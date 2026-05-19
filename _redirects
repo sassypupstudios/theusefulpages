@@ -1,0 +1,9 @@
+# Cloudflare Pages _redirects
+# Ensures clean URLs work without trailing slash issues
+
+/word-unscrambler    /word-unscrambler/    301
+/password-generator  /password-generator/  301
+/unit-converter      /unit-converter/      301
+/word-counter        /word-counter/        301
+/lorem-ipsum         /lorem-ipsum/         301
+/color-picker        /color-picker/        301

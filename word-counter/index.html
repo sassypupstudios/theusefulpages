@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter — Count Words, Characters & Reading Time | The Useful Pages</title>
+  <meta name="description" content="Count words, characters, sentences, and paragraphs instantly. Get reading and speaking time estimates, find and replace text, and convert case. Free, no signup.">
+  <meta name="keywords" content="word counter, character counter, reading time calculator, word count tool, text analyzer, word frequency">
+  <link rel="canonical" href="https://theusefulpages.com/word-counter/">
+  <meta property="og:title" content="Word Counter & Text Analyzer — The Useful Pages">
+  <meta property="og:description" content="Instant word count, character count, reading time, and text analysis. Free, no signup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theusefulpages.com/word-counter/">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Word Counter & Text Analyzer",
+    "url": "https://theusefulpages.com/word-counter/",
+    "description": "Count words, characters, sentences, and paragraphs. Get reading and speaking time estimates.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <!-- Google Analytics — replace G-XXXXXXXXXX -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <!-- AdSense — replace ca-pub-XXXXXXXXXXXXXXXX -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } }
+    };
+  </script>
+  <link rel="stylesheet" href="/css/shared.css">
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors-fast">
+
+  <!-- NAV -->
+  <nav class="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 text-indigo-600 font-bold text-lg shrink-0">
+          <span class="text-xl" aria-hidden="true">⚡</span> The Useful Pages
+        </a>
+        <div class="hidden lg:flex items-center gap-5 text-sm">
+          <a href="/word-unscrambler/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Word Unscrambler</a>
+          <a href="/password-generator/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Password Generator</a>
+          <a href="/unit-converter/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Unit Converter</a>
+          <a href="/word-counter/" data-nav class="text-violet-600 font-semibold">Word Counter</a>
+          <a href="/lorem-ipsum/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Lorem Ipsum</a>
+          <a href="/color-picker/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Color Picker</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="dark-toggle" aria-label="Toggle dark mode" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+            <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </button>
+          <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" class="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <div class="px-4 py-3 space-y-1 text-sm">
+        <a href="/word-unscrambler/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🔤 Word Unscrambler</a>
+        <a href="/password-generator/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🔐 Password Generator</a>
+        <a href="/unit-converter/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">⚖️ Unit Converter</a>
+        <a href="/word-counter/" class="block px-3 py-2 rounded-lg bg-violet-50 dark:bg-violet-950 text-violet-700 dark:text-violet-300 font-medium">📊 Word Counter</a>
+        <a href="/lorem-ipsum/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">📝 Lorem Ipsum</a>
+        <a href="/color-picker/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🎨 Color Picker</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- TOP AD BANNER -->
+  <!-- AD ZONE: top-banner 728×90 leaderboard -->
+  <div class="ad-zone ad-banner py-2 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
+    <div class="ad-placeholder">Advertisement · 728×90</div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="lg:grid lg:grid-cols-[1fr_300px] lg:gap-8">
+
+      <main>
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Word Counter</h1>
+        <p class="text-gray-500 dark:text-gray-400 mb-8">Paste or type your text below for an instant, detailed analysis.</p>
+
+        <!-- STATS ROW -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 mb-6">
+          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
+            <p id="stat-words" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Words</p>
+          </div>
+          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
+            <p id="stat-chars" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Characters</p>
+          </div>
+          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
+            <p id="stat-chars-no-space" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Chars (no spaces)</p>
+          </div>
+          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
+            <p id="stat-sentences" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Sentences</p>
+          </div>
+          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
+            <p id="stat-paragraphs" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Paragraphs</p>
+          </div>
+          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
+            <p id="stat-read-time" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0s</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Reading time</p>
+          </div>
+        </div>
+
+        <!-- Speaking time strip -->
+        <div class="bg-violet-50 dark:bg-violet-950 border border-violet-200 dark:border-violet-900 rounded-xl px-4 py-3 mb-6 flex items-center justify-between">
+          <span class="text-sm text-violet-700 dark:text-violet-300">🎤 Speaking time (avg 130 wpm)</span>
+          <span id="stat-speak-time" class="font-semibold text-violet-700 dark:text-violet-300">0s</span>
+        </div>
+
+        <!-- TEXTAREA -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-4 mb-6">
+          <textarea
+            id="text-input"
+            placeholder="Paste or type your text here…"
+            rows="12"
+            class="w-full bg-transparent resize-y text-gray-800 dark:text-gray-200 text-sm leading-relaxed outline-none placeholder-gray-300 dark:placeholder-gray-600"
+          ></textarea>
+          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-gray-100 dark:border-slate-800 mt-2">
+            <div class="flex flex-wrap gap-2">
+              <button id="clear-text" class="px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-slate-700 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">Clear</button>
+              <button id="copy-text" class="px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-slate-700 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">Copy text</button>
+            </div>
+            <span class="text-xs text-gray-400 dark:text-gray-500" id="char-counter">0 / ∞</span>
+          </div>
+        </div>
+
+        <!-- TOOLS SECTION -->
+        <!-- AD ZONE: mid-tool responsive -->
+        <div class="ad-zone ad-responsive mb-6">
+          <div class="ad-placeholder">Advertisement · Responsive</div>
+        </div>
+
+        <!-- Find & Replace -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-6 mb-6">
+          <h2 class="font-semibold text-gray-700 dark:text-gray-300 mb-4">Find &amp; Replace</h2>
+          <div class="grid sm:grid-cols-2 gap-3 mb-3">
+            <div>
+              <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1.5">Find</label>
+              <input id="find-input" type="text" placeholder="Search text…"
+                class="w-full px-3 py-2.5 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-violet-500 transition-all">
+            </div>
+            <div>
+              <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1.5">Replace with</label>
+              <input id="replace-input" type="text" placeholder="Replacement…"
+                class="w-full px-3 py-2.5 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-violet-500 transition-all">
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <label class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
+              <input type="checkbox" id="case-sensitive" class="accent-violet-600">
+              Case sensitive
+            </label>
+            <button id="replace-btn" class="px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium rounded-lg transition-colors">Replace All</button>
+            <span id="replace-count" class="text-sm text-gray-400 dark:text-gray-500"></span>
+          </div>
+        </div>
+
+        <!-- Case Converter -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-6 mb-6">
+          <h2 class="font-semibold text-gray-700 dark:text-gray-300 mb-4">Case Converter</h2>
+          <div class="flex flex-wrap gap-2">
+            <button data-case="upper"    class="case-btn px-3 py-2 text-sm font-medium border border-gray-200 dark:border-slate-700 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-violet-50 dark:hover:bg-violet-950 hover:border-violet-300 hover:text-violet-700 transition-all">UPPERCASE</button>
+            <button data-case="lower"    class="case-btn px-3 py-2 text-sm font-medium border border-gray-200 dark:border-slate-700 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-violet-50 dark:hover:bg-violet-950 hover:border-violet-300 hover:text-violet-700 transition-all">lowercase</button>
+            <button data-case="title"    class="case-btn px-3 py-2 text-sm font-medium border border-gray-200 dark:border-slate-700 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-violet-50 dark:hover:bg-violet-950 hover:border-violet-300 hover:text-violet-700 transition-all">Title Case</button>
+            <button data-case="sentence" class="case-btn px-3 py-2 text-sm font-medium border border-gray-200 dark:border-slate-700 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-violet-50 dark:hover:bg-violet-950 hover:border-violet-300 hover:text-violet-700 transition-all">Sentence case</button>
+            <button data-case="alternate" class="case-btn px-3 py-2 text-sm font-medium border border-gray-200 dark:border-slate-700 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-violet-50 dark:hover:bg-violet-950 hover:border-violet-300 hover:text-violet-700 transition-all">aLtErNaTe</button>
+          </div>
+        </div>
+
+        <!-- Word frequency -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-6">
+          <h2 class="font-semibold text-gray-700 dark:text-gray-300 mb-4">Top Words</h2>
+          <div id="word-freq" class="flex flex-wrap gap-2 text-sm text-gray-500 dark:text-gray-400 italic">
+            Start typing to see word frequency.
+          </div>
+        </div>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="hidden lg:block space-y-6">
+        <div class="ad-zone ad-rectangle">
+          <div class="ad-placeholder">Advertisement · 300×250</div>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-5">
+          <h3 class="font-semibold text-gray-700 dark:text-gray-300 mb-3 text-sm uppercase tracking-wide">Reading Speeds</h3>
+          <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2">
+            <li>• Average reading: ~238 wpm</li>
+            <li>• Average speaking: ~130 wpm</li>
+            <li>• Speed reading: ~700+ wpm</li>
+            <li>• Blog post: ~1,600 words (~7 min)</li>
+            <li>• Novel page: ~250 words (~1 min)</li>
+          </ul>
+        </div>
+        <div class="ad-zone ad-rectangle">
+          <div class="ad-placeholder">Advertisement · 300×250</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 mt-4">
+    <div class="ad-zone ad-banner border-b border-gray-100 dark:border-slate-800">
+      <div class="ad-placeholder">Advertisement · 728×90</div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500 dark:text-gray-400">
+      <span><span class="font-semibold text-gray-700 dark:text-gray-300">The Useful Pages</span> — Free tools for everyone</span>
+      <span>Powered by <a href="https://sassypupstudios.com" class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium" target="_blank" rel="noopener noreferrer">Sassy Pup Studios</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/shared.js"></script>
+  <script>
+  (function () {
+    const textarea    = document.getElementById('text-input');
+    const clearBtn    = document.getElementById('clear-text');
+    const copyBtn     = document.getElementById('copy-text');
+    const charCounter = document.getElementById('char-counter');
+    const findInput   = document.getElementById('find-input');
+    const replaceInput= document.getElementById('replace-input');
+    const replaceBtn  = document.getElementById('replace-btn');
+    const replaceCount= document.getElementById('replace-count');
+    const caseSensitive= document.getElementById('case-sensitive');
+    const wordFreqDiv = document.getElementById('word-freq');
+
+    const stats = {
+      words:         document.getElementById('stat-words'),
+      chars:         document.getElementById('stat-chars'),
+      charsNoSpace:  document.getElementById('stat-chars-no-space'),
+      sentences:     document.getElementById('stat-sentences'),
+      paragraphs:    document.getElementById('stat-paragraphs'),
+      readTime:      document.getElementById('stat-read-time'),
+      speakTime:     document.getElementById('stat-speak-time'),
+    };
+
+    function fmtTime(minutes) {
+      if (minutes < 1) return `${Math.round(minutes * 60)}s`;
+      if (minutes < 60) return `${Math.round(minutes)} min`;
+      const h = Math.floor(minutes / 60);
+      const m = Math.round(minutes % 60);
+      return m ? `${h}h ${m}m` : `${h}h`;
+    }
+
+    function analyze(text) {
+      const words = text.trim() === '' ? [] : text.trim().split(/\s+/).filter(w => w.length > 0);
+      const wordCount = words.length;
+      const charCount = text.length;
+      const charNoSpace = text.replace(/\s/g, '').length;
+      const sentences = text.trim() === '' ? 0 : (text.match(/[^.!?]*[.!?]+/g) || []).length || (text.trim().length > 0 ? 1 : 0);
+      const paragraphs = text.trim() === '' ? 0 : text.split(/\n\s*\n/).filter(p => p.trim().length > 0).length || (text.trim().length > 0 ? 1 : 0);
+      const readMins  = wordCount / 238;
+      const speakMins = wordCount / 130;
+
+      stats.words.textContent        = wordCount.toLocaleString();
+      stats.chars.textContent        = charCount.toLocaleString();
+      stats.charsNoSpace.textContent = charNoSpace.toLocaleString();
+      stats.sentences.textContent    = sentences.toLocaleString();
+      stats.paragraphs.textContent   = paragraphs.toLocaleString();
+      stats.readTime.textContent     = wordCount === 0 ? '0s' : fmtTime(readMins);
+      stats.speakTime.textContent    = wordCount === 0 ? '0s' : fmtTime(speakMins);
+      charCounter.textContent        = `${charCount.toLocaleString()} chars`;
+
+      // Word frequency (top 15, ignore stop words)
+      const STOP = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','is','it','be','as','was','are','were','has','have','had','i','you','he','she','we','they','this','that','not','by','from','up','about','into','over','after','its','their','there']);
+      const freq = {};
+      words.forEach(w => {
+        const wl = w.toLowerCase().replace(/[^a-z']/g, '');
+        if (wl.length > 2 && !STOP.has(wl)) freq[wl] = (freq[wl] || 0) + 1;
+      });
+      const sorted = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 15);
+      if (sorted.length === 0) {
+        wordFreqDiv.innerHTML = '<span class="italic">Start typing to see word frequency.</span>';
+      } else {
+        wordFreqDiv.innerHTML = sorted.map(([word, count]) =>
+          `<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-violet-50 dark:bg-violet-950 text-violet-700 dark:text-violet-300 rounded-full text-xs font-medium">${word} <span class="opacity-60">${count}</span></span>`
+        ).join('');
+      }
+    }
+
+    // Case converters
+    function toTitleCase(str) {
+      const minors = new Set(['a','an','the','and','but','or','for','nor','on','at','to','by','in','up','as','of']);
+      return str.replace(/\w\S*/g, (word, idx) => {
+        const lower = word.toLowerCase();
+        return (idx === 0 || !minors.has(lower)) ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : lower;
+      });
+    }
+    function toSentenceCase(str) {
+      return str.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g, c => c.toUpperCase());
+    }
+    function toAlternate(str) {
+      let i = 0;
+      return str.replace(/[a-zA-Z]/g, c => i++ % 2 === 0 ? c.toLowerCase() : c.toUpperCase());
+    }
+
+    // Events
+    textarea.addEventListener('input', () => analyze(textarea.value));
+    clearBtn.addEventListener('click', () => { textarea.value = ''; analyze(''); textarea.focus(); });
+    copyBtn.addEventListener('click',  () => copyToClipboard(textarea.value));
+
+    replaceBtn.addEventListener('click', () => {
+      const find = findInput.value;
+      if (!find) return;
+      const flags = caseSensitive.checked ? 'g' : 'gi';
+      try {
+        const re = new RegExp(find.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), flags);
+        const matches = (textarea.value.match(re) || []).length;
+        textarea.value = textarea.value.replace(re, replaceInput.value);
+        analyze(textarea.value);
+        replaceCount.textContent = matches ? `${matches} replacement${matches !== 1 ? 's' : ''} made` : 'No matches found';
+      } catch (_) {
+        replaceCount.textContent = 'Invalid search';
+      }
+    });
+
+    document.querySelectorAll('.case-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = textarea.value;
+        const t = btn.dataset.case;
+        if (t === 'upper')     textarea.value = text.toUpperCase();
+        if (t === 'lower')     textarea.value = text.toLowerCase();
+        if (t === 'title')     textarea.value = toTitleCase(text);
+        if (t === 'sentence')  textarea.value = toSentenceCase(text);
+        if (t === 'alternate') textarea.value = toAlternate(text);
+        analyze(textarea.value);
+      });
+    });
+
+    // Init
+    analyze('');
+  })();
+  </script>
+</body>
+</html>
