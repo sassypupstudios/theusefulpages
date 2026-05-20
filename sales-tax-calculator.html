@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Tax Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate sales tax, reverse-calculate pre-tax price, or find the tax rate. Includes common US state rates and bill-splitting. Free and instant.">
+  <link rel="canonical" href="https://theusefulpages.com/sales-tax-calculator.html">
+  <meta property="og:title" content="Sales Tax Calculator — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sales Tax Calculator","url":"https://theusefulpages.com/sales-tax-calculator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .state-chips { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem; }
+    .state-chip { padding:0.3rem 0.65rem; border:1.5px solid var(--border); border-radius:20px; font-size:0.775rem; font-weight:600; color:var(--text-muted); cursor:pointer; background:var(--card-bg); transition:all 0.15s; font-family:inherit; }
+    .state-chip:hover { border-color:var(--primary); color:var(--primary); }
+    .state-chip.active { background:var(--primary); border-color:var(--primary); color:#fff; }
+    .result-highlight { background:var(--primary); color:#fff; border-radius:12px; padding:1rem 1.25rem; text-align:center; margin-bottom:0.75rem; }
+    .result-highlight .amount { font-size:2rem; font-weight:700; }
+    .result-highlight .label { font-size:0.8rem; opacity:0.85; margin-top:0.2rem; }
+    .split-section { border-top:1px solid var(--border); margin-top:1.25rem; padding-top:1.25rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Sales Tax Calculator</h1>
+      <p class="page-subtitle">Calculate tax, find the pre-tax price, or determine the tax rate — updates live as you type.</p>
+
+      <div class="tool-card">
+        <!-- Tabs -->
+        <div class="tab-group" style="margin-bottom:1.25rem;">
+          <button class="tab-btn active" id="tab-calc" onclick="switchTab('calc')">Calculate Tax</button>
+          <button class="tab-btn" id="tab-reverse" onclick="switchTab('reverse')">Remove Tax</button>
+          <button class="tab-btn" id="tab-rate" onclick="switchTab('rate')">Find Rate</button>
+        </div>
+
+        <!-- State chips (shared) -->
+        <div style="margin-bottom:0.5rem;">
+          <span class="form-label" style="display:block;margin-bottom:0.4rem;">Common US State Rates</span>
+          <div class="state-chips" id="state-chips">
+            <button class="state-chip" data-rate="7.25" onclick="applyChip(this)">CA 7.25%</button>
+            <button class="state-chip" data-rate="6.25" onclick="applyChip(this)">TX 6.25%</button>
+            <button class="state-chip" data-rate="6"    onclick="applyChip(this)">FL 6%</button>
+            <button class="state-chip" data-rate="4"    onclick="applyChip(this)">NY 4%</button>
+            <button class="state-chip" data-rate="10.25" onclick="applyChip(this)">WA 10.25%</button>
+            <button class="state-chip" data-rate="6.25" onclick="applyChip(this)">IL 6.25%</button>
+            <button class="state-chip" data-rate="6"    onclick="applyChip(this)">PA 6%</button>
+            <button class="state-chip" data-rate="5.75" onclick="applyChip(this)">OH 5.75%</button>
+            <button class="state-chip" data-rate="4"    onclick="applyChip(this)">GA 4%</button>
+            <button class="state-chip" data-rate="4.75" onclick="applyChip(this)">NC 4.75%</button>
+          </div>
+        </div>
+
+        <!-- TAB 1: Calculate Tax -->
+        <div id="panel-calc">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Pre-Tax Price ($)</label>
+              <input type="number" id="calc-price" class="form-input" placeholder="0.00" min="0" step="0.01" oninput="calcTax()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tax Rate (%)</label>
+              <input type="number" id="calc-rate" class="form-input" placeholder="e.g. 8.5" min="0" max="100" step="0.01" oninput="calcTax(); syncChips('calc-rate')">
+            </div>
+          </div>
+          <div id="result-calc" class="hidden">
+            <div class="result-highlight">
+              <div class="amount" id="calc-total">$0.00</div>
+              <div class="label">Total (with tax)</div>
+            </div>
+            <div class="stat-grid" style="grid-template-columns:repeat(2,1fr);gap:0.75rem;margin-bottom:0.75rem;">
+              <div class="stat-box"><div class="stat-value" id="calc-tax-amt">$0.00</div><div class="stat-label">Tax Amount</div></div>
+              <div class="stat-box"><div class="stat-value" id="calc-pretax-echo">$0.00</div><div class="stat-label">Pre-Tax Price</div></div>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="copyCalc()">Copy Result</button>
+          </div>
+        </div>
+
+        <!-- TAB 2: Remove Tax (Reverse) -->
+        <div id="panel-reverse" class="hidden">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Total Price incl. Tax ($)</label>
+              <input type="number" id="rev-total" class="form-input" placeholder="0.00" min="0" step="0.01" oninput="calcReverse()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tax Rate (%)</label>
+              <input type="number" id="rev-rate" class="form-input" placeholder="e.g. 8.5" min="0" max="100" step="0.01" oninput="calcReverse(); syncChips('rev-rate')">
+            </div>
+          </div>
+          <div id="result-reverse" class="hidden">
+            <div class="result-highlight">
+              <div class="amount" id="rev-pretax">$0.00</div>
+              <div class="label">Pre-Tax Price</div>
+            </div>
+            <div class="stat-grid" style="grid-template-columns:repeat(2,1fr);gap:0.75rem;margin-bottom:0.75rem;">
+              <div class="stat-box"><div class="stat-value" id="rev-tax-amt">$0.00</div><div class="stat-label">Tax Amount</div></div>
+              <div class="stat-box"><div class="stat-value" id="rev-total-echo">$0.00</div><div class="stat-label">Total Paid</div></div>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="copyReverse()">Copy Result</button>
+          </div>
+        </div>
+
+        <!-- TAB 3: Find Rate -->
+        <div id="panel-rate" class="hidden">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Pre-Tax Price ($)</label>
+              <input type="number" id="fr-pretax" class="form-input" placeholder="0.00" min="0" step="0.01" oninput="calcFindRate()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Total After-Tax Price ($)</label>
+              <input type="number" id="fr-total" class="form-input" placeholder="0.00" min="0" step="0.01" oninput="calcFindRate()">
+            </div>
+          </div>
+          <div id="result-rate" class="hidden">
+            <div class="result-highlight">
+              <div class="amount" id="fr-rate-display">0%</div>
+              <div class="label">Tax Rate</div>
+            </div>
+            <div class="stat-grid" style="grid-template-columns:repeat(2,1fr);gap:0.75rem;margin-bottom:0.75rem;">
+              <div class="stat-box"><div class="stat-value" id="fr-tax-amt">$0.00</div><div class="stat-label">Tax Amount</div></div>
+              <div class="stat-box"><div class="stat-value" id="fr-pretax-echo">$0.00</div><div class="stat-label">Pre-Tax Price</div></div>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="copyFindRate()">Copy Result</button>
+          </div>
+        </div>
+
+        <!-- Split Section (shared) -->
+        <div class="split-section" id="split-section" style="display:none;">
+          <label class="form-label">Split Among People</label>
+          <div class="form-row" style="align-items:flex-end;">
+            <div class="form-group" style="flex:0 0 140px;">
+              <input type="number" id="split-n" class="form-input" placeholder="# people" min="2" max="100" value="2" oninput="updateSplit()">
+            </div>
+            <div class="stat-box" style="flex:1;margin-bottom:1rem;">
+              <div class="stat-value" id="split-per">$0.00</div>
+              <div class="stat-label">Per Person (total with tax)</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:0.5rem;">Rates shown are base state rates. Local/county taxes may apply and vary by location.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Calculate Tax:</strong> Enter a pre-tax price and rate to see the tax amount and final total.</li>
+          <li><strong>Remove Tax:</strong> Enter a tax-inclusive total and rate to back-calculate the original pre-tax price.</li>
+          <li><strong>Find Rate:</strong> Enter both the pre-tax and after-tax prices to discover the effective tax rate.</li>
+          <li>Click any <strong>state chip</strong> to instantly fill in that state's base sales tax rate.</li>
+          <li>Use the <strong>Split Among People</strong> field to divide the total among a group.</li>
+          <li>All results update live — no button press needed.</li>
+        </ul>
+      </div>
+
+      <div id="related-tools"></div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('sales-tax-calculator.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('sales-tax-calculator.html', 'finance');
+  });
+
+  let activeTab = 'calc';
+
+  function switchTab(tab) {
+    activeTab = tab;
+    ['calc','reverse','rate'].forEach(t => {
+      document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+      document.getElementById('panel-' + t).classList.toggle('hidden', t !== tab);
+    });
+    updateSplitVisibility();
+  }
+
+  // Sync chip highlight to the active rate field
+  function syncChips(inputId) {
+    const val = parseFloat(document.getElementById(inputId).value);
+    document.querySelectorAll('.state-chip').forEach(c => {
+      c.classList.toggle('active', parseFloat(c.dataset.rate) === val);
+    });
+  }
+
+  function applyChip(btn) {
+    const rate = btn.dataset.rate;
+    document.querySelectorAll('.state-chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    if (activeTab === 'calc')    { document.getElementById('calc-rate').value = rate; calcTax(); }
+    if (activeTab === 'reverse') { document.getElementById('rev-rate').value  = rate; calcReverse(); }
+    // Find rate tab doesn't use chips for input — just show visually
+  }
+
+  // ── Tab 1: Calculate Tax ──────────────────────────
+  function calcTax() {
+    const price = parseFloat(document.getElementById('calc-price').value);
+    const rate  = parseFloat(document.getElementById('calc-rate').value);
+    const result = document.getElementById('result-calc');
+    if (isNaN(price) || isNaN(rate) || price < 0 || rate < 0) { result.classList.add('hidden'); updateSplitVisibility(); return; }
+
+    const taxAmt = price * (rate / 100);
+    const total  = price + taxAmt;
+
+    document.getElementById('calc-tax-amt').textContent    = fmtCurrency(taxAmt);
+    document.getElementById('calc-pretax-echo').textContent = fmtCurrency(price);
+    document.getElementById('calc-total').textContent       = fmtCurrency(total);
+    result.classList.remove('hidden');
+    updateSplit(total);
+    updateSplitVisibility(total);
+  }
+
+  // ── Tab 2: Remove Tax ─────────────────────────────
+  function calcReverse() {
+    const total = parseFloat(document.getElementById('rev-total').value);
+    const rate  = parseFloat(document.getElementById('rev-rate').value);
+    const result = document.getElementById('result-reverse');
+    if (isNaN(total) || isNaN(rate) || total < 0 || rate < 0) { result.classList.add('hidden'); updateSplitVisibility(); return; }
+
+    const preTax = total / (1 + rate / 100);
+    const taxAmt = total - preTax;
+
+    document.getElementById('rev-pretax').textContent    = fmtCurrency(preTax);
+    document.getElementById('rev-tax-amt').textContent   = fmtCurrency(taxAmt);
+    document.getElementById('rev-total-echo').textContent = fmtCurrency(total);
+    result.classList.remove('hidden');
+    updateSplit(total);
+    updateSplitVisibility(total);
+  }
+
+  // ── Tab 3: Find Rate ──────────────────────────────
+  function calcFindRate() {
+    const preTax = parseFloat(document.getElementById('fr-pretax').value);
+    const total  = parseFloat(document.getElementById('fr-total').value);
+    const result = document.getElementById('result-rate');
+    if (isNaN(preTax) || isNaN(total) || preTax <= 0 || total <= preTax) { result.classList.add('hidden'); updateSplitVisibility(); return; }
+
+    const taxAmt = total - preTax;
+    const rate   = (taxAmt / preTax) * 100;
+
+    document.getElementById('fr-rate-display').textContent = fmtPct(rate, 4).replace(/\.?0+%$/, '%');
+    document.getElementById('fr-tax-amt').textContent      = fmtCurrency(taxAmt);
+    document.getElementById('fr-pretax-echo').textContent  = fmtCurrency(preTax);
+    result.classList.remove('hidden');
+    updateSplit(total);
+    updateSplitVisibility(total);
+  }
+
+  // ── Split ─────────────────────────────────────────
+  let _lastTotal = null;
+
+  function updateSplit(total) {
+    if (total !== undefined) _lastTotal = total;
+    if (_lastTotal == null) return;
+    const n = parseInt(document.getElementById('split-n').value) || 2;
+    document.getElementById('split-per').textContent = fmtCurrency(_lastTotal / n);
+  }
+
+  function updateSplitVisibility(total) {
+    const splitEl = document.getElementById('split-section');
+    if (total !== undefined && total > 0) {
+      splitEl.style.display = '';
+      updateSplit(total);
+    } else if (total === undefined) {
+      // Called without total — check if result visible
+      const resultId = 'result-' + activeTab;
+      const visible = !document.getElementById(resultId).classList.contains('hidden');
+      splitEl.style.display = visible ? '' : 'none';
+    }
+  }
+
+  // ── Copy helpers ──────────────────────────────────
+  function copyCalc() {
+    const price = document.getElementById('calc-price').value;
+    const rate  = document.getElementById('calc-rate').value;
+    const tax   = document.getElementById('calc-tax-amt').textContent;
+    const total = document.getElementById('calc-total').textContent;
+    copyText(`Sales Tax Calculation\nPre-Tax Price: $${price}\nTax Rate: ${rate}%\nTax Amount: ${tax}\nTotal: ${total}`, 'Result copied!');
+  }
+
+  function copyReverse() {
+    const total  = document.getElementById('rev-total').value;
+    const rate   = document.getElementById('rev-rate').value;
+    const preTax = document.getElementById('rev-pretax').textContent;
+    const tax    = document.getElementById('rev-tax-amt').textContent;
+    copyText(`Remove Tax Calculation\nTotal Paid: $${total}\nTax Rate: ${rate}%\nTax Amount: ${tax}\nPre-Tax Price: ${preTax}`, 'Result copied!');
+  }
+
+  function copyFindRate() {
+    const preTax = document.getElementById('fr-pretax').value;
+    const total  = document.getElementById('fr-total').value;
+    const rate   = document.getElementById('fr-rate-display').textContent;
+    const tax    = document.getElementById('fr-tax-amt').textContent;
+    copyText(`Find Tax Rate\nPre-Tax Price: $${preTax}\nTotal Paid: $${total}\nTax Amount: ${tax}\nTax Rate: ${rate}`, 'Result copied!');
+  }
+  </script>
+</body>
+</html>

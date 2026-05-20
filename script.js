@@ -5,12 +5,12 @@
 // ── Tool directory ─────────────────────────────────
 const TOOLS = {
   text: {
-    label: 'Text & Writing',
+    label: 'Text Tools',
     icon: '✍️',
     tools: [
       { name: 'Word Counter',            url: 'word-counter.html',            desc: 'Words, chars, sentences & reading time' },
-      { name: 'Character Counter',       url: 'character-counter.html',       desc: 'Detailed character statistics' },
-      { name: 'Case Converter',          url: 'case-converter.html',          desc: 'UPPER, lower, Title, Sentence case' },
+      { name: 'Character Counter',       url: 'character-counter.html',       desc: 'Social limits, SMS, meta & username lengths' },
+      { name: 'Case Converter',          url: 'case-converter.html',          desc: 'UPPER, lower, Title, camelCase, snake_case' },
       { name: 'Lorem Ipsum Generator',   url: 'lorem-ipsum.html',             desc: 'Customizable placeholder text' },
       { name: 'Text Diff Checker',       url: 'text-diff.html',               desc: 'Side-by-side text comparison' },
       { name: 'Remove Duplicate Lines',  url: 'remove-duplicate-lines.html',  desc: 'Clean duplicate text lines fast' },
@@ -39,10 +39,12 @@ const TOOLS = {
     icon: '📅',
     tools: [
       { name: 'Days Between Dates',      url: 'days-between-dates.html',      desc: 'Days, weeks, months between two dates' },
+      { name: 'Business Days Calculator',url: 'business-days.html',           desc: 'Working days between dates, skip holidays' },
       { name: 'Date Calculator',         url: 'date-calculator.html',         desc: 'Add or subtract time from any date' },
       { name: 'Days Until Calculator',   url: 'days-until.html',              desc: 'Countdown to any future date' },
       { name: 'Unix Timestamp Converter',url: 'unix-timestamp.html',          desc: 'Timestamp ↔ human-readable date' },
       { name: 'Time Zone Converter',     url: 'timezone-converter.html',      desc: 'Convert between world time zones' },
+      { name: 'Meeting Planner',         url: 'timezone-meeting-planner.html',desc: 'Find overlap across 2–4 time zones' },
       { name: 'Countdown Timer',         url: 'countdown-timer.html',         desc: 'Visual countdown to specific date/time' },
       { name: 'Kitchen Timer',           url: 'kitchen-timer.html',           desc: 'Multiple labeled timers with presets' },
     ],
@@ -66,9 +68,13 @@ const TOOLS = {
     tools: [
       { name: 'JSON Formatter',          url: 'json-formatter.html',          desc: 'Beautify, validate, and minify JSON' },
       { name: 'CSV to JSON',             url: 'csv-to-json.html',             desc: 'Convert CSV data to JSON format' },
+      { name: 'URL Encoder / Decoder',   url: 'url-encoder.html',             desc: 'Encode or decode URLs and query strings' },
       { name: 'HTML Formatter',          url: 'html-formatter.html',          desc: 'Beautify or minify HTML code' },
       { name: 'JavaScript Minifier',     url: 'js-minifier.html',             desc: 'Minify JS and show size reduction' },
       { name: 'Markdown Previewer',      url: 'markdown-previewer.html',      desc: 'Live side-by-side Markdown preview' },
+      { name: 'Cron Expression Helper',  url: 'cron-helper.html',             desc: 'Build & explain cron schedules visually' },
+      { name: 'Robots.txt Generator',    url: 'robots-txt-generator.html',    desc: 'Build robots.txt rules with presets' },
+      { name: '.htaccess Generator',     url: 'htaccess-generator.html',      desc: 'Redirects, HTTPS, www, security headers' },
       { name: 'Color Picker & Palette',  url: 'color-picker.html',            desc: 'HEX/RGB/HSL values & palettes' },
       { name: 'QR Code Generator',       url: 'qr-generator.html',            desc: 'Text/URL to QR code, download PNG' },
       { name: 'Password Generator',      url: 'password-generator.html',      desc: 'Strong passwords with strength meter' },
@@ -96,7 +102,7 @@ const TOOLS = {
     icon: '❤️',
     tools: [
       { name: 'BMI Calculator',          url: 'bmi-calculator.html',          desc: 'Body mass index with WHO classification' },
-      { name: 'Calorie Calculator',       url: 'calorie-calculator.html',      desc: 'TDEE, activity level & macros' },
+      { name: 'Calorie Calculator',      url: 'calorie-calculator.html',      desc: 'TDEE, activity level & macros' },
       { name: 'Body Fat Calculator',     url: 'body-fat.html',                desc: 'Navy method body fat percentage' },
       { name: 'Ideal Weight Calculator', url: 'ideal-weight.html',            desc: 'Multiple formulas & healthy range' },
       { name: 'Pregnancy Due Date',      url: 'pregnancy-due-date.html',      desc: 'From LMP, conception, or ultrasound' },
@@ -104,11 +110,12 @@ const TOOLS = {
     ],
   },
   finance: {
-    label: 'Financial',
+    label: 'Money Tools',
     icon: '💰',
     tools: [
       { name: 'Loan Payment Calculator', url: 'loan-calculator.html',         desc: 'Monthly payment & total interest' },
       { name: 'Mortgage Calculator',     url: 'mortgage-calculator.html',     desc: 'PITI payments & amortization schedule' },
+      { name: 'Sales Tax Calculator',    url: 'sales-tax-calculator.html',    desc: 'Calculate tax, total, or pre-tax price' },
       { name: 'Compound Interest',       url: 'compound-interest.html',       desc: 'Future value with contribution growth' },
       { name: 'Retirement Calculator',   url: 'retirement-calculator.html',   desc: 'Savings needed & growth projection' },
       { name: 'Tip Calculator',          url: 'tip-calculator.html',          desc: 'Tip amount, split bill, per person' },

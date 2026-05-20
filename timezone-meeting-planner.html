@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Zone Meeting Planner — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Find the best meeting time across 2–4 time zones. Color-coded hour grid shows business hours overlap for any date. Free and instant.">
+  <link rel="canonical" href="https://theusefulpages.com/timezone-meeting-planner.html">
+  <meta property="og:title" content="Time Zone Meeting Planner — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Time Zone Meeting Planner","url":"https://theusefulpages.com/timezone-meeting-planner.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tz-location-row { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.75rem; }
+    .tz-location-row select { flex:1; }
+    .tz-remove-btn { background:none; border:1.5px solid var(--border); border-radius:8px; cursor:pointer; color:var(--text-muted); font-size:1rem; width:2rem; height:2rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:border-color 0.15s, color 0.15s; }
+    .tz-remove-btn:hover { border-color:#ef4444; color:#ef4444; }
+    .hour-grid { display:grid; gap:0; overflow-x:auto; }
+    .hour-grid-inner { min-width:560px; }
+    .hg-row { display:grid; align-items:center; margin-bottom:2px; }
+    .hg-label { font-size:0.75rem; font-weight:600; color:var(--text-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding-right:0.5rem; }
+    .hg-cell { height:2rem; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:600; cursor:default; transition:filter 0.15s; }
+    .hg-cell:hover { filter:brightness(1.1); }
+    .hg-cell.biz   { background:var(--accent,#22c55e); color:#fff; }
+    .hg-cell.early { background:#f59e0b; color:#fff; }
+    .hg-cell.night { background:var(--border); color:var(--text-muted); }
+    .hg-cell.selected { outline:2px solid var(--primary); outline-offset:1px; }
+    .hg-header { display:grid; margin-bottom:4px; }
+    .hg-hour-label { font-size:0.65rem; color:var(--text-muted); text-align:center; }
+    .overlap-banner { background:var(--primary); color:#fff; border-radius:10px; padding:0.75rem 1rem; margin-bottom:1rem; font-size:0.875rem; font-weight:600; display:flex; align-items:center; gap:0.5rem; }
+    .overlap-banner.none { background:var(--border); color:var(--text-muted); }
+    .legend { display:flex; gap:1rem; flex-wrap:wrap; font-size:0.75rem; color:var(--text-muted); margin-bottom:0.75rem; }
+    .legend-dot { display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:4px; }
+    .slider-row { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
+    .slider-row input[type=range] { flex:1; accent-color:var(--primary); }
+    .selected-time-display { font-size:0.875rem; font-weight:600; color:var(--primary); min-width:3.5rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Time Zone Meeting Planner</h1>
+      <p class="page-subtitle">Find the best meeting time across multiple time zones — color-coded by business hours.</p>
+
+      <div class="tool-card">
+        <!-- Date picker -->
+        <div class="form-row" style="margin-bottom:1rem;">
+          <div class="form-group" style="flex:0 0 auto;">
+            <label class="form-label">Meeting Date</label>
+            <input type="date" id="meeting-date" class="form-input" oninput="renderGrid()">
+          </div>
+        </div>
+
+        <!-- Location rows -->
+        <label class="form-label">Locations (2–4)</label>
+        <div id="locations-container"></div>
+        <button class="btn btn-outline btn-sm" id="add-location-btn" onclick="addLocation()" style="margin-bottom:1.25rem;">+ Add Location</button>
+
+        <!-- Time slider -->
+        <div class="form-group">
+          <label class="form-label">Highlight Hour (host time)</label>
+          <div class="slider-row">
+            <input type="range" id="hour-slider" min="0" max="23" value="10" oninput="onSliderChange()">
+            <span class="selected-time-display" id="slider-display">10:00 AM</span>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+          <span><span class="legend-dot" style="background:var(--accent,#22c55e);"></span>Business hours (9am–5pm)</span>
+          <span><span class="legend-dot" style="background:#f59e0b;"></span>Early/Late (7–9am or 5–7pm)</span>
+          <span><span class="legend-dot" style="background:var(--border);"></span>Night (outside 7am–7pm)</span>
+        </div>
+
+        <!-- Best overlap banner -->
+        <div id="overlap-banner" class="overlap-banner none" style="display:none;"></div>
+
+        <!-- Hour grid -->
+        <div class="hour-grid" id="hour-grid"></div>
+
+        <!-- Copy summary -->
+        <div style="margin-top:1rem;">
+          <button class="btn btn-outline btn-sm" onclick="copySummary()">Copy Summary</button>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Select a meeting date — DST differences are automatically accounted for.</li>
+          <li>Choose 2 to 4 cities/time zones from the dropdowns.</li>
+          <li>The hour grid shows all 24 hours in the host (first) timezone, with color indicators for each location.</li>
+          <li>Green = core business hours (9am–5pm), amber = early/late (7–9am or 5–7pm), grey = night.</li>
+          <li>The <strong>Best Overlap</strong> banner highlights hours where all zones are in business hours simultaneously.</li>
+          <li>Drag the slider to highlight a specific hour and see exact times across all zones.</li>
+          <li>Click <strong>Copy Summary</strong> to share the time breakdown with your team.</li>
+        </ul>
+      </div>
+
+      <div id="related-tools"></div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('timezone-meeting-planner.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('timezone-meeting-planner.html', 'datetime');
+
+    // Set today's date
+    document.getElementById('meeting-date').value = new Date().toISOString().split('T')[0];
+
+    // Init with 2 locations
+    addLocation('America/New_York', 'New York');
+    addLocation('Europe/London', 'London');
+    renderGrid();
+  });
+
+  const CITIES = [
+    { label: 'New York (ET)',        tz: 'America/New_York' },
+    { label: 'Chicago (CT)',         tz: 'America/Chicago' },
+    { label: 'Denver (MT)',          tz: 'America/Denver' },
+    { label: 'Los Angeles (PT)',     tz: 'America/Los_Angeles' },
+    { label: 'Anchorage (AKT)',      tz: 'America/Anchorage' },
+    { label: 'Honolulu (HT)',        tz: 'Pacific/Honolulu' },
+    { label: 'Toronto (ET)',         tz: 'America/Toronto' },
+    { label: 'Mexico City (CT)',     tz: 'America/Mexico_City' },
+    { label: 'São Paulo (BRT)',      tz: 'America/Sao_Paulo' },
+    { label: 'London (GMT/BST)',     tz: 'Europe/London' },
+    { label: 'Paris (CET/CEST)',     tz: 'Europe/Paris' },
+    { label: 'Berlin (CET/CEST)',    tz: 'Europe/Berlin' },
+    { label: 'Amsterdam (CET/CEST)',tz: 'Europe/Amsterdam' },
+    { label: 'Madrid (CET/CEST)',    tz: 'Europe/Madrid' },
+    { label: 'Rome (CET/CEST)',      tz: 'Europe/Rome' },
+    { label: 'Stockholm (CET/CEST)',tz: 'Europe/Stockholm' },
+    { label: 'Helsinki (EET/EEST)', tz: 'Europe/Helsinki' },
+    { label: 'Istanbul (TRT)',       tz: 'Europe/Istanbul' },
+    { label: 'Moscow (MSK)',         tz: 'Europe/Moscow' },
+    { label: 'Dubai (GST)',          tz: 'Asia/Dubai' },
+    { label: 'Mumbai (IST)',         tz: 'Asia/Kolkata' },
+    { label: 'Bangkok (ICT)',        tz: 'Asia/Bangkok' },
+    { label: 'Singapore (SGT)',      tz: 'Asia/Singapore' },
+    { label: 'Hong Kong (HKT)',      tz: 'Asia/Hong_Kong' },
+    { label: 'Beijing (CST)',        tz: 'Asia/Shanghai' },
+    { label: 'Seoul (KST)',          tz: 'Asia/Seoul' },
+    { label: 'Tokyo (JST)',          tz: 'Asia/Tokyo' },
+    { label: 'Sydney (AEST/AEDT)',  tz: 'Australia/Sydney' },
+    { label: 'Melbourne (AEST)',     tz: 'Australia/Melbourne' },
+    { label: 'Auckland (NZST)',      tz: 'Pacific/Auckland' },
+  ];
+
+  let locationCount = 0;
+
+  function buildSelect(selectedTz) {
+    return '<option value="">— Select city —</option>' +
+      CITIES.map(c => `<option value="${c.tz}"${c.tz === selectedTz ? ' selected' : ''}>${c.label}</option>`).join('');
+  }
+
+  function addLocation(tz, label) {
+    const container = document.getElementById('locations-container');
+    const rows = container.querySelectorAll('.tz-location-row');
+    if (rows.length >= 4) return;
+
+    const id = ++locationCount;
+    const div = document.createElement('div');
+    div.className = 'tz-location-row';
+    div.dataset.id = id;
+    div.innerHTML = `
+      <select class="form-select" onchange="renderGrid()" data-loc-id="${id}">
+        ${buildSelect(tz || '')}
+      </select>
+      <button class="tz-remove-btn" onclick="removeLocation(${id})" title="Remove">✕</button>`;
+    container.appendChild(div);
+
+    updateAddBtn();
+    renderGrid();
+  }
+
+  function removeLocation(id) {
+    const container = document.getElementById('locations-container');
+    const rows = container.querySelectorAll('.tz-location-row');
+    if (rows.length <= 2) { showToast('Need at least 2 locations.'); return; }
+    const row = container.querySelector(`.tz-location-row[data-id="${id}"]`);
+    if (row) row.remove();
+    updateAddBtn();
+    renderGrid();
+  }
+
+  function updateAddBtn() {
+    const count = document.getElementById('locations-container').querySelectorAll('.tz-location-row').length;
+    document.getElementById('add-location-btn').style.display = count >= 4 ? 'none' : '';
+  }
+
+  function getLocations() {
+    return Array.from(document.getElementById('locations-container').querySelectorAll('select'))
+      .map(s => ({ tz: s.value, label: s.options[s.selectedIndex]?.text || s.value }))
+      .filter(l => l.tz);
+  }
+
+  function getLocalHour(baseDateStr, hostTz, targetTz, hostHour) {
+    // Build a date at hostHour in hostTz, then get hour in targetTz
+    const baseDate = baseDateStr || new Date().toISOString().split('T')[0];
+    // Use Intl to get offset difference
+    const testDate = new Date(`${baseDate}T${String(hostHour).padStart(2,'0')}:00:00`);
+    // Format in target tz
+    const fmt = new Intl.DateTimeFormat('en-US', {
+      timeZone: targetTz,
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: false,
+    });
+    const parts = fmt.formatToParts(testDate);
+    const h = parseInt(parts.find(p => p.type === 'hour')?.value || '0');
+    const m = parseInt(parts.find(p => p.type === 'minute')?.value || '0');
+    return { hour: h === 24 ? 0 : h, minute: m };
+  }
+
+  function formatHour12(h, m) {
+    const ampm = h < 12 ? 'AM' : 'PM';
+    const hh = h % 12 || 12;
+    const mm = String(m).padStart(2, '0');
+    return `${hh}:${mm} ${ampm}`;
+  }
+
+  function hourClass(h) {
+    if (h >= 9 && h < 17) return 'biz';
+    if ((h >= 7 && h < 9) || (h >= 17 && h < 19)) return 'early';
+    return 'night';
+  }
+
+  function onSliderChange() {
+    const h = parseInt(document.getElementById('hour-slider').value);
+    document.getElementById('slider-display').textContent = formatHour12(h, 0);
+    renderGrid();
+  }
+
+  function renderGrid() {
+    const locs = getLocations();
+    const dateStr = document.getElementById('meeting-date').value || new Date().toISOString().split('T')[0];
+    const selectedHour = parseInt(document.getElementById('hour-slider').value);
+    document.getElementById('slider-display').textContent = formatHour12(selectedHour, 0);
+
+    if (locs.length < 1) {
+      document.getElementById('hour-grid').innerHTML = '<p style="color:var(--text-muted);font-size:0.875rem;">Select at least one location.</p>';
+      return;
+    }
+
+    const hostTz = locs[0].tz;
+    const HOURS = Array.from({length: 24}, (_, i) => i); // 0–23 host hours
+
+    // Find best overlap hours (all zones in business hours)
+    const overlapHours = HOURS.filter(h => {
+      return locs.every(loc => {
+        const { hour } = getLocalHour(dateStr, hostTz, loc.tz, h);
+        return hour >= 9 && hour < 17;
+      });
+    });
+
+    // Overlap banner
+    const banner = document.getElementById('overlap-banner');
+    if (overlapHours.length > 0) {
+      const first = overlapHours[0], last = overlapHours[overlapHours.length - 1];
+      const { hour: fh } = getLocalHour(dateStr, hostTz, hostTz, first);
+      const { hour: lh } = getLocalHour(dateStr, hostTz, hostTz, last);
+      banner.className = 'overlap-banner';
+      banner.style.display = '';
+      banner.textContent = `✓ Best overlap: ${formatHour12(fh, 0)} – ${formatHour12(lh + 1, 0)} (host time) — all zones in business hours`;
+    } else {
+      banner.className = 'overlap-banner none';
+      banner.style.display = '';
+      banner.textContent = '✗ No full business-hours overlap found for this date.';
+    }
+
+    // Build grid
+    // Cols: label + 24 hour cells
+    const LABEL_COL = '120px';
+    const CELL = '1fr';
+    const gridCols = `${LABEL_COL} repeat(24, ${CELL})`;
+
+    // Header row (hour labels)
+    const headerCells = HOURS.map(h => {
+      const label = h % 3 === 0 ? formatHour12(h, 0).replace(':00', '') : '';
+      return `<div class="hg-hour-label">${label}</div>`;
+    }).join('');
+
+    let html = `<div class="hour-grid-inner">`;
+    html += `<div class="hg-header" style="display:grid;grid-template-columns:${gridCols};margin-bottom:4px;">`;
+    html += `<div></div>${headerCells}</div>`;
+
+    locs.forEach((loc, idx) => {
+      const shortLabel = loc.label.split(' (')[0];
+      html += `<div class="hg-row" style="display:grid;grid-template-columns:${gridCols};">`;
+      html += `<div class="hg-label" title="${loc.label}">${shortLabel}</div>`;
+      HOURS.forEach(h => {
+        const { hour, minute } = getLocalHour(dateStr, hostTz, loc.tz, h);
+        const cls = hourClass(hour);
+        const isSel = h === selectedHour ? ' selected' : '';
+        const label = h % 2 === 0 ? formatHour12(hour, minute) : '';
+        html += `<div class="hg-cell ${cls}${isSel}" title="${shortLabel}: ${formatHour12(hour, minute)}">${h === selectedHour ? formatHour12(hour, minute) : ''}</div>`;
+      });
+      html += `</div>`;
+    });
+
+    html += `</div>`;
+    document.getElementById('hour-grid').innerHTML = html;
+  }
+
+  function copySummary() {
+    const locs = getLocations();
+    const dateStr = document.getElementById('meeting-date').value || new Date().toISOString().split('T')[0];
+    const selectedHour = parseInt(document.getElementById('hour-slider').value);
+    const hostTz = locs[0]?.tz;
+    if (!hostTz) { showToast('Add at least one location.'); return; }
+
+    const lines = [`Meeting Time Summary — ${dateStr}`];
+    locs.forEach(loc => {
+      const { hour, minute } = getLocalHour(dateStr, hostTz, loc.tz, selectedHour);
+      lines.push(`${loc.label.split(' (')[0]}: ${formatHour12(hour, minute)}`);
+    });
+    copyText(lines.join('\n'), 'Summary copied!');
+  }
+  </script>
+</body>
+</html>

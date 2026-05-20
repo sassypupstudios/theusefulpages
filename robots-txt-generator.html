@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robots.txt Generator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Free online robots.txt generator. Build allow/disallow rules for any bot visually, apply presets for common scenarios, and download your robots.txt instantly.">
+  <link rel="canonical" href="https://theusefulpages.com/robots-txt-generator.html">
+  <meta property="og:title" content="Robots.txt Generator — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Robots.txt Generator","url":"https://theusefulpages.com/robots-txt-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .rule-row {
+      display: grid;
+      grid-template-columns: 1fr 110px 1fr 36px;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 600px) {
+      .rule-row { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+      .rule-row .remove-btn { grid-column: 2; grid-row: 2; justify-self: end; }
+    }
+    .rule-row select, .rule-row input { width: 100%; }
+    .remove-btn {
+      width: 32px; height: 32px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .15s;
+      flex-shrink: 0;
+    }
+    .remove-btn:hover { background: #fee2e2; border-color: #f87171; color: #e74c3c; }
+    .preset-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+    .preset-chip {
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      border: 1.5px solid var(--border);
+      background: var(--bg-secondary);
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all .15s;
+    }
+    .preset-chip:hover { border-color: var(--primary); color: var(--primary); }
+    .output-wrap { position: relative; }
+    .output-wrap pre {
+      background: var(--mono-bg);
+      color: var(--mono-text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-all;
+      min-height: 120px;
+      margin: 0;
+    }
+    .col-header {
+      display: grid;
+      grid-template-columns: 1fr 110px 1fr 36px;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .disclaimer {
+      background: var(--bg-secondary);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Robots.txt Generator</h1>
+      <p class="page-subtitle">Build robots.txt rules visually, apply presets, and download the file for your site.</p>
+
+      <div class="tool-card">
+
+        <!-- Presets -->
+        <div class="form-group">
+          <label class="form-label">Quick Presets</label>
+          <div class="preset-chips" id="preset-chips">
+            <button class="preset-chip" data-preset="allow-all">Allow all</button>
+            <button class="preset-chip" data-preset="block-all">Block all bots</button>
+            <button class="preset-chip" data-preset="block-ai">Block AI scrapers</button>
+            <button class="preset-chip" data-preset="block-bad">Block bad bots</button>
+            <button class="preset-chip" data-preset="wp-admin">WordPress admin only</button>
+            <button class="preset-chip" data-preset="no-images">No images</button>
+          </div>
+        </div>
+
+        <!-- Rule builder -->
+        <div class="form-group">
+          <label class="form-label">Rules</label>
+          <div class="col-header">
+            <span>User-agent</span><span>Allow / Disallow</span><span>Path</span><span></span>
+          </div>
+          <div id="rules-container"></div>
+          <button class="btn btn-outline btn-sm" id="add-rule-btn" style="margin-top:0.5rem;">+ Add Rule</button>
+        </div>
+
+        <!-- Sitemap -->
+        <div class="form-group">
+          <label class="form-label">Sitemap URL <span style="font-weight:400;color:var(--text-muted)">(optional)</span></label>
+          <input type="url" class="form-input" id="sitemap-url" placeholder="https://example.com/sitemap.xml">
+        </div>
+
+        <!-- Output -->
+        <div class="form-group" style="margin-top:1rem;">
+          <label class="form-label">Generated robots.txt</label>
+          <div class="output-wrap">
+            <pre id="robots-output"># robots.txt</pre>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="copy-btn">Copy</button>
+          <button class="btn btn-outline" id="download-btn">Download robots.txt</button>
+        </div>
+
+        <div class="disclaimer">
+          <strong>Note:</strong> robots.txt is advisory only — well-behaved bots follow it, but malicious crawlers may ignore it. It is not a security mechanism.
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Click a <strong>Quick Preset</strong> to load a common configuration, or build rules from scratch.</li>
+          <li>Each rule row has a <strong>User-agent</strong> (which bot), an <strong>Allow/Disallow</strong> directive, and a <strong>Path</strong>.</li>
+          <li>Use <code>*</code> as the User-agent to target all crawlers.</li>
+          <li>Paths must start with <code>/</code>. Use <code>/</code> alone to match everything.</li>
+          <li>Add your <strong>Sitemap URL</strong> to help search engines discover your content.</li>
+          <li>Click <strong>Copy</strong> or <strong>Download</strong> to use the generated file. Place it at the root of your domain: <code>https://yourdomain.com/robots.txt</code></li>
+        </ul>
+      </div>
+
+      <div id="related-tools"></div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('robots-txt-generator.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('robots-txt-generator.html', 'dev');
+
+    const COMMON_AGENTS = ['*', 'Googlebot', 'Bingbot', 'Slurp', 'DuckDuckBot', 'Baiduspider',
+      'GPTBot', 'ClaudeBot', 'ChatGPT-User', 'CCBot', 'anthropic-ai',
+      'SemrushBot', 'AhrefsBot', 'MJ12bot', 'DotBot'];
+
+    const PRESETS = {
+      'allow-all': [
+        { agent: '*', type: 'Allow', path: '/' }
+      ],
+      'block-all': [
+        { agent: '*', type: 'Disallow', path: '/' }
+      ],
+      'block-ai': [
+        { agent: 'GPTBot', type: 'Disallow', path: '/' },
+        { agent: 'ClaudeBot', type: 'Disallow', path: '/' },
+        { agent: 'ChatGPT-User', type: 'Disallow', path: '/' },
+        { agent: 'CCBot', type: 'Disallow', path: '/' },
+        { agent: 'anthropic-ai', type: 'Disallow', path: '/' },
+        { agent: 'Google-Extended', type: 'Disallow', path: '/' }
+      ],
+      'block-bad': [
+        { agent: '*', type: 'Allow', path: '/' },
+        { agent: 'MJ12bot', type: 'Disallow', path: '/' },
+        { agent: 'DotBot', type: 'Disallow', path: '/' },
+        { agent: 'SemrushBot', type: 'Disallow', path: '/' },
+        { agent: 'AhrefsBot', type: 'Disallow', path: '/' }
+      ],
+      'wp-admin': [
+        { agent: '*', type: 'Allow', path: '/' },
+        { agent: '*', type: 'Disallow', path: '/wp-admin/' },
+        { agent: '*', type: 'Disallow', path: '/wp-includes/' },
+        { agent: '*', type: 'Disallow', path: '/wp-content/plugins/' }
+      ],
+      'no-images': [
+        { agent: '*', type: 'Allow', path: '/' },
+        { agent: 'Googlebot-Image', type: 'Disallow', path: '/' }
+      ]
+    };
+
+    let rules = [];
+
+    function agentOptions(selected) {
+      return COMMON_AGENTS.map(a =>
+        `<option value="${a}" ${a === selected ? 'selected' : ''}>${a}</option>`
+      ).join('') + (COMMON_AGENTS.includes(selected) ? '' : `<option value="${selected}" selected>${selected}</option>`);
+    }
+
+    function renderRules() {
+      const container = document.getElementById('rules-container');
+      container.innerHTML = rules.map((r, i) => `
+        <div class="rule-row" data-idx="${i}">
+          <select class="form-select rule-agent">
+            ${agentOptions(r.agent)}
+            <option value="__custom__" ${!COMMON_AGENTS.includes(r.agent) ? 'selected' : ''}>Custom…</option>
+          </select>
+          <select class="form-select rule-type">
+            <option value="Allow" ${r.type === 'Allow' ? 'selected' : ''}>Allow</option>
+            <option value="Disallow" ${r.type === 'Disallow' ? 'selected' : ''}>Disallow</option>
+          </select>
+          <input type="text" class="form-input rule-path" value="${r.path}" placeholder="/" spellcheck="false">
+          <button class="remove-btn" data-remove="${i}" title="Remove">×</button>
+        </div>
+      `).join('');
+      generateOutput();
+    }
+
+    function generateOutput() {
+      // Group rules by agent
+      const groups = {};
+      const order = [];
+      rules.forEach(r => {
+        if (!groups[r.agent]) { groups[r.agent] = []; order.push(r.agent); }
+        groups[r.agent].push(r);
+      });
+
+      let lines = ['# Generated by theusefulpages.com/robots-txt-generator.html', ''];
+      // Deduplicate agent order
+      const seen = new Set();
+      const orderedAgents = order.filter(a => { if (seen.has(a)) return false; seen.add(a); return true; });
+
+      orderedAgents.forEach(agent => {
+        lines.push(`User-agent: ${agent}`);
+        groups[agent].forEach(r => {
+          lines.push(`${r.type}: ${r.path || '/'}`);
+        });
+        lines.push('');
+      });
+
+      const sitemap = document.getElementById('sitemap-url').value.trim();
+      if (sitemap) lines.push(`Sitemap: ${sitemap}`);
+
+      document.getElementById('robots-output').textContent = lines.join('\n').trim();
+    }
+
+    // Container event delegation
+    document.getElementById('rules-container').addEventListener('change', e => {
+      const row = e.target.closest('.rule-row');
+      if (!row) return;
+      const idx = parseInt(row.dataset.idx);
+      if (e.target.classList.contains('rule-agent')) {
+        if (e.target.value === '__custom__') {
+          const custom = prompt('Enter custom User-agent name:');
+          if (custom && custom.trim()) {
+            rules[idx].agent = custom.trim();
+            if (!COMMON_AGENTS.includes(custom.trim())) COMMON_AGENTS.push(custom.trim());
+          }
+        } else {
+          rules[idx].agent = e.target.value;
+        }
+      }
+      if (e.target.classList.contains('rule-type')) rules[idx].type = e.target.value;
+      renderRules();
+    });
+
+    document.getElementById('rules-container').addEventListener('input', e => {
+      const row = e.target.closest('.rule-row');
+      if (!row) return;
+      const idx = parseInt(row.dataset.idx);
+      if (e.target.classList.contains('rule-path')) {
+        rules[idx].path = e.target.value;
+        generateOutput();
+      }
+    });
+
+    document.getElementById('rules-container').addEventListener('click', e => {
+      const btn = e.target.closest('[data-remove]');
+      if (!btn) return;
+      rules.splice(parseInt(btn.dataset.remove), 1);
+      renderRules();
+    });
+
+    document.getElementById('add-rule-btn').addEventListener('click', () => {
+      rules.push({ agent: '*', type: 'Disallow', path: '/' });
+      renderRules();
+    });
+
+    document.getElementById('sitemap-url').addEventListener('input', generateOutput);
+
+    document.querySelectorAll('.preset-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        rules = PRESETS[btn.dataset.preset].map(r => ({ ...r }));
+        renderRules();
+      });
+    });
+
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const text = document.getElementById('robots-output').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 1500);
+      });
+    });
+
+    document.getElementById('download-btn').addEventListener('click', () => {
+      const text = document.getElementById('robots-output').textContent;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'robots.txt';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    // Init with allow-all
+    rules = PRESETS['allow-all'].map(r => ({ ...r }));
+    renderRules();
+  });
+  </script>
+</body>
+</html>

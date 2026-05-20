@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>.htaccess Redirect Generator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Free online .htaccess generator. Build 301/302 redirects, force HTTPS, enable GZIP, block directory listing, and more — copy or download instantly.">
+  <link rel="canonical" href="https://theusefulpages.com/htaccess-generator.html">
+  <meta property="og:title" content=".htaccess Redirect Generator — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":".htaccess Redirect Generator","url":"https://theusefulpages.com/htaccess-generator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tab-bar { display:flex; gap:0.5rem; margin-bottom:1.25rem; }
+    .tab-bar-btn {
+      padding:0.45rem 1.1rem; border-radius:20px; border:1.5px solid var(--border);
+      background:var(--card-bg); cursor:pointer; font-size:0.85rem; font-weight:500;
+      color:var(--text-muted); transition:all .15s;
+    }
+    .tab-bar-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+
+    /* Redirect rows */
+    .redirect-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 90px 34px;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width:580px) {
+      .redirect-row { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+      .redirect-row .redir-type { grid-column:1; }
+      .redirect-row .remove-btn { grid-column:2; justify-self:end; }
+    }
+    .remove-btn {
+      width:32px; height:32px; border:1px solid var(--border); border-radius:6px;
+      background:var(--bg-secondary); color:var(--text-muted); cursor:pointer;
+      font-size:1rem; display:flex; align-items:center; justify-content:center;
+      transition:all .15s; flex-shrink:0;
+    }
+    .remove-btn:hover { background:#fee2e2; border-color:#f87171; color:#e74c3c; }
+
+    /* Toggle rules */
+    .toggle-rule {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toggle-rule:last-child { border-bottom: none; }
+    .toggle-rule-info { flex: 1; }
+    .toggle-rule-info strong { font-size: 0.875rem; color: var(--text); display:block; margin-bottom:0.15rem; }
+    .toggle-rule-info p { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
+    .toggle-rule-extra { margin-top: 0.5rem; display: none; }
+    .toggle-rule-extra.show { display: block; }
+
+    /* Toggle switch */
+    .toggle-switch { position:relative; display:inline-block; width:40px; height:22px; flex-shrink:0; margin-top:1px; }
+    .toggle-switch input { opacity:0; width:0; height:0; }
+    .toggle-slider {
+      position:absolute; cursor:pointer; inset:0; background:var(--border);
+      border-radius:22px; transition:.2s;
+    }
+    .toggle-slider::before {
+      content:''; position:absolute; width:16px; height:16px; left:3px; bottom:3px;
+      background:#fff; border-radius:50%; transition:.2s;
+    }
+    .toggle-switch input:checked + .toggle-slider { background:var(--primary); }
+    .toggle-switch input:checked + .toggle-slider::before { transform:translateX(18px); }
+
+    /* Output */
+    .output-pre {
+      background: var(--mono-bg);
+      color: var(--mono-text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-all;
+      min-height: 140px;
+      margin: 0;
+    }
+    .col-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr 90px 34px;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .disclaimer {
+      background: var(--bg-secondary);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+    }
+
+    .www-group { display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.35rem; }
+    .www-group label { display:flex; align-items:center; gap:0.35rem; font-size:0.82rem; color:var(--text-muted); cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">.htaccess Generator</h1>
+      <p class="page-subtitle">Build redirects and common Apache rules visually — copy or download your .htaccess file.</p>
+
+      <div class="tool-card">
+        <div class="tab-bar">
+          <button class="tab-bar-btn active" data-tab="redirects">Redirects</button>
+          <button class="tab-bar-btn" data-tab="rules">Common Rules</button>
+        </div>
+
+        <!-- TAB: REDIRECTS -->
+        <div class="tab-panel active" id="tab-redirects">
+          <div class="col-header">
+            <span>From (path)</span><span>To (URL)</span><span>Type</span><span></span>
+          </div>
+          <div id="redirect-rows"></div>
+          <button class="btn btn-outline btn-sm" id="add-redirect-btn" style="margin-top:0.5rem;">+ Add Redirect</button>
+        </div>
+
+        <!-- TAB: COMMON RULES -->
+        <div class="tab-panel" id="tab-rules">
+          <div id="toggle-rules-container">
+
+            <div class="toggle-rule">
+              <label class="toggle-switch">
+                <input type="checkbox" id="rule-https">
+                <span class="toggle-slider"></span>
+              </label>
+              <div class="toggle-rule-info">
+                <strong>Force HTTPS</strong>
+                <p>Redirect all HTTP requests to HTTPS automatically.</p>
+              </div>
+            </div>
+
+            <div class="toggle-rule">
+              <label class="toggle-switch">
+                <input type="checkbox" id="rule-www">
+                <span class="toggle-slider"></span>
+              </label>
+              <div class="toggle-rule-info">
+                <strong>Force www / non-www</strong>
+                <p>Canonicalise your domain to always use (or not use) www.</p>
+                <div class="toggle-rule-extra" id="www-extra">
+                  <div class="www-group">
+                    <label><input type="radio" name="www-mode" value="add" checked> Force www</label>
+                    <label><input type="radio" name="www-mode" value="remove"> Force non-www</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="toggle-rule">
+              <label class="toggle-switch">
+                <input type="checkbox" id="rule-gzip">
+                <span class="toggle-slider"></span>
+              </label>
+              <div class="toggle-rule-info">
+                <strong>Enable GZIP Compression</strong>
+                <p>Compress HTML, CSS, JS, and other text assets to improve load time.</p>
+              </div>
+            </div>
+
+            <div class="toggle-rule">
+              <label class="toggle-switch">
+                <input type="checkbox" id="rule-nodir">
+                <span class="toggle-slider"></span>
+              </label>
+              <div class="toggle-rule-info">
+                <strong>Prevent Directory Listing</strong>
+                <p>Block browsers from seeing folder contents when no index file exists.</p>
+              </div>
+            </div>
+
+            <div class="toggle-rule">
+              <label class="toggle-switch">
+                <input type="checkbox" id="rule-cache">
+                <span class="toggle-slider"></span>
+              </label>
+              <div class="toggle-rule-info">
+                <strong>Cache Static Assets</strong>
+                <p>Set long-lived cache headers for images, CSS, and JS files.</p>
+              </div>
+            </div>
+
+            <div class="toggle-rule">
+              <label class="toggle-switch">
+                <input type="checkbox" id="rule-env">
+                <span class="toggle-slider"></span>
+              </label>
+              <div class="toggle-rule-info">
+                <strong>Block Sensitive Files</strong>
+                <p>Deny access to .env, .git, composer files, and other sensitive paths.</p>
+              </div>
+            </div>
+
+            <div class="toggle-rule">
+              <label class="toggle-switch">
+                <input type="checkbox" id="rule-404">
+                <span class="toggle-slider"></span>
+              </label>
+              <div class="toggle-rule-info">
+                <strong>Custom 404 Error Page</strong>
+                <p>Serve a custom page when a URL is not found.</p>
+                <div class="toggle-rule-extra" id="err404-extra">
+                  <input type="text" class="form-input" id="err404-path" placeholder="/404.html" style="margin-top:0.35rem;">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Output (shared) -->
+        <div class="form-group" style="margin-top:1.5rem;">
+          <label class="form-label">Generated .htaccess</label>
+          <pre class="output-pre" id="htaccess-output"># .htaccess</pre>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="copy-btn">Copy</button>
+          <button class="btn btn-outline" id="download-btn">Download .htaccess</button>
+        </div>
+
+        <div class="disclaimer">
+          <strong>Apache only:</strong> .htaccess files work on Apache web servers. They have no effect on Nginx, Caddy, or other servers. Always test redirects before deploying to production.
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Redirects tab</strong> — add rows with a From path (e.g. <code>/old-page</code>), a To URL, and a redirect type (301 = permanent, 302 = temporary).</li>
+          <li><strong>Common Rules tab</strong> — toggle individual rules on or off. Some rules reveal extra options when enabled.</li>
+          <li>The generated .htaccess output updates live as you make changes across both tabs.</li>
+          <li>Click <strong>Copy</strong> or <strong>Download</strong> to get the file, then place it in your Apache site's root directory (or the relevant subdirectory).</li>
+          <li>Use a 301 redirect for permanent URL changes (search engines will update their index) and 302 for temporary ones.</li>
+        </ul>
+      </div>
+
+      <div id="related-tools"></div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('htaccess-generator.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('htaccess-generator.html', 'dev');
+
+    // ---- Tab switching ----
+    document.querySelectorAll('.tab-bar-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-bar-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ---- Redirect rows ----
+    let redirects = [{ from: '/old-page', to: 'https://example.com/new-page', type: '301' }];
+
+    function renderRedirects() {
+      const container = document.getElementById('redirect-rows');
+      container.innerHTML = redirects.map((r, i) => `
+        <div class="redirect-row" data-idx="${i}">
+          <input type="text" class="form-input redir-from" value="${escAttr(r.from)}" placeholder="/old-path" spellcheck="false">
+          <input type="text" class="form-input redir-to" value="${escAttr(r.to)}" placeholder="https://example.com/new" spellcheck="false">
+          <select class="form-select redir-type">
+            <option value="301" ${r.type==='301'?'selected':''}>301 Permanent</option>
+            <option value="302" ${r.type==='302'?'selected':''}>302 Temporary</option>
+            <option value="303" ${r.type==='303'?'selected':''}>303 See Other</option>
+          </select>
+          <button class="remove-btn" data-remove="${i}" title="Remove">×</button>
+        </div>
+      `).join('');
+      generateOutput();
+    }
+
+    function escAttr(s) {
+      return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+    }
+
+    document.getElementById('redirect-rows').addEventListener('input', e => {
+      const row = e.target.closest('.redirect-row');
+      if (!row) return;
+      const idx = parseInt(row.dataset.idx);
+      if (e.target.classList.contains('redir-from')) redirects[idx].from = e.target.value;
+      if (e.target.classList.contains('redir-to')) redirects[idx].to = e.target.value;
+      generateOutput();
+    });
+
+    document.getElementById('redirect-rows').addEventListener('change', e => {
+      const row = e.target.closest('.redirect-row');
+      if (!row) return;
+      const idx = parseInt(row.dataset.idx);
+      if (e.target.classList.contains('redir-type')) redirects[idx].type = e.target.value;
+      generateOutput();
+    });
+
+    document.getElementById('redirect-rows').addEventListener('click', e => {
+      const btn = e.target.closest('[data-remove]');
+      if (!btn) return;
+      redirects.splice(parseInt(btn.dataset.remove), 1);
+      renderRedirects();
+    });
+
+    document.getElementById('add-redirect-btn').addEventListener('click', () => {
+      redirects.push({ from: '', to: '', type: '301' });
+      renderRedirects();
+    });
+
+    // ---- Toggle rules ----
+    const toggleIds = ['rule-https','rule-www','rule-gzip','rule-nodir','rule-cache','rule-env','rule-404'];
+    toggleIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('change', () => {
+        // Show/hide extras
+        if (id === 'rule-www') {
+          document.getElementById('www-extra').classList.toggle('show', el.checked);
+        }
+        if (id === 'rule-404') {
+          document.getElementById('err404-extra').classList.toggle('show', el.checked);
+        }
+        generateOutput();
+      });
+    });
+
+    document.querySelectorAll('input[name="www-mode"]').forEach(r => r.addEventListener('change', generateOutput));
+    document.getElementById('err404-path').addEventListener('input', generateOutput);
+
+    // ---- Generate output ----
+    function generateOutput() {
+      const sections = [];
+      sections.push('# Generated by theusefulpages.com/htaccess-generator.html');
+
+      // Redirects
+      const validRedirects = redirects.filter(r => r.from.trim() && r.to.trim());
+      if (validRedirects.length) {
+        sections.push('');
+        sections.push('# ── Redirects ──────────────────────────────');
+        sections.push('<IfModule mod_rewrite.c>');
+        sections.push('  RewriteEngine On');
+        validRedirects.forEach(r => {
+          const from = r.from.trim().replace(/^\//, '');
+          sections.push(`  RewriteRule ^${from}$ ${r.to.trim()} [R=${r.type},L]`);
+        });
+        sections.push('</IfModule>');
+      }
+
+      // Force HTTPS
+      if (document.getElementById('rule-https').checked) {
+        sections.push('');
+        sections.push('# ── Force HTTPS ─────────────────────────────');
+        sections.push('<IfModule mod_rewrite.c>');
+        sections.push('  RewriteEngine On');
+        sections.push('  RewriteCond %{HTTPS} off');
+        sections.push('  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]');
+        sections.push('</IfModule>');
+      }
+
+      // Force www / non-www
+      if (document.getElementById('rule-www').checked) {
+        const mode = document.querySelector('input[name="www-mode"]:checked').value;
+        sections.push('');
+        if (mode === 'add') {
+          sections.push('# ── Force www ───────────────────────────────');
+          sections.push('<IfModule mod_rewrite.c>');
+          sections.push('  RewriteEngine On');
+          sections.push('  RewriteCond %{HTTP_HOST} !^www\\. [NC]');
+          sections.push('  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]');
+          sections.push('</IfModule>');
+        } else {
+          sections.push('# ── Force non-www ───────────────────────────');
+          sections.push('<IfModule mod_rewrite.c>');
+          sections.push('  RewriteEngine On');
+          sections.push('  RewriteCond %{HTTP_HOST} ^www\\.(.+)$ [NC]');
+          sections.push('  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]');
+          sections.push('</IfModule>');
+        }
+      }
+
+      // GZIP
+      if (document.getElementById('rule-gzip').checked) {
+        sections.push('');
+        sections.push('# ── GZIP Compression ────────────────────────');
+        sections.push('<IfModule mod_deflate.c>');
+        sections.push('  AddOutputFilterByType DEFLATE text/html text/plain text/xml');
+        sections.push('  AddOutputFilterByType DEFLATE text/css text/javascript');
+        sections.push('  AddOutputFilterByType DEFLATE application/javascript application/x-javascript');
+        sections.push('  AddOutputFilterByType DEFLATE application/json application/xml');
+        sections.push('  AddOutputFilterByType DEFLATE image/svg+xml');
+        sections.push('</IfModule>');
+      }
+
+      // No directory listing
+      if (document.getElementById('rule-nodir').checked) {
+        sections.push('');
+        sections.push('# ── Prevent Directory Listing ───────────────');
+        sections.push('Options -Indexes');
+      }
+
+      // Cache static assets
+      if (document.getElementById('rule-cache').checked) {
+        sections.push('');
+        sections.push('# ── Cache Static Assets ─────────────────────');
+        sections.push('<IfModule mod_expires.c>');
+        sections.push('  ExpiresActive On');
+        sections.push('  ExpiresByType image/jpeg "access plus 1 year"');
+        sections.push('  ExpiresByType image/png "access plus 1 year"');
+        sections.push('  ExpiresByType image/gif "access plus 1 year"');
+        sections.push('  ExpiresByType image/webp "access plus 1 year"');
+        sections.push('  ExpiresByType image/svg+xml "access plus 1 year"');
+        sections.push('  ExpiresByType text/css "access plus 1 month"');
+        sections.push('  ExpiresByType application/javascript "access plus 1 month"');
+        sections.push('  ExpiresByType application/x-javascript "access plus 1 month"');
+        sections.push('</IfModule>');
+      }
+
+      // Block sensitive files
+      if (document.getElementById('rule-env').checked) {
+        sections.push('');
+        sections.push('# ── Block Sensitive Files ───────────────────');
+        sections.push('<FilesMatch "(\\.env|\\.git|\\.htpasswd|composer\\.(json|lock)|package\\.json|package-lock\\.json|yarn\\.lock)$">');
+        sections.push('  Order allow,deny');
+        sections.push('  Deny from all');
+        sections.push('</FilesMatch>');
+      }
+
+      // Custom 404
+      if (document.getElementById('rule-404').checked) {
+        const path = document.getElementById('err404-path').value.trim() || '/404.html';
+        sections.push('');
+        sections.push('# ── Custom 404 Page ─────────────────────────');
+        sections.push(`ErrorDocument 404 ${path}`);
+      }
+
+      document.getElementById('htaccess-output').textContent = sections.join('\n');
+    }
+
+    // ---- Copy / Download ----
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const text = document.getElementById('htaccess-output').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 1500);
+      });
+    });
+
+    document.getElementById('download-btn').addEventListener('click', () => {
+      const text = document.getElementById('htaccess-output').textContent;
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = '.htaccess';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    // Init
+    renderRedirects();
+  });
+  </script>
+</body>
+</html>

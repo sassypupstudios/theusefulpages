@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Encoder / Decoder — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Free online URL encoder and decoder. Percent-encode URLs and URI components, or decode encoded strings back to plain text instantly.">
+  <link rel="canonical" href="https://theusefulpages.com/url-encoder.html">
+  <meta property="og:title" content="URL Encoder / Decoder — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL Encoder / Decoder","url":"https://theusefulpages.com/url-encoder.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .example-chip {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.4rem 0.6rem;
+      font-size: 0.78rem;
+      font-family: monospace;
+      color: var(--text-muted);
+    }
+    .example-chip strong {
+      color: var(--text);
+      display: block;
+      font-size: 0.8rem;
+    }
+    .mode-tabs { display:flex; gap:0.5rem; margin-bottom:1.25rem; }
+    .mode-tab { padding:0.45rem 1.1rem; border-radius:20px; border:1.5px solid var(--border); background:var(--card-bg); cursor:pointer; font-size:0.85rem; font-weight:500; color:var(--text-muted); transition:all .15s; }
+    .mode-tab.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .mode-panel { display:none; }
+    .mode-panel.active { display:block; }
+    .char-count { font-size:0.75rem; color:var(--text-muted); margin-top:0.3rem; text-align:right; }
+    .encode-mode-group { display:flex; gap:1rem; margin-bottom:0.75rem; flex-wrap:wrap; }
+    .encode-mode-group label { display:flex; align-items:center; gap:0.4rem; font-size:0.85rem; color:var(--text-muted); cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">URL Encoder / Decoder</h1>
+      <p class="page-subtitle">Percent-encode URLs and URI components, or decode encoded strings back to plain text.</p>
+
+      <div class="tool-card">
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-tab="encode">Encode</button>
+          <button class="mode-tab" data-tab="decode">Decode</button>
+        </div>
+
+        <!-- ENCODE TAB -->
+        <div class="mode-panel active" id="tab-encode">
+          <div class="encode-mode-group">
+            <label>
+              <input type="radio" name="enc-mode" value="component" checked> Encode component
+              <span style="font-size:0.75rem;margin-left:0.2rem;">(escapes all special chars)</span>
+            </label>
+            <label>
+              <input type="radio" name="enc-mode" value="url"> Encode full URL
+              <span style="font-size:0.75rem;margin-left:0.2rem;">(preserves ://?=&#)</span>
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Input</label>
+            <textarea class="form-input" id="enc-input" rows="5" placeholder="Enter text or URL to encode..."></textarea>
+            <div class="char-count" id="enc-in-count">0 characters</div>
+          </div>
+          <div class="form-group" style="margin-top:0.75rem;">
+            <label class="form-label">Encoded Output</label>
+            <textarea class="form-input mono-output" id="enc-output" rows="5" readonly placeholder="Encoded output will appear here..."></textarea>
+            <div class="char-count" id="enc-out-count">0 characters</div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" id="enc-copy-btn">Copy Output</button>
+            <button class="btn btn-outline" id="enc-clear-btn">Clear</button>
+          </div>
+        </div>
+
+        <!-- DECODE TAB -->
+        <div class="mode-panel" id="tab-decode">
+          <div class="form-group">
+            <label class="form-label">Encoded Input</label>
+            <textarea class="form-input mono-output" id="dec-input" rows="5" placeholder="Paste percent-encoded URL or text..."></textarea>
+            <div class="char-count" id="dec-in-count">0 characters</div>
+          </div>
+          <div id="dec-error" style="display:none;background:var(--result-bg);border:1px solid var(--result-border);border-radius:8px;padding:0.6rem 0.8rem;color:#e74c3c;font-size:0.82rem;margin-top:0.5rem;">
+            Invalid encoded string — check for malformed percent sequences.
+          </div>
+          <div class="form-group" style="margin-top:0.75rem;">
+            <label class="form-label">Decoded Output</label>
+            <textarea class="form-input" id="dec-output" rows="5" readonly placeholder="Decoded output will appear here..."></textarea>
+            <div class="char-count" id="dec-out-count">0 characters</div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" id="dec-copy-btn">Copy Output</button>
+            <button class="btn btn-outline" id="dec-clear-btn">Clear</button>
+          </div>
+        </div>
+
+        <!-- EXAMPLES -->
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <p style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:0.25rem;">Common Percent-Encoded Characters</p>
+          <div class="examples-grid">
+            <div class="example-chip"><strong>Space</strong> %20 (or +)</div>
+            <div class="example-chip"><strong>/</strong> %2F</div>
+            <div class="example-chip"><strong>@</strong> %40</div>
+            <div class="example-chip"><strong>?</strong> %3F</div>
+            <div class="example-chip"><strong>=</strong> %3D</div>
+            <div class="example-chip"><strong>&amp;</strong> %26</div>
+            <div class="example-chip"><strong>#</strong> %23</div>
+            <div class="example-chip"><strong>+</strong> %2B</div>
+            <div class="example-chip"><strong>:</strong> %3A</div>
+            <div class="example-chip"><strong>%</strong> %25</div>
+            <div class="example-chip"><strong>[</strong> %5B</div>
+            <div class="example-chip"><strong>]</strong> %5D</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Encode Component</strong> — encodes all special characters including <code>/ ? = &amp; #</code>. Use this for query parameter values.</li>
+          <li><strong>Encode Full URL</strong> — preserves <code>:// ? = &amp; #</code> so the URL structure stays intact. Use this for encoding a complete URL.</li>
+          <li><strong>Decode</strong> — paste any percent-encoded string to convert it back to plain text. Both <code>%XX</code> and <code>+</code> (space) forms are supported.</li>
+          <li>Output updates live as you type (300 ms debounce) — no need to click a button.</li>
+          <li>Click <strong>Copy Output</strong> to copy the result to your clipboard.</li>
+        </ul>
+      </div>
+
+      <div id="related-tools"></div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('url-encoder.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('url-encoder.html', 'dev');
+
+    // Tab switching
+    document.querySelectorAll('.mode-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.mode-tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.mode-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    let encTimer, decTimer;
+
+    // ENCODE
+    function doEncode() {
+      const raw = document.getElementById('enc-input').value;
+      document.getElementById('enc-in-count').textContent = raw.length + ' characters';
+      if (!raw) {
+        document.getElementById('enc-output').value = '';
+        document.getElementById('enc-out-count').textContent = '0 characters';
+        return;
+      }
+      const mode = document.querySelector('input[name="enc-mode"]:checked').value;
+      let result;
+      try {
+        result = mode === 'url' ? encodeURI(raw) : encodeURIComponent(raw);
+      } catch(e) {
+        result = '';
+      }
+      document.getElementById('enc-output').value = result;
+      document.getElementById('enc-out-count').textContent = result.length + ' characters';
+    }
+
+    document.getElementById('enc-input').addEventListener('input', () => {
+      clearTimeout(encTimer);
+      encTimer = setTimeout(doEncode, 300);
+    });
+    document.querySelectorAll('input[name="enc-mode"]').forEach(r => r.addEventListener('change', doEncode));
+
+    document.getElementById('enc-copy-btn').addEventListener('click', () => {
+      const val = document.getElementById('enc-output').value;
+      if (!val) return;
+      navigator.clipboard.writeText(val).then(() => {
+        const btn = document.getElementById('enc-copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy Output', 1500);
+      });
+    });
+
+    document.getElementById('enc-clear-btn').addEventListener('click', () => {
+      document.getElementById('enc-input').value = '';
+      document.getElementById('enc-output').value = '';
+      document.getElementById('enc-in-count').textContent = '0 characters';
+      document.getElementById('enc-out-count').textContent = '0 characters';
+    });
+
+    // DECODE
+    function doDecode() {
+      const raw = document.getElementById('dec-input').value;
+      document.getElementById('dec-in-count').textContent = raw.length + ' characters';
+      const errEl = document.getElementById('dec-error');
+      const outEl = document.getElementById('dec-output');
+      if (!raw) {
+        outEl.value = '';
+        document.getElementById('dec-out-count').textContent = '0 characters';
+        errEl.style.display = 'none';
+        return;
+      }
+      // Support both %XX and + forms
+      const plusNorm = raw.replace(/\+/g, ' ');
+      try {
+        const result = decodeURIComponent(plusNorm);
+        outEl.value = result;
+        document.getElementById('dec-out-count').textContent = result.length + ' characters';
+        errEl.style.display = 'none';
+      } catch(e) {
+        outEl.value = '';
+        document.getElementById('dec-out-count').textContent = '0 characters';
+        errEl.style.display = 'block';
+      }
+    }
+
+    document.getElementById('dec-input').addEventListener('input', () => {
+      clearTimeout(decTimer);
+      decTimer = setTimeout(doDecode, 300);
+    });
+
+    document.getElementById('dec-copy-btn').addEventListener('click', () => {
+      const val = document.getElementById('dec-output').value;
+      if (!val) return;
+      navigator.clipboard.writeText(val).then(() => {
+        const btn = document.getElementById('dec-copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy Output', 1500);
+      });
+    });
+
+    document.getElementById('dec-clear-btn').addEventListener('click', () => {
+      document.getElementById('dec-input').value = '';
+      document.getElementById('dec-output').value = '';
+      document.getElementById('dec-in-count').textContent = '0 characters';
+      document.getElementById('dec-out-count').textContent = '0 characters';
+      document.getElementById('dec-error').style.display = 'none';
+    });
+  });
+  </script>
+</body>
+</html>
