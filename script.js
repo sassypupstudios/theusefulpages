@@ -157,24 +157,29 @@ initTheme();
 
 // ── Nav injection ──────────────────────────────────
 function injectNav(activeUrl) {
-  const dropdowns = Object.values(TOOLS).map(cat => {
-    const links = cat.tools.map(t =>
-      `<a href="${t.url}">${t.name}</a>`
-    ).join('');
+  const megaCols = Object.values(TOOLS).map(cat => {
+    const links = cat.tools.map(t => `<a href="${t.url}">${t.name}</a>`).join('');
     return `
-      <div class="nav-dropdown">
-        <button>${cat.icon} ${cat.label} ▾</button>
-        <div class="dropdown-menu">${links}</div>
+      <div class="mega-col">
+        <div class="mega-col-heading">${cat.icon} ${cat.label}</div>
+        ${links}
       </div>`;
   }).join('');
+
+  const mobileCategories = Object.values(TOOLS).map(cat => `
+    <div class="mobile-category">
+      <h3>${cat.icon} ${cat.label}</h3>
+      ${cat.tools.map(t => `<a href="${t.url}">${t.name}</a>`).join('')}
+    </div>`).join('');
 
   const html = `
     <nav class="site-nav">
       <div class="nav-inner">
         <a href="index.html" class="nav-logo">⚡ The Useful Pages</a>
-        <div class="nav-links">${dropdowns}</div>
         <div class="nav-right">
-          <a href="index.html" style="font-size:0.8125rem;font-weight:600;color:var(--primary);text-decoration:none;padding:0.4rem 0.75rem;border:1.5px solid var(--primary);border-radius:8px;">All Tools</a>
+          <button class="nav-all-tools-btn" id="all-tools-btn" aria-expanded="false" aria-controls="mega-menu">
+            All Tools <span class="caret">▼</span>
+          </button>
           <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark/light mode">
             <svg class="icon-sun" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
             <svg class="icon-moon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
@@ -184,39 +189,48 @@ function injectNav(activeUrl) {
           </button>
         </div>
       </div>
-      <div class="mobile-menu" id="mobile-menu">
-        ${Object.values(TOOLS).map(cat => `
-          <div class="mobile-category">
-            <h3>${cat.icon} ${cat.label}</h3>
-            ${cat.tools.map(t => `<a href="${t.url}">${t.name}</a>`).join('')}
-          </div>
-        `).join('')}
+      <div class="mega-menu" id="mega-menu">
+        <div class="mega-menu-inner">${megaCols}</div>
       </div>
+      <div class="mobile-menu" id="mobile-menu">${mobileCategories}</div>
     </nav>`;
 
   const el = document.getElementById('site-nav');
   if (el) el.outerHTML = html;
   else document.body.insertAdjacentHTML('afterbegin', html);
 
-  document.getElementById('hamburger-btn').addEventListener('click', () => {
+  const allToolsBtn = document.getElementById('all-tools-btn');
+  const megaMenu = document.getElementById('mega-menu');
+
+  allToolsBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    const isOpen = megaMenu.classList.contains('open');
+    megaMenu.classList.toggle('open', !isOpen);
+    allToolsBtn.classList.toggle('open', !isOpen);
+    allToolsBtn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  // Close mega-menu on outside click or Escape
+  document.addEventListener('click', () => {
+    megaMenu.classList.remove('open');
+    allToolsBtn.classList.remove('open');
+    allToolsBtn.setAttribute('aria-expanded', 'false');
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      megaMenu.classList.remove('open');
+      allToolsBtn.classList.remove('open');
+      allToolsBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+  // Prevent clicks inside the mega-menu from closing it
+  megaMenu.addEventListener('click', e => e.stopPropagation());
+
+  document.getElementById('hamburger-btn').addEventListener('click', e => {
+    e.stopPropagation();
     document.getElementById('mobile-menu').classList.toggle('open');
   });
   document.getElementById('theme-toggle-btn').addEventListener('click', toggleTheme);
-
-  // Dropdown click-to-toggle (supplements CSS :hover for touch/click users)
-  document.querySelectorAll('.nav-dropdown > button').forEach(btn => {
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      const parent = btn.parentElement;
-      const isOpen = parent.classList.contains('open');
-      document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
-      if (!isOpen) parent.classList.add('open');
-    });
-  });
-  // Close all dropdowns when clicking anywhere else
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
-  });
 
   trackRecentlyUsed(activeUrl);
 }
