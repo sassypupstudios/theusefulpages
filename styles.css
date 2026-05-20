@@ -99,7 +99,7 @@ a:hover { color: var(--primary-dark); }
   align-items: center;
   gap: 0.25rem;
   flex: 1;
-  overflow: hidden;
+  min-width: 0;
 }
 .nav-dropdown { position: relative; }
 .nav-dropdown > button {
@@ -118,7 +118,8 @@ a:hover { color: var(--primary-dark); }
   transition: background 0.15s, color 0.15s;
 }
 .nav-dropdown > button:hover { background: var(--bg-secondary); color: var(--primary); }
-.nav-dropdown:hover .dropdown-menu { display: block; }
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown.open .dropdown-menu { display: block; }
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -707,9 +708,16 @@ input[type="range"] {
   font-size: 0.8125rem;
   color: var(--primary);
   text-decoration: none;
+  font-weight: 500;
   transition: opacity 0.1s;
 }
 .recent-chip:hover { opacity: 0.8; color: var(--primary); }
+/* Dark mode: --primary on --result-bg is nearly invisible (~1.2:1); use high-contrast light text */
+[data-theme="dark"] .recent-chip {
+  color: #7dd3e0;
+  border-color: #0e7490;
+}
+[data-theme="dark"] .recent-chip:hover { color: #a5f3fc; opacity: 1; }
 
 /* ── Page title ──────────────────────────────── */
 .page-title {

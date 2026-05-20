@@ -203,6 +203,21 @@ function injectNav(activeUrl) {
   });
   document.getElementById('theme-toggle-btn').addEventListener('click', toggleTheme);
 
+  // Dropdown click-to-toggle (supplements CSS :hover for touch/click users)
+  document.querySelectorAll('.nav-dropdown > button').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const parent = btn.parentElement;
+      const isOpen = parent.classList.contains('open');
+      document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+      if (!isOpen) parent.classList.add('open');
+    });
+  });
+  // Close all dropdowns when clicking anywhere else
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+  });
+
   trackRecentlyUsed(activeUrl);
 }
 
