@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UUID Generator - Free Online UUID v4 Generator & Validator | The Useful Pages</title>
+  <meta name="description" content="Free online UUID v4 generator. Generate single or bulk UUIDs, validate any UUID, toggle uppercase/lowercase, and learn what each UUID section means.">
+  <link rel="canonical" href="https://theusefulpages.com/uuid-generator.html">
+  <meta property="og:title" content="UUID Generator - The Useful Pages">
+  <meta property="og:description" content="Free online UUID v4 generator and validator. Generate single or bulk UUIDs, validate any UUID string.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"UUID Generator","url":"https://theusefulpages.com/uuid-generator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .uuid-display { font-family: monospace; font-size: 1.35rem; font-weight: 700; letter-spacing: 0.04em; padding: 1.1rem 1.25rem; background: var(--bg-alt); border: 2px solid var(--primary); border-radius: 10px; color: var(--primary); text-align: center; word-break: break-all; }
+    .uuid-segment { display: inline; }
+    .seg-time-low  { color: #2563eb; }
+    .seg-time-mid  { color: #7c3aed; }
+    .seg-time-high { color: #db2777; }
+    .seg-clock     { color: #d97706; }
+    .seg-node      { color: #059669; }
+    .seg-dash      { color: var(--text-muted); }
+    .breakdown-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.5rem; margin-top: 0.75rem; }
+    .breakdown-cell { padding: 0.5rem; border-radius: 8px; font-size: 0.8rem; text-align: center; }
+    .breakdown-cell .seg-label { font-weight: 700; font-size: 0.75rem; margin-bottom: 0.2rem; }
+    .breakdown-cell .seg-desc { font-size: 0.7rem; color: var(--text-muted); }
+    .validate-result { padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; margin-top: 0.75rem; }
+    .validate-valid { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .validate-invalid { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .bulk-list { max-height: 320px; overflow-y: auto; }
+    .bulk-item { display: flex; align-items: center; justify-content: space-between; padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--border); font-family: monospace; font-size: 0.82rem; }
+    .bulk-item:last-child { border-bottom: none; }
+    .nil-uuid { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">UUID Generator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Generate, validate, and explore UUID v4 identifiers. Bulk generate up to 100 UUIDs at once.</p>
+
+      <div class="tool-card">
+        <!-- Single UUID -->
+        <div class="form-group">
+          <label class="form-label">Generated UUID v4</label>
+          <div class="uuid-display" id="uuidDisplay">—</div>
+        </div>
+
+        <div class="btn-row" style="flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="generateOne()">&#x1F504; Generate New</button>
+          <button class="btn btn-outline btn-sm" onclick="copyUUID()">Copy UUID</button>
+          <button class="btn btn-ghost btn-sm" onclick="toggleCase()">Toggle Case</button>
+          <button class="btn btn-ghost btn-sm" onclick="setNil()">NIL UUID</button>
+        </div>
+
+        <!-- UUID segment breakdown -->
+        <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <label class="form-label">Format Breakdown</label>
+          <div id="breakdownDisplay" style="font-family:monospace;font-size:1rem;word-break:break-all;margin-bottom:0.75rem;"></div>
+          <div class="breakdown-grid" id="breakdownGrid"></div>
+        </div>
+
+        <!-- Bulk generate -->
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <label class="form-label">Bulk Generate</label>
+          <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;margin-bottom:0.75rem;">
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;">
+              <span>Count:</span>
+              <input type="number" id="bulkCount" value="10" min="1" max="100" class="form-input" style="width:70px;">
+            </div>
+            <button class="btn btn-accent btn-sm" onclick="generateBulk()">Generate List</button>
+            <button class="btn btn-ghost btn-sm" onclick="copyAllUUIDs()">Copy All</button>
+          </div>
+          <div id="bulkSection" class="hidden">
+            <div class="bulk-list mono-output" id="bulkList" style="padding:0;"></div>
+          </div>
+        </div>
+
+        <!-- Validator -->
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <label class="form-label">UUID Validator</label>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <input class="form-input" id="validateInput" placeholder="Paste a UUID to validate..." style="flex:1;" oninput="liveValidate(this.value)">
+            <button class="btn btn-outline btn-sm" onclick="validateUUID()">Validate</button>
+          </div>
+          <div id="validateResult" class="hidden"></div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Click <strong>Generate New</strong> to create a cryptographically random UUID v4.</li>
+          <li>Use <strong>Copy UUID</strong> to copy it to your clipboard.</li>
+          <li><strong>Toggle Case</strong> switches between lowercase and uppercase formats.</li>
+          <li><strong>NIL UUID</strong> inserts the special all-zeros UUID (00000000-0000-0000-0000-000000000000).</li>
+          <li>The format breakdown shows what each section of the UUID represents with color coding.</li>
+          <li>Enter any UUID in the validator to check if it is valid and which version it is.</li>
+          <li>Set a count (1–100) and click <strong>Generate List</strong> for bulk UUID generation.</li>
+        </ul>
+      </div>
+
+      <!-- UUID Info -->
+      <div class="tool-card" style="margin-top:1rem;">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">About UUID Format</h2>
+        <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:0.75rem;">A UUID (Universally Unique Identifier) is a 128-bit value represented as 32 hexadecimal digits in 5 groups separated by hyphens: <code style="background:var(--bg-alt);padding:0.1rem 0.35rem;border-radius:4px;">xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx</code></p>
+        <div class="breakdown-grid" style="margin-top:0.5rem;">
+          <div class="breakdown-cell" style="background:#eff6ff;"><div class="seg-label" style="color:#2563eb;">time_low</div><div class="seg-desc">First 8 chars — 32 bits</div></div>
+          <div class="breakdown-cell" style="background:#f5f3ff;"><div class="seg-label" style="color:#7c3aed;">time_mid</div><div class="seg-desc">4 chars — 16 bits</div></div>
+          <div class="breakdown-cell" style="background:#fdf2f8;"><div class="seg-label" style="color:#db2777;">time_hi + version</div><div class="seg-desc">4 chars — M = version digit</div></div>
+          <div class="breakdown-cell" style="background:#fffbeb;"><div class="seg-label" style="color:#d97706;">clock_seq</div><div class="seg-desc">4 chars — N = variant bits</div></div>
+          <div class="breakdown-cell" style="background:#ecfdf5;"><div class="seg-label" style="color:#059669;">node</div><div class="seg-desc">12 chars — 48 bits</div></div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;">In UUID v4, the M digit is always <strong>4</strong> and the N digit is <strong>8, 9, a, or b</strong>. All other digits are random, giving approximately 2¹²² possible values.</p>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="password-generator.html">Password Generator</a>
+          <a href="json-formatter.html">JSON Formatter</a>
+          <a href="qr-generator.html">QR Code Generator</a>
+          <a href="csv-to-json.html">CSV to JSON</a>
+          <a href="color-picker.html">Color Picker</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar"><div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('uuid-generator.html');
+      injectFooter();
+      generateOne();
+    });
+
+    let currentUUID = '';
+    let isUppercase = false;
+    let bulkUUIDs = [];
+
+    function generateUUIDv4() {
+      const bytes = new Uint8Array(16);
+      crypto.getRandomValues(bytes);
+      bytes[6] = (bytes[6] & 0x0f) | 0x40; // version 4
+      bytes[8] = (bytes[8] & 0x3f) | 0x80; // variant bits
+      const hex = Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
+      return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
+    }
+
+    function applyCase(uuid) {
+      return isUppercase ? uuid.toUpperCase() : uuid.toLowerCase();
+    }
+
+    function generateOne() {
+      currentUUID = generateUUIDv4();
+      renderUUID();
+    }
+
+    function renderUUID() {
+      const display = applyCase(currentUUID);
+      document.getElementById('uuidDisplay').textContent = display;
+      renderBreakdown(display);
+    }
+
+    function renderBreakdown(uuid) {
+      const parts = uuid.split('-');
+      if (parts.length !== 5) return;
+      const [tl, tm, th, cl, node] = parts;
+      document.getElementById('breakdownDisplay').innerHTML =
+        `<span class="seg-time-low">${tl}</span><span class="seg-dash">-</span>` +
+        `<span class="seg-time-mid">${tm}</span><span class="seg-dash">-</span>` +
+        `<span class="seg-time-high">${th}</span><span class="seg-dash">-</span>` +
+        `<span class="seg-clock">${cl}</span><span class="seg-dash">-</span>` +
+        `<span class="seg-node">${node}</span>`;
+
+      document.getElementById('breakdownGrid').innerHTML = `
+        <div class="breakdown-cell" style="background:#eff6ff;">
+          <div class="seg-label" style="color:#2563eb;">${tl}</div>
+          <div class="seg-desc">time_low (32 bits)</div>
+        </div>
+        <div class="breakdown-cell" style="background:#f5f3ff;">
+          <div class="seg-label" style="color:#7c3aed;">${tm}</div>
+          <div class="seg-desc">time_mid (16 bits)</div>
+        </div>
+        <div class="breakdown-cell" style="background:#fdf2f8;">
+          <div class="seg-label" style="color:#db2777;">${th}</div>
+          <div class="seg-desc">version + time_hi</div>
+        </div>
+        <div class="breakdown-cell" style="background:#fffbeb;">
+          <div class="seg-label" style="color:#d97706;">${cl}</div>
+          <div class="seg-desc">clock_seq + variant</div>
+        </div>
+        <div class="breakdown-cell" style="background:#ecfdf5;">
+          <div class="seg-label" style="color:#059669;">${node}</div>
+          <div class="seg-desc">node (48 bits)</div>
+        </div>
+      `;
+    }
+
+    function copyUUID() {
+      const display = applyCase(currentUUID);
+      if (!display || display === '—') { showToast('Generate a UUID first.'); return; }
+      copyText(display, 'UUID copied!');
+    }
+
+    function toggleCase() {
+      isUppercase = !isUppercase;
+      renderUUID();
+      if (bulkUUIDs.length) renderBulkList();
+    }
+
+    function setNil() {
+      currentUUID = '00000000-0000-0000-0000-000000000000';
+      renderUUID();
+    }
+
+    function generateBulk() {
+      const count = Math.min(100, Math.max(1, parseInt(document.getElementById('bulkCount').value) || 10));
+      bulkUUIDs = Array.from({length: count}, generateUUIDv4);
+      renderBulkList();
+      document.getElementById('bulkSection').classList.remove('hidden');
+    }
+
+    function renderBulkList() {
+      const list = document.getElementById('bulkList');
+      list.innerHTML = bulkUUIDs.map((uuid, i) => {
+        const display = applyCase(uuid);
+        return `<div class="bulk-item">
+          <span>${i+1}. ${display}</span>
+          <button class="btn btn-ghost btn-sm" style="font-size:0.7rem;padding:0.2rem 0.5rem;flex-shrink:0;" onclick="copyText('${display}','Copied!')">Copy</button>
+        </div>`;
+      }).join('');
+    }
+
+    function copyAllUUIDs() {
+      if (!bulkUUIDs.length) { showToast('Generate a bulk list first.'); return; }
+      copyText(bulkUUIDs.map(applyCase).join('\n'), 'All UUIDs copied!');
+    }
+
+    const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const NIL_RE = /^00000000-0000-0000-0000-000000000000$/;
+
+    function liveValidate(val) {
+      if (!val.trim()) { document.getElementById('validateResult').classList.add('hidden'); return; }
+      validateUUID();
+    }
+
+    function validateUUID() {
+      const val = document.getElementById('validateInput').value.trim();
+      const result = document.getElementById('validateResult');
+      result.classList.remove('hidden');
+
+      if (!val) { result.className = 'validate-result validate-invalid'; result.textContent = 'Please enter a UUID to validate.'; return; }
+
+      if (NIL_RE.test(val)) {
+        result.className = 'validate-result validate-valid';
+        result.textContent = '✓ Valid — NIL UUID (all zeros, version-less)';
+        return;
+      }
+
+      if (UUID_RE.test(val)) {
+        const versionChar = val.split('-')[2][0];
+        const version = parseInt(versionChar);
+        const variantNybble = parseInt(val.split('-')[3][0], 16);
+        const variant = variantNybble >= 8 && variantNybble <= 11 ? 'RFC 4122' : 'Other';
+        result.className = 'validate-result validate-valid';
+        result.textContent = `✓ Valid UUID — Version ${version}, Variant: ${variant}`;
+      } else {
+        result.className = 'validate-result validate-invalid';
+        // give a hint about what's wrong
+        const noHyphens = val.replace(/-/g, '');
+        if (noHyphens.length !== 32) {
+          result.textContent = `✗ Invalid — expected 32 hex digits, got ${noHyphens.length}`;
+        } else if (val.split('-').length !== 5) {
+          result.textContent = '✗ Invalid — must have exactly 4 hyphens in the format 8-4-4-4-12';
+        } else {
+          result.textContent = '✗ Invalid UUID — check version digit (3rd group) and variant bits (4th group)';
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mortgage Calculator - Free Online Mortgage Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate your full mortgage payment including principal, interest, taxes, insurance, and PMI. Free mortgage calculator with amortization schedule.">
+  <link rel="canonical" href="https://theusefulpages.com/mortgage-calculator.html">
+  <meta property="og:title" content="Mortgage Calculator - The Useful Pages">
+  <meta property="og:description" content="Calculate your full monthly mortgage payment including PITI breakdown and year-by-year amortization. Free and accurate.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Mortgage Calculator","url":"https://theusefulpages.com/mortgage-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Mortgage Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate your complete monthly mortgage payment including principal, interest, taxes, insurance, and PMI.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Home Price ($)</label>
+            <input type="number" class="form-input" id="homePrice" value="350000" min="0" step="1000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Down Payment</label>
+            <div class="input-group">
+              <input type="number" class="form-input" id="downPayment" value="70000" min="0" step="1000">
+              <select class="form-select" id="downPaymentType" style="max-width:90px;" onchange="syncDownPayment('type')">
+                <option value="dollar">$</option>
+                <option value="percent">%</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Loan Term</label>
+            <select class="form-select" id="loanTerm">
+              <option value="30">30 Years</option>
+              <option value="20">20 Years</option>
+              <option value="15">15 Years</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Interest Rate (%)</label>
+            <input type="number" class="form-input" id="interestRate" value="7.0" min="0" max="30" step="0.01">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Property Tax ($/year)</label>
+            <input type="number" class="form-input" id="propertyTax" value="4200" min="0" step="100">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Homeowner's Insurance ($/year)</label>
+            <input type="number" class="form-input" id="insurance" value="1200" min="0" step="100">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">PMI Rate (% of loan, if &lt;20% down — leave 0 if not applicable)</label>
+          <input type="number" class="form-input" id="pmiRate" value="0.5" min="0" max="5" step="0.01">
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary btn-block" onclick="calculateMortgage()">Calculate Mortgage</button>
+        </div>
+
+        <div id="results" class="hidden" style="margin-top:1.5rem;">
+          <div class="stat-grid" id="statGrid"></div>
+          <div id="pmiNote" style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);"></div>
+
+          <div style="margin-top:1.5rem;">
+            <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;">Year-by-Year Amortization</h3>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Year</th><th>Principal Paid</th><th>Interest Paid</th><th>Remaining Balance</th></tr></thead>
+                <tbody id="amortBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="totalCost" style="margin-top:1rem;padding:0.75rem;background:var(--surface);border-radius:8px;font-size:0.875rem;"></div>
+
+          <div style="margin-top:1rem;">
+            <button class="btn btn-accent btn-sm" onclick="copySummary()">Copy Summary</button>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">For educational purposes only — not financial advice.</p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter the home price and your down payment (as dollars or a percentage).</li>
+          <li>Select your loan term (15, 20, or 30 years) and enter your interest rate.</li>
+          <li>Add annual property tax and homeowner's insurance estimates.</li>
+          <li>If your down payment is less than 20%, enter your PMI rate (typically 0.5–1.5%).</li>
+          <li>Click Calculate to see your full PITI monthly payment breakdown.</li>
+          <li>Review the year-by-year table to see how your balance decreases over time.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="car-payment.html">Car Payment Calculator</a>
+          <a href="compound-interest.html">Compound Interest Calculator</a>
+          <a href="savings-calculator.html">Savings Calculator</a>
+          <a href="debt-payoff.html">Debt Payoff Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('mortgage-calculator.html'); injectFooter(); });
+
+    function syncDownPayment(source) {
+      const hp = parseFloat(document.getElementById('homePrice').value) || 0;
+      const dp = parseFloat(document.getElementById('downPayment').value) || 0;
+      const type = document.getElementById('downPaymentType').value;
+      // just recalc on button click
+    }
+
+    function calculateMortgage() {
+      const homePrice = parseFloat(document.getElementById('homePrice').value) || 0;
+      let downPayment = parseFloat(document.getElementById('downPayment').value) || 0;
+      const dpType = document.getElementById('downPaymentType').value;
+      if (dpType === 'percent') downPayment = homePrice * (downPayment / 100);
+
+      const loanTerm = parseInt(document.getElementById('loanTerm').value);
+      const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
+      const propertyTax = parseFloat(document.getElementById('propertyTax').value) || 0;
+      const insurance = parseFloat(document.getElementById('insurance').value) || 0;
+      const pmiRateAnnual = parseFloat(document.getElementById('pmiRate').value) || 0;
+
+      if (homePrice <= 0) { showToast('Please enter a valid home price.'); return; }
+
+      const loanAmount = homePrice - downPayment;
+      const n = loanTerm * 12;
+      const r = annualRate / 100 / 12;
+      const downPct = (downPayment / homePrice) * 100;
+
+      let PI;
+      if (r === 0) { PI = loanAmount / n; }
+      else { PI = loanAmount * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1); }
+
+      const monthlyTax = propertyTax / 12;
+      const monthlyInsurance = insurance / 12;
+      const monthlyPMI = downPct < 20 ? (loanAmount * pmiRateAnnual / 100) / 12 : 0;
+      const totalMonthly = PI + monthlyTax + monthlyInsurance + monthlyPMI;
+
+      document.getElementById('statGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(PI)}</div><div class="stat-label">Principal + Interest</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(monthlyTax)}</div><div class="stat-label">Property Tax</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(monthlyInsurance)}</div><div class="stat-label">Insurance</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(monthlyPMI)}</div><div class="stat-label">PMI</div></div>
+        <div class="stat-box" style="grid-column:1/-1;background:var(--primary);color:white;"><div class="stat-value" style="color:white;">${fmtCurrency(totalMonthly)}</div><div class="stat-label" style="color:rgba(255,255,255,0.8);">Total Monthly Payment (PITI)</div></div>
+      `;
+
+      const pmiNote = document.getElementById('pmiNote');
+      if (downPct < 20) {
+        pmiNote.innerHTML = `<span class="badge badge-accent">PMI applies</span> Down payment is ${fmtPct(downPct, 1)} — PMI typically drops when you reach 20% equity.`;
+      } else {
+        pmiNote.innerHTML = `<span class="badge badge-green">No PMI</span> Down payment of ${fmtPct(downPct, 1)} exceeds 20%.`;
+      }
+
+      // Year-by-year amortization
+      let balance = loanAmount;
+      const rows = [];
+      for (let yr = 1; yr <= loanTerm; yr++) {
+        let yearPrincipal = 0, yearInterest = 0;
+        for (let mo = 0; mo < 12; mo++) {
+          const intPayment = balance * r;
+          const prinPayment = PI - intPayment;
+          yearInterest += intPayment;
+          yearPrincipal += prinPayment;
+          balance = Math.max(0, balance - prinPayment);
+        }
+        rows.push({ yr, yearPrincipal, yearInterest, balance });
+      }
+
+      document.getElementById('amortBody').innerHTML = rows.map(r => `
+        <tr>
+          <td>${r.yr}</td>
+          <td>${fmtCurrency(r.yearPrincipal)}</td>
+          <td>${fmtCurrency(r.yearInterest)}</td>
+          <td>${fmtCurrency(r.balance)}</td>
+        </tr>
+      `).join('');
+
+      const totalPaid = PI * n + propertyTax * loanTerm + insurance * loanTerm + monthlyPMI * 12 * loanTerm;
+      const totalInterest = PI * n - loanAmount;
+      document.getElementById('totalCost').innerHTML = `
+        <strong>Total cost over ${loanTerm} years:</strong> ${fmtCurrency(totalPaid)} &nbsp;|&nbsp;
+        <strong>Total interest (P&I only):</strong> ${fmtCurrency(totalInterest)} &nbsp;|&nbsp;
+        <strong>Down payment:</strong> ${fmtCurrency(downPayment)} (${fmtPct(downPct, 1)})
+      `;
+
+      document.getElementById('results').classList.remove('hidden');
+    }
+
+    function copySummary() {
+      const boxes = document.querySelectorAll('.stat-box');
+      let text = 'Mortgage Calculator Summary\n';
+      boxes.forEach(b => {
+        text += `${b.querySelector('.stat-label').textContent}: ${b.querySelector('.stat-value').textContent}\n`;
+      });
+      text += document.getElementById('totalCost').innerText;
+      copyText(text, 'Summary copied!');
+    }
+  </script>
+</body>
+</html>

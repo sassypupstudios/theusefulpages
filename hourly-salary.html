@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hourly to Salary Converter - Free Online Pay Calculator | The Useful Pages</title>
+  <meta name="description" content="Convert hourly wage to annual salary or salary to hourly rate instantly. Includes biweekly, weekly, daily pay, overtime calculator, and US tax estimates.">
+  <link rel="canonical" href="https://theusefulpages.com/hourly-salary.html">
+  <meta property="og:title" content="Hourly to Salary Converter - The Useful Pages">
+  <meta property="og:description" content="Instantly convert between hourly and annual pay. See all pay periods, overtime, and rough US federal tax estimates.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hourly to Salary Converter","url":"https://theusefulpages.com/hourly-salary.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tab-group { display:flex; gap:0; border:2px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:1.5rem; }
+    .tab-btn { flex:1; padding:0.625rem 1rem; background:white; border:none; cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--text-muted); transition:all 0.15s; font-family:inherit; }
+    .tab-btn.active { background:var(--primary); color:white; }
+    .tab-btn:not(:last-child) { border-right:2px solid var(--border); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Hourly to Salary Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Convert between hourly wage and annual salary — with overtime calculator and tax estimates.</p>
+      <div class="tool-card">
+        <div class="tab-group">
+          <button class="tab-btn active" id="tab-hourly" onclick="switchTab('hourly')">Hourly → Salary</button>
+          <button class="tab-btn" id="tab-salary" onclick="switchTab('salary')">Salary → Hourly</button>
+        </div>
+
+        <div id="panel-hourly">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Hourly Wage ($)</label>
+              <input type="number" class="form-input" id="hourlyWage" value="25" min="0" step="0.01" oninput="calcFromHourly()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Hours Per Week</label>
+              <input type="number" class="form-input" id="hoursPerWeek" value="40" min="1" max="168" oninput="calcFromHourly()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Weeks Per Year</label>
+            <select class="form-select" id="weeksPerYear" onchange="calcFromHourly()">
+              <option value="52">52 weeks (no vacation)</option>
+              <option value="50" selected>50 weeks (2 weeks vacation)</option>
+              <option value="48">48 weeks (4 weeks vacation)</option>
+              <option value="46">46 weeks (6 weeks vacation)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="panel-salary" class="hidden">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Annual Salary ($)</label>
+              <input type="number" class="form-input" id="annualSalary" value="52000" min="0" step="1000" oninput="calcFromSalary()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Hours Per Week</label>
+              <input type="number" class="form-input" id="hoursPerWeekSalary" value="40" min="1" max="168" oninput="calcFromSalary()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Weeks Per Year</label>
+            <select class="form-select" id="weeksPerYearSalary" onchange="calcFromSalary()">
+              <option value="52">52 weeks (no vacation)</option>
+              <option value="50" selected>50 weeks (2 weeks vacation)</option>
+              <option value="48">48 weeks (4 weeks vacation)</option>
+              <option value="46">46 weeks (6 weeks vacation)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="payResults" style="margin-top:1rem;">
+          <div class="stat-grid" id="payGrid"></div>
+        </div>
+
+        <!-- Tax estimates -->
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem;">Rough US Federal Tax Estimate</h3>
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.75rem;">Approximate single-filer estimate only. Actual taxes vary based on deductions, state, and filing status.</p>
+          <div class="stat-grid" id="taxGrid"></div>
+        </div>
+
+        <!-- Overtime -->
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;">Overtime Calculator</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Regular Hours (this week)</label>
+              <input type="number" class="form-input" id="regHours" value="40" min="0" oninput="calcOvertime()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Overtime Hours</label>
+              <input type="number" class="form-input" id="otHours" value="5" min="0" oninput="calcOvertime()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">OT Rate Multiplier</label>
+            <select class="form-select" id="otMultiplier" onchange="calcOvertime()">
+              <option value="1.5" selected>1.5x (time and a half)</option>
+              <option value="2">2x (double time)</option>
+              <option value="1.25">1.25x</option>
+            </select>
+          </div>
+          <div class="stat-grid" id="otGrid"></div>
+        </div>
+
+        <div style="margin-top:1rem;">
+          <button class="btn btn-accent btn-sm" onclick="copySummary()">Copy Summary</button>
+        </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">For educational purposes only — not financial or tax advice. Consult a tax professional for accurate estimates.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Use "Hourly → Salary" to see your annual equivalent from an hourly rate.</li>
+          <li>Use "Salary → Hourly" to break down your salary into an effective hourly rate.</li>
+          <li>Adjust hours per week and weeks per year to match your actual work schedule.</li>
+          <li>Tax estimates are rough US federal only — state taxes and deductions not included.</li>
+          <li>Use the overtime calculator to see your weekly pay with overtime hours.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="tip-calculator.html">Tip Calculator</a>
+          <a href="retirement-calculator.html">Retirement Calculator</a>
+          <a href="savings-calculator.html">Savings Calculator</a>
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="debt-payoff.html">Debt Payoff Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('hourly-salary.html'); injectFooter(); calcFromHourly(); });
+
+    let currentMode = 'hourly';
+    let currentHourly = 25;
+    let currentAnnual = 0;
+
+    function switchTab(tab) {
+      currentMode = tab;
+      document.getElementById('tab-hourly').classList.toggle('active', tab === 'hourly');
+      document.getElementById('tab-salary').classList.toggle('active', tab === 'salary');
+      document.getElementById('panel-hourly').classList.toggle('hidden', tab !== 'hourly');
+      document.getElementById('panel-salary').classList.toggle('hidden', tab !== 'salary');
+      if (tab === 'hourly') calcFromHourly(); else calcFromSalary();
+    }
+
+    function calcFromHourly() {
+      const hourly = parseFloat(document.getElementById('hourlyWage').value) || 0;
+      const hpw = parseFloat(document.getElementById('hoursPerWeek').value) || 40;
+      const wpy = parseFloat(document.getElementById('weeksPerYear').value) || 50;
+      currentHourly = hourly;
+      currentAnnual = hourly * hpw * wpy;
+      renderPayGrid(currentHourly, currentAnnual, hpw, wpy);
+      renderTaxGrid(currentAnnual);
+      calcOvertime();
+    }
+
+    function calcFromSalary() {
+      const annual = parseFloat(document.getElementById('annualSalary').value) || 0;
+      const hpw = parseFloat(document.getElementById('hoursPerWeekSalary').value) || 40;
+      const wpy = parseFloat(document.getElementById('weeksPerYearSalary').value) || 50;
+      currentAnnual = annual;
+      currentHourly = hpw > 0 && wpy > 0 ? annual / (hpw * wpy) : 0;
+      renderPayGrid(currentHourly, currentAnnual, hpw, wpy);
+      renderTaxGrid(currentAnnual);
+      calcOvertime();
+    }
+
+    function renderPayGrid(hourly, annual, hpw, wpy) {
+      const weekly = hourly * hpw;
+      const biweekly = weekly * 2;
+      const monthly = annual / 12;
+      const daily = hpw > 0 ? weekly / 5 : 0;
+      document.getElementById('payGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(hourly)}</div><div class="stat-label">Hourly Rate</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(daily)}</div><div class="stat-label">Daily (8 hrs)</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(weekly)}</div><div class="stat-label">Weekly</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(biweekly)}</div><div class="stat-label">Biweekly</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(monthly)}</div><div class="stat-label">Monthly</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(annual)}</div><div class="stat-label">Annual</div></div>
+      `;
+    }
+
+    function renderTaxGrid(annual) {
+      // 2024 US federal tax brackets (single filer, standard deduction $14,600)
+      const taxable = Math.max(0, annual - 14600);
+      let tax = 0;
+      const brackets = [
+        [11600, 0.10], [33550, 0.12], [50400, 0.22], [96950, 0.24], [206700, 0.32], [243725, 0.35], [Infinity, 0.37]
+      ];
+      let prev = 0;
+      for (const [limit, rate] of brackets) {
+        if (taxable <= prev) break;
+        tax += (Math.min(taxable, limit) - prev) * rate;
+        prev = limit;
+      }
+      // FICA: 6.2% SS (up to $168,600) + 1.45% Medicare
+      const ss = Math.min(annual, 168600) * 0.062;
+      const medicare = annual * 0.0145;
+      const totalTax = tax + ss + medicare;
+      const effectiveRate = annual > 0 ? (totalTax / annual) * 100 : 0;
+      const takeHome = annual - totalTax;
+      document.getElementById('taxGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(tax)}</div><div class="stat-label">Est. Federal Income Tax</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(ss + medicare)}</div><div class="stat-label">Est. FICA (SS + Medicare)</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtPct(effectiveRate, 1)}</div><div class="stat-label">Effective Tax Rate</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(takeHome)}</div><div class="stat-label">Est. Annual Take-Home</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(takeHome / 12)}</div><div class="stat-label">Est. Monthly Take-Home</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(takeHome / 26)}</div><div class="stat-label">Est. Biweekly Take-Home</div></div>
+      `;
+    }
+
+    function calcOvertime() {
+      const regHours = parseFloat(document.getElementById('regHours').value) || 40;
+      const otHours = parseFloat(document.getElementById('otHours').value) || 0;
+      const otMult = parseFloat(document.getElementById('otMultiplier').value) || 1.5;
+      const regPay = regHours * currentHourly;
+      const otPay = otHours * currentHourly * otMult;
+      const totalPay = regPay + otPay;
+      document.getElementById('otGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(regPay)}</div><div class="stat-label">Regular Pay</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(otPay)}</div><div class="stat-label">Overtime Pay (${otMult}x)</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(totalPay)}</div><div class="stat-label">Total Weekly Pay</div></div>
+      `;
+    }
+
+    function copySummary() {
+      const boxes = document.querySelectorAll('#payGrid .stat-box');
+      let text = 'Pay Conversion Summary\n';
+      boxes.forEach(b => {
+        text += `${b.querySelector('.stat-label').textContent}: ${b.querySelector('.stat-value').textContent}\n`;
+      });
+      copyText(text, 'Summary copied!');
+    }
+  </script>
+</body>
+</html>

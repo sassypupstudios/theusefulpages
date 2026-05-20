@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Number Generator - Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Generate random numbers instantly. Single numbers, lists with no duplicates, dice rolls, coin flips, and more. Free online random number generator tool.">
+  <link rel="canonical" href="https://theusefulpages.com/random-number.html">
+  <meta property="og:title" content="Random Number Generator - The Useful Pages">
+  <meta property="og:description" content="Generate random numbers instantly. Single numbers, lists with no duplicates, dice rolls, coin flips, and more.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Random Number Generator","url":"https://theusefulpages.com/random-number.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .rng-big { font-size: 4rem; font-weight: 700; color: var(--primary); text-align: center; padding: 1.5rem 0 0.5rem; line-height: 1; }
+    .chip-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .chip { background: var(--primary); color: #fff; border-radius: 1rem; padding: 0.3rem 0.75rem; font-size: 0.875rem; font-weight: 500; }
+    .quick-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+    .quick-result { text-align:center; font-size: 1.5rem; font-weight: 700; color: var(--accent); margin-top: 0.75rem; min-height: 2.5rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="3000000001"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Random Number Generator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Generate single numbers, random lists, dice rolls, and coin flips instantly.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" id="rng-tabs">
+          <button class="tab-btn active" data-tab="single">Single Number</button>
+          <button class="tab-btn" data-tab="list">Number List</button>
+          <button class="tab-btn" data-tab="quick">Quick Tools</button>
+        </div>
+
+        <!-- Single Number -->
+        <div id="tab-single" class="tab-panel">
+          <div class="form-row" style="margin-top:1rem;">
+            <div class="form-group">
+              <label class="form-label">Minimum</label>
+              <input class="form-input" id="s-min" type="number" value="1" step="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Maximum</label>
+              <input class="form-input" id="s-max" type="number" value="100" step="1">
+            </div>
+          </div>
+          <div id="s-error" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+          <div class="btn-row">
+            <button class="btn btn-primary btn-block" onclick="genSingle()" style="font-size:1.1rem;">Generate Number</button>
+          </div>
+          <div id="s-result" class="hidden">
+            <div class="rng-big" id="s-number">—</div>
+            <div style="text-align:center;color:var(--text-muted);font-size:0.85rem;" id="s-range-label"></div>
+            <div class="btn-row" style="justify-content:center;margin-top:1rem;">
+              <button class="btn btn-accent" onclick="genSingle()">Re-roll 🎲</button>
+              <button class="btn btn-outline" onclick="copySingle()">Copy</button>
+            </div>
+            <div style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem;" id="s-history"></div>
+          </div>
+        </div>
+
+        <!-- Number List -->
+        <div id="tab-list" class="tab-panel hidden">
+          <div class="form-row" style="margin-top:1rem;">
+            <div class="form-group">
+              <label class="form-label">Minimum</label>
+              <input class="form-input" id="l-min" type="number" value="1" step="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Maximum</label>
+              <input class="form-input" id="l-max" type="number" value="100" step="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Count</label>
+              <input class="form-input" id="l-count" type="number" value="10" min="1" max="1000" step="1">
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
+            <input type="checkbox" id="l-nodup" style="width:18px;height:18px;accent-color:var(--primary);">
+            <label for="l-nodup" style="font-size:0.875rem;cursor:pointer;">No duplicates</label>
+          </div>
+          <div id="l-error" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="genList()">Generate List</button>
+            <button class="btn btn-ghost" id="l-shuffle-btn" onclick="shuffleList()" style="display:none;">Shuffle</button>
+            <button class="btn btn-outline" id="l-copy-btn" onclick="copyList()" style="display:none;">Copy List</button>
+          </div>
+          <div id="l-result" class="hidden" style="margin-top:1rem;">
+            <div class="chip-list" id="l-chips"></div>
+            <div style="margin-top:0.75rem;font-size:0.8rem;color:var(--text-muted);" id="l-info"></div>
+          </div>
+        </div>
+
+        <!-- Quick Tools -->
+        <div id="tab-quick" class="tab-panel hidden">
+          <div style="margin-top:1rem;">
+            <div style="font-weight:600;margin-bottom:0.75rem;">Dice Roll</div>
+            <div class="quick-btns">
+              <button class="btn btn-primary" onclick="rollDice(4)">d4</button>
+              <button class="btn btn-primary" onclick="rollDice(6)">d6</button>
+              <button class="btn btn-primary" onclick="rollDice(8)">d8</button>
+              <button class="btn btn-primary" onclick="rollDice(10)">d10</button>
+              <button class="btn btn-primary" onclick="rollDice(12)">d12</button>
+              <button class="btn btn-primary" onclick="rollDice(20)">d20</button>
+              <button class="btn btn-primary" onclick="rollDice(100)">d100</button>
+            </div>
+            <div class="quick-result" id="q-dice"></div>
+
+            <div style="font-weight:600;margin:1.5rem 0 0.75rem;">Coin Flip</div>
+            <div class="quick-btns">
+              <button class="btn btn-accent btn-block" style="max-width:220px;" onclick="flipCoin()">Flip Coin 🪙</button>
+            </div>
+            <div class="quick-result" id="q-coin"></div>
+
+            <div style="font-weight:600;margin:1.5rem 0 0.75rem;">Yes / No</div>
+            <div class="quick-btns">
+              <button class="btn btn-outline btn-block" style="max-width:220px;" onclick="yesNo()">Decide for Me</button>
+            </div>
+            <div class="quick-result" id="q-yesno"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="3000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Single Number</strong> — Set a min and max, then click Generate. Click Re-roll for a new number in the same range.</li>
+          <li><strong>Number List</strong> — Set min, max, and how many numbers to generate. Check "No duplicates" to ensure every number appears only once.</li>
+          <li>Use <strong>Shuffle</strong> to randomize the order of an already-generated list.</li>
+          <li><strong>Quick Tools</strong> — Roll standard dice (d4 through d100), flip a coin, or get a random Yes/No answer.</li>
+          <li>Use the Copy buttons to copy results to your clipboard.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="percentage-calculator.html">Percentage Calculator</a>
+          <a href="age-calculator.html">Age Calculator</a>
+          <a href="fraction-calculator.html">Fraction Calculator</a>
+          <a href="square-root.html">Square Root Calculator</a>
+          <a href="quadratic-solver.html">Quadratic Solver</a>
+          <a href="standard-deviation.html">Standard Deviation</a>
+          <a href="scientific-calculator.html">Scientific Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="3000000003"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="3000000004"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('random-number.html');
+    injectFooter();
+    document.querySelectorAll('#rng-tabs .tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#rng-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+      });
+    });
+  });
+
+  let sHistory = [];
+  let currentList = [];
+
+  function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function genSingle() {
+    const min = parseInt(document.getElementById('s-min').value);
+    const max = parseInt(document.getElementById('s-max').value);
+    const err = document.getElementById('s-error');
+    if (isNaN(min) || isNaN(max)) { err.textContent = 'Please enter valid min and max values.'; return; }
+    if (min > max) { err.textContent = 'Minimum must be less than or equal to maximum.'; return; }
+    err.textContent = '';
+    const n = randInt(min, max);
+    sHistory.unshift(n);
+    if (sHistory.length > 5) sHistory.pop();
+    document.getElementById('s-number').textContent = n.toLocaleString();
+    document.getElementById('s-range-label').textContent = 'Range: ' + min.toLocaleString() + ' – ' + max.toLocaleString();
+    document.getElementById('s-history').textContent = sHistory.length > 1 ? 'Previous: ' + sHistory.slice(1).join(', ') : '';
+    document.getElementById('s-result').classList.remove('hidden');
+  }
+
+  function copySingle() {
+    const val = document.getElementById('s-number').textContent;
+    copyText(val, 'Number copied!');
+  }
+
+  function genList() {
+    const min = parseInt(document.getElementById('l-min').value);
+    const max = parseInt(document.getElementById('l-max').value);
+    const count = parseInt(document.getElementById('l-count').value);
+    const noDup = document.getElementById('l-nodup').checked;
+    const err = document.getElementById('l-error');
+    if (isNaN(min) || isNaN(max) || isNaN(count)) { err.textContent = 'Please enter valid values.'; return; }
+    if (min > max) { err.textContent = 'Minimum must be ≤ maximum.'; return; }
+    if (count < 1 || count > 1000) { err.textContent = 'Count must be between 1 and 1000.'; return; }
+    if (noDup && count > (max - min + 1)) { err.textContent = 'Cannot generate ' + count + ' unique numbers in range ' + min + '–' + max + '.'; return; }
+    err.textContent = '';
+
+    if (noDup) {
+      const pool = [];
+      for (let i = min; i <= max; i++) pool.push(i);
+      for (let i = pool.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+      currentList = pool.slice(0, count);
+    } else {
+      currentList = Array.from({length: count}, () => randInt(min, max));
+    }
+    renderList();
+  }
+
+  function shuffleList() {
+    for (let i = currentList.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [currentList[i], currentList[j]] = [currentList[j], currentList[i]];
+    }
+    renderList();
+  }
+
+  function renderList() {
+    const chips = document.getElementById('l-chips');
+    chips.innerHTML = currentList.map(n => '<span class="chip">' + n + '</span>').join('');
+    document.getElementById('l-info').textContent = currentList.length + ' numbers generated. Min: ' + Math.min(...currentList) + ', Max: ' + Math.max(...currentList);
+    document.getElementById('l-result').classList.remove('hidden');
+    document.getElementById('l-shuffle-btn').style.display = '';
+    document.getElementById('l-copy-btn').style.display = '';
+  }
+
+  function copyList() {
+    copyText(currentList.join(', '), 'List copied!');
+  }
+
+  function rollDice(sides) {
+    const result = randInt(1, sides);
+    const emojis = {4:'🎲',6:'🎲',8:'🎲',10:'🎲',12:'🎲',20:'🎲',100:'🎲'};
+    document.getElementById('q-dice').textContent = (emojis[sides]||'🎲') + ' d' + sides + ': ' + result;
+  }
+
+  function flipCoin() {
+    const result = Math.random() < 0.5 ? 'Heads 🪙' : 'Tails 🪙';
+    document.getElementById('q-coin').textContent = result;
+  }
+
+  function yesNo() {
+    const result = Math.random() < 0.5 ? 'Yes ✅' : 'No ❌';
+    document.getElementById('q-yesno').textContent = result;
+  }
+  </script>
+</body>
+</html>

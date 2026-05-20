@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Zone Converter - Convert Time Between World Time Zones | The Useful Pages</title>
+  <meta name="description" content="Convert times between world time zones instantly. Supports DST, live current time mode, up to 5 destination zones, and common city presets. Free online tool.">
+  <link rel="canonical" href="https://theusefulpages.com/timezone-converter.html">
+  <meta property="og:title" content="Time Zone Converter - The Useful Pages">
+  <meta property="og:description" content="Convert times between world time zones. DST-aware, live mode, up to 5 destinations, city presets included.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Time Zone Converter","url":"https://theusefulpages.com/timezone-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tz-result { display: flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1rem; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 0.5rem; background: #fff; }
+    .tz-result-zone { font-size: 0.8rem; color: var(--text-muted); min-width: 140px; }
+    .tz-result-time { font-size: 1.25rem; font-weight: 700; color: var(--primary); flex: 1; }
+    .tz-result-date { font-size: 0.8rem; color: var(--text-muted); }
+    .tz-dest-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .dst-badge { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.4rem; border-radius: 4px; background: #fef9c3; color: #92400e; border: 1px solid #fde047; margin-left: 0.25rem; }
+    .preset-btns { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567890"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Time Zone Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Convert times between world time zones with DST support and live current time.</p>
+      <div class="tool-card">
+
+        <!-- Live mode toggle -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;padding:0.75rem 1rem;background:#f8fafc;border-radius:8px;border:1px solid var(--border);">
+          <span style="font-weight:600;font-size:0.9rem;">Live Current Time</span>
+          <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+            <input type="checkbox" id="live-toggle" style="width:18px;height:18px;accent-color:var(--primary);" onchange="toggleLive()">
+            <span style="font-size:0.875rem;color:var(--text-muted);">Auto-update every second</span>
+          </label>
+        </div>
+
+        <!-- Date/Time input -->
+        <div class="form-group">
+          <label class="form-label">Date &amp; Time</label>
+          <input type="datetime-local" id="dt-input" class="form-input" oninput="if(!liveMode)convertTZ()">
+        </div>
+
+        <!-- Source timezone -->
+        <div class="form-group">
+          <label class="form-label">Source Time Zone</label>
+          <select id="src-tz" class="form-select" onchange="convertTZ()"></select>
+        </div>
+
+        <!-- Destination timezones -->
+        <div style="margin-bottom:0.75rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+            <label class="form-label" style="margin:0;">Destination Time Zones</label>
+            <button class="btn btn-outline btn-sm" onclick="addDest()" id="add-dest-btn">+ Add Zone</button>
+          </div>
+          <div id="dest-rows"></div>
+        </div>
+
+        <!-- City presets -->
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:0.8rem;font-weight:600;color:var(--text-muted);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.05em;">Quick Add City</div>
+          <div class="preset-btns">
+            <button class="btn btn-outline btn-sm" onclick="addPreset('America/New_York','New York')">New York</button>
+            <button class="btn btn-outline btn-sm" onclick="addPreset('Europe/London','London')">London</button>
+            <button class="btn btn-outline btn-sm" onclick="addPreset('Europe/Paris','Paris')">Paris</button>
+            <button class="btn btn-outline btn-sm" onclick="addPreset('Asia/Tokyo','Tokyo')">Tokyo</button>
+            <button class="btn btn-outline btn-sm" onclick="addPreset('Australia/Sydney','Sydney')">Sydney</button>
+            <button class="btn btn-outline btn-sm" onclick="addPreset('America/Los_Angeles','Los Angeles')">Los Angeles</button>
+            <button class="btn btn-outline btn-sm" onclick="addPreset('America/Chicago','Chicago')">Chicago</button>
+            <button class="btn btn-outline btn-sm" onclick="addPreset('Asia/Dubai','Dubai')">Dubai</button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-block" onclick="convertTZ()">Convert Times</button>
+
+        <!-- Results -->
+        <div id="tz-results" style="margin-top:1rem;"></div>
+        <div id="copy-all-wrap" class="hidden" style="margin-top:0.75rem;">
+          <button class="btn btn-accent btn-block" onclick="copyAllTimes()">Copy All Times</button>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567891" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enable <strong>Live Current Time</strong> to automatically show the current time in all zones, updating every second.</li>
+          <li>Or enter a specific date and time and select your source time zone.</li>
+          <li>Add up to 5 destination time zones using the dropdowns or city preset buttons.</li>
+          <li>A <strong>DST</strong> badge appears when Daylight Saving Time is active in a zone.</li>
+          <li>Click <strong>Copy All Times</strong> to copy all converted times to your clipboard.</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="days-between-dates.html">Days Between Dates</a>
+          <a href="date-calculator.html">Date Calculator</a>
+          <a href="days-until.html">Days Until Calculator</a>
+          <a href="unix-timestamp.html">Unix Timestamp Converter</a>
+          <a href="countdown-timer.html">Countdown Timer</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567892"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567893"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    const TIMEZONES = [
+      { label: 'UTC', tz: 'UTC' },
+      { label: 'New York (ET)', tz: 'America/New_York' },
+      { label: 'Chicago (CT)', tz: 'America/Chicago' },
+      { label: 'Denver (MT)', tz: 'America/Denver' },
+      { label: 'Los Angeles (PT)', tz: 'America/Los_Angeles' },
+      { label: 'Anchorage (AKT)', tz: 'America/Anchorage' },
+      { label: 'Honolulu (HT)', tz: 'Pacific/Honolulu' },
+      { label: 'Toronto (ET)', tz: 'America/Toronto' },
+      { label: 'São Paulo (BRT)', tz: 'America/Sao_Paulo' },
+      { label: 'London (GMT/BST)', tz: 'Europe/London' },
+      { label: 'Paris (CET/CEST)', tz: 'Europe/Paris' },
+      { label: 'Berlin (CET/CEST)', tz: 'Europe/Berlin' },
+      { label: 'Moscow (MSK)', tz: 'Europe/Moscow' },
+      { label: 'Dubai (GST)', tz: 'Asia/Dubai' },
+      { label: 'Mumbai (IST)', tz: 'Asia/Kolkata' },
+      { label: 'Bangkok (ICT)', tz: 'Asia/Bangkok' },
+      { label: 'Singapore (SGT)', tz: 'Asia/Singapore' },
+      { label: 'Hong Kong (HKT)', tz: 'Asia/Hong_Kong' },
+      { label: 'Tokyo (JST)', tz: 'Asia/Tokyo' },
+      { label: 'Sydney (AEST/AEDT)', tz: 'Australia/Sydney' },
+      { label: 'Auckland (NZST/NZDT)', tz: 'Pacific/Auckland' },
+    ];
+
+    let liveMode = false;
+    let liveInterval = null;
+    let destCount = 0;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('timezone-converter.html');
+      injectFooter();
+      populateSelects();
+      setNow();
+      // Add 2 default destinations
+      addDest('America/New_York');
+      addDest('Europe/London');
+      convertTZ();
+    });
+
+    function populateSelects() {
+      const src = document.getElementById('src-tz');
+      src.innerHTML = TIMEZONES.map(t => `<option value="${t.tz}">${t.label}</option>`).join('');
+      // Try to detect user's local timezone
+      const local = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const match = TIMEZONES.find(t => t.tz === local);
+      if (match) src.value = local;
+    }
+
+    function setNow() {
+      const now = new Date();
+      const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+      document.getElementById('dt-input').value = local;
+    }
+
+    function toggleLive() {
+      liveMode = document.getElementById('live-toggle').checked;
+      document.getElementById('dt-input').disabled = liveMode;
+      if (liveMode) {
+        setNow();
+        convertTZ();
+        liveInterval = setInterval(() => { setNow(); convertTZ(); }, 1000);
+      } else {
+        clearInterval(liveInterval);
+      }
+    }
+
+    function buildSelect(id, selectedTz) {
+      return `<select id="${id}" class="form-select" onchange="convertTZ()" style="flex:1;">` +
+        TIMEZONES.map(t => `<option value="${t.tz}"${t.tz === selectedTz ? ' selected' : ''}>${t.label}</option>`).join('') +
+        `</select>`;
+    }
+
+    function addDest(presetTz) {
+      const rows = document.getElementById('dest-rows');
+      if (destCount >= 5) { showToast('Maximum 5 destination zones.'); return; }
+      const id = 'dest-' + destCount++;
+      const div = document.createElement('div');
+      div.className = 'tz-dest-row';
+      div.id = 'row-' + id;
+      const defaultTz = presetTz || 'UTC';
+      div.innerHTML = buildSelect(id, defaultTz) +
+        `<button class="btn btn-ghost btn-sm" onclick="removeDest('row-${id}')" style="min-width:36px;padding:0.25rem 0.5rem;flex-shrink:0;">✕</button>`;
+      rows.appendChild(div);
+      document.getElementById('add-dest-btn').style.display = destCount >= 5 ? 'none' : '';
+      convertTZ();
+    }
+
+    function addPreset(tz, label) {
+      const rows = document.getElementById('dest-rows');
+      if (destCount >= 5) { showToast('Maximum 5 destination zones.'); return; }
+      addDest(tz);
+    }
+
+    function removeDest(rowId) {
+      const el = document.getElementById(rowId);
+      if (el) el.remove();
+      destCount--;
+      document.getElementById('add-dest-btn').style.display = destCount >= 5 ? 'none' : '';
+      convertTZ();
+    }
+
+    function isDST(date, tz) {
+      // Compare Jan offset vs Jul offset to the given date's offset
+      const jan = new Date(date.getFullYear(), 0, 1);
+      const jul = new Date(date.getFullYear(), 6, 1);
+      const getOffset = (d) => {
+        const s = d.toLocaleString('en-US', { timeZone: tz, hour: 'numeric', hour12: false });
+        const u = d.toLocaleString('en-US', { timeZone: 'UTC', hour: 'numeric', hour12: false });
+        return parseInt(s) - parseInt(u);
+      };
+      const janOff = getOffset(jan);
+      const julOff = getOffset(jul);
+      const curOff = getOffset(date);
+      if (janOff === julOff) return false; // No DST in this zone
+      return curOff === Math.max(janOff, julOff);
+    }
+
+    function formatInTZ(date, tz) {
+      const timeStr = date.toLocaleTimeString('en-US', { timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+      const dateStr = date.toLocaleDateString('en-US', { timeZone: tz, weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+      return { time: timeStr, date: dateStr };
+    }
+
+    function getTZLabel(tz) {
+      return TIMEZONES.find(t => t.tz === tz)?.label || tz;
+    }
+
+    function convertTZ() {
+      const dtVal = document.getElementById('dt-input').value;
+      if (!dtVal) return;
+      const srcTz = document.getElementById('src-tz').value;
+
+      // Parse the input as a date in the source timezone
+      // We use the trick: create a date string with timezone offset
+      const date = new Date(dtVal);
+      if (isNaN(date.getTime())) return;
+
+      // Collect all dest zones
+      const destSelects = document.querySelectorAll('#dest-rows select');
+      const zones = [];
+      // Add source as first
+      zones.push({ tz: srcTz, label: getTZLabel(srcTz) + ' (source)', isSource: true });
+      destSelects.forEach(sel => zones.push({ tz: sel.value, label: getTZLabel(sel.value) }));
+
+      // Adjust: date input is treated as local browser time, but we want to treat it as source tz time.
+      // Get the source tz offset at that moment vs UTC
+      const utcStr = date.toLocaleString('en-US', { timeZone: 'UTC' });
+      const srcStr = date.toLocaleString('en-US', { timeZone: srcTz });
+      const utcDate = new Date(utcStr);
+      const srcDate = new Date(srcStr);
+      const offsetMs = srcDate - utcDate;
+      // The input is "local" browser time. Convert: treat input as srcTz time.
+      const browserOffset = date.getTimezoneOffset() * 60000; // ms (negative for east)
+      const adjustedDate = new Date(date.getTime() + browserOffset - offsetMs);
+
+      const resultsEl = document.getElementById('tz-results');
+      resultsEl.innerHTML = zones.map(z => {
+        const { time, date: dateStr } = formatInTZ(adjustedDate, z.tz);
+        const dst = isDST(adjustedDate, z.tz);
+        const dstBadge = dst ? '<span class="dst-badge">DST</span>' : '';
+        const srcBadge = z.isSource ? '<span style="font-size:0.7rem;background:#e0f2fe;color:#0369a1;border:1px solid #bae6fd;padding:0.15rem 0.4rem;border-radius:4px;margin-left:0.25rem;font-weight:600;">SOURCE</span>' : '';
+        return `<div class="tz-result">
+          <div style="flex:1;">
+            <div class="tz-result-zone">${z.label}${dstBadge}${srcBadge}</div>
+            <div class="tz-result-time">${time}</div>
+            <div class="tz-result-date">${dateStr}</div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="copyText('${time} (${dateStr})','Copied!')" style="flex-shrink:0;">Copy</button>
+        </div>`;
+      }).join('');
+
+      document.getElementById('copy-all-wrap').classList.remove('hidden');
+      window._lastZones = zones;
+      window._lastDate = adjustedDate;
+    }
+
+    function copyAllTimes() {
+      if (!window._lastZones || !window._lastDate) return;
+      const lines = window._lastZones.map(z => {
+        const { time, date } = formatInTZ(window._lastDate, z.tz);
+        const dst = isDST(window._lastDate, z.tz) ? ' (DST)' : '';
+        return `${z.label}${dst}: ${time} — ${date}`;
+      });
+      copyText(lines.join('\n'), 'All times copied!');
+    }
+  </script>
+</body>
+</html>

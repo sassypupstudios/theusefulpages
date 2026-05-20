@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fraction Calculator - Free Online Fraction Tool | The Useful Pages</title>
+  <meta name="description" content="Add, subtract, multiply, and divide fractions with step-by-step working. Simplify fractions and convert between fractions and decimals. Free online tool.">
+  <link rel="canonical" href="https://theusefulpages.com/fraction-calculator.html">
+  <meta property="og:title" content="Fraction Calculator - The Useful Pages">
+  <meta property="og:description" content="Add, subtract, multiply, and divide fractions with step-by-step working. Simplify fractions and convert between fractions and decimals.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Fraction Calculator","url":"https://theusefulpages.com/fraction-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .frac-input { display:flex; align-items:center; gap:0.5rem; }
+    .frac-box { display:flex; flex-direction:column; align-items:center; gap:2px; }
+    .frac-box input { width:80px; text-align:center; }
+    .frac-line { width:80px; height:2px; background:var(--primary); border-radius:2px; }
+    .frac-op { font-size:1.5rem; font-weight:700; color:var(--primary); padding:0 0.25rem; }
+    .steps-box { background:#f8fafc; border-radius:0.5rem; padding:1rem; margin-top:1rem; font-size:0.875rem; line-height:2; font-family:monospace; }
+    .big-frac { font-size:1.5rem; font-weight:700; color:var(--primary); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="4000000001"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Fraction Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Add, subtract, multiply, or divide fractions — with full step-by-step working shown.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" id="frac-tabs">
+          <button class="tab-btn active" data-tab="arith">Arithmetic</button>
+          <button class="tab-btn" data-tab="simplify">Simplify</button>
+          <button class="tab-btn" data-tab="convert">Convert</button>
+        </div>
+
+        <!-- Arithmetic -->
+        <div id="tab-arith" class="tab-panel">
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin:1rem 0 0.75rem;">
+            <button class="tab-btn active" id="op-add" onclick="setOp('+')" style="min-width:60px;">Add (+)</button>
+            <button class="tab-btn" id="op-sub" onclick="setOp('-')" style="min-width:60px;">Sub (−)</button>
+            <button class="tab-btn" id="op-mul" onclick="setOp('*')" style="min-width:60px;">Mul (×)</button>
+            <button class="tab-btn" id="op-div" onclick="setOp('/')" style="min-width:60px;">Div (÷)</button>
+          </div>
+          <div class="frac-input" style="flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
+            <div class="frac-box">
+              <input class="form-input" id="a-num" type="number" placeholder="1" step="1">
+              <div class="frac-line"></div>
+              <input class="form-input" id="a-den" type="number" placeholder="2" step="1">
+            </div>
+            <div class="frac-op" id="op-display">+</div>
+            <div class="frac-box">
+              <input class="form-input" id="b-num" type="number" placeholder="1" step="1">
+              <div class="frac-line"></div>
+              <input class="form-input" id="b-den" type="number" placeholder="3" step="1">
+            </div>
+          </div>
+          <div id="arith-error" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="calcArith()">Calculate</button>
+            <button class="btn btn-ghost" onclick="clearArith()">Clear</button>
+            <button class="btn btn-outline" id="arith-copy" onclick="copyArith()" style="display:none;">Copy Result</button>
+          </div>
+          <div id="arith-result" class="hidden" style="margin-top:1rem;">
+            <div class="result-card">
+              <div class="result-row"><span class="result-label">Fraction</span><span class="result-value big-frac" id="arith-frac"></span></div>
+              <div class="result-row"><span class="result-label">Decimal</span><span class="result-value" id="arith-dec"></span></div>
+              <div class="result-row"><span class="result-label">Mixed Number</span><span class="result-value" id="arith-mixed"></span></div>
+            </div>
+            <div style="font-weight:600;margin-top:1rem;margin-bottom:0.5rem;font-size:0.9rem;">Step-by-step working</div>
+            <div class="steps-box" id="arith-steps"></div>
+          </div>
+        </div>
+
+        <!-- Simplify -->
+        <div id="tab-simplify" class="tab-panel hidden">
+          <p style="font-size:0.875rem;color:var(--text-muted);margin-top:1rem;margin-bottom:0.75rem;">Enter a fraction to reduce it to its simplest form.</p>
+          <div class="frac-input" style="gap:1rem;margin-bottom:1rem;">
+            <div class="frac-box">
+              <input class="form-input" id="si-num" type="number" placeholder="12" step="1">
+              <div class="frac-line"></div>
+              <input class="form-input" id="si-den" type="number" placeholder="18" step="1">
+            </div>
+          </div>
+          <div id="si-error" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+          <div class="btn-row">
+            <button class="btn btn-primary" onclick="calcSimplify()">Simplify</button>
+            <button class="btn btn-ghost" onclick="clearSimplify()">Clear</button>
+          </div>
+          <div id="si-result" class="hidden" style="margin-top:1rem;">
+            <div class="result-card">
+              <div class="result-row"><span class="result-label">Simplified</span><span class="result-value big-frac" id="si-frac"></span></div>
+              <div class="result-row"><span class="result-label">GCD used</span><span class="result-value" id="si-gcd"></span></div>
+              <div class="result-row"><span class="result-label">Decimal</span><span class="result-value" id="si-dec"></span></div>
+              <div class="result-row"><span class="result-label">Mixed Number</span><span class="result-value" id="si-mixed"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Convert -->
+        <div id="tab-convert" class="tab-panel hidden">
+          <div style="margin-top:1rem;">
+            <div style="font-weight:600;margin-bottom:0.75rem;">Fraction → Decimal</div>
+            <div class="frac-input" style="gap:1rem;margin-bottom:0.75rem;">
+              <div class="frac-box">
+                <input class="form-input" id="fd-num" type="number" placeholder="3" step="1">
+                <div class="frac-line"></div>
+                <input class="form-input" id="fd-den" type="number" placeholder="4" step="1">
+              </div>
+            </div>
+            <div id="fd-error" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+            <div class="btn-row">
+              <button class="btn btn-primary" onclick="fracToDec()">Convert</button>
+              <button class="btn btn-ghost" onclick="clearFD()">Clear</button>
+            </div>
+            <div id="fd-result" class="result-card hidden" style="margin-top:0.75rem;">
+              <div class="result-row"><span class="result-label">Decimal</span><span class="result-value" id="fd-ans"></span></div>
+              <div class="result-row"><span class="result-label">Percentage</span><span class="result-value" id="fd-pct"></span></div>
+            </div>
+
+            <hr style="margin:1.5rem 0;border-color:#e5e7eb;">
+            <div style="font-weight:600;margin-bottom:0.75rem;">Decimal → Fraction</div>
+            <div class="form-group" style="max-width:200px;">
+              <label class="form-label">Decimal</label>
+              <input class="form-input" id="df-dec" type="number" placeholder="0.75" step="any">
+            </div>
+            <div id="df-error" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+            <div class="btn-row">
+              <button class="btn btn-primary" onclick="decToFrac()">Convert</button>
+              <button class="btn btn-ghost" onclick="clearDF()">Clear</button>
+            </div>
+            <div id="df-result" class="result-card hidden" style="margin-top:0.75rem;">
+              <div class="result-row"><span class="result-label">Fraction</span><span class="result-value big-frac" id="df-ans"></span></div>
+              <div class="result-row"><span class="result-label">Simplified</span><span class="result-value" id="df-simp"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="4000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Arithmetic</strong> — Enter numerator and denominator for each fraction, choose an operation, and click Calculate.</li>
+          <li>Step-by-step working is shown below the result so you can follow the math.</li>
+          <li><strong>Simplify</strong> — Enter any fraction and reduce it to its lowest terms using the GCD.</li>
+          <li><strong>Convert</strong> — Convert a fraction to a decimal/percentage, or turn a decimal into a fraction.</li>
+          <li>Results include the simplified fraction, decimal equivalent, and mixed number where applicable.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="percentage-calculator.html">Percentage Calculator</a>
+          <a href="age-calculator.html">Age Calculator</a>
+          <a href="random-number.html">Random Number Generator</a>
+          <a href="square-root.html">Square Root Calculator</a>
+          <a href="quadratic-solver.html">Quadratic Solver</a>
+          <a href="standard-deviation.html">Standard Deviation</a>
+          <a href="scientific-calculator.html">Scientific Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="4000000003"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="4000000004"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('fraction-calculator.html');
+    injectFooter();
+    document.querySelectorAll('#frac-tabs .tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#frac-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+      });
+    });
+  });
+
+  let currentOp = '+';
+
+  function setOp(op) {
+    currentOp = op;
+    const labels = {'+':'Add (+)','-':'Sub (−)','*':'Mul (×)','/':'Div (÷)'};
+    const ids = {'+':'op-add','-':'op-sub','*':'op-mul','/':'op-div'};
+    const display = {'+':'+','-':'−','*':'×','/':'÷'};
+    document.querySelectorAll('#tab-arith .tab-btn[id^="op-"]').forEach(b => b.classList.remove('active'));
+    document.getElementById(ids[op]).classList.add('active');
+    document.getElementById('op-display').textContent = display[op];
+  }
+
+  function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { [a, b] = [b, a % b]; } return a; }
+
+  function simplifyFrac(n, d) {
+    if (d === 0) return [n, d];
+    const g = gcd(Math.abs(n), Math.abs(d));
+    let sn = n / g, sd = d / g;
+    if (sd < 0) { sn = -sn; sd = -sd; }
+    return [sn, sd];
+  }
+
+  function fracStr(n, d) {
+    if (d === 1) return '' + n;
+    return n + '/' + d;
+  }
+
+  function mixedStr(n, d) {
+    if (d === 1) return '' + n;
+    const whole = Math.trunc(n / d);
+    const rem = Math.abs(n % d);
+    if (whole === 0) return n + '/' + d;
+    if (rem === 0) return '' + whole;
+    return whole + ' ' + rem + '/' + d;
+  }
+
+  function calcArith() {
+    const an = parseInt(document.getElementById('a-num').value);
+    const ad = parseInt(document.getElementById('a-den').value);
+    const bn = parseInt(document.getElementById('b-num').value);
+    const bd = parseInt(document.getElementById('b-den').value);
+    const err = document.getElementById('arith-error');
+    if (isNaN(an)||isNaN(ad)||isNaN(bn)||isNaN(bd)) { err.textContent='Please fill in all four fields.'; return; }
+    if (ad===0||bd===0) { err.textContent='Denominator cannot be zero.'; return; }
+    if (currentOp==='/' && bn===0) { err.textContent='Cannot divide by zero.'; return; }
+    err.textContent='';
+
+    let rn, rd, steps=[];
+    steps.push('Fractions: ' + fracStr(an,ad) + ' ' + {'+':'+','-':'−','*':'×','/':'÷'}[currentOp] + ' ' + fracStr(bn,bd));
+
+    if (currentOp==='+' || currentOp==='-') {
+      const lcm = (ad * bd) / gcd(ad, bd);
+      const an2 = an * (lcm / ad);
+      const bn2 = bn * (lcm / bd);
+      steps.push('Find LCM of ' + ad + ' and ' + bd + ' = ' + lcm);
+      steps.push('Convert: ' + fracStr(an2,lcm) + ' ' + (currentOp==='+' ? '+' : '−') + ' ' + fracStr(bn2,lcm));
+      rn = currentOp==='+' ? an2 + bn2 : an2 - bn2;
+      rd = lcm;
+      steps.push('= ' + fracStr(rn,rd));
+    } else if (currentOp==='*') {
+      rn = an * bn; rd = ad * bd;
+      steps.push('Multiply numerators: ' + an + ' × ' + bn + ' = ' + rn);
+      steps.push('Multiply denominators: ' + ad + ' × ' + bd + ' = ' + rd);
+    } else {
+      rn = an * bd; rd = ad * bn;
+      steps.push('Flip second fraction: ' + fracStr(bd,bn));
+      steps.push('Multiply: ' + an + '×' + bd + ' / ' + ad + '×' + bn + ' = ' + fracStr(rn,rd));
+    }
+
+    const [sn, sd] = simplifyFrac(rn, rd);
+    const g = gcd(Math.abs(rn), Math.abs(rd));
+    if (g > 1) {
+      steps.push('Simplify by GCD (' + g + '): ' + fracStr(rn,rd) + ' = ' + fracStr(sn,sd));
+    }
+
+    document.getElementById('arith-frac').textContent = fracStr(sn, sd);
+    document.getElementById('arith-dec').textContent = fmtNum(sn/sd, 6);
+    document.getElementById('arith-mixed').textContent = mixedStr(sn, sd);
+    document.getElementById('arith-steps').innerHTML = steps.join('<br>');
+    document.getElementById('arith-result').classList.remove('hidden');
+    document.getElementById('arith-copy').style.display = '';
+  }
+
+  function clearArith() {
+    ['a-num','a-den','b-num','b-den'].forEach(id => document.getElementById(id).value='');
+    document.getElementById('arith-error').textContent='';
+    document.getElementById('arith-result').classList.add('hidden');
+    document.getElementById('arith-copy').style.display='none';
+  }
+
+  function copyArith() {
+    const frac = document.getElementById('arith-frac').textContent;
+    const dec = document.getElementById('arith-dec').textContent;
+    copyText('Result: ' + frac + ' (decimal: ' + dec + ')', 'Result copied!');
+  }
+
+  function calcSimplify() {
+    const n = parseInt(document.getElementById('si-num').value);
+    const d = parseInt(document.getElementById('si-den').value);
+    const err = document.getElementById('si-error');
+    if (isNaN(n)||isNaN(d)) { err.textContent='Please enter numerator and denominator.'; return; }
+    if (d===0) { err.textContent='Denominator cannot be zero.'; return; }
+    err.textContent='';
+    const g = gcd(Math.abs(n), Math.abs(d));
+    const [sn,sd] = simplifyFrac(n,d);
+    document.getElementById('si-frac').textContent = fracStr(sn,sd);
+    document.getElementById('si-gcd').textContent = g;
+    document.getElementById('si-dec').textContent = fmtNum(sn/sd,6);
+    document.getElementById('si-mixed').textContent = mixedStr(sn,sd);
+    document.getElementById('si-result').classList.remove('hidden');
+  }
+
+  function clearSimplify() {
+    document.getElementById('si-num').value='';
+    document.getElementById('si-den').value='';
+    document.getElementById('si-error').textContent='';
+    document.getElementById('si-result').classList.add('hidden');
+  }
+
+  function fracToDec() {
+    const n = parseInt(document.getElementById('fd-num').value);
+    const d = parseInt(document.getElementById('fd-den').value);
+    const err = document.getElementById('fd-error');
+    if (isNaN(n)||isNaN(d)) { err.textContent='Please enter numerator and denominator.'; return; }
+    if (d===0) { err.textContent='Denominator cannot be zero.'; return; }
+    err.textContent='';
+    const dec = n/d;
+    document.getElementById('fd-ans').textContent = fmtNum(dec,8);
+    document.getElementById('fd-pct').textContent = fmtNum(dec*100,4) + '%';
+    document.getElementById('fd-result').classList.remove('hidden');
+  }
+
+  function clearFD() {
+    document.getElementById('fd-num').value='';
+    document.getElementById('fd-den').value='';
+    document.getElementById('fd-error').textContent='';
+    document.getElementById('fd-result').classList.add('hidden');
+  }
+
+  function decToFrac() {
+    const dec = parseFloat(document.getElementById('df-dec').value);
+    const err = document.getElementById('df-error');
+    if (isNaN(dec)) { err.textContent='Please enter a decimal number.'; return; }
+    err.textContent='';
+    const str = dec.toString();
+    const decPlaces = str.includes('.') ? str.split('.')[1].length : 0;
+    const denom = Math.pow(10, decPlaces);
+    const numer = Math.round(dec * denom);
+    document.getElementById('df-ans').textContent = numer + '/' + denom;
+    const [sn,sd] = simplifyFrac(numer,denom);
+    document.getElementById('df-simp').textContent = fracStr(sn,sd);
+    document.getElementById('df-result').classList.remove('hidden');
+  }
+
+  function clearDF() {
+    document.getElementById('df-dec').value='';
+    document.getElementById('df-error').textContent='';
+    document.getElementById('df-result').classList.add('hidden');
+  }
+  </script>
+</body>
+</html>

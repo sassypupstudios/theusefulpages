@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ovulation Calculator - Free Fertile Window & Ovulation Date Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate your ovulation date and fertile window. Enter your last period and cycle length to find your best days to conceive. Shows 3 months of cycles with fertile windows.">
+  <link rel="canonical" href="https://theusefulpages.com/ovulation-calculator.html">
+  <meta property="og:title" content="Ovulation Calculator - The Useful Pages"><meta property="og:description" content="Find your fertile window and ovulation date to maximize conception chances."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Ovulation Calculator","url":"https://theusefulpages.com/ovulation-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .ovulation-big { font-size:2rem; font-weight:700; color:var(--primary); }
+    .fertile-window-bar { display:flex; height:36px; border-radius:8px; overflow:hidden; margin:1rem 0; }
+    .fw-day { flex:1; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:600; transition:all 0.2s; }
+    .fw-period { background:#fde8e8; color:#dc2626; }
+    .fw-normal { background:var(--bg-secondary); color:var(--text-muted); }
+    .fw-fertile { background:#bbf7d0; color:#15803d; }
+    .fw-peak { background:#22c55e; color:#fff; }
+    .fw-ovulation { background:var(--primary); color:#fff; }
+    .cycle-card { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:1rem; margin-bottom:0.75rem; }
+    .cycle-header { font-weight:700; color:var(--primary); font-size:0.95rem; margin-bottom:0.75rem; }
+    .cycle-mini-bar { display:flex; height:20px; border-radius:6px; overflow:hidden; margin:0.5rem 0; }
+    .cycle-mini-day { flex:1; }
+    .legend { display:flex; gap:1rem; flex-wrap:wrap; font-size:0.78rem; margin-top:0.5rem; }
+    .legend-item { display:flex; align-items:center; gap:0.35rem; }
+    .legend-dot { width:12px; height:12px; border-radius:3px; }
+    .best-days-grid { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem; }
+    .best-day-chip { background:var(--primary); color:#fff; border-radius:8px; padding:0.4rem 0.75rem; font-weight:700; font-size:0.875rem; }
+    .disclaimer { background:#fff8f0; border-left:3px solid var(--accent); padding:0.75rem 1rem; border-radius:0 8px 8px 0; font-size:0.82rem; color:var(--text-muted); margin-top:1rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Ovulation Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Find your fertile window and best days to conceive based on your cycle.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Day of Last Period</label>
+            <input type="date" id="lastPeriod" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cycle Length (days)</label>
+            <input type="number" id="cycleLength" class="form-input" value="28" min="21" max="35" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Period Length (days)</label>
+            <input type="number" id="periodLength" class="form-input" value="5" min="2" max="10" step="1">
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calculate()">Calculate</button>
+          <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
+        </div>
+
+        <div id="results" style="display:none;margin-top:1.25rem;">
+          <div style="margin-bottom:1.25rem;">
+            <div style="font-size:0.78rem;font-weight:600;color:var(--text-muted);margin-bottom:0.25rem;">NEXT OVULATION DATE</div>
+            <div class="ovulation-big" id="ovulationDate">—</div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-box"><div class="stat-value" id="fertileStart">—</div><div class="stat-label">Fertile Window Starts</div></div>
+            <div class="stat-box"><div class="stat-value" id="fertileEnd">—</div><div class="stat-label">Fertile Window Ends</div></div>
+            <div class="stat-box"><div class="stat-value" id="nextPeriod">—</div><div class="stat-label">Next Period</div></div>
+          </div>
+
+          <div style="margin-top:1.25rem;">
+            <div style="font-weight:700;font-size:0.95rem;margin-bottom:0.25rem;">Best Days to Conceive</div>
+            <div style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">The 2 days before ovulation and ovulation day itself have the highest conception probability.</div>
+            <div class="best-days-grid" id="bestDays"></div>
+          </div>
+
+          <div style="margin-top:1.25rem;">
+            <div style="font-weight:700;font-size:0.95rem;margin-bottom:0.5rem;">3-Month Cycle Overview</div>
+            <div class="legend">
+              <span class="legend-item"><span class="legend-dot" style="background:#fde8e8;border:1px solid #dc2626;"></span>Period</span>
+              <span class="legend-item"><span class="legend-dot" style="background:#bbf7d0;"></span>Fertile</span>
+              <span class="legend-item"><span class="legend-dot" style="background:var(--primary);"></span>Ovulation</span>
+              <span class="legend-item"><span class="legend-dot" style="background:var(--bg-secondary);border:1px solid var(--border);"></span>Non-fertile</span>
+            </div>
+            <div id="cycleCards" style="margin-top:0.75rem;"></div>
+          </div>
+
+          <div class="disclaimer">For planning purposes only — not medical advice. Ovulation timing varies and this calculator provides estimates based on average cycle patterns. Irregular cycles may affect accuracy. Consult a healthcare provider for fertility concerns.</div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card"><h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2><ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+        <li>Enter the first day of your most recent period.</li>
+        <li>Set your average cycle length — 28 days is the average but many women range from 21–35 days.</li>
+        <li>Enter how many days your period typically lasts.</li>
+        <li>Click <strong>Calculate</strong> to see your ovulation date and fertile window.</li>
+        <li>Ovulation typically occurs 14 days before your next period starts.</li>
+        <li>The fertile window is 5 days before ovulation plus ovulation day itself — sperm can survive up to 5 days.</li>
+        <li>The 3-month chart shows upcoming cycles, fertile windows, and ovulation days.</li>
+      </ul></div>
+
+      <div class="related-card"><h3>Related Tools</h3><div class="related-links">
+        <a href="pregnancy-due-date.html">Pregnancy Due Date Calculator</a>
+      </div></div>
+    </main>
+    <aside class="tool-sidebar"><div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const DAYS_SHORT = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+    function fmtDate(d) { return `${MONTHS[d.getMonth()]} ${d.getDate()}`; }
+    function fmtDateFull(d) { return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`; }
+    function addDays(d, n) { const r=new Date(d); r.setDate(r.getDate()+n); return r; }
+    function sameDay(a,b) { return a.toDateString()===b.toDateString(); }
+
+    function calculate() {
+      const raw = document.getElementById('lastPeriod').value;
+      if (!raw) { showToast('Enter your last period date.'); return; }
+      const cycleLen = parseInt(document.getElementById('cycleLength').value)||28;
+      const periodLen = parseInt(document.getElementById('periodLength').value)||5;
+      const lastPeriod = new Date(raw+'T00:00:00');
+
+      // Ovulation = LMP + (cycleLen - 14)
+      const ovulationDay = addDays(lastPeriod, cycleLen - 14);
+      const fertileStart = addDays(ovulationDay, -5);
+      const fertileEnd = ovulationDay; // ovulation day is last fertile day
+      const nextPeriodStart = addDays(lastPeriod, cycleLen);
+
+      document.getElementById('ovulationDate').textContent = fmtDateFull(ovulationDay);
+      document.getElementById('fertileStart').textContent = fmtDate(fertileStart);
+      document.getElementById('fertileEnd').textContent = fmtDate(fertileEnd);
+      document.getElementById('nextPeriod').textContent = fmtDate(nextPeriodStart);
+
+      // Best days: day before ovulation, day of ovulation, 2 days before ovulation
+      const bestDayOffsets = [-2,-1,0];
+      let bestHtml = '';
+      bestDayOffsets.forEach(o=>{
+        const d = addDays(ovulationDay, o);
+        bestHtml += `<div class="best-day-chip">${fmtDate(d)}</div>`;
+      });
+      document.getElementById('bestDays').innerHTML = bestHtml;
+
+      // 3-month cycle cards
+      let cyclesHtml = '';
+      for (let c = 0; c < 3; c++) {
+        const cycleStart = addDays(lastPeriod, c * cycleLen);
+        const cycleOv = addDays(cycleStart, cycleLen - 14);
+        const cycleFertileStart = addDays(cycleOv, -5);
+        const nextCycleStart = addDays(cycleStart, cycleLen);
+
+        let barHtml = '';
+        let infoRows = `<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;font-size:0.78rem;margin-top:0.5rem;">
+          <div><span style="color:var(--text-muted);">Period:</span> ${fmtDate(cycleStart)}–${fmtDate(addDays(cycleStart,periodLen-1))}</div>
+          <div><span style="color:var(--text-muted);">Fertile:</span> ${fmtDate(cycleFertileStart)}–${fmtDate(cycleOv)}</div>
+          <div><span style="color:var(--text-muted);">Ovulation:</span> ${fmtDate(cycleOv)}</div>
+        </div>`;
+
+        for (let d = 0; d < cycleLen; d++) {
+          const day = addDays(cycleStart, d);
+          let cls = 'cycle-mini-day';
+          if (d < periodLen) cls += ' fw-period';
+          else if (sameDay(day, cycleOv)) cls += ' fw-ovulation';
+          else if (day >= cycleFertileStart && day <= cycleOv) cls += ' fw-fertile';
+          else cls += ' fw-normal';
+          barHtml += `<div class="${cls}" title="${fmtDate(day)}"></div>`;
+        }
+
+        cyclesHtml += `<div class="cycle-card">
+          <div class="cycle-header">Cycle ${c+1}: ${fmtDate(cycleStart)} – ${fmtDate(addDays(nextCycleStart,-1))}</div>
+          <div class="cycle-mini-bar">${barHtml}</div>
+          ${infoRows}
+        </div>`;
+      }
+      document.getElementById('cycleCards').innerHTML = cyclesHtml;
+      document.getElementById('results').style.display = 'block';
+    }
+
+    function clearAll() {
+      document.getElementById('lastPeriod').value = '';
+      document.getElementById('cycleLength').value = '28';
+      document.getElementById('periodLength').value = '5';
+      document.getElementById('results').style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('ovulation-calculator.html');
+      injectFooter();
+      const d = new Date(); d.setDate(d.getDate()-10);
+      document.getElementById('lastPeriod').value = d.toISOString().split('T')[0];
+    });
+  </script>
+</body>
+</html>

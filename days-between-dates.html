@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Days Between Dates - Free Online Date Difference Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate the exact number of days between two dates. Get total days, weeks, months, weekdays, and weekends between any two dates instantly for free.">
+  <link rel="canonical" href="https://theusefulpages.com/days-between-dates.html">
+  <meta property="og:title" content="Days Between Dates - The Useful Pages">
+  <meta property="og:description" content="Calculate the exact number of days between two dates. Get total days, weeks, months, weekdays, and weekends instantly.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Days Between Dates","url":"https://theusefulpages.com/days-between-dates.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567890"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Days Between Dates</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate the exact number of days, weeks, months, and more between any two dates.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Start Date</label>
+            <div style="display:flex;gap:0.5rem;align-items:center;">
+              <input type="date" id="startDate" class="form-input" style="flex:1;">
+              <button class="btn btn-outline btn-sm" onclick="setToday('startDate')">Today</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">End Date</label>
+            <div style="display:flex;gap:0.5rem;align-items:center;">
+              <input type="date" id="endDate" class="form-input" style="flex:1;">
+              <button class="btn btn-outline btn-sm" onclick="setToday('endDate')">Today</button>
+            </div>
+          </div>
+        </div>
+        <div class="btn-row" style="margin-bottom:1rem;">
+          <button class="btn btn-primary btn-block" onclick="calculate()">Calculate Days</button>
+          <button class="btn btn-outline" onclick="swapDates()" style="min-width:120px;">&#8645; Swap</button>
+        </div>
+        <div id="results" class="hidden">
+          <div class="stat-grid" style="grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1rem;">
+            <div class="stat-box" style="grid-column:1/-1;">
+              <div class="stat-value" id="totalDays" style="font-size:2.5rem;color:var(--primary);">-</div>
+              <div class="stat-label">Total Days</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="weeksDisplay">-</div>
+              <div class="stat-label">Weeks &amp; Days</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="monthsDisplay">-</div>
+              <div class="stat-label">Months &amp; Days</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="weekdays">-</div>
+              <div class="stat-label">Weekdays Only</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="weekends">-</div>
+              <div class="stat-label">Weekend Days</div>
+            </div>
+          </div>
+          <div class="result-card" style="margin-bottom:1rem;">
+            <div class="result-row">
+              <span class="result-label">Breakdown</span>
+              <span id="breakdown" style="font-weight:600;color:var(--primary);">-</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Earlier Date</span>
+              <span id="earlierDate" style="font-weight:500;">-</span>
+            </div>
+          </div>
+          <button class="btn btn-accent btn-block" onclick="copyResult()">Copy Result</button>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567891" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter a start date and end date using the date pickers.</li>
+          <li>Click <strong>Today</strong> next to either field to quickly set it to today's date.</li>
+          <li>Use the <strong>Swap</strong> button to switch start and end dates.</li>
+          <li>Click <strong>Calculate Days</strong> to see results including total days, weeks, months, weekdays, and weekends.</li>
+          <li>Click <strong>Copy Result</strong> to copy a summary to your clipboard.</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="date-calculator.html">Date Calculator</a>
+          <a href="days-until.html">Days Until Calculator</a>
+          <a href="unix-timestamp.html">Unix Timestamp Converter</a>
+          <a href="timezone-converter.html">Time Zone Converter</a>
+          <a href="countdown-timer.html">Countdown Timer</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567892"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567893"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('days-between-dates.html');
+      injectFooter();
+      // Set defaults
+      const today = new Date();
+      const todayStr = today.toISOString().split('T')[0];
+      document.getElementById('startDate').value = todayStr;
+      const future = new Date(today);
+      future.setDate(future.getDate() + 30);
+      document.getElementById('endDate').value = future.toISOString().split('T')[0];
+    });
+
+    function setToday(id) {
+      document.getElementById(id).value = new Date().toISOString().split('T')[0];
+    }
+
+    function swapDates() {
+      const s = document.getElementById('startDate');
+      const e = document.getElementById('endDate');
+      const tmp = s.value;
+      s.value = e.value;
+      e.value = tmp;
+    }
+
+    function countWeekdays(start, end) {
+      let count = 0;
+      const cur = new Date(start);
+      while (cur <= end) {
+        const day = cur.getDay();
+        if (day !== 0 && day !== 6) count++;
+        cur.setDate(cur.getDate() + 1);
+      }
+      return count;
+    }
+
+    function calculate() {
+      const sv = document.getElementById('startDate').value;
+      const ev = document.getElementById('endDate').value;
+      if (!sv || !ev) { showToast('Please select both dates.'); return; }
+
+      let start = new Date(sv + 'T00:00:00');
+      let end = new Date(ev + 'T00:00:00');
+
+      const earlier = start <= end ? sv : ev;
+      const [d1, d2] = start <= end ? [start, end] : [end, start];
+
+      const msDay = 1000 * 60 * 60 * 24;
+      const totalDays = Math.round(Math.abs(d2 - d1) / msDay);
+
+      const weeks = Math.floor(totalDays / 7);
+      const remDays = totalDays % 7;
+
+      // Months and days breakdown
+      let y1 = d1.getFullYear(), m1 = d1.getMonth(), day1 = d1.getDate();
+      let y2 = d2.getFullYear(), m2 = d2.getMonth(), day2 = d2.getDate();
+      let totalMonths = (y2 - y1) * 12 + (m2 - m1);
+      let extraDays = day2 - day1;
+      if (extraDays < 0) { totalMonths--; extraDays += new Date(y2, m2, 0).getDate(); }
+
+      // Years, months, days
+      let years = Math.floor(totalMonths / 12);
+      let months = totalMonths % 12;
+
+      const weekdayCount = countWeekdays(d1, d2);
+      const weekendCount = totalDays - weekdayCount + 1 - (d1.getTime() === d2.getTime() ? 1 : 0);
+      // Recalculate: total days span is inclusive of endpoints?
+      // Actually let's count: totalDays = end - start in days (exclusive end)
+      // weekdays between start and end (exclusive)
+      // recount properly
+      const wkd = countWeekdaysExclusive(d1, d2);
+      const wke = totalDays - wkd;
+
+      document.getElementById('totalDays').textContent = totalDays;
+      document.getElementById('weeksDisplay').textContent = weeks + 'w ' + remDays + 'd';
+      document.getElementById('monthsDisplay').textContent = totalMonths + 'mo ' + extraDays + 'd';
+      document.getElementById('weekdays').textContent = wkd;
+      document.getElementById('weekends').textContent = wke;
+
+      let breakdownParts = [];
+      if (years > 0) breakdownParts.push(years + ' year' + (years !== 1 ? 's' : ''));
+      if (months > 0) breakdownParts.push(months + ' month' + (months !== 1 ? 's' : ''));
+      if (extraDays > 0) breakdownParts.push(extraDays + ' day' + (extraDays !== 1 ? 's' : ''));
+      document.getElementById('breakdown').textContent = breakdownParts.length ? breakdownParts.join(', ') : '0 days';
+
+      const opts = { year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('earlierDate').textContent = new Date(earlier + 'T00:00:00').toLocaleDateString(undefined, opts);
+
+      document.getElementById('results').classList.remove('hidden');
+    }
+
+    function countWeekdaysExclusive(d1, d2) {
+      // Count weekdays from d1 (inclusive) to d2 (exclusive)
+      const totalMs = d2 - d1;
+      const totalD = Math.round(totalMs / (1000*60*60*24));
+      let count = 0;
+      const cur = new Date(d1);
+      for (let i = 0; i < totalD; i++) {
+        const day = cur.getDay();
+        if (day !== 0 && day !== 6) count++;
+        cur.setDate(cur.getDate() + 1);
+      }
+      return count;
+    }
+
+    function copyResult() {
+      const total = document.getElementById('totalDays').textContent;
+      const weeks = document.getElementById('weeksDisplay').textContent;
+      const months = document.getElementById('monthsDisplay').textContent;
+      const wkd = document.getElementById('weekdays').textContent;
+      const wke = document.getElementById('weekends').textContent;
+      const breakdown = document.getElementById('breakdown').textContent;
+      const sv = document.getElementById('startDate').value;
+      const ev = document.getElementById('endDate').value;
+      const text = `Days Between ${sv} and ${ev}\nTotal Days: ${total}\nWeeks & Days: ${weeks}\nMonths & Days: ${months}\nBreakdown: ${breakdown}\nWeekdays: ${wkd}\nWeekend Days: ${wke}`;
+      copyText(text, 'Result copied!');
+    }
+  </script>
+</body>
+</html>

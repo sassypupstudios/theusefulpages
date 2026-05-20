@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Previewer - Free Live Markdown Editor | The Useful Pages</title>
+  <meta name="description" content="Free online Markdown previewer with live rendering. Write Markdown on the left, see the HTML preview on the right instantly. Copy HTML, download .md file, word count.">
+  <link rel="canonical" href="https://theusefulpages.com/markdown-previewer.html">
+  <meta property="og:title" content="Markdown Previewer - The Useful Pages">
+  <meta property="og:description" content="Free live Markdown editor and previewer. Write Markdown and see the rendered HTML instantly.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Markdown Previewer","url":"https://theusefulpages.com/markdown-previewer.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    .split-pane { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 768px) { .split-pane { grid-template-columns: 1fr; } }
+    .pane-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.4rem; }
+    #mdInput { width: 100%; height: 420px; resize: vertical; font-family: monospace; font-size: 0.875rem; }
+    .preview-pane { height: 420px; overflow-y: auto; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; background: #fff; font-size: 0.9rem; line-height: 1.7; }
+    .preview-pane h1,.preview-pane h2,.preview-pane h3,.preview-pane h4 { color: var(--primary); margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .preview-pane h1 { font-size: 1.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.3rem; }
+    .preview-pane h2 { font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.2rem; }
+    .preview-pane code { background: #f3f4f6; padding: 0.15rem 0.35rem; border-radius: 4px; font-family: monospace; font-size: 0.85em; }
+    .preview-pane pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+    .preview-pane pre code { background: none; padding: 0; color: inherit; }
+    .preview-pane blockquote { border-left: 4px solid var(--primary); margin: 0.75rem 0; padding: 0.5rem 1rem; background: var(--bg-alt); color: var(--text-muted); }
+    .preview-pane a { color: var(--primary); }
+    .preview-pane table { border-collapse: collapse; width: 100%; margin: 0.75rem 0; }
+    .preview-pane th { background: var(--primary); color: #fff; padding: 0.4rem 0.75rem; }
+    .preview-pane td { border: 1px solid var(--border); padding: 0.35rem 0.75rem; }
+    .preview-pane tr:nth-child(even) td { background: var(--bg-alt); }
+    .preview-pane ul,.preview-pane ol { padding-left: 1.5rem; }
+    .preview-pane img { max-width: 100%; border-radius: 4px; }
+    .preview-pane hr { border: none; border-top: 2px solid var(--border); margin: 1rem 0; }
+    .stats-bar { display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+    .layout-toggle { display: flex; gap: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Markdown Previewer</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Write Markdown on the left and see a live HTML preview on the right as you type.</p>
+
+      <div class="tool-card">
+        <div class="btn-row" style="margin-bottom:1rem;flex-wrap:wrap;">
+          <button class="btn btn-ghost btn-sm" onclick="loadTemplate()">Starter Template</button>
+          <button class="btn btn-outline btn-sm" onclick="copyMarkdown()">Copy Markdown</button>
+          <button class="btn btn-outline btn-sm" onclick="copyHTML()">Copy HTML</button>
+          <button class="btn btn-ghost btn-sm" onclick="downloadMD()">Download .md</button>
+          <button class="btn btn-ghost btn-sm" onclick="clearAll()">Clear</button>
+        </div>
+
+        <div class="split-pane">
+          <div>
+            <div class="pane-label">Markdown</div>
+            <textarea id="mdInput" class="form-textarea code-area" placeholder="Type your Markdown here..."></textarea>
+            <div class="stats-bar" id="statsBar">
+              <span id="wordCount">0 words</span>
+              <span id="charCount">0 chars</span>
+              <span id="lineCount">0 lines</span>
+            </div>
+          </div>
+          <div>
+            <div class="pane-label">Preview</div>
+            <div class="preview-pane" id="preview"><em style="color:var(--text-muted);">Your preview will appear here...</em></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Type or paste Markdown in the left pane — the preview updates live as you type.</li>
+          <li>Click <strong>Starter Template</strong> to load a sample showing common Markdown syntax.</li>
+          <li>Use <strong>Copy HTML</strong> to grab the rendered HTML output.</li>
+          <li>Use <strong>Copy Markdown</strong> to copy your raw Markdown text.</li>
+          <li>Click <strong>Download .md</strong> to save your Markdown as a file.</li>
+          <li>Word count, character count, and line count update automatically.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="json-formatter.html">JSON Formatter</a>
+          <a href="html-formatter.html">HTML Formatter</a>
+          <a href="js-minifier.html">JS Minifier</a>
+          <a href="csv-to-json.html">CSV to JSON</a>
+          <a href="color-picker.html">Color Picker</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar"><div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('markdown-previewer.html');
+      injectFooter();
+      document.getElementById('mdInput').addEventListener('input', debounceUpdate);
+    });
+
+    let debounceTimer = null;
+    function debounceUpdate() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(updatePreview, 200);
+    }
+
+    function updatePreview() {
+      const md = document.getElementById('mdInput').value;
+      const preview = document.getElementById('preview');
+      if (!md.trim()) {
+        preview.innerHTML = '<em style="color:var(--text-muted);">Your preview will appear here...</em>';
+      } else {
+        preview.innerHTML = marked.parse(md);
+      }
+      updateStats(md);
+    }
+
+    function updateStats(text) {
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      const chars = text.length;
+      const lines = text.split('\n').length;
+      document.getElementById('wordCount').textContent = fmtNum(words) + ' words';
+      document.getElementById('charCount').textContent = fmtNum(chars) + ' chars';
+      document.getElementById('lineCount').textContent = fmtNum(lines) + ' lines';
+    }
+
+    function copyMarkdown() {
+      copyText(document.getElementById('mdInput').value, 'Markdown copied!');
+    }
+
+    function copyHTML() {
+      copyText(document.getElementById('preview').innerHTML, 'HTML copied!');
+    }
+
+    function downloadMD() {
+      const content = document.getElementById('mdInput').value;
+      const blob = new Blob([content], {type: 'text/markdown'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'document.md';
+      a.click();
+    }
+
+    function clearAll() {
+      document.getElementById('mdInput').value = '';
+      updatePreview();
+    }
+
+    function loadTemplate() {
+      document.getElementById('mdInput').value = `# Welcome to Markdown Previewer
+
+## What is Markdown?
+
+Markdown is a lightweight markup language for creating formatted text. It's used in **README files**, documentation, and more.
+
+## Text Formatting
+
+You can make text **bold**, *italic*, or ***both***. You can also ~~strikethrough~~ text.
+
+## Lists
+
+### Unordered List
+- Apples
+- Bananas
+- Cherries
+
+### Ordered List
+1. First item
+2. Second item
+3. Third item
+
+## Links & Images
+
+[Visit The Useful Pages](https://theusefulpages.com)
+
+## Code
+
+Inline \`code\` looks like this.
+
+\`\`\`javascript
+function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+console.log(greet('World'));
+\`\`\`
+
+## Blockquote
+
+> "The best tools are the ones you actually use." — Someone wise
+
+## Table
+
+| Name    | Age | City       |
+|---------|-----|------------|
+| Alice   | 30  | New York   |
+| Bob     | 25  | London     |
+| Carol   | 35  | Tokyo      |
+
+## Horizontal Rule
+
+---
+
+*That's the basics of Markdown!*
+`;
+      updatePreview();
+    }
+  </script>
+</body>
+</html>

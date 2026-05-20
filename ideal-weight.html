@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ideal Weight Calculator - Free Ideal Body Weight Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate your ideal body weight using 4 scientific formulas: Hamwi, Devine, Robinson, and Miller. See healthy BMI weight range and a visual comparison of all results.">
+  <link rel="canonical" href="https://theusefulpages.com/ideal-weight.html">
+  <meta property="og:title" content="Ideal Weight Calculator - The Useful Pages"><meta property="og:description" content="Find your ideal weight using Hamwi, Devine, Robinson, and Miller formulas."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Ideal Weight Calculator","url":"https://theusefulpages.com/ideal-weight.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .formula-card { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:1rem; margin-bottom:0.75rem; }
+    .formula-name { font-weight:700; color:var(--primary); font-size:0.95rem; }
+    .formula-weight { font-size:1.75rem; font-weight:700; color:var(--primary); }
+    .formula-desc { font-size:0.78rem; color:var(--text-muted); margin-top:0.25rem; }
+    .formula-bar-wrap { margin-top:0.5rem; }
+    .formula-bar-bg { height:8px; background:var(--border); border-radius:4px; overflow:hidden; }
+    .formula-bar-fill { height:100%; background:var(--primary); border-radius:4px; transition:width 0.4s; }
+    .range-indicator { position:relative; height:30px; margin:1.25rem 0 0.5rem; }
+    .range-bar { height:12px; background:linear-gradient(to right,#e2e8f0,#22c55e,#e2e8f0); border-radius:6px; position:absolute; top:9px; left:0; right:0; }
+    .range-dot { position:absolute; top:5px; width:20px; height:20px; border-radius:50%; border:3px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,0.2); transform:translateX(-50%); transition:left 0.4s; }
+    .disclaimer { background:#fff8f0; border-left:3px solid var(--accent); padding:0.75rem 1rem; border-radius:0 8px 8px 0; font-size:0.82rem; color:var(--text-muted); margin-top:1rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Ideal Weight Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Compare ideal weight estimates from four scientific formulas and the healthy BMI range for your height.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Sex</label>
+            <div class="tab-group" id="sexTabs">
+              <button class="tab-btn active" onclick="setSex('male')">Male</button>
+              <button class="tab-btn" onclick="setSex('female')">Female</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Units</label>
+            <div class="tab-group" id="unitTabs">
+              <button class="tab-btn active" onclick="setUnit('imperial')">Imperial</button>
+              <button class="tab-btn" onclick="setUnit('metric')">Metric</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top:0.75rem;" id="imperialH">
+          <div class="form-group">
+            <label class="form-label">Height — Feet</label>
+            <input type="number" id="feet" class="form-input" value="5" min="1" max="8">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Height — Inches</label>
+            <input type="number" id="inches" class="form-input" value="10" min="0" max="11">
+          </div>
+        </div>
+        <div class="form-row" id="metricH" style="display:none;margin-top:0.75rem;">
+          <div class="form-group">
+            <label class="form-label">Height (cm)</label>
+            <input type="number" id="cm" class="form-input" value="178" min="100" max="280">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:0.5rem;">
+          <label class="form-label">Current Weight (optional — for BMI back-calculation)</label>
+          <div style="display:flex;gap:0.75rem;align-items:center;">
+            <input type="number" id="currentWeight" class="form-input" style="max-width:160px;" placeholder="e.g. 170">
+            <span id="weightUnit" style="font-size:0.875rem;color:var(--text-muted);">lbs</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calculate()">Calculate</button>
+          <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
+        </div>
+
+        <div id="results" style="display:none;margin-top:1.25rem;">
+          <div style="font-weight:700;font-size:0.95rem;color:var(--primary);margin-bottom:0.75rem;">Results for <span id="heightDisplay"></span></div>
+
+          <div id="formulaCards"></div>
+
+          <div style="margin-top:1rem;padding:1rem;background:var(--bg-secondary);border-radius:10px;border:1px solid var(--border);">
+            <div style="font-weight:700;margin-bottom:0.5rem;">Healthy BMI Weight Range (18.5 – 24.9)</div>
+            <div style="font-size:1.5rem;font-weight:700;color:#22c55e;" id="bmiRange">—</div>
+            <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem;">Based on WHO BMI guidelines for your height</div>
+            <div id="currentBmiRow" style="margin-top:0.75rem;display:none;">
+              <div style="font-size:0.875rem;">Your current BMI: <strong id="currentBmi">—</strong> (<span id="currentBmiCat">—</span>)</div>
+            </div>
+          </div>
+
+          <div class="disclaimer">For informational purposes only — not medical advice. Ideal weight formulas were developed for clinical drug dosing, not fitness goals. A healthy weight depends on many individual factors including muscle mass, age, and bone density.</div>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">About the Formulas</h2>
+        <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <p><strong>Hamwi (1964)</strong> — Originally developed for insulin dosing. Males: 106 lbs for 5 ft + 6 lbs per inch over 5 ft. Females: 100 lbs + 5 lbs/inch.</p>
+          <p><strong>Devine (1974)</strong> — Widely used in pharmacology and ICU settings. Males: 50 kg + 2.3 kg/inch over 5 ft. Females: 45.5 kg + 2.3 kg/inch.</p>
+          <p><strong>Robinson (1983)</strong> — Derived from Metropolitan Life tables. Males: 52 kg + 1.9 kg/inch over 5 ft. Females: 49 kg + 1.7 kg/inch.</p>
+          <p><strong>Miller (1983)</strong> — Another Met Life derivation. Males: 56.2 kg + 1.41 kg/inch over 5 ft. Females: 53.1 kg + 1.36 kg/inch.</p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card"><h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2><ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+        <li>Select your sex and preferred units (Imperial or Metric).</li>
+        <li>Enter your height.</li>
+        <li>Optionally enter your current weight to see your current BMI alongside the ideal range.</li>
+        <li>Click <strong>Calculate</strong> to see results from all four formulas.</li>
+        <li>The green healthy BMI range (18.5–24.9) is the most widely accepted guideline.</li>
+        <li>These formulas were designed for clinical use — use them as a general reference only.</li>
+      </ul></div>
+
+      <div class="related-card"><h3>Related Tools</h3><div class="related-links">
+        <a href="bmi-calculator.html">BMI Calculator</a>
+        <a href="calorie-calculator.html">Calorie Calculator</a>
+        <a href="body-fat.html">Body Fat Calculator</a>
+      </div></div>
+    </main>
+    <aside class="tool-sidebar"><div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let sex='male', unit='imperial';
+
+    function setSex(s){sex=s;document.querySelectorAll('#sexTabs .tab-btn').forEach((b,i)=>b.classList.toggle('active',['male','female'][i]===s));}
+    function setUnit(u){
+      unit=u;
+      document.querySelectorAll('#unitTabs .tab-btn').forEach((b,i)=>b.classList.toggle('active',['imperial','metric'][i]===u));
+      document.getElementById('imperialH').style.display=u==='imperial'?'flex':'none';
+      document.getElementById('metricH').style.display=u==='metric'?'flex':'none';
+      document.getElementById('weightUnit').textContent=u==='imperial'?'lbs':'kg';
+    }
+
+    function getHeightInches(){
+      if(unit==='imperial') return (parseFloat(document.getElementById('feet').value)||0)*12+(parseFloat(document.getElementById('inches').value)||0);
+      return (parseFloat(document.getElementById('cm').value)||0)/2.54;
+    }
+
+    function kgToDisplay(kg){ return unit==='imperial'?Math.round(kg*2.20462)+' lbs':Math.round(kg*10)/10+' kg'; }
+
+    function calculate(){
+      const totalInch=getHeightInches();
+      if(!totalInch||totalInch<48){showToast('Enter a valid height.');return;}
+      const inchOver5ft=Math.max(0,totalInch-60);
+      const heightM=totalInch*0.0254;
+
+      // All formulas return kg
+      let hamwi,devine,robinson,miller;
+      if(sex==='male'){
+        hamwi=48.08+2.7216*inchOver5ft; // 106lbs base = 48.08kg, 6lbs/inch = 2.7216kg
+        devine=50+2.3*inchOver5ft;
+        robinson=52+1.9*inchOver5ft;
+        miller=56.2+1.41*inchOver5ft;
+      } else {
+        hamwi=45.36+2.268*inchOver5ft; // 100lbs=45.36kg, 5lbs/inch=2.268kg
+        devine=45.5+2.3*inchOver5ft;
+        robinson=49+1.7*inchOver5ft;
+        miller=53.1+1.36*inchOver5ft;
+      }
+
+      const bmiLo=18.5*heightM*heightM;
+      const bmiHi=24.9*heightM*heightM;
+
+      const formulas=[
+        {name:'Hamwi',kg:hamwi,desc:'Originally developed for insulin dosing calculations (1964). Best for: general clinical reference.'},
+        {name:'Devine',kg:devine,desc:'Most widely used in ICU and pharmacology for drug dosing (1974). Best for: medication dosing contexts.'},
+        {name:'Robinson',kg:robinson,desc:'Derived from Metropolitan Life Insurance height-weight tables (1983). Best for: population-level estimates.'},
+        {name:'Miller',kg:miller,desc:'Another Metropolitan Life derivation with slightly higher estimates (1983). Best for: taller individuals.'},
+      ];
+      const allVals=formulas.map(f=>f.kg);
+      const minVal=Math.min(...allVals,bmiLo);
+      const maxVal=Math.max(...allVals,bmiHi)*1.1;
+
+      const COLORS=['#236A77','#D6AA76','#3b82f6','#22c55e'];
+      let html='';
+      formulas.forEach((f,i)=>{
+        const disp=kgToDisplay(f.kg);
+        const barPct=Math.round((f.kg-minVal)/(maxVal-minVal)*100);
+        html+=`<div class="formula-card"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><div><div class="formula-name">${f.name} Formula</div><div class="formula-weight" style="color:${COLORS[i]}">${disp}</div><div class="formula-desc">${f.desc}</div></div></div><div class="formula-bar-wrap"><div class="formula-bar-bg"><div class="formula-bar-fill" style="width:${barPct}%;background:${COLORS[i]};"></div></div></div></div>`;
+      });
+      document.getElementById('formulaCards').innerHTML=html;
+
+      const avgKg=(hamwi+devine+robinson+miller)/4;
+      document.getElementById('bmiRange').textContent=`${kgToDisplay(bmiLo)} – ${kgToDisplay(bmiHi)}`;
+
+      let ftStr='';
+      if(unit==='imperial'){const f=Math.floor(totalInch/12),i=Math.round(totalInch%12);ftStr=`${f}′${i}″`;}
+      else{ftStr=`${Math.round(totalInch*2.54)} cm`;}
+      document.getElementById('heightDisplay').textContent=ftStr+(sex==='male'?' male':' female');
+
+      // Current BMI
+      const cw=parseFloat(document.getElementById('currentWeight').value);
+      if(cw){
+        const cwKg=unit==='imperial'?cw*0.453592:cw;
+        const bmi=cwKg/(heightM*heightM);
+        let bmiCat;
+        if(bmi<18.5)bmiCat='Underweight';
+        else if(bmi<25)bmiCat='Normal';
+        else if(bmi<30)bmiCat='Overweight';
+        else bmiCat='Obese';
+        document.getElementById('currentBmi').textContent=Math.round(bmi*10)/10;
+        document.getElementById('currentBmiCat').textContent=bmiCat;
+        document.getElementById('currentBmiRow').style.display='block';
+      } else {
+        document.getElementById('currentBmiRow').style.display='none';
+      }
+
+      document.getElementById('results').style.display='block';
+    }
+
+    function clearAll(){document.getElementById('results').style.display='none';document.getElementById('currentWeight').value='';}
+
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('ideal-weight.html');injectFooter();});
+  </script>
+</body>
+</html>

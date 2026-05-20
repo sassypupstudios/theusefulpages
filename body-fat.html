@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body Fat Calculator (Navy Method) - Free Body Fat Percentage Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate your body fat percentage using the US Navy method. Enter neck, waist, and hip measurements. Get fat mass, lean mass, and fitness category with reference chart.">
+  <link rel="canonical" href="https://theusefulpages.com/body-fat.html">
+  <meta property="og:title" content="Body Fat Calculator - The Useful Pages"><meta property="og:description" content="Calculate body fat percentage using the accurate US Navy method."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Body Fat Calculator","url":"https://theusefulpages.com/body-fat.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .bf-big { font-size:3.5rem; font-weight:700; color:var(--primary); line-height:1; }
+    .bf-gauge { height:22px; border-radius:11px; background:linear-gradient(to right,#3b82f6 0%,#22c55e 15%,#86efac 30%,#f59e0b 60%,#ef4444 85%,#991b1b 100%); position:relative; margin:1rem 0 0.4rem; }
+    .bf-marker { position:absolute; top:-5px; transform:translateX(-50%); width:4px; height:32px; background:#1a1a1a; border-radius:2px; transition:left 0.4s; }
+    .bf-labels { display:flex; justify-content:space-between; font-size:0.68rem; color:var(--text-muted); }
+    .cat-essential { color:#3b82f6; }
+    .cat-athlete { color:#22c55e; }
+    .cat-fitness { color:#16a34a; }
+    .cat-acceptable { color:#f59e0b; }
+    .cat-obese { color:#ef4444; }
+    .disclaimer { background:#fff8f0; border-left:3px solid var(--accent); padding:0.75rem 1rem; border-radius:0 8px 8px 0; font-size:0.82rem; color:var(--text-muted); margin-top:1rem; }
+    .ref-table { width:100%; border-collapse:collapse; font-size:0.82rem; }
+    .ref-table th { background:var(--primary); color:#fff; padding:0.5rem 0.75rem; text-align:left; }
+    .ref-table td { padding:0.5rem 0.75rem; border-bottom:1px solid var(--border); }
+    .ref-table tr:nth-child(even) td { background:var(--bg-secondary); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Body Fat Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Estimate your body fat percentage using the US Navy circumference method.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Sex</label>
+            <div class="tab-group" id="sexTabs">
+              <button class="tab-btn active" onclick="setSex('male')">Male</button>
+              <button class="tab-btn" onclick="setSex('female')">Female</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Units</label>
+            <div class="tab-group" id="unitTabs">
+              <button class="tab-btn active" onclick="setUnit('imperial')">Imperial (in, lbs)</button>
+              <button class="tab-btn" onclick="setUnit('metric')">Metric (cm, kg)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top:0.75rem;">
+          <div class="form-group">
+            <label class="form-label">Height <span id="hUnit">(inches)</span></label>
+            <input type="number" id="height" class="form-input" value="70" min="40" max="120" step="0.5">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Weight <span id="wUnit">(lbs)</span></label>
+            <input type="number" id="weight" class="form-input" value="175" min="1" max="999" step="0.5">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Neck Circumference <span id="mUnit">(inches)</span></label>
+            <input type="number" id="neck" class="form-input" value="15" min="5" max="30" step="0.5">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Waist Circumference <span id="mUnit2">(inches)</span></label>
+            <input type="number" id="waist" class="form-input" value="34" min="20" max="80" step="0.5">
+          </div>
+          <div class="form-group" id="hipGroup">
+            <label class="form-label">Hip Circumference <span id="mUnit3">(inches)</span></label>
+            <input type="number" id="hip" class="form-input" value="40" min="20" max="80" step="0.5">
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calculate()">Calculate Body Fat</button>
+          <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
+        </div>
+
+        <div id="results" style="display:none;margin-top:1.25rem;">
+          <div style="display:flex;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;">
+            <div>
+              <div style="font-size:0.78rem;color:var(--text-muted);font-weight:600;">BODY FAT</div>
+              <div class="bf-big" id="bfVal">—</div>
+            </div>
+            <div style="padding-bottom:0.5rem;">
+              <div style="font-size:1rem;font-weight:700;" id="bfCat">—</div>
+              <div style="font-size:0.82rem;color:var(--text-muted);">Fitness Category</div>
+            </div>
+          </div>
+          <div class="bf-gauge"><div class="bf-marker" id="bfMarker"></div></div>
+          <div class="bf-labels"><span>2%</span><span>Essential</span><span>Athlete</span><span>Fitness</span><span>Acceptable</span><span>Obese</span></div>
+
+          <div class="stat-grid" style="margin-top:1.25rem;">
+            <div class="stat-box"><div class="stat-value" id="fatMass">—</div><div class="stat-label">Fat Mass</div></div>
+            <div class="stat-box"><div class="stat-value" id="leanMass">—</div><div class="stat-label">Lean Mass</div></div>
+            <div class="stat-box"><div class="stat-value" id="bfPct">—</div><div class="stat-label">Body Fat %</div></div>
+          </div>
+          <div class="disclaimer">For informational purposes only — not medical advice. The Navy method is an estimate. DEXA scan or hydrostatic weighing provide more accurate results.</div>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">Body Fat Reference Chart</h2>
+        <div class="table-wrap">
+          <table class="ref-table">
+            <thead><tr><th>Category</th><th>Men</th><th>Women</th></tr></thead>
+            <tbody>
+              <tr><td style="color:#3b82f6;font-weight:600;">Essential Fat</td><td>2–5%</td><td>10–13%</td></tr>
+              <tr><td style="color:#22c55e;font-weight:600;">Athletes</td><td>6–13%</td><td>14–20%</td></tr>
+              <tr><td style="color:#16a34a;font-weight:600;">Fitness</td><td>14–17%</td><td>21–24%</td></tr>
+              <tr><td style="color:#f59e0b;font-weight:600;">Acceptable</td><td>18–24%</td><td>25–31%</td></tr>
+              <tr><td style="color:#ef4444;font-weight:600;">Obese</td><td>25%+</td><td>32%+</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;">Source: American Council on Exercise (ACE)</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card"><h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2><ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+        <li>Select your sex — females need an additional hip measurement.</li>
+        <li>Measure your <strong>neck</strong> just below the larynx (Adam's apple), sloping slightly downward.</li>
+        <li>Measure your <strong>waist</strong> at the narrowest point (males) or navel level (females).</li>
+        <li>Measure your <strong>hips</strong> (females only) at the widest point.</li>
+        <li>Use a flexible tape measure and measure in the morning for consistency.</li>
+        <li>The US Navy formula uses logarithms of circumference measurements.</li>
+        <li>Results are estimates — individual body composition varies.</li>
+      </ul></div>
+
+      <div class="related-card"><h3>Related Tools</h3><div class="related-links">
+        <a href="bmi-calculator.html">BMI Calculator</a>
+        <a href="calorie-calculator.html">Calorie Calculator</a>
+        <a href="ideal-weight.html">Ideal Weight Calculator</a>
+      </div></div>
+    </main>
+    <aside class="tool-sidebar"><div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let sex = 'male', unit = 'imperial';
+
+    function setSex(s) {
+      sex = s;
+      document.querySelectorAll('#sexTabs .tab-btn').forEach((b,i)=>b.classList.toggle('active',['male','female'][i]===s));
+      document.getElementById('hipGroup').style.display = s==='female'?'block':'none';
+    }
+
+    function setUnit(u) {
+      unit = u;
+      document.querySelectorAll('#unitTabs .tab-btn').forEach((b,i)=>b.classList.toggle('active',['imperial','metric'][i]===u));
+      const isImp = u==='imperial';
+      document.getElementById('hUnit').textContent = isImp?'(inches)':'(cm)';
+      document.getElementById('wUnit').textContent = isImp?'(lbs)':'(kg)';
+      ['mUnit','mUnit2','mUnit3'].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=isImp?'(inches)':'(cm)'; });
+      if (isImp) { document.getElementById('height').value=70; document.getElementById('weight').value=175; document.getElementById('neck').value=15; document.getElementById('waist').value=34; document.getElementById('hip').value=40; }
+      else { document.getElementById('height').value=178; document.getElementById('weight').value=79; document.getElementById('neck').value=38; document.getElementById('waist').value=86; document.getElementById('hip').value=101; }
+    }
+
+    function toInches(v) { return unit==='imperial' ? v : v/2.54; }
+    function toLbs(v) { return unit==='imperial' ? v : v*2.20462; }
+
+    function calculate() {
+      const heightIn = toInches(parseFloat(document.getElementById('height').value)||0);
+      const weightLb = toLbs(parseFloat(document.getElementById('weight').value)||0);
+      const neckIn = toInches(parseFloat(document.getElementById('neck').value)||0);
+      const waistIn = toInches(parseFloat(document.getElementById('waist').value)||0);
+      const hipIn = sex==='female' ? toInches(parseFloat(document.getElementById('hip').value)||0) : 0;
+
+      if (!heightIn||!weightLb||!neckIn||!waistIn||(sex==='female'&&!hipIn)) { showToast('Please fill in all measurements.'); return; }
+
+      // US Navy body fat formula
+      let bf;
+      if (sex==='male') {
+        bf = 86.010 * Math.log10(waistIn - neckIn) - 70.041 * Math.log10(heightIn) + 36.76;
+      } else {
+        bf = 163.205 * Math.log10(waistIn + hipIn - neckIn) - 97.684 * Math.log10(heightIn) - 78.387;
+      }
+      bf = Math.max(2, Math.min(60, bf));
+      const bfRound = Math.round(bf * 10) / 10;
+      const fatLb = weightLb * bf / 100;
+      const leanLb = weightLb - fatLb;
+      const wUnit = unit==='imperial'?'lbs':'kg';
+      const wFactor = unit==='imperial'?1:0.453592;
+
+      let cat, catClass, gaugeMax;
+      if (sex==='male') {
+        if (bf<6){cat='Essential Fat';catClass='cat-essential';}
+        else if(bf<14){cat='Athletes';catClass='cat-athlete';}
+        else if(bf<18){cat='Fitness';catClass='cat-fitness';}
+        else if(bf<25){cat='Acceptable';catClass='cat-acceptable';}
+        else{cat='Obese';catClass='cat-obese';}
+        gaugeMax=35;
+      } else {
+        if (bf<14){cat='Essential Fat';catClass='cat-essential';}
+        else if(bf<21){cat='Athletes';catClass='cat-athlete';}
+        else if(bf<25){cat='Fitness';catClass='cat-fitness';}
+        else if(bf<32){cat='Acceptable';catClass='cat-acceptable';}
+        else{cat='Obese';catClass='cat-obese';}
+        gaugeMax=45;
+      }
+
+      const pct = Math.min(100, Math.max(0, (bf-2)/(gaugeMax-2)*100));
+      document.getElementById('bfMarker').style.left = pct+'%';
+      document.getElementById('bfVal').textContent = bfRound+'%';
+      const catEl = document.getElementById('bfCat');
+      catEl.textContent = cat; catEl.className = catClass;
+      document.getElementById('fatMass').textContent = fmtNum(Math.round(fatLb*wFactor*10)/10,1)+' '+wUnit;
+      document.getElementById('leanMass').textContent = fmtNum(Math.round(leanLb*wFactor*10)/10,1)+' '+wUnit;
+      document.getElementById('bfPct').textContent = bfRound+'%';
+      document.getElementById('results').style.display='block';
+    }
+
+    function clearAll() { document.getElementById('results').style.display='none'; }
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      injectNav('body-fat.html'); injectFooter();
+      document.getElementById('hipGroup').style.display='none';
+    });
+  </script>
+</body>
+</html>

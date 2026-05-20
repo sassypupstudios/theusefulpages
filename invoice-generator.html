@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Generator - Free Online Invoice Maker | The Useful Pages</title>
+  <meta name="description" content="Create professional invoices online for free. Add line items, calculate totals and tax automatically, then print or save as PDF. No account required — instant invoice maker.">
+  <link rel="canonical" href="https://theusefulpages.com/invoice-generator.html">
+  <meta property="og:title" content="Invoice Generator - The Useful Pages"><meta property="og:description" content="Create and print professional invoices instantly. Free online invoice maker with tax calculation."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Invoice Generator","url":"https://theusefulpages.com/invoice-generator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .section-title { font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--primary); margin:1.5rem 0 0.75rem; padding-bottom:0.4rem; border-bottom:2px solid var(--primary); }
+    .line-items-table { width:100%; border-collapse:collapse; margin-bottom:0.5rem; }
+    .line-items-table th { text-align:left; padding:0.5rem 0.4rem; font-size:0.78rem; font-weight:600; color:var(--text-muted); border-bottom:1px solid var(--border,#e2e8f0); }
+    .line-items-table td { padding:0.35rem 0.4rem; vertical-align:middle; }
+    .line-items-table .line-total { font-weight:600; color:var(--primary); text-align:right; }
+    .totals-box { max-width:320px; margin-left:auto; margin-top:1rem; }
+    .totals-box .result-row { display:flex; justify-content:space-between; padding:0.4rem 0; font-size:0.9rem; border-bottom:1px solid var(--border,#e2e8f0); }
+    .totals-box .result-row.grand-total { font-weight:700; font-size:1.1rem; color:var(--primary); border-bottom:none; border-top:2px solid var(--primary); margin-top:0.25rem; padding-top:0.5rem; }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      body { font-family: 'Inter', Arial, sans-serif; font-size:12px; color:#000; background:#fff; }
+      #site-nav, #site-footer, .ad-container, .tool-sidebar, .btn-row, .btn, .instructions-card, .related-card, .no-print, .form-label, button { display:none !important; }
+      .page-wrapper { display:block !important; max-width:100%; }
+      .tool-main { max-width:100%; padding:0; }
+      .tool-card { border:none; box-shadow:none; padding:0; }
+      h1 { display:none; }
+      .section-title { color:#000; border-color:#000; }
+      input, select, textarea { border:none !important; padding:0 !important; background:transparent !important; box-shadow:none !important; }
+      textarea { resize:none; }
+      .print-invoice { display:block !important; }
+      #form-area { display:none !important; }
+      .totals-box .result-row.grand-total { color:#000; border-color:#000; }
+      .line-items-table th { color:#555; }
+    }
+
+    /* Print Invoice View */
+    .print-invoice { display:none; }
+    @media print {
+      .print-invoice { display:block !important; }
+      #form-area { display:none !important; }
+    }
+
+    .print-invoice-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:2rem; border-bottom:3px solid #236A77; padding-bottom:1rem; }
+    .print-biz-name { font-size:1.5rem; font-weight:700; color:#236A77; }
+    .print-invoice-title { font-size:2rem; font-weight:700; color:#236A77; text-align:right; }
+    .print-parties { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:2rem; }
+    .print-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; color:#777; margin-bottom:0.25rem; }
+    .print-items-table { width:100%; border-collapse:collapse; margin-bottom:1.5rem; }
+    .print-items-table th { background:#236A77; color:#fff; padding:0.5rem; text-align:left; font-size:0.8rem; }
+    .print-items-table td { padding:0.5rem; border-bottom:1px solid #e2e8f0; font-size:0.85rem; }
+    .print-items-table .col-right { text-align:right; }
+    .print-totals { max-width:280px; margin-left:auto; }
+    .print-totals-row { display:flex; justify-content:space-between; padding:0.3rem 0; border-bottom:1px solid #e2e8f0; font-size:0.85rem; }
+    .print-totals-row.grand { font-weight:700; font-size:1rem; border-top:2px solid #236A77; border-bottom:none; padding-top:0.5rem; margin-top:0.25rem; color:#236A77; }
+    .print-notes { margin-top:2rem; padding-top:1rem; border-top:1px solid #e2e8f0; font-size:0.8rem; color:#555; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner no-print"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Invoice Generator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Create a professional invoice, calculate totals automatically, and print or save as PDF — no account needed.</p>
+
+      <div class="tool-card">
+        <div class="btn-row no-print" style="margin-bottom:1rem;">
+          <button class="btn btn-primary" onclick="printInvoice()">Print / Save as PDF</button>
+          <button class="btn btn-outline" onclick="clearAll()">Clear All</button>
+        </div>
+
+        <!-- SCREEN FORM -->
+        <div id="form-area">
+          <div class="section-title">Your Business Information</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Business Name</label><input class="form-input" id="biz-name" type="text" placeholder="Acme Consulting LLC" oninput="syncPrint()"></div>
+            <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="biz-email" type="email" placeholder="hello@acme.com" oninput="syncPrint()"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Address</label><input class="form-input" id="biz-addr" type="text" placeholder="123 Main St, City, ST 12345" oninput="syncPrint()"></div>
+            <div class="form-group"><label class="form-label">Phone</label><input class="form-input" id="biz-phone" type="text" placeholder="(555) 000-0000" oninput="syncPrint()"></div>
+          </div>
+
+          <div class="section-title">Client Information</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Client Name / Company</label><input class="form-input" id="cli-name" type="text" placeholder="Jane Smith / Acme Inc." oninput="syncPrint()"></div>
+            <div class="form-group"><label class="form-label">Client Email</label><input class="form-input" id="cli-email" type="email" placeholder="jane@client.com" oninput="syncPrint()"></div>
+          </div>
+          <div class="form-group"><label class="form-label">Client Address</label><input class="form-input" id="cli-addr" type="text" placeholder="456 Client Ave, City, ST 67890" oninput="syncPrint()"></div>
+
+          <div class="section-title">Invoice Details</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Invoice #</label><input class="form-input" id="inv-num" type="text" placeholder="INV-001" oninput="syncPrint()"></div>
+            <div class="form-group"><label class="form-label">Invoice Date</label><input class="form-input" id="inv-date" type="date" oninput="syncPrint()"></div>
+            <div class="form-group"><label class="form-label">Due Date</label><input class="form-input" id="inv-due" type="date" oninput="syncPrint()"></div>
+            <div class="form-group"><label class="form-label">Payment Terms</label>
+              <select class="form-select" id="inv-terms" onchange="syncPrint()">
+                <option>Net 30</option><option>Net 15</option><option>Net 60</option><option>Due on Receipt</option><option>50% Upfront</option><option>Custom</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="section-title">Line Items</div>
+          <div class="table-wrap">
+            <table class="line-items-table">
+              <thead><tr><th style="min-width:200px;">Description</th><th style="width:80px;">Qty</th><th style="width:120px;">Unit Price</th><th style="width:120px;">Total</th><th style="width:40px;"></th></tr></thead>
+              <tbody id="line-items-body"></tbody>
+            </table>
+          </div>
+          <button class="btn btn-outline btn-sm no-print" onclick="addLineItem()">+ Add Line Item</button>
+
+          <div class="form-row" style="margin-top:1rem;align-items:flex-end;">
+            <div class="form-group" style="flex:1;">
+              <label class="form-label">Tax Rate (%)</label>
+              <input class="form-input" id="tax-rate" type="number" min="0" max="100" step="0.01" placeholder="0" value="0" oninput="calcTotals();syncPrint()">
+            </div>
+            <div class="totals-box" style="flex:2;">
+              <div class="result-row"><span class="result-label">Subtotal</span><span class="result-value" id="subtotal-display">$0.00</span></div>
+              <div class="result-row"><span class="result-label" id="tax-label">Tax (0%)</span><span class="result-value" id="tax-display">$0.00</span></div>
+              <div class="result-row grand-total"><span>Total Due</span><span id="total-display">$0.00</span></div>
+            </div>
+          </div>
+
+          <div class="section-title">Notes / Terms</div>
+          <textarea class="form-input" id="inv-notes" rows="3" placeholder="Payment instructions, bank details, late fees policy, thank you message..." style="width:100%;resize:vertical;" oninput="syncPrint()"></textarea>
+        </div>
+
+        <!-- PRINT VIEW (shown only when printing) -->
+        <div class="print-invoice" id="print-area">
+          <div class="print-invoice-header">
+            <div>
+              <div class="print-biz-name" id="pr-biz-name"></div>
+              <div id="pr-biz-addr" style="font-size:0.85rem;color:#555;margin-top:0.25rem;"></div>
+              <div id="pr-biz-contact" style="font-size:0.85rem;color:#555;"></div>
+            </div>
+            <div style="text-align:right;">
+              <div class="print-invoice-title">INVOICE</div>
+              <div style="font-size:0.85rem;color:#555;" id="pr-inv-num"></div>
+            </div>
+          </div>
+          <div class="print-parties">
+            <div>
+              <div class="print-label">Bill To</div>
+              <div id="pr-cli-name" style="font-weight:600;"></div>
+              <div id="pr-cli-addr" style="font-size:0.85rem;color:#555;"></div>
+              <div id="pr-cli-email" style="font-size:0.85rem;color:#555;"></div>
+            </div>
+            <div style="text-align:right;">
+              <div class="print-label">Invoice Date</div>
+              <div id="pr-date" style="font-weight:600;margin-bottom:0.5rem;"></div>
+              <div class="print-label">Due Date</div>
+              <div id="pr-due" style="font-weight:600;margin-bottom:0.5rem;"></div>
+              <div class="print-label">Payment Terms</div>
+              <div id="pr-terms" style="font-weight:600;"></div>
+            </div>
+          </div>
+          <table class="print-items-table" id="pr-items-table">
+            <thead><tr><th>Description</th><th class="col-right">Qty</th><th class="col-right">Unit Price</th><th class="col-right">Total</th></tr></thead>
+            <tbody id="pr-items-body"></tbody>
+          </table>
+          <div class="print-totals">
+            <div class="print-totals-row"><span>Subtotal</span><span id="pr-subtotal"></span></div>
+            <div class="print-totals-row"><span id="pr-tax-label">Tax</span><span id="pr-tax"></span></div>
+            <div class="print-totals-row grand"><span>Total Due</span><span id="pr-total"></span></div>
+          </div>
+          <div class="print-notes" id="pr-notes"></div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle no-print"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card no-print">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Fill in your business info, client info, and invoice details at the top.</li>
+          <li>Add line items using <strong>+ Add Line Item</strong>. Qty × Unit Price calculates each line total automatically.</li>
+          <li>Enter a tax rate (e.g. 8.5 for 8.5%) to add tax — or leave at 0 for no tax.</li>
+          <li>Add any payment notes, bank details, or thank-you messages in the Notes section.</li>
+          <li>Click <strong>Print / Save as PDF</strong> — your browser's print dialog will appear. Choose "Save as PDF" as the destination to download a clean PDF invoice.</li>
+          <li>All form controls are hidden during printing — only the clean invoice layout is shown.</li>
+        </ul>
+      </div>
+
+      <div class="related-card no-print">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="hourly-salary.html">Hourly to Salary</a>
+          <a href="tip-calculator.html">Tip Calculator</a>
+          <a href="time-card-calculator.html">Time Card Calculator</a>
+          <a href="pay-raise-calculator.html">Pay Raise Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar no-print">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner no-print"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let lineCount = 0;
+
+    function addLineItem(desc='', qty='1', price='') {
+      lineCount++;
+      const id = lineCount;
+      const row = document.createElement('tr');
+      row.id = 'line-' + id;
+      row.innerHTML = `
+        <td><input class="form-input" style="width:100%;" type="text" placeholder="Service or product description" value="${desc}" oninput="calcTotals();syncPrint()"></td>
+        <td><input class="form-input line-qty" type="number" min="0" step="any" placeholder="1" value="${qty}" oninput="calcTotals();syncPrint()" style="width:70px;"></td>
+        <td><input class="form-input line-price" type="number" min="0" step="0.01" placeholder="0.00" value="${price}" oninput="calcTotals();syncPrint()" style="width:110px;"></td>
+        <td class="line-total" id="lt-${id}">$0.00</td>
+        <td><button class="btn btn-ghost btn-sm no-print" style="padding:0.25rem 0.5rem;" onclick="removeLine(${id})">×</button></td>
+      `;
+      document.getElementById('line-items-body').appendChild(row);
+      calcTotals();
+    }
+
+    function removeLine(id) {
+      const el = document.getElementById('line-' + id);
+      if (el) el.remove();
+      calcTotals();
+      syncPrint();
+    }
+
+    function calcTotals() {
+      const qtys = document.querySelectorAll('.line-qty');
+      const prices = document.querySelectorAll('.line-price');
+      let subtotal = 0;
+      const rows = document.querySelectorAll('#line-items-body tr');
+      rows.forEach((row, i) => {
+        const q = parseFloat(qtys[i]?.value) || 0;
+        const p = parseFloat(prices[i]?.value) || 0;
+        const total = q * p;
+        subtotal += total;
+        const ltId = row.querySelector('[id^="lt-"]')?.id;
+        if (ltId) document.getElementById(ltId).textContent = fmtCurrency(total);
+      });
+      const taxRate = parseFloat(document.getElementById('tax-rate').value) || 0;
+      const taxAmt = subtotal * (taxRate / 100);
+      const total = subtotal + taxAmt;
+      document.getElementById('subtotal-display').textContent = fmtCurrency(subtotal);
+      document.getElementById('tax-label').textContent = `Tax (${taxRate}%)`;
+      document.getElementById('tax-display').textContent = fmtCurrency(taxAmt);
+      document.getElementById('total-display').textContent = fmtCurrency(total);
+    }
+
+    function syncPrint() {
+      const v = id => document.getElementById(id)?.value || '';
+      document.getElementById('pr-biz-name').textContent = v('biz-name') || 'Your Business Name';
+      document.getElementById('pr-biz-addr').textContent = v('biz-addr');
+      document.getElementById('pr-biz-contact').textContent = [v('biz-email'), v('biz-phone')].filter(Boolean).join(' · ');
+      document.getElementById('pr-inv-num').textContent = v('inv-num') ? 'Invoice #' + v('inv-num') : '';
+      document.getElementById('pr-cli-name').textContent = v('cli-name');
+      document.getElementById('pr-cli-addr').textContent = v('cli-addr');
+      document.getElementById('pr-cli-email').textContent = v('cli-email');
+      document.getElementById('pr-date').textContent = v('inv-date') ? new Date(v('inv-date') + 'T00:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '';
+      document.getElementById('pr-due').textContent = v('inv-due') ? new Date(v('inv-due') + 'T00:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}) : '';
+      document.getElementById('pr-terms').textContent = v('inv-terms') || document.getElementById('inv-terms')?.value || '';
+
+      const qtys = document.querySelectorAll('.line-qty');
+      const prices = document.querySelectorAll('.line-price');
+      const descs = document.querySelectorAll('#line-items-body input[type=text]');
+      let tbody = '';
+      let subtotal = 0;
+      descs.forEach((d, i) => {
+        const q = parseFloat(qtys[i]?.value) || 0;
+        const p = parseFloat(prices[i]?.value) || 0;
+        const t = q * p;
+        subtotal += t;
+        tbody += `<tr><td>${d.value||'—'}</td><td class="col-right">${q}</td><td class="col-right">${fmtCurrency(p)}</td><td class="col-right">${fmtCurrency(t)}</td></tr>`;
+      });
+      document.getElementById('pr-items-body').innerHTML = tbody;
+
+      const taxRate = parseFloat(document.getElementById('tax-rate').value) || 0;
+      const taxAmt = subtotal * (taxRate / 100);
+      document.getElementById('pr-subtotal').textContent = fmtCurrency(subtotal);
+      document.getElementById('pr-tax-label').textContent = `Tax (${taxRate}%)`;
+      document.getElementById('pr-tax').textContent = fmtCurrency(taxAmt);
+      document.getElementById('pr-total').textContent = fmtCurrency(subtotal + taxAmt);
+
+      const notes = v('inv-notes');
+      const notesEl = document.getElementById('pr-notes');
+      notesEl.textContent = notes;
+      notesEl.style.display = notes ? '' : 'none';
+    }
+
+    function printInvoice() {
+      syncPrint();
+      window.print();
+    }
+
+    function clearAll() {
+      if (!confirm('Clear all invoice data?')) return;
+      ['biz-name','biz-email','biz-addr','biz-phone','cli-name','cli-email','cli-addr','inv-num','inv-date','inv-due','inv-notes'].forEach(id => { const el = document.getElementById(id); if(el) el.value=''; });
+      document.getElementById('tax-rate').value = '0';
+      document.getElementById('line-items-body').innerHTML = '';
+      lineCount = 0;
+      addLineItem(); addLineItem(); addLineItem();
+      calcTotals();
+    }
+
+    // Default today's date and invoice number
+    const today = new Date();
+    const due30 = new Date(today); due30.setDate(due30.getDate()+30);
+    document.getElementById('inv-date').value = today.toISOString().slice(0,10);
+    document.getElementById('inv-due').value = due30.toISOString().slice(0,10);
+    document.getElementById('inv-num').value = 'INV-' + String(Math.floor(Math.random()*900)+100);
+
+    addLineItem('', 1, '');
+    addLineItem('', 1, '');
+    addLineItem('', 1, '');
+
+    document.addEventListener('DOMContentLoaded', () => { injectNav('invoice-generator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slug Generator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Convert any text into URL-friendly slugs instantly. Generate kebab-case, snake_case, and dot.case slugs with live preview. Free online slug generator.">
+  <link rel="canonical" href="https://theusefulpages.com/slug-generator">
+  <meta property="og:title" content="Slug Generator — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Slug Generator","url":"https://theusefulpages.com/slug-generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .slug-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--bg-alt, #f7f7f5);
+      border: 1px solid var(--border, #e0ddd8);
+      border-radius: 10px;
+      padding: 0.875rem 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .slug-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      min-width: 80px;
+    }
+    .slug-value {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9375rem;
+      color: var(--primary);
+      flex: 1;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Slug Generator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Turn any text into a clean, URL-friendly slug — live preview as you type.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label" for="slugInput">Enter your text</label>
+          <input type="text" class="form-input" id="slugInput" placeholder="e.g. My Awesome Blog Post Title!" oninput="updateSlug()" style="font-size:1rem;">
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.25rem;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Max length</label>
+            <input type="number" class="form-input" id="maxLength" value="0" min="0" max="500" oninput="updateSlug()" placeholder="0 = unlimited">
+            <span style="font-size:0.8rem;color:var(--text-muted);">0 = no limit</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;padding-top:1.5rem;">
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;">
+              <input type="checkbox" id="preserveNumbers" checked style="accent-color:var(--primary);"> Preserve numbers
+            </label>
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;">
+              <input type="checkbox" id="lowercase" checked style="accent-color:var(--primary);"> Lowercase
+            </label>
+          </div>
+        </div>
+
+        <div id="slugResults" style="display:none;">
+          <div style="font-size:0.8125rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Slug Variants</div>
+
+          <div class="slug-row">
+            <span class="slug-label">kebab-case</span>
+            <span class="slug-value" id="slugHyphen"></span>
+            <button class="btn btn-secondary" style="padding:0.3rem 0.75rem;font-size:0.8125rem;" onclick="copyRaw('slugHyphen')">Copy</button>
+          </div>
+          <div class="slug-row">
+            <span class="slug-label">snake_case</span>
+            <span class="slug-value" id="slugUnderscore"></span>
+            <button class="btn btn-secondary" style="padding:0.3rem 0.75rem;font-size:0.8125rem;" onclick="copyRaw('slugUnderscore')">Copy</button>
+          </div>
+          <div class="slug-row">
+            <span class="slug-label">dot.case</span>
+            <span class="slug-value" id="slugDot"></span>
+            <button class="btn btn-secondary" style="padding:0.3rem 0.75rem;font-size:0.8125rem;" onclick="copyRaw('slugDot')">Copy</button>
+          </div>
+
+          <div style="font-size:0.8125rem;color:var(--text-muted);margin-top:0.5rem;" id="slugLength"></div>
+        </div>
+
+        <div id="emptyState" style="text-align:center;padding:2rem;color:var(--text-muted);font-size:0.9375rem;">
+          Start typing above to see your slug preview
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Type or paste any text into the input field — slugs update instantly as you type.</li>
+          <li>Set a <strong>Max length</strong> to truncate slugs to a specific character limit (0 = unlimited).</li>
+          <li>Toggle <strong>Preserve numbers</strong> to keep or strip numeric characters.</li>
+          <li>Click <strong>Copy</strong> next to any slug variant to copy it to the clipboard.</li>
+        </ol>
+        <p style="margin-top:0.75rem;">Slugs are used in URLs, file names, and identifiers. Special characters, accents, and punctuation are automatically removed or transliterated.</p>
+      </div>
+
+      <div id="related-tools"></div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('slug-generator.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('slug-generator.html', 'text');
+  });
+
+  // Basic transliteration map for common accented characters
+  const TRANSLITERATE = {
+    'à':'a','á':'a','â':'a','ã':'a','ä':'a','å':'a','æ':'ae',
+    'ç':'c','è':'e','é':'e','ê':'e','ë':'e','ì':'i','í':'i','î':'i','ï':'i',
+    'ð':'d','ñ':'n','ò':'o','ó':'o','ô':'o','õ':'o','ö':'o','ø':'o',
+    'ù':'u','ú':'u','û':'u','ü':'u','ý':'y','þ':'th','ß':'ss',
+    'À':'A','Á':'A','Â':'A','Ã':'A','Ä':'A','Å':'A','Æ':'AE',
+    'Ç':'C','È':'E','É':'E','Ê':'E','Ë':'E','Ì':'I','Í':'I','Î':'I','Ï':'I',
+    'Ð':'D','Ñ':'N','Ò':'O','Ó':'O','Ô':'O','Õ':'O','Ö':'O','Ø':'O',
+    'Ù':'U','Ú':'U','Û':'U','Ü':'U','Ý':'Y','Þ':'TH',
+  };
+
+  function toSlug(text, separator, preserveNums, lower, maxLen) {
+    // Transliterate
+    let s = text.split('').map(c => TRANSLITERATE[c] || c).join('');
+    // Lowercase before stripping
+    if (lower) s = s.toLowerCase();
+    // Remove non-alphanumeric (keep numbers if preserveNums)
+    if (preserveNums) {
+      s = s.replace(/[^a-zA-Z0-9\s-]/g, ' ');
+    } else {
+      s = s.replace(/[^a-zA-Z\s-]/g, ' ');
+    }
+    // Collapse whitespace/hyphens to separator
+    s = s.trim().replace(/[\s\-]+/g, separator);
+    // Apply max length (truncate cleanly at separator boundary)
+    if (maxLen > 0 && s.length > maxLen) {
+      s = s.slice(0, maxLen);
+      // Remove trailing separator
+      s = s.replace(new RegExp('[' + separator + ']+$'), '');
+    }
+    return s;
+  }
+
+  function copyRaw(elId) {
+    const val = document.getElementById(elId).textContent;
+    navigator.clipboard.writeText(val).then(() => showToast('Copied!'));
+  }
+
+  function updateSlug() {
+    const text = document.getElementById('slugInput').value;
+    const preserveNums = document.getElementById('preserveNumbers').checked;
+    const lower = document.getElementById('lowercase').checked;
+    const maxLen = parseInt(document.getElementById('maxLength').value) || 0;
+
+    if (!text.trim()) {
+      document.getElementById('slugResults').style.display = 'none';
+      document.getElementById('emptyState').style.display = '';
+      return;
+    }
+
+    const hyphen = toSlug(text, '-', preserveNums, lower, maxLen);
+    const underscore = toSlug(text, '_', preserveNums, lower, maxLen);
+    const dot = toSlug(text, '.', preserveNums, lower, maxLen);
+
+    document.getElementById('slugHyphen').textContent = hyphen || '(empty)';
+    document.getElementById('slugUnderscore').textContent = underscore || '(empty)';
+    document.getElementById('slugDot').textContent = dot || '(empty)';
+    document.getElementById('slugLength').textContent = `kebab-case length: ${hyphen.length} character${hyphen.length !== 1 ? 's' : ''}`;
+
+    document.getElementById('slugResults').style.display = '';
+    document.getElementById('emptyState').style.display = 'none';
+  }
+  </script>
+</body>
+</html>

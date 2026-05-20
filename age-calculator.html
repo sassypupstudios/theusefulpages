@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator - Free Online Age Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate your exact age in years, months, days, hours, and minutes. Find your next birthday countdown, day of week born, and fun facts about your birth year.">
+  <link rel="canonical" href="https://theusefulpages.com/age-calculator.html">
+  <meta property="og:title" content="Age Calculator - The Useful Pages">
+  <meta property="og:description" content="Calculate your exact age in years, months, days, hours, and minutes. Find your next birthday countdown, day of week born, and fun facts about your birth year.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Age Calculator","url":"https://theusefulpages.com/age-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="2000000001"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Age Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Find your exact age, next birthday countdown, and fun facts about when you were born.</p>
+      <div class="tool-card">
+        <div class="form-group" style="max-width:320px;">
+          <label class="form-label">Date of Birth</label>
+          <input class="form-input" type="date" id="dob-input" max="">
+        </div>
+        <div class="form-group" style="max-width:320px;">
+          <label class="form-label">Calculate age as of</label>
+          <input class="form-input" type="date" id="as-of-input">
+        </div>
+        <div id="age-error" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calcAge()">Calculate Age</button>
+          <button class="btn btn-ghost" onclick="clearAge()">Clear</button>
+          <button class="btn btn-outline" id="age-share" onclick="shareAge()" style="display:none;">Share Result</button>
+        </div>
+
+        <div id="age-results" class="hidden" style="margin-top:1.5rem;">
+          <div class="result-card" style="margin-bottom:1rem;">
+            <div style="text-align:center;padding:0.75rem 0;">
+              <div style="font-size:2.5rem;font-weight:700;color:var(--primary);" id="age-main"></div>
+              <div style="color:var(--text-muted);font-size:0.9rem;margin-top:0.25rem;" id="age-sub"></div>
+            </div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="age-months"></div>
+              <div class="stat-label">Total Months</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="age-weeks"></div>
+              <div class="stat-label">Total Weeks</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="age-days"></div>
+              <div class="stat-label">Total Days</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="age-hours"></div>
+              <div class="stat-label">Total Hours</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="age-minutes"></div>
+              <div class="stat-label">Total Minutes</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="age-seconds"></div>
+              <div class="stat-label">Total Seconds</div>
+            </div>
+          </div>
+
+          <div class="result-card" style="margin-top:1rem;">
+            <div class="result-row"><span class="result-label">Day of Week Born</span><span class="result-value" id="age-dow"></span></div>
+            <div class="result-row"><span class="result-label">Next Birthday</span><span class="result-value" id="age-next-bday"></span></div>
+            <div class="result-row"><span class="result-label">Days Until Birthday</span><span class="result-value" id="age-days-bday"></span></div>
+            <div class="result-row"><span class="result-label">Which Birthday</span><span class="result-value" id="age-which-bday"></span></div>
+          </div>
+
+          <div class="result-card" style="margin-top:1rem;">
+            <div style="font-weight:600;margin-bottom:0.5rem;font-size:0.95rem;">Fun Facts About Your Birth Year</div>
+            <div id="age-facts" style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="2000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your date of birth using the date picker.</li>
+          <li>The "Calculate age as of" field defaults to today — change it to calculate age at any specific date.</li>
+          <li>Click <strong>Calculate Age</strong> to see your exact age in years, months, and days.</li>
+          <li>Scroll down to see your total age in months, weeks, days, hours, minutes, and seconds.</li>
+          <li>Find out what day of the week you were born and when your next birthday is.</li>
+          <li>Use <strong>Share Result</strong> to copy a summary of your age to the clipboard.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="percentage-calculator.html">Percentage Calculator</a>
+          <a href="random-number.html">Random Number Generator</a>
+          <a href="fraction-calculator.html">Fraction Calculator</a>
+          <a href="square-root.html">Square Root Calculator</a>
+          <a href="quadratic-solver.html">Quadratic Solver</a>
+          <a href="standard-deviation.html">Standard Deviation</a>
+          <a href="scientific-calculator.html">Scientific Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="2000000003"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="2000000004"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('age-calculator.html');
+    injectFooter();
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('dob-input').max = today;
+    document.getElementById('as-of-input').value = today;
+    document.getElementById('as-of-input').max = today;
+  });
+
+  const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  function calcAge() {
+    const dobVal = document.getElementById('dob-input').value;
+    const asOfVal = document.getElementById('as-of-input').value;
+    const err = document.getElementById('age-error');
+    if (!dobVal) { err.textContent = 'Please enter a date of birth.'; return; }
+    if (!asOfVal) { err.textContent = 'Please enter an "as of" date.'; return; }
+    const dob = new Date(dobVal + 'T00:00:00');
+    const asOf = new Date(asOfVal + 'T00:00:00');
+    if (dob > asOf) { err.textContent = 'Date of birth cannot be after the "as of" date.'; return; }
+    err.textContent = '';
+
+    let years = asOf.getFullYear() - dob.getFullYear();
+    let months = asOf.getMonth() - dob.getMonth();
+    let days = asOf.getDate() - dob.getDate();
+
+    if (days < 0) {
+      months--;
+      const prevMonth = new Date(asOf.getFullYear(), asOf.getMonth(), 0);
+      days += prevMonth.getDate();
+    }
+    if (months < 0) { years--; months += 12; }
+
+    document.getElementById('age-main').textContent = years + ' years, ' + months + ' months, ' + days + ' days';
+    document.getElementById('age-sub').textContent = 'Born ' + DAYS[dob.getDay()] + ', ' + MONTHS[dob.getMonth()] + ' ' + dob.getDate() + ', ' + dob.getFullYear();
+
+    const diffMs = asOf - dob;
+    const totalDays = Math.floor(diffMs / 86400000);
+    const totalWeeks = Math.floor(totalDays / 7);
+    const totalMonths = years * 12 + months;
+    const totalHours = totalDays * 24;
+    const totalMins = totalHours * 60;
+    const totalSecs = totalMins * 60;
+
+    document.getElementById('age-months').textContent = totalMonths.toLocaleString();
+    document.getElementById('age-weeks').textContent = totalWeeks.toLocaleString();
+    document.getElementById('age-days').textContent = totalDays.toLocaleString();
+    document.getElementById('age-hours').textContent = totalHours.toLocaleString();
+    document.getElementById('age-minutes').textContent = totalMins.toLocaleString();
+    document.getElementById('age-seconds').textContent = totalSecs.toLocaleString();
+
+    document.getElementById('age-dow').textContent = DAYS[dob.getDay()];
+
+    // Next birthday
+    const nextBday = new Date(asOf.getFullYear(), dob.getMonth(), dob.getDate());
+    if (nextBday <= asOf) nextBday.setFullYear(nextBday.getFullYear() + 1);
+    const daysUntil = Math.round((nextBday - asOf) / 86400000);
+    const nextAge = nextBday.getFullYear() - dob.getFullYear();
+
+    document.getElementById('age-next-bday').textContent = MONTHS[nextBday.getMonth()] + ' ' + nextBday.getDate() + ', ' + nextBday.getFullYear();
+    document.getElementById('age-days-bday').textContent = daysUntil === 0 ? 'Today! 🎉' : daysUntil + ' days';
+    document.getElementById('age-which-bday').textContent = ordinal(nextAge) + ' birthday';
+
+    // Fun facts
+    const yr = dob.getFullYear();
+    const facts = getBirthYearFacts(yr);
+    document.getElementById('age-facts').innerHTML = facts.map(f => '• ' + f).join('<br>');
+
+    document.getElementById('age-results').classList.remove('hidden');
+    document.getElementById('age-share').style.display = '';
+  }
+
+  function ordinal(n) {
+    const s = ['th','st','nd','rd'];
+    const v = n % 100;
+    return n + (s[(v-20)%10] || s[v] || s[0]);
+  }
+
+  function getBirthYearFacts(yr) {
+    const facts = [];
+    facts.push('You were born in ' + yr + '.');
+    const isLeap = (yr % 4 === 0 && yr % 100 !== 0) || yr % 400 === 0;
+    facts.push(yr + ' was ' + (isLeap ? 'a leap year (366 days).' : 'not a leap year (365 days).'));
+    const century = Math.ceil(yr / 100);
+    facts.push('You were born in the ' + ordinal(century) + ' century.');
+    if (yr >= 1980 && yr <= 1994) facts.push('You are a Millennial (born 1981–1996).');
+    else if (yr >= 1965 && yr <= 1979) facts.push('You are Generation X (born 1965–1980).');
+    else if (yr >= 1946 && yr <= 1964) facts.push('You are a Baby Boomer (born 1946–1964).');
+    else if (yr >= 1995 && yr <= 2009) facts.push('You are Generation Z (born 1997–2012).');
+    else if (yr >= 2010) facts.push('You are Generation Alpha (born 2013+).');
+    const decade = Math.floor(yr / 10) * 10;
+    facts.push('You were born in the ' + decade + 's.');
+    return facts;
+  }
+
+  function shareAge() {
+    const main = document.getElementById('age-main').textContent;
+    const sub = document.getElementById('age-sub').textContent;
+    const days = document.getElementById('age-days').textContent;
+    copyText(sub + '\nAge: ' + main + '\nTotal days lived: ' + days, 'Age summary copied!');
+  }
+
+  function clearAge() {
+    document.getElementById('dob-input').value = '';
+    document.getElementById('as-of-input').value = new Date().toISOString().split('T')[0];
+    document.getElementById('age-error').textContent = '';
+    document.getElementById('age-results').classList.add('hidden');
+    document.getElementById('age-share').style.display = 'none';
+  }
+  </script>
+</body>
+</html>

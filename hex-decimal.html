@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hex to Decimal Converter - Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Free hex to decimal converter. Convert between hexadecimal, decimal, binary, and octal instantly. Includes color preview, batch converter, and reference table.">
+  <link rel="canonical" href="https://theusefulpages.com/hex-decimal.html">
+  <meta property="og:title" content="Hex ↔ Decimal Converter - The Useful Pages">
+  <meta property="og:description" content="Convert hex, decimal, binary, and octal numbers instantly. Includes color preview and batch conversion.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hex to Decimal Converter","url":"https://theusefulpages.com/hex-decimal.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .base-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    @media(max-width:540px){.base-grid{grid-template-columns:1fr;}}
+    .base-label{font-size:0.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary);margin-bottom:0.25rem;}
+    .base-input{font-family:monospace;font-size:1rem;}
+    .color-preview{display:flex;align-items:center;gap:1rem;padding:0.75rem 1rem;border-radius:10px;border:1px solid var(--border);margin:1rem 0;display:none;}
+    .color-swatch{width:60px;height:60px;border-radius:8px;border:1px solid var(--border);flex-shrink:0;}
+    .color-info{font-size:0.85rem;}
+    .section-title{font-size:1rem;font-weight:700;color:var(--primary);margin:1.5rem 0 0.75rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+    .ref-table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+    .ref-table th{background:var(--primary);color:#fff;padding:0.4rem 0.6rem;text-align:left;font-weight:600;}
+    .ref-table td{padding:0.35rem 0.6rem;border-bottom:1px solid var(--border);font-family:monospace;}
+    .ref-table tr:nth-child(even) td{background:#f7fafb;}
+    .batch-output{width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:0.75rem;}
+    .batch-output th{background:var(--primary);color:#fff;padding:0.4rem 0.6rem;text-align:left;font-weight:600;}
+    .batch-output td{padding:0.35rem 0.6rem;border-bottom:1px solid var(--border);font-family:monospace;}
+    .batch-output tr:nth-child(even) td{background:#f7fafb;}
+    .error-inline{color:#c0392b;font-size:0.78rem;margin-top:0.2rem;}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Hex ↔ Decimal Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Convert between hexadecimal, decimal, binary, and octal. All four update simultaneously as you type.</p>
+      <div class="tool-card">
+
+        <!-- Main converter -->
+        <div class="base-grid">
+          <div class="form-group">
+            <div class="base-label">Hexadecimal (Base 16)</div>
+            <input type="text" class="form-input base-input" id="inp-hex" placeholder="e.g. FF" oninput="syncFrom('hex')" autocomplete="off" spellcheck="false">
+            <div class="error-inline" id="err-hex"></div>
+          </div>
+          <div class="form-group">
+            <div class="base-label">Decimal (Base 10)</div>
+            <input type="text" class="form-input base-input" id="inp-dec" placeholder="e.g. 255" oninput="syncFrom('dec')" autocomplete="off">
+            <div class="error-inline" id="err-dec"></div>
+          </div>
+          <div class="form-group">
+            <div class="base-label">Binary (Base 2)</div>
+            <input type="text" class="form-input base-input" id="inp-bin" placeholder="e.g. 11111111" oninput="syncFrom('bin')" autocomplete="off" spellcheck="false">
+            <div class="error-inline" id="err-bin"></div>
+          </div>
+          <div class="form-group">
+            <div class="base-label">Octal (Base 8)</div>
+            <input type="text" class="form-input base-input" id="inp-oct" placeholder="e.g. 377" oninput="syncFrom('oct')" autocomplete="off">
+            <div class="error-inline" id="err-oct"></div>
+          </div>
+        </div>
+
+        <!-- Color preview -->
+        <div class="color-preview" id="color-preview">
+          <div class="color-swatch" id="color-swatch"></div>
+          <div class="color-info">
+            <div style="font-weight:600;margin-bottom:0.2rem;" id="color-hex-label"></div>
+            <div style="color:var(--text-muted);font-size:0.78rem;" id="color-rgb-label"></div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-accent" onclick="copyText(document.getElementById('inp-hex').value,'HEX copied!')">Copy HEX</button>
+          <button class="btn btn-primary" onclick="copyText(document.getElementById('inp-dec').value,'DEC copied!')">Copy DEC</button>
+          <button class="btn btn-outline" onclick="clearAll()">Clear</button>
+        </div>
+
+        <!-- Batch converter -->
+        <div class="section-title">Batch Converter</div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;">Paste multiple numbers (one per line), select the input base, and convert all at once.</p>
+        <div class="form-row" style="align-items:flex-end;">
+          <div class="form-group" style="flex:2;">
+            <label class="form-label">Input (one per line)</label>
+            <textarea class="form-input mono-output" id="batch-input" rows="5" placeholder="FF&#10;A0&#10;1B"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Input Base</label>
+            <select class="form-select" id="batch-base">
+              <option value="16">Hexadecimal (16)</option>
+              <option value="10">Decimal (10)</option>
+              <option value="2">Binary (2)</option>
+              <option value="8">Octal (8)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-accent" onclick="runBatch()">Convert All</button>
+        <div id="batch-result"></div>
+
+        <!-- Reference table -->
+        <div class="section-title">Common Hex Reference</div>
+        <table class="ref-table">
+          <thead><tr><th>HEX</th><th>DEC</th><th>BIN</th><th>OCT</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>00</td><td>0</td><td>00000000</td><td>0</td><td>Zero / null</td></tr>
+            <tr><td>0F</td><td>15</td><td>00001111</td><td>17</td><td>Lower nibble</td></tr>
+            <tr><td>10</td><td>16</td><td>00010000</td><td>20</td><td></td></tr>
+            <tr><td>1F</td><td>31</td><td>00011111</td><td>37</td><td></td></tr>
+            <tr><td>20</td><td>32</td><td>00100000</td><td>40</td><td>Space (ASCII)</td></tr>
+            <tr><td>40</td><td>64</td><td>01000000</td><td>100</td><td>@ (ASCII)</td></tr>
+            <tr><td>7F</td><td>127</td><td>01111111</td><td>177</td><td>DEL (ASCII)</td></tr>
+            <tr><td>80</td><td>128</td><td>10000000</td><td>200</td><td>Sign bit (8-bit signed)</td></tr>
+            <tr><td>A0</td><td>160</td><td>10100000</td><td>240</td><td></td></tr>
+            <tr><td>C0</td><td>192</td><td>11000000</td><td>300</td><td>Common subnet mask byte</td></tr>
+            <tr><td>FF</td><td>255</td><td>11111111</td><td>377</td><td>Max byte / 8-bit unsigned</td></tr>
+            <tr><td>100</td><td>256</td><td>100000000</td><td>400</td><td></td></tr>
+            <tr><td>FFFF</td><td>65535</td><td>1111111111111111</td><td>177777</td><td>Max 16-bit unsigned</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Type in any of the four fields (HEX, Decimal, Binary, Octal) — all others update instantly</li>
+          <li>If the hex value looks like a CSS color (#RRGGBB or RRGGBB), a color swatch preview appears</li>
+          <li>Use the Batch Converter to convert many numbers at once — paste one per line, select the base, and click Convert All</li>
+          <li>The reference table shows common hex values and their equivalents in all bases</li>
+          <li>Hex input is case-insensitive (A = a)</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="binary-decimal.html" class="related-link">Binary Converter</a>
+          <a href="base64.html" class="related-link">Base64 Encoder</a>
+          <a href="unit-converter.html" class="related-link">Unit Converter</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  let syncing = false;
+
+  const validators = {
+    hex: /^[0-9a-fA-F]+$/,
+    dec: /^[0-9]+$/,
+    bin: /^[01]+$/,
+    oct: /^[0-7]+$/
+  };
+  const bases = { hex:16, dec:10, bin:2, oct:8 };
+  const ids = { hex:'inp-hex', dec:'inp-dec', bin:'inp-bin', oct:'inp-oct' };
+
+  function syncFrom(source) {
+    if (syncing) return;
+    syncing = true;
+    ['hex','dec','bin','oct'].forEach(b => document.getElementById('err-'+b).textContent='');
+    const val = document.getElementById(ids[source]).value.trim();
+    if (!val) { ['hex','dec','bin','oct'].forEach(b => { if(b!==source) document.getElementById(ids[b]).value=''; }); updateColorPreview(''); syncing=false; return; }
+    if (!validators[source].test(val)) {
+      document.getElementById('err-'+source).textContent = 'Invalid ' + source.toUpperCase() + ' value';
+      syncing=false; return;
+    }
+    const num = parseInt(val, bases[source]);
+    if (isNaN(num)) { syncing=false; return; }
+    if (source !== 'hex') document.getElementById(ids.hex).value = num.toString(16).toUpperCase();
+    if (source !== 'dec') document.getElementById(ids.dec).value = num.toString(10);
+    if (source !== 'bin') document.getElementById(ids.bin).value = num.toString(2);
+    if (source !== 'oct') document.getElementById(ids.oct).value = num.toString(8);
+    updateColorPreview(num.toString(16).toUpperCase());
+    syncing = false;
+  }
+
+  function updateColorPreview(hexVal) {
+    const prev = document.getElementById('color-preview');
+    const clean = hexVal.replace(/^#/,'');
+    if (/^[0-9a-fA-F]{6}$/.test(clean)) {
+      const r = parseInt(clean.slice(0,2),16);
+      const g = parseInt(clean.slice(2,4),16);
+      const b = parseInt(clean.slice(4,6),16);
+      document.getElementById('color-swatch').style.background = '#'+clean;
+      document.getElementById('color-hex-label').textContent = '#'+clean.toUpperCase();
+      document.getElementById('color-rgb-label').textContent = `RGB(${r}, ${g}, ${b})`;
+      prev.style.display = 'flex';
+    } else {
+      prev.style.display = 'none';
+    }
+  }
+
+  function clearAll() {
+    ['hex','dec','bin','oct'].forEach(b => { document.getElementById(ids[b]).value=''; document.getElementById('err-'+b).textContent=''; });
+    document.getElementById('color-preview').style.display='none';
+  }
+
+  function runBatch() {
+    const lines = document.getElementById('batch-input').value.split('\n').map(l=>l.trim()).filter(l=>l);
+    const base = parseInt(document.getElementById('batch-base').value);
+    if (!lines.length) return;
+    const baseNames = {16:'HEX',10:'DEC',2:'BIN',8:'OCT'};
+    let html = '<table class="batch-output"><thead><tr><th>Input</th><th>HEX</th><th>DEC</th><th>BIN</th><th>OCT</th></tr></thead><tbody>';
+    lines.forEach(line => {
+      const num = parseInt(line, base);
+      if (isNaN(num)) {
+        html += `<tr><td>${line}</td><td colspan="4" style="color:#c0392b;">Invalid</td></tr>`;
+      } else {
+        html += `<tr><td>${line}</td><td>${num.toString(16).toUpperCase()}</td><td>${num.toString(10)}</td><td>${num.toString(2)}</td><td>${num.toString(8)}</td></tr>`;
+      }
+    });
+    html += '</tbody></table>';
+    document.getElementById('batch-result').innerHTML = html;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('hex-decimal.html'); injectFooter(); });
+  </script>
+</body>
+</html>

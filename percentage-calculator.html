@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percentage Calculator - Free Online Percentage Tool | The Useful Pages</title>
+  <meta name="description" content="Free online percentage calculator. Find X% of Y, calculate percentage change, what percent is X of Y, and reverse percentage calculations instantly.">
+  <link rel="canonical" href="https://theusefulpages.com/percentage-calculator.html">
+  <meta property="og:title" content="Percentage Calculator - The Useful Pages">
+  <meta property="og:description" content="Free online percentage calculator. Find X% of Y, calculate percentage change, what percent is X of Y, and reverse percentage calculations instantly.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Percentage Calculator","url":"https://theusefulpages.com/percentage-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1000000001"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Percentage Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate percentages instantly — find X% of Y, percentage change, reverse lookups, and more.</p>
+      <div class="tool-card">
+        <div class="tab-group" id="pct-tabs">
+          <button class="tab-btn active" data-tab="of">X% of Y</button>
+          <button class="tab-btn" data-tab="change">% Change</button>
+          <button class="tab-btn" data-tab="what">What % is X of Y</button>
+          <button class="tab-btn" data-tab="reverse">Reverse %</button>
+        </div>
+
+        <!-- Tab: X% of Y -->
+        <div id="tab-of" class="tab-panel">
+          <div class="form-row" style="margin-top:1rem;">
+            <div class="form-group">
+              <label class="form-label">Percentage (%)</label>
+              <input class="form-input" id="of-pct" type="number" placeholder="e.g. 25" step="any">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Of number</label>
+              <input class="form-input" id="of-num" type="number" placeholder="e.g. 200" step="any">
+            </div>
+          </div>
+          <div id="of-error" class="text-muted" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+          <div id="of-result" class="result-card hidden">
+            <div class="result-row"><span class="result-label">Result</span><span class="result-value" id="of-answer"></span></div>
+            <div class="result-row"><span class="result-label">As decimal</span><span class="result-value" id="of-decimal"></span></div>
+          </div>
+          <div class="btn-row" style="margin-top:1rem;">
+            <button class="btn btn-primary" onclick="calcOf()">Calculate</button>
+            <button class="btn btn-ghost" onclick="clearOf()">Clear</button>
+            <button class="btn btn-outline" id="of-copy" onclick="copyOf()" style="display:none;">Copy Result</button>
+          </div>
+        </div>
+
+        <!-- Tab: Percentage Change -->
+        <div id="tab-change" class="tab-panel hidden">
+          <div class="form-row" style="margin-top:1rem;">
+            <div class="form-group">
+              <label class="form-label">From value</label>
+              <input class="form-input" id="ch-from" type="number" placeholder="e.g. 100" step="any">
+            </div>
+            <div class="form-group">
+              <label class="form-label">To value</label>
+              <input class="form-input" id="ch-to" type="number" placeholder="e.g. 125" step="any">
+            </div>
+          </div>
+          <div id="ch-error" class="text-muted" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+          <div id="ch-result" class="result-card hidden">
+            <div class="result-row"><span class="result-label">Percentage Change</span><span class="result-value" id="ch-pct"></span></div>
+            <div class="result-row"><span class="result-label">Direction</span><span class="result-value" id="ch-dir"></span></div>
+            <div class="result-row"><span class="result-label">Absolute Change</span><span class="result-value" id="ch-abs"></span></div>
+          </div>
+          <div class="btn-row" style="margin-top:1rem;">
+            <button class="btn btn-primary" onclick="calcChange()">Calculate</button>
+            <button class="btn btn-ghost" onclick="clearChange()">Clear</button>
+            <button class="btn btn-outline" id="ch-copy" onclick="copyChange()" style="display:none;">Copy Result</button>
+          </div>
+        </div>
+
+        <!-- Tab: What % is X of Y -->
+        <div id="tab-what" class="tab-panel hidden">
+          <div class="form-row" style="margin-top:1rem;">
+            <div class="form-group">
+              <label class="form-label">X (part)</label>
+              <input class="form-input" id="wh-x" type="number" placeholder="e.g. 50" step="any">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Y (total)</label>
+              <input class="form-input" id="wh-y" type="number" placeholder="e.g. 200" step="any">
+            </div>
+          </div>
+          <div id="wh-error" class="text-muted" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+          <div id="wh-result" class="result-card hidden">
+            <div class="result-row"><span class="result-label">X is</span><span class="result-value" id="wh-ans"></span></div>
+            <div class="result-row"><span class="result-label">As fraction</span><span class="result-value" id="wh-frac"></span></div>
+          </div>
+          <div class="btn-row" style="margin-top:1rem;">
+            <button class="btn btn-primary" onclick="calcWhat()">Calculate</button>
+            <button class="btn btn-ghost" onclick="clearWhat()">Clear</button>
+            <button class="btn btn-outline" id="wh-copy" onclick="copyWhat()" style="display:none;">Copy Result</button>
+          </div>
+        </div>
+
+        <!-- Tab: Reverse % -->
+        <div id="tab-reverse" class="tab-panel hidden">
+          <p style="font-size:0.875rem;color:var(--text-muted);margin-top:1rem;margin-bottom:0.75rem;">If X is Y% of <em>what number</em>?</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">X (known value)</label>
+              <input class="form-input" id="rv-x" type="number" placeholder="e.g. 25" step="any">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Y (percentage %)</label>
+              <input class="form-input" id="rv-y" type="number" placeholder="e.g. 20" step="any">
+            </div>
+          </div>
+          <div id="rv-error" class="text-muted" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+          <div id="rv-result" class="result-card hidden">
+            <div class="result-row"><span class="result-label">Total (whole) value</span><span class="result-value" id="rv-ans"></span></div>
+            <div class="result-row"><span class="result-label">Verification</span><span class="result-value" id="rv-verify"></span></div>
+          </div>
+          <div class="btn-row" style="margin-top:1rem;">
+            <button class="btn btn-primary" onclick="calcReverse()">Calculate</button>
+            <button class="btn btn-ghost" onclick="clearReverse()">Clear</button>
+            <button class="btn btn-outline" id="rv-copy" onclick="copyReverse()" style="display:none;">Copy Result</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Select a calculation mode using the tabs above.</li>
+          <li><strong>X% of Y</strong> — Enter a percentage and a number to find what that percentage equals.</li>
+          <li><strong>% Change</strong> — Enter a starting value and ending value to find the percentage increase or decrease.</li>
+          <li><strong>What % is X of Y</strong> — Enter two numbers to find what percentage the first is of the second.</li>
+          <li><strong>Reverse %</strong> — Enter a value and a percentage to find what the original whole number was.</li>
+          <li>Results update on calculate. Use the Copy Result button to copy the answer to your clipboard.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="fraction-calculator.html">Fraction Calculator</a>
+          <a href="square-root.html">Square Root Calculator</a>
+          <a href="quadratic-solver.html">Quadratic Solver</a>
+          <a href="standard-deviation.html">Standard Deviation</a>
+          <a href="scientific-calculator.html">Scientific Calculator</a>
+          <a href="age-calculator.html">Age Calculator</a>
+          <a href="random-number.html">Random Number Generator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1000000003"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1000000004"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('percentage-calculator.html');
+    injectFooter();
+
+    // Tab switching
+    document.querySelectorAll('#pct-tabs .tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#pct-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+      });
+    });
+
+    // Real-time calculation on input
+    ['of-pct','of-num'].forEach(id => document.getElementById(id).addEventListener('input', calcOf));
+    ['ch-from','ch-to'].forEach(id => document.getElementById(id).addEventListener('input', calcChange));
+    ['wh-x','wh-y'].forEach(id => document.getElementById(id).addEventListener('input', calcWhat));
+    ['rv-x','rv-y'].forEach(id => document.getElementById(id).addEventListener('input', calcReverse));
+  });
+
+  function calcOf() {
+    const pct = parseFloat(document.getElementById('of-pct').value);
+    const num = parseFloat(document.getElementById('of-num').value);
+    const err = document.getElementById('of-error');
+    if (isNaN(pct) || isNaN(num)) { err.textContent = ''; document.getElementById('of-result').classList.add('hidden'); document.getElementById('of-copy').style.display='none'; return; }
+    err.textContent = '';
+    const result = (pct / 100) * num;
+    document.getElementById('of-answer').textContent = pct + '% of ' + fmtNum(num, 4) + ' = ' + fmtNum(result, 6);
+    document.getElementById('of-decimal').textContent = fmtNum(result / num, 6);
+    document.getElementById('of-result').classList.remove('hidden');
+    document.getElementById('of-copy').style.display = '';
+  }
+
+  function clearOf() {
+    document.getElementById('of-pct').value = '';
+    document.getElementById('of-num').value = '';
+    document.getElementById('of-error').textContent = '';
+    document.getElementById('of-result').classList.add('hidden');
+    document.getElementById('of-copy').style.display = 'none';
+  }
+
+  function copyOf() {
+    const txt = document.getElementById('of-answer').textContent;
+    copyText(txt, 'Result copied!');
+  }
+
+  function calcChange() {
+    const from = parseFloat(document.getElementById('ch-from').value);
+    const to = parseFloat(document.getElementById('ch-to').value);
+    const err = document.getElementById('ch-error');
+    if (isNaN(from) || isNaN(to)) { err.textContent = ''; document.getElementById('ch-result').classList.add('hidden'); document.getElementById('ch-copy').style.display='none'; return; }
+    if (from === 0) { err.textContent = 'From value cannot be zero.'; document.getElementById('ch-result').classList.add('hidden'); return; }
+    err.textContent = '';
+    const change = ((to - from) / Math.abs(from)) * 100;
+    const abs = to - from;
+    document.getElementById('ch-pct').textContent = fmtNum(change, 4) + '%';
+    document.getElementById('ch-dir').textContent = change > 0 ? 'Increase ▲' : change < 0 ? 'Decrease ▼' : 'No Change';
+    document.getElementById('ch-abs').textContent = (abs >= 0 ? '+' : '') + fmtNum(abs, 4);
+    document.getElementById('ch-result').classList.remove('hidden');
+    document.getElementById('ch-copy').style.display = '';
+  }
+
+  function clearChange() {
+    document.getElementById('ch-from').value = '';
+    document.getElementById('ch-to').value = '';
+    document.getElementById('ch-error').textContent = '';
+    document.getElementById('ch-result').classList.add('hidden');
+    document.getElementById('ch-copy').style.display = 'none';
+  }
+
+  function copyChange() {
+    const pct = document.getElementById('ch-pct').textContent;
+    const dir = document.getElementById('ch-dir').textContent;
+    copyText('Percentage Change: ' + pct + ' (' + dir + ')', 'Result copied!');
+  }
+
+  function calcWhat() {
+    const x = parseFloat(document.getElementById('wh-x').value);
+    const y = parseFloat(document.getElementById('wh-y').value);
+    const err = document.getElementById('wh-error');
+    if (isNaN(x) || isNaN(y)) { err.textContent = ''; document.getElementById('wh-result').classList.add('hidden'); document.getElementById('wh-copy').style.display='none'; return; }
+    if (y === 0) { err.textContent = 'Total (Y) cannot be zero.'; document.getElementById('wh-result').classList.add('hidden'); return; }
+    err.textContent = '';
+    const pct = (x / y) * 100;
+    document.getElementById('wh-ans').textContent = fmtNum(x, 4) + ' is ' + fmtNum(pct, 4) + '% of ' + fmtNum(y, 4);
+    document.getElementById('wh-frac').textContent = fmtNum(x, 4) + ' / ' + fmtNum(y, 4);
+    document.getElementById('wh-result').classList.remove('hidden');
+    document.getElementById('wh-copy').style.display = '';
+  }
+
+  function clearWhat() {
+    document.getElementById('wh-x').value = '';
+    document.getElementById('wh-y').value = '';
+    document.getElementById('wh-error').textContent = '';
+    document.getElementById('wh-result').classList.add('hidden');
+    document.getElementById('wh-copy').style.display = 'none';
+  }
+
+  function copyWhat() {
+    copyText(document.getElementById('wh-ans').textContent, 'Result copied!');
+  }
+
+  function calcReverse() {
+    const x = parseFloat(document.getElementById('rv-x').value);
+    const y = parseFloat(document.getElementById('rv-y').value);
+    const err = document.getElementById('rv-error');
+    if (isNaN(x) || isNaN(y)) { err.textContent = ''; document.getElementById('rv-result').classList.add('hidden'); document.getElementById('rv-copy').style.display='none'; return; }
+    if (y === 0) { err.textContent = 'Percentage (Y) cannot be zero.'; document.getElementById('rv-result').classList.add('hidden'); return; }
+    err.textContent = '';
+    const total = x / (y / 100);
+    document.getElementById('rv-ans').textContent = fmtNum(total, 6);
+    document.getElementById('rv-verify').textContent = fmtNum(x, 4) + ' is ' + fmtNum(y, 4) + '% of ' + fmtNum(total, 4) + ' ✓';
+    document.getElementById('rv-result').classList.remove('hidden');
+    document.getElementById('rv-copy').style.display = '';
+  }
+
+  function clearReverse() {
+    document.getElementById('rv-x').value = '';
+    document.getElementById('rv-y').value = '';
+    document.getElementById('rv-error').textContent = '';
+    document.getElementById('rv-result').classList.add('hidden');
+    document.getElementById('rv-copy').style.display = 'none';
+  }
+
+  function copyReverse() {
+    copyText('Total value: ' + document.getElementById('rv-ans').textContent, 'Result copied!');
+  }
+  </script>
+</body>
+</html>

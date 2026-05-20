@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Payment Calculator - Free Auto Loan Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate your monthly car payment including sales tax and trade-in. See total loan cost, total interest, and affordability guide based on your income.">
+  <link rel="canonical" href="https://theusefulpages.com/car-payment.html">
+  <meta property="og:title" content="Car Payment Calculator - The Useful Pages">
+  <meta property="og:description" content="Calculate monthly auto loan payments with trade-in, sales tax, and an income-based affordability guide. Free and accurate.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Car Payment Calculator","url":"https://theusefulpages.com/car-payment.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Car Payment Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate your monthly auto loan payment including tax, trade-in, and total cost of ownership.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Vehicle Price ($)</label>
+            <input type="number" class="form-input" id="vehiclePrice" value="32000" min="0" step="500">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Down Payment ($)</label>
+            <input type="number" class="form-input" id="downPayment" value="5000" min="0" step="500">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Trade-In Value ($)</label>
+            <input type="number" class="form-input" id="tradeIn" value="0" min="0" step="500">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sales Tax Rate (%)</label>
+            <input type="number" class="form-input" id="salesTax" value="7" min="0" max="20" step="0.1">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Loan Term (months)</label>
+            <select class="form-select" id="loanTerm">
+              <option value="24">24 months (2 years)</option>
+              <option value="36">36 months (3 years)</option>
+              <option value="48">48 months (4 years)</option>
+              <option value="60" selected>60 months (5 years)</option>
+              <option value="72">72 months (6 years)</option>
+              <option value="84">84 months (7 years)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Interest Rate (% APR)</label>
+            <input type="number" class="form-input" id="interestRate" value="6.9" min="0" max="30" step="0.01">
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary btn-block" onclick="calculateCarPayment()">Calculate Payment</button>
+        </div>
+
+        <div id="results" class="hidden" style="margin-top:1.5rem;">
+          <div class="stat-grid" id="statGrid"></div>
+          <div id="loanBreakdown" style="margin-top:1rem;padding:0.75rem;background:var(--surface);border-radius:8px;font-size:0.875rem;color:var(--text-muted);line-height:1.8;"></div>
+
+          <!-- Affordability guide -->
+          <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+            <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.5rem;">Affordability Guide</h3>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.75rem;">Financial experts recommend keeping total car expenses at 10–15% of monthly take-home pay.</p>
+            <div class="form-group">
+              <label class="form-label">Your Monthly Take-Home Pay ($)</label>
+              <input type="number" class="form-input" id="monthlyIncome" placeholder="Enter to see affordability" min="0" step="100" oninput="updateAffordability()">
+            </div>
+            <div id="affordabilityResult"></div>
+          </div>
+
+          <div style="margin-top:1rem;">
+            <button class="btn btn-accent btn-sm" onclick="copySummary()">Copy Summary</button>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">For educational purposes only — not financial advice.</p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter the vehicle price (sticker price before tax).</li>
+          <li>Add your down payment and any trade-in vehicle value.</li>
+          <li>Enter your local sales tax rate — this is applied to the vehicle price.</li>
+          <li>Choose your loan term and enter your APR from your lender.</li>
+          <li>Click Calculate to see your monthly payment and total loan cost.</li>
+          <li>Enter your monthly take-home pay to check if this payment fits your budget.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="mortgage-calculator.html">Mortgage Calculator</a>
+          <a href="savings-calculator.html">Savings Calculator</a>
+          <a href="debt-payoff.html">Debt Payoff Calculator</a>
+          <a href="hourly-salary.html">Hourly to Salary Converter</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('car-payment.html'); injectFooter(); });
+
+    let calculatedMonthlyPayment = 0;
+
+    function calculateCarPayment() {
+      const vehiclePrice = parseFloat(document.getElementById('vehiclePrice').value) || 0;
+      const downPayment = parseFloat(document.getElementById('downPayment').value) || 0;
+      const tradeIn = parseFloat(document.getElementById('tradeIn').value) || 0;
+      const salesTaxRate = parseFloat(document.getElementById('salesTax').value) || 0;
+      const n = parseInt(document.getElementById('loanTerm').value);
+      const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
+
+      if (vehiclePrice <= 0) { showToast('Please enter a valid vehicle price.'); return; }
+
+      const taxAmount = vehiclePrice * (salesTaxRate / 100);
+      const totalVehicleCost = vehiclePrice + taxAmount;
+      const loanAmount = Math.max(0, totalVehicleCost - downPayment - tradeIn);
+      const r = annualRate / 100 / 12;
+
+      let monthlyPayment;
+      if (r === 0) { monthlyPayment = loanAmount / n; }
+      else { monthlyPayment = loanAmount * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1); }
+
+      const totalPayment = monthlyPayment * n;
+      const totalInterest = totalPayment - loanAmount;
+      const totalCost = totalPayment + downPayment + tradeIn;
+
+      calculatedMonthlyPayment = monthlyPayment;
+
+      document.getElementById('statGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(monthlyPayment)}</div><div class="stat-label">Monthly Payment</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(loanAmount)}</div><div class="stat-label">Total Loan Amount</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(totalInterest)}</div><div class="stat-label">Total Interest</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(totalPayment + downPayment)}</div><div class="stat-label">Total Cost of Vehicle</div></div>
+      `;
+
+      document.getElementById('loanBreakdown').innerHTML = `
+        <strong>Vehicle price:</strong> ${fmtCurrency(vehiclePrice)} &nbsp;+&nbsp;
+        <strong>Tax (${salesTaxRate}%):</strong> ${fmtCurrency(taxAmount)} &nbsp;=&nbsp;
+        <strong>Total price:</strong> ${fmtCurrency(totalVehicleCost)}<br>
+        <strong>Down payment:</strong> ${fmtCurrency(downPayment)} &nbsp;+&nbsp;
+        <strong>Trade-in:</strong> ${fmtCurrency(tradeIn)} &nbsp;=&nbsp;
+        <strong>Loan amount:</strong> ${fmtCurrency(loanAmount)}
+      `;
+
+      document.getElementById('results').classList.remove('hidden');
+      updateAffordability();
+    }
+
+    function updateAffordability() {
+      const income = parseFloat(document.getElementById('monthlyIncome').value) || 0;
+      const el = document.getElementById('affordabilityResult');
+      if (!income || !calculatedMonthlyPayment) { el.innerHTML = ''; return; }
+      const pct = (calculatedMonthlyPayment / income) * 100;
+      const rec10 = income * 0.10;
+      const rec15 = income * 0.15;
+      let badge, msg;
+      if (pct <= 10) { badge = '<span class="badge badge-green">Comfortable</span>'; msg = `Your payment is ${fmtPct(pct,1)} of income — well within the recommended 10–15% guideline.`; }
+      else if (pct <= 15) { badge = '<span class="badge badge-accent">Moderate</span>'; msg = `Your payment is ${fmtPct(pct,1)} of income — within the 15% guideline but watch other expenses.`; }
+      else { badge = '<span class="badge badge-red">Stretched</span>'; msg = `Your payment is ${fmtPct(pct,1)} of income — above the recommended 15%. Consider a larger down payment or lower price.`; }
+      el.innerHTML = `<div style="margin-top:0.5rem;">${badge} ${msg}<br><span style="font-size:0.8rem;">10% guideline: ${fmtCurrency(rec10)}/mo &nbsp;|&nbsp; 15% guideline: ${fmtCurrency(rec15)}/mo</span></div>`;
+    }
+
+    function copySummary() {
+      const boxes = document.querySelectorAll('.stat-box');
+      let text = 'Car Payment Calculator Summary\n';
+      boxes.forEach(b => { text += `${b.querySelector('.stat-label').textContent}: ${b.querySelector('.stat-value').textContent}\n`; });
+      text += '\n' + document.getElementById('loanBreakdown').innerText;
+      copyText(text, 'Summary copied!');
+    }
+  </script>
+</body>
+</html>

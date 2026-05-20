@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alphabetical Sort — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Sort lines of text alphabetically A to Z or Z to A, by length, in reverse, or randomly. Options for case sensitivity, empty line removal, and whitespace trimming.">
+  <link rel="canonical" href="https://theusefulpages.com/alphabetical-sort">
+  <meta property="og:title" content="Alphabetical Sort — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Alphabetical Sort","url":"https://theusefulpages.com/alphabetical-sort","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Alphabetical Sort</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Sort lines of text in any order — alphabetical, by length, reversed, or shuffled.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label" for="inputLines">Input Text (one item per line)</label>
+          <textarea class="form-textarea" id="inputLines" placeholder="Enter each item on its own line..." style="min-height:180px;font-family:'Courier New',monospace;font-size:0.875rem;"></textarea>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Sort Order</label>
+            <select class="form-select" id="sortOrder">
+              <option value="az">A → Z (ascending)</option>
+              <option value="za">Z → A (descending)</option>
+              <option value="short">By length: short → long</option>
+              <option value="long">By length: long → short</option>
+              <option value="reverse">Reverse current order</option>
+              <option value="shuffle">Shuffle / randomize</option>
+            </select>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;padding-top:1.5rem;">
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;">
+              <input type="checkbox" id="caseSensitive" style="accent-color:var(--primary);"> Case-sensitive sort
+            </label>
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;">
+              <input type="checkbox" id="removeEmpty" checked style="accent-color:var(--primary);"> Remove empty lines
+            </label>
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;">
+              <input type="checkbox" id="trimLines" checked style="accent-color:var(--primary);"> Trim whitespace
+            </label>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;">
+          <button class="btn btn-primary" onclick="sortLines()">Sort</button>
+          <button class="btn btn-secondary" onclick="clearSort()">Clear</button>
+        </div>
+
+        <div id="resultArea" style="display:none;margin-top:1.5rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.5rem;">
+            <div id="statsLine" style="font-size:0.875rem;color:var(--text-muted);"></div>
+            <button class="btn btn-secondary" onclick="copyText('outputLines')">Copy Output</button>
+          </div>
+          <textarea class="form-textarea" id="outputLines" readonly style="min-height:180px;font-family:'Courier New',monospace;font-size:0.875rem;background:var(--bg-alt,#f7f7f5);"></textarea>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Type or paste your list into the input box — put each item on its own line.</li>
+          <li>Choose a sort order from the dropdown: alphabetical, by length, reverse, or random shuffle.</li>
+          <li>Set your preferences for case sensitivity, empty lines, and whitespace.</li>
+          <li>Click <strong>Sort</strong> and copy the result.</li>
+        </ol>
+        <p style="margin-top:0.75rem;"><strong>Case-sensitive</strong> sort places uppercase letters before lowercase (e.g., "Banana" before "apple"). When unchecked, sorting ignores case.</p>
+      </div>
+
+      <div id="related-tools"></div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('alphabetical-sort.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('alphabetical-sort.html', 'text');
+  });
+
+  function clearSort() {
+    document.getElementById('inputLines').value = '';
+    document.getElementById('resultArea').style.display = 'none';
+  }
+
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function sortLines() {
+    const raw = document.getElementById('inputLines').value;
+    const order = document.getElementById('sortOrder').value;
+    const caseSensitive = document.getElementById('caseSensitive').checked;
+    const removeEmpty = document.getElementById('removeEmpty').checked;
+    const trim = document.getElementById('trimLines').checked;
+
+    let lines = raw.split('\n');
+    if (trim) lines = lines.map(l => l.trim());
+    if (removeEmpty) lines = lines.filter(l => l.length > 0);
+
+    const sortKey = l => caseSensitive ? l : l.toLowerCase();
+
+    if (order === 'az') {
+      lines.sort((a, b) => sortKey(a).localeCompare(sortKey(b)));
+    } else if (order === 'za') {
+      lines.sort((a, b) => sortKey(b).localeCompare(sortKey(a)));
+    } else if (order === 'short') {
+      lines.sort((a, b) => a.length - b.length || sortKey(a).localeCompare(sortKey(b)));
+    } else if (order === 'long') {
+      lines.sort((a, b) => b.length - a.length || sortKey(a).localeCompare(sortKey(b)));
+    } else if (order === 'reverse') {
+      lines.reverse();
+    } else if (order === 'shuffle') {
+      shuffle(lines);
+    }
+
+    document.getElementById('outputLines').value = lines.join('\n');
+    document.getElementById('statsLine').textContent = `${lines.length} line${lines.length !== 1 ? 's' : ''}`;
+    document.getElementById('resultArea').style.display = '';
+  }
+  </script>
+</body>
+</html>

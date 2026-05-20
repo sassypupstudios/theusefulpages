@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Card Calculator - Free Weekly Hours & Overtime Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate weekly work hours, overtime, and pay from your time card. Enter clock-in/out times and breaks for each day. Get regular vs overtime hours and total pay instantly.">
+  <link rel="canonical" href="https://theusefulpages.com/time-card-calculator.html">
+  <meta property="og:title" content="Time Card Calculator - The Useful Pages"><meta property="og:description" content="Calculate weekly hours, overtime, and pay from your time card entries. Free online tool."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Time Card Calculator","url":"https://theusefulpages.com/time-card-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tc-row { display:grid; grid-template-columns:90px 1fr 1fr 90px 80px 40px; gap:0.5rem; align-items:center; padding:0.5rem 0; border-bottom:1px solid var(--border,#e2e8f0); }
+    .tc-row:last-child { border-bottom:none; }
+    .tc-header { font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; padding:0.35rem 0; }
+    .tc-day-label { font-weight:600; font-size:0.9rem; }
+    .tc-hours { font-weight:700; color:var(--primary); text-align:center; }
+    .tc-toggle { display:flex; align-items:center; gap:0.4rem; cursor:pointer; }
+    .tc-toggle input[type=checkbox] { width:16px; height:16px; accent-color:var(--primary); cursor:pointer; }
+    .tc-row.disabled { opacity:0.4; pointer-events:none; }
+    .tc-row.disabled input { background:var(--bg-secondary,#f8fafc); }
+    .summary-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:0.75rem; margin-top:1rem; }
+    .import-box { background:var(--bg-secondary,#f8fafc); border:1px solid var(--border,#e2e8f0); border-radius:8px; padding:1rem; margin-top:1rem; }
+    @media (max-width: 600px) {
+      .tc-row { grid-template-columns:70px 1fr 1fr 70px 60px 30px; gap:0.3rem; }
+    }
+    @media print {
+      #site-nav,#site-footer,.ad-container,.tool-sidebar,.btn-row,.instructions-card,.related-card,.import-box,.no-print { display:none !important; }
+      .page-wrapper { display:block; }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Time Card Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Enter your clock-in/out times for each day to calculate total hours, overtime, and weekly pay.</p>
+
+      <div class="tool-card">
+        <!-- Hourly Rate -->
+        <div class="form-row" style="align-items:flex-end;margin-bottom:1rem;">
+          <div class="form-group" style="flex:1;max-width:200px;">
+            <label class="form-label">Hourly Rate (optional)</label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input class="form-input" id="hourly-rate" type="number" min="0" step="0.01" placeholder="0.00" oninput="calcAll()">
+            </div>
+          </div>
+          <div class="form-group" style="flex:1;max-width:180px;">
+            <label class="form-label">Overtime threshold</label>
+            <select class="form-select" id="ot-threshold" onchange="calcAll()">
+              <option value="40">40 hrs/week (standard)</option>
+              <option value="44">44 hrs/week</option>
+              <option value="48">48 hrs/week</option>
+              <option value="0">No overtime</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex:1;max-width:180px;">
+            <label class="form-label">OT multiplier</label>
+            <select class="form-select" id="ot-mult" onchange="calcAll()">
+              <option value="1.5">1.5× (time and a half)</option>
+              <option value="2">2× (double time)</option>
+              <option value="1.25">1.25×</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Time Card Grid -->
+        <div class="tc-row tc-header" style="border-bottom:2px solid var(--primary);">
+          <div></div>
+          <div>Clock In</div>
+          <div>Clock Out</div>
+          <div>Break (min)</div>
+          <div style="text-align:center;">Hours</div>
+          <div></div>
+        </div>
+        <div id="tc-rows"></div>
+
+        <!-- Summary -->
+        <div id="summary-area" style="margin-top:1.5rem;">
+          <div class="summary-grid">
+            <div class="stat-box"><div class="stat-value" id="s-total">0.00</div><div class="stat-label">Total Hours</div></div>
+            <div class="stat-box"><div class="stat-value" id="s-regular">0.00</div><div class="stat-label">Regular Hours</div></div>
+            <div class="stat-box"><div class="stat-value" id="s-overtime">0.00</div><div class="stat-label">Overtime Hours</div></div>
+            <div class="stat-box"><div class="stat-value" id="s-days">0</div><div class="stat-label">Days Worked</div></div>
+            <div class="stat-box" id="pay-box" style="display:none;"><div class="stat-value" id="s-pay">$0.00</div><div class="stat-label">Estimated Pay</div></div>
+            <div class="stat-box" id="reg-pay-box" style="display:none;"><div class="stat-value" id="s-reg-pay">$0.00</div><div class="stat-label">Regular Pay</div></div>
+            <div class="stat-box" id="ot-pay-box" style="display:none;"><div class="stat-value" id="s-ot-pay">$0.00</div><div class="stat-label">Overtime Pay</div></div>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top:1rem;">
+          <button class="btn btn-primary btn-sm" onclick="copySummary()">Copy Summary</button>
+          <button class="btn btn-outline btn-sm" onclick="window.print()">Print</button>
+          <button class="btn btn-ghost btn-sm" onclick="saveToStorage()">Save</button>
+          <button class="btn btn-ghost btn-sm" onclick="loadFromStorage()">Load Saved</button>
+          <button class="btn btn-ghost btn-sm" onclick="clearAll()">Clear</button>
+        </div>
+
+        <!-- Import -->
+        <div class="import-box no-print">
+          <div style="font-size:0.85rem;font-weight:700;margin-bottom:0.5rem;color:var(--primary);">Quick Import</div>
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem;">Paste times like: <code>9:00 AM - 5:00 PM, 30</code> (one per line, Mon–Sun order). Format: start - end, break_minutes</p>
+          <textarea class="form-input" id="import-text" rows="4" placeholder="9:00 AM - 5:30 PM, 30&#10;8:30 AM - 4:00 PM, 45&#10;9:00 AM - 6:00 PM, 60" style="width:100%;resize:vertical;font-family:monospace;font-size:0.8rem;margin-bottom:0.5rem;"></textarea>
+          <button class="btn btn-outline btn-sm" onclick="importTimes()">Import Times</button>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Each day is enabled by default — uncheck the box next to a day to disable it (e.g. weekends off).</li>
+          <li>Enter clock-in and clock-out times for each active day. Use standard time pickers or type manually.</li>
+          <li>Enter break duration in minutes (e.g. 30 for a half-hour lunch). This is subtracted from your hours.</li>
+          <li>Optionally enter your hourly rate to see your regular pay, overtime pay, and total estimated pay.</li>
+          <li>Overtime is calculated after 40 hours by default (standard US). Change the threshold if your employer uses a different cutoff.</li>
+          <li>Use <strong>Quick Import</strong> to paste times in bulk: one line per day starting Monday, format <code>9:00 AM - 5:00 PM, 30</code>.</li>
+          <li>Click <strong>Save</strong> to store your current time card in your browser. Click <strong>Load Saved</strong> to restore it.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="hourly-salary.html">Hourly to Salary</a>
+          <a href="tip-calculator.html">Tip Calculator</a>
+          <a href="pay-raise-calculator.html">Pay Raise Calculator</a>
+          <a href="gpa-calculator.html">GPA Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+    const DEFAULT_ENABLED = [true,true,true,true,true,false,false];
+
+    function buildRows() {
+      const container = document.getElementById('tc-rows');
+      container.innerHTML = '';
+      DAYS.forEach((day, i) => {
+        const row = document.createElement('div');
+        row.className = 'tc-row' + (DEFAULT_ENABLED[i] ? '' : ' disabled');
+        row.id = 'row-' + i;
+        row.innerHTML = `
+          <label class="tc-toggle">
+            <input type="checkbox" id="chk-${i}" ${DEFAULT_ENABLED[i]?'checked':''} onchange="toggleDay(${i})">
+            <span class="tc-day-label" style="font-size:0.85rem;">${day.slice(0,3)}</span>
+          </label>
+          <input class="form-input" type="time" id="in-${i}" value="${i<5?'09:00':''}" oninput="calcAll()">
+          <input class="form-input" type="time" id="out-${i}" value="${i<5?'17:00':''}" oninput="calcAll()">
+          <input class="form-input" type="number" id="brk-${i}" min="0" max="480" placeholder="0" value="${i<5?'30':'0'}" style="width:70px;" oninput="calcAll()">
+          <div class="tc-hours" id="hrs-${i}">—</div>
+          <div></div>
+        `;
+        container.appendChild(row);
+      });
+      calcAll();
+    }
+
+    function toggleDay(i) {
+      const enabled = document.getElementById('chk-'+i).checked;
+      const row = document.getElementById('row-'+i);
+      row.classList.toggle('disabled', !enabled);
+      if (!enabled) {
+        document.getElementById('hrs-'+i).textContent = '—';
+      }
+      calcAll();
+    }
+
+    function parseTimeToMinutes(t) {
+      if (!t) return null;
+      const [h, m] = t.split(':').map(Number);
+      return h * 60 + m;
+    }
+
+    function calcDayHours(i) {
+      if (!document.getElementById('chk-'+i).checked) return 0;
+      const inVal = document.getElementById('in-'+i).value;
+      const outVal = document.getElementById('out-'+i).value;
+      const brk = parseInt(document.getElementById('brk-'+i).value) || 0;
+      const inMin = parseTimeToMinutes(inVal);
+      const outMin = parseTimeToMinutes(outVal);
+      if (inMin === null || outMin === null) return 0;
+      let diff = outMin - inMin;
+      if (diff <= 0) diff += 24 * 60; // overnight
+      diff -= brk;
+      return Math.max(0, diff / 60);
+    }
+
+    function calcAll() {
+      let totalHrs = 0;
+      let daysWorked = 0;
+      DAYS.forEach((_, i) => {
+        const h = calcDayHours(i);
+        totalHrs += h;
+        if (h > 0) daysWorked++;
+        const el = document.getElementById('hrs-'+i);
+        if (document.getElementById('chk-'+i).checked) {
+          el.textContent = h > 0 ? fmtNum(h, 2) : '0.00';
+        } else {
+          el.textContent = '—';
+        }
+      });
+
+      const otThreshold = parseFloat(document.getElementById('ot-threshold').value) || 40;
+      const otMult = parseFloat(document.getElementById('ot-mult').value) || 1.5;
+      const regularHrs = otThreshold > 0 ? Math.min(totalHrs, otThreshold) : totalHrs;
+      const otHrs = otThreshold > 0 ? Math.max(0, totalHrs - otThreshold) : 0;
+
+      document.getElementById('s-total').textContent = fmtNum(totalHrs, 2);
+      document.getElementById('s-regular').textContent = fmtNum(regularHrs, 2);
+      document.getElementById('s-overtime').textContent = fmtNum(otHrs, 2);
+      document.getElementById('s-days').textContent = daysWorked;
+
+      const rate = parseFloat(document.getElementById('hourly-rate').value);
+      if (rate > 0) {
+        const regPay = regularHrs * rate;
+        const otPay = otHrs * rate * otMult;
+        const totalPay = regPay + otPay;
+        document.getElementById('s-pay').textContent = fmtCurrency(totalPay);
+        document.getElementById('s-reg-pay').textContent = fmtCurrency(regPay);
+        document.getElementById('s-ot-pay').textContent = fmtCurrency(otPay);
+        document.getElementById('pay-box').style.display = '';
+        document.getElementById('reg-pay-box').style.display = '';
+        document.getElementById('ot-pay-box').style.display = '';
+      } else {
+        document.getElementById('pay-box').style.display = 'none';
+        document.getElementById('reg-pay-box').style.display = 'none';
+        document.getElementById('ot-pay-box').style.display = 'none';
+      }
+    }
+
+    function copySummary() {
+      const lines = ['Weekly Time Card Summary', ''];
+      DAYS.forEach((day, i) => {
+        if (!document.getElementById('chk-'+i).checked) return;
+        const h = calcDayHours(i);
+        const inV = document.getElementById('in-'+i).value;
+        const outV = document.getElementById('out-'+i).value;
+        const brk = document.getElementById('brk-'+i).value;
+        lines.push(`${day}: ${inV} – ${outV} (${brk}min break) = ${fmtNum(h,2)} hrs`);
+      });
+      lines.push('');
+      const total = parseFloat(document.getElementById('s-total').textContent) || 0;
+      const reg = parseFloat(document.getElementById('s-regular').textContent) || 0;
+      const ot = parseFloat(document.getElementById('s-overtime').textContent) || 0;
+      lines.push(`Total: ${document.getElementById('s-total').textContent} hrs`);
+      lines.push(`Regular: ${document.getElementById('s-regular').textContent} hrs  |  Overtime: ${document.getElementById('s-overtime').textContent} hrs`);
+      const rate = parseFloat(document.getElementById('hourly-rate').value);
+      if (rate > 0) lines.push(`Estimated Pay: ${document.getElementById('s-pay').textContent}`);
+      copyText(lines.join('\n'), 'Summary copied!');
+    }
+
+    function saveToStorage() {
+      const data = { rate: document.getElementById('hourly-rate').value, ot: document.getElementById('ot-threshold').value, mult: document.getElementById('ot-mult').value, days: [] };
+      DAYS.forEach((_, i) => {
+        data.days.push({ enabled: document.getElementById('chk-'+i).checked, in: document.getElementById('in-'+i).value, out: document.getElementById('out-'+i).value, brk: document.getElementById('brk-'+i).value });
+      });
+      localStorage.setItem('timecard-data', JSON.stringify(data));
+      showToast('Time card saved!');
+    }
+
+    function loadFromStorage() {
+      const raw = localStorage.getItem('timecard-data');
+      if (!raw) { showToast('No saved data found'); return; }
+      const data = JSON.parse(raw);
+      document.getElementById('hourly-rate').value = data.rate || '';
+      document.getElementById('ot-threshold').value = data.ot || '40';
+      document.getElementById('ot-mult').value = data.mult || '1.5';
+      data.days?.forEach((d, i) => {
+        document.getElementById('chk-'+i).checked = d.enabled;
+        document.getElementById('in-'+i).value = d.in || '';
+        document.getElementById('out-'+i).value = d.out || '';
+        document.getElementById('brk-'+i).value = d.brk || '0';
+        document.getElementById('row-'+i).classList.toggle('disabled', !d.enabled);
+      });
+      calcAll();
+      showToast('Time card loaded!');
+    }
+
+    function clearAll() {
+      DAYS.forEach((_, i) => {
+        document.getElementById('chk-'+i).checked = DEFAULT_ENABLED[i];
+        document.getElementById('in-'+i).value = '';
+        document.getElementById('out-'+i).value = '';
+        document.getElementById('brk-'+i).value = '0';
+        document.getElementById('row-'+i).classList.toggle('disabled', !DEFAULT_ENABLED[i]);
+        document.getElementById('hrs-'+i).textContent = '—';
+      });
+      document.getElementById('hourly-rate').value = '';
+      calcAll();
+    }
+
+    function parseTime12(str) {
+      // Parse formats like "9:00 AM", "17:00", "9:00am"
+      str = str.trim();
+      const match12 = str.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+      if (match12) {
+        let h = parseInt(match12[1]);
+        const m = match12[2];
+        const ampm = match12[3].toUpperCase();
+        if (ampm === 'AM' && h === 12) h = 0;
+        if (ampm === 'PM' && h !== 12) h += 12;
+        return String(h).padStart(2,'0') + ':' + m;
+      }
+      const match24 = str.match(/^(\d{1,2}):(\d{2})$/);
+      if (match24) return String(parseInt(match24[1])).padStart(2,'0') + ':' + match24[2];
+      return '';
+    }
+
+    function importTimes() {
+      const text = document.getElementById('import-text').value.trim();
+      if (!text) { showToast('Nothing to import'); return; }
+      const lines = text.split('\n').filter(l => l.trim());
+      lines.forEach((line, i) => {
+        if (i >= 7) return;
+        // Format: "9:00 AM - 5:00 PM, 30" or "9:00 - 17:00, 30"
+        const parts = line.split(',');
+        const brk = parts[1] ? parseInt(parts[1].trim()) || 0 : 0;
+        const timePart = parts[0].trim();
+        const timeMatch = timePart.split(/\s*[-–]\s*/);
+        if (timeMatch.length >= 2) {
+          const inTime = parseTime12(timeMatch[0].trim());
+          const outTime = parseTime12(timeMatch[1].trim());
+          if (inTime) document.getElementById('in-'+i).value = inTime;
+          if (outTime) document.getElementById('out-'+i).value = outTime;
+          document.getElementById('brk-'+i).value = brk;
+          document.getElementById('chk-'+i).checked = true;
+          document.getElementById('row-'+i).classList.remove('disabled');
+        }
+      });
+      calcAll();
+      showToast('Times imported!');
+    }
+
+    buildRows();
+    document.addEventListener('DOMContentLoaded', () => { injectNav('time-card-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

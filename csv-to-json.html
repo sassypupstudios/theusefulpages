@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV to JSON Converter - Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Convert CSV to JSON instantly online. Choose delimiter, handle headers, preview results as a table. Also converts JSON back to CSV. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/csv-to-json.html">
+  <meta property="og:title" content="CSV to JSON Converter - The Useful Pages">
+  <meta property="og:description" content="Convert CSV to JSON instantly online. Choose delimiter, handle headers, preview results as a table.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSV to JSON Converter","url":"https://theusefulpages.com/csv-to-json.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .preview-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 1rem; overflow-x: auto; display: block; }
+    .preview-table th { background: var(--primary); color: #fff; padding: 0.4rem 0.75rem; text-align: left; white-space: nowrap; }
+    .preview-table td { border-bottom: 1px solid var(--border); padding: 0.35rem 0.75rem; white-space: nowrap; }
+    .preview-table tr:nth-child(even) td { background: var(--bg-alt); }
+    .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); }
+    .error-box { background: #fef2f2; border: 1px solid #fca5a5; border-radius: 8px; padding: 1rem; color: #dc2626; font-size: 0.875rem; margin-top: 1rem; }
+    .options-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+    .check-label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">CSV to JSON Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Convert CSV data to JSON format instantly. Preview as table. Also supports JSON to CSV.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" style="margin-bottom:1rem;">
+          <button class="tab-btn active" id="tab-csv" onclick="switchMode('csv')">CSV → JSON</button>
+          <button class="tab-btn" id="tab-json" onclick="switchMode('json')">JSON → CSV</button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" id="inputLabel">CSV Input</label>
+          <textarea id="mainInput" class="form-textarea code-area" rows="8" placeholder="name,age,city&#10;Alice,30,New York&#10;Bob,25,London"></textarea>
+        </div>
+
+        <div class="options-row" id="csvOptions">
+          <div class="form-group" style="margin:0;">
+            <label class="form-label" style="margin-bottom:0.25rem;">Delimiter</label>
+            <select class="form-select" id="delimiter" style="width:auto;">
+              <option value=",">Comma (,)</option>
+              <option value=";">Semicolon (;)</option>
+              <option value="	">Tab</option>
+              <option value="|">Pipe (|)</option>
+            </select>
+          </div>
+          <label class="check-label"><input type="checkbox" id="hasHeader" checked> First row is header</label>
+          <label class="check-label"><input type="checkbox" id="trimWS" checked> Trim whitespace</label>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="convert()">Convert</button>
+          <button class="btn btn-ghost btn-sm" onclick="clearAll()">Clear</button>
+          <button class="btn btn-ghost btn-sm" onclick="loadSample()">Load Sample</button>
+        </div>
+
+        <div id="errorBox" class="error-box hidden"></div>
+
+        <div id="outputSection" class="hidden" style="margin-top:1.25rem;">
+          <div class="stat-grid" id="statsGrid" style="margin-bottom:1rem;"></div>
+          <label class="form-label">Output</label>
+          <pre id="outputArea" class="mono-output" style="max-height:350px;overflow:auto;"></pre>
+          <div class="btn-row" style="margin-top:0.75rem;">
+            <button class="btn btn-outline btn-sm" onclick="copyOutput()">Copy Output</button>
+            <button class="btn btn-ghost btn-sm" onclick="downloadOutput()">Download</button>
+          </div>
+          <div id="tableSection" class="hidden" style="margin-top:1.25rem;">
+            <label class="form-label">Table Preview (first 10 rows)</label>
+            <div class="table-wrap"><table class="preview-table" id="previewTable"></table></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Paste your CSV data into the input box, or click <strong>Load Sample</strong> to try an example.</li>
+          <li>Choose the delimiter that your CSV uses (comma, semicolon, tab, or pipe).</li>
+          <li>Check <strong>First row is header</strong> to use column names as JSON keys.</li>
+          <li>Click <strong>Convert</strong> to generate JSON. A table preview shows the first 10 rows.</li>
+          <li>Switch to <strong>JSON → CSV</strong> tab to reverse the conversion.</li>
+          <li>Copy the output or download it as a file.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="json-formatter.html">JSON Formatter</a>
+          <a href="html-formatter.html">HTML Formatter</a>
+          <a href="js-minifier.html">JS Minifier</a>
+          <a href="markdown-previewer.html">Markdown Previewer</a>
+          <a href="uuid-generator.html">UUID Generator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar"><div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('csv-to-json.html'); injectFooter(); });
+
+    let currentMode = 'csv';
+    let currentOutput = '';
+    let currentExt = 'json';
+
+    function switchMode(mode) {
+      currentMode = mode;
+      document.getElementById('tab-csv').className = mode === 'csv' ? 'tab-btn active' : 'tab-btn';
+      document.getElementById('tab-json').className = mode === 'json' ? 'tab-btn active' : 'tab-btn';
+      document.getElementById('inputLabel').textContent = mode === 'csv' ? 'CSV Input' : 'JSON Input';
+      document.getElementById('csvOptions').style.display = mode === 'csv' ? '' : 'none';
+      document.getElementById('mainInput').placeholder = mode === 'csv'
+        ? 'name,age,city\nAlice,30,New York\nBob,25,London'
+        : '[{"name":"Alice","age":30},{"name":"Bob","age":25}]';
+      clearAll();
+    }
+
+    function parseCSV(text, delim, trim) {
+      const lines = text.split(/\r?\n/).filter(l => l.trim() !== '');
+      return lines.map(line => {
+        const cells = [];
+        let cur = '', inQ = false;
+        for (let i = 0; i < line.length; i++) {
+          const ch = line[i];
+          if (ch === '"') { inQ = !inQ; }
+          else if (ch === delim && !inQ) { cells.push(trim ? cur.trim() : cur); cur = ''; }
+          else { cur += ch; }
+        }
+        cells.push(trim ? cur.trim() : cur);
+        return cells;
+      });
+    }
+
+    function convert() {
+      const input = document.getElementById('mainInput').value.trim();
+      if (!input) { showError('Please enter some data.'); return; }
+      clearError();
+
+      if (currentMode === 'csv') {
+        const delim = document.getElementById('delimiter').value;
+        const hasHeader = document.getElementById('hasHeader').checked;
+        const trim = document.getElementById('trimWS').checked;
+        const rows = parseCSV(input, delim, trim);
+        if (rows.length === 0) { showError('No data found.'); return; }
+
+        let result, headers;
+        if (hasHeader) {
+          headers = rows[0];
+          const dataRows = rows.slice(1);
+          result = dataRows.map(row => {
+            const obj = {};
+            headers.forEach((h, i) => { obj[h] = row[i] !== undefined ? row[i] : ''; });
+            return obj;
+          });
+        } else {
+          result = rows.map(row => row);
+        }
+
+        currentOutput = JSON.stringify(result, null, 2);
+        currentExt = 'json';
+        document.getElementById('outputArea').textContent = currentOutput;
+        document.getElementById('statsGrid').innerHTML = `
+          <div class="stat-box"><div class="stat-value">${fmtNum(rows.length - (hasHeader?1:0))}</div><div class="stat-label">Rows</div></div>
+          <div class="stat-box"><div class="stat-value">${fmtNum(rows[0].length)}</div><div class="stat-label">Columns</div></div>
+          <div class="stat-box"><div class="stat-value">${fmtNum(result.length * rows[0].length)}</div><div class="stat-label">Fields</div></div>
+        `;
+        renderTable(result, headers);
+        document.getElementById('outputSection').classList.remove('hidden');
+      } else {
+        let data;
+        try { data = JSON.parse(input); } catch(e) { showError('Invalid JSON: ' + e.message); return; }
+        if (!Array.isArray(data) || data.length === 0) { showError('JSON must be a non-empty array of objects.'); return; }
+        const headers = Object.keys(data[0]);
+        const csvLines = [headers.join(',')];
+        data.forEach(row => {
+          csvLines.push(headers.map(h => {
+            const v = String(row[h] !== undefined ? row[h] : '');
+            return v.includes(',') || v.includes('"') || v.includes('\n') ? `"${v.replace(/"/g,'""')}"` : v;
+          }).join(','));
+        });
+        currentOutput = csvLines.join('\n');
+        currentExt = 'csv';
+        document.getElementById('outputArea').textContent = currentOutput;
+        document.getElementById('statsGrid').innerHTML = `
+          <div class="stat-box"><div class="stat-value">${fmtNum(data.length)}</div><div class="stat-label">Rows</div></div>
+          <div class="stat-box"><div class="stat-value">${fmtNum(headers.length)}</div><div class="stat-label">Columns</div></div>
+        `;
+        document.getElementById('tableSection').classList.add('hidden');
+        document.getElementById('outputSection').classList.remove('hidden');
+      }
+    }
+
+    function renderTable(data, headers) {
+      const table = document.getElementById('previewTable');
+      const preview = data.slice(0, 10);
+      const cols = headers || (preview.length > 0 ? Object.keys(preview[0]) : []);
+      let html = '<thead><tr>' + cols.map(h => `<th>${escHtml(h)}</th>`).join('') + '</tr></thead><tbody>';
+      preview.forEach(row => {
+        html += '<tr>' + cols.map(h => `<td>${escHtml(String(row[h] !== undefined ? row[h] : ''))}</td>`).join('') + '</tr>';
+      });
+      html += '</tbody>';
+      table.innerHTML = html;
+      document.getElementById('tableSection').classList.remove('hidden');
+    }
+
+    function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function showError(msg) {
+      const b = document.getElementById('errorBox');
+      b.textContent = msg; b.classList.remove('hidden');
+      document.getElementById('outputSection').classList.add('hidden');
+    }
+    function clearError() { document.getElementById('errorBox').classList.add('hidden'); }
+
+    function copyOutput() { copyText(currentOutput, 'Copied!'); }
+
+    function downloadOutput() {
+      const blob = new Blob([currentOutput], {type: 'text/plain'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `output.${currentExt}`;
+      a.click();
+    }
+
+    function clearAll() {
+      document.getElementById('mainInput').value = '';
+      document.getElementById('outputSection').classList.add('hidden');
+      clearError();
+    }
+
+    function loadSample() {
+      if (currentMode === 'csv') {
+        document.getElementById('mainInput').value = 'name,age,city,active\nAlice,30,New York,true\nBob,25,London,false\nCarol,35,Tokyo,true';
+      } else {
+        document.getElementById('mainInput').value = '[{"name":"Alice","age":30,"city":"New York"},{"name":"Bob","age":25,"city":"London"}]';
+      }
+    }
+  </script>
+</body>
+</html>

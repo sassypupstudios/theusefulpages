@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 Encoder / Decoder - Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Free online Base64 encoder and decoder. Encode text or files to Base64, decode Base64 strings back to text. Supports URL-safe encoding and image preview.">
+  <link rel="canonical" href="https://theusefulpages.com/base64.html">
+  <meta property="og:title" content="Base64 Encoder / Decoder - The Useful Pages">
+  <meta property="og:description" content="Encode and decode Base64 online. Supports URL-safe mode, file encoding, and image preview.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Base64 Encoder / Decoder","url":"https://theusefulpages.com/base64.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .mode-tabs{display:flex;gap:0.5rem;margin-bottom:1.25rem;}
+    .mode-tab{padding:0.45rem 1.1rem;border-radius:20px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:0.85rem;font-weight:500;color:var(--text-muted);transition:all .15s;}
+    .mode-tab.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+    .mode-panel{display:none;}.mode-panel.active{display:block;}
+    .char-count{font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem;text-align:right;}
+    .error-box{background:#fff0f0;border:1px solid #f5c0c0;border-radius:8px;padding:0.6rem 0.8rem;color:#c0392b;font-size:0.82rem;margin-top:0.5rem;display:none;}
+    .image-preview{margin-top:1rem;text-align:center;display:none;}
+    .image-preview img{max-width:100%;max-height:200px;border-radius:8px;border:1px solid var(--border);}
+    .options-row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:0.75rem;font-size:0.85rem;align-items:center;}
+    .options-row label{display:flex;align-items:center;gap:0.35rem;cursor:pointer;color:var(--text-muted);}
+    .drag-zone{border:2px dashed var(--border);border-radius:10px;padding:2rem;text-align:center;cursor:pointer;color:var(--text-muted);font-size:0.85rem;transition:border-color .15s;margin-bottom:0.75rem;}
+    .drag-zone:hover,.drag-zone.drag-over{border-color:var(--primary);color:var(--primary);}
+    .drag-zone input[type=file]{display:none;}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Base64 Encoder / Decoder</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Encode text or files to Base64, or decode Base64 strings back to readable text.</p>
+      <div class="tool-card">
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="encode">Encode</button>
+          <button class="mode-tab" data-mode="decode">Decode</button>
+          <button class="mode-tab" data-mode="file">File Encode</button>
+        </div>
+
+        <!-- ENCODE -->
+        <div class="mode-panel active" id="panel-encode">
+          <div class="options-row">
+            <label><input type="checkbox" id="enc-urlsafe"> URL-safe (replace +/ with -_)</label>
+            <label><input type="checkbox" id="enc-linebreaks"> Line breaks every 76 chars</label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Input Text</label>
+            <textarea class="form-input" id="enc-input" rows="6" placeholder="Enter text to encode..." oninput="doEncode()"></textarea>
+            <div class="char-count" id="enc-in-count">0 characters</div>
+          </div>
+          <div class="form-group" style="margin-top:0.75rem;">
+            <label class="form-label">Base64 Output</label>
+            <textarea class="form-input mono-output" id="enc-output" rows="6" readonly placeholder="Base64 encoded output will appear here..."></textarea>
+            <div class="char-count" id="enc-out-count">0 characters</div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-accent" onclick="copyText(document.getElementById('enc-output').value,'Copied!')">Copy Output</button>
+            <button class="btn btn-outline" onclick="clearEncode()">Clear</button>
+          </div>
+        </div>
+
+        <!-- DECODE -->
+        <div class="mode-panel" id="panel-decode">
+          <div class="form-group">
+            <label class="form-label">Base64 Input</label>
+            <textarea class="form-input mono-output" id="dec-input" rows="6" placeholder="Paste Base64 string to decode..." oninput="doDecode()"></textarea>
+            <div class="char-count" id="dec-in-count">0 characters</div>
+          </div>
+          <div class="error-box" id="dec-error">Invalid Base64 input. Please check your string and try again.</div>
+          <div class="form-group" style="margin-top:0.75rem;">
+            <label class="form-label">Decoded Output</label>
+            <textarea class="form-input" id="dec-output" rows="6" readonly placeholder="Decoded text will appear here..."></textarea>
+            <div class="char-count" id="dec-out-count">0 characters</div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-accent" onclick="copyText(document.getElementById('dec-output').value,'Copied!')">Copy Output</button>
+            <button class="btn btn-outline" onclick="clearDecode()">Clear</button>
+          </div>
+        </div>
+
+        <!-- FILE ENCODE -->
+        <div class="mode-panel" id="panel-file">
+          <div class="drag-zone" id="drag-zone" onclick="document.getElementById('file-input').click()">
+            <div style="font-size:2rem;margin-bottom:0.5rem;">📁</div>
+            <div>Click to select a file, or drag and drop here</div>
+            <div style="font-size:0.75rem;margin-top:0.3rem;">Any file type supported</div>
+            <input type="file" id="file-input" onchange="encodeFile(this.files[0])">
+          </div>
+          <div id="file-info" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;display:none;"></div>
+          <div class="form-group">
+            <label class="form-label">Base64 Data URL Output</label>
+            <textarea class="form-input mono-output" id="file-output" rows="6" readonly placeholder="Base64 output will appear after selecting a file..."></textarea>
+          </div>
+          <div class="image-preview" id="img-preview">
+            <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Image Preview</p>
+            <img id="img-preview-el" src="" alt="Preview">
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-accent" onclick="copyText(document.getElementById('file-output').value,'Copied!')">Copy Output</button>
+            <button class="btn btn-outline" onclick="clearFile()">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Encode:</strong> Type or paste text into the input box — Base64 output is generated instantly</li>
+          <li>Check "URL-safe" to replace + and / with - and _ (safe for use in URLs and filenames)</li>
+          <li>Check "Line breaks" to wrap output at 76 characters per line (MIME standard)</li>
+          <li><strong>Decode:</strong> Paste a Base64 string — the decoded text appears instantly. URL-safe variants are auto-detected</li>
+          <li><strong>File Encode:</strong> Select or drag any file to get its Base64 data URL. Images will show a preview</li>
+          <li>Use Copy Output to copy results to your clipboard</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="hex-decimal.html" class="related-link">Hex ↔ Decimal</a>
+          <a href="binary-decimal.html" class="related-link">Binary Converter</a>
+          <a href="unit-converter.html" class="related-link">Unit Converter</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  // Tab switching
+  document.querySelectorAll('.mode-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mode-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.mode-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-'+btn.dataset.mode).classList.add('active');
+    });
+  });
+
+  function doEncode() {
+    const input = document.getElementById('enc-input').value;
+    const urlSafe = document.getElementById('enc-urlsafe').checked;
+    const lineBreaks = document.getElementById('enc-linebreaks').checked;
+    document.getElementById('enc-in-count').textContent = input.length + ' characters';
+    if (!input) { document.getElementById('enc-output').value=''; document.getElementById('enc-out-count').textContent='0 characters'; return; }
+    let encoded = btoa(unescape(encodeURIComponent(input)));
+    if (urlSafe) encoded = encoded.replace(/\+/g,'-').replace(/\//g,'_');
+    if (lineBreaks) encoded = encoded.match(/.{1,76}/g).join('\n');
+    document.getElementById('enc-output').value = encoded;
+    document.getElementById('enc-out-count').textContent = encoded.length + ' characters';
+  }
+
+  document.getElementById('enc-urlsafe').addEventListener('change', doEncode);
+  document.getElementById('enc-linebreaks').addEventListener('change', doEncode);
+
+  function clearEncode() {
+    document.getElementById('enc-input').value='';
+    document.getElementById('enc-output').value='';
+    document.getElementById('enc-in-count').textContent='0 characters';
+    document.getElementById('enc-out-count').textContent='0 characters';
+  }
+
+  function doDecode() {
+    let input = document.getElementById('dec-input').value.trim();
+    const errEl = document.getElementById('dec-error');
+    const outEl = document.getElementById('dec-output');
+    document.getElementById('dec-in-count').textContent = input.length + ' characters';
+    if (!input) { outEl.value=''; document.getElementById('dec-out-count').textContent='0 characters'; errEl.style.display='none'; return; }
+    // Normalize URL-safe and strip whitespace
+    input = input.replace(/[-]/g,'+').replace(/[_]/g,'/').replace(/\s/g,'');
+    try {
+      const decoded = decodeURIComponent(escape(atob(input)));
+      outEl.value = decoded;
+      document.getElementById('dec-out-count').textContent = decoded.length + ' characters';
+      errEl.style.display = 'none';
+    } catch(e) {
+      outEl.value = '';
+      document.getElementById('dec-out-count').textContent = '0 characters';
+      errEl.style.display = 'block';
+    }
+  }
+
+  function clearDecode() {
+    document.getElementById('dec-input').value='';
+    document.getElementById('dec-output').value='';
+    document.getElementById('dec-in-count').textContent='0 characters';
+    document.getElementById('dec-out-count').textContent='0 characters';
+    document.getElementById('dec-error').style.display='none';
+  }
+
+  function encodeFile(file) {
+    if (!file) return;
+    const infoEl = document.getElementById('file-info');
+    const outEl = document.getElementById('file-output');
+    const prevEl = document.getElementById('img-preview');
+    infoEl.style.display = 'block';
+    infoEl.textContent = `File: ${file.name} | Size: ${(file.size/1024).toFixed(1)} KB | Type: ${file.type || 'unknown'}`;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const dataUrl = e.target.result;
+      outEl.value = dataUrl;
+      if (file.type.startsWith('image/')) {
+        document.getElementById('img-preview-el').src = dataUrl;
+        prevEl.style.display = 'block';
+      } else {
+        prevEl.style.display = 'none';
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function clearFile() {
+    document.getElementById('file-input').value='';
+    document.getElementById('file-output').value='';
+    document.getElementById('file-info').style.display='none';
+    document.getElementById('img-preview').style.display='none';
+    document.getElementById('img-preview-el').src='';
+  }
+
+  // Drag and drop
+  const dz = document.getElementById('drag-zone');
+  dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag-over'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('drag-over'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('drag-over'); const f = e.dataTransfer.files[0]; if(f) encodeFile(f); });
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('base64.html'); injectFooter(); });
+  </script>
+</body>
+</html>

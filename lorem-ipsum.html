@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorem Ipsum Generator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Generate lorem ipsum placeholder text instantly. Choose number of paragraphs, words per paragraph, or total word count. Starts with classic or random opening.">
+  <link rel="canonical" href="https://theusefulpages.com/lorem-ipsum">
+  <meta property="og:title" content="Lorem Ipsum Generator — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Lorem Ipsum Generator","url":"https://theusefulpages.com/lorem-ipsum","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <!-- AD ZONE: Top Banner -->
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Lorem Ipsum Generator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Generate customizable placeholder text for your design and layout projects.</p>
+
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div class="form-group">
+            <label class="form-label" for="genMode">Generate by</label>
+            <select class="form-select" id="genMode" onchange="updateModeUI()">
+              <option value="paragraphs">Number of paragraphs</option>
+              <option value="words">Total word count</option>
+            </select>
+          </div>
+          <div class="form-group" id="paragraphCountGroup">
+            <label class="form-label" for="paragraphCount">Number of paragraphs</label>
+            <input type="number" class="form-input" id="paragraphCount" value="3" min="1" max="20">
+          </div>
+          <div class="form-group" id="wordsPerParaGroup">
+            <label class="form-label" for="wordsPerPara">Words per paragraph</label>
+            <input type="number" class="form-input" id="wordsPerPara" value="60" min="10" max="200">
+          </div>
+          <div class="form-group" id="totalWordsGroup" style="display:none;">
+            <label class="form-label" for="totalWords">Total words</label>
+            <input type="number" class="form-input" id="totalWords" value="200" min="10" max="2000">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-size:0.9375rem;color:var(--text);">
+            <input type="checkbox" id="classicStart" checked style="width:16px;height:16px;accent-color:var(--primary);">
+            Start with "Lorem ipsum dolor sit amet..."
+          </label>
+        </div>
+
+        <button class="btn btn-primary" onclick="generateLorem()">Generate</button>
+
+        <div id="outputArea" style="display:none;margin-top:1.5rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+            <span id="statsLine" style="font-size:0.875rem;color:var(--text-muted);"></span>
+            <button class="btn btn-secondary" onclick="copyText('loremOutput')">Copy Text</button>
+          </div>
+          <div id="loremOutput" style="background:var(--bg-alt,#f7f7f5);border:1px solid var(--border,#e0ddd8);border-radius:10px;padding:1.25rem;font-size:0.9375rem;line-height:1.75;color:var(--text);white-space:pre-wrap;max-height:400px;overflow-y:auto;"></div>
+        </div>
+      </div>
+
+      <!-- AD ZONE: Content Middle -->
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Choose whether to generate by paragraph count or total word count.</li>
+          <li>Set the number of paragraphs and words per paragraph, or enter a total word count.</li>
+          <li>Check the box to start with the classic "Lorem ipsum..." opening sentence.</li>
+          <li>Click <strong>Generate</strong> and copy the result to your clipboard.</li>
+        </ol>
+        <p style="margin-top:0.75rem;">Lorem ipsum text is used as placeholder text in design mockups, typography testing, and layout prototypes — it resembles natural prose without distracting with real content.</p>
+      </div>
+
+      <div id="related-tools"></div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <!-- AD ZONE: Sidebar Rectangle 300x250 -->
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <!-- AD ZONE: Footer Banner -->
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('lorem-ipsum.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('lorem-ipsum.html', 'text');
+    generateLorem();
+  });
+
+  const LOREM_WORDS = [
+    'lorem','ipsum','dolor','sit','amet','consectetur','adipiscing','elit','sed','do',
+    'eiusmod','tempor','incididunt','ut','labore','et','dolore','magna','aliqua','enim',
+    'ad','minim','veniam','quis','nostrud','exercitation','ullamco','laboris','nisi',
+    'aliquip','ex','ea','commodo','consequat','duis','aute','irure','in','reprehenderit',
+    'voluptate','velit','esse','cillum','fugiat','nulla','pariatur','excepteur','sint',
+    'occaecat','cupidatat','non','proident','sunt','culpa','qui','officia','deserunt',
+    'mollit','anim','id','est','laborum','at','vero','eos','accusamus','iusto','odio',
+    'dignissimos','ducimus','blanditiis','praesentium','voluptatum','deleniti','atque',
+    'corrupti','quos','dolores','quas','molestias','excepturi','occaecati','cupiditate',
+    'minima','veniam','quis','nostrum','exercitationem','ullam','corporis','suscipit',
+    'laboriosam','nisi','aliquid','ex','ea','commodi','consequatur','autem','vel',
+    'eum','iure','reprehenderit','qui','voluptatem','nulla','porro','quisquam','quia',
+    'aspernatur','aut','odit','fugit','consequuntur','magni','dolores','ratione',
+    'sequi','nesciunt','neque','porro','dolorem','ipsum','quia','dolor','sit','amet',
+    'numquam','eius','modi','tempora','incidunt','labore','dolorem','magnam','quaerat',
+    'voluptatem','perspiciatis','unde','omnis','iste','natus','error','accusantium',
+    'doloremque','laudantium','totam','rem','aperiam','eaque','ipsa','quae','ab','illo',
+    'inventore','veritatis','quasi','architecto','beatae','vitae','dicta','explicabo',
+  ];
+
+  const CLASSIC_START = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+
+  let _wi = 0;
+  function nextWord() {
+    _wi = (_wi + 1) % LOREM_WORDS.length;
+    return LOREM_WORDS[_wi];
+  }
+
+  function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  function buildParagraph(wordCount, isFirst, classicStart) {
+    const words = [];
+    if (isFirst && classicStart) {
+      const classicWords = CLASSIC_START.replace(/[.,]/g,'').toLowerCase().split(' ');
+      words.push(...classicWords.slice(0, Math.min(wordCount, classicWords.length)));
+    }
+    while (words.length < wordCount) {
+      words.push(nextWord());
+    }
+    // Build sentences (roughly 8-15 words each)
+    let sentences = [];
+    let i = 0;
+    while (i < words.length) {
+      const len = Math.min(8 + Math.floor(Math.random() * 8), words.length - i);
+      const chunk = words.slice(i, i + len);
+      chunk[0] = capitalize(chunk[0]);
+      sentences.push(chunk.join(' ') + '.');
+      i += len;
+    }
+    if (isFirst && classicStart) {
+      sentences[0] = CLASSIC_START;
+      // rebuild rest
+      const remaining = words.slice(CLASSIC_START.replace(/[.,]/g,'').split(' ').length);
+      sentences = [CLASSIC_START];
+      let j = 0;
+      while (j < remaining.length) {
+        const len = Math.min(8 + Math.floor(Math.random() * 8), remaining.length - j);
+        const chunk = remaining.slice(j, j + len);
+        chunk[0] = capitalize(chunk[0]);
+        sentences.push(chunk.join(' ') + '.');
+        j += len;
+      }
+    }
+    return sentences.join(' ');
+  }
+
+  function updateModeUI() {
+    const mode = document.getElementById('genMode').value;
+    document.getElementById('paragraphCountGroup').style.display = mode === 'paragraphs' ? '' : 'none';
+    document.getElementById('wordsPerParaGroup').style.display = mode === 'paragraphs' ? '' : 'none';
+    document.getElementById('totalWordsGroup').style.display = mode === 'words' ? '' : 'none';
+  }
+
+  function generateLorem() {
+    _wi = 0;
+    const mode = document.getElementById('genMode').value;
+    const classicStart = document.getElementById('classicStart').checked;
+    let paragraphs = [];
+
+    if (mode === 'paragraphs') {
+      const numP = Math.max(1, Math.min(20, parseInt(document.getElementById('paragraphCount').value) || 3));
+      const wpp = Math.max(10, Math.min(200, parseInt(document.getElementById('wordsPerPara').value) || 60));
+      for (let i = 0; i < numP; i++) {
+        paragraphs.push(buildParagraph(wpp, i === 0, classicStart));
+      }
+    } else {
+      const total = Math.max(10, Math.min(2000, parseInt(document.getElementById('totalWords').value) || 200));
+      const wpp = 60;
+      let remaining = total;
+      let idx = 0;
+      while (remaining > 0) {
+        const take = Math.min(remaining, wpp);
+        paragraphs.push(buildParagraph(take, idx === 0, classicStart));
+        remaining -= take;
+        idx++;
+      }
+    }
+
+    const text = paragraphs.join('\n\n');
+    const wordCount = text.split(/\s+/).filter(Boolean).length;
+    const charCount = text.length;
+
+    document.getElementById('loremOutput').textContent = text;
+    document.getElementById('statsLine').textContent = `${paragraphs.length} paragraph${paragraphs.length !== 1 ? 's' : ''} · ${fmtNum(wordCount)} words · ${fmtNum(charCount)} characters`;
+    document.getElementById('outputArea').style.display = '';
+  }
+  </script>
+</body>
+</html>

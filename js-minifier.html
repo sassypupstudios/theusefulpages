@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Minifier - Free Online JS Minifier | The Useful Pages</title>
+  <meta name="description" content="Free online JavaScript minifier. Remove comments, collapse whitespace, and reduce JS file size instantly. See bytes saved and reduction percentage. No upload needed.">
+  <link rel="canonical" href="https://theusefulpages.com/js-minifier.html">
+  <meta property="og:title" content="JavaScript Minifier - The Useful Pages">
+  <meta property="og:description" content="Free online JavaScript minifier. Remove comments and collapse whitespace to reduce JS file size instantly.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JavaScript Minifier","url":"https://theusefulpages.com/js-minifier.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .error-box { background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:1rem;color:#dc2626;font-size:0.875rem;margin-top:1rem; }
+    .check-label { display:flex;align-items:center;gap:0.4rem;font-size:0.875rem;cursor:pointer; }
+    .opts-row { display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">JavaScript Minifier</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Reduce JS file size by removing comments and collapsing whitespace. See exact bytes saved.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label">JavaScript Input</label>
+          <textarea id="jsInput" class="form-textarea code-area" rows="12" placeholder="Paste your JavaScript code here..."></textarea>
+        </div>
+
+        <div class="opts-row">
+          <label class="check-label"><input type="checkbox" id="removeLineComments" checked> Remove // line comments</label>
+          <label class="check-label"><input type="checkbox" id="removeBlockComments" checked> Remove /* block */ comments</label>
+          <label class="check-label"><input type="checkbox" id="collapseWS" checked> Collapse whitespace</label>
+          <label class="check-label"><input type="checkbox" id="removeNewlines" checked> Remove unnecessary newlines</label>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="minifyJS()">Minify JavaScript</button>
+          <button class="btn btn-ghost btn-sm" onclick="clearAll()">Clear</button>
+          <button class="btn btn-ghost btn-sm" onclick="loadSample()">Load Sample</button>
+        </div>
+
+        <div id="errorBox" class="error-box hidden"></div>
+
+        <div id="outputSection" class="hidden" style="margin-top:1.25rem;">
+          <div class="stat-grid" id="statsGrid" style="margin-bottom:1rem;"></div>
+          <label class="form-label">Minified Output</label>
+          <pre id="jsOutput" class="mono-output" style="max-height:400px;overflow:auto;white-space:pre-wrap;word-break:break-all;"></pre>
+          <div class="btn-row" style="margin-top:0.75rem;">
+            <button class="btn btn-outline btn-sm" onclick="copyOutput()">Copy Output</button>
+            <button class="btn btn-ghost btn-sm" onclick="downloadJS()">Download .js</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Paste your JavaScript code into the input box above.</li>
+          <li>Choose which minification options to apply using the checkboxes.</li>
+          <li>Click <strong>Minify JavaScript</strong> to compress your code.</li>
+          <li>View the original size, minified size, reduction percentage, and bytes saved.</li>
+          <li>Copy the minified output or download it as a .js file.</li>
+          <li>For maximum safety, keep all options checked — this tool only removes whitespace and comments.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="json-formatter.html">JSON Formatter</a>
+          <a href="html-formatter.html">HTML Formatter</a>
+          <a href="csv-to-json.html">CSV to JSON</a>
+          <a href="markdown-previewer.html">Markdown Previewer</a>
+          <a href="color-picker.html">Color Picker</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar"><div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('js-minifier.html'); injectFooter(); });
+
+    let currentOutput = '';
+
+    function minifyJS() {
+      const input = document.getElementById('jsInput').value;
+      if (!input.trim()) { showError('Please enter some JavaScript.'); return; }
+      clearError();
+
+      let result = input;
+
+      // Remove block comments (handle carefully to avoid regex/string content)
+      if (document.getElementById('removeBlockComments').checked) {
+        result = removeBlockComments(result);
+      }
+
+      // Remove line comments
+      if (document.getElementById('removeLineComments').checked) {
+        result = removeLineComments(result);
+      }
+
+      // Collapse whitespace
+      if (document.getElementById('collapseWS').checked) {
+        result = result.replace(/[ \t]+/g, ' ');
+        result = result.replace(/[ \t]*\n[ \t]*/g, '\n');
+      }
+
+      // Remove unnecessary newlines
+      if (document.getElementById('removeNewlines').checked) {
+        result = result.replace(/\n{2,}/g, '\n');
+        // Remove newlines between statements where safe
+        result = result.replace(/([;{}()\[\]])\n\s*/g, '$1');
+        result = result.replace(/\n\s*([;{}()\[\]])/g, '$1');
+      }
+
+      result = result.trim();
+      currentOutput = result;
+
+      const origBytes = new TextEncoder().encode(input).length;
+      const newBytes = new TextEncoder().encode(result).length;
+      const saved = origBytes - newBytes;
+      const pct = origBytes > 0 ? ((saved / origBytes) * 100).toFixed(1) : '0';
+
+      document.getElementById('statsGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtNum(origBytes)}</div><div class="stat-label">Original bytes</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtNum(newBytes)}</div><div class="stat-label">Minified bytes</div></div>
+        <div class="stat-box"><div class="stat-value">${pct}%</div><div class="stat-label">Reduction</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtNum(saved)}</div><div class="stat-label">Bytes saved</div></div>
+      `;
+
+      document.getElementById('jsOutput').textContent = result;
+      document.getElementById('outputSection').classList.remove('hidden');
+    }
+
+    function removeBlockComments(code) {
+      // State machine to avoid removing comment-like strings inside string literals
+      let out = '';
+      let i = 0;
+      while (i < code.length) {
+        if (code[i] === '/' && code[i+1] === '*') {
+          const end = code.indexOf('*/', i + 2);
+          i = end === -1 ? code.length : end + 2;
+        } else if (code[i] === '"' || code[i] === "'" || code[i] === '`') {
+          const q = code[i];
+          out += q; i++;
+          while (i < code.length && code[i] !== q) {
+            if (code[i] === '\\') { out += code[i]; i++; }
+            out += code[i]; i++;
+          }
+          out += (code[i] || ''); i++;
+        } else {
+          out += code[i]; i++;
+        }
+      }
+      return out;
+    }
+
+    function removeLineComments(code) {
+      const lines = code.split('\n');
+      return lines.map(line => {
+        // Simple approach: find // not inside strings
+        let inStr = null;
+        for (let i = 0; i < line.length; i++) {
+          const ch = line[i];
+          if (!inStr && (ch === '"' || ch === "'" || ch === '`')) { inStr = ch; }
+          else if (inStr && ch === inStr && line[i-1] !== '\\') { inStr = null; }
+          else if (!inStr && ch === '/' && line[i+1] === '/') {
+            return line.substring(0, i).trimEnd();
+          }
+        }
+        return line;
+      }).join('\n');
+    }
+
+    function showError(msg) {
+      const b = document.getElementById('errorBox');
+      b.textContent = msg; b.classList.remove('hidden');
+      document.getElementById('outputSection').classList.add('hidden');
+    }
+    function clearError() { document.getElementById('errorBox').classList.add('hidden'); }
+    function copyOutput() { copyText(currentOutput, 'JS copied!'); }
+
+    function downloadJS() {
+      const blob = new Blob([currentOutput], {type: 'application/javascript'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'output.min.js';
+      a.click();
+    }
+
+    function clearAll() {
+      document.getElementById('jsInput').value = '';
+      document.getElementById('outputSection').classList.add('hidden');
+      clearError();
+    }
+
+    function loadSample() {
+      document.getElementById('jsInput').value = `// This is a sample JavaScript file
+/*
+ * Multi-line block comment
+ * describing this module
+ */
+
+function calculateTotal(items) {
+  // Sum all item prices
+  let total = 0;
+
+  for (let i = 0; i < items.length; i++) {
+    total += items[i].price; // add each price
+  }
+
+  return total;
+}
+
+/* Format currency helper */
+function formatCurrency(amount) {
+  return '$' + amount.toFixed(2);
+}
+
+const result = calculateTotal([
+  { name: 'Apple', price: 1.50 },
+  { name: 'Banana', price: 0.75 },
+  { name: 'Cherry', price: 3.00 }
+]);
+
+console.log('Total: ' + formatCurrency(result));`;
+    }
+  </script>
+</body>
+</html>

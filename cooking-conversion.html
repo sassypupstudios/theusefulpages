@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooking Conversion Calculator - Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Free cooking conversion calculator. Convert cups, tablespoons, teaspoons, ml, oz and more. Includes ingredient weight converter and oven temperature chart.">
+  <link rel="canonical" href="https://theusefulpages.com/cooking-conversion.html">
+  <meta property="og:title" content="Cooking Conversion Calculator - The Useful Pages">
+  <meta property="og:description" content="Convert cooking measurements: cups, tbsp, tsp, ml, oz, and more. Includes ingredient weights and oven temperature guide.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Cooking Conversion Calculator","url":"https://theusefulpages.com/cooking-conversion.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .section-title{font-size:1rem;font-weight:700;color:var(--primary);margin:1.5rem 0 0.75rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+    .section-title:first-child{margin-top:0;padding-top:0;border-top:none;}
+    .ref-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:0.5rem;}
+    .ref-table th{background:var(--primary);color:#fff;padding:0.4rem 0.6rem;text-align:left;font-weight:600;}
+    .ref-table td{padding:0.35rem 0.6rem;border-bottom:1px solid var(--border);}
+    .ref-table tr:nth-child(even) td{background:#f7fafb;}
+    .converter-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;}
+    @media(max-width:600px){.converter-row{grid-template-columns:1fr;}}
+    .swap-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:1.25rem;transition:all .15s;align-self:flex-end;}
+    .swap-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
+    .weight-result{background:#f0f8fa;border:1px solid #c5dfe5;border-radius:8px;padding:1rem;margin-top:1rem;font-size:0.9rem;}
+    .weight-result strong{color:var(--primary);font-size:1.1rem;}
+    .oven-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.5rem;margin-top:0.5rem;}
+    .oven-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.8rem;font-size:0.82rem;}
+    .oven-card .oven-label{font-weight:600;color:var(--primary);margin-bottom:0.2rem;}
+    .oven-card .oven-temps{color:var(--text-muted);}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Cooking Conversion Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Convert cooking measurements, find ingredient weights by volume, and look up oven temperatures.</p>
+      <div class="tool-card">
+
+        <!-- Volume Converter -->
+        <div class="section-title">Volume Converter</div>
+        <div class="converter-row" style="margin-bottom:1rem;">
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Amount</label>
+            <input type="number" class="form-input" id="vol-from-val" value="1" min="0" step="any" oninput="convertVol('from')">
+            <select class="form-select" id="vol-from-unit" onchange="convertVol('from')" style="margin-top:0.4rem;">
+              <option value="tsp">Teaspoons (tsp)</option>
+              <option value="tbsp">Tablespoons (tbsp)</option>
+              <option value="fl_oz">Fluid Ounces (fl oz)</option>
+              <option value="cup" selected>Cups</option>
+              <option value="pt">Pints (pt)</option>
+              <option value="qt">Quarts (qt)</option>
+              <option value="gal">Gallons (gal)</option>
+              <option value="ml">Milliliters (ml)</option>
+              <option value="l">Liters (L)</option>
+            </select>
+          </div>
+          <button class="swap-btn" onclick="swapVol()" title="Swap">⇄</button>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Result</label>
+            <input type="number" class="form-input" id="vol-to-val" oninput="convertVol('to')">
+            <select class="form-select" id="vol-to-unit" onchange="convertVol('from')" style="margin-top:0.4rem;">
+              <option value="tsp">Teaspoons (tsp)</option>
+              <option value="tbsp">Tablespoons (tbsp)</option>
+              <option value="fl_oz">Fluid Ounces (fl oz)</option>
+              <option value="cup">Cups</option>
+              <option value="pt">Pints (pt)</option>
+              <option value="qt">Quarts (qt)</option>
+              <option value="gal">Gallons (gal)</option>
+              <option value="ml" selected>Milliliters (ml)</option>
+              <option value="l">Liters (L)</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-accent" onclick="copyText(document.getElementById('vol-to-val').value,'Copied!')">Copy Result</button>
+          <button class="btn btn-outline" onclick="document.getElementById('vol-from-val').value='';document.getElementById('vol-to-val').value='';">Reset</button>
+        </div>
+
+        <!-- Quick Reference Table -->
+        <div class="section-title">Common Volume Equivalents</div>
+        <table class="ref-table">
+          <thead><tr><th>Unit</th><th>tsp</th><th>tbsp</th><th>fl oz</th><th>cup</th><th>ml</th></tr></thead>
+          <tbody>
+            <tr><td>1 teaspoon</td><td>1</td><td>⅓</td><td>⅙</td><td>1/48</td><td>4.93</td></tr>
+            <tr><td>1 tablespoon</td><td>3</td><td>1</td><td>½</td><td>1/16</td><td>14.79</td></tr>
+            <tr><td>1 fluid ounce</td><td>6</td><td>2</td><td>1</td><td>⅛</td><td>29.57</td></tr>
+            <tr><td>¼ cup</td><td>12</td><td>4</td><td>2</td><td>¼</td><td>59.15</td></tr>
+            <tr><td>½ cup</td><td>24</td><td>8</td><td>4</td><td>½</td><td>118.3</td></tr>
+            <tr><td>1 cup</td><td>48</td><td>16</td><td>8</td><td>1</td><td>236.6</td></tr>
+            <tr><td>1 pint</td><td>96</td><td>32</td><td>16</td><td>2</td><td>473.2</td></tr>
+            <tr><td>1 quart</td><td>192</td><td>64</td><td>32</td><td>4</td><td>946.4</td></tr>
+            <tr><td>1 gallon</td><td>768</td><td>256</td><td>128</td><td>16</td><td>3785</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Ingredient Weight Converter -->
+        <div class="section-title">Ingredient Weight by Volume</div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;">Different ingredients have different densities. Enter a volume and select an ingredient to get the approximate weight.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Amount</label>
+            <input type="number" class="form-input" id="ing-amount" value="1" min="0" step="any" oninput="calcIngWeight()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Volume Unit</label>
+            <select class="form-select" id="ing-unit" onchange="calcIngWeight()">
+              <option value="tsp">Teaspoons</option>
+              <option value="tbsp">Tablespoons</option>
+              <option value="fl_oz">Fluid Ounces</option>
+              <option value="cup" selected>Cups</option>
+              <option value="ml">Milliliters</option>
+              <option value="l">Liters</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ingredient</label>
+            <select class="form-select" id="ing-select" onchange="calcIngWeight()">
+              <option value="water">Water</option>
+              <option value="flour" selected>All-Purpose Flour</option>
+              <option value="sugar">Granulated Sugar</option>
+              <option value="brown_sugar">Brown Sugar (packed)</option>
+              <option value="butter">Butter</option>
+              <option value="milk">Whole Milk</option>
+              <option value="rice">White Rice (uncooked)</option>
+              <option value="honey">Honey</option>
+              <option value="olive_oil">Olive Oil</option>
+              <option value="salt">Salt (table)</option>
+              <option value="cocoa">Cocoa Powder</option>
+              <option value="oats">Rolled Oats</option>
+            </select>
+          </div>
+        </div>
+        <div class="weight-result" id="weight-result">Select an ingredient above to see its weight equivalent.</div>
+
+        <!-- Oven Temperature -->
+        <div class="section-title">Oven Temperature Guide</div>
+        <div class="form-row" style="align-items:flex-end;">
+          <div class="form-group">
+            <label class="form-label">°F</label>
+            <input type="number" class="form-input" id="oven-f" placeholder="e.g. 350" oninput="ovenConvert('f')">
+          </div>
+          <div class="form-group">
+            <label class="form-label">°C</label>
+            <input type="number" class="form-input" id="oven-c" placeholder="e.g. 177" oninput="ovenConvert('c')">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Gas Mark</label>
+            <input type="text" class="form-input" id="oven-gas" readonly placeholder="—">
+          </div>
+        </div>
+        <div class="oven-grid">
+          <div class="oven-card"><div class="oven-label">Very Low</div><div class="oven-temps">250°F / 120°C / Gas 1</div></div>
+          <div class="oven-card"><div class="oven-label">Low</div><div class="oven-temps">300°F / 150°C / Gas 2</div></div>
+          <div class="oven-card"><div class="oven-label">Moderate</div><div class="oven-temps">325°F / 165°C / Gas 3</div></div>
+          <div class="oven-card"><div class="oven-label">Medium</div><div class="oven-temps">350°F / 177°C / Gas 4</div></div>
+          <div class="oven-card"><div class="oven-label">Moderate Hot</div><div class="oven-temps">375°F / 190°C / Gas 5</div></div>
+          <div class="oven-card"><div class="oven-label">Hot</div><div class="oven-temps">400°F / 205°C / Gas 6</div></div>
+          <div class="oven-card"><div class="oven-label">Very Hot</div><div class="oven-temps">425°F / 220°C / Gas 7</div></div>
+          <div class="oven-card"><div class="oven-label">Extra Hot</div><div class="oven-temps">450°F / 230°C / Gas 8</div></div>
+          <div class="oven-card"><div class="oven-label">Broil/Grill</div><div class="oven-temps">500°F / 260°C / Gas 9</div></div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Use the Volume Converter to convert between cups, tablespoons, ml, and other units — type in either field</li>
+          <li>The quick reference table shows common equivalents at a glance</li>
+          <li>Use the Ingredient Weight section to find how much an ingredient weighs by volume (e.g. 1 cup of flour ≈ 120g)</li>
+          <li>The Oven Temperature section converts between °F, °C, and Gas Mark — type in either temperature field</li>
+          <li>Click common oven preset cards to quickly see the equivalents</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="unit-converter.html" class="related-link">Unit Converter</a>
+          <a href="height-converter.html" class="related-link">Height Converter</a>
+          <a href="speed-converter.html" class="related-link">Speed Converter</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  // Volume factors in ml
+  const volFactors = { tsp:4.92892, tbsp:14.7868, fl_oz:29.5735, cup:236.588, pt:473.176, qt:946.353, gal:3785.41, ml:1, l:1000 };
+
+  function convertVol(dir) {
+    const fv = document.getElementById('vol-from-val');
+    const tv = document.getElementById('vol-to-val');
+    const fu = document.getElementById('vol-from-unit').value;
+    const tu = document.getElementById('vol-to-unit').value;
+    if (dir === 'from') {
+      const v = parseFloat(fv.value);
+      if (!isNaN(v)) tv.value = parseFloat((v * volFactors[fu] / volFactors[tu]).toFixed(6));
+    } else {
+      const v = parseFloat(tv.value);
+      if (!isNaN(v)) fv.value = parseFloat((v * volFactors[tu] / volFactors[fu]).toFixed(6));
+    }
+  }
+
+  function swapVol() {
+    const fu = document.getElementById('vol-from-unit');
+    const tu = document.getElementById('vol-to-unit');
+    const tmp = fu.value; fu.value = tu.value; tu.value = tmp;
+    convertVol('from');
+  }
+
+  // Ingredient densities (g per ml)
+  const ingDensity = {
+    water: { name:'Water', g_per_ml: 1.0 },
+    flour: { name:'All-Purpose Flour', g_per_ml: 0.5075 },
+    sugar: { name:'Granulated Sugar', g_per_ml: 0.845 },
+    brown_sugar: { name:'Brown Sugar (packed)', g_per_ml: 0.93 },
+    butter: { name:'Butter', g_per_ml: 0.911 },
+    milk: { name:'Whole Milk', g_per_ml: 1.03 },
+    rice: { name:'White Rice (uncooked)', g_per_ml: 0.74 },
+    honey: { name:'Honey', g_per_ml: 1.42 },
+    olive_oil: { name:'Olive Oil', g_per_ml: 0.908 },
+    salt: { name:'Salt (table)', g_per_ml: 1.217 },
+    cocoa: { name:'Cocoa Powder', g_per_ml: 0.4233 },
+    oats: { name:'Rolled Oats', g_per_ml: 0.34 }
+  };
+
+  function calcIngWeight() {
+    const amt = parseFloat(document.getElementById('ing-amount').value);
+    const unit = document.getElementById('ing-unit').value;
+    const ing = document.getElementById('ing-select').value;
+    const el = document.getElementById('weight-result');
+    if (isNaN(amt) || amt <= 0) { el.innerHTML = 'Enter a valid amount above.'; return; }
+    const ml = amt * volFactors[unit];
+    const d = ingDensity[ing];
+    const grams = ml * d.g_per_ml;
+    const oz = grams / 28.3495;
+    const unitName = document.getElementById('ing-unit').options[document.getElementById('ing-unit').selectedIndex].text;
+    el.innerHTML = `<strong>${amt} ${unitName}</strong> of <strong>${d.name}</strong> ≈ <strong>${grams.toFixed(1)} g</strong> (${oz.toFixed(2)} oz)<br><span style="font-size:0.78rem;color:var(--text-muted);">Based on ${d.g_per_ml} g/ml density. Actual weight may vary with packing method.</span>`;
+  }
+
+  function ovenConvert(from) {
+    const fEl = document.getElementById('oven-f');
+    const cEl = document.getElementById('oven-c');
+    const gEl = document.getElementById('oven-gas');
+    let f, c;
+    if (from === 'f') {
+      f = parseFloat(fEl.value);
+      if (isNaN(f)) { cEl.value=''; gEl.value=''; return; }
+      c = (f - 32) * 5/9;
+      cEl.value = Math.round(c);
+    } else {
+      c = parseFloat(cEl.value);
+      if (isNaN(c)) { fEl.value=''; gEl.value=''; return; }
+      f = c * 9/5 + 32;
+      fEl.value = Math.round(f);
+    }
+    // Gas mark approximation
+    let gas = '—';
+    if (f < 275) gas = '½';
+    else if (f < 325) gas = '1–2';
+    else if (f < 350) gas = '3';
+    else if (f < 375) gas = '4';
+    else if (f < 400) gas = '5';
+    else if (f < 425) gas = '6';
+    else if (f < 450) gas = '7';
+    else if (f < 475) gas = '8';
+    else gas = '9';
+    gEl.value = gas;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('cooking-conversion.html'); injectFooter();
+    convertVol('from');
+    calcIngWeight();
+  });
+  </script>
+</body>
+</html>

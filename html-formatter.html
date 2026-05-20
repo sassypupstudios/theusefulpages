@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Formatter & Minifier - Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Free online HTML formatter and minifier. Beautify messy HTML with proper indentation or minify it to reduce file size. Copy or download output instantly.">
+  <link rel="canonical" href="https://theusefulpages.com/html-formatter.html">
+  <meta property="og:title" content="HTML Formatter & Minifier - The Useful Pages">
+  <meta property="og:description" content="Free online HTML formatter and minifier. Beautify or minify HTML instantly with size reduction stats.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"HTML Formatter & Minifier","url":"https://theusefulpages.com/html-formatter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .error-box { background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:1rem;color:#dc2626;font-size:0.875rem;margin-top:1rem; }
+    .indent-opts { display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap; }
+    .radio-label { display:flex;align-items:center;gap:0.35rem;font-size:0.875rem;cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">HTML Formatter & Minifier</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Beautify HTML with proper indentation or minify it to reduce file size. See size reduction stats instantly.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" style="margin-bottom:1rem;">
+          <button class="tab-btn active" id="tab-beautify" onclick="switchTab('beautify')">Beautify</button>
+          <button class="tab-btn" id="tab-minify" onclick="switchTab('minify')">Minify</button>
+        </div>
+
+        <div id="beautifyOpts" class="indent-opts" style="margin-bottom:1rem;">
+          <span style="font-size:0.875rem;font-weight:500;">Indent:</span>
+          <label class="radio-label"><input type="radio" name="indent" value="2" checked> 2 spaces</label>
+          <label class="radio-label"><input type="radio" name="indent" value="4"> 4 spaces</label>
+          <label class="radio-label"><input type="radio" name="indent" value="tab"> Tab</label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">HTML Input</label>
+          <textarea id="htmlInput" class="form-textarea code-area" rows="10" placeholder="Paste your HTML here..."></textarea>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" id="actionBtn" onclick="runAction()">Beautify HTML</button>
+          <button class="btn btn-ghost btn-sm" onclick="clearAll()">Clear</button>
+          <button class="btn btn-ghost btn-sm" onclick="loadSample()">Load Sample</button>
+        </div>
+
+        <div id="errorBox" class="error-box hidden"></div>
+
+        <div id="outputSection" class="hidden" style="margin-top:1.25rem;">
+          <div class="stat-grid" id="statsGrid" style="margin-bottom:1rem;"></div>
+          <label class="form-label">Output</label>
+          <pre id="htmlOutput" class="mono-output" style="max-height:400px;overflow:auto;white-space:pre-wrap;"></pre>
+          <div class="btn-row" style="margin-top:0.75rem;">
+            <button class="btn btn-outline btn-sm" onclick="copyOutput()">Copy Output</button>
+            <button class="btn btn-ghost btn-sm" onclick="downloadHTML()">Download .html</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Paste your HTML code into the input box above.</li>
+          <li><strong>Beautify</strong> tab: formats HTML with clean indentation. Choose 2 spaces, 4 spaces, or tabs.</li>
+          <li><strong>Minify</strong> tab: removes all unnecessary whitespace to reduce file size.</li>
+          <li>After converting, view size stats including bytes saved and reduction percentage.</li>
+          <li>Copy the output to clipboard or download as an .html file.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="json-formatter.html">JSON Formatter</a>
+          <a href="css-to-json.html">CSV to JSON</a>
+          <a href="js-minifier.html">JS Minifier</a>
+          <a href="markdown-previewer.html">Markdown Previewer</a>
+          <a href="color-picker.html">Color Picker</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar"><div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('html-formatter.html'); injectFooter(); });
+
+    let currentTab = 'beautify';
+    let currentOutput = '';
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.getElementById('tab-beautify').className = tab === 'beautify' ? 'tab-btn active' : 'tab-btn';
+      document.getElementById('tab-minify').className = tab === 'minify' ? 'tab-btn active' : 'tab-btn';
+      document.getElementById('beautifyOpts').style.display = tab === 'beautify' ? '' : 'none';
+      document.getElementById('actionBtn').textContent = tab === 'beautify' ? 'Beautify HTML' : 'Minify HTML';
+      document.getElementById('outputSection').classList.add('hidden');
+      clearError();
+    }
+
+    function getIndent() {
+      const v = document.querySelector('input[name="indent"]:checked').value;
+      return v === 'tab' ? '\t' : ' '.repeat(parseInt(v));
+    }
+
+    const VOID_TAGS = new Set(['area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr']);
+    const INLINE_TAGS = new Set(['a','abbr','acronym','b','bdo','big','br','button','cite','code','dfn','em','i','img','input','kbd','label','map','object','output','q','s','samp','select','small','span','strong','sub','sup','textarea','time','tt','u','var']);
+
+    function beautifyHTML(html, indent) {
+      // Tokenize HTML into tags and text
+      const tokens = [];
+      const re = /(<[^>]+>|[^<]+)/g;
+      let m;
+      while ((m = re.exec(html)) !== null) {
+        const tok = m[1];
+        if (tok.trim()) tokens.push(tok);
+      }
+
+      let level = 0;
+      let out = '';
+      let lastWasBlock = false;
+
+      for (let i = 0; i < tokens.length; i++) {
+        const tok = tokens[i].trim();
+        if (!tok) continue;
+
+        if (tok.startsWith('<!--')) {
+          out += indent.repeat(level) + tok + '\n';
+          continue;
+        }
+
+        if (tok.startsWith('</')) {
+          // closing tag
+          const tag = tok.match(/<\/(\w+)/)?.[1]?.toLowerCase() || '';
+          if (!INLINE_TAGS.has(tag)) { level = Math.max(0, level - 1); }
+          out += indent.repeat(level) + tok + '\n';
+        } else if (tok.startsWith('<')) {
+          const tag = tok.match(/<(\w+)/)?.[1]?.toLowerCase() || '';
+          const isSelfClose = tok.endsWith('/>') || VOID_TAGS.has(tag);
+          if (INLINE_TAGS.has(tag)) {
+            out += indent.repeat(level) + tok + '\n';
+          } else {
+            out += indent.repeat(level) + tok + '\n';
+            if (!isSelfClose) level++;
+          }
+        } else {
+          // text node
+          out += indent.repeat(level) + tok + '\n';
+        }
+      }
+      return out.trimEnd();
+    }
+
+    function minifyHTML(html) {
+      return html
+        .replace(/<!--[\s\S]*?-->/g, '')       // remove comments
+        .replace(/\s+/g, ' ')                   // collapse whitespace
+        .replace(/>\s+</g, '><')               // remove space between tags
+        .replace(/\s+(\/?>)/g, '$1')           // remove space before />
+        .replace(/(<\w[^>]*)\s+>/g, '$1>')    // clean up tag close
+        .trim();
+    }
+
+    function runAction() {
+      const input = document.getElementById('htmlInput').value;
+      if (!input.trim()) { showError('Please enter some HTML.'); return; }
+      clearError();
+
+      let result;
+      if (currentTab === 'beautify') {
+        result = beautifyHTML(input, getIndent());
+      } else {
+        result = minifyHTML(input);
+      }
+
+      currentOutput = result;
+      document.getElementById('htmlOutput').textContent = result;
+
+      const origBytes = new TextEncoder().encode(input).length;
+      const newBytes = new TextEncoder().encode(result).length;
+      const diff = origBytes - newBytes;
+      const pct = origBytes > 0 ? ((Math.abs(diff) / origBytes) * 100).toFixed(1) : '0';
+      const lines = result.split('\n').length;
+
+      document.getElementById('statsGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtNum(origBytes)}</div><div class="stat-label">Original bytes</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtNum(newBytes)}</div><div class="stat-label">Output bytes</div></div>
+        <div class="stat-box"><div class="stat-value">${currentTab === 'minify' ? '-' : ''}${pct}%</div><div class="stat-label">${currentTab === 'minify' ? 'Reduction' : 'Size change'}</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtNum(lines)}</div><div class="stat-label">Lines</div></div>
+      `;
+      document.getElementById('outputSection').classList.remove('hidden');
+    }
+
+    function showError(msg) {
+      const b = document.getElementById('errorBox');
+      b.textContent = msg; b.classList.remove('hidden');
+    }
+    function clearError() { document.getElementById('errorBox').classList.add('hidden'); }
+    function copyOutput() { copyText(currentOutput, 'HTML copied!'); }
+
+    function downloadHTML() {
+      const blob = new Blob([currentOutput], {type: 'text/html'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'output.html';
+      a.click();
+    }
+
+    function clearAll() {
+      document.getElementById('htmlInput').value = '';
+      document.getElementById('outputSection').classList.add('hidden');
+      clearError();
+    }
+
+    function loadSample() {
+      document.getElementById('htmlInput').value = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Sample Page</title></head><body><div class="container"><h1>Hello World</h1><p>This is a <strong>sample</strong> paragraph with some <a href="#">inline elements</a> inside it.</p><ul><li>Item one</li><li>Item two</li><li>Item three</li></ul></div></body></html>`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savings Calculator - Free Online Savings Goal Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate how your savings grow over time or find the monthly contribution needed to reach a savings goal. Includes inflation-adjusted value and year-by-year table.">
+  <link rel="canonical" href="https://theusefulpages.com/savings-calculator.html">
+  <meta property="og:title" content="Savings Calculator - The Useful Pages">
+  <meta property="og:description" content="Project savings growth or calculate the monthly deposit needed to hit a goal. Includes inflation adjustment and year-by-year timeline.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Savings Calculator","url":"https://theusefulpages.com/savings-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tab-group { display:flex; gap:0; border:2px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:1.5rem; }
+    .tab-btn { flex:1; padding:0.625rem 1rem; background:white; border:none; cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--text-muted); transition:all 0.15s; font-family:inherit; }
+    .tab-btn.active { background:var(--primary); color:white; }
+    .tab-btn:not(:last-child) { border-right:2px solid var(--border); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Savings Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Project your savings growth or calculate what you need to save to reach a goal.</p>
+      <div class="tool-card">
+        <div class="tab-group">
+          <button class="tab-btn active" id="tab-growth" onclick="switchTab('growth')">Savings Growth</button>
+          <button class="tab-btn" id="tab-goal" onclick="switchTab('goal')">Goal Calculator</button>
+        </div>
+
+        <!-- Growth mode -->
+        <div id="panel-growth">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Initial Deposit ($)</label>
+              <input type="number" class="form-input" id="initialDeposit" value="5000" min="0" step="100">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Monthly Contribution ($)</label>
+              <input type="number" class="form-input" id="monthlyContrib" value="300" min="0" step="10">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Annual Interest Rate (%)</label>
+              <input type="number" class="form-input" id="interestRate" value="4.5" min="0" max="30" step="0.01">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Years</label>
+              <input type="number" class="form-input" id="years" value="10" min="1" max="50">
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary btn-block" onclick="calcGrowth()">Calculate Growth</button>
+          </div>
+        </div>
+
+        <!-- Goal mode -->
+        <div id="panel-goal" class="hidden">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Savings Goal ($)</label>
+              <input type="number" class="form-input" id="goalAmount" value="50000" min="0" step="500">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Initial Deposit ($)</label>
+              <input type="number" class="form-input" id="goalInitial" value="1000" min="0" step="100">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Annual Interest Rate (%)</label>
+            <input type="number" class="form-input" id="goalRate" value="4.5" min="0" max="30" step="0.01">
+          </div>
+          <div class="tab-group" style="margin-bottom:1rem;">
+            <button class="tab-btn active" id="subtab-contrib" onclick="switchGoalMode('contrib')">Find Monthly Contribution</button>
+            <button class="tab-btn" id="subtab-years" onclick="switchGoalMode('years')">Find Years Needed</button>
+          </div>
+          <div id="goal-contrib-panel">
+            <div class="form-group">
+              <label class="form-label">Target Years</label>
+              <input type="number" class="form-input" id="goalYears" value="5" min="1" max="50">
+            </div>
+          </div>
+          <div id="goal-years-panel" class="hidden">
+            <div class="form-group">
+              <label class="form-label">Monthly Contribution ($)</label>
+              <input type="number" class="form-input" id="goalMonthly" value="500" min="0" step="10">
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary btn-block" onclick="calcGoal()">Calculate Goal</button>
+          </div>
+        </div>
+
+        <div id="results" class="hidden" style="margin-top:1.5rem;">
+          <div class="stat-grid" id="statGrid"></div>
+          <div id="inflationNote" style="margin-top:0.75rem;padding:0.75rem;background:var(--surface);border-radius:8px;font-size:0.875rem;color:var(--text-muted);"></div>
+
+          <div id="tableSection" style="margin-top:1.5rem;">
+            <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;">Year-by-Year Timeline</h3>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Year</th><th>Year-End Balance</th><th>Total Deposited</th><th>Interest Earned</th></tr></thead>
+                <tbody id="timelineBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div style="margin-top:1rem;">
+            <button class="btn btn-accent btn-sm" onclick="copySummary()">Copy Summary</button>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">For educational purposes only — not financial advice.</p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Use <strong>Savings Growth</strong> to project how much a deposit + contributions will grow over time.</li>
+          <li>Use <strong>Goal Calculator</strong> to find the monthly contribution needed to hit a target amount.</li>
+          <li>Switch to "Find Years Needed" in goal mode to see how long it takes at a given monthly amount.</li>
+          <li>Interest is compounded monthly in all calculations.</li>
+          <li>The inflation note shows your future balance in today's purchasing power (at 2.5% inflation).</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="compound-interest.html">Compound Interest Calculator</a>
+          <a href="retirement-calculator.html">Retirement Calculator</a>
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="debt-payoff.html">Debt Payoff Calculator</a>
+          <a href="mortgage-calculator.html">Mortgage Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('savings-calculator.html'); injectFooter(); });
+
+    let currentTab = 'growth';
+    let goalMode = 'contrib';
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.getElementById('tab-growth').classList.toggle('active', tab === 'growth');
+      document.getElementById('tab-goal').classList.toggle('active', tab === 'goal');
+      document.getElementById('panel-growth').classList.toggle('hidden', tab !== 'growth');
+      document.getElementById('panel-goal').classList.toggle('hidden', tab !== 'goal');
+      document.getElementById('results').classList.add('hidden');
+    }
+
+    function switchGoalMode(mode) {
+      goalMode = mode;
+      document.getElementById('subtab-contrib').classList.toggle('active', mode === 'contrib');
+      document.getElementById('subtab-years').classList.toggle('active', mode === 'years');
+      document.getElementById('goal-contrib-panel').classList.toggle('hidden', mode !== 'contrib');
+      document.getElementById('goal-years-panel').classList.toggle('hidden', mode !== 'years');
+    }
+
+    function runGrowthSim(P, PMT, annualRate, years) {
+      const r = annualRate / 100 / 12;
+      let balance = P;
+      let totalDeposited = P;
+      const rows = [];
+      for (let yr = 1; yr <= years; yr++) {
+        for (let mo = 0; mo < 12; mo++) {
+          balance = balance * (1 + r) + PMT;
+          totalDeposited += PMT;
+        }
+        rows.push({ yr, balance, totalDeposited, interestEarned: balance - totalDeposited });
+      }
+      return { finalBalance: balance, totalDeposited, rows };
+    }
+
+    function calcGrowth() {
+      const P = parseFloat(document.getElementById('initialDeposit').value) || 0;
+      const PMT = parseFloat(document.getElementById('monthlyContrib').value) || 0;
+      const rate = parseFloat(document.getElementById('interestRate').value) || 0;
+      const years = parseInt(document.getElementById('years').value) || 1;
+
+      const { finalBalance, totalDeposited, rows } = runGrowthSim(P, PMT, rate, years);
+      const interestEarned = finalBalance - totalDeposited;
+      const interestPct = totalDeposited > 0 ? (interestEarned / totalDeposited) * 100 : 0;
+      const inflationAdj = finalBalance / Math.pow(1.025, years);
+
+      document.getElementById('statGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(finalBalance)}</div><div class="stat-label">Future Value</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(totalDeposited)}</div><div class="stat-label">Total Deposited</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(interestEarned)}</div><div class="stat-label">Interest Earned</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtPct(interestPct, 1)}</div><div class="stat-label">Interest % of Total</div></div>
+      `;
+      document.getElementById('inflationNote').innerHTML = `<strong>Inflation-adjusted value (2.5%/yr):</strong> ${fmtCurrency(inflationAdj)} in today's purchasing power after ${years} years.`;
+      renderTimeline(rows);
+      document.getElementById('results').classList.remove('hidden');
+    }
+
+    function calcGoal() {
+      const goal = parseFloat(document.getElementById('goalAmount').value) || 0;
+      const P = parseFloat(document.getElementById('goalInitial').value) || 0;
+      const rate = parseFloat(document.getElementById('goalRate').value) || 0;
+      const r = rate / 100 / 12;
+
+      if (goalMode === 'contrib') {
+        const years = parseInt(document.getElementById('goalYears').value) || 1;
+        const n = years * 12;
+        // FV = P*(1+r)^n + PMT*[(1+r)^n - 1]/r
+        // goal = P*(1+r)^n + PMT*[(1+r)^n - 1]/r
+        // PMT = (goal - P*(1+r)^n) * r / [(1+r)^n - 1]
+        const factor = r > 0 ? Math.pow(1 + r, n) : 1;
+        let PMT;
+        if (r === 0) { PMT = (goal - P) / n; }
+        else { PMT = (goal - P * factor) * r / (factor - 1); }
+        if (PMT < 0) PMT = 0;
+
+        const { finalBalance, totalDeposited, rows } = runGrowthSim(P, PMT, rate, years);
+        const inflationAdj = goal / Math.pow(1.025, years);
+        document.getElementById('statGrid').innerHTML = `
+          <div class="stat-box"><div class="stat-value">${fmtCurrency(PMT)}</div><div class="stat-label">Required Monthly Contribution</div></div>
+          <div class="stat-box"><div class="stat-value">${fmtCurrency(goal)}</div><div class="stat-label">Savings Goal</div></div>
+          <div class="stat-box"><div class="stat-value">${fmtCurrency(finalBalance - totalDeposited)}</div><div class="stat-label">Interest Earned</div></div>
+          <div class="stat-box"><div class="stat-value">${fmtCurrency(totalDeposited)}</div><div class="stat-label">Total Deposited</div></div>
+        `;
+        document.getElementById('inflationNote').innerHTML = `<strong>Goal inflation-adjusted (2.5%/yr):</strong> ${fmtCurrency(goal)} in ${years} years = ${fmtCurrency(inflationAdj)} in today's dollars.`;
+        renderTimeline(rows);
+      } else {
+        const PMT = parseFloat(document.getElementById('goalMonthly').value) || 0;
+        // Find years: simulate month by month until balance >= goal or max 600 months
+        let balance = P;
+        let months = 0;
+        let totalDep = P;
+        while (balance < goal && months < 600) {
+          balance = balance * (1 + r) + PMT;
+          totalDep += PMT;
+          months++;
+        }
+        if (months >= 600) { showToast('Goal not reachable within 50 years at this rate.'); return; }
+        const years = Math.ceil(months / 12);
+        const { rows } = runGrowthSim(P, PMT, rate, years);
+        document.getElementById('statGrid').innerHTML = `
+          <div class="stat-box"><div class="stat-value">${Math.floor(months / 12)}y ${months % 12}m</div><div class="stat-label">Time to Reach Goal</div></div>
+          <div class="stat-box"><div class="stat-value">${fmtCurrency(goal)}</div><div class="stat-label">Savings Goal</div></div>
+          <div class="stat-box"><div class="stat-value">${fmtCurrency(balance - totalDep)}</div><div class="stat-label">Interest Earned</div></div>
+          <div class="stat-box"><div class="stat-value">${fmtCurrency(totalDep)}</div><div class="stat-label">Total Deposited</div></div>
+        `;
+        document.getElementById('inflationNote').innerHTML = `<strong>Goal reached in approximately ${Math.floor(months/12)} years and ${months % 12} months</strong> with ${fmtCurrency(PMT)}/month at ${rate}% annual interest.`;
+        renderTimeline(rows);
+      }
+      document.getElementById('results').classList.remove('hidden');
+    }
+
+    function renderTimeline(rows) {
+      document.getElementById('timelineBody').innerHTML = rows.map(r => `
+        <tr>
+          <td>${r.yr}</td>
+          <td>${fmtCurrency(r.balance)}</td>
+          <td>${fmtCurrency(r.totalDeposited)}</td>
+          <td>${fmtCurrency(r.interestEarned)}</td>
+        </tr>
+      `).join('');
+    }
+
+    function copySummary() {
+      const boxes = document.querySelectorAll('.stat-box');
+      let text = 'Savings Calculator Summary\n';
+      boxes.forEach(b => { text += `${b.querySelector('.stat-label').textContent}: ${b.querySelector('.stat-value').textContent}\n`; });
+      text += '\n' + document.getElementById('inflationNote').innerText;
+      copyText(text, 'Summary copied!');
+    }
+  </script>
+</body>
+</html>

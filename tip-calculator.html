@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator - Free Online Tip & Bill Splitter | The Useful Pages</title>
+  <meta name="description" content="Calculate tip amount, split the bill between people, and round up totals instantly. Free tip calculator with custom tip percentage and pre-tax option.">
+  <link rel="canonical" href="https://theusefulpages.com/tip-calculator.html">
+  <meta property="og:title" content="Tip Calculator - The Useful Pages">
+  <meta property="og:description" content="Calculate tip and split the bill instantly. Supports custom tip %, split by people, round-up, and pre-tax tip options.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tip Calculator","url":"https://theusefulpages.com/tip-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tip-btn-group { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; }
+    .tip-btn { padding:0.5rem 1rem; border:2px solid var(--border); border-radius:8px; background:white; cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--text-muted); transition:all 0.15s; font-family:inherit; }
+    .tip-btn:hover { border-color:var(--primary); color:var(--primary); }
+    .tip-btn.active { background:var(--primary); border-color:var(--primary); color:white; }
+    .result-big { text-align:center; padding:1.25rem; background:var(--primary); color:white; border-radius:12px; margin-bottom:0.75rem; }
+    .result-big .amount { font-size:2.25rem; font-weight:700; }
+    .result-big .label { font-size:0.875rem; opacity:0.85; margin-top:0.25rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Tip Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate your tip and split the bill — updates instantly as you type.</p>
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label">Bill Amount ($)</label>
+          <input type="number" class="form-input" id="billAmount" placeholder="0.00" min="0" step="0.01" oninput="calculate()">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tip Percentage</label>
+          <div class="tip-btn-group">
+            <button class="tip-btn" onclick="setTip(10)">10%</button>
+            <button class="tip-btn" onclick="setTip(15)">15%</button>
+            <button class="tip-btn active" onclick="setTip(18)">18%</button>
+            <button class="tip-btn" onclick="setTip(20)">20%</button>
+            <button class="tip-btn" onclick="setTip(25)">25%</button>
+            <button class="tip-btn" onclick="setTip('custom')">Custom</button>
+          </div>
+          <div id="customTipGroup" class="hidden">
+            <input type="number" class="form-input" id="customTipPct" placeholder="Custom tip %" min="0" max="100" step="1" oninput="calculate()">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Number of People</label>
+            <input type="number" class="form-input" id="numPeople" value="1" min="1" max="100" oninput="calculate()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pre-Tax Amount ($) <span style="font-size:0.75rem;font-weight:400;">(optional)</span></label>
+            <input type="number" class="form-input" id="preTaxAmount" placeholder="Leave blank to tip on total" min="0" step="0.01" oninput="calculate()">
+          </div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap;">
+          <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.875rem;cursor:pointer;">
+            <input type="checkbox" id="roundUp" onchange="calculate()"> Round up per-person total
+          </label>
+        </div>
+
+        <div id="results" style="margin-top:0.5rem;">
+          <div class="result-big">
+            <div class="amount" id="perPersonAmount">$0.00</div>
+            <div class="label">Per Person</div>
+          </div>
+          <div class="stat-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="stat-box"><div class="stat-value" id="tipAmount">$0.00</div><div class="stat-label">Tip Amount</div></div>
+            <div class="stat-box"><div class="stat-value" id="totalBill">$0.00</div><div class="stat-label">Total Bill</div></div>
+            <div class="stat-box"><div class="stat-value" id="tipPctDisplay">18%</div><div class="stat-label">Tip %</div></div>
+          </div>
+          <div style="margin-top:0.75rem;">
+            <button class="btn btn-accent btn-sm" onclick="copyResult()">Copy Result</button>
+          </div>
+        </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">For educational purposes only — not financial advice.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your total bill amount — results update instantly as you type.</li>
+          <li>Select a preset tip percentage or choose Custom to enter your own.</li>
+          <li>Enter the number of people splitting the bill.</li>
+          <li>Optionally enter a pre-tax amount to calculate tip on food only (before tax).</li>
+          <li>Check "Round up" to round each person's share to the nearest dollar.</li>
+          <li>Use "Copy Result" to share the breakdown with your group.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="hourly-salary.html">Hourly to Salary Converter</a>
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="savings-calculator.html">Savings Calculator</a>
+          <a href="car-payment.html">Car Payment Calculator</a>
+          <a href="debt-payoff.html">Debt Payoff Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('tip-calculator.html'); injectFooter(); calculate(); });
+
+    let currentTipPct = 18;
+
+    function setTip(val) {
+      document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      const customGroup = document.getElementById('customTipGroup');
+      if (val === 'custom') {
+        customGroup.classList.remove('hidden');
+        currentTipPct = parseFloat(document.getElementById('customTipPct').value) || 0;
+      } else {
+        customGroup.classList.add('hidden');
+        currentTipPct = val;
+      }
+      calculate();
+    }
+
+    function calculate() {
+      const bill = parseFloat(document.getElementById('billAmount').value) || 0;
+      const preTax = parseFloat(document.getElementById('preTaxAmount').value);
+      const people = parseInt(document.getElementById('numPeople').value) || 1;
+      const roundUp = document.getElementById('roundUp').checked;
+      const customPct = parseFloat(document.getElementById('customTipPct').value);
+
+      if (document.getElementById('customTipGroup') && !document.getElementById('customTipGroup').classList.contains('hidden')) {
+        currentTipPct = isNaN(customPct) ? 0 : customPct;
+      }
+
+      const tipBase = (!isNaN(preTax) && preTax > 0 && document.getElementById('preTaxAmount').value !== '') ? preTax : bill;
+      const tipAmount = tipBase * (currentTipPct / 100);
+      const totalBill = bill + tipAmount;
+      let perPerson = totalBill / people;
+      if (roundUp) perPerson = Math.ceil(perPerson);
+
+      document.getElementById('tipAmount').textContent = fmtCurrency(tipAmount);
+      document.getElementById('totalBill').textContent = fmtCurrency(totalBill);
+      document.getElementById('perPersonAmount').textContent = fmtCurrency(perPerson);
+      document.getElementById('tipPctDisplay').textContent = fmtPct(currentTipPct, 0);
+    }
+
+    function copyResult() {
+      const bill = document.getElementById('billAmount').value || '0';
+      const tip = document.getElementById('tipAmount').textContent;
+      const total = document.getElementById('totalBill').textContent;
+      const perPerson = document.getElementById('perPersonAmount').textContent;
+      const people = document.getElementById('numPeople').value;
+      const text = `Tip Calculator Result\nBill: $${bill}\nTip (${currentTipPct}%): ${tip}\nTotal: ${total}\nPer person (${people}): ${perPerson}`;
+      copyText(text, 'Result copied!');
+    }
+  </script>
+</body>
+</html>

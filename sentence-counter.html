@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentence Counter — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Count sentences, words, and characters in your text. See average sentence length, longest and shortest sentences. Free online sentence counter tool.">
+  <link rel="canonical" href="https://theusefulpages.com/sentence-counter">
+  <meta property="og:title" content="Sentence Counter — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Sentence Counter","url":"https://theusefulpages.com/sentence-counter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .sentence-highlight {
+      display: inline;
+      border-radius: 3px;
+      padding: 1px 0;
+      cursor: default;
+      transition: background 0.15s;
+    }
+    .sentence-highlight:hover {
+      background: rgba(35, 106, 119, 0.15);
+    }
+    .sentence-highlight.longest { outline: 2px solid #dc3545; outline-offset: 1px; }
+    .sentence-highlight.shortest { outline: 2px solid #28a745; outline-offset: 1px; }
+    .sentence-view {
+      background: var(--bg-alt, #f7f7f5);
+      border: 1px solid var(--border, #e0ddd8);
+      border-radius: 10px;
+      padding: 1.25rem;
+      font-size: 0.9375rem;
+      line-height: 1.85;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+    .legend-dot { display:inline-block; width:12px; height:12px; border-radius:2px; margin-right:4px; vertical-align:middle; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Sentence Counter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Analyze your text sentence by sentence — count, length, and structure at a glance.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label" for="mainText">Your Text</label>
+          <textarea class="form-textarea" id="mainText" placeholder="Paste or type your text here..." style="min-height:180px;" oninput="analyze()"></textarea>
+        </div>
+
+        <div class="stat-grid" style="margin-top:1rem;">
+          <div class="stat-box">
+            <div class="stat-value" id="sentenceCount">0</div>
+            <div class="stat-label">Sentences</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="wordCount">0</div>
+            <div class="stat-label">Words</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="charCount">0</div>
+            <div class="stat-label">Characters</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="avgLen">—</div>
+            <div class="stat-label">Avg words / sentence</div>
+          </div>
+        </div>
+
+        <div id="extrasArea" style="display:none;margin-top:1rem;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem;">
+            <div style="background:var(--bg-alt,#f7f7f5);border:1px solid var(--border,#e0ddd8);border-radius:8px;padding:0.75rem;">
+              <div style="font-size:0.75rem;font-weight:600;color:#dc3545;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;">Longest sentence</div>
+              <div id="longestSentence" style="font-size:0.875rem;color:var(--text);line-height:1.5;"></div>
+              <div id="longestCount" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem;"></div>
+            </div>
+            <div style="background:var(--bg-alt,#f7f7f5);border:1px solid var(--border,#e0ddd8);border-radius:8px;padding:0.75rem;">
+              <div style="font-size:0.75rem;font-weight:600;color:#28a745;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;">Shortest sentence</div>
+              <div id="shortestSentence" style="font-size:0.875rem;color:var(--text);line-height:1.5;"></div>
+              <div id="shortestCount" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem;"></div>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.5rem;">
+            <div style="font-size:0.8125rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Sentence View
+              <span style="font-weight:400;margin-left:0.75rem;">
+                <span style="color:#dc3545;">&#9632;</span> longest &nbsp;
+                <span style="color:#28a745;">&#9632;</span> shortest &nbsp;
+                <span style="opacity:0.5;">hover to highlight</span>
+              </span>
+            </div>
+            <button class="btn btn-secondary" onclick="copyStats()" style="font-size:0.8125rem;padding:0.3rem 0.75rem;">Copy Stats</button>
+          </div>
+          <div id="sentenceView" class="sentence-view"></div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Paste or type your text into the input box — all statistics update instantly.</li>
+          <li>See your sentence count, word count, character count, and average sentence length.</li>
+          <li>The <strong>Sentence View</strong> panel shows each sentence individually — hover over any sentence to highlight it. The longest sentence is outlined in red, the shortest in green.</li>
+          <li>Click <strong>Copy Stats</strong> to copy a summary of all counts to the clipboard.</li>
+        </ol>
+      </div>
+
+      <div id="related-tools"></div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('sentence-counter.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('sentence-counter.html', 'text');
+  });
+
+  let _sentences = [];
+
+  function wordCount(s) {
+    return s.trim().split(/\s+/).filter(Boolean).length;
+  }
+
+  function truncate(s, n) {
+    return s.length > n ? s.slice(0, n) + '…' : s;
+  }
+
+  function analyze() {
+    const text = document.getElementById('mainText').value;
+
+    // Split into sentences on . ! ? — keep the delimiter attached
+    const raw = text.match(/[^.!?]*[.!?]+[\s]*/g) || [];
+    // Also catch a trailing fragment with no terminal punctuation
+    const joined = raw.join('');
+    const trailing = text.slice(joined.length).trim();
+    _sentences = raw.map(s => s.trim()).filter(Boolean);
+    if (trailing) _sentences.push(trailing);
+
+    const sc = _sentences.length;
+    const wc = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+    const cc = text.length;
+    const avg = sc > 0 ? (_sentences.reduce((a, s) => a + wordCount(s), 0) / sc) : 0;
+
+    document.getElementById('sentenceCount').textContent = fmtNum(sc);
+    document.getElementById('wordCount').textContent = fmtNum(wc);
+    document.getElementById('charCount').textContent = fmtNum(cc);
+    document.getElementById('avgLen').textContent = sc > 0 ? avg.toFixed(1) : '—';
+
+    if (sc === 0) {
+      document.getElementById('extrasArea').style.display = 'none';
+      return;
+    }
+
+    // Longest / shortest
+    const lengths = _sentences.map(wordCount);
+    const maxLen = Math.max(...lengths);
+    const minLen = Math.min(...lengths);
+    const longestIdx = lengths.indexOf(maxLen);
+    const shortestIdx = lengths.indexOf(minLen);
+
+    document.getElementById('longestSentence').textContent = truncate(_sentences[longestIdx], 120);
+    document.getElementById('longestCount').textContent = `${maxLen} words`;
+    document.getElementById('shortestSentence').textContent = truncate(_sentences[shortestIdx], 120);
+    document.getElementById('shortestCount').textContent = `${minLen} word${minLen !== 1 ? 's' : ''}`;
+
+    // Sentence view with hover highlights
+    const html = _sentences.map((s, i) => {
+      let cls = 'sentence-highlight';
+      if (i === longestIdx) cls += ' longest';
+      if (i === shortestIdx) cls += ' shortest';
+      const esc = s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      return `<span class="${cls}" title="${wordCount(s)} words">${esc}</span> `;
+    }).join('');
+
+    document.getElementById('sentenceView').innerHTML = html;
+    document.getElementById('extrasArea').style.display = '';
+  }
+
+  function copyStats() {
+    const sc = document.getElementById('sentenceCount').textContent;
+    const wc = document.getElementById('wordCount').textContent;
+    const cc = document.getElementById('charCount').textContent;
+    const avg = document.getElementById('avgLen').textContent;
+    const stats = `Sentences: ${sc}\nWords: ${wc}\nCharacters: ${cc}\nAvg words/sentence: ${avg}`;
+    navigator.clipboard.writeText(stats).then(() => showToast('Stats copied!'));
+  }
+  </script>
+</body>
+</html>

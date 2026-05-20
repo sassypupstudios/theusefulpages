@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Time Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate reading time and speaking time for any text. Choose slow, average, or fast reading speed. Shows word count, character count, sentences, and paragraphs.">
+  <link rel="canonical" href="https://theusefulpages.com/reading-time">
+  <meta property="og:title" content="Reading Time Calculator — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Reading Time Calculator","url":"https://theusefulpages.com/reading-time","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Reading Time Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Paste your text to instantly estimate reading and speaking time.</p>
+
+      <div class="tool-card">
+        <div style="display:flex;gap:1rem;align-items:flex-end;flex-wrap:wrap;margin-bottom:1rem;">
+          <div class="form-group" style="margin-bottom:0;flex:1;min-width:200px;">
+            <label class="form-label" for="readingSpeed">Reading speed</label>
+            <select class="form-select" id="readingSpeed" onchange="updateCustomSpeed()">
+              <option value="150">Slow (150 wpm)</option>
+              <option value="200" selected>Average (200 wpm)</option>
+              <option value="250">Fast (250 wpm)</option>
+              <option value="custom">Custom...</option>
+            </select>
+          </div>
+          <div class="form-group" id="customSpeedGroup" style="display:none;margin-bottom:0;min-width:140px;">
+            <label class="form-label" for="customWpm">Words per minute</label>
+            <input type="number" class="form-input" id="customWpm" value="200" min="1" max="2000" oninput="analyze()">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="mainText">Your Text</label>
+          <textarea class="form-textarea" id="mainText" placeholder="Paste or type your text here..." style="min-height:200px;" oninput="analyze()"></textarea>
+        </div>
+
+        <div class="stat-grid" style="margin-top:1rem;">
+          <div class="stat-box" style="border-top:3px solid var(--primary);">
+            <div class="stat-value" id="readingTimeVal" style="color:var(--primary);">—</div>
+            <div class="stat-label">Reading Time</div>
+          </div>
+          <div class="stat-box" style="border-top:3px solid var(--accent);">
+            <div class="stat-value" id="speakingTimeVal" style="color:var(--accent);">—</div>
+            <div class="stat-label">Speaking Time</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="wordCountVal">0</div>
+            <div class="stat-label">Words</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="charCountVal">0</div>
+            <div class="stat-label">Characters</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="sentenceCountVal">0</div>
+            <div class="stat-label">Sentences</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="paraCountVal">0</div>
+            <div class="stat-label">Paragraphs</div>
+          </div>
+        </div>
+
+        <div id="wpmNote" style="font-size:0.8125rem;color:var(--text-muted);margin-top:0.75rem;text-align:center;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Paste or type your text into the box — stats update instantly.</li>
+          <li>Select a reading speed: <strong>Slow</strong> (150 wpm), <strong>Average</strong> (200 wpm), <strong>Fast</strong> (250 wpm), or enter a custom speed.</li>
+          <li>Reading time and speaking time update automatically as you change the speed or the text.</li>
+        </ol>
+        <p style="margin-top:0.75rem;"><strong>Speaking time</strong> is calculated at 125 words per minute — the typical pace for a comfortable presentation or speech. Use it to plan talks, podcasts, or voiceovers.</p>
+        <p style="margin-top:0.5rem;">Average adult reading speed is 200–250 wpm for non-fiction and 150–200 wpm for technical content.</p>
+      </div>
+
+      <div id="related-tools"></div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('reading-time.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('reading-time.html', 'text');
+  });
+
+  function updateCustomSpeed() {
+    const val = document.getElementById('readingSpeed').value;
+    document.getElementById('customSpeedGroup').style.display = val === 'custom' ? '' : 'none';
+    analyze();
+  }
+
+  function formatTime(minutes) {
+    if (minutes < 1) return 'under 1 min';
+    const h = Math.floor(minutes / 60);
+    const m = Math.round(minutes % 60);
+    if (h === 0) return `${m} min${m !== 1 ? 's' : ''}`;
+    return `${h}h ${m}m`;
+  }
+
+  function analyze() {
+    const text = document.getElementById('mainText').value;
+
+    // Word count
+    const words = text.trim() === '' ? [] : text.trim().split(/\s+/);
+    const wordCount = words.length;
+
+    // Character count
+    const charCount = text.length;
+
+    // Sentence count — split on . ! ? followed by space or end
+    const sentences = text.match(/[^.!?]*[.!?]+/g) || [];
+    const sentenceCount = sentences.length;
+
+    // Paragraph count
+    const paras = text.split(/\n\s*\n/).filter(p => p.trim().length > 0);
+    const paraCount = paras.length;
+
+    // Reading speed
+    const speedSel = document.getElementById('readingSpeed').value;
+    const wpm = speedSel === 'custom'
+      ? (parseInt(document.getElementById('customWpm').value) || 200)
+      : parseInt(speedSel);
+
+    const readingMins = wordCount / wpm;
+    const speakingMins = wordCount / 125;
+
+    document.getElementById('wordCountVal').textContent = fmtNum(wordCount);
+    document.getElementById('charCountVal').textContent = fmtNum(charCount);
+    document.getElementById('sentenceCountVal').textContent = fmtNum(sentenceCount);
+    document.getElementById('paraCountVal').textContent = fmtNum(paraCount);
+    document.getElementById('readingTimeVal').textContent = wordCount === 0 ? '—' : formatTime(readingMins);
+    document.getElementById('speakingTimeVal').textContent = wordCount === 0 ? '—' : formatTime(speakingMins);
+    document.getElementById('wpmNote').textContent = wordCount > 0
+      ? `Reading at ${fmtNum(wpm)} wpm · Speaking at 125 wpm`
+      : '';
+  }
+  </script>
+</body>
+</html>

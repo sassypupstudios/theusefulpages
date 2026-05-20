@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instant Pot to Slow Cooker Converter - Free Cooking Time Converter | The Useful Pages</title>
+  <meta name="description" content="Convert cooking times between Instant Pot and slow cooker instantly. Also converts oven recipes to Instant Pot. Includes a reference table for common foods.">
+  <link rel="canonical" href="https://theusefulpages.com/instant-pot-converter.html">
+  <meta property="og:title" content="Instant Pot ↔ Slow Cooker Converter - The Useful Pages"><meta property="og:description" content="Convert cooking times between Instant Pot, slow cooker, and oven."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Instant Pot Converter","url":"https://theusefulpages.com/instant-pot-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-big { font-size:2rem; font-weight:700; color:var(--primary); }
+    .release-badge { display:inline-block; background:var(--accent); color:#fff; border-radius:20px; padding:0.25rem 0.75rem; font-size:0.82rem; font-weight:600; margin-top:0.5rem; }
+    .ref-table { width:100%; border-collapse:collapse; font-size:0.875rem; }
+    .ref-table th { background:var(--primary); color:#fff; padding:0.6rem 0.75rem; text-align:left; }
+    .ref-table td { padding:0.6rem 0.75rem; border-bottom:1px solid var(--border); }
+    .ref-table tr:nth-child(even) td { background:var(--bg-secondary); }
+    .ref-table tr:last-child td { border-bottom:none; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Instant Pot ↔ Slow Cooker Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Convert cooking times between Instant Pot pressure cooker, slow cooker, and oven.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" id="tabGroup">
+          <button class="tab-btn active" onclick="switchTab('sc-ip')">Slow Cooker → Instant Pot</button>
+          <button class="tab-btn" onclick="switchTab('ip-sc')">Instant Pot → Slow Cooker</button>
+          <button class="tab-btn" onclick="switchTab('oven-ip')">Oven → Instant Pot</button>
+        </div>
+
+        <!-- Slow Cooker → Instant Pot -->
+        <div id="tab-sc-ip">
+          <div class="form-row" style="margin-top:1rem;">
+            <div class="form-group">
+              <label class="form-label">Food Category</label>
+              <select id="cat-sc" class="form-select" onchange="updateResult()">
+                <option value="beans">Beans / Legumes</option>
+                <option value="beef">Beef</option>
+                <option value="chicken" selected>Chicken</option>
+                <option value="pork">Pork</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="grains">Grains / Rice</option>
+                <option value="soup">Soup / Stew</option>
+                <option value="fish">Fish / Seafood</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Slow Cooker Mode</label>
+              <select id="scMode" class="form-select" onchange="updateResult()">
+                <option value="low">Low</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Slow Cooker Time</label>
+              <div class="input-group">
+                <input type="number" id="scHours" class="form-input" value="6" min="0" max="12" step="0.5" oninput="updateResult()">
+                <span class="input-group-text">hrs</span>
+              </div>
+            </div>
+          </div>
+          <div id="result-sc-ip" class="result-card" style="display:none;"></div>
+        </div>
+
+        <!-- Instant Pot → Slow Cooker -->
+        <div id="tab-ip-sc" style="display:none;">
+          <div class="form-row" style="margin-top:1rem;">
+            <div class="form-group">
+              <label class="form-label">Food Category</label>
+              <select id="cat-ip" class="form-select" onchange="updateResult()">
+                <option value="beans">Beans / Legumes</option>
+                <option value="beef">Beef</option>
+                <option value="chicken" selected>Chicken</option>
+                <option value="pork">Pork</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="grains">Grains / Rice</option>
+                <option value="soup">Soup / Stew</option>
+                <option value="fish">Fish / Seafood</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">IP Pressure Cook Time</label>
+              <div class="input-group">
+                <input type="number" id="ipMins" class="form-input" value="20" min="1" max="120" step="1" oninput="updateResult()">
+                <span class="input-group-text">min</span>
+              </div>
+            </div>
+          </div>
+          <div id="result-ip-sc" class="result-card" style="display:none;"></div>
+        </div>
+
+        <!-- Oven → Instant Pot -->
+        <div id="tab-oven-ip" style="display:none;">
+          <div class="form-row" style="margin-top:1rem;">
+            <div class="form-group">
+              <label class="form-label">Oven Temp (°F)</label>
+              <input type="number" id="ovenTemp" class="form-input" value="350" min="200" max="500" step="25" oninput="updateResult()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Oven Time</label>
+              <div class="input-group">
+                <input type="number" id="ovenHours" class="form-input" value="2" min="0" max="12" step="0.5" oninput="updateResult()">
+                <span class="input-group-text">hrs</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Food Category</label>
+              <select id="cat-oven" class="form-select" onchange="updateResult()">
+                <option value="beef" selected>Beef / Roast</option>
+                <option value="chicken">Chicken</option>
+                <option value="pork">Pork</option>
+                <option value="beans">Beans</option>
+                <option value="soup">Soup / Stew</option>
+              </select>
+            </div>
+          </div>
+          <div id="result-oven-ip" class="result-card" style="display:none;"></div>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;color:var(--primary);">Quick Reference Table</h2>
+        <div class="table-wrap">
+          <table class="ref-table">
+            <thead><tr><th>Food</th><th>Slow Cooker Low</th><th>Slow Cooker High</th><th>Instant Pot</th><th>Release</th></tr></thead>
+            <tbody>
+              <tr><td>Dried Beans</td><td>8–10 hrs</td><td>5–6 hrs</td><td>25–30 min</td><td>Natural</td></tr>
+              <tr><td>Beef Chuck Roast</td><td>8–10 hrs</td><td>4–5 hrs</td><td>60–80 min</td><td>Natural 15 min</td></tr>
+              <tr><td>Beef Stew</td><td>8–10 hrs</td><td>4–6 hrs</td><td>35 min</td><td>Natural 10 min</td></tr>
+              <tr><td>Whole Chicken</td><td>6–8 hrs</td><td>3–4 hrs</td><td>25–30 min</td><td>Natural 15 min</td></tr>
+              <tr><td>Chicken Breasts</td><td>4–6 hrs</td><td>3–4 hrs</td><td>10–15 min</td><td>Natural 5 min</td></tr>
+              <tr><td>Chicken Thighs</td><td>6–8 hrs</td><td>3–4 hrs</td><td>15 min</td><td>Natural 5 min</td></tr>
+              <tr><td>Pork Shoulder</td><td>8–10 hrs</td><td>4–6 hrs</td><td>60–75 min</td><td>Natural 15 min</td></tr>
+              <tr><td>Pork Ribs</td><td>6–8 hrs</td><td>3–4 hrs</td><td>25–30 min</td><td>Quick</td></tr>
+              <tr><td>Vegetables (soft)</td><td>2–3 hrs</td><td>1–2 hrs</td><td>3–5 min</td><td>Quick</td></tr>
+              <tr><td>Vegetables (root)</td><td>4–6 hrs</td><td>2–3 hrs</td><td>8–12 min</td><td>Quick</td></tr>
+              <tr><td>White Rice</td><td>2–2.5 hrs</td><td>1–1.5 hrs</td><td>3 min</td><td>Natural 10 min</td></tr>
+              <tr><td>Brown Rice</td><td>3–4 hrs</td><td>2–3 hrs</td><td>22 min</td><td>Natural 10 min</td></tr>
+              <tr><td>Soup / Broth</td><td>6–8 hrs</td><td>3–4 hrs</td><td>20–30 min</td><td>Quick</td></tr>
+              <tr><td>Fish / Salmon</td><td>1–2 hrs</td><td>1 hr</td><td>3–5 min</td><td>Quick</td></tr>
+              <tr><td>Shrimp</td><td>1–1.5 hrs</td><td>45 min</td><td>1–2 min</td><td>Quick</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card"><h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2><ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+        <li>Choose the conversion direction using the tabs at the top.</li>
+        <li>Select the food category and enter your original cooking time.</li>
+        <li>The converted time updates automatically as you type.</li>
+        <li>Pay attention to the recommended pressure release method — it affects texture.</li>
+        <li>Natural release means letting pressure drop on its own; quick release uses the valve.</li>
+        <li>Use the reference table below for quick lookups on common foods.</li>
+        <li>Times are estimates — always check food is fully cooked before serving.</li>
+      </ul></div>
+
+      <div class="related-card"><h3>Related Tools</h3><div class="related-links">
+        <a href="recipe-scaler.html">Recipe Scaler</a>
+      </div></div>
+    </main>
+    <aside class="tool-sidebar"><div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    // IP minutes per SC hour (low), factor for high = 0.6x low
+    const IP_RATIOS = {
+      beans:    { scLow: 3.0, release: 'Natural release (15 min)', notes: 'Add 1 cup liquid. Do not fill over 1/2 full.' },
+      beef:     { scLow: 7.5, release: 'Natural release (15 min)', notes: 'Sear meat first for best flavor.' },
+      chicken:  { scLow: 4.5, release: 'Natural release (5 min)', notes: 'Ensure internal temp reaches 165°F.' },
+      pork:     { scLow: 7.5, release: 'Natural release (15 min)', notes: 'Great for pulled pork — cook until fork-tender.' },
+      vegetables:{ scLow: 2.5, release: 'Quick release', notes: 'Check at minimum time to avoid mush.' },
+      grains:   { scLow: 3.0, release: 'Natural release (10 min)', notes: 'Use 1:1.25 water-to-grain ratio.' },
+      soup:     { scLow: 3.5, release: 'Quick release', notes: 'Do not fill over 2/3 full with liquid.' },
+      fish:     { scLow: 12.0, release: 'Quick release', notes: 'Fish cooks very quickly — check at minimum time.' },
+    };
+
+    let activeTab = 'sc-ip';
+
+    function switchTab(tab) {
+      activeTab = tab;
+      document.querySelectorAll('.tab-btn').forEach((b,i)=>{
+        b.classList.toggle('active', ['sc-ip','ip-sc','oven-ip'][i]===tab);
+      });
+      ['sc-ip','ip-sc','oven-ip'].forEach(t=>{
+        document.getElementById('tab-'+t).style.display = t===tab?'block':'none';
+      });
+      updateResult();
+    }
+
+    function updateResult() {
+      if (activeTab === 'sc-ip') calcScToIp();
+      else if (activeTab === 'ip-sc') calcIpToSc();
+      else calcOvenToIp();
+    }
+
+    function calcScToIp() {
+      const cat = document.getElementById('cat-sc').value;
+      const mode = document.getElementById('scMode').value;
+      const hours = parseFloat(document.getElementById('scHours').value) || 0;
+      const r = IP_RATIOS[cat];
+      // SC low: ratio mins/hr; high is ~60% of low time (higher temp)
+      const minsPerHour = mode === 'low' ? r.scLow : r.scLow * 0.6;
+      const ipMins = Math.max(1, Math.round(hours * minsPerHour));
+      const el = document.getElementById('result-sc-ip');
+      el.style.display = 'block';
+      el.innerHTML = `
+        <div class="result-row"><span class="result-label">Instant Pot Pressure Cook Time</span><span class="result-value"><span class="result-big">${ipMins} min</span></span></div>
+        <div class="result-row"><span class="result-label">Release Method</span><span class="result-value"><span class="release-badge">${r.release}</span></span></div>
+        <div class="result-row"><span class="result-label">Tips</span><span class="result-value" style="font-size:0.875rem;color:var(--text-muted);">${r.notes}</span></div>
+        <div class="result-row"><span class="result-label">Original (Slow Cooker)</span><span class="result-value">${hours} hrs on ${mode}</span></div>`;
+    }
+
+    function calcIpToSc() {
+      const cat = document.getElementById('cat-ip').value;
+      const mins = parseFloat(document.getElementById('ipMins').value) || 0;
+      const r = IP_RATIOS[cat];
+      const scLowHrs = Math.round((mins / r.scLow) * 2) / 2;
+      const scHighHrs = Math.round((mins / (r.scLow * 0.6)) * 2) / 2;
+      const el = document.getElementById('result-ip-sc');
+      el.style.display = 'block';
+      el.innerHTML = `
+        <div class="result-row"><span class="result-label">Slow Cooker on LOW</span><span class="result-value"><span class="result-big">${scLowHrs} hrs</span></span></div>
+        <div class="result-row"><span class="result-label">Slow Cooker on HIGH</span><span class="result-value"><span class="result-big">${scHighHrs} hrs</span></span></div>
+        <div class="result-row"><span class="result-label">Tips</span><span class="result-value" style="font-size:0.875rem;color:var(--text-muted);">${r.notes}</span></div>
+        <div class="result-row"><span class="result-label">Original (Instant Pot)</span><span class="result-value">${mins} min under pressure</span></div>`;
+    }
+
+    function calcOvenToIp() {
+      const temp = parseFloat(document.getElementById('ovenTemp').value) || 350;
+      const hours = parseFloat(document.getElementById('ovenHours').value) || 0;
+      const cat = document.getElementById('cat-oven').value;
+      const r = IP_RATIOS[cat];
+      // Higher oven temp = shorter IP time; base factor ~0.25 of oven time in mins
+      const tempFactor = temp > 400 ? 0.22 : temp > 325 ? 0.25 : 0.3;
+      const ipMins = Math.max(5, Math.round(hours * 60 * tempFactor));
+      const el = document.getElementById('result-oven-ip');
+      el.style.display = 'block';
+      el.innerHTML = `
+        <div class="result-row"><span class="result-label">Instant Pot Pressure Cook Time</span><span class="result-value"><span class="result-big">${ipMins} min</span></span></div>
+        <div class="result-row"><span class="result-label">Release Method</span><span class="result-value"><span class="release-badge">${r.release}</span></span></div>
+        <div class="result-row"><span class="result-label">Tips</span><span class="result-value" style="font-size:0.875rem;color:var(--text-muted);">${r.notes}</span></div>
+        <div class="result-row"><span class="result-label">Original (Oven)</span><span class="result-value">${hours} hrs at ${temp}°F</span></div>`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('instant-pot-converter.html');
+      injectFooter();
+      updateResult();
+    });
+  </script>
+</body>
+</html>

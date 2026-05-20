@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Formatter & Validator - Free Online JSON Tool | The Useful Pages</title>
+  <meta name="description" content="Free online JSON formatter, beautifier, and validator. Beautify, minify, or validate JSON instantly. View as collapsible tree. Copy or download output.">
+  <link rel="canonical" href="https://theusefulpages.com/json-formatter.html">
+  <meta property="og:title" content="JSON Formatter & Validator - The Useful Pages">
+  <meta property="og:description" content="Free online JSON formatter, beautifier, and validator. Beautify, minify, or validate JSON instantly.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JSON Formatter & Validator","url":"https://theusefulpages.com/json-formatter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .json-tree { font-family: monospace; font-size: 0.85rem; line-height: 1.6; }
+    .json-tree details { margin-left: 1rem; border-left: 2px solid var(--border); padding-left: 0.5rem; }
+    .json-tree summary { cursor: pointer; list-style: none; }
+    .json-tree summary::-webkit-details-marker { display: none; }
+    .json-tree summary::before { content: '▶ '; font-size: 0.7rem; }
+    .json-tree details[open] > summary::before { content: '▼ '; }
+    .json-key { color: #236A77; font-weight: 600; }
+    .json-str { color: #2d7a3a; }
+    .json-num { color: #b5590a; }
+    .json-bool { color: #7c3aed; }
+    .json-null { color: #6b7280; }
+    .view-toggle { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .error-box { background: #fef2f2; border: 1px solid #fca5a5; border-radius: 8px; padding: 1rem; color: #dc2626; font-size: 0.875rem; margin-top: 1rem; }
+    .size-info { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">JSON Formatter & Validator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Beautify, minify, or validate JSON. View as a collapsible tree. Copy or download your output.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label">JSON Input</label>
+          <textarea id="jsonInput" class="form-textarea code-area" rows="10" placeholder='Paste your JSON here, e.g. {"name":"Alice","age":30}'></textarea>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="beautifyJSON()">Beautify</button>
+          <button class="btn btn-accent" onclick="minifyJSON()">Minify</button>
+          <button class="btn btn-outline" onclick="validateJSON()">Validate</button>
+          <button class="btn btn-ghost btn-sm" onclick="clearAll()">Clear</button>
+        </div>
+        <div id="errorBox" class="error-box hidden"></div>
+        <div id="outputSection" class="hidden" style="margin-top:1rem;">
+          <div class="view-toggle">
+            <button class="btn btn-sm btn-primary" id="rawBtn" onclick="showRaw()">Raw</button>
+            <button class="btn btn-sm btn-outline" id="treeBtn" onclick="showTree()">Tree View</button>
+          </div>
+          <div id="rawView">
+            <div class="stat-grid" id="statsGrid" style="margin-bottom:1rem;"></div>
+            <pre id="jsonOutput" class="mono-output" style="max-height:400px;overflow:auto;"></pre>
+            <div id="sizeInfo" class="size-info"></div>
+          </div>
+          <div id="treeView" class="hidden">
+            <div id="jsonTree" class="mono-output json-tree" style="max-height:400px;overflow:auto;"></div>
+          </div>
+          <div class="btn-row" style="margin-top:0.75rem;">
+            <button class="btn btn-outline btn-sm" onclick="copyOutput()">Copy Output</button>
+            <button class="btn btn-ghost btn-sm" onclick="downloadJSON()">Download .json</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Paste your JSON into the input box above.</li>
+          <li>Click <strong>Beautify</strong> to format with 2-space indentation for easy reading.</li>
+          <li>Click <strong>Minify</strong> to compress JSON by removing all whitespace.</li>
+          <li>Click <strong>Validate</strong> to check if your JSON is valid — errors show the line number.</li>
+          <li>Switch to <strong>Tree View</strong> to explore the JSON structure with collapsible nodes.</li>
+          <li>Use <strong>Copy Output</strong> or <strong>Download .json</strong> to save your result.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="csv-to-json.html">CSV to JSON</a>
+          <a href="html-formatter.html">HTML Formatter</a>
+          <a href="js-minifier.html">JS Minifier</a>
+          <a href="markdown-previewer.html">Markdown Previewer</a>
+          <a href="uuid-generator.html">UUID Generator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar"><div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('json-formatter.html'); injectFooter(); });
+
+    let currentOutput = '';
+    let currentParsed = null;
+
+    function showError(msg) {
+      const box = document.getElementById('errorBox');
+      box.textContent = msg;
+      box.classList.remove('hidden');
+      document.getElementById('outputSection').classList.add('hidden');
+    }
+
+    function clearError() {
+      document.getElementById('errorBox').classList.add('hidden');
+    }
+
+    function getInput() { return document.getElementById('jsonInput').value.trim(); }
+
+    function parseInput() {
+      const raw = getInput();
+      if (!raw) { showError('Please enter some JSON.'); return null; }
+      try { return JSON.parse(raw); } catch(e) {
+        const lineMatch = e.message.match(/position (\d+)/);
+        let lineMsg = '';
+        if (lineMatch) {
+          const pos = parseInt(lineMatch[1]);
+          const lines = raw.substring(0, pos).split('\n');
+          lineMsg = ` (line ${lines.length}, col ${lines[lines.length-1].length + 1})`;
+        }
+        showError('Invalid JSON: ' + e.message + lineMsg);
+        return null;
+      }
+    }
+
+    function showOutput(text, parsed) {
+      clearError();
+      currentOutput = text;
+      currentParsed = parsed;
+      document.getElementById('jsonOutput').textContent = text;
+      document.getElementById('outputSection').classList.remove('hidden');
+      showRaw();
+    }
+
+    function beautifyJSON() {
+      const parsed = parseInput();
+      if (!parsed && parsed !== null && typeof parsed !== 'boolean' && parsed !== 0) return;
+      const raw = getInput();
+      let p;
+      try { p = JSON.parse(raw); } catch(e) { return; }
+      const out = JSON.stringify(p, null, 2);
+      const lines = out.split('\n').length;
+      document.getElementById('statsGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtNum(lines)}</div><div class="stat-label">Lines</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtNum(out.length)}</div><div class="stat-label">Characters</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtNum((new TextEncoder().encode(out)).length)}</div><div class="stat-label">Bytes</div></div>
+      `;
+      document.getElementById('sizeInfo').textContent = '';
+      showOutput(out, p);
+    }
+
+    function minifyJSON() {
+      const raw = getInput();
+      if (!raw) { showError('Please enter some JSON.'); return; }
+      let p;
+      try { p = JSON.parse(raw); } catch(e) { showError('Invalid JSON: ' + e.message); return; }
+      clearError();
+      const out = JSON.stringify(p);
+      const origBytes = (new TextEncoder().encode(raw)).length;
+      const newBytes = (new TextEncoder().encode(out)).length;
+      const saved = origBytes - newBytes;
+      const pct = ((saved / origBytes) * 100).toFixed(1);
+      document.getElementById('statsGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtNum(origBytes)}</div><div class="stat-label">Original bytes</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtNum(newBytes)}</div><div class="stat-label">Minified bytes</div></div>
+        <div class="stat-box"><div class="stat-value">${pct}%</div><div class="stat-label">Reduction</div></div>
+      `;
+      document.getElementById('sizeInfo').textContent = `Saved ${fmtNum(saved)} bytes (${pct}% reduction)`;
+      showOutput(out, p);
+    }
+
+    function validateJSON() {
+      const raw = getInput();
+      if (!raw) { showError('Please enter some JSON.'); return; }
+      try {
+        const p = JSON.parse(raw);
+        clearError();
+        const type = Array.isArray(p) ? 'array' : typeof p;
+        const keys = type === 'object' ? Object.keys(p).length : (Array.isArray(p) ? p.length : 'N/A');
+        document.getElementById('statsGrid').innerHTML = `
+          <div class="stat-box"><div class="stat-value" style="color:#16a34a;">✓ Valid</div><div class="stat-label">Status</div></div>
+          <div class="stat-box"><div class="stat-value">${type}</div><div class="stat-label">Root type</div></div>
+          <div class="stat-box"><div class="stat-value">${keys}</div><div class="stat-label">${Array.isArray(p) ? 'Items' : 'Keys'}</div></div>
+        `;
+        document.getElementById('sizeInfo').textContent = '';
+        showOutput(JSON.stringify(p, null, 2), p);
+      } catch(e) {
+        const lineMatch = e.message.match(/position (\d+)/);
+        let lineMsg = '';
+        if (lineMatch) {
+          const pos = parseInt(lineMatch[1]);
+          const lines = raw.substring(0, pos).split('\n');
+          lineMsg = ` at line ${lines.length}, column ${lines[lines.length-1].length + 1}`;
+        }
+        showError('❌ Invalid JSON: ' + e.message + lineMsg);
+      }
+    }
+
+    function showRaw() {
+      document.getElementById('rawView').classList.remove('hidden');
+      document.getElementById('treeView').classList.add('hidden');
+      document.getElementById('rawBtn').className = 'btn btn-sm btn-primary';
+      document.getElementById('treeBtn').className = 'btn btn-sm btn-outline';
+    }
+
+    function showTree() {
+      document.getElementById('rawView').classList.add('hidden');
+      document.getElementById('treeView').classList.remove('hidden');
+      document.getElementById('treeBtn').className = 'btn btn-sm btn-primary';
+      document.getElementById('rawBtn').className = 'btn btn-sm btn-outline';
+      document.getElementById('jsonTree').innerHTML = renderTree(currentParsed, 'root');
+    }
+
+    function renderTree(val, key, isLast) {
+      const keySpan = key !== null ? `<span class="json-key">${escHtml(String(key))}</span>: ` : '';
+      if (val === null) return `<div>${keySpan}<span class="json-null">null</span></div>`;
+      if (typeof val === 'boolean') return `<div>${keySpan}<span class="json-bool">${val}</span></div>`;
+      if (typeof val === 'number') return `<div>${keySpan}<span class="json-num">${val}</span></div>`;
+      if (typeof val === 'string') return `<div>${keySpan}<span class="json-str">"${escHtml(val)}"</span></div>`;
+      if (Array.isArray(val)) {
+        if (val.length === 0) return `<div>${keySpan}[]</div>`;
+        const items = val.map((v, i) => renderTree(v, i)).join('');
+        return `<details open><summary>${keySpan}Array [${val.length}]</summary>${items}</details>`;
+      }
+      if (typeof val === 'object') {
+        const keys = Object.keys(val);
+        if (keys.length === 0) return `<div>${keySpan}{}</div>`;
+        const items = keys.map(k => renderTree(val[k], k)).join('');
+        return `<details open><summary>${keySpan}Object {${keys.length}}</summary>${items}</details>`;
+      }
+      return `<div>${keySpan}${escHtml(String(val))}</div>`;
+    }
+
+    function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    function copyOutput() { copyText(currentOutput, 'JSON copied!'); }
+
+    function downloadJSON() {
+      const blob = new Blob([currentOutput], {type: 'application/json'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'output.json';
+      a.click();
+    }
+
+    function clearAll() {
+      document.getElementById('jsonInput').value = '';
+      document.getElementById('outputSection').classList.add('hidden');
+      clearError();
+    }
+  </script>
+</body>
+</html>

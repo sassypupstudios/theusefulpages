@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitchen Timer - Multiple Simultaneous Timers Online | The Useful Pages</title>
+  <meta name="description" content="Run up to 6 kitchen timers simultaneously in your browser. Custom labels, preset durations, audio alerts, and HH:MM:SS input. No app needed. Free online tool.">
+  <link rel="canonical" href="https://theusefulpages.com/kitchen-timer.html">
+  <meta property="og:title" content="Kitchen Timer - The Useful Pages">
+  <meta property="og:description" content="Run multiple kitchen timers at once. Custom labels, presets, audio alerts on completion. Free online multi-timer tool.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Kitchen Timer","url":"https://theusefulpages.com/kitchen-timer.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .timers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .timer-card { border: 2px solid var(--border); border-radius: 14px; padding: 1.25rem; background: #fff; transition: border-color 0.2s, box-shadow 0.2s; position: relative; }
+    .timer-card.running { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(35,106,119,0.1); }
+    .timer-card.done { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,0.15); animation: flashDone 1s ease-in-out 0s 6; }
+    .timer-card.warn { border-color: #d97706; box-shadow: 0 0 0 3px rgba(217,119,6,0.12); }
+    @keyframes flashDone { 0%,100% { background: #fff; } 50% { background: #fee2e2; } }
+    .timer-label-input { font-weight: 700; font-size: 1rem; color: var(--primary); border: none; outline: none; width: 100%; background: transparent; padding: 0; margin-bottom: 0.5rem; }
+    .timer-label-input:focus { border-bottom: 2px solid var(--primary); }
+    .timer-display { font-size: 3rem; font-weight: 700; font-family: monospace; text-align: center; letter-spacing: 0.05em; color: var(--primary); margin: 0.75rem 0; line-height: 1; transition: color 0.3s; }
+    .timer-display.warn { color: #d97706; }
+    .timer-display.danger { color: #dc2626; }
+    .timer-display.done { color: #dc2626; }
+    .timer-input-row { display: flex; gap: 0.4rem; align-items: center; margin-bottom: 0.75rem; }
+    .timer-seg-input { width: 52px; text-align: center; font-family: monospace; font-size: 1.1rem; font-weight: 600; }
+    .timer-seg-sep { font-size: 1.4rem; font-weight: 700; color: var(--text-muted); padding: 0 0.1rem; }
+    .timer-btns { display: flex; gap: 0.5rem; }
+    .timer-delete { position: absolute; top: 0.75rem; right: 0.75rem; background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 1.1rem; padding: 0.25rem; border-radius: 4px; line-height: 1; min-width: 28px; min-height: 28px; display: flex; align-items: center; justify-content: center; }
+    .timer-delete:hover { color: #dc2626; background: #fee2e2; }
+    .preset-btns { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+    .add-timer-btn { border: 2px dashed var(--border); border-radius: 14px; padding: 2rem; text-align: center; cursor: pointer; color: var(--text-muted); font-weight: 600; transition: border-color 0.2s, color 0.2s; background: #f8fafc; }
+    .add-timer-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .done-label { font-size: 0.8rem; font-weight: 700; color: #dc2626; text-align: center; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.25rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567890"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Kitchen Timer</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Run up to 6 labeled timers simultaneously with audio alerts on completion.</p>
+      <div class="tool-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;">
+          <div style="font-size:0.8rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Presets — click to add a new timer</div>
+          <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-size:0.875rem;">
+            <input type="checkbox" id="sound-on" checked style="accent-color:var(--primary);width:16px;height:16px;">
+            Sound alerts
+          </label>
+        </div>
+        <div class="preset-btns">
+          <button class="btn btn-outline btn-sm" onclick="addPreset(1,'1 Min')">1 min</button>
+          <button class="btn btn-outline btn-sm" onclick="addPreset(3,'3 Min')">3 min</button>
+          <button class="btn btn-outline btn-sm" onclick="addPreset(5,'5 Min')">5 min</button>
+          <button class="btn btn-outline btn-sm" onclick="addPreset(10,'10 Min')">10 min</button>
+          <button class="btn btn-outline btn-sm" onclick="addPreset(15,'15 Min')">15 min</button>
+          <button class="btn btn-outline btn-sm" onclick="addPreset(20,'20 Min')">20 min</button>
+          <button class="btn btn-outline btn-sm" onclick="addPreset(30,'30 Min')">30 min</button>
+          <button class="btn btn-outline btn-sm" onclick="addPreset(45,'45 Min')">45 min</button>
+          <button class="btn btn-outline btn-sm" onclick="addPreset(60,'1 Hour')">60 min</button>
+        </div>
+        <button class="btn btn-primary" onclick="addTimer()" style="margin-bottom:1.25rem;">+ Add Custom Timer</button>
+        <div class="timers-grid" id="timers-grid"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567891" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Click a preset button to instantly add a labeled timer with that duration.</li>
+          <li>Click <strong>+ Add Custom Timer</strong> to create a timer with a custom HH:MM:SS duration.</li>
+          <li>Click the label at the top of each timer to rename it.</li>
+          <li>Use <strong>Start</strong> / <strong>Pause</strong> to control each timer independently.</li>
+          <li>Click <strong>Reset</strong> to return a timer to its set duration.</li>
+          <li>The display turns yellow under 1 minute and red under 30 seconds.</li>
+          <li>An audio beep plays when any timer reaches zero (if Sound alerts is enabled).</li>
+          <li>Up to 6 timers can run simultaneously.</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="countdown-timer.html">Countdown Timer</a>
+          <a href="days-until.html">Days Until Calculator</a>
+          <a href="days-between-dates.html">Days Between Dates</a>
+          <a href="date-calculator.html">Date Calculator</a>
+          <a href="timezone-converter.html">Time Zone Converter</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567892"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567893"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let timers = {};
+    let timerCount = 0;
+    let audioCtx = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('kitchen-timer.html');
+      injectFooter();
+      // Start with one default timer
+      addTimer(5, 0, 0, 'Timer 1');
+    });
+
+    function playAlert() {
+      if (!document.getElementById('sound-on').checked) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        // Three beep sequence
+        [0, 0.4, 0.8].forEach(offset => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(1000, audioCtx.currentTime + offset);
+          gain.gain.setValueAtTime(0.6, audioCtx.currentTime + offset);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + offset + 0.3);
+          osc.start(audioCtx.currentTime + offset);
+          osc.stop(audioCtx.currentTime + offset + 0.35);
+        });
+      } catch (e) {}
+    }
+
+    function getTimerCount() {
+      return Object.keys(timers).length;
+    }
+
+    function addPreset(minutes, label) {
+      if (getTimerCount() >= 6) { showToast('Maximum 6 timers at once.'); return; }
+      addTimer(minutes, 0, 0, label);
+    }
+
+    function addTimer(hrs = 0, mins = 5, secs = 0, label = '') {
+      if (getTimerCount() >= 6) { showToast('Maximum 6 timers at once.'); return; }
+      const id = 'timer-' + (++timerCount);
+      const totalSecs = hrs * 3600 + mins * 60 + secs;
+      const defaultLabel = label || ('Timer ' + timerCount);
+
+      timers[id] = {
+        id,
+        label: defaultLabel,
+        totalSecs,
+        remaining: totalSecs,
+        running: false,
+        done: false,
+        interval: null,
+        origHrs: hrs,
+        origMins: mins,
+        origSecs: secs,
+      };
+
+      renderTimer(id);
+    }
+
+    function renderTimer(id) {
+      const grid = document.getElementById('timers-grid');
+      const t = timers[id];
+      const div = document.createElement('div');
+      div.className = 'timer-card';
+      div.id = 'card-' + id;
+      div.innerHTML = `
+        <button class="timer-delete" onclick="deleteTimer('${id}')" title="Remove timer">✕</button>
+        <input class="timer-label-input" id="lbl-${id}" value="${t.label}" maxlength="30" onchange="timers['${id}'].label=this.value">
+        <div id="done-lbl-${id}" class="done-label hidden">&#9201; TIME'S UP!</div>
+        <div class="timer-display" id="disp-${id}">${formatTime(t.remaining)}</div>
+        <div class="timer-input-row" id="input-row-${id}">
+          <input type="number" class="form-input timer-seg-input" id="inp-h-${id}" value="${String(t.origHrs).padStart(2,'0')}" min="0" max="99" placeholder="HH" oninput="updateTimerFromInput('${id}')">
+          <span class="timer-seg-sep">:</span>
+          <input type="number" class="form-input timer-seg-input" id="inp-m-${id}" value="${String(t.origMins).padStart(2,'0')}" min="0" max="59" placeholder="MM" oninput="updateTimerFromInput('${id}')">
+          <span class="timer-seg-sep">:</span>
+          <input type="number" class="form-input timer-seg-input" id="inp-s-${id}" value="${String(t.origSecs).padStart(2,'0')}" min="0" max="59" placeholder="SS" oninput="updateTimerFromInput('${id}')">
+        </div>
+        <div class="timer-btns">
+          <button class="btn btn-primary" id="start-btn-${id}" onclick="toggleTimer('${id}')" style="flex:1;">Start</button>
+          <button class="btn btn-outline" onclick="resetTimer('${id}')">Reset</button>
+        </div>`;
+      grid.appendChild(div);
+    }
+
+    function updateTimerFromInput(id) {
+      if (timers[id].running) return;
+      const h = parseInt(document.getElementById('inp-h-' + id).value) || 0;
+      const m = parseInt(document.getElementById('inp-m-' + id).value) || 0;
+      const s = parseInt(document.getElementById('inp-s-' + id).value) || 0;
+      const total = h * 3600 + m * 60 + s;
+      timers[id].origHrs = h;
+      timers[id].origMins = m;
+      timers[id].origSecs = s;
+      timers[id].totalSecs = total;
+      timers[id].remaining = total;
+      timers[id].done = false;
+      updateDisplay(id);
+    }
+
+    function toggleTimer(id) {
+      const t = timers[id];
+      if (t.done) { resetTimer(id); return; }
+      if (t.remaining <= 0) return;
+      if (t.running) {
+        clearInterval(t.interval);
+        t.running = false;
+        t.interval = null;
+        document.getElementById('start-btn-' + id).textContent = 'Resume';
+        document.getElementById('card-' + id).classList.remove('running');
+        // Re-enable inputs
+        setInputsDisabled(id, false);
+      } else {
+        // Unlock audio context on user gesture
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        t.running = true;
+        document.getElementById('start-btn-' + id).textContent = 'Pause';
+        document.getElementById('card-' + id).classList.add('running');
+        setInputsDisabled(id, true);
+        t.interval = setInterval(() => tickTimer(id), 1000);
+      }
+    }
+
+    function setInputsDisabled(id, disabled) {
+      ['inp-h-','inp-m-','inp-s-'].forEach(prefix => {
+        const el = document.getElementById(prefix + id);
+        if (el) el.disabled = disabled;
+      });
+    }
+
+    function tickTimer(id) {
+      const t = timers[id];
+      if (t.remaining > 0) {
+        t.remaining--;
+        updateDisplay(id);
+      }
+      if (t.remaining <= 0) {
+        clearInterval(t.interval);
+        t.interval = null;
+        t.running = false;
+        t.done = true;
+        document.getElementById('start-btn-' + id).textContent = 'Reset';
+        const card = document.getElementById('card-' + id);
+        card.classList.remove('running', 'warn');
+        card.classList.add('done');
+        document.getElementById('done-lbl-' + id).classList.remove('hidden');
+        document.getElementById('disp-' + id).className = 'timer-display done';
+        playAlert();
+        setInputsDisabled(id, false);
+      }
+    }
+
+    function updateDisplay(id) {
+      const t = timers[id];
+      const disp = document.getElementById('disp-' + id);
+      const card = document.getElementById('card-' + id);
+      disp.textContent = formatTime(t.remaining);
+      if (!t.done) {
+        if (t.remaining <= 30) {
+          disp.className = 'timer-display danger';
+          if (t.running) { card.classList.remove('warn'); card.classList.add('running'); }
+        } else if (t.remaining <= 60) {
+          disp.className = 'timer-display warn';
+          if (t.running) { card.classList.add('warn'); }
+        } else {
+          disp.className = 'timer-display';
+          card.classList.remove('warn');
+        }
+      }
+    }
+
+    function resetTimer(id) {
+      const t = timers[id];
+      clearInterval(t.interval);
+      t.interval = null;
+      t.running = false;
+      t.done = false;
+      t.remaining = t.totalSecs;
+      const card = document.getElementById('card-' + id);
+      card.classList.remove('running', 'done', 'warn');
+      document.getElementById('start-btn-' + id).textContent = 'Start';
+      document.getElementById('done-lbl-' + id).classList.add('hidden');
+      updateDisplay(id);
+      setInputsDisabled(id, false);
+    }
+
+    function deleteTimer(id) {
+      const t = timers[id];
+      if (t.interval) clearInterval(t.interval);
+      delete timers[id];
+      const card = document.getElementById('card-' + id);
+      if (card) card.remove();
+    }
+
+    function formatTime(totalSecs) {
+      const h = Math.floor(totalSecs / 3600);
+      const m = Math.floor((totalSecs % 3600) / 60);
+      const s = totalSecs % 60;
+      if (h > 0) {
+        return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      }
+      return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    }
+  </script>
+</body>
+</html>

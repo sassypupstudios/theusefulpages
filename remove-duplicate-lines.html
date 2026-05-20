@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remove Duplicate Lines — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Remove duplicate lines from any text instantly. Options for case-sensitive matching, whitespace trimming, and keeping first or last occurrence. Free online tool.">
+  <link rel="canonical" href="https://theusefulpages.com/remove-duplicate-lines">
+  <meta property="og:title" content="Remove Duplicate Lines — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Remove Duplicate Lines","url":"https://theusefulpages.com/remove-duplicate-lines","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Remove Duplicate Lines</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Paste your text below and instantly remove all repeated lines.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label" for="inputText">Input Text</label>
+          <textarea class="form-textarea" id="inputText" placeholder="Paste your text here — one item per line..." style="min-height:180px;font-family:'Courier New',monospace;font-size:0.875rem;"></textarea>
+        </div>
+
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;">
+            <input type="checkbox" id="caseSensitive" checked style="accent-color:var(--primary);"> Case-sensitive
+          </label>
+          <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;">
+            <input type="checkbox" id="trimWhitespace" checked style="accent-color:var(--primary);"> Trim whitespace
+          </label>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;">
+            <span style="color:var(--text);">Keep:</span>
+            <select class="form-select" id="keepOccurrence" style="padding:0.25rem 0.5rem;font-size:0.875rem;">
+              <option value="first">First occurrence</option>
+              <option value="last">Last occurrence</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;">
+          <button class="btn btn-primary" onclick="removeDuplicates()">Remove Duplicates</button>
+          <button class="btn btn-secondary" onclick="clearDuplicates()">Clear</button>
+        </div>
+
+        <div id="resultArea" style="display:none;margin-top:1.5rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;flex-wrap:wrap;gap:0.5rem;">
+            <div id="statsLine" style="font-size:0.875rem;color:var(--text-muted);"></div>
+            <button class="btn btn-secondary" onclick="copyText('outputText')">Copy Output</button>
+          </div>
+          <textarea class="form-textarea" id="outputText" readonly style="min-height:180px;font-family:'Courier New',monospace;font-size:0.875rem;background:var(--bg-alt,#f7f7f5);"></textarea>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Paste or type your text into the input box — each line is treated as one item.</li>
+          <li>Choose your options: case-sensitive matching, whitespace trimming, and whether to keep the first or last duplicate.</li>
+          <li>Click <strong>Remove Duplicates</strong> to process the text.</li>
+          <li>Copy the cleaned output with the <strong>Copy Output</strong> button.</li>
+        </ol>
+        <p style="margin-top:0.75rem;"><strong>Case-sensitive</strong> means "Apple" and "apple" are treated as different lines. When off, they count as duplicates. <strong>Trim whitespace</strong> ignores leading and trailing spaces when comparing lines.</p>
+      </div>
+
+      <div id="related-tools"></div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('remove-duplicate-lines.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('remove-duplicate-lines.html', 'text');
+  });
+
+  function clearDuplicates() {
+    document.getElementById('inputText').value = '';
+    document.getElementById('resultArea').style.display = 'none';
+  }
+
+  function removeDuplicates() {
+    const raw = document.getElementById('inputText').value;
+    const caseSensitive = document.getElementById('caseSensitive').checked;
+    const trim = document.getElementById('trimWhitespace').checked;
+    const keep = document.getElementById('keepOccurrence').value;
+
+    const lines = raw.split('\n');
+    const seen = new Map(); // key -> index of first/last occurrence
+
+    lines.forEach((line, idx) => {
+      let key = trim ? line.trim() : line;
+      if (!caseSensitive) key = key.toLowerCase();
+      if (keep === 'first') {
+        if (!seen.has(key)) seen.set(key, idx);
+      } else {
+        seen.set(key, idx); // always overwrite → last wins
+      }
+    });
+
+    const keptIndices = new Set(seen.values());
+    const result = lines.filter((_, idx) => keptIndices.has(idx));
+    const removed = lines.length - result.length;
+
+    document.getElementById('outputText').value = result.join('\n');
+    document.getElementById('statsLine').textContent =
+      `${lines.length} lines in → ${result.length} lines out · ${removed} duplicate${removed !== 1 ? 's' : ''} removed`;
+    document.getElementById('resultArea').style.display = '';
+  }
+  </script>
+</body>
+</html>

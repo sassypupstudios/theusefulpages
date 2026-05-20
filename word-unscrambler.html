@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Unscrambler - Free Online Word Finder | The Useful Pages</title>
+  <meta name="description" content="Unscramble letters to find all possible words. Filter by length, sort by Scrabble score or alphabetically. Click any word to see its definition instantly.">
+  <link rel="canonical" href="https://theusefulpages.com/word-unscrambler.html">
+  <meta property="og:title" content="Word Unscrambler - The Useful Pages"><meta property="og:description" content="Unscramble letters to find all possible words instantly."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Unscrambler","url":"https://theusefulpages.com/word-unscrambler.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .word-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .word-chip { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 6px; padding: 0.35rem 0.75rem; font-size: 0.875rem; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+    .word-chip:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .word-chip .chip-score { font-size: 0.7rem; color: var(--accent); margin-left: 0.3rem; }
+    .word-chip:hover .chip-score { color: #fff; }
+    .status-bar { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; }
+    .modal-overlay.active { display:flex; }
+    .modal-box { background:#fff; border-radius:12px; padding:1.5rem; max-width:500px; width:90%; max-height:80vh; overflow-y:auto; }
+    .modal-word { font-size:1.5rem; font-weight:700; color:var(--primary); margin-bottom:0.25rem; }
+    .modal-phonetic { color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem; }
+    .def-pos { font-style:italic; font-size:0.85rem; color:var(--accent); margin-bottom:0.25rem; font-weight:600; }
+    .def-text { font-size:0.9rem; margin-bottom:0.75rem; }
+    .no-results { color:var(--text-muted); text-align:center; padding:2rem; font-size:0.95rem; }
+    .loader { display:inline-block; width:14px; height:14px; border:2px solid var(--border); border-top-color:var(--primary); border-radius:50%; animation:spin 0.6s linear infinite; vertical-align:middle; margin-right:0.4rem; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Word Unscrambler</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Enter scrambled letters to find every word you can make. Click any word to see its definition.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group" style="flex:1;">
+            <label class="form-label">Scrambled Letters (up to 15)</label>
+            <input type="text" id="lettersInput" class="form-input" maxlength="15" placeholder="e.g. staer" style="text-transform:uppercase;font-size:1.25rem;letter-spacing:0.1em;" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'').toUpperCase()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Min Length</label>
+            <select id="minLen" class="form-select">
+              <option value="2">2+</option>
+              <option value="3" selected>3+</option>
+              <option value="4">4+</option>
+              <option value="5">5+</option>
+              <option value="6">6+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sort By</label>
+            <select id="sortBy" class="form-select">
+              <option value="length">Length</option>
+              <option value="alpha">Alphabetical</option>
+              <option value="score">Scrabble Score</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="unscramble()">Unscramble</button>
+          <button class="btn btn-outline" onclick="copyAllWords()">Copy All Words</button>
+          <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
+        </div>
+        <div id="statusBar" class="status-bar"></div>
+        <div id="resultsArea"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card"><h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2><ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+        <li>Type your scrambled letters (up to 15) in the input box.</li>
+        <li>Choose minimum word length and sort preference.</li>
+        <li>Click <strong>Unscramble</strong> to find all possible words.</li>
+        <li>Click any word chip to look up its dictionary definition.</li>
+        <li>The number next to each word is its Scrabble point value.</li>
+        <li>Use <strong>Copy All Words</strong> to copy every result to clipboard.</li>
+        <li>The word list loads once and is cached for 7 days for fast results.</li>
+      </ul></div>
+
+      <div class="related-card"><h3>Related Tools</h3><div class="related-links">
+        <a href="scrabble-word-finder.html">Scrabble Word Finder</a>
+      </div></div>
+    </main>
+    <aside class="tool-sidebar"><div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div></aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+
+  <!-- Definition Modal -->
+  <div class="modal-overlay" id="defModal" onclick="if(event.target===this)closeModal()">
+    <div class="modal-box">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+        <div>
+          <div class="modal-word" id="modalWord"></div>
+          <div class="modal-phonetic" id="modalPhonetic"></div>
+        </div>
+        <button onclick="closeModal()" class="btn btn-ghost btn-sm">✕</button>
+      </div>
+      <div id="modalDefs"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const SCRABBLE_VALS = {a:1,b:3,c:3,d:2,e:1,f:4,g:2,h:4,i:1,j:8,k:5,l:1,m:3,n:1,o:1,p:3,q:10,r:1,s:1,t:1,u:1,v:4,w:4,x:8,y:4,z:10};
+    const WORD_LIST_KEY = 'wordlist_v1';
+    const WORD_LIST_TS = 'wordlist_ts';
+    const CACHE_DAYS = 7;
+    let wordSet = null;
+    let foundWords = [];
+
+    function scrabbleScore(w) { return w.split('').reduce((s,c)=>s+(SCRABBLE_VALS[c]||0),0); }
+
+    async function loadWordList() {
+      const ts = localStorage.getItem(WORD_LIST_TS);
+      if (ts && Date.now() - parseInt(ts) < CACHE_DAYS * 864e5) {
+        const stored = localStorage.getItem(WORD_LIST_KEY);
+        if (stored) { wordSet = new Set(stored.split('\n')); return; }
+      }
+      setStatus('<span class="loader"></span>Loading word list (one-time download ~5MB)…');
+      try {
+        const r = await fetch('https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt');
+        const txt = await r.text();
+        try { localStorage.setItem(WORD_LIST_KEY, txt.trim()); localStorage.setItem(WORD_LIST_TS, Date.now()); } catch(e){}
+        wordSet = new Set(txt.split('\n').map(w=>w.trim().toLowerCase()));
+        setStatus('Word list loaded. Ready.');
+      } catch(e) { setStatus('Failed to load word list. Check connection.'); }
+    }
+
+    function setStatus(msg) { document.getElementById('statusBar').innerHTML = msg; }
+
+    function canForm(word, letters) {
+      const pool = letters.slice();
+      for (const c of word) {
+        const i = pool.indexOf(c);
+        if (i === -1) return false;
+        pool.splice(i, 1);
+      }
+      return true;
+    }
+
+    async function unscramble() {
+      const letters = document.getElementById('lettersInput').value.toLowerCase().trim();
+      if (!letters) { showToast('Enter some letters first.'); return; }
+      if (!wordSet) { await loadWordList(); if (!wordSet) return; }
+      const minLen = parseInt(document.getElementById('minLen').value);
+      const sortBy = document.getElementById('sortBy').value;
+      setStatus('<span class="loader"></span>Searching…');
+      setTimeout(() => {
+        const letterArr = letters.split('');
+        foundWords = [];
+        for (const word of wordSet) {
+          if (word.length < minLen || word.length > letters.length) continue;
+          if (canForm(word.split(''), letterArr)) foundWords.push(word);
+        }
+        sortWords(foundWords, sortBy);
+        renderWords(foundWords);
+        setStatus(`Found <strong>${foundWords.length}</strong> words from "<strong>${letters.toUpperCase()}</strong>"`);
+      }, 10);
+    }
+
+    function sortWords(words, by) {
+      if (by === 'length') words.sort((a,b)=>b.length-a.length||a.localeCompare(b));
+      else if (by === 'alpha') words.sort();
+      else if (by === 'score') words.sort((a,b)=>scrabbleScore(b)-scrabbleScore(a));
+    }
+
+    function renderWords(words) {
+      const area = document.getElementById('resultsArea');
+      if (!words.length) { area.innerHTML = '<div class="no-results">No words found. Try fewer letters or a shorter minimum length.</div>'; return; }
+      const chips = words.map(w => {
+        const sc = scrabbleScore(w);
+        return `<span class="word-chip" onclick="lookupWord('${w}')">${w.toUpperCase()}<span class="chip-score">${sc}pts</span></span>`;
+      }).join('');
+      area.innerHTML = `<div class="word-chips">${chips}</div>`;
+    }
+
+    function copyAllWords() {
+      if (!foundWords.length) { showToast('No words to copy.'); return; }
+      copyText(foundWords.join(', '), 'Words copied!');
+    }
+
+    function clearAll() {
+      document.getElementById('lettersInput').value = '';
+      document.getElementById('resultsArea').innerHTML = '';
+      setStatus('');
+      foundWords = [];
+    }
+
+    async function lookupWord(word) {
+      document.getElementById('modalWord').textContent = word.toUpperCase();
+      document.getElementById('modalPhonetic').textContent = '';
+      document.getElementById('modalDefs').innerHTML = '<div class="loader"></div> Looking up…';
+      document.getElementById('defModal').classList.add('active');
+      try {
+        const r = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+        const data = await r.json();
+        if (!Array.isArray(data) || !data.length) throw new Error('Not found');
+        const entry = data[0];
+        document.getElementById('modalPhonetic').textContent = entry.phonetic || '';
+        let html = '';
+        for (const meaning of entry.meanings.slice(0,4)) {
+          html += `<div class="def-pos">${meaning.partOfSpeech}</div>`;
+          meaning.definitions.slice(0,2).forEach(d => {
+            html += `<div class="def-text">• ${d.definition}</div>`;
+            if (d.example) html += `<div style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;font-style:italic;">"${d.example}"</div>`;
+          });
+        }
+        document.getElementById('modalDefs').innerHTML = html;
+      } catch(e) {
+        document.getElementById('modalDefs').innerHTML = '<div class="def-text" style="color:var(--text-muted)">Definition not found.</div>';
+      }
+    }
+
+    function closeModal() { document.getElementById('defModal').classList.remove('active'); }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('word-unscrambler.html');
+      injectFooter();
+      loadWordList();
+      document.getElementById('lettersInput').addEventListener('keydown', e => { if(e.key==='Enter') unscramble(); });
+    });
+  </script>
+</body>
+</html>

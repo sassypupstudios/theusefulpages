@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Converter - Free Online Text Case Changer | The Useful Pages</title>
+  <meta name="description" content="Convert text to uppercase, lowercase, title case, sentence case, or alternating case instantly. Also reverse text and remove extra spaces. Free online case converter.">
+  <link rel="canonical" href="https://theusefulpages.com/case-converter.html">
+  <meta property="og:title" content="Case Converter - The Useful Pages">
+  <meta property="og:description" content="Convert text to uppercase, lowercase, title case, sentence case, or alternating case instantly. Free online case converter tool.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Case Converter","url":"https://theusefulpages.com/case-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="3000000001"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Case Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Paste your text and click a conversion button to change its case instantly.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label" for="mainText">Your Text</label>
+          <textarea class="form-textarea" id="mainText" placeholder="Type or paste text here..." style="min-height:200px;" oninput="updateCharCount()"></textarea>
+          <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.4rem;" id="charCount">0 characters &bull; 0 words</div>
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:0.875rem;font-weight:600;margin-bottom:0.6rem;color:var(--primary);">Case Conversions</div>
+          <div class="btn-row">
+            <button class="btn btn-primary" style="min-height:44px;" onclick="convertCase('upper')">UPPERCASE</button>
+            <button class="btn btn-primary" style="min-height:44px;" onclick="convertCase('lower')">lowercase</button>
+            <button class="btn btn-primary" style="min-height:44px;" onclick="convertCase('title')">Title Case</button>
+            <button class="btn btn-primary" style="min-height:44px;" onclick="convertCase('sentence')">Sentence case</button>
+            <button class="btn btn-primary" style="min-height:44px;" onclick="convertCase('alternate')">aLtErNaTe</button>
+          </div>
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:0.875rem;font-weight:600;margin-bottom:0.6rem;color:var(--primary);">Text Transformations</div>
+          <div class="btn-row">
+            <button class="btn btn-accent" style="min-height:44px;" onclick="removeExtraSpaces()">Remove Extra Spaces</button>
+            <button class="btn btn-accent" style="min-height:44px;" onclick="reverseText()">Reverse Text</button>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-outline" style="min-height:44px;" onclick="copyText(document.getElementById('mainText').value, 'Text copied!')">Copy Text</button>
+          <button class="btn btn-ghost" style="min-height:44px;" onclick="clearAll()">Clear</button>
+        </div>
+      </div>
+
+      <!-- Quick Preview -->
+      <div class="tool-card" style="margin-top:1rem;" id="previewCard">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">All Case Previews</h2>
+        <div id="previewsContainer" style="font-size:0.875rem;color:var(--text-muted);">Type some text above to see previews of all cases.</div>
+      </div>
+
+      <div class="ad-container ad-content-middle" style="margin-top:1.5rem;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="3000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Type or paste your text into the textarea.</li>
+          <li>Click any case conversion button to transform the text in the textarea.</li>
+          <li><strong>UPPERCASE</strong> — converts all letters to capital letters.</li>
+          <li><strong>lowercase</strong> — converts all letters to small letters.</li>
+          <li><strong>Title Case</strong> — capitalizes the first letter of every word.</li>
+          <li><strong>Sentence case</strong> — capitalizes only the first letter of each sentence.</li>
+          <li><strong>aLtErNaTe</strong> — alternates between lower and uppercase letters.</li>
+          <li><strong>Remove Extra Spaces</strong> — collapses multiple spaces into one.</li>
+          <li><strong>Reverse Text</strong> — reverses all characters in the text.</li>
+          <li>Use the Copy button to copy the transformed text to your clipboard.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="word-counter.html">Word Counter</a>
+          <a href="character-counter.html">Character Counter</a>
+          <a href="slug-generator.html">Slug Generator</a>
+          <a href="remove-duplicate-lines.html">Remove Duplicate Lines</a>
+          <a href="text-diff.html">Text Diff Checker</a>
+        </div>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="3000000003"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="3000000004"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('case-converter.html');
+    injectFooter();
+  });
+
+  function updateCharCount() {
+    const text = document.getElementById('mainText').value;
+    const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+    document.getElementById('charCount').textContent = `${fmtNum(text.length, 0)} characters • ${fmtNum(words, 0)} words`;
+    updatePreviews(text);
+  }
+
+  function updatePreviews(text) {
+    const container = document.getElementById('previewsContainer');
+    if (!text.trim()) {
+      container.innerHTML = '<span style="color:var(--text-muted);">Type some text above to see previews of all cases.</span>';
+      return;
+    }
+    const preview = text.length > 120 ? text.slice(0, 120) + '...' : text;
+    const cases = [
+      { label: 'UPPERCASE', val: preview.toUpperCase() },
+      { label: 'lowercase', val: preview.toLowerCase() },
+      { label: 'Title Case', val: preview.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()) },
+      { label: 'Sentence case', val: preview.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase()) },
+      { label: 'aLtErNaTe', val: (() => { let i=0; return preview.split('').map(c => c.match(/[a-z]/i) ? (i++%2===0 ? c.toLowerCase() : c.toUpperCase()) : c).join(''); })() },
+    ];
+    container.innerHTML = cases.map(c => `
+      <div style="margin-bottom:0.75rem;padding:0.6rem 0.75rem;background:#f9fafb;border-radius:6px;border:1px solid var(--border);">
+        <div style="font-size:0.75rem;font-weight:600;color:var(--primary);margin-bottom:0.25rem;">${c.label}</div>
+        <div style="word-break:break-word;">${c.val}</div>
+      </div>
+    `).join('');
+  }
+
+  function convertCase(type) {
+    const ta = document.getElementById('mainText');
+    let t = ta.value;
+    if (type === 'upper') t = t.toUpperCase();
+    else if (type === 'lower') t = t.toLowerCase();
+    else if (type === 'title') t = t.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+    else if (type === 'sentence') t = t.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
+    else if (type === 'alternate') {
+      let i = 0;
+      t = t.split('').map(c => c.match(/[a-z]/i) ? (i++ % 2 === 0 ? c.toLowerCase() : c.toUpperCase()) : c).join('');
+    }
+    ta.value = t;
+    updateCharCount();
+  }
+
+  function removeExtraSpaces() {
+    const ta = document.getElementById('mainText');
+    ta.value = ta.value.replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
+    updateCharCount();
+  }
+
+  function reverseText() {
+    const ta = document.getElementById('mainText');
+    ta.value = ta.value.split('').reverse().join('');
+    updateCharCount();
+  }
+
+  function clearAll() {
+    document.getElementById('mainText').value = '';
+    updateCharCount();
+  }
+  </script>
+</body>
+</html>

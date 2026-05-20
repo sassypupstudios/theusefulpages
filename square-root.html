@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Square Root Calculator - Free Online Root Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate square roots, cube roots, nth roots, squares, cubes, and powers instantly. Includes a table of common square roots and perfect square detection.">
+  <link rel="canonical" href="https://theusefulpages.com/square-root.html">
+  <meta property="og:title" content="Square Root Calculator - The Useful Pages">
+  <meta property="og:description" content="Calculate square roots, cube roots, nth roots, squares, cubes, and powers instantly. Includes perfect square detection and common roots table.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Square Root Calculator","url":"https://theusefulpages.com/square-root.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .big-result { font-size:2.5rem; font-weight:700; color:var(--primary); }
+    .roots-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+    .roots-table th { background:var(--primary); color:#fff; padding:0.5rem; text-align:center; }
+    .roots-table td { padding:0.4rem 0.5rem; text-align:center; border-bottom:1px solid #e5e7eb; }
+    .roots-table tr:nth-child(even) td { background:#f8fafc; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="5000000001"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Square Root Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate square roots, cube roots, nth roots, squares, cubes, and powers with precision.</p>
+
+      <div class="tool-card">
+        <!-- Main root calculator -->
+        <div class="form-row">
+          <div class="form-group" style="flex:2;">
+            <label class="form-label">Number</label>
+            <input class="form-input" id="sqrt-num" type="number" placeholder="e.g. 144" step="any">
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label class="form-label">Decimal places</label>
+            <select class="form-select" id="sqrt-dec">
+              <option value="2">2</option>
+              <option value="4">4</option>
+              <option value="6" selected>6</option>
+              <option value="8">8</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group" style="flex:1;">
+            <label class="form-label">Nth root (n)</label>
+            <input class="form-input" id="sqrt-n" type="number" value="2" min="1" step="1" placeholder="2">
+          </div>
+        </div>
+        <div id="sqrt-error" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calcSqrt()">Calculate</button>
+          <button class="btn btn-ghost" onclick="clearSqrt()">Clear</button>
+          <button class="btn btn-outline" id="sqrt-copy" onclick="copySqrt()" style="display:none;">Copy √ Result</button>
+        </div>
+
+        <div id="sqrt-results" class="hidden" style="margin-top:1.5rem;">
+          <div class="result-card" style="margin-bottom:1rem;">
+            <div style="text-align:center;padding:0.75rem 0;">
+              <div class="big-result" id="sqrt-main"></div>
+              <div style="color:var(--text-muted);font-size:0.85rem;margin-top:0.25rem;" id="sqrt-label"></div>
+            </div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="sqrt-sq"></div>
+              <div class="stat-label">√ (Square Root)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="sqrt-cb"></div>
+              <div class="stat-label">∛ (Cube Root)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="sqrt-nth"></div>
+              <div class="stat-label" id="sqrt-nth-label">Nth Root</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="sqrt-perfect"></div>
+              <div class="stat-label">Perfect Square?</div>
+            </div>
+          </div>
+        </div>
+
+        <hr style="margin:1.5rem 0;border-color:#e5e7eb;">
+
+        <!-- Power calculator -->
+        <div style="font-weight:600;margin-bottom:0.75rem;">Power & Exponent Calculator</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Base (n)</label>
+            <input class="form-input" id="pow-base" type="number" placeholder="e.g. 3" step="any">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Exponent</label>
+            <input class="form-input" id="pow-exp" type="number" placeholder="e.g. 4" step="any">
+          </div>
+        </div>
+        <div id="pow-error" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calcPow()">Calculate</button>
+          <button class="btn btn-accent" onclick="calcQuick(2)">n²</button>
+          <button class="btn btn-accent" onclick="calcQuick(3)">n³</button>
+          <button class="btn btn-ghost" onclick="clearPow()">Clear</button>
+        </div>
+        <div id="pow-result" class="result-card hidden" style="margin-top:1rem;">
+          <div class="result-row"><span class="result-label">Result</span><span class="result-value" id="pow-ans"></span></div>
+          <div class="result-row"><span class="result-label">Expression</span><span class="result-value" id="pow-expr"></span></div>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <div style="font-weight:600;margin-bottom:0.75rem;">Common Square Roots (1–20)</div>
+        <div class="table-wrap">
+          <table class="roots-table" id="roots-table"></table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="5000000002" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter a number in the top field and click <strong>Calculate</strong> to see its square root, cube root, and nth root.</li>
+          <li>Set the <strong>Nth root</strong> field to any value — for example, 4 gives you the 4th root (⁴√n).</li>
+          <li>Adjust <strong>Decimal places</strong> to control the precision of results (2–10 places).</li>
+          <li>Use the <strong>Power Calculator</strong> to compute n² (square), n³ (cube), or any base raised to an exponent.</li>
+          <li>The common square roots table below shows √1 through √20 for quick reference.</li>
+          <li>A <strong>Perfect Square</strong> badge tells you whether the number is a whole-number square.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="percentage-calculator.html">Percentage Calculator</a>
+          <a href="age-calculator.html">Age Calculator</a>
+          <a href="random-number.html">Random Number Generator</a>
+          <a href="fraction-calculator.html">Fraction Calculator</a>
+          <a href="quadratic-solver.html">Quadratic Solver</a>
+          <a href="standard-deviation.html">Standard Deviation</a>
+          <a href="scientific-calculator.html">Scientific Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar">
+        <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="5000000003"></ins>
+        <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+      </div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="5000000004"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('square-root.html');
+    injectFooter();
+    buildTable();
+    document.getElementById('sqrt-num').addEventListener('input', calcSqrt);
+    document.getElementById('sqrt-dec').addEventListener('change', calcSqrt);
+    document.getElementById('sqrt-n').addEventListener('input', calcSqrt);
+  });
+
+  function buildTable() {
+    const t = document.getElementById('roots-table');
+    let html = '<thead><tr><th>n</th><th>n²</th><th>√n</th><th>Perfect?</th></tr></thead><tbody>';
+    for (let i = 1; i <= 20; i++) {
+      const sq = i * i;
+      const rt = Math.sqrt(i).toFixed(6);
+      const perf = Number.isInteger(Math.sqrt(i)) ? 'Yes ✓' : 'No';
+      html += `<tr><td>${i}</td><td>${sq}</td><td>${rt}</td><td>${perf}</td></tr>`;
+    }
+    html += '</tbody>';
+    t.innerHTML = html;
+  }
+
+  function calcSqrt() {
+    const num = parseFloat(document.getElementById('sqrt-num').value);
+    const dec = parseInt(document.getElementById('sqrt-dec').value);
+    const n = parseFloat(document.getElementById('sqrt-n').value);
+    const err = document.getElementById('sqrt-error');
+    if (isNaN(num)) { err.textContent = ''; document.getElementById('sqrt-results').classList.add('hidden'); document.getElementById('sqrt-copy').style.display='none'; return; }
+    if (num < 0) { err.textContent = 'Cannot calculate real roots of negative numbers.'; document.getElementById('sqrt-results').classList.add('hidden'); return; }
+    if (isNaN(n) || n < 1) { err.textContent = 'N must be a positive integer.'; return; }
+    err.textContent = '';
+
+    const sqrtVal = Math.sqrt(num).toFixed(dec);
+    const cbrtVal = Math.cbrt(num).toFixed(dec);
+    const nthVal = Math.pow(num, 1/n).toFixed(dec);
+    const isPerfect = Number.isInteger(Math.sqrt(num));
+
+    document.getElementById('sqrt-main').textContent = '√' + num + ' = ' + sqrtVal;
+    document.getElementById('sqrt-label').textContent = 'to ' + dec + ' decimal place' + (dec===1?'':'s');
+    document.getElementById('sqrt-sq').textContent = sqrtVal;
+    document.getElementById('sqrt-cb').textContent = cbrtVal;
+    document.getElementById('sqrt-nth').textContent = nthVal;
+    document.getElementById('sqrt-nth-label').textContent = (n===2?'√':n===3?'∛':'ⁿ√') + ' (' + n + 'th Root)';
+    document.getElementById('sqrt-perfect').textContent = isPerfect ? 'Yes ✓' : 'No';
+    document.getElementById('sqrt-results').classList.remove('hidden');
+    document.getElementById('sqrt-copy').style.display = '';
+  }
+
+  function clearSqrt() {
+    document.getElementById('sqrt-num').value = '';
+    document.getElementById('sqrt-n').value = '2';
+    document.getElementById('sqrt-error').textContent = '';
+    document.getElementById('sqrt-results').classList.add('hidden');
+    document.getElementById('sqrt-copy').style.display = 'none';
+  }
+
+  function copySqrt() {
+    copyText(document.getElementById('sqrt-main').textContent, 'Result copied!');
+  }
+
+  function calcPow() {
+    const base = parseFloat(document.getElementById('pow-base').value);
+    const exp = parseFloat(document.getElementById('pow-exp').value);
+    const err = document.getElementById('pow-error');
+    if (isNaN(base) || isNaN(exp)) { err.textContent = 'Please enter base and exponent.'; return; }
+    err.textContent = '';
+    const result = Math.pow(base, exp);
+    document.getElementById('pow-ans').textContent = fmtNum(result, 6);
+    document.getElementById('pow-expr').textContent = base + ' ^ ' + exp + ' = ' + fmtNum(result, 6);
+    document.getElementById('pow-result').classList.remove('hidden');
+  }
+
+  function calcQuick(exp) {
+    const base = parseFloat(document.getElementById('pow-base').value);
+    const err = document.getElementById('pow-error');
+    if (isNaN(base)) { err.textContent = 'Please enter a base value.'; return; }
+    document.getElementById('pow-exp').value = exp;
+    calcPow();
+  }
+
+  function clearPow() {
+    document.getElementById('pow-base').value = '';
+    document.getElementById('pow-exp').value = '';
+    document.getElementById('pow-error').textContent = '';
+    document.getElementById('pow-result').classList.add('hidden');
+  }
+  </script>
+</body>
+</html>

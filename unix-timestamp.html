@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unix Timestamp Converter - Epoch Time to Date | The Useful Pages</title>
+  <meta name="description" content="Convert Unix timestamps to human-readable dates and vice versa. Supports seconds and milliseconds, UTC, local time, ISO 8601, and relative time. Free tool.">
+  <link rel="canonical" href="https://theusefulpages.com/unix-timestamp.html">
+  <meta property="og:title" content="Unix Timestamp Converter - The Useful Pages">
+  <meta property="og:description" content="Convert Unix epoch timestamps to dates and dates to Unix timestamps. Supports seconds, milliseconds, ISO 8601, and relative time.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Unix Timestamp Converter","url":"https://theusefulpages.com/unix-timestamp.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .current-ts { background: var(--primary); color: #fff; border-radius: 12px; padding: 1.25rem; text-align: center; margin-bottom: 1.5rem; }
+    .current-ts-num { font-size: 2rem; font-weight: 700; font-family: monospace; letter-spacing: 0.05em; }
+    .current-ts-label { font-size: 0.8rem; opacity: 0.85; margin-top: 0.25rem; }
+    .copy-row { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+    .copy-row:last-child { border-bottom: none; }
+    .copy-row-label { font-size: 0.8rem; color: var(--text-muted); min-width: 110px; }
+    .copy-row-value { font-family: monospace; font-size: 0.9rem; flex: 1; word-break: break-all; }
+    .copy-row-btn { flex-shrink: 0; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567890"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Unix Timestamp Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Convert between Unix epoch timestamps and human-readable dates instantly.</p>
+
+      <div class="tool-card">
+        <div class="current-ts">
+          <div class="current-ts-label">Current Unix Timestamp (seconds)</div>
+          <div class="current-ts-num" id="live-ts">-</div>
+          <div class="current-ts-label" id="live-ts-ms" style="margin-top:0.25rem;font-size:0.75rem;opacity:0.7;"></div>
+          <button class="btn btn-sm" style="margin-top:0.75rem;background:rgba(255,255,255,0.2);color:#fff;border:1px solid rgba(255,255,255,0.4);" onclick="copyText(document.getElementById('live-ts').textContent,'Timestamp copied!')">Copy</button>
+        </div>
+
+        <!-- Timestamp → Date -->
+        <div style="margin-bottom:1.5rem;">
+          <h2 style="font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:0.75rem;">Timestamp → Date</h2>
+          <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;">
+            <input type="text" id="ts-input" class="form-input" placeholder="e.g. 1700000000 or 1700000000000" style="flex:1;font-family:monospace;">
+            <button class="btn btn-primary" onclick="convertTsToDate()">Convert</button>
+          </div>
+          <div id="ts-results" class="hidden">
+            <div class="result-card">
+              <div class="copy-row">
+                <span class="copy-row-label">UTC</span>
+                <span class="copy-row-value" id="r-utc">-</span>
+                <button class="btn btn-outline btn-sm copy-row-btn" onclick="copyText(document.getElementById('r-utc').textContent,'Copied!')">Copy</button>
+              </div>
+              <div class="copy-row">
+                <span class="copy-row-label">Local Time</span>
+                <span class="copy-row-value" id="r-local">-</span>
+                <button class="btn btn-outline btn-sm copy-row-btn" onclick="copyText(document.getElementById('r-local').textContent,'Copied!')">Copy</button>
+              </div>
+              <div class="copy-row">
+                <span class="copy-row-label">ISO 8601</span>
+                <span class="copy-row-value" id="r-iso">-</span>
+                <button class="btn btn-outline btn-sm copy-row-btn" onclick="copyText(document.getElementById('r-iso').textContent,'Copied!')">Copy</button>
+              </div>
+              <div class="copy-row">
+                <span class="copy-row-label">Relative</span>
+                <span class="copy-row-value" id="r-relative">-</span>
+                <span class="copy-row-btn" style="min-width:60px;"></span>
+              </div>
+              <div class="copy-row">
+                <span class="copy-row-label">Detected as</span>
+                <span class="copy-row-value" id="r-type">-</span>
+                <span class="copy-row-btn" style="min-width:60px;"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border:none;border-top:1px solid var(--border);margin:1.5rem 0;">
+
+        <!-- Date → Timestamp -->
+        <div>
+          <h2 style="font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:0.75rem;">Date → Timestamp</h2>
+          <div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;flex-wrap:wrap;">
+            <input type="datetime-local" id="date-input" class="form-input" style="flex:1;min-width:200px;">
+            <button class="btn btn-primary" onclick="convertDateToTs()">Convert</button>
+            <button class="btn btn-outline" onclick="setNow()">Now</button>
+          </div>
+          <div id="date-results" class="hidden">
+            <div class="result-card">
+              <div class="copy-row">
+                <span class="copy-row-label">Unix Seconds</span>
+                <span class="copy-row-value" id="d-seconds">-</span>
+                <button class="btn btn-outline btn-sm copy-row-btn" onclick="copyText(document.getElementById('d-seconds').textContent,'Copied!')">Copy</button>
+              </div>
+              <div class="copy-row">
+                <span class="copy-row-label">Unix Milliseconds</span>
+                <span class="copy-row-value" id="d-millis">-</span>
+                <button class="btn btn-outline btn-sm copy-row-btn" onclick="copyText(document.getElementById('d-millis').textContent,'Copied!')">Copy</button>
+              </div>
+              <div class="copy-row">
+                <span class="copy-row-label">ISO 8601</span>
+                <span class="copy-row-value" id="d-iso">-</span>
+                <button class="btn btn-outline btn-sm copy-row-btn" onclick="copyText(document.getElementById('d-iso').textContent,'Copied!')">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567891" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>The live counter at the top shows the current Unix timestamp in seconds, updating every second.</li>
+          <li>To convert a timestamp to a date, paste a Unix timestamp (seconds or milliseconds — auto-detected) and click <strong>Convert</strong>.</li>
+          <li>To convert a date to a timestamp, pick a date and time and click <strong>Convert</strong>. Click <strong>Now</strong> to use the current date/time.</li>
+          <li>Use individual <strong>Copy</strong> buttons to copy any value to your clipboard.</li>
+          <li>Millisecond timestamps are detected automatically (13+ digits).</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="days-between-dates.html">Days Between Dates</a>
+          <a href="date-calculator.html">Date Calculator</a>
+          <a href="days-until.html">Days Until Calculator</a>
+          <a href="timezone-converter.html">Time Zone Converter</a>
+          <a href="countdown-timer.html">Countdown Timer</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567892"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567893"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('unix-timestamp.html');
+      injectFooter();
+      setInterval(updateLive, 1000);
+      updateLive();
+      setNow();
+    });
+
+    function updateLive() {
+      const now = Date.now();
+      document.getElementById('live-ts').textContent = Math.floor(now / 1000);
+      document.getElementById('live-ts-ms').textContent = now + ' ms';
+    }
+
+    function setNow() {
+      const now = new Date();
+      const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+      document.getElementById('date-input').value = local;
+    }
+
+    function getRelative(date) {
+      const diffMs = Date.now() - date.getTime();
+      const diffSec = Math.floor(Math.abs(diffMs) / 1000);
+      const future = diffMs < 0;
+      const prefix = future ? 'in ' : '';
+      const suffix = future ? '' : ' ago';
+      if (diffSec < 60) return prefix + diffSec + ' second' + (diffSec !== 1 ? 's' : '') + suffix;
+      const diffMin = Math.floor(diffSec / 60);
+      if (diffMin < 60) return prefix + diffMin + ' minute' + (diffMin !== 1 ? 's' : '') + suffix;
+      const diffHr = Math.floor(diffMin / 60);
+      if (diffHr < 24) return prefix + diffHr + ' hour' + (diffHr !== 1 ? 's' : '') + suffix;
+      const diffDay = Math.floor(diffHr / 24);
+      if (diffDay < 30) return prefix + diffDay + ' day' + (diffDay !== 1 ? 's' : '') + suffix;
+      const diffMo = Math.floor(diffDay / 30);
+      if (diffMo < 12) return prefix + diffMo + ' month' + (diffMo !== 1 ? 's' : '') + suffix;
+      const diffYr = Math.floor(diffDay / 365);
+      return prefix + diffYr + ' year' + (diffYr !== 1 ? 's' : '') + suffix;
+    }
+
+    function convertTsToDate() {
+      const raw = document.getElementById('ts-input').value.trim();
+      if (!raw || isNaN(raw)) { showToast('Please enter a valid numeric timestamp.'); return; }
+      let ts = parseInt(raw);
+      let isMs = false;
+      // Auto-detect: if > 13 digits or value > ~year 2100 in seconds, treat as ms
+      if (String(ts).length >= 13 || ts > 4102444800) {
+        isMs = true;
+      }
+      const date = isMs ? new Date(ts) : new Date(ts * 1000);
+      if (isNaN(date.getTime())) { showToast('Invalid timestamp.'); return; }
+
+      const utcOpts = { timeZone: 'UTC', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
+      document.getElementById('r-utc').textContent = date.toLocaleString(undefined, utcOpts);
+      document.getElementById('r-local').textContent = date.toLocaleString(undefined, { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' });
+      document.getElementById('r-iso').textContent = date.toISOString();
+      document.getElementById('r-relative').textContent = getRelative(date);
+      document.getElementById('r-type').textContent = isMs ? 'Milliseconds (ms)' : 'Seconds (s)';
+      document.getElementById('ts-results').classList.remove('hidden');
+    }
+
+    function convertDateToTs() {
+      const val = document.getElementById('date-input').value;
+      if (!val) { showToast('Please select a date and time.'); return; }
+      const date = new Date(val);
+      if (isNaN(date.getTime())) { showToast('Invalid date.'); return; }
+      const secs = Math.floor(date.getTime() / 1000);
+      document.getElementById('d-seconds').textContent = secs;
+      document.getElementById('d-millis').textContent = date.getTime();
+      document.getElementById('d-iso').textContent = date.toISOString();
+      document.getElementById('date-results').classList.remove('hidden');
+    }
+
+    // Allow Enter key on timestamp input
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('ts-input').addEventListener('keydown', e => { if (e.key === 'Enter') convertTsToDate(); });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Payment Calculator - Free Online Loan Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate your monthly loan payment, total interest, and full amortization schedule instantly. Free loan calculator for personal, auto, and student loans.">
+  <link rel="canonical" href="https://theusefulpages.com/loan-calculator.html">
+  <meta property="og:title" content="Loan Payment Calculator - The Useful Pages">
+  <meta property="og:description" content="Calculate monthly loan payments, total interest, and amortization schedule instantly. Free and accurate.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Loan Payment Calculator","url":"https://theusefulpages.com/loan-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Loan Payment Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate your monthly payment, total interest, and full amortization schedule for any loan.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Loan Amount ($)</label>
+            <input type="number" class="form-input" id="loanAmount" value="20000" min="0" step="100">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Annual Interest Rate (%)</label>
+            <input type="number" class="form-input" id="interestRate" value="6.5" min="0" max="100" step="0.01">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Loan Term</label>
+            <input type="number" class="form-input" id="loanTerm" value="5" min="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Term Unit</label>
+            <select class="form-select" id="termUnit">
+              <option value="years">Years</option>
+              <option value="months">Months</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary btn-block" onclick="calculateLoan()">Calculate Payment</button>
+        </div>
+
+        <div id="results" class="hidden" style="margin-top:1.5rem;">
+          <div class="stat-grid" id="statGrid"></div>
+          <div style="margin-top:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+              <h3 style="font-size:1rem;font-weight:600;margin:0;">Amortization Schedule</h3>
+              <button class="btn btn-outline btn-sm" onclick="toggleAmortization()">Show All Months</button>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table" id="amortTable">
+                <thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+                <tbody id="amortBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <button class="btn btn-accent btn-sm" onclick="copySummary()">Copy Summary</button>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">For educational purposes only — not financial advice.</p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter the total amount you plan to borrow in the Loan Amount field.</li>
+          <li>Input your annual interest rate (APR) as a percentage.</li>
+          <li>Set the loan term in years or switch to months for shorter loans.</li>
+          <li>Click Calculate to see your monthly payment and full amortization schedule.</li>
+          <li>Toggle "Show All Months" to view every payment period.</li>
+          <li>Use "Copy Summary" to copy the results to your clipboard.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="mortgage-calculator.html">Mortgage Calculator</a>
+          <a href="car-payment.html">Car Payment Calculator</a>
+          <a href="compound-interest.html">Compound Interest Calculator</a>
+          <a href="savings-calculator.html">Savings Calculator</a>
+          <a href="debt-payoff.html">Debt Payoff Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('loan-calculator.html'); injectFooter(); });
+
+    let fullAmortData = [];
+    let showingAll = false;
+
+    function calculateLoan() {
+      const P = parseFloat(document.getElementById('loanAmount').value) || 0;
+      const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
+      const termVal = parseFloat(document.getElementById('loanTerm').value) || 0;
+      const termUnit = document.getElementById('termUnit').value;
+      const n = termUnit === 'years' ? termVal * 12 : termVal;
+      const r = annualRate / 100 / 12;
+
+      if (P <= 0 || n <= 0) { showToast('Please enter valid loan details.'); return; }
+
+      let M;
+      if (r === 0) {
+        M = P / n;
+      } else {
+        M = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      }
+
+      const totalPayment = M * n;
+      const totalInterest = totalPayment - P;
+      const interestPct = (totalInterest / P) * 100;
+
+      document.getElementById('statGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(M)}</div><div class="stat-label">Monthly Payment</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(totalPayment)}</div><div class="stat-label">Total Payment</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(totalInterest)}</div><div class="stat-label">Total Interest</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtPct(interestPct, 1)}</div><div class="stat-label">Interest % of Loan</div></div>
+      `;
+
+      fullAmortData = [];
+      let balance = P;
+      for (let i = 1; i <= n; i++) {
+        const interestPayment = balance * r;
+        const principalPayment = M - interestPayment;
+        balance = Math.max(0, balance - principalPayment);
+        fullAmortData.push({ month: i, payment: M, principal: principalPayment, interest: interestPayment, balance });
+      }
+
+      showingAll = false;
+      renderAmortTable();
+      document.getElementById('results').classList.remove('hidden');
+      document.querySelector('[onclick="toggleAmortization()"]').textContent = 'Show All Months';
+    }
+
+    function renderAmortTable() {
+      const data = showingAll ? fullAmortData : fullAmortData.slice(0, 12);
+      const tbody = document.getElementById('amortBody');
+      tbody.innerHTML = data.map(r => `
+        <tr>
+          <td>${r.month}</td>
+          <td>${fmtCurrency(r.payment)}</td>
+          <td>${fmtCurrency(r.principal)}</td>
+          <td>${fmtCurrency(r.interest)}</td>
+          <td>${fmtCurrency(r.balance)}</td>
+        </tr>
+      `).join('');
+    }
+
+    function toggleAmortization() {
+      showingAll = !showingAll;
+      renderAmortTable();
+      document.querySelector('[onclick="toggleAmortization()"]').textContent = showingAll ? 'Show First 12' : 'Show All Months';
+    }
+
+    function copySummary() {
+      const P = parseFloat(document.getElementById('loanAmount').value) || 0;
+      const r = parseFloat(document.getElementById('interestRate').value) || 0;
+      const term = document.getElementById('loanTerm').value + ' ' + document.getElementById('termUnit').value;
+      const statBoxes = document.querySelectorAll('.stat-box');
+      let text = `Loan Calculator Summary\nLoan: ${fmtCurrency(P)} at ${r}% for ${term}\n`;
+      statBoxes.forEach(b => {
+        text += `${b.querySelector('.stat-label').textContent}: ${b.querySelector('.stat-value').textContent}\n`;
+      });
+      copyText(text, 'Summary copied!');
+    }
+  </script>
+</body>
+</html>
