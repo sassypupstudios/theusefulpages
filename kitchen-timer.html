@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kitchen Timer - Multiple Simultaneous Timers Online | The Useful Pages</title>
   <meta name="description" content="Run up to 6 kitchen timers simultaneously in your browser. Custom labels, preset durations, audio alerts, and HH:MM:SS input. No app needed. Free online tool.">
   <link rel="canonical" href="https://theusefulpages.com/kitchen-timer.html">
@@ -15,7 +17,7 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     .timers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
-    .timer-card { border: 2px solid var(--border); border-radius: 14px; padding: 1.25rem; background: #fff; transition: border-color 0.2s, box-shadow 0.2s; position: relative; }
+    .timer-card { border: 2px solid var(--border); border-radius: 14px; padding: 1.25rem; background: var(--card-bg); transition: border-color 0.2s, box-shadow 0.2s; position: relative; }
     .timer-card.running { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(35,106,119,0.1); }
     .timer-card.done { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,0.15); animation: flashDone 1s ease-in-out 0s 6; }
     .timer-card.warn { border-color: #d97706; box-shadow: 0 0 0 3px rgba(217,119,6,0.12); }
@@ -33,14 +35,14 @@
     .timer-delete { position: absolute; top: 0.75rem; right: 0.75rem; background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 1.1rem; padding: 0.25rem; border-radius: 4px; line-height: 1; min-width: 28px; min-height: 28px; display: flex; align-items: center; justify-content: center; }
     .timer-delete:hover { color: #dc2626; background: #fee2e2; }
     .preset-btns { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-    .add-timer-btn { border: 2px dashed var(--border); border-radius: 14px; padding: 2rem; text-align: center; cursor: pointer; color: var(--text-muted); font-weight: 600; transition: border-color 0.2s, color 0.2s; background: #f8fafc; }
+    .add-timer-btn { border: 2px dashed var(--border); border-radius: 14px; padding: 2rem; text-align: center; cursor: pointer; color: var(--text-muted); font-weight: 600; transition: border-color 0.2s, color 0.2s; background: var(--bg-secondary); }
     .add-timer-btn:hover { border-color: var(--primary); color: var(--primary); }
     .done-label { font-size: 0.8rem; font-weight: 700; color: #dc2626; text-align: center; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.25rem; }
   </style>
 </head>
 <body>
   <div id="site-nav"></div>
-  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567890"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div class="page-wrapper">
     <main class="tool-main">
       <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Kitchen Timer</h1>
@@ -68,7 +70,7 @@
         <div class="timers-grid" id="timers-grid"></div>
       </div>
 
-      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567891" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
       <div class="instructions-card">
         <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
         <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
@@ -94,10 +96,10 @@
       </div>
     </main>
     <aside class="tool-sidebar">
-      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567892"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
     </aside>
   </div>
-  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="1234567893"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
   <div id="site-footer"></div>
   <script src="script.js"></script>
   <script>

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Word Unscrambler - Free Online Word Finder | The Useful Pages</title>
   <meta name="description" content="Unscramble letters to find all possible words. Filter by length, sort by Scrabble score or alphabetically. Click any word to see its definition instantly.">
   <link rel="canonical" href="https://theusefulpages.com/word-unscrambler.html">
@@ -20,7 +22,7 @@
     .status-bar { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem; }
     .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; }
     .modal-overlay.active { display:flex; }
-    .modal-box { background:#fff; border-radius:12px; padding:1.5rem; max-width:500px; width:90%; max-height:80vh; overflow-y:auto; }
+    .modal-box { background:var(--card-bg); border-radius:12px; padding:1.5rem; max-width:500px; width:90%; max-height:80vh; overflow-y:auto; }
     .modal-word { font-size:1.5rem; font-weight:700; color:var(--primary); margin-bottom:0.25rem; }
     .modal-phonetic { color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem; }
     .def-pos { font-style:italic; font-size:0.85rem; color:var(--accent); margin-bottom:0.25rem; font-weight:600; }

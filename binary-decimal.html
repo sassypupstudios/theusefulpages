@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Binary to Decimal Converter - Free Online Tool | The Useful Pages</title>
   <meta name="description" content="Free binary to decimal converter. Convert between binary, octal, decimal, and hex simultaneously. Includes custom base converter, bit info, and ASCII lookup.">
   <link rel="canonical" href="https://theusefulpages.com/binary-decimal.html">
@@ -23,13 +25,13 @@
     .bit-group{display:flex;gap:0.15rem;margin-right:0.4rem;}
     .bit-cell{width:28px;height:32px;border-radius:5px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;transition:all .15s;}
     .bit-cell.one{background:var(--primary);color:#fff;border-color:var(--primary);}
-    .bit-cell.zero{background:#f7fafb;color:var(--text-muted);}
+    .bit-cell.zero{background:var(--bg-secondary);color:var(--text-muted);}
     .stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.75rem;margin:0.75rem 0;}
     .info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.75rem;margin:0.75rem 0;}
-    .info-box{background:#f7fafb;border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.75rem;}
+    .info-box{background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.75rem;}
     .info-box .lbl{font-size:0.72rem;color:var(--text-muted);margin-bottom:0.2rem;font-weight:500;}
     .info-box .val{font-size:0.95rem;font-weight:700;color:var(--primary);font-family:monospace;}
-    .ascii-box{background:#f0f8fa;border:1px solid #c5dfe5;border-radius:8px;padding:0.75rem 1rem;margin:0.75rem 0;font-size:0.9rem;display:none;}
+    .ascii-box{background:var(--result-bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin:0.75rem 0;font-size:0.9rem;display:none;}
     .custom-base-row{display:grid;grid-template-columns:1fr 80px 80px 1fr;gap:0.75rem;align-items:end;}
     @media(max-width:600px){.custom-base-row{grid-template-columns:1fr 1fr;}}
     .error-inline{color:#c0392b;font-size:0.75rem;margin-top:0.2rem;}

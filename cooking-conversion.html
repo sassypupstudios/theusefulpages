@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cooking Conversion Calculator - Free Online Tool | The Useful Pages</title>
   <meta name="description" content="Free cooking conversion calculator. Convert cups, tablespoons, teaspoons, ml, oz and more. Includes ingredient weight converter and oven temperature chart.">
   <link rel="canonical" href="https://theusefulpages.com/cooking-conversion.html">
@@ -22,12 +24,12 @@
     .ref-table tr:nth-child(even) td{background:#f7fafb;}
     .converter-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;}
     @media(max-width:600px){.converter-row{grid-template-columns:1fr;}}
-    .swap-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:1.25rem;transition:all .15s;align-self:flex-end;}
+    .swap-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:var(--card-bg);cursor:pointer;font-size:1.25rem;transition:all .15s;align-self:flex-end;}
     .swap-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
-    .weight-result{background:#f0f8fa;border:1px solid #c5dfe5;border-radius:8px;padding:1rem;margin-top:1rem;font-size:0.9rem;}
+    .weight-result{background:var(--result-bg);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-top:1rem;font-size:0.9rem;}
     .weight-result strong{color:var(--primary);font-size:1.1rem;}
     .oven-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.5rem;margin-top:0.5rem;}
-    .oven-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.8rem;font-size:0.82rem;}
+    .oven-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.8rem;font-size:0.82rem;}
     .oven-card .oven-label{font-weight:600;color:var(--primary);margin-bottom:0.2rem;}
     .oven-card .oven-temps{color:var(--text-muted);}
   </style>

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BMI Calculator - Free Body Mass Index Calculator | The Useful Pages</title>
   <meta name="description" content="Calculate your BMI (Body Mass Index) instantly. Supports imperial and metric units. Shows WHO category, healthy weight range, and a visual BMI scale for your height.">
   <link rel="canonical" href="https://theusefulpages.com/bmi-calculator.html">
@@ -14,8 +16,8 @@
   <style>
     .bmi-gauge-wrap { margin: 1.25rem 0; }
     .bmi-scale { position:relative; height:28px; border-radius:14px; background:linear-gradient(to right,#3b82f6 0%,#22c55e 25%,#f59e0b 50%,#ef4444 75%,#991b1b 100%); overflow:visible; }
-    .bmi-marker { position:absolute; top:-6px; transform:translateX(-50%); width:4px; height:40px; background:#1a1a1a; border-radius:2px; transition:left 0.4s; }
-    .bmi-marker::after { content:attr(data-val); position:absolute; top:44px; left:50%; transform:translateX(-50%); font-size:0.75rem; font-weight:700; white-space:nowrap; color:#1a1a1a; }
+    .bmi-marker { position:absolute; top:-6px; transform:translateX(-50%); width:4px; height:40px; background:var(--text); border-radius:2px; transition:left 0.4s; }
+    .bmi-marker::after { content:attr(data-val); position:absolute; top:44px; left:50%; transform:translateX(-50%); font-size:0.75rem; font-weight:700; white-space:nowrap; color:var(--text); }
     .bmi-labels { display:flex; justify-content:space-between; font-size:0.7rem; color:var(--text-muted); margin-top:0.4rem; }
     .bmi-number { font-size:3.5rem; font-weight:700; color:var(--primary); line-height:1; }
     .bmi-cat { font-size:1.1rem; font-weight:600; margin-top:0.25rem; }

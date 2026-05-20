@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pregnancy Due Date Calculator - Free EDD Calculator | The Useful Pages</title>
   <meta name="description" content="Calculate your pregnancy due date from LMP, conception date, or ultrasound. See current week, trimester, days remaining, and a full milestone timeline with key dates.">
   <link rel="canonical" href="https://theusefulpages.com/pregnancy-due-date.html">
@@ -16,7 +18,7 @@
     .milestone-list { display:flex; flex-direction:column; gap:0; margin-top:0.75rem; }
     .milestone-item { display:flex; align-items:flex-start; gap:1rem; padding:0.75rem 0; border-bottom:1px solid var(--border); position:relative; }
     .milestone-item:last-child { border-bottom:none; }
-    .milestone-dot { width:14px; height:14px; border-radius:50%; background:var(--border); flex-shrink:0; margin-top:3px; border:2px solid #fff; box-shadow:0 0 0 2px var(--border); }
+    .milestone-dot { width:14px; height:14px; border-radius:50%; background:var(--border); flex-shrink:0; margin-top:3px; border:2px solid var(--card-bg); box-shadow:0 0 0 2px var(--border); }
     .milestone-dot.passed { background:var(--primary); box-shadow:0 0 0 2px var(--primary); }
     .milestone-dot.current { background:var(--accent); box-shadow:0 0 0 2px var(--accent); animation:pulse 1.5s ease-in-out infinite; }
     @keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.25);} }
@@ -31,7 +33,7 @@
     .tri-1 { background:#dbeafe; color:#1d4ed8; }
     .tri-2 { background:#dcfce7; color:#15803d; }
     .tri-3 { background:#fef9c3; color:#a16207; }
-    .disclaimer { background:#fff8f0; border-left:3px solid var(--accent); padding:0.75rem 1rem; border-radius:0 8px 8px 0; font-size:0.82rem; color:var(--text-muted); margin-top:1rem; }
+    .disclaimer { background:var(--result-bg); border-left:3px solid var(--accent); padding:0.75rem 1rem; border-radius:0 8px 8px 0; font-size:0.82rem; color:var(--text-muted); margin-top:1rem; }
   </style>
 </head>
 <body>

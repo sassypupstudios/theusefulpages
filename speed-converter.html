@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Speed Converter - MPH, KM/H, Knots, Mach | The Useful Pages</title>
   <meta name="description" content="Free online speed converter between mph, km/h, m/s, ft/s, knots, and Mach. Includes travel time calculator, distance calculator, and all-units table.">
   <link rel="canonical" href="https://theusefulpages.com/speed-converter.html">
@@ -16,19 +18,19 @@
   <style>
     .converter-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;}
     @media(max-width:600px){.converter-row{grid-template-columns:1fr;}}
-    .swap-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:1.25rem;transition:all .15s;align-self:flex-end;}
+    .swap-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:var(--card-bg);cursor:pointer;font-size:1.25rem;transition:all .15s;align-self:flex-end;}
     .swap-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
     .section-title{font-size:1rem;font-weight:700;color:var(--primary);margin:1.5rem 0 0.75rem;padding-top:1.25rem;border-top:1px solid var(--border);}
     .all-units-table{width:100%;border-collapse:collapse;font-size:0.85rem;}
     .all-units-table th{background:var(--primary);color:#fff;padding:0.45rem 0.75rem;text-align:left;font-weight:600;}
     .all-units-table td{padding:0.4rem 0.75rem;border-bottom:1px solid var(--border);}
-    .all-units-table tr:nth-child(even) td{background:#f7fafb;}
+    .all-units-table tr:nth-child(even) td{background:var(--bg-secondary);}
     .all-units-table .unit-name{color:var(--text-muted);font-size:0.78rem;}
     .ref-table{width:100%;border-collapse:collapse;font-size:0.82rem;}
     .ref-table th{background:var(--primary);color:#fff;padding:0.4rem 0.6rem;text-align:left;font-weight:600;}
     .ref-table td{padding:0.35rem 0.6rem;border-bottom:1px solid var(--border);}
-    .ref-table tr:nth-child(even) td{background:#f7fafb;}
-    .travel-result{background:#f0f8fa;border:1px solid #c5dfe5;border-radius:8px;padding:0.75rem 1rem;margin-top:0.75rem;font-size:0.88rem;display:none;}
+    .ref-table tr:nth-child(even) td{background:var(--bg-secondary);}
+    .travel-result{background:var(--result-bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-top:0.75rem;font-size:0.88rem;display:none;}
     .travel-result strong{color:var(--primary);font-size:1rem;}
     .tab-group{display:flex;gap:0.5rem;margin-bottom:1rem;}
     .tab-btn{padding:0.4rem 1rem;border-radius:20px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:0.82rem;font-weight:500;color:var(--text-muted);transition:all .15s;}

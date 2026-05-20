@@ -131,6 +131,23 @@ const TOOLS = {
   },
 };
 
+// ── Dark mode ──────────────────────────────────────
+function initTheme() {
+  const saved = localStorage.getItem('tup_theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('tup_theme', next);
+}
+
+initTheme();
+
 // ── Nav injection ──────────────────────────────────
 function injectNav(activeUrl) {
   const dropdowns = Object.values(TOOLS).map(cat => {
@@ -151,6 +168,10 @@ function injectNav(activeUrl) {
         <div class="nav-links">${dropdowns}</div>
         <div class="nav-right">
           <a href="index.html" style="font-size:0.8125rem;font-weight:600;color:var(--primary);text-decoration:none;padding:0.4rem 0.75rem;border:1.5px solid var(--primary);border-radius:8px;">All Tools</a>
+          <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+            <svg class="icon-sun" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg class="icon-moon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          </button>
           <button class="hamburger" id="hamburger-btn" aria-label="Menu">
             <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
@@ -173,6 +194,7 @@ function injectNav(activeUrl) {
   document.getElementById('hamburger-btn').addEventListener('click', () => {
     document.getElementById('mobile-menu').classList.toggle('open');
   });
+  document.getElementById('theme-toggle-btn').addEventListener('click', toggleTheme);
 
   trackRecentlyUsed(activeUrl);
 }

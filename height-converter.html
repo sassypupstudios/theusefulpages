@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Height Converter - Feet & Inches to CM | The Useful Pages</title>
   <meta name="description" content="Free height converter between feet & inches and centimeters. Includes height reference chart, BMI preview, and international height format display.">
   <link rel="canonical" href="https://theusefulpages.com/height-converter.html">
@@ -22,20 +24,20 @@
     .arrow-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
     .section-title{font-size:1rem;font-weight:700;color:var(--primary);margin:1.5rem 0 0.75rem;padding-top:1.25rem;border-top:1px solid var(--border);}
     .result-extra{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.6rem;margin-top:0.75rem;}
-    .result-box{background:#f7fafb;border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.75rem;}
+    .result-box{background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.75rem;}
     .result-box .lbl{font-size:0.72rem;color:var(--text-muted);margin-bottom:0.2rem;}
     .result-box .val{font-size:1rem;font-weight:700;color:var(--primary);}
     .chart-table{width:100%;border-collapse:collapse;font-size:0.82rem;}
     .chart-table th{background:var(--primary);color:#fff;padding:0.4rem 0.6rem;text-align:left;font-weight:600;}
     .chart-table td{padding:0.35rem 0.6rem;border-bottom:1px solid var(--border);}
-    .chart-table tr:nth-child(even) td{background:#f7fafb;}
+    .chart-table tr:nth-child(even) td{background:var(--bg-secondary);}
     .chart-table tr.highlight td{background:#e8f5f8;font-weight:600;color:var(--primary);}
-    .bmi-result{background:#f0f8fa;border:1px solid #c5dfe5;border-radius:8px;padding:0.75rem 1rem;margin-top:0.75rem;font-size:0.88rem;}
+    .bmi-result{background:var(--result-bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-top:0.75rem;font-size:0.88rem;}
     .bmi-bar-wrap{height:12px;border-radius:6px;background:linear-gradient(to right,#3498db 0%,#2ecc71 25%,#f1c40f 50%,#e67e22 75%,#e74c3c 100%);margin:0.5rem 0;position:relative;}
     .bmi-marker{position:absolute;top:-4px;width:4px;height:20px;background:#333;border-radius:2px;transform:translateX(-50%);}
     .bmi-labels{display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text-muted);}
     .intl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.6rem;margin-top:0.5rem;}
-    .intl-box{background:#f7fafb;border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.75rem;}
+    .intl-box{background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.75rem;}
     .intl-box .country{font-size:0.72rem;color:var(--text-muted);margin-bottom:0.2rem;font-weight:500;}
     .intl-box .fmt{font-size:0.95rem;font-weight:700;color:var(--primary);}
   </style>

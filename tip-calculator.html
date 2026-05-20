@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tip Calculator - Free Online Tip & Bill Splitter | The Useful Pages</title>
   <meta name="description" content="Calculate tip amount, split the bill between people, and round up totals instantly. Free tip calculator with custom tip percentage and pre-tax option.">
   <link rel="canonical" href="https://theusefulpages.com/tip-calculator.html">
@@ -15,7 +17,7 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     .tip-btn-group { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; }
-    .tip-btn { padding:0.5rem 1rem; border:2px solid var(--border); border-radius:8px; background:white; cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--text-muted); transition:all 0.15s; font-family:inherit; }
+    .tip-btn { padding:0.5rem 1rem; border:2px solid var(--border); border-radius:8px; background:var(--card-bg); cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--text-muted); transition:all 0.15s; font-family:inherit; }
     .tip-btn:hover { border-color:var(--primary); color:var(--primary); }
     .tip-btn.active { background:var(--primary); border-color:var(--primary); color:white; }
     .result-big { text-align:center; padding:1.25rem; background:var(--primary); color:white; border-radius:12px; margin-bottom:0.75rem; }

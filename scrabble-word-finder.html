@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scrabble Word Finder - Free Online Scrabble Helper | The Useful Pages</title>
   <meta name="description" content="Find all playable Scrabble words from your tiles. Supports blank wildcards (?). Sort by Scrabble score, filter by length or letters. See letter scores for each word.">
   <link rel="canonical" href="https://theusefulpages.com/scrabble-word-finder.html">
@@ -14,14 +16,14 @@
   <style>
     .tile-input { display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; }
     .tile-box { width:48px; height:52px; border:2px solid var(--border); border-radius:8px; text-align:center; font-size:1.25rem; font-weight:700; text-transform:uppercase; background:var(--bg-secondary); color:var(--primary); outline:none; transition:border-color 0.15s; }
-    .tile-box:focus { border-color:var(--primary); background:#fff; }
+    .tile-box:focus { border-color:var(--primary); background:var(--card-bg); }
     .tile-box.wildcard { border-color:var(--accent); color:var(--accent); }
     .top-words { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:0.5rem; margin-bottom:1rem; }
     .top-word-card { background:var(--bg-secondary); border:1px solid var(--border); border-radius:8px; padding:0.6rem 0.75rem; }
     .top-word-name { font-weight:700; color:var(--primary); font-size:1rem; }
     .top-word-score { font-size:1.25rem; font-weight:700; color:var(--accent); float:right; }
     .word-letters { display:flex; gap:2px; flex-wrap:wrap; margin-top:0.35rem; }
-    .letter-tile { display:inline-flex; flex-direction:column; align-items:center; background:#fff; border:1px solid var(--border); border-radius:4px; padding:0 4px; min-width:22px; }
+    .letter-tile { display:inline-flex; flex-direction:column; align-items:center; background:var(--card-bg); border:1px solid var(--border); border-radius:4px; padding:0 4px; min-width:22px; }
     .letter-tile.blank-tile { border-color:var(--accent); color:var(--accent); }
     .lt-char { font-size:0.85rem; font-weight:700; line-height:1.3; }
     .lt-score { font-size:0.55rem; color:var(--text-muted); }
