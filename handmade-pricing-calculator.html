@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handmade Pricing Calculator — Free Calculator for Handmade Sellers | The Useful Pages</title>
+  <meta name="description" content="Calculate fair prices for your handmade goods using three proven formulas: Simple, Industry Standard, and Detailed cost-plus pricing. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/handmade-pricing-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .formula-card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 10px; padding: 1rem; margin-bottom: 0.75rem; }
+    .formula-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.25rem; }
+    .formula-price { font-size: 2rem; font-weight: 700; color: var(--primary); }
+    .formula-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem; }
+    .highlight-formula { border-color: var(--primary); background: var(--result-bg); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Handmade Pricing Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Get a fair price for your handmade goods using three proven pricing formulas.</p>
+
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Material Cost ($)</label>
+            <input type="number" class="form-input" id="materialCost" placeholder="0.00" min="0" step="0.01" oninput="calcPricing()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Time to Make (hours)</label>
+            <input type="number" class="form-input" id="timeHours" placeholder="0" min="0" step="0.25" oninput="calcPricing()">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Hourly Rate ($) <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">min. $15–25 recommended</span></label>
+            <input type="number" class="form-input" id="hourlyRate" placeholder="20" min="0" step="0.50" oninput="calcPricing()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Overhead % <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(tools, utilities, supplies)</span></label>
+            <input type="number" class="form-input" id="overheadPct" placeholder="15" min="0" max="100" step="1" value="15" oninput="calcPricing()">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Desired Profit Margin %</label>
+          <input type="number" class="form-input" id="marginPct" placeholder="30" min="0" max="100" step="1" value="30" oninput="calcPricing()">
+        </div>
+
+        <div id="results" style="margin-top:1.25rem;">
+          <div class="formula-card">
+            <div class="formula-title">Simple Formula — Materials × 2.5</div>
+            <div class="formula-price" id="simplePrice">—</div>
+            <div class="formula-note" id="simpleNote">Quick rule of thumb used by many makers</div>
+          </div>
+          <div class="formula-card">
+            <div class="formula-title">Industry Standard — Materials×2 + Labor</div>
+            <div class="formula-price" id="industryPrice">—</div>
+            <div class="formula-note" id="industryNote">Common formula taught in craft business courses</div>
+          </div>
+          <div class="formula-card highlight-formula">
+            <div class="formula-title">Detailed / Cost-Plus (Recommended)</div>
+            <div class="formula-price" id="detailedPrice">—</div>
+            <div class="formula-note" id="detailedNote">(Materials + Labor + Overhead) × (1 + Margin%)</div>
+          </div>
+          <div class="result-card" id="breakdown" style="display:none;">
+            <strong style="font-size:0.875rem;">Cost Breakdown</strong>
+            <div class="result-row"><span class="result-label">Materials</span><span id="bMat">—</span></div>
+            <div class="result-row"><span class="result-label">Labor</span><span id="bLabor">—</span></div>
+            <div class="result-row"><span class="result-label">Overhead</span><span id="bOverhead">—</span></div>
+            <div class="result-row"><span class="result-label">Total Cost</span><span id="bTotal" style="font-weight:700;">—</span></div>
+            <div class="result-row"><span class="result-label">Profit at Detailed Price</span><span id="bProfit" style="font-weight:700;color:var(--primary);">—</span></div>
+          </div>
+        </div>
+        <p class="disclaimer" style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">These calculators provide estimates for planning purposes. Consult a tax professional for business financial advice.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to Use</h2>
+        <ul style="margin:0 0 1rem 0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter the total cost of all materials for one item.</li>
+          <li>Enter how many hours the item takes to make.</li>
+          <li>Set your hourly rate — aim for at least $15–$25/hr minimum.</li>
+          <li>Overhead covers tools, electricity, workspace, packaging supplies (default 15%).</li>
+          <li>Profit margin is your business profit on top of all costs.</li>
+        </ul>
+        <h3 style="font-size:0.875rem;font-weight:700;margin-bottom:0.5rem;">Pricing Tips</h3>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Never underprice your labor.</strong> $20–$30/hr is reasonable for skilled handwork.</li>
+          <li>The Simple formula works as a quick sanity check but often undervalues labor-intensive items.</li>
+          <li>The Detailed formula is best for pricing accuracy and long-term business health.</li>
+          <li>Price for your target market — Etsy buyers, craft fair shoppers, and wholesale buyers expect different price points.</li>
+          <li>Revisit prices when material costs change.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="craft-fair-profit-calculator.html">Craft Fair Profit Calculator</a>
+          <a href="etsy-fee-calculator.html">Etsy Fee Calculator</a>
+          <a href="wholesale-price-calculator.html">Wholesale Price Calculator</a>
+          <a href="product-cost-calculator.html">Product Cost Calculator</a>
+          <a href="handmade-profit-margin-calculator.html">Profit Margin Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('handmade-pricing-calculator.html'); injectFooter(); calcPricing(); });
+
+    function fmt(n) { return '$' + n.toFixed(2); }
+
+    function calcPricing() {
+      const mat = parseFloat(document.getElementById('materialCost').value) || 0;
+      const hrs = parseFloat(document.getElementById('timeHours').value) || 0;
+      const rate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+      const overhead = parseFloat(document.getElementById('overheadPct').value) || 0;
+      const margin = parseFloat(document.getElementById('marginPct').value) || 0;
+
+      const labor = hrs * rate;
+      const overheadAmt = (mat + labor) * (overhead / 100);
+      const totalCost = mat + labor + overheadAmt;
+
+      const simplePrice = mat * 2.5;
+      const industryPrice = mat * 2 + labor;
+      const detailedPrice = totalCost * (1 + margin / 100);
+      const profit = detailedPrice - totalCost;
+
+      document.getElementById('simplePrice').textContent = fmt(simplePrice);
+      document.getElementById('simpleNote').textContent = `Materials (${fmt(mat)}) × 2.5`;
+      document.getElementById('industryPrice').textContent = fmt(industryPrice);
+      document.getElementById('industryNote').textContent = `Materials×2 (${fmt(mat*2)}) + Labor (${fmt(labor)})`;
+      document.getElementById('detailedPrice').textContent = fmt(detailedPrice);
+      document.getElementById('detailedNote').textContent = `Total cost ${fmt(totalCost)} × ${(1 + margin/100).toFixed(2)} (margin ${margin}%)`;
+
+      if (mat > 0 || hrs > 0) {
+        document.getElementById('breakdown').style.display = 'block';
+        document.getElementById('bMat').textContent = fmt(mat);
+        document.getElementById('bLabor').textContent = fmt(labor);
+        document.getElementById('bOverhead').textContent = fmt(overheadAmt) + ` (${overhead}%)`;
+        document.getElementById('bTotal').textContent = fmt(totalCost);
+        document.getElementById('bProfit').textContent = fmt(profit) + ` (${margin}%)`;
+      } else {
+        document.getElementById('breakdown').style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

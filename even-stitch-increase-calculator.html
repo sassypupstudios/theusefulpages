@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Even Stitch Increase Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate evenly spaced increases across a row. Get written crochet or knitting instructions. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/even-stitch-increase-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-box { background:var(--result-bg); border:1px solid var(--result-border); border-radius:var(--radius); padding:18px; margin-top:16px; }
+    .big-result { font-size:1.1rem; font-weight:600; color:var(--primary); line-height:1.7; }
+    .pattern-block { background:var(--bg-secondary); border-radius:8px; padding:14px; font-family:monospace; font-size:0.9rem; white-space:pre-wrap; margin-top:10px; line-height:1.7; }
+    .stat-row { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:10px; }
+    .stat-item { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:10px 16px; text-align:center; flex:1; min-width:100px; }
+    .stat-item .val { font-size:1.3rem; font-weight:700; color:var(--primary); }
+    .stat-item .lbl { font-size:0.78rem; color:var(--text-muted); margin-top:2px; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Even Stitch Increase Calculator</h1>
+      <p class="page-subtitle">Get written instructions for spacing increases evenly across a single row or round.</p>
+
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div>
+            <label class="label">Current Stitch Count</label>
+            <input type="number" id="current-st" class="form-input" placeholder="e.g. 80" min="1" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Desired Stitch Count</label>
+            <input type="number" id="desired-st" class="form-input" placeholder="e.g. 96" min="1" oninput="calculate()">
+          </div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <label class="label">Craft Type</label>
+          <select id="craft-type" class="form-select" onchange="calculate()">
+            <option value="crochet">Crochet (sc / inc)</option>
+            <option value="knitting">Knitting (k / kfb or M1)</option>
+          </select>
+        </div>
+        <div id="result" class="result-box" style="display:none;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>About Even Stitch Increases</h2>
+        <p>When you need to add stitches evenly across a row (to go up a needle size, change stitch pattern, or resize), the key is to space the increases as evenly as possible.</p>
+        <ul>
+          <li>Divide the current stitch count by the number of increases needed to find the base interval.</li>
+          <li>If the stitches don't divide perfectly, some intervals will be one stitch longer — the calculator shows both.</li>
+          <li>In crochet, an "inc" = 2 sc in 1 st. In knitting, use kfb or M1 as your pattern specifies.</li>
+        </ul>
+        <p class="disclaimer">This tool is for increases only. For decreases, use the <a href="even-stitch-decrease-calculator.html">Even Stitch Decrease Calculator</a>.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{ injectNav('even-stitch-increase-calculator.html'); injectFooter(); });
+
+  function calculate(){
+    const cur = parseInt(document.getElementById('current-st').value);
+    const des = parseInt(document.getElementById('desired-st').value);
+    const craft = document.getElementById('craft-type').value;
+    const el = document.getElementById('result');
+
+    if(isNaN(cur)||isNaN(des)||cur<1||des<1){ el.style.display='none'; return; }
+    if(des <= cur){
+      el.innerHTML='<p style="color:#ef4444;">Desired stitch count must be greater than current stitch count.</p>';
+      el.style.display=''; return;
+    }
+
+    const inc = des - cur; // number of increases
+    const sc_term = craft==='crochet' ? 'sc' : 'k';
+    const inc_term = craft==='crochet' ? 'inc' : 'kfb';
+
+    // base = how many plain sts before each increase
+    const base = Math.floor(cur / inc);
+    const remainder = cur % inc; // these sections get (base+1) plain sts
+
+    let html = `<div class="stat-row">
+      <div class="stat-item"><div class="val">${inc}</div><div class="lbl">Increases needed</div></div>
+      <div class="stat-item"><div class="val">${cur}</div><div class="lbl">Starting stitches</div></div>
+      <div class="stat-item"><div class="val">${des}</div><div class="lbl">Ending stitches</div></div>
+    </div>`;
+
+    let patternText = '';
+    if(remainder === 0){
+      patternText = `*${sc_term} ${base}, ${inc_term}* repeat ${inc} times.`;
+      html += `<div class="big-result">${patternText}</div>`;
+    } else {
+      const shortCount = inc - remainder;
+      const longCount = remainder;
+      patternText = `Work ${shortCount} repeats of [${sc_term} ${base}, ${inc_term}] and ${longCount} repeats of [${sc_term} ${base+1}, ${inc_term}].\n\nShort repeat: *${sc_term} ${base}, ${inc_term}* × ${shortCount}\nLong repeat:  *${sc_term} ${base+1}, ${inc_term}* × ${longCount}`;
+      html += `<div class="big-result">Mix two repeat lengths to distribute evenly:</div>`;
+      html += `<div class="pattern-block">${patternText}</div>`;
+      html += `<p style="margin-top:8px;font-size:0.88rem;color:var(--text-muted);">Tip: Alternate short and long repeats rather than doing all short ones first.</p>`;
+    }
+
+    el.innerHTML = html;
+    el.style.display='';
+  }
+  </script>
+</body>
+</html>

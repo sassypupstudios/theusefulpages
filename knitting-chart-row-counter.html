@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Chart Row Counter — Free Knitting Tool | The Useful Pages</title>
+  <meta name="description" content="Track multiple knitting charts with a digital row counter. Saves progress automatically. Mobile-friendly with progress bars and notes. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-chart-row-counter.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .chart-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      background: var(--surface);
+      position: relative;
+    }
+    .chart-card h3 { margin: 0 0 0.75rem; font-size: 1rem; }
+    .progress-bar-wrap { background: var(--border); border-radius: 999px; height: 10px; overflow: hidden; margin: 0.5rem 0; }
+    .progress-bar-fill { height: 100%; background: var(--primary, #6c63ff); border-radius: 999px; transition: width 0.3s; }
+    .row-controls { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+    .btn-counter { font-size: 1.25rem; padding: 0.4rem 1rem; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); cursor: pointer; color: var(--text); font-weight: 700; }
+    .btn-counter:hover { background: var(--border); }
+    .current-row-display { font-size: 1.75rem; font-weight: 700; min-width: 3rem; text-align: center; }
+    .chart-meta { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
+    .delete-btn { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 1.1rem; padding: 0.2rem 0.4rem; border-radius: 4px; }
+    .delete-btn:hover { background: var(--border); color: var(--text); }
+    .complete-badge { display: inline-block; background: #22c55e; color: white; font-size: 0.75rem; padding: 0.15rem 0.5rem; border-radius: 999px; margin-left: 0.5rem; }
+    .notes-field { width: 100%; margin-top: 0.5rem; font-size: 0.85rem; resize: vertical; min-height: 48px; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Chart Row Counter</h1>
+      <p class="page-subtitle">Track multiple charts simultaneously. Progress saves automatically to your browser.</p>
+
+      <div class="tool-card">
+        <h3 style="margin-bottom:0.75rem;">Add a New Chart</h3>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+          <div>
+            <label class="label">Chart name</label>
+            <input class="form-input" type="text" id="new-name" placeholder="e.g. Lace Panel A">
+          </div>
+          <div>
+            <label class="label">Total rows</label>
+            <input class="form-input" type="number" id="new-total" min="1" placeholder="e.g. 32">
+          </div>
+          <div>
+            <label class="label">Repeat length (rows)</label>
+            <input class="form-input" type="number" id="new-repeat" min="1" placeholder="e.g. 8">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+          <div>
+            <label class="label">Repeats to work</label>
+            <input class="form-input" type="number" id="new-reps" min="1" placeholder="e.g. 4 (optional)">
+          </div>
+          <div style="display:flex;align-items:flex-end;">
+            <button class="btn-primary" onclick="addChart()" style="width:100%;">+ Add Chart</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="charts-container"></div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <button class="btn-outline" onclick="exportCharts()">Export as Text</button>
+          <button class="btn-outline" onclick="clearAllCharts()" style="color:#e55;">Clear All Charts</button>
+        </div>
+        <div id="export-output" style="display:none;margin-top:1rem;">
+          <label class="label">Export (copy to save)</label>
+          <textarea class="form-textarea notes-field" id="export-text" rows="8" readonly style="font-family:monospace;font-size:0.8rem;"></textarea>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Enter a chart name, total rows, and repeat length, then click <strong>+ Add Chart</strong>.</li>
+          <li>Use the <strong>+</strong> button to advance one row, <strong>−</strong> to go back.</li>
+          <li>The progress bar, current row, and repeat position update automatically.</li>
+          <li>Add notes to each chart using the notes field.</li>
+          <li>All progress saves automatically to your browser (localStorage) — close and reopen safely.</li>
+        </ol>
+        <h3 style="margin-top:1rem;">Tips</h3>
+        <ul>
+          <li>Add multiple charts if your project has several different chart sections (e.g., body, sleeves, border).</li>
+          <li>Use the Export button to copy your progress as plain text for safekeeping.</li>
+          <li>The repeat position tells you which row within the current repeat you are on.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    injectNav('knitting-chart-row-counter.html');
+    injectFooter();
+    loadCharts();
+  });
+
+  const STORAGE_KEY = 'tup_knit_charts';
+
+  function getCharts() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch { return []; }
+  }
+
+  function saveCharts(charts) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(charts));
+  }
+
+  function loadCharts() {
+    const charts = getCharts();
+    document.getElementById('charts-container').innerHTML = '';
+    if (charts.length === 0) {
+      document.getElementById('charts-container').innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:1rem;">No charts yet. Add one above!</p>';
+      return;
+    }
+    charts.forEach((c, i) => renderChart(c, i));
+  }
+
+  function renderChart(c, i) {
+    const container = document.getElementById('charts-container');
+    const pct = c.total > 0 ? Math.min(100, Math.round((c.current / c.total) * 100)) : 0;
+    const done = c.current >= c.total;
+    const repeatPos = c.repeat > 0 ? ((c.current - 1) % c.repeat) + 1 : '—';
+    const repeatNum = c.repeat > 0 ? Math.ceil(c.current / c.repeat) : '—';
+    const div = document.createElement('div');
+    div.className = 'chart-card';
+    div.id = `chart-${i}`;
+    div.innerHTML = `
+      <button class="delete-btn" onclick="deleteChart(${i})" title="Remove chart">✕</button>
+      <h3>${escHtml(c.name)}${done ? '<span class="complete-badge">Complete!</span>' : ''}</h3>
+      <div class="row-controls">
+        <button class="btn-counter" onclick="adjustRow(${i}, -1)" ${c.current <= 0 ? 'disabled' : ''}>−</button>
+        <div class="current-row-display" id="disp-${i}">${c.current}</div>
+        <span style="color:var(--text-muted);">/ ${c.total}</span>
+        <button class="btn-counter" onclick="adjustRow(${i}, 1)" ${done ? 'disabled' : ''}>+</button>
+        <button class="btn-outline" onclick="resetChart(${i})" style="font-size:0.8rem;padding:0.3rem 0.6rem;">Reset</button>
+      </div>
+      <div class="progress-bar-wrap" style="margin-top:0.5rem;">
+        <div class="progress-bar-fill" style="width:${pct}%"></div>
+      </div>
+      <div class="chart-meta">
+        ${pct}% complete ·
+        ${c.repeat > 0 ? `Repeat ${repeatNum}, row ${repeatPos} of ${c.repeat}` : 'No repeat set'} ·
+        ${c.reps ? `Target: ${c.reps} repeats` : ''}
+      </div>
+      <textarea class="form-textarea notes-field" placeholder="Notes for this chart..." onchange="saveNote(${i}, this.value)">${escHtml(c.notes||'')}</textarea>
+    `;
+    container.appendChild(div);
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function adjustRow(i, delta) {
+    const charts = getCharts();
+    charts[i].current = Math.max(0, Math.min(charts[i].total, charts[i].current + delta));
+    saveCharts(charts);
+    loadCharts();
+  }
+
+  function resetChart(i) {
+    if (!confirm('Reset this chart to row 0?')) return;
+    const charts = getCharts();
+    charts[i].current = 0;
+    saveCharts(charts);
+    loadCharts();
+  }
+
+  function deleteChart(i) {
+    if (!confirm('Remove this chart?')) return;
+    const charts = getCharts();
+    charts.splice(i, 1);
+    saveCharts(charts);
+    loadCharts();
+  }
+
+  function saveNote(i, val) {
+    const charts = getCharts();
+    charts[i].notes = val;
+    saveCharts(charts);
+  }
+
+  function addChart() {
+    const name = document.getElementById('new-name').value.trim();
+    const total = parseInt(document.getElementById('new-total').value);
+    const repeat = parseInt(document.getElementById('new-repeat').value) || 0;
+    const reps = parseInt(document.getElementById('new-reps').value) || 0;
+    if (!name) { alert('Please enter a chart name.'); return; }
+    if (!total || total < 1) { alert('Please enter a valid total row count.'); return; }
+    const charts = getCharts();
+    charts.push({ name, total, repeat, reps, current: 0, notes: '' });
+    saveCharts(charts);
+    document.getElementById('new-name').value = '';
+    document.getElementById('new-total').value = '';
+    document.getElementById('new-repeat').value = '';
+    document.getElementById('new-reps').value = '';
+    loadCharts();
+  }
+
+  function exportCharts() {
+    const charts = getCharts();
+    if (charts.length === 0) { alert('No charts to export.'); return; }
+    let out = 'Knitting Chart Row Counter — Export\n';
+    out += new Date().toLocaleString() + '\n\n';
+    charts.forEach((c, i) => {
+      out += `Chart ${i+1}: ${c.name}\n`;
+      out += `  Progress: Row ${c.current} of ${c.total} (${Math.round(c.current/c.total*100)}%)\n`;
+      if (c.repeat) out += `  Repeat length: ${c.repeat} rows\n`;
+      if (c.notes) out += `  Notes: ${c.notes}\n`;
+      out += '\n';
+    });
+    document.getElementById('export-text').value = out;
+    document.getElementById('export-output').style.display = '';
+    document.getElementById('export-text').select();
+  }
+
+  function clearAllCharts() {
+    if (!confirm('Clear ALL charts? This cannot be undone.')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    loadCharts();
+  }
+  </script>
+</body>
+</html>

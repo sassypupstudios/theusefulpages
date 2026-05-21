@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Hat Crown Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate crochet hat crown increase and decrease schedules. Enter head circumference and gauge for round-by-round instructions. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-hat-crown-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Hat Crown Calculator</h1>
+      <p class="page-subtitle">Round-by-round increase or decrease schedule for hat crowns, worked bottom-up or top-down.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Head Circumference (inches)</label>
+            <select class="form-select" id="head-size">
+              <option value="">-- Select size --</option>
+              <option value="12">Baby (12")</option>
+              <option value="14">Toddler (14")</option>
+              <option value="17">Child (17")</option>
+              <option value="20">Teen/Small Adult (20")</option>
+              <option value="22" selected>Adult M (22")</option>
+              <option value="23">Adult L (23")</option>
+              <option value="25">Adult XL (25")</option>
+              <option value="custom">Custom...</option>
+            </select>
+          </div>
+          <div id="custom-circ-wrap" style="display:none;">
+            <label class="label">Custom Circumference (inches)</label>
+            <input class="form-input" type="number" id="custom-circ" min="5" step="0.5" placeholder="e.g. 21.5">
+          </div>
+          <div>
+            <label class="label">Stitches per Inch (gauge)</label>
+            <input class="form-input" type="number" id="hat-spi" min="0.5" step="0.5" placeholder="e.g. 4">
+          </div>
+          <div>
+            <label class="label">Starting Ring Stitches</label>
+            <select class="form-select" id="ring-start">
+              <option value="6" selected>6 (most common)</option>
+              <option value="8">8 (flatter top)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:1.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+          <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+            <input type="radio" name="hat-mode" value="increase" checked> Bottom-up (crown increases)
+          </label>
+          <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+            <input type="radio" name="hat-mode" value="decrease"> Top-down (crown decreases)
+          </label>
+        </div>
+        <button class="btn-primary" onclick="calcHat()">Generate Schedule</button>
+        <div id="hat-result" style="margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Select a standard hat size or enter a custom head circumference.</li>
+          <li>Enter your stitch gauge (stitches per inch from your swatch).</li>
+          <li>Choose <strong>bottom-up</strong> for crown-up construction (magic ring to full circumference) or <strong>top-down</strong> for decrease schedule (full circumference down to closure).</li>
+          <li>The calculator outputs round-by-round instructions you can follow directly.</li>
+        </ul>
+        <h2>About Hat Construction</h2>
+        <p>Most crochet hats start with a magic ring and increase each round until the crown reaches the target circumference. The number of increases per round equals the starting stitch count (e.g., start with 6 → increase 6 sts each round). After reaching circumference, work even for the body of the hat.</p>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.getElementById('head-size').addEventListener('change', function() {
+    document.getElementById('custom-circ-wrap').style.display = this.value === 'custom' ? '' : 'none';
+  });
+
+  function calcHat() {
+    const sizeEl = document.getElementById('head-size');
+    let circ = sizeEl.value === 'custom'
+      ? parseFloat(document.getElementById('custom-circ').value)
+      : parseFloat(sizeEl.value);
+    const spi = parseFloat(document.getElementById('hat-spi').value);
+    const ringStart = parseInt(document.getElementById('ring-start').value);
+    const mode = document.querySelector('input[name="hat-mode"]:checked').value;
+    const res = document.getElementById('hat-result');
+    if (!circ || !spi) {
+      res.innerHTML='<p style="color:var(--color-error)">Please select/enter head circumference and stitch gauge.</p>'; return;
+    }
+    const totalSts = Math.round(circ * spi);
+    const incPerRound = ringStart;
+
+    let rows = [];
+    if (mode === 'increase') {
+      let sts = ringStart;
+      let rnd = 1;
+      rows.push({rnd, sts, inst: `Make magic ring. Work ${ringStart} sc into ring. Pull tail to close. (${sts} sts)`});
+      while (sts < totalSts) {
+        rnd++;
+        const prev = sts;
+        sts = prev + incPerRound;
+        if (sts > totalSts) sts = totalSts;
+        const incCount = sts - prev;
+        const scCount = prev - incCount;
+        if (incCount === prev) {
+          rows.push({rnd, sts, inst: `Round ${rnd}: 2 sc in each st. (${sts} sts)`});
+        } else {
+          rows.push({rnd, sts, inst: `Round ${rnd}: *sc in next ${Math.floor(scCount/incCount)} sts, 2 sc in next st* × ${incCount}. (${sts} sts)`});
+        }
+      }
+      rows.push({rnd: rnd+1, sts, inst: `Round ${rnd+1}+: Work even (no increases) until hat reaches desired length.`});
+    } else {
+      let sts = totalSts;
+      let rnd = 1;
+      rows.push({rnd, sts, inst: `Start with ${totalSts} sts at full circumference.`});
+      while (sts > incPerRound) {
+        rnd++;
+        const prev = sts;
+        sts = Math.max(prev - incPerRound, incPerRound);
+        const decCount = prev - sts;
+        const scCount = sts - decCount;
+        if (decCount === 0) break;
+        if (scCount <= 0) {
+          rows.push({rnd, sts, inst: `Round ${rnd}: sc2tog across. (${sts} sts)`});
+        } else {
+          rows.push({rnd, sts, inst: `Round ${rnd}: *sc in next ${Math.max(1,Math.floor(scCount/decCount))} sts, sc2tog* × ${decCount}. (${sts} sts)`});
+        }
+      }
+      rows.push({rnd: rnd+1, sts: 0, inst: `Final round: sc2tog until closed. Fasten off and weave in ends.`});
+    }
+
+    let tableRows = rows.map(r => `<tr><td>${r.rnd}</td><td>${r.sts > 0 ? r.sts : '—'}</td><td>${r.inst}</td></tr>`).join('');
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid" style="margin-bottom:1rem;">
+        <div class="stat-box"><div class="label">Target Circumference</div><strong>${circ}"</strong></div>
+        <div class="stat-box"><div class="label">Total Stitches</div><strong>${totalSts} sts</strong></div>
+        <div class="stat-box"><div class="label">Starting Ring</div><strong>${ringStart} sts</strong></div>
+        <div class="stat-box"><div class="label">Inc/Dec Per Round</div><strong>${incPerRound} sts</strong></div>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Round</th><th>Stitch Count</th><th>Instructions</th></tr></thead>
+          <tbody>${tableRows}</tbody>
+        </table>
+      </div>
+    </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('crochet-hat-crown-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

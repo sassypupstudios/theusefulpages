@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarn Cost Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate yarn cost per yard, compare two yarns, and estimate total project yarn cost. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/yarn-cost-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .mode-tabs { display:flex; gap:0; margin-bottom:20px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); }
+    .mode-tab { flex:1; padding:10px; text-align:center; cursor:pointer; background:var(--bg-secondary); font-weight:500; border:none; font-family:inherit; font-size:0.9rem; color:var(--text); transition:background 0.2s; }
+    .mode-tab.active { background:var(--primary); color:#fff; }
+    .result-box { background:var(--result-bg); border:1px solid var(--result-border); border-radius:var(--radius); padding:16px; margin-top:14px; }
+    .stat-row { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:4px; }
+    .stat-item { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:10px 16px; flex:1; min-width:100px; text-align:center; }
+    .stat-val { font-size:1.4rem; font-weight:700; color:var(--primary); }
+    .stat-lbl { font-size:0.78rem; color:var(--text-muted); }
+    .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .compare-card { background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius); padding:14px; }
+    .winner-badge { background:var(--accent); color:#fff; font-size:0.75rem; font-weight:700; border-radius:20px; padding:2px 10px; margin-left:6px; }
+    @media(max-width:520px){ .compare-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Yarn Cost Calculator</h1>
+      <p class="page-subtitle">Calculate cost per yard, compare two yarns, or estimate total project cost from yardage needed.</p>
+
+      <div class="tool-card">
+        <div class="mode-tabs">
+          <button class="mode-tab active" id="tab-single" onclick="setMode('single')">Single Yarn</button>
+          <button class="mode-tab" id="tab-compare" onclick="setMode('compare')">Compare 2 Yarns</button>
+          <button class="mode-tab" id="tab-reverse" onclick="setMode('reverse')">By Yardage Needed</button>
+        </div>
+
+        <!-- SINGLE MODE -->
+        <div id="mode-single">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px;">
+            <div><label class="label">Number of Skeins</label><input type="number" id="s-skeins" class="form-input" placeholder="e.g. 4" min="0.1" step="0.1" oninput="calcSingle()"></div>
+            <div><label class="label">Cost per Skein ($)</label><input type="number" id="s-cost" class="form-input" placeholder="e.g. 12.99" min="0" step="0.01" oninput="calcSingle()"></div>
+            <div><label class="label">Yards per Skein</label><input type="number" id="s-yards" class="form-input" placeholder="e.g. 220" min="1" oninput="calcSingle()"></div>
+          </div>
+          <div id="single-result" class="result-box" style="display:none;"></div>
+        </div>
+
+        <!-- COMPARE MODE -->
+        <div id="mode-compare" style="display:none;">
+          <div class="compare-grid" style="margin-bottom:14px;">
+            <div class="compare-card">
+              <div style="font-weight:600;margin-bottom:10px;">Yarn A</div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div><label class="label">Name</label><input type="text" id="c-a-name" class="form-input" placeholder="e.g. Brand A" oninput="calcCompare()"></div>
+                <div><label class="label">Skeins</label><input type="number" id="c-a-skeins" class="form-input" placeholder="e.g. 4" min="0.1" step="0.1" oninput="calcCompare()"></div>
+                <div><label class="label">Cost/Skein ($)</label><input type="number" id="c-a-cost" class="form-input" placeholder="e.g. 12.99" min="0" step="0.01" oninput="calcCompare()"></div>
+                <div><label class="label">Yards/Skein</label><input type="number" id="c-a-yards" class="form-input" placeholder="e.g. 200" min="1" oninput="calcCompare()"></div>
+              </div>
+            </div>
+            <div class="compare-card">
+              <div style="font-weight:600;margin-bottom:10px;">Yarn B</div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div><label class="label">Name</label><input type="text" id="c-b-name" class="form-input" placeholder="e.g. Brand B" oninput="calcCompare()"></div>
+                <div><label class="label">Skeins</label><input type="number" id="c-b-skeins" class="form-input" placeholder="e.g. 4" min="0.1" step="0.1" oninput="calcCompare()"></div>
+                <div><label class="label">Cost/Skein ($)</label><input type="number" id="c-b-cost" class="form-input" placeholder="e.g. 9.99" min="0" step="0.01" oninput="calcCompare()"></div>
+                <div><label class="label">Yards/Skein</label><input type="number" id="c-b-yards" class="form-input" placeholder="e.g. 180" min="1" oninput="calcCompare()"></div>
+              </div>
+            </div>
+          </div>
+          <div id="compare-result" class="result-box" style="display:none;"></div>
+        </div>
+
+        <!-- REVERSE MODE -->
+        <div id="mode-reverse" style="display:none;">
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px;">
+            <div><label class="label">Total Yards Needed</label><input type="number" id="r-yards" class="form-input" placeholder="e.g. 800" min="1" oninput="calcReverse()"></div>
+            <div><label class="label">Cost per Yard ($)</label><input type="number" id="r-cost-yd" class="form-input" placeholder="e.g. 0.06" min="0" step="0.001" oninput="calcReverse()"></div>
+          </div>
+          <div id="reverse-result" class="result-box" style="display:none;"></div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Yarn Cost Calculator</h2>
+        <ul>
+          <li><strong>Single Yarn:</strong> Enter how many skeins you're buying, the price per skein, and the yards per skein. Get your total cost, cost per yard, and cost per 100 yards.</li>
+          <li><strong>Compare 2 Yarns:</strong> Compare two options side by side — see which is more economical per yard.</li>
+          <li><strong>By Yardage Needed:</strong> Know how many yards your pattern calls for? Enter the yardage and cost per yard to get total cost.</li>
+        </ul>
+        <p class="disclaimer">Prices shown are for illustration only. Check current retailer prices before purchasing.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{ injectNav('yarn-cost-calculator.html'); injectFooter(); });
+
+  function setMode(m){
+    ['single','compare','reverse'].forEach(id=>{
+      document.getElementById('mode-'+id).style.display = id===m ? '' : 'none';
+      document.getElementById('tab-'+id).classList.toggle('active', id===m);
+    });
+  }
+
+  function fmt(n){ return '$'+n.toFixed(2); }
+  function fmtL(n){ return '$'+n.toFixed(4); }
+
+  function calcSingle(){
+    const skeins = parseFloat(document.getElementById('s-skeins').value);
+    const cost = parseFloat(document.getElementById('s-cost').value);
+    const yards = parseFloat(document.getElementById('s-yards').value);
+    const el = document.getElementById('single-result');
+    if(isNaN(skeins)||isNaN(cost)||isNaN(yards)||skeins<=0||yards<=0){ el.style.display='none'; return; }
+    const total = skeins * cost;
+    const totalYd = skeins * yards;
+    const perYd = total / totalYd;
+    const per100 = perYd * 100;
+    el.innerHTML = `<div class="stat-row">
+      <div class="stat-item"><div class="stat-val">${fmt(total)}</div><div class="stat-lbl">Total Cost</div></div>
+      <div class="stat-item"><div class="stat-val">${totalYd.toLocaleString()}</div><div class="stat-lbl">Total Yards</div></div>
+      <div class="stat-item"><div class="stat-val">${fmtL(perYd)}</div><div class="stat-lbl">Cost per Yard</div></div>
+      <div class="stat-item"><div class="stat-val">${fmt(per100)}</div><div class="stat-lbl">Cost per 100 Yards</div></div>
+    </div>`;
+    el.style.display='';
+  }
+
+  function calcCompare(){
+    const aName = document.getElementById('c-a-name').value||'Yarn A';
+    const bName = document.getElementById('c-b-name').value||'Yarn B';
+    const aS=parseFloat(document.getElementById('c-a-skeins').value);
+    const aC=parseFloat(document.getElementById('c-a-cost').value);
+    const aY=parseFloat(document.getElementById('c-a-yards').value);
+    const bS=parseFloat(document.getElementById('c-b-skeins').value);
+    const bC=parseFloat(document.getElementById('c-b-cost').value);
+    const bY=parseFloat(document.getElementById('c-b-yards').value);
+    const el=document.getElementById('compare-result');
+    if([aS,aC,aY,bS,bC,bY].some(isNaN)){ el.style.display='none'; return; }
+    const aTotal=aS*aC, aTotalYd=aS*aY, aPerYd=aTotal/aTotalYd;
+    const bTotal=bS*bC, bTotalYd=bS*bY, bPerYd=bTotal/bTotalYd;
+    const aBetter = aPerYd < bPerYd;
+    const pctDiff = Math.abs((bPerYd-aPerYd)/Math.max(aPerYd,bPerYd)*100).toFixed(1);
+    el.innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="stat-item"><strong>${aName}${aBetter?'<span class="winner-badge">Best Value</span>':''}</strong>
+        <div class="stat-val">${fmt(aTotal)}</div><div class="stat-lbl">Total · ${fmtL(aPerYd)}/yd</div></div>
+      <div class="stat-item"><strong>${bName}${!aBetter?'<span class="winner-badge">Best Value</span>':''}</strong>
+        <div class="stat-val">${fmt(bTotal)}</div><div class="stat-lbl">Total · ${fmtL(bPerYd)}/yd</div></div>
+    </div>
+    <p style="margin-top:12px;font-size:0.9rem;color:var(--text-muted);">${aBetter?aName:bName} is <strong>${pctDiff}% cheaper per yard</strong>.</p>`;
+    el.style.display='';
+  }
+
+  function calcReverse(){
+    const yd=parseFloat(document.getElementById('r-yards').value);
+    const cyd=parseFloat(document.getElementById('r-cost-yd').value);
+    const el=document.getElementById('reverse-result');
+    if(isNaN(yd)||isNaN(cyd)||yd<=0||cyd<=0){ el.style.display='none'; return; }
+    const total=yd*cyd;
+    el.innerHTML=`<div class="stat-row">
+      <div class="stat-item"><div class="stat-val">${fmt(total)}</div><div class="stat-lbl">Total Cost</div></div>
+      <div class="stat-item"><div class="stat-val">${yd.toLocaleString()}</div><div class="stat-lbl">Yards</div></div>
+      <div class="stat-item"><div class="stat-val">${fmtL(cyd)}</div><div class="stat-lbl">Cost per Yard</div></div>
+    </div>`;
+    el.style.display='';
+  }
+  </script>
+</body>
+</html>

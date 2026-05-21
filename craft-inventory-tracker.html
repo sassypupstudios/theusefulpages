@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Craft Inventory Tracker — Free Craft Business Tool | The Useful Pages</title>
+  <meta name="description" content="Track your craft supplies and finished product inventory. Log items, quantities, costs, and reorder alerts. Free browser-based tracker — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/craft-inventory-tracker.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Craft Inventory Tracker</h1>
+      <p class="page-subtitle">Log your craft supplies and finished products. Track quantities, costs, and reorder points. Data saves in your browser.</p>
+
+      <div class="tool-card">
+        <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 1rem;">Add item</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Item name</label>
+            <input type="text" id="inv-name" class="form-input" placeholder="e.g. Wool yarn — cream">
+          </div>
+          <div>
+            <label class="label">Category</label>
+            <select id="inv-cat" class="form-select">
+              <option value="Yarn">Yarn</option>
+              <option value="Fabric">Fabric</option>
+              <option value="Thread/Floss">Thread/Floss</option>
+              <option value="Notions">Notions</option>
+              <option value="Packaging">Packaging</option>
+              <option value="Finished Product">Finished Product</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Unit</label>
+            <input type="text" id="inv-unit" class="form-input" placeholder="e.g. skeins, yards, pcs">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Qty on hand</label>
+            <input type="number" id="inv-qty" class="form-input" value="1" min="0" step="0.01">
+          </div>
+          <div>
+            <label class="label">Reorder point</label>
+            <input type="number" id="inv-reorder" class="form-input" value="0" min="0" step="0.01" placeholder="e.g. 2">
+          </div>
+          <div>
+            <label class="label">Cost per unit ($)</label>
+            <input type="number" id="inv-cost" class="form-input" value="0" min="0" step="0.01">
+          </div>
+          <div>
+            <label class="label">Supplier</label>
+            <input type="text" id="inv-supplier" class="form-input" placeholder="Optional">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="addItem()">Add Item</button>
+
+        <div style="margin-top:1.75rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+            <h3 style="font-size:0.95rem;font-weight:700;margin:0;">Inventory</h3>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+              <input type="text" id="inv-search" class="form-input" placeholder="Search…" style="max-width:130px;font-size:0.82rem;padding:0.25rem 0.5rem;" oninput="renderInv()">
+              <select id="inv-filter-cat" class="form-select" style="font-size:0.82rem;padding:0.25rem 0.5rem;" onchange="renderInv()">
+                <option value="all">All categories</option>
+                <option value="low">Low stock only</option>
+                <option value="Yarn">Yarn</option>
+                <option value="Fabric">Fabric</option>
+                <option value="Thread/Floss">Thread/Floss</option>
+                <option value="Notions">Notions</option>
+                <option value="Packaging">Packaging</option>
+                <option value="Finished Product">Finished Product</option>
+                <option value="Other">Other</option>
+              </select>
+              <button class="btn-ghost" style="font-size:0.8rem;padding:0.25rem 0.6rem;" onclick="exportInvCSV()">Export CSV</button>
+            </div>
+          </div>
+          <div id="inv-list"></div>
+          <div id="inv-empty" style="color:var(--text-muted);font-size:0.9rem;padding:1rem 0;display:none;">No items yet. Add your first item above.</div>
+          <div id="inv-summary" style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem;"></div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">How to use this tracker</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Add every supply item or finished product to your inventory. Set a reorder point — when quantity on hand drops to or below that number, the row is flagged red so you know to restock. Filter by "Low stock only" to build a shopping list quickly.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Adjust qty directly in the table as you use supplies or sell items</li>
+          <li>Cost per unit × qty = total inventory value, shown in the summary</li>
+          <li>Export to CSV to keep records in a spreadsheet</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Data is stored in your browser's localStorage and does not sync across devices or browsers.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const STORE_KEY = 'tup_craft_inventory';
+  let inventory = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
+  function save() { localStorage.setItem(STORE_KEY, JSON.stringify(inventory)); }
+
+  function addItem() {
+    const name = document.getElementById('inv-name').value.trim();
+    if (!name) { alert('Enter an item name.'); return; }
+    inventory.push({
+      id: Date.now(),
+      name,
+      cat: document.getElementById('inv-cat').value,
+      unit: document.getElementById('inv-unit').value.trim() || 'units',
+      qty: parseFloat(document.getElementById('inv-qty').value) || 0,
+      reorder: parseFloat(document.getElementById('inv-reorder').value) || 0,
+      cost: parseFloat(document.getElementById('inv-cost').value) || 0,
+      supplier: document.getElementById('inv-supplier').value.trim()
+    });
+    save();
+    document.getElementById('inv-name').value = '';
+    document.getElementById('inv-qty').value = '1';
+    document.getElementById('inv-reorder').value = '0';
+    document.getElementById('inv-cost').value = '0';
+    document.getElementById('inv-supplier').value = '';
+    renderInv();
+  }
+
+  function removeItem(id) {
+    if (!confirm('Remove this item?')) return;
+    inventory = inventory.filter(x => x.id !== id);
+    save(); renderInv();
+  }
+
+  function updateItemQty(id, qty) {
+    const item = inventory.find(x => x.id === id);
+    if (item) { item.qty = Math.max(0, parseFloat(qty)||0); save(); renderInv(); }
+  }
+
+  function renderInv() {
+    const search = document.getElementById('inv-search').value.toLowerCase();
+    const filterCat = document.getElementById('inv-filter-cat').value;
+    const list = document.getElementById('inv-list');
+    const empty = document.getElementById('inv-empty');
+    const summary = document.getElementById('inv-summary');
+    let data = [...inventory];
+    if (filterCat === 'low') data = data.filter(x => x.reorder > 0 && x.qty <= x.reorder);
+    else if (filterCat !== 'all') data = data.filter(x => x.cat === filterCat);
+    if (search) data = data.filter(x => x.name.toLowerCase().includes(search) || x.cat.toLowerCase().includes(search));
+    if (data.length === 0) {
+      list.innerHTML = ''; empty.style.display = '';
+      summary.textContent = '';
+      return;
+    }
+    empty.style.display = 'none';
+    list.innerHTML = `<div class="table-wrap"><table class="data-table">
+      <thead><tr><th>Item</th><th>Category</th><th>Qty</th><th>Unit</th><th>Reorder at</th><th>Cost/unit</th><th>Value</th><th>Supplier</th><th></th></tr></thead>
+      <tbody>${data.map(x => {
+        const low = x.reorder > 0 && x.qty <= x.reorder;
+        const rowStyle = low ? 'background:rgba(239,68,68,0.08);' : '';
+        return `<tr style="${rowStyle}">
+          <td style="font-weight:500;">${x.name}${low?'<span style="margin-left:0.4rem;font-size:0.75rem;color:#ef4444;font-weight:600;">LOW</span>':''}</td>
+          <td style="font-size:0.82rem;">${x.cat}</td>
+          <td><input type="number" value="${x.qty}" min="0" step="0.01" style="width:65px;font-size:0.82rem;padding:0.15rem 0.3rem;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--text);" onchange="updateItemQty(${x.id},this.value)"></td>
+          <td style="font-size:0.82rem;">${x.unit}</td>
+          <td style="font-size:0.82rem;">${x.reorder||'—'}</td>
+          <td style="font-size:0.82rem;">$${x.cost.toFixed(2)}</td>
+          <td style="font-size:0.82rem;">$${(x.qty*x.cost).toFixed(2)}</td>
+          <td style="font-size:0.82rem;">${x.supplier||'—'}</td>
+          <td><button class="btn-ghost" style="font-size:0.78rem;padding:0.15rem 0.4rem;" onclick="removeItem(${x.id})">✕</button></td>
+        </tr>`;
+      }).join('')}</tbody>
+    </table></div>`;
+    const totalValue = inventory.reduce((s,x)=>s+x.qty*x.cost,0);
+    const lowCount = inventory.filter(x=>x.reorder>0&&x.qty<=x.reorder).length;
+    summary.innerHTML = `${inventory.length} items · Total value: $${totalValue.toFixed(2)}${lowCount?` · <span style="color:#ef4444;font-weight:600;">${lowCount} low stock</span>`:''}`;
+  }
+
+  function exportInvCSV() {
+    const rows = [['Item','Category','Qty','Unit','Reorder At','Cost/Unit','Total Value','Supplier']];
+    inventory.forEach(x => rows.push([x.name,x.cat,x.qty,x.unit,x.reorder,x.cost,(x.qty*x.cost).toFixed(2),x.supplier]));
+    const csv = rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+    const a = document.createElement('a');
+    a.href = 'data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+    a.download = 'craft-inventory.csv';
+    a.click();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('craft-inventory-tracker.html'); injectFooter(); renderInv(); });
+  </script>
+</body>
+</html>

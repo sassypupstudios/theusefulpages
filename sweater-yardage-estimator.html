@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweater Yardage Estimator — Free Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Estimate yarn yardage for a knit or crochet sweater by size and yarn weight. See body, sleeve, and finishing breakdowns. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/sweater-yardage-estimator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Sweater Yardage Estimator</h1>
+      <p class="page-subtitle">Estimate total yarn for your sweater with a body, sleeve, and finishing breakdown.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Size</label>
+            <select class="form-select" id="sweater-size" onchange="loadSweaterSize()">
+              <option value="custom">Custom chest size</option>
+              <option value="xs">XS (32")</option>
+              <option value="s">S (36")</option>
+              <option value="m">M (40")</option>
+              <option value="l">L (44")</option>
+              <option value="xl">XL (48")</option>
+              <option value="2xl">2XL (52")</option>
+              <option value="3xl">3XL (56")</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Chest Circumference (inches)</label>
+            <input class="form-input" type="number" id="chest-circ" min="20" placeholder="e.g. 40">
+          </div>
+          <div>
+            <label class="label">Body Length (inches)</label>
+            <input class="form-input" type="number" id="body-length" value="25" min="10" placeholder="e.g. 25">
+          </div>
+          <div>
+            <label class="label">Sleeve Length</label>
+            <select class="form-select" id="sleeve-length">
+              <option value="short">Short (7")</option>
+              <option value="3q">3/4 Length (17")</option>
+              <option value="full" selected>Full Length (24")</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Yarn Weight</label>
+            <select class="form-select" id="yarn-weight">
+              <option value="lace">Lace (0)</option>
+              <option value="fingering">Fingering (1)</option>
+              <option value="sport">Sport (2)</option>
+              <option value="dk">DK (3)</option>
+              <option value="worsted" selected>Worsted (4)</option>
+              <option value="bulky">Bulky (5)</option>
+              <option value="super-bulky">Super Bulky (6)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Construction</label>
+            <select class="form-select" id="construction">
+              <option value="standard">Standard (set-in / drop-shoulder)</option>
+              <option value="raglan">Raglan</option>
+              <option value="seamless">Seamless / top-down</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcSweater()">Estimate Yardage</button>
+          <button class="btn-ghost" onclick="resetSweater()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="sweater-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-body-yds"></div>
+              <div class="stat-label">Body Yards</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-sleeve-yds"></div>
+              <div class="stat-label">Sleeve Yards (×2)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-finish-yds"></div>
+              <div class="stat-label">Collar / Finishing Yards</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-total-yds"></div>
+              <div class="stat-label">Total Yards</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-buffer-yds"></div>
+              <div class="stat-label">Total + 15% Buffer</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-skeins"></div>
+              <div class="stat-label">Approx. Skeins (200yd)</div>
+            </div>
+          </div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Actual yarn use varies by stitch pattern, gauge, tension, and yarn brand. Always purchase an extra skein from the same dye lot.</p>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Typical Sweater Yardage by Size &amp; Weight</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Size</th><th>Fingering</th><th>DK</th><th>Worsted</th><th>Bulky</th></tr></thead>
+            <tbody>
+              <tr><td>XS (32")</td><td>1400–1600</td><td>1000–1200</td><td>800–1000</td><td>500–700</td></tr>
+              <tr><td>S (36")</td><td>1600–1900</td><td>1200–1400</td><td>950–1100</td><td>600–800</td></tr>
+              <tr><td>M (40")</td><td>1900–2200</td><td>1400–1700</td><td>1100–1300</td><td>700–900</td></tr>
+              <tr><td>L (44")</td><td>2200–2600</td><td>1700–2000</td><td>1300–1600</td><td>800–1100</td></tr>
+              <tr><td>XL (48")</td><td>2600–3000</td><td>2000–2400</td><td>1600–1900</td><td>1000–1300</td></tr>
+              <tr><td>2XL (52")</td><td>3000–3500</td><td>2400–2800</td><td>1900–2300</td><td>1200–1500</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="disclaimer" style="margin-top:0.5rem;">Yardage ranges are approximate for a standard crew-neck sweater with full-length sleeves.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Estimator</h2>
+        <ul>
+          <li>Select a standard size or enter your chest circumference directly.</li>
+          <li>Adjust body length, sleeve length, and yarn weight.</li>
+          <li>Click <strong>Estimate Yardage</strong> to see a breakdown by section and total.</li>
+        </ul>
+        <h2>Tips</h2>
+        <ul>
+          <li>The estimate covers a standard adult sweater with 1–2" ease. Add 10–15% for textured stitches.</li>
+          <li>Buy all skeins from the same dye lot — colors can vary slightly between lots.</li>
+          <li>Cardigans typically use 5–10% less yarn than pullovers due to the front opening.</li>
+          <li>Use the reference table above to cross-check your estimate.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('sweater-yardage-estimator.html');injectFooter();});
+    const sizes = {xs:32,s:36,m:40,l:44,xl:48,'2xl':52,'3xl':56};
+    const sleeveLengths = {short:7,'3q':17,full:24};
+    // yards per sq inch by weight
+    const ydsPerSqIn = {lace:0.09,fingering:0.065,sport:0.05,dk:0.04,worsted:0.034,bulky:0.024,'super-bulky':0.017};
+
+    function loadSweaterSize(){
+      const v = document.getElementById('sweater-size').value;
+      if(v==='custom') return;
+      document.getElementById('chest-circ').value = sizes[v];
+    }
+
+    function calcSweater(){
+      const chest  = parseFloat(document.getElementById('chest-circ').value);
+      const bodyL  = parseFloat(document.getElementById('body-length').value)||25;
+      const slvLen = sleeveLengths[document.getElementById('sleeve-length').value];
+      const wt     = document.getElementById('yarn-weight').value;
+      if(isNaN(chest)||chest<=0){alert('Please enter chest circumference.');return;}
+
+      const yds = ydsPerSqIn[wt];
+      // Body: front + back = 2 rectangles of (chest/2) × bodyLength
+      const bodyArea  = chest * bodyL;
+      const bodyYds   = bodyArea * yds;
+
+      // Sleeves: approximate each sleeve as tapered tube — average width ≈ 40% of chest
+      const avgSlvWidth = chest * 0.4;
+      const slvArea   = avgSlvWidth * slvLen;
+      const slvYds    = slvArea * yds * 2; // both sleeves
+
+      // Collar / finishing: ~8% of body
+      const finishYds = bodyYds * 0.08;
+
+      const total  = bodyYds + slvYds + finishYds;
+      const buffer = total * 1.15;
+      const skeins = Math.ceil(buffer/200);
+
+      document.getElementById('res-body-yds').textContent   = Math.round(bodyYds).toLocaleString();
+      document.getElementById('res-sleeve-yds').textContent = Math.round(slvYds).toLocaleString();
+      document.getElementById('res-finish-yds').textContent = Math.round(finishYds).toLocaleString();
+      document.getElementById('res-total-yds').textContent  = Math.round(total).toLocaleString();
+      document.getElementById('res-buffer-yds').textContent = Math.round(buffer).toLocaleString();
+      document.getElementById('res-skeins').textContent     = skeins;
+      document.getElementById('sweater-result').style.display='block';
+    }
+
+    function resetSweater(){
+      document.getElementById('sweater-size').value='custom';
+      document.getElementById('chest-circ').value='';
+      document.getElementById('body-length').value=25;
+      document.getElementById('sweater-result').style.display='none';
+    }
+  </script>
+</body>
+</html>

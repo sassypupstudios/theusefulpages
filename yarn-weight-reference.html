@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarn Weight Reference Chart — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Comprehensive yarn weight reference chart with all 8 CYCA weights, WPI, gauge, needle and hook sizes, and fiber content care guide. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/yarn-weight-reference.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Yarn Weight Reference Chart</h1>
+      <p class="page-subtitle">All 8 CYCA yarn weights with gauge, WPI, needle, hook sizes, common uses, and fiber care guide.</p>
+      <div class="tool-card">
+        <h2 style="font-size:1.1rem;margin-bottom:1rem;">CYCA Yarn Weight Chart</h2>
+        <input class="form-input" type="text" id="search-weights" placeholder="Filter by weight name, CYCA number, or use…" oninput="filterWeights()" style="margin-bottom:1rem;">
+        <div class="table-wrap">
+          <table class="data-table" id="cyca-table">
+            <thead>
+              <tr>
+                <th>Weight Name</th>
+                <th>CYCA #</th>
+                <th>Common Names</th>
+                <th>WPI</th>
+                <th>Knit Gauge (4")</th>
+                <th>Crochet Gauge (4")</th>
+                <th>Needle (mm)</th>
+                <th>Hook (mm)</th>
+                <th>Common Uses</th>
+              </tr>
+            </thead>
+            <tbody id="cyca-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:1rem;">Fiber Content Reference</h2>
+        <input class="form-input" type="text" id="search-fiber" placeholder="Filter fiber types…" oninput="filterFibers()" style="margin-bottom:1rem;">
+        <div class="table-wrap">
+          <table class="data-table" id="fiber-table">
+            <thead>
+              <tr><th>Fiber</th><th>Characteristics</th><th>Pros</th><th>Cons</th><th>Care</th></tr>
+            </thead>
+            <tbody id="fiber-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Reference</h2>
+        <ul>
+          <li>Use the filter box above each table to search by any column value — weight name, fiber, CYCA number, etc.</li>
+          <li><strong>CYCA Numbers</strong> are the Craft Yarn Council of America's standardized weight system (0–7). CYCA 0 is the finest; CYCA 7 is the heaviest.</li>
+          <li><strong>WPI</strong> (Wraps Per Inch) lets you classify unlabeled yarn — wrap it around a ruler and count the wraps in one inch.</li>
+          <li>Gauge ranges assume stockinette stitch for knitting and single crochet for crochet, over 4 inches with recommended needle/hook size.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('yarn-weight-reference.html');injectFooter();init();});
+
+    const cyca = [
+      {name:'Lace',         num:0, common:'Cobweb, Thread, 1-ply, 2-ply', wpi:'30+',  kGauge:'33–40 sts',  cGauge:'32–42 sc',  needle:'1.5–2.25',  hook:'Steel 6–8 / 1.75–2.25', uses:'Lace shawls, doilies, lightweight overlays'},
+      {name:'Super Fine',   num:1, common:'Sock, Fingering, Baby, 4-ply',  wpi:'14–30', kGauge:'27–32 sts', cGauge:'21–32 sc', needle:'2.25–3.25', hook:'2.25–3.5',  uses:'Socks, baby garments, fine accessories'},
+      {name:'Fine',         num:2, common:'Sport, Baby, 5-ply',            wpi:'12–14', kGauge:'23–26 sts', cGauge:'16–20 sc', needle:'3.25–3.75', hook:'3.5–4.5',   uses:'Baby items, light layering, athletic socks'},
+      {name:'Light',        num:3, common:'DK, Light Worsted, 8-ply',      wpi:'11–12', kGauge:'21–24 sts', cGauge:'12–17 sc', needle:'3.75–4.5',  hook:'4.5–5.5',  uses:'Sweaters, hats, mittens, toys'},
+      {name:'Medium',       num:4, common:'Worsted, Afghan, Aran, 10-ply', wpi:'9–10',  kGauge:'16–20 sts', cGauge:'11–14 sc', needle:'4.5–5.5',   hook:'5.0–6.5',  uses:'Sweaters, blankets, scarves, hats — most popular weight'},
+      {name:'Bulky',        num:5, common:'Chunky, Craft, Rug',            wpi:'5–6',   kGauge:'12–15 sts', cGauge:'8–11 sc',  needle:'5.5–8.0',   hook:'6.5–9.0',  uses:'Rugs, thick blankets, quick hats and scarves'},
+      {name:'Super Bulky',  num:6, common:'Super Chunky, Roving',          wpi:'4–5',   kGauge:'7–11 sts',  cGauge:'6–9 sc',   needle:'8.0–12.75', hook:'9.0–15.0', uses:'Arm knitting, cozy blankets, quick accessories'},
+      {name:'Jumbo',        num:7, common:'Jumbo, Roving, Extreme',        wpi:'1–4',   kGauge:'6 sts or fewer', cGauge:'5 sc or fewer', needle:'12.75+', hook:'15.0+', uses:'Extreme arm-knitting, ultra-chunky décor blankets'},
+    ];
+
+    const fibers = [
+      {fiber:'Wool',    chars:'Elastic, warm, moisture-wicking',         pros:'Excellent warmth, takes dye beautifully, easy to block',   cons:'Can felt if agitated when wet, may itch',                  care:'Hand wash or superwash; lay flat to dry; avoid hot water'},
+      {fiber:'Cotton',  chars:'Inelastic, breathable, cool',             pros:'Machine washable, great for warm climates, hypoallergenic', cons:'Heavy, no memory/stretch, harder on hands',               care:'Machine wash warm; can tumble dry; may shrink first wash'},
+      {fiber:'Acrylic', chars:'Synthetic, consistent, affordable',       pros:'Machine washable, wide color range, budget-friendly',      cons:'Less breathable, not biodegradable, can pill',            care:'Machine wash and dry; use cool/low heat to prevent melting'},
+      {fiber:'Linen',   chars:'Stiff at first, gets softer with use',    pros:'Very breathable, durable, eco-friendly',                   cons:'Stiff to work with, limited elasticity, expensive',        care:'Hand or machine wash cold; line dry; softens over time'},
+      {fiber:'Alpaca',  chars:'Soft, warm, hypoallergenic',              pros:'Luxuriously soft, warmer than wool, no lanolin',           cons:'Can be slippery, heavy, drapes a lot',                    care:'Hand wash in cool water; lay flat to dry; do not wring'},
+      {fiber:'Silk',    chars:'Lustrous, strong, smooth',                pros:'Beautiful sheen, strong, temperature-regulating',          cons:'Expensive, slippery to work with, little stretch',         care:'Hand wash cold; lay flat or hang dry; iron on low if needed'},
+      {fiber:'Bamboo',  chars:'Soft, silky, breathable',                 pros:'Eco-friendly source, antibacterial, smooth',               cons:'Little stretch, can be heavy',                            care:'Machine wash gentle; lay flat to dry; cool iron'},
+      {fiber:'Mohair',  chars:'Halo/fuzzy, very warm, lightweight',      pros:'Creates a beautiful fuzzy halo, warm for its weight',      cons:'Can be scratchy, tricky to frog (undo), sheds',           care:'Hand wash cold; lay flat to dry; do not agitate'},
+    ];
+
+    function init(){
+      renderCYCA(cyca);
+      renderFibers(fibers);
+    }
+
+    function renderCYCA(data){
+      document.getElementById('cyca-tbody').innerHTML =
+        data.map(w=>`<tr><td>${w.name}</td><td>${w.num}</td><td>${w.common}</td><td>${w.wpi}</td><td>${w.kGauge}</td><td>${w.cGauge}</td><td>${w.needle}</td><td>${w.hook}</td><td>${w.uses}</td></tr>`).join('');
+    }
+
+    function renderFibers(data){
+      document.getElementById('fiber-tbody').innerHTML =
+        data.map(f=>`<tr><td><strong>${f.fiber}</strong></td><td>${f.chars}</td><td>${f.pros}</td><td>${f.cons}</td><td>${f.care}</td></tr>`).join('');
+    }
+
+    function filterWeights(){
+      const q = document.getElementById('search-weights').value.toLowerCase();
+      renderCYCA(cyca.filter(w=>
+        w.name.toLowerCase().includes(q)||
+        String(w.num).includes(q)||
+        w.common.toLowerCase().includes(q)||
+        w.uses.toLowerCase().includes(q)
+      ));
+    }
+
+    function filterFibers(){
+      const q = document.getElementById('search-fiber').value.toLowerCase();
+      renderFibers(fibers.filter(f=>
+        f.fiber.toLowerCase().includes(q)||
+        f.chars.toLowerCase().includes(q)||
+        f.pros.toLowerCase().includes(q)||
+        f.care.toLowerCase().includes(q)
+      ));
+    }
+  </script>
+</body>
+</html>

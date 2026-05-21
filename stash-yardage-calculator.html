@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stash Yardage Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Track your yarn stash — add, edit, search, and see total yardage by weight. Saved in your browser. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/stash-yardage-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .stash-form { display:grid; grid-template-columns:2fr 1fr 1fr 1fr auto; gap:8px; align-items:end; margin-bottom:14px; }
+    .stash-table { width:100%; border-collapse:collapse; font-size:0.88rem; }
+    .stash-table th { background:var(--table-th-bg); padding:8px 10px; text-align:left; }
+    .stash-table td { padding:7px 10px; border-bottom:1px solid var(--border); }
+    .stash-table tr:last-child td { border:none; }
+    .weight-badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:0.75rem; font-weight:600; background:var(--primary); color:#fff; }
+    .summary-grid { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+    .summary-chip { background:var(--bg-secondary); border:1px solid var(--border); border-radius:8px; padding:8px 14px; font-size:0.85rem; }
+    .summary-chip strong { color:var(--primary); }
+    .toolbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:12px; }
+    .btn-sm { padding:5px 12px; font-size:0.82rem; border-radius:6px; border:none; cursor:pointer; background:var(--primary); color:#fff; }
+    .btn-danger { background:#ef4444; }
+    .btn-neutral { background:var(--bg-secondary); color:var(--text); border:1px solid var(--border); }
+    .search-bar { flex:1; min-width:150px; }
+    @media(max-width:620px){ .stash-form{grid-template-columns:1fr 1fr; } .stash-form .full-col{grid-column:1/3;} }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Stash Yardage Calculator</h1>
+      <p class="page-subtitle">Track your yarn stash — add entries, search by name, filter by weight, and see totals.</p>
+
+      <div class="tool-card">
+        <h2 style="font-size:1rem;margin-bottom:10px;">Add Yarn to Stash</h2>
+        <div class="stash-form">
+          <div class="full-col"><label class="label">Yarn Name / Brand</label><input type="text" id="add-name" class="form-input" placeholder="e.g. Malabrigo Rios - Whale Blue"></div>
+          <div><label class="label">Weight</label>
+            <select id="add-weight" class="form-select">
+              <option value="Lace">Lace</option>
+              <option value="Fingering">Fingering</option>
+              <option value="Sport">Sport</option>
+              <option value="DK">DK</option>
+              <option value="Worsted" selected>Worsted</option>
+              <option value="Bulky">Bulky</option>
+              <option value="Super Bulky">Super Bulky</option>
+            </select>
+          </div>
+          <div><label class="label">Yardage</label><input type="number" id="add-yards" class="form-input" placeholder="e.g. 440" min="0"></div>
+          <div><label class="label">Color Notes</label><input type="text" id="add-color" class="form-input" placeholder="e.g. teal"></div>
+          <div style="padding-top:20px;"><button class="btn-primary" onclick="addEntry()">Add</button></div>
+        </div>
+        <div id="add-error" style="color:#ef4444;font-size:0.85rem;display:none;margin-bottom:8px;"></div>
+
+        <hr style="margin:16px 0;border-color:var(--border);">
+
+        <div id="summary-section">
+          <h2 style="font-size:1rem;margin-bottom:8px;">Stash Summary</h2>
+          <div class="summary-grid" id="summary-grid"></div>
+        </div>
+
+        <div class="toolbar">
+          <input type="text" id="search-input" class="form-input search-bar" placeholder="Search by name or color..." oninput="renderTable()">
+          <select id="filter-weight" class="form-select" style="width:auto;" onchange="renderTable()">
+            <option value="">All weights</option>
+            <option value="Lace">Lace</option>
+            <option value="Fingering">Fingering</option>
+            <option value="Sport">Sport</option>
+            <option value="DK">DK</option>
+            <option value="Worsted">Worsted</option>
+            <option value="Bulky">Bulky</option>
+            <option value="Super Bulky">Super Bulky</option>
+          </select>
+          <button class="btn-sm btn-neutral" onclick="exportStash()">Export Text</button>
+          <button class="btn-sm btn-danger" onclick="clearStash()">Clear All</button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="stash-table">
+            <thead><tr><th>Name</th><th>Weight</th><th>Yards</th><th>Color</th><th></th></tr></thead>
+            <tbody id="stash-tbody"></tbody>
+          </table>
+        </div>
+        <div id="empty-msg" style="text-align:center;padding:24px;color:var(--text-muted);display:none;">No entries yet. Add your first yarn above!</div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>About the Stash Tracker</h2>
+        <p>Keep a running inventory of your yarn stash right in your browser. All data is stored locally — no account needed.</p>
+        <ul>
+          <li>Add as many yarns as you like — name, weight, yardage, and color notes.</li>
+          <li>The summary shows total yardage broken down by weight category.</li>
+          <li>Use the search bar to find a specific yarn, or filter by weight to plan a project.</li>
+          <li>Export your stash as a text file for backup or sharing.</li>
+        </ul>
+        <p class="disclaimer">Data is stored in your browser's localStorage. Clearing browser data will erase your stash — use Export regularly.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const STORAGE_KEY='tup_stash';
+  let stash=[];
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    injectNav('stash-yardage-calculator.html');
+    injectFooter();
+    load();
+    renderTable();
+    renderSummary();
+  });
+
+  function load(){ try{ const s=localStorage.getItem(STORAGE_KEY); if(s) stash=JSON.parse(s); }catch(e){} }
+  function save(){ localStorage.setItem(STORAGE_KEY,JSON.stringify(stash)); }
+
+  function addEntry(){
+    const name=document.getElementById('add-name').value.trim();
+    const weight=document.getElementById('add-weight').value;
+    const yards=parseFloat(document.getElementById('add-yards').value);
+    const color=document.getElementById('add-color').value.trim();
+    const err=document.getElementById('add-error');
+    if(!name){ err.textContent='Please enter a yarn name.'; err.style.display=''; return; }
+    if(isNaN(yards)||yards<0){ err.textContent='Please enter a valid yardage.'; err.style.display=''; return; }
+    err.style.display='none';
+    stash.push({ id:Date.now(), name, weight, yards, color });
+    save();
+    document.getElementById('add-name').value='';
+    document.getElementById('add-yards').value='';
+    document.getElementById('add-color').value='';
+    renderTable();
+    renderSummary();
+  }
+
+  function removeEntry(id){
+    stash=stash.filter(e=>e.id!==id);
+    save(); renderTable(); renderSummary();
+  }
+
+  function renderTable(){
+    const search=(document.getElementById('search-input').value||'').toLowerCase();
+    const filterW=document.getElementById('filter-weight').value;
+    const tbody=document.getElementById('stash-tbody');
+    const empty=document.getElementById('empty-msg');
+    const filtered=stash.filter(e=>{
+      if(filterW && e.weight!==filterW) return false;
+      if(search && !e.name.toLowerCase().includes(search) && !e.color.toLowerCase().includes(search)) return false;
+      return true;
+    });
+    tbody.innerHTML='';
+    if(filtered.length===0){ empty.style.display=''; }
+    else {
+      empty.style.display='none';
+      filtered.forEach(e=>{
+        const tr=document.createElement('tr');
+        tr.innerHTML=`<td>${e.name}</td><td><span class="weight-badge">${e.weight}</span></td><td>${e.yards.toLocaleString()}</td><td>${e.color||'—'}</td><td><button class="btn-sm btn-danger" onclick="removeEntry(${e.id})">✕</button></td>`;
+        tbody.appendChild(tr);
+      });
+    }
+  }
+
+  function renderSummary(){
+    const grid=document.getElementById('summary-grid');
+    const WEIGHTS=['Lace','Fingering','Sport','DK','Worsted','Bulky','Super Bulky'];
+    const totals={};
+    stash.forEach(e=>{ totals[e.weight]=(totals[e.weight]||0)+e.yards; });
+    const grandTotal=stash.reduce((s,e)=>s+e.yards,0);
+    grid.innerHTML='';
+    const grand=document.createElement('div');
+    grand.className='summary-chip';
+    grand.innerHTML=`<strong>${grandTotal.toLocaleString()} yd</strong> total (${stash.length} skeins)`;
+    grid.appendChild(grand);
+    WEIGHTS.forEach(w=>{
+      if(totals[w]){
+        const chip=document.createElement('div'); chip.className='summary-chip';
+        chip.innerHTML=`${w}: <strong>${totals[w].toLocaleString()} yd</strong>`;
+        grid.appendChild(chip);
+      }
+    });
+  }
+
+  function exportStash(){
+    let out='YARN STASH EXPORT\n'+'='.repeat(30)+'\n\n';
+    const grandTotal=stash.reduce((s,e)=>s+e.yards,0);
+    out+=`Total: ${stash.length} skeins, ${grandTotal.toLocaleString()} yards\n\n`;
+    stash.forEach(e=>{ out+=`${e.name}  |  ${e.weight}  |  ${e.yards} yd  |  ${e.color||'no color note'}\n`; });
+    const blob=new Blob([out],{type:'text/plain'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='yarn-stash.txt'; a.click();
+  }
+
+  function clearStash(){
+    if(!confirm('Clear all stash entries? This cannot be undone.')) return;
+    stash=[]; save(); renderTable(); renderSummary();
+  }
+  </script>
+</body>
+</html>

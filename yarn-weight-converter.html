@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarn Weight Converter — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Convert yarn weights between US and UK naming systems. See recommended hook sizes, needle sizes, WPI, and gauge for each weight. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/yarn-weight-converter.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Yarn Weight Converter</h1>
+      <p class="page-subtitle">Convert yarn weights between US and UK naming systems with recommended hook, needle, and gauge info.</p>
+      <div class="tool-card">
+        <h2 style="font-size:1.1rem;margin-bottom:1rem;">Quick Converter</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+          <div>
+            <label class="label">Select System</label>
+            <select class="form-select" id="sys-select" onchange="rebuildWeightDropdown()">
+              <option value="us">US Names</option>
+              <option value="uk">UK Names</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Select Weight</label>
+            <select class="form-select" id="weight-select" onchange="showWeightInfo()"></select>
+          </div>
+        </div>
+        <div id="weight-result" style="display:none;"></div>
+
+        <h2 style="font-size:1.1rem;margin:2rem 0 1rem;">Full Conversion Table</h2>
+        <div class="table-wrap">
+          <table class="data-table" id="weight-table">
+            <thead><tr><th>US Name</th><th>UK Name</th><th>CYCA #</th><th>WPI</th><th>Needle (mm)</th><th>Hook (mm)</th><th>Knit Gauge</th></tr></thead>
+            <tbody id="weight-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Converter</h2>
+        <ul>
+          <li>Select your naming system (US or UK) and choose a yarn weight from the dropdown to see the full equivalent info.</li>
+          <li>The full table below shows all weights side-by-side for quick comparison.</li>
+        </ul>
+        <h2>US vs. UK Yarn Weight Names</h2>
+        <p>The US and UK use different names for the same yarn weights. For example, what Americans call "worsted" is called "Aran" in the UK. Always check the CYCA number or WPI to confirm you have the right weight.</p>
+        <h2>What is WPI?</h2>
+        <p>WPI (Wraps Per Inch) is the number of times you can wrap yarn around a ruler in one inch. It's the most reliable way to determine yarn weight when labels are missing. Higher WPI = thinner yarn.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('yarn-weight-converter.html');injectFooter();init();});
+
+    const weights = [
+      {us:'Lace / Cobweb', uk:'1-ply / 2-ply', cyca:0, wpi:'30+', needle:'1.5–2.25', hook:'1.75–2.25', kGauge:'32–42 sts', cGauge:'32–42 sc', desc:'Extremely fine; used for lace shawls and delicate doilies.'},
+      {us:'Fingering / Sock', uk:'3-ply / 4-ply', cyca:1, wpi:'14–30', needle:'2.25–3.25', hook:'2.25–3.5', kGauge:'27–32 sts', cGauge:'21–32 sc', desc:'Common for socks, baby items, and lightweight accessories.'},
+      {us:'Sport / Baby', uk:'5-ply', cyca:2, wpi:'12–14', needle:'3.25–3.75', hook:'3.5–4.5', kGauge:'23–26 sts', cGauge:'16–20 sc', desc:'Slightly heavier than fingering; great for baby garments and light layering pieces.'},
+      {us:'DK / Light Worsted', uk:'DK / 8-ply', cyca:3, wpi:'11–12', needle:'3.75–4.5', hook:'4.5–5.5', kGauge:'21–24 sts', cGauge:'12–17 sc', desc:'Versatile mid-weight used for sweaters, hats, and home goods.'},
+      {us:'Worsted', uk:'Aran', cyca:4, wpi:'9–10', needle:'4.5–5.5', hook:'5.0–6.5', kGauge:'16–20 sts', cGauge:'11–14 sc', desc:'The most popular weight; works up quickly and is easy to handle.'},
+      {us:'Aran / Heavy Worsted', uk:'Chunky (light)', cyca:4, wpi:'8–9', needle:'5.0–5.5', hook:'5.5–6.5', kGauge:'16–18 sts', cGauge:'11–13 sc', desc:'Slightly heavier than standard worsted; great for cozy sweaters.'},
+      {us:'Bulky', uk:'Chunky', cyca:5, wpi:'5–6', needle:'5.5–8.0', hook:'6.5–9.0', kGauge:'12–15 sts', cGauge:'8–11 sc', desc:'Fast to knit and crochet; popular for blankets, scarves, and hats.'},
+      {us:'Super Bulky', uk:'Super Chunky', cyca:6, wpi:'4–5', needle:'8.0–12.75', hook:'9.0–15.0', kGauge:'7–11 sts', cGauge:'6–9 sc', desc:'Very chunky; used for arm-knitting and ultra-cozy blankets.'},
+      {us:'Jumbo / Roving', uk:'Extra Super Chunky', cyca:7, wpi:'1–4', needle:'12.75+', hook:'15.0+', kGauge:'6 or fewer sts', cGauge:'5 or fewer sc', desc:'Extreme-weight yarn for very large needles and hooks.'},
+    ];
+
+    function init(){
+      renderTable();
+      rebuildWeightDropdown();
+    }
+
+    function renderTable(){
+      document.getElementById('weight-tbody').innerHTML =
+        weights.map(w=>`<tr><td>${w.us}</td><td>${w.uk}</td><td>${w.cyca}</td><td>${w.wpi}</td><td>${w.needle}</td><td>${w.hook}</td><td>${w.kGauge}</td></tr>`).join('');
+    }
+
+    function rebuildWeightDropdown(){
+      const sys = document.getElementById('sys-select').value;
+      const sel = document.getElementById('weight-select');
+      sel.innerHTML = '';
+      weights.forEach((w,i)=>{
+        const opt=document.createElement('option');
+        opt.value=i;
+        opt.textContent = sys==='us' ? w.us : w.uk;
+        sel.appendChild(opt);
+      });
+      showWeightInfo();
+    }
+
+    function showWeightInfo(){
+      const idx = parseInt(document.getElementById('weight-select').value);
+      const w = weights[idx];
+      if(!w){document.getElementById('weight-result').style.display='none';return;}
+      document.getElementById('weight-result').innerHTML = `
+        <div class="result-card">
+          <div class="stat-grid">
+            <div class="stat-box"><div class="stat-value">${w.us}</div><div class="stat-label">US Name</div></div>
+            <div class="stat-box"><div class="stat-value">${w.uk}</div><div class="stat-label">UK Name</div></div>
+            <div class="stat-box"><div class="stat-value">CYCA ${w.cyca}</div><div class="stat-label">Standard Weight</div></div>
+            <div class="stat-box"><div class="stat-value">${w.wpi}</div><div class="stat-label">WPI Range</div></div>
+            <div class="stat-box"><div class="stat-value">${w.needle} mm</div><div class="stat-label">Rec. Needle</div></div>
+            <div class="stat-box"><div class="stat-value">${w.hook} mm</div><div class="stat-label">Rec. Hook</div></div>
+            <div class="stat-box"><div class="stat-value">${w.kGauge}</div><div class="stat-label">Knit Gauge (4")</div></div>
+            <div class="stat-box"><div class="stat-value">${w.cGauge}</div><div class="stat-label">Crochet Gauge (4")</div></div>
+          </div>
+          <p style="margin-top:1rem;color:var(--text-muted);font-size:0.95rem;">${w.desc}</p>
+        </div>
+      `;
+      document.getElementById('weight-result').style.display='block';
+    }
+  </script>
+</body>
+</html>

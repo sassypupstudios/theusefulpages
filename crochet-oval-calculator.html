@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Oval Calculator — Foundation Chain &amp; Round-by-Round | The Useful Pages</title>
+  <meta name="description" content="Calculate the foundation chain and round-by-round stitch counts for a crochet oval. Enter dimensions and gauge for written instructions. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-oval-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Oval Calculator</h1>
+      <p class="page-subtitle">Get your foundation chain count, total stitches per round, and a round-by-round increase schedule for a crocheted oval.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Desired Length (inches)</label>
+            <input class="form-input" type="number" id="oval-length" min="1" step="0.5" placeholder="e.g. 10">
+          </div>
+          <div>
+            <label class="label">Desired Width (inches)</label>
+            <input class="form-input" type="number" id="oval-width" min="1" step="0.5" placeholder="e.g. 6">
+          </div>
+          <div>
+            <label class="label">Stitches per Inch (gauge)</label>
+            <input class="form-input" type="number" id="oval-gauge" min="0.5" step="0.5" placeholder="e.g. 3.5">
+          </div>
+          <div>
+            <label class="label">Rounds to Show (increase schedule)</label>
+            <input class="form-input" type="number" id="oval-rounds" min="1" max="20" step="1" value="6">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcOval()">Calculate Oval Pattern</button>
+        <div id="oval-result" style="margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Enter your desired finished length and width in inches.</li>
+          <li>Enter your gauge (stitches per inch) from a swatch.</li>
+          <li>Set how many rounds of increase schedule you want shown (default 6).</li>
+          <li>Click <strong>Calculate Oval Pattern</strong> to see your foundation chain and round-by-round instructions.</li>
+        </ul>
+        <h2>The Oval Formula</h2>
+        <p>An oval is formed by working a foundation chain along the long axis and then crocheting in the round, adding increases at each end to create the curved short ends.</p>
+        <p><strong>Foundation chain</strong> = (Length − Width) × gauge, rounded to the nearest whole number. This gives the straight section; the width is added by the semicircular ends.</p>
+        <p><strong>Each increase round</strong> adds stitches at both short ends. The number of increases per end equals the starting semi-circle stitch count, similar to flat circle math.</p>
+        <h2>Common Uses</h2>
+        <ul>
+          <li>Bag bottoms and tote bases</li>
+          <li>Oval rugs and placemats</li>
+          <li>Amigurumi flat bases (body undersides)</li>
+          <li>Basket bottoms</li>
+        </ul>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcOval() {
+    const length = parseFloat(document.getElementById('oval-length').value);
+    const width = parseFloat(document.getElementById('oval-width').value);
+    const gauge = parseFloat(document.getElementById('oval-gauge').value);
+    const roundsToShow = parseInt(document.getElementById('oval-rounds').value) || 6;
+    const res = document.getElementById('oval-result');
+
+    if (!length || !width || !gauge || length <= 0 || width <= 0 || gauge <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid length, width, and gauge values.</p>'; return;
+    }
+    if (length <= width) {
+      res.innerHTML = '<p style="color:var(--color-error)">Length must be greater than width for an oval.</p>'; return;
+    }
+
+    // Foundation chain = (length - width) * gauge, straight portion
+    const chainSts = Math.round((length - width) * gauge);
+    // Semicircle at each end: diameter = width, so half-circumference stitches = pi * (width/2) * gauge / 2 * 2 ends
+    // Stitches around one semicircle end = Math.round(Math.PI * width * gauge / 2)
+    const endSts = Math.round(Math.PI * width * gauge / 2);
+    // Total stitches round 1 = 2 * chainSts + 2 * endSts (both sides of chain + both ends)
+    // More precisely: work along chain (chainSts), curve around end (endSts), back along chain (chainSts), curve around start (endSts)
+    const round1Total = 2 * chainSts + 2 * endSts;
+
+    // For increase rounds: increases happen only at the ends, adding 2 per end per increase round
+    // Increment per increase round ≈ 4 sts (2 at each end, like circle math adds 4 to 2 semicircles)
+    // More accurately each semicircle is like half a circle that adds startSts/round
+    // Use a simpler model: each increase round adds 4 stitches (2 per end curved section)
+    const incPerRound = 4;
+
+    // Build written instructions
+    let instructions = [];
+    // Round 1 written
+    instructions.push({
+      round: 1,
+      total: round1Total,
+      text: `Ch ${chainSts + 2}. Sc in 2nd ch from hook and in each ch across (${chainSts} sc). Work ${endSts} sc evenly around the end. Sc in each ch across the other side (${chainSts} sc). Work ${endSts} sc evenly around the other end. Join to first sc. (${round1Total} sts)`
+    });
+
+    let prevTotal = round1Total;
+    for (let r = 2; r <= Math.min(roundsToShow, 20); r++) {
+      const total = prevTotal + incPerRound;
+      instructions.push({
+        round: r,
+        total,
+        text: `Round ${r}: Sc in each st around, working 2 sc in the 2 corner sts at each end. (${total} sts)`
+      });
+      prevTotal = total;
+    }
+
+    // Estimate finished dimensions after rounds shown
+    const estWidth = width + ((roundsToShow - 1) * (1 / gauge) * 2);
+    const estLength = length + ((roundsToShow - 1) * (1 / gauge) * 2);
+
+    let tableRows = instructions.map(r =>
+      `<tr><td>${r.round}</td><td>${r.total}</td><td>${r.text}</td></tr>`
+    ).join('');
+
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid" style="margin-bottom:1rem;">
+        <div class="stat-box"><div class="label">Foundation Chain</div><strong>${chainSts + 2} chs</strong></div>
+        <div class="stat-box"><div class="label">Working Chain (no turn ch)</div><strong>${chainSts} sts</strong></div>
+        <div class="stat-box"><div class="label">Round 1 Total</div><strong>${round1Total} sts</strong></div>
+        <div class="stat-box"><div class="label">Increase per Round</div><strong>${incPerRound} sts</strong></div>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Round</th><th>Total Sts</th><th>Instructions</th></tr></thead>
+          <tbody>${tableRows}</tbody>
+        </table>
+      </div>
+      <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--color-text-muted)">Tip: Continue adding ${incPerRound} stitches per increase round until desired size. For an even oval, work plain rounds between increase rounds as needed.</p>
+    </div>`;
+  }
+  document.addEventListener('DOMContentLoaded', () => { injectNav('crochet-oval-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flying Geese Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate cutting sizes for flying geese quilt blocks using the standard and 4-at-a-time methods. Enter your desired finished size and get precise cutting measurements. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/flying-geese-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Flying Geese Calculator</h1>
+      <p class="page-subtitle">Calculate cutting sizes for flying geese blocks — standard and 4-at-a-time methods.</p>
+      <div class="tool-card">
+        <p style="margin-bottom:1rem;font-size:0.9rem;color:var(--color-muted);">A flying geese unit is always 2× as wide as it is tall. Enter your desired <strong>finished</strong> width and height.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Finished Width (inches) — the long side</label>
+            <input class="form-input" type="number" id="fg-width" min="0.5" step="0.25" placeholder="e.g. 4">
+          </div>
+          <div>
+            <label class="label">Finished Height (inches) — the short side</label>
+            <input class="form-input" type="number" id="fg-height" min="0.5" step="0.25" placeholder="e.g. 2">
+          </div>
+          <div>
+            <label class="label">Number of Flying Geese Needed</label>
+            <input class="form-input" type="number" id="fg-count" min="1" step="1" placeholder="e.g. 32">
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcFG()">Calculate</button>
+          <button class="btn-outline" onclick="resetFG()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="fg-result" style="display:none;margin-top:1.5rem;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="stat-box" style="text-align:left;padding:1rem;">
+              <div style="font-weight:600;margin-bottom:0.5rem;">Standard Method (1 at a time)</div>
+              <div style="margin-bottom:0.25rem;">Center rectangle: <strong id="res-std-rect"></strong></div>
+              <div style="margin-bottom:0.25rem;">Corner squares: <strong id="res-std-sq"></strong> × 2 squares</div>
+              <div style="margin-top:0.75rem;font-size:0.85rem;color:var(--color-muted);">Sew corner squares to each end of rectangle on the diagonal. Yields 1 flying geese unit per set.</div>
+              <div style="margin-top:0.75rem;">Sets to cut: <strong id="res-std-sets"></strong></div>
+            </div>
+            <div class="stat-box" style="text-align:left;padding:1rem;">
+              <div style="font-weight:600;margin-bottom:0.5rem;">4-at-a-Time Method (no-waste)</div>
+              <div style="margin-bottom:0.25rem;">Large center square: <strong id="res-4at-large"></strong></div>
+              <div style="margin-bottom:0.25rem;">Small corner squares: <strong id="res-4at-small"></strong> × 4 squares</div>
+              <div style="margin-top:0.75rem;font-size:0.85rem;color:var(--color-muted);">Layer two small squares on opposite corners of large square, sew and flip. Repeat other two corners. Cut apart. Yields 4 flying geese per large square.</div>
+              <div style="margin-top:0.75rem;">Large squares to cut: <strong id="res-4at-large-count"></strong></div>
+            </div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-unfinished-w"></div>
+              <div class="stat-label">Unfinished Width</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-unfinished-h"></div>
+              <div class="stat-label">Unfinished Height</div>
+            </div>
+          </div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+        </div>
+        <h3 style="margin-top:1.5rem;">Common Flying Geese Sizes Reference</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Finished W × H</th>
+                <th>Center Rectangle (Std)</th>
+                <th>Corner Squares (Std)</th>
+                <th>Large Square (4-at-a-time)</th>
+                <th>Small Squares (4-at-a-time)</th>
+              </tr>
+            </thead>
+            <tbody id="fg-ref-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use the Flying Geese Calculator</h2>
+        <ul>
+          <li>Enter the <strong>finished width</strong> (the long horizontal measurement) and <strong>finished height</strong> (the short vertical measurement) of your flying geese unit.</li>
+          <li>Note: Traditional flying geese are always 2:1 ratio (width is twice the height), but this calculator works for any proportions.</li>
+          <li>Enter the number of flying geese units you need for your project.</li>
+          <li>Click <strong>Calculate</strong> to see cutting sizes for both methods.</li>
+        </ul>
+        <h2>Cutting Formulas</h2>
+        <ul>
+          <li><strong>Standard method — Center rectangle:</strong> (Finished Width + 0.75") × (Finished Height + 0.75")</li>
+          <li><strong>Standard method — Corner squares:</strong> Finished Height + 0.875" (cut 2 per unit)</li>
+          <li><strong>4-at-a-time — Large square:</strong> Finished Width + 1.25"</li>
+          <li><strong>4-at-a-time — Small squares:</strong> Finished Height + 0.875" (cut 4 per large square)</li>
+        </ul>
+        <h2>Which Method to Choose?</h2>
+        <ul>
+          <li>The <strong>standard method</strong> is more accurate and easier for beginners.</li>
+          <li>The <strong>4-at-a-time method</strong> is faster for making many geese and produces no waste triangles, but requires careful pressing and trimming.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      injectNav('flying-geese-calculator.html');
+      injectFooter();
+      buildFGRefTable();
+    });
+
+    function fracStr(val){
+      const whole = Math.floor(val);
+      const dec   = Math.round((val - whole) * 8) / 8;
+      const fracs = {0:'', 0.125:'⅛', 0.25:'¼', 0.375:'⅜', 0.5:'½', 0.625:'⅝', 0.75:'¾', 0.875:'⅞'};
+      const frac  = fracs[dec] !== undefined ? fracs[dec] : (dec > 0 ? dec.toString() : '');
+      return (whole > 0 ? whole : '') + frac + '"';
+    }
+
+    function calcFG(){
+      const fw = parseFloat(document.getElementById('fg-width').value);
+      const fh = parseFloat(document.getElementById('fg-height').value);
+      const count = parseInt(document.getElementById('fg-count').value);
+
+      if(isNaN(fw)||fw<=0||isNaN(fh)||fh<=0){alert('Please enter valid finished dimensions.');return;}
+
+      // Standard method
+      const stdRectW = fw + 0.75;
+      const stdRectH = fh + 0.75;
+      const stdSq    = fh + 0.875;
+      // 4-at-a-time
+      const largeSquare = fw + 1.25;
+      const smallSquare = fh + 0.875;
+
+      document.getElementById('res-std-rect').textContent   = fracStr(stdRectW) + ' × ' + fracStr(stdRectH);
+      document.getElementById('res-std-sq').textContent     = fracStr(stdSq);
+      document.getElementById('res-4at-large').textContent  = fracStr(largeSquare);
+      document.getElementById('res-4at-small').textContent  = fracStr(smallSquare);
+      document.getElementById('res-unfinished-w').textContent = fracStr(fw + 0.5);
+      document.getElementById('res-unfinished-h').textContent = fracStr(fh + 0.5);
+
+      if(!isNaN(count)&&count>0){
+        document.getElementById('res-std-sets').textContent       = count + ' sets';
+        document.getElementById('res-4at-large-count').textContent = Math.ceil(count/4) + ' squares';
+      } else {
+        document.getElementById('res-std-sets').textContent       = '—';
+        document.getElementById('res-4at-large-count').textContent = '—';
+      }
+
+      document.getElementById('fg-result').style.display = 'block';
+    }
+
+    function resetFG(){
+      document.getElementById('fg-width').value  = '';
+      document.getElementById('fg-height').value = '';
+      document.getElementById('fg-count').value  = '';
+      document.getElementById('fg-result').style.display = 'none';
+    }
+
+    function buildFGRefTable(){
+      const sizes = [
+        [2,1],[3,1.5],[4,2],[4.5,2.25],[6,3],[8,4],[9,4.5],[12,6]
+      ];
+      const tbody = document.getElementById('fg-ref-table');
+      sizes.forEach(([w,h]) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${fracStr(w)} × ${fracStr(h)}</td>` +
+          `<td>${fracStr(w+0.75)} × ${fracStr(h+0.75)}</td>` +
+          `<td>${fracStr(h+0.875)}</td>` +
+          `<td>${fracStr(w+1.25)}</td>` +
+          `<td>${fracStr(h+0.875)}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+  </script>
+</body>
+</html>

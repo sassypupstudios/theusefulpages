@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quilt Binding Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate quilt binding yardage, number of strips to cut, and total fabric needed. Supports 2.25\" and 2.5\" binding widths. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/quilt-binding-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Quilt Binding Calculator</h1>
+      <p class="page-subtitle">Calculate binding strips and yardage for finishing your quilt.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Quilt Width (inches)</label>
+            <input class="form-input" type="number" id="quilt-width" placeholder="e.g. 60" min="1">
+          </div>
+          <div>
+            <label class="label">Quilt Length (inches)</label>
+            <input class="form-input" type="number" id="quilt-length" placeholder="e.g. 80" min="1">
+          </div>
+          <div>
+            <label class="label">Binding Strip Width</label>
+            <select class="form-select" id="strip-width">
+              <option value="2.25">2.25" (standard double-fold)</option>
+              <option value="2.5" selected>2.5" (popular double-fold)</option>
+              <option value="3">3" (wide binding)</option>
+              <option value="1.5">1.5" (single-fold)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Fabric Width (usable)</label>
+            <select class="form-select" id="fabric-width">
+              <option value="40">40" (after washing/selvage)</option>
+              <option value="44" selected>44" usable</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calculate()">Calculate Binding</button>
+        </div>
+        <div id="results" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-label">Perimeter</div>
+              <div class="stat-value" id="perimeter">—</div>
+              <div class="stat-sub">inches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Binding Needed</div>
+              <div class="stat-value" id="binding-length">—</div>
+              <div class="stat-sub">inches total</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Strips to Cut</div>
+              <div class="stat-value" id="strips-count">—</div>
+              <div class="stat-sub">strips</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Fabric Yardage</div>
+              <div class="stat-value" id="total-yards">—</div>
+              <div class="stat-sub">yards</div>
+            </div>
+          </div>
+          <div id="formula-box" style="margin-top:1rem;padding:0.75rem;background:var(--bg-secondary,#f8f9fa);border-radius:8px;font-size:0.9rem;line-height:1.7;"></div>
+          <p class="disclaimer">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Enter your finished quilt width and length in inches.</li>
+          <li>Choose your binding strip width (2.5" is the most common).</li>
+          <li>Select your usable fabric width.</li>
+          <li>Click <strong>Calculate Binding</strong> to see strips and yardage.</li>
+        </ol>
+        <h2>The Formula</h2>
+        <p><strong>Perimeter</strong> = (Width + Length) × 2<br>
+        <strong>Total binding needed</strong> = Perimeter + 12" (for joins and corners)<br>
+        <strong>Number of strips</strong> = Total binding ÷ Fabric width (rounded up)<br>
+        <strong>Yardage</strong> = (Strips × Strip width) ÷ 36" + seam allowance</p>
+        <h2>Double-Fold vs. Single-Fold Binding</h2>
+        <p><strong>Double-fold (most common):</strong> Strip is folded in half lengthwise before sewing. Provides a neat, durable edge. Use 2.25"–2.5" strips. Finished binding is about 1/4"–3/8" wide.<br>
+        <strong>Single-fold:</strong> Strip is pressed with folded edges and sewn down flat. Use 1.5" strips for a narrow binding or 2" for wider.</p>
+        <h2>Common Binding Yardage Reference</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Quilt Size</th><th>2.25" Strips</th><th>2.5" Strips</th></tr></thead>
+            <tbody>
+              <tr><td>Baby (36"×45")</td><td>0.33 yd</td><td>0.38 yd</td></tr>
+              <tr><td>Throw (60"×80")</td><td>0.5 yd</td><td>0.55 yd</td></tr>
+              <tr><td>Full (80"×90")</td><td>0.6 yd</td><td>0.65 yd</td></tr>
+              <tr><td>Queen (90"×108")</td><td>0.65 yd</td><td>0.75 yd</td></tr>
+              <tr><td>King (108"×108")</td><td>0.75 yd</td><td>0.85 yd</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calculate() {
+    const qw = parseFloat(document.getElementById('quilt-width').value);
+    const ql = parseFloat(document.getElementById('quilt-length').value);
+    const sw = parseFloat(document.getElementById('strip-width').value);
+    const fw = parseFloat(document.getElementById('fabric-width').value);
+    if (!qw || !ql) { alert('Please enter quilt width and length.'); return; }
+
+    const perimeter = (qw + ql) * 2;
+    const bindingNeeded = perimeter + 12; // extra for joins and corners
+    const strips = Math.ceil(bindingNeeded / fw);
+    const totalFabricIn = strips * sw + 0.25; // small seam allowance
+    const yards = totalFabricIn / 36;
+
+    document.getElementById('perimeter').textContent = perimeter.toFixed(0);
+    document.getElementById('binding-length').textContent = bindingNeeded.toFixed(0);
+    document.getElementById('strips-count').textContent = strips;
+    document.getElementById('total-yards').textContent = yards.toFixed(2);
+
+    const formula = `Formula breakdown:
+• Perimeter: (${qw}" + ${ql}") × 2 = ${perimeter}"
+• Total binding: ${perimeter}" + 12" (overlap) = ${bindingNeeded}"
+• Strips: ${bindingNeeded}" ÷ ${fw}" fabric width = ${strips} strips
+• Yardage: ${strips} strips × ${sw}" wide = ${(strips*sw).toFixed(1)}" ÷ 36 = ${yards.toFixed(2)} yards
+• Buy at least ${Math.ceil(yards * 4) / 4} yards to be safe (rounds up to nearest 1/4 yd)`;
+
+    document.getElementById('formula-box').style.whiteSpace = 'pre-line';
+    document.getElementById('formula-box').textContent = formula;
+    document.getElementById('results').style.display = '';
+  }
+  </script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{injectNav('quilt-binding-calculator.html');injectFooter();});</script>
+</body>
+</html>

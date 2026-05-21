@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aida Cloth Count Calculator — Free Embroidery Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate finished embroidery size from stitch count and Aida cloth count, or find how many stitches fit a desired size. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/aida-cloth-count-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Aida Cloth Count Calculator</h1>
+      <p class="page-subtitle">Convert stitch counts to finished sizes — or find the right count for your target dimensions.</p>
+      <div class="tool-card">
+        <div style="display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+          <button class="btn-primary" id="tab-forward" onclick="setTab('forward')">Stitch Count → Size</button>
+          <button class="btn-outline" id="tab-reverse" onclick="setTab('reverse')">Size → Stitch Count</button>
+        </div>
+
+        <!-- Forward: stitch count to size -->
+        <div id="panel-forward">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Fabric Count</label>
+              <select class="form-select" id="count-fwd">
+                <option value="6">6-count Aida</option>
+                <option value="11">11-count Aida</option>
+                <option value="14" selected>14-count Aida</option>
+                <option value="16">16-count Aida</option>
+                <option value="18">18-count Aida</option>
+                <option value="22">22-count Aida</option>
+                <option value="14">28-count (stitched over 2)</option>
+                <option value="16">32-count (stitched over 2)</option>
+              </select>
+            </div>
+            <div></div>
+            <div>
+              <label class="label">Stitch Width</label>
+              <input class="form-input" type="number" id="stitch-w" placeholder="e.g. 140" min="1">
+            </div>
+            <div>
+              <label class="label">Stitch Height</label>
+              <input class="form-input" type="number" id="stitch-h" placeholder="e.g. 120" min="1">
+            </div>
+          </div>
+          <button class="btn-primary" style="margin-top:1rem;" onclick="calcForward()">Calculate Size</button>
+          <div id="result-forward" class="result-card" style="display:none;margin-top:1rem;"></div>
+        </div>
+
+        <!-- Reverse: size to stitch count -->
+        <div id="panel-reverse" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Desired Width (inches)</label>
+              <input class="form-input" type="number" id="size-w" placeholder="e.g. 10" min="0.1" step="0.1">
+            </div>
+            <div>
+              <label class="label">Desired Height (inches)</label>
+              <input class="form-input" type="number" id="size-h" placeholder="e.g. 8" min="0.1" step="0.1">
+            </div>
+          </div>
+          <button class="btn-primary" style="margin-top:1rem;" onclick="calcReverse()">Show Stitch Counts</button>
+          <div id="result-reverse" style="display:none;margin-top:1rem;"></div>
+        </div>
+
+        <!-- Reference table always visible -->
+        <div style="margin-top:2rem;">
+          <h3 style="margin-bottom:.75rem;">Fabric Count Reference</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Count</th><th>Stitches/Inch</th><th>Stitch Size (mm)</th><th>Best For</th></tr></thead>
+              <tbody>
+                <tr><td>6-count</td><td>6</td><td>4.2 mm</td><td>Beginners, large designs</td></tr>
+                <tr><td>11-count</td><td>11</td><td>2.3 mm</td><td>Beginner–intermediate</td></tr>
+                <tr><td>14-count</td><td>14</td><td>1.8 mm</td><td>Most popular, versatile</td></tr>
+                <tr><td>16-count</td><td>16</td><td>1.6 mm</td><td>Fine detail</td></tr>
+                <tr><td>18-count</td><td>18</td><td>1.4 mm</td><td>Fine detail</td></tr>
+                <tr><td>22-count</td><td>22</td><td>1.15 mm</td><td>Very fine/miniature</td></tr>
+                <tr><td>28-count (over 2)</td><td>14</td><td>1.8 mm</td><td>Evenweave linen feel at 14ct</td></tr>
+                <tr><td>32-count (over 2)</td><td>16</td><td>1.6 mm</td><td>Evenweave linen feel at 16ct</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <h3>Stitch Count → Finished Size</h3>
+        <p>Select your Aida cloth count, enter the stitch width and height of your pattern, then click Calculate Size. The result shows your finished stitched area in both inches and centimeters.</p>
+        <h3>Finished Size → Stitch Count</h3>
+        <p>Enter the dimensions you want your finished design to be. The calculator shows a comparison table of how many stitches you would need at each fabric count — helpful for choosing which Aida to buy.</p>
+        <h3>What Is Fabric Count?</h3>
+        <p>Fabric count refers to the number of stitches (or threads) per inch. A 14-count Aida has 14 holes per inch, so a 140-stitch-wide design will measure exactly 10 inches across.</p>
+        <h3>28-count and 32-count "Stitched Over 2"</h3>
+        <p>Evenweave fabrics like 28-count linen are stitched over 2 fabric threads, which makes each cross-stitch the same size as on 14-count Aida. Similarly, 32-count stitched over 2 equals 16-count Aida.</p>
+        <h3>Formula</h3>
+        <p>Finished size (inches) = Stitch count ÷ Fabric count. Always add at least 3 inches (7.5 cm) on each side of the design area when buying fabric.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('aida-cloth-count-calculator.html');injectFooter();});
+
+    const COUNTS = [6,11,14,16,18,22];
+    const COUNT_LABELS = {6:'6-count',11:'11-count',14:'14-count',16:'16-count',18:'18-count',22:'22-count'};
+
+    function setTab(tab) {
+      document.getElementById('panel-forward').style.display = tab==='forward' ? '' : 'none';
+      document.getElementById('panel-reverse').style.display = tab==='reverse' ? '' : 'none';
+      document.getElementById('tab-forward').className = tab==='forward' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('tab-reverse').className = tab==='reverse' ? 'btn-primary' : 'btn-outline';
+    }
+
+    function calcForward() {
+      const count = parseFloat(document.getElementById('count-fwd').value);
+      const sw = parseFloat(document.getElementById('stitch-w').value);
+      const sh = parseFloat(document.getElementById('stitch-h').value);
+      if (!count || !sw || !sh || sw<=0 || sh<=0) { alert('Please enter valid stitch counts.'); return; }
+      const wIn = sw / count;
+      const hIn = sh / count;
+      const wCm = wIn * 2.54;
+      const hCm = hIn * 2.54;
+      const el = document.getElementById('result-forward');
+      el.style.display = '';
+      el.innerHTML = `
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-label">Width</div><div class="stat-value">${wIn.toFixed(2)}" / ${wCm.toFixed(1)} cm</div></div>
+          <div class="stat-box"><div class="stat-label">Height</div><div class="stat-value">${hIn.toFixed(2)}" / ${hCm.toFixed(1)} cm</div></div>
+          <div class="stat-box"><div class="stat-label">Fabric to Buy (+ 3" border)</div><div class="stat-value">${(wIn+6).toFixed(1)}" × ${(hIn+6).toFixed(1)}"</div></div>
+          <div class="stat-box"><div class="stat-label">Total Stitches</div><div class="stat-value">${(sw*sh).toLocaleString()}</div></div>
+        </div>`;
+    }
+
+    function calcReverse() {
+      const sw = parseFloat(document.getElementById('size-w').value);
+      const sh = parseFloat(document.getElementById('size-h').value);
+      if (!sw || !sh || sw<=0 || sh<=0) { alert('Please enter valid dimensions.'); return; }
+      let rows = COUNTS.map(c=>{
+        const stitchW = Math.round(sw*c);
+        const stitchH = Math.round(sh*c);
+        return `<tr><td>${COUNT_LABELS[c]}</td><td>${stitchW} × ${stitchH}</td><td>${(stitchW*stitchH).toLocaleString()}</td><td>${(sw*2.54).toFixed(1)} × ${(sh*2.54).toFixed(1)} cm</td></tr>`;
+      }).join('');
+      const el = document.getElementById('result-reverse');
+      el.style.display = '';
+      el.innerHTML = `<div class="table-wrap"><table class="data-table"><thead><tr><th>Count</th><th>Stitch Count (W×H)</th><th>Total Stitches</th><th>Finished Size (cm)</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    }
+  </script>
+</body>
+</html>

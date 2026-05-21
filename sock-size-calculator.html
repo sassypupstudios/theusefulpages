@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sock Size Calculator — Free Knitting Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate cast-on stitch counts for hand-knit socks from foot circumference or shoe size. Includes heel flap and gusset counts. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/sock-size-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Sock Size Calculator</h1>
+      <p class="page-subtitle">Calculate stitch counts for hand-knit socks from your foot size and gauge.</p>
+      <div class="tool-card">
+        <div style="display:grid;gap:1rem;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Gauge (stitches per inch)</label>
+              <input class="form-input" type="number" id="gauge" min="1" step="0.25" placeholder="e.g. 8">
+            </div>
+            <div>
+              <label class="label">Input method</label>
+              <select class="form-select" id="input-method" onchange="toggleInput()">
+                <option value="circ">Foot circumference (inches)</option>
+                <option value="shoe">Shoe size</option>
+              </select>
+            </div>
+          </div>
+          <div id="circ-input">
+            <label class="label">Foot circumference (inches)</label>
+            <input class="form-input" type="number" id="foot-circ" min="4" max="16" step="0.25" placeholder="e.g. 8.5">
+          </div>
+          <div id="shoe-input" style="display:none;">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+              <div>
+                <label class="label">Shoe size system</label>
+                <select class="form-select" id="shoe-system">
+                  <option value="us-w">US Women's</option>
+                  <option value="us-m">US Men's</option>
+                  <option value="eu">EU</option>
+                  <option value="uk">UK</option>
+                </select>
+              </div>
+              <div>
+                <label class="label">Shoe size</label>
+                <input class="form-input" type="number" id="shoe-size" min="1" max="55" step="0.5" placeholder="e.g. 8">
+              </div>
+              <div>
+                <label class="label">Est. foot circumference</label>
+                <input class="form-input" type="text" id="shoe-circ-out" readonly placeholder="— inches">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcSock()" style="margin-top:1rem;">Calculate Sock Stitch Counts</button>
+        <div id="sock-result" style="display:none;margin-top:1.5rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>Shoe Size to Foot Circumference Reference</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>US Women's</th><th>US Men's</th><th>EU</th><th>UK</th><th>Approx. Foot Circ. (in)</th></tr></thead>
+            <tbody>
+              <tr><td>5–6</td><td>3.5–4.5</td><td>35–36</td><td>2.5–3.5</td><td>7.5–8.0"</td></tr>
+              <tr><td>6.5–7.5</td><td>5–6</td><td>37–38</td><td>4–5</td><td>8.0–8.5"</td></tr>
+              <tr><td>8–9</td><td>6.5–7.5</td><td>38–40</td><td>5.5–6.5</td><td>8.5–9.0"</td></tr>
+              <tr><td>9.5–10.5</td><td>8–9</td><td>40–42</td><td>7–8</td><td>9.0–9.5"</td></tr>
+              <tr><td>11–12</td><td>9.5–10.5</td><td>42–44</td><td>8.5–9.5</td><td>9.5–10.0"</td></tr>
+              <tr><td>12–13</td><td>11–12</td><td>44–46</td><td>10–11</td><td>10.0–10.5"</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h2>How to Use</h2>
+        <ul>
+          <li>Measure foot circumference at the widest part of the foot (around the ball of the foot).</li>
+          <li>Socks should have about 10% negative ease for a snug, non-slipping fit.</li>
+          <li>The heel flap is worked on half the total stitch count.</li>
+          <li>See the <a href="heel-turn-calculator.html">Heel Turn Calculator</a> for the complete heel turn sequence.</li>
+          <li>See the <a href="toe-decrease-calculator.html">Toe Decrease Calculator</a> for decreasing to the toe.</li>
+        </ul>
+        <p class="disclaimer">Results are estimates. Gauge, yarn, and needle type affect actual results.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('sock-size-calculator.html');injectFooter();});
+
+    function toggleInput(){
+      const m = document.getElementById('input-method').value;
+      document.getElementById('circ-input').style.display  = m==='circ'?'block':'none';
+      document.getElementById('shoe-input').style.display  = m==='shoe'?'block':'none';
+    }
+
+    // Shoe size → approx foot circumference (inches)
+    // Using average estimates
+    function shoeToCirc(size, system){
+      let usW;
+      if(system==='us-w') usW=size;
+      else if(system==='us-m') usW=size+1.5;
+      else if(system==='eu') usW=(size-31)*0.5+2.5; // rough
+      else if(system==='uk') usW=size+2;
+      // US Women's → foot circumference estimate
+      // Rough linear: size 5 ≈ 7.5", size 12 ≈ 10.5"
+      const circ = 7.5 + (usW-5)*(3/7);
+      return Math.max(6, Math.min(14, circ));
+    }
+
+    document.getElementById('shoe-size').addEventListener('input', function(){
+      const sz  = parseFloat(this.value);
+      const sys = document.getElementById('shoe-system').value;
+      if(!isNaN(sz)){
+        document.getElementById('shoe-circ-out').value = shoeToCirc(sz,sys).toFixed(2)+'"';
+      }
+    });
+    document.getElementById('shoe-system').addEventListener('change', function(){
+      document.getElementById('shoe-size').dispatchEvent(new Event('input'));
+    });
+
+    function calcSock(){
+      const gauge = parseFloat(document.getElementById('gauge').value);
+      if(isNaN(gauge)||gauge<=0){alert('Please enter your gauge.');return;}
+
+      let circ;
+      const method = document.getElementById('input-method').value;
+      if(method==='circ'){
+        circ = parseFloat(document.getElementById('foot-circ').value);
+        if(isNaN(circ)||circ<=0){alert('Please enter foot circumference.');return;}
+      } else {
+        const sz  = parseFloat(document.getElementById('shoe-size').value);
+        const sys = document.getElementById('shoe-system').value;
+        if(isNaN(sz)){alert('Please enter a shoe size.');return;}
+        circ = shoeToCirc(sz,sys);
+      }
+
+      const ease = 0.10; // 10% negative ease
+      const sockCirc = circ*(1-ease);
+      let castOn = Math.round(sockCirc * gauge);
+      // Round to nearest 4 (common for sock math)
+      castOn = Math.round(castOn/4)*4;
+      const heelFlap = Math.floor(castOn/2);
+      const gusset   = Math.round(heelFlap * 0.6); // ~60% of heel flap sts
+      const footSts  = castOn;
+
+      const html = `
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-value">${castOn}</div><div class="stat-label">Leg Cast-On Stitches</div></div>
+          <div class="stat-box"><div class="stat-value">${heelFlap}</div><div class="stat-label">Heel Flap Stitches</div></div>
+          <div class="stat-box"><div class="stat-value">${gusset}</div><div class="stat-label">Gusset Pick-Up</div></div>
+          <div class="stat-box"><div class="stat-value">${footSts}</div><div class="stat-label">Foot Stitch Count</div></div>
+        </div>
+        <div class="result-card" style="margin-top:1rem;">
+          <p style="margin:0;font-size:0.9rem;">
+            <strong>Foot circumference used:</strong> ${circ.toFixed(2)}" &nbsp;|&nbsp;
+            <strong>With 10% negative ease:</strong> ${sockCirc.toFixed(2)}" &nbsp;|&nbsp;
+            <strong>Cast on:</strong> ${castOn} sts (rounded to nearest 4)
+          </p>
+        </div>
+        <div class="result-card" style="margin-top:0.5rem;background:var(--bg-secondary);">
+          <p style="margin:0;font-size:0.9rem;color:var(--text-muted);">
+            Use <a href="heel-turn-calculator.html">Heel Turn Calculator</a> with your heel flap count of ${heelFlap} sts.
+            Use <a href="toe-decrease-calculator.html">Toe Decrease Calculator</a> with your foot count of ${footSts} sts.
+          </p>
+        </div>`;
+
+      document.getElementById('sock-result').innerHTML=html;
+      document.getElementById('sock-result').style.display='block';
+    }
+  </script>
+</body>
+</html>

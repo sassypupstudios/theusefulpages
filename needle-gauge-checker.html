@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Needle Gauge Checker Reference — Free Knitting Tool | The Useful Pages</title>
+  <meta name="description" content="Identify knitting needle sizes by mm, US size, or UK size. Full conversion table plus gauge-check tool to find suggested needle size from your swatch. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/needle-gauge-checker.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Needle Gauge Checker</h1>
+      <p class="page-subtitle">Identify any knitting needle by its mm diameter, and find suggested needle sizes from your swatch gauge.</p>
+
+      <div class="tool-card">
+        <h3 style="margin-bottom:0.75rem;">Identify My Needle</h3>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.75rem;">Measure your needle diameter with a needle gauge card and enter it below.</p>
+        <div style="display:flex;gap:1rem;align-items:flex-end;flex-wrap:wrap;">
+          <div>
+            <label class="label">Measured diameter (mm)</label>
+            <input class="form-input" type="number" id="needle-mm" min="1" max="30" step="0.25" placeholder="e.g. 3.75" oninput="identifyNeedle()">
+          </div>
+        </div>
+        <div id="needle-id-result" style="display:none;margin-top:1rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-mm"></div>
+              <div class="stat-label">mm</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-us"></div>
+              <div class="stat-label">US Size</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-uk"></div>
+              <div class="stat-label">UK/Canadian Size</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-weight"></div>
+              <div class="stat-label">Yarn Weight</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h3 style="margin-bottom:0.75rem;">Gauge-Check: Find Suggested Needle Size</h3>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.75rem;">Enter your measured stitch gauge to find what needle size is typical.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0.75rem;">
+          <div>
+            <label class="label">Stitches per 4 inches (measured)</label>
+            <input class="form-input" type="number" id="gauge-sts" min="4" max="80" step="0.5" placeholder="e.g. 22">
+          </div>
+          <div>
+            <label class="label">Yarn weight</label>
+            <select class="form-select" id="gauge-weight">
+              <option value="">— Any weight —</option>
+              <option value="lace">Lace (0)</option>
+              <option value="fingering">Fingering/Sock (1)</option>
+              <option value="sport">Sport (2)</option>
+              <option value="dk">DK (3)</option>
+              <option value="worsted">Worsted (4)</option>
+              <option value="bulky">Bulky (5)</option>
+              <option value="superbulky">Super Bulky (6+)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="gaugeCheck()">Find Suggested Needle</button>
+        <div id="gauge-check-result" style="display:none;margin-top:1rem;"></div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h3 style="margin-bottom:1rem;">Full Needle Size Conversion Table</h3>
+        <div class="table-wrap">
+          <table class="data-table" id="needle-table">
+            <thead>
+              <tr><th>mm</th><th>US Size</th><th>UK / Canadian</th><th>Yarn Weight</th></tr>
+            </thead>
+            <tbody id="needle-tbody"></tbody>
+          </table>
+        </div>
+        <p style="color:var(--text-muted);font-size:0.8rem;margin-top:0.75rem;">Note: Needle sizing varies slightly by manufacturer. Measure your needle with a gauge card for precision.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li><strong>Identify My Needle:</strong> Use a needle gauge card (the metal or plastic card with holes) to measure your needle diameter in mm, then enter it above.</li>
+          <li><strong>Gauge-Check:</strong> Count stitches over 4 inches in your swatch, enter that number, and find the typical needle size for that gauge.</li>
+          <li><strong>Conversion Table:</strong> Browse the full mm ↔ US ↔ UK reference below.</li>
+        </ul>
+        <h3 style="margin-top:1rem;">How to Measure Your Needle</h3>
+        <ol>
+          <li>Insert the needle into the round holes on your needle gauge card.</li>
+          <li>Find the smallest hole the needle fits through without forcing — that is your needle size.</li>
+          <li>Read the mm measurement printed beside that hole.</li>
+        </ol>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    injectNav('needle-gauge-checker.html');
+    injectFooter();
+    buildTable();
+  });
+
+  // mm, US, UK, yarn weight
+  const NEEDLES = [
+    [1.5, '000', 17, 'Lace'],
+    [1.75, '00', 15, 'Lace'],
+    [2.0, '0', 14, 'Lace/Fingering'],
+    [2.25, '1', 13, 'Fingering/Sock'],
+    [2.5, '1.5', 12, 'Fingering'],
+    [2.75, '2', 12, 'Fingering/Sock'],
+    [3.0, '2.5', 11, 'Fingering/Sport'],
+    [3.25, '3', 10, 'Sport'],
+    [3.5, '4', 10, 'Sport/DK'],
+    [3.75, '5', 9, 'DK'],
+    [4.0, '6', 8, 'DK/Worsted'],
+    [4.5, '7', 7, 'Worsted'],
+    [5.0, '8', 6, 'Worsted'],
+    [5.5, '9', 5, 'Worsted/Aran'],
+    [6.0, '10', 4, 'Bulky'],
+    [6.5, '10.5', 3, 'Bulky'],
+    [7.0, '10.75', 2, 'Bulky'],
+    [8.0, '11', 0, 'Bulky'],
+    [9.0, '13', 00, 'Super Bulky'],
+    [10.0, '15', '000', 'Super Bulky'],
+    [12.0, '17', '—', 'Super Bulky'],
+    [15.0, '19', '—', 'Jumbo'],
+    [19.0, '35', '—', 'Jumbo'],
+    [25.0, '50', '—', 'Jumbo'],
+  ];
+
+  // Gauge ranges per weight (sts/4in)
+  const GAUGE_WEIGHTS = [
+    { w: 'lace', label: 'Lace', min: 32, max: 60, needle: '1.5–2.25mm (US 000–1)' },
+    { w: 'fingering', label: 'Fingering/Sock', min: 26, max: 36, needle: '2.25–3.25mm (US 1–3)' },
+    { w: 'sport', label: 'Sport', min: 22, max: 28, needle: '3.25–3.75mm (US 3–5)' },
+    { w: 'dk', label: 'DK', min: 18, max: 24, needle: '3.75–4.5mm (US 5–7)' },
+    { w: 'worsted', label: 'Worsted/Aran', min: 14, max: 20, needle: '4.5–5.5mm (US 7–9)' },
+    { w: 'bulky', label: 'Bulky', min: 10, max: 16, needle: '6.0–8.0mm (US 10–11)' },
+    { w: 'superbulky', label: 'Super Bulky/Jumbo', min: 4, max: 12, needle: '9.0mm+ (US 13+)' },
+  ];
+
+  function buildTable() {
+    const tbody = document.getElementById('needle-tbody');
+    NEEDLES.forEach(n => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${n[0]} mm</td><td>US ${n[1]}</td><td>${n[2]}</td><td>${n[3]}</td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function identifyNeedle() {
+    const mm = parseFloat(document.getElementById('needle-mm').value);
+    if (!mm || mm < 1) { document.getElementById('needle-id-result').style.display='none'; return; }
+    // Find closest needle
+    let closest = NEEDLES[0];
+    let minDiff = Math.abs(mm - NEEDLES[0][0]);
+    NEEDLES.forEach(n => {
+      const d = Math.abs(mm - n[0]);
+      if (d < minDiff) { minDiff = d; closest = n; }
+    });
+    document.getElementById('res-mm').textContent = closest[0] + ' mm';
+    document.getElementById('res-us').textContent = 'US ' + closest[1];
+    document.getElementById('res-uk').textContent = closest[2];
+    document.getElementById('res-weight').textContent = closest[3];
+    document.getElementById('needle-id-result').style.display = '';
+  }
+
+  function gaugeCheck() {
+    const sts = parseFloat(document.getElementById('gauge-sts').value);
+    const wt = document.getElementById('gauge-weight').value;
+    if (!sts) { alert('Please enter your stitch gauge.'); return; }
+
+    let matches = GAUGE_WEIGHTS.filter(g => sts >= g.min && sts <= g.max);
+    if (wt) matches = matches.filter(g => g.w === wt);
+
+    let html = '';
+    if (matches.length === 0) {
+      // Find closest
+      const sorted = GAUGE_WEIGHTS.slice().sort((a, b) => {
+        const da = Math.min(Math.abs(sts - a.min), Math.abs(sts - a.max));
+        const db = Math.min(Math.abs(sts - b.min), Math.abs(sts - b.max));
+        return da - db;
+      });
+      html = `<p>No exact match for ${sts} sts/4". Closest match:</p>`;
+      html += `<div class="stat-grid"><div class="stat-box"><div class="stat-value">${sorted[0].label}</div><div class="stat-label">Yarn Weight</div></div><div class="stat-box"><div class="stat-value" style="font-size:1rem;">${sorted[0].needle}</div><div class="stat-label">Suggested Needle</div></div></div>`;
+    } else {
+      html = `<p>For <strong>${sts} stitches per 4 inches</strong>:</p>`;
+      matches.forEach(m => {
+        html += `<div class="stat-grid" style="margin-bottom:0.5rem;"><div class="stat-box"><div class="stat-value">${m.label}</div><div class="stat-label">Yarn Weight</div></div><div class="stat-box"><div class="stat-value" style="font-size:1rem;">${m.needle}</div><div class="stat-label">Suggested Needle</div></div></div>`;
+      });
+    }
+    document.getElementById('gauge-check-result').innerHTML = html;
+    document.getElementById('gauge-check-result').style.display = '';
+  }
+  </script>
+</body>
+</html>

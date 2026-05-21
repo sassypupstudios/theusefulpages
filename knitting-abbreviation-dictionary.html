@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Abbreviation Dictionary — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Look up any knitting abbreviation instantly. Searchable dictionary of 60+ knitting terms with full names and notes. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-abbreviation-dictionary.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Abbreviation Dictionary</h1>
+      <p class="page-subtitle">Search 60+ knitting abbreviations. Type an abbreviation or keyword to filter instantly.</p>
+      <div class="tool-card">
+        <input class="form-input" type="text" id="search" placeholder="Search abbreviation or name (e.g. k2tog, purl, cable...)" style="margin-bottom:1rem;" oninput="filterTable()">
+        <p id="count-label" style="margin-bottom:0.5rem;font-size:0.9rem;color:var(--text-muted)"></p>
+        <div class="table-wrap">
+          <table class="data-table" id="abbr-table">
+            <thead>
+              <tr><th>Abbreviation</th><th>Full Name</th><th>Notes</th></tr>
+            </thead>
+            <tbody id="abbr-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <p>Type any abbreviation (e.g. <strong>k2tog</strong>) or keyword (e.g. <strong>decrease</strong>) in the search box to filter instantly. Abbreviations follow standard US/international knitting terminology.</p>
+        <h2>About Knitting Abbreviations</h2>
+        <p>Knitting patterns use shorthand to keep instructions compact. While most abbreviations are standardized, some designers use their own terms — always check the pattern's key when provided.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const KNITTING_ABBR = [
+    {abbr:'k',name:'Knit',notes:'Basic knit stitch; smooth side faces you on RS'},
+    {abbr:'p',name:'Purl',notes:'Basic purl stitch; bumpy side faces you on RS'},
+    {abbr:'k2tog',name:'Knit 2 Together',notes:'Right-leaning decrease; insert needle through 2 sts at once'},
+    {abbr:'p2tog',name:'Purl 2 Together',notes:'Right-leaning decrease on purl side'},
+    {abbr:'ssk',name:'Slip Slip Knit',notes:'Left-leaning decrease; slip 2 sts knitwise then knit together'},
+    {abbr:'ssp',name:'Slip Slip Purl',notes:'Left-leaning decrease on purl side'},
+    {abbr:'yo',name:'Yarn Over',notes:'Creates a new stitch and eyelet hole; used in lace'},
+    {abbr:'CO',name:'Cast On',notes:'Create the initial row of stitches on needle'},
+    {abbr:'BO',name:'Bind Off',notes:'Also called cast off; secures stitches at end of work'},
+    {abbr:'cast off',name:'Cast Off',notes:'See BO (Bind Off); common British term'},
+    {abbr:'RS',name:'Right Side',notes:'Public/front face of the knitted fabric'},
+    {abbr:'WS',name:'Wrong Side',notes:'Back/private face of the knitted fabric'},
+    {abbr:'sm',name:'Slip Marker',notes:'Move the stitch marker from left to right needle'},
+    {abbr:'pm',name:'Place Marker',notes:'Place a stitch marker on needle at this point'},
+    {abbr:'rm',name:'Remove Marker',notes:'Take the stitch marker off the needle'},
+    {abbr:'m1',name:'Make 1',notes:'Increase by picking up bar between stitches and knitting it'},
+    {abbr:'m1l',name:'Make 1 Left',notes:'Left-leaning increase; pick up bar from front to back'},
+    {abbr:'m1r',name:'Make 1 Right',notes:'Right-leaning increase; pick up bar from back to front'},
+    {abbr:'m1p',name:'Make 1 Purl',notes:'Increase on purl side; pick up bar and purl it'},
+    {abbr:'kfb',name:'Knit Front and Back',notes:'Increase: knit into front and back of same stitch'},
+    {abbr:'pfb',name:'Purl Front and Back',notes:'Increase: purl into front and back of same stitch'},
+    {abbr:'sl',name:'Slip',notes:'Transfer stitch from left to right needle without working'},
+    {abbr:'sl1',name:'Slip 1',notes:'Slip one stitch; knitwise unless otherwise stated'},
+    {abbr:'slk',name:'Slip Knitwise',notes:'Insert needle as if to knit before slipping'},
+    {abbr:'slp',name:'Slip Purlwise',notes:'Insert needle as if to purl before slipping; default slip direction'},
+    {abbr:'psso',name:'Pass Slipped Stitch Over',notes:'Lift slipped stitch over the just-worked stitch; decrease'},
+    {abbr:'wyib',name:'With Yarn In Back',notes:'Hold yarn to back of work before next stitch'},
+    {abbr:'wyif',name:'With Yarn In Front',notes:'Hold yarn to front of work before next stitch'},
+    {abbr:'cn',name:'Cable Needle',notes:'Short needle used to hold stitches for cable techniques'},
+    {abbr:'c2b',name:'Cable 2 Back',notes:'Slip 1 st to CN, hold back, k1, k1 from CN; right-twisting cable'},
+    {abbr:'c2f',name:'Cable 2 Front',notes:'Slip 1 st to CN, hold front, k1, k1 from CN; left-twisting cable'},
+    {abbr:'c4b',name:'Cable 4 Back',notes:'Slip 2 sts to CN, hold back, k2, k2 from CN'},
+    {abbr:'c4f',name:'Cable 4 Front',notes:'Slip 2 sts to CN, hold front, k2, k2 from CN'},
+    {abbr:'c6b',name:'Cable 6 Back',notes:'Slip 3 sts to CN, hold back, k3, k3 from CN'},
+    {abbr:'c6f',name:'Cable 6 Front',notes:'Slip 3 sts to CN, hold front, k3, k3 from CN'},
+    {abbr:'tbl',name:'Through Back Loop',notes:'Insert needle through back loop of stitch instead of front'},
+    {abbr:'rnd',name:'Round',notes:'One complete circuit when knitting in the round'},
+    {abbr:'rnds',name:'Rounds',notes:'Plural of round'},
+    {abbr:'beg',name:'Beginning',notes:'Start of row, round, or pattern section'},
+    {abbr:'cont',name:'Continue',notes:'Keep working as established'},
+    {abbr:'rem',name:'Remaining',notes:'Stitches or rows left after decreases'},
+    {abbr:'rep',name:'Repeat',notes:'Work the instructions again as directed'},
+    {abbr:'alt',name:'Alternate',notes:'Every other row or stitch'},
+    {abbr:'approx',name:'Approximately',notes:'Measurement is not exact'},
+    {abbr:'bet',name:'Between',notes:'Work between the indicated stitches'},
+    {abbr:'dec',name:'Decrease',notes:'Reduce stitch count; e.g., k2tog or ssk'},
+    {abbr:'inc',name:'Increase',notes:'Add a stitch; e.g., kfb or m1'},
+    {abbr:'k-wise',name:'Knitwise',notes:'Insert needle as if to knit'},
+    {abbr:'p-wise',name:'Purlwise',notes:'Insert needle as if to purl'},
+    {abbr:'MC',name:'Main Color',notes:'Primary yarn color in a multicolor project'},
+    {abbr:'CC',name:'Contrast Color',notes:'Secondary yarn color'},
+    {abbr:'st',name:'Stitch',notes:'A single knitting stitch'},
+    {abbr:'sts',name:'Stitches',notes:'Plural of stitch'},
+    {abbr:'dpn',name:'Double-Pointed Needle',notes:'Short needle pointed at both ends; used for small circumferences'},
+    {abbr:'dpns',name:'Double-Pointed Needles',notes:'Plural of dpn'},
+    {abbr:'circ',name:'Circular Needle',notes:'Two needle tips joined by a cable; for knitting in the round or flat'},
+    {abbr:'lhs',name:'Left-Hand Side',notes:'The left side of the work as you look at it'},
+    {abbr:'rhs',name:'Right-Hand Side',notes:'The right side of the work as you look at it'},
+    {abbr:'sk2p',name:'Slip 1, Knit 2 Together, Pass Slipped Stitch Over',notes:'Double decrease; 2 sts reduced to 1'},
+    {abbr:'s2kp',name:'Slip 2 Together, Knit 1, Pass Slipped Stitches Over',notes:'Centered double decrease'},
+    {abbr:'w&t',name:'Wrap and Turn',notes:'Short-row technique; wrap yarn around stitch before turning'},
+    {abbr:'p/u',name:'Pick Up',notes:'Pick up stitches along an edge to continue knitting'},
+    {abbr:'kw',name:'Knitwise',notes:'Insert needle as if to work a knit stitch'},
+    {abbr:'pw',name:'Purlwise',notes:'Insert needle as if to work a purl stitch'},
+  ];
+
+  function renderTable(data) {
+    const tbody = document.getElementById('abbr-body');
+    tbody.innerHTML = data.map(r =>
+      `<tr><td><strong>${escH(r.abbr)}</strong></td><td>${escH(r.name)}</td><td>${escH(r.notes)}</td></tr>`
+    ).join('');
+    document.getElementById('count-label').textContent = `Showing ${data.length} of ${KNITTING_ABBR.length} entries`;
+  }
+
+  function escH(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function filterTable() {
+    const q = document.getElementById('search').value.trim().toLowerCase();
+    if (!q) { renderTable(KNITTING_ABBR); return; }
+    renderTable(KNITTING_ABBR.filter(r =>
+      r.abbr.toLowerCase().includes(q) || r.name.toLowerCase().includes(q) || r.notes.toLowerCase().includes(q)
+    ));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('knitting-abbreviation-dictionary.html');
+    injectFooter();
+    renderTable(KNITTING_ABBR);
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shawl Yardage Estimator — Free Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Estimate yardage for triangle, rectangle, semicircle, and crescent shawls. Adjust for lace, solid, and textured stitch types. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/shawl-yardage-estimator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Shawl Yardage Estimator</h1>
+      <p class="page-subtitle">Estimate how much yarn you need for triangle, rectangle, semicircle, and crescent shawls.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Shawl Shape</label>
+            <select class="form-select" id="shawl-shape" onchange="updateDepthLabel()">
+              <option value="triangle">Triangle</option>
+              <option value="rectangle">Rectangle</option>
+              <option value="semicircle">Semicircle</option>
+              <option value="crescent">Crescent</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Yarn Weight</label>
+            <select class="form-select" id="yarn-weight">
+              <option value="lace">Lace (0)</option>
+              <option value="fingering" selected>Fingering (1)</option>
+              <option value="sport">Sport (2)</option>
+              <option value="dk">DK (3)</option>
+              <option value="worsted">Worsted (4)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Wingspan (inches)</label>
+            <input class="form-input" type="number" id="wingspan" min="20" placeholder="e.g. 60">
+          </div>
+          <div>
+            <label class="label" id="depth-label">Depth / Height (inches)</label>
+            <input class="form-input" type="number" id="depth" min="5" placeholder="e.g. 28">
+          </div>
+          <div>
+            <label class="label">Stitch Type</label>
+            <select class="form-select" id="stitch-type">
+              <option value="solid">Solid (stockinette / sc-dc) — 1.0×</option>
+              <option value="textured">Textured (cables, bobbles, seed) — 1.2×</option>
+              <option value="lace">Lace / Open stitch — 1.35×</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Size Preset</label>
+            <select class="form-select" id="shawl-preset" onchange="loadShawlPreset()">
+              <option value="custom">Custom</option>
+              <option value="mini">Mini (36" × 18")</option>
+              <option value="medium">Medium (55" × 24")</option>
+              <option value="large">Large (72" × 32")</option>
+              <option value="xl">Extra Large (80" × 40")</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcShawl()">Estimate Yardage</button>
+          <button class="btn-ghost" onclick="resetShawl()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="shawl-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-area"></div>
+              <div class="stat-label">Area (sq inches)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yards"></div>
+              <div class="stat-label">Estimated Yards</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-meters"></div>
+              <div class="stat-label">Estimated Meters</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-buffer"></div>
+              <div class="stat-label">Yards + 15% Buffer</div>
+            </div>
+          </div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Lace and open stitches consume more yarn per square inch than solid stitches despite appearing lighter. The stitch multiplier accounts for this.</p>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Common Shawl Sizes</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Size</th><th>Wingspan</th><th>Depth</th><th>Fingering Yardage (approx.)</th></tr></thead>
+            <tbody>
+              <tr><td>Mini / Neck wrap</td><td>36"</td><td>18"</td><td>400–600 yds</td></tr>
+              <tr><td>Medium</td><td>55"</td><td>24"</td><td>700–1000 yds</td></tr>
+              <tr><td>Large</td><td>72"</td><td>32"</td><td>1000–1400 yds</td></tr>
+              <tr><td>Extra Large</td><td>80"</td><td>40"</td><td>1400–2000 yds</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Estimator</h2>
+        <ul>
+          <li>Select your shawl shape — triangle, rectangle, semicircle, or crescent.</li>
+          <li>Enter the wingspan (widest edge) and depth (from top edge to bottom point or hem).</li>
+          <li>Select yarn weight and stitch type. Lace patterns use more yarn per area than stockinette.</li>
+          <li>Click <strong>Estimate Yardage</strong> to get your estimate in yards and meters.</li>
+        </ul>
+        <h2>Shape Notes</h2>
+        <ul>
+          <li><strong>Triangle:</strong> Area calculated as ½ × wingspan × depth.</li>
+          <li><strong>Rectangle:</strong> Area = wingspan × depth.</li>
+          <li><strong>Semicircle:</strong> Area = ½ × π × r² where wingspan = diameter.</li>
+          <li><strong>Crescent:</strong> Approximated as 60% of a semicircle of the same wingspan.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('shawl-yardage-estimator.html');injectFooter();});
+    // yards per sq inch by weight (baseline for solid stockinette)
+    const ydsPerSqIn = {lace:0.09, fingering:0.07, sport:0.055, dk:0.045, worsted:0.038};
+    const stitchMult = {solid:1.0, textured:1.2, lace:1.35};
+    const shawlPresets = {mini:{w:36,d:18}, medium:{w:55,d:24}, large:{w:72,d:32}, xl:{w:80,d:40}};
+
+    function updateDepthLabel(){
+      const shape = document.getElementById('shawl-shape').value;
+      const lbl = document.getElementById('depth-label');
+      lbl.textContent = shape==='semicircle' ? 'Radius (inches) — half of wingspan' : 'Depth / Height (inches)';
+    }
+
+    function loadShawlPreset(){
+      const p = shawlPresets[document.getElementById('shawl-preset').value];
+      if(!p) return;
+      document.getElementById('wingspan').value = p.w;
+      document.getElementById('depth').value    = p.d;
+    }
+
+    function calcShawl(){
+      const shape  = document.getElementById('shawl-shape').value;
+      const wspan  = parseFloat(document.getElementById('wingspan').value);
+      const depth  = parseFloat(document.getElementById('depth').value);
+      const wt     = document.getElementById('yarn-weight').value;
+      const stitch = document.getElementById('stitch-type').value;
+      if(isNaN(wspan)||wspan<=0||isNaN(depth)||depth<=0){alert('Please enter wingspan and depth.');return;}
+      let area;
+      if(shape==='triangle')  area = 0.5 * wspan * depth;
+      else if(shape==='rectangle') area = wspan * depth;
+      else if(shape==='semicircle'){ const r = wspan/2; area = 0.5 * Math.PI * r * r; }
+      else { const r = wspan/2; area = 0.5 * Math.PI * r * r * 0.6; } // crescent
+      const yards  = area * ydsPerSqIn[wt] * stitchMult[stitch];
+      const meters = yards * 0.9144;
+      const buffer = yards * 1.15;
+      document.getElementById('res-area').textContent   = Math.round(area).toLocaleString();
+      document.getElementById('res-yards').textContent  = Math.round(yards).toLocaleString();
+      document.getElementById('res-meters').textContent = Math.round(meters).toLocaleString();
+      document.getElementById('res-buffer').textContent = Math.round(buffer).toLocaleString();
+      document.getElementById('shawl-result').style.display='block';
+    }
+
+    function resetShawl(){
+      document.getElementById('shawl-preset').value='custom';
+      ['wingspan','depth'].forEach(id=>{document.getElementById(id).value='';});
+      document.getElementById('shawl-result').style.display='none';
+    }
+  </script>
+</body>
+</html>

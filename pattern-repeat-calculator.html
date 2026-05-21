@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Repeat Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate how many full pattern repeats fit in your stitch count and adjust for edge stitches. Get a written cast-on formula. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-repeat-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-box { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:1.25rem; margin-top:1rem; }
+    .formula-box { background:var(--bg); border:1px solid var(--primary); border-radius:8px; padding:0.85rem 1rem; font-size:0.95rem; font-weight:600; color:var(--primary); margin:0.75rem 0; line-height:1.6; }
+    .stat-row { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.75rem; }
+    .stat-box { background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:0.65rem 0.9rem; flex:1; min-width:100px; text-align:center; }
+    .stat-num { font-size:1.5rem; font-weight:700; color:var(--primary); }
+    .stat-lbl { font-size:0.73rem; color:var(--text-muted); }
+    .adj-grid { display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.75rem; }
+    .adj-box { flex:1; min-width:140px; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:0.75rem; text-align:center; }
+    .adj-num { font-size:1.5rem; font-weight:700; color:var(--primary); }
+    .adj-lbl { font-size:0.78rem; color:var(--text-muted); }
+    .adj-diff { font-size:0.82rem; margin-top:0.25rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Repeat Calculator</h1>
+      <p class="page-subtitle">Check if your stitch count fits a pattern repeat, find adjusted counts, and get a written cast-on formula with optional edge stitches.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="totalSt">Your Total Stitch Count</label>
+            <input type="number" id="totalSt" class="form-input" placeholder="e.g. 100" min="1" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="repeatSize">Pattern Repeat Size (sts)</label>
+            <input type="number" id="repeatSize" class="form-input" placeholder="e.g. 8" min="1" step="1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="edgeSt">Edge Stitches Each Side (optional)</label>
+          <input type="number" id="edgeSt" class="form-input" placeholder="e.g. 2 (enter 0 for none)" min="0" step="1" value="0" style="max-width:220px;">
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.25rem;">Edge stitches are worked outside the pattern repeat on each side.</p>
+        </div>
+        <button class="btn btn-primary" onclick="calculate()">Calculate Repeats</button>
+        <div id="result"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your <strong>total stitch count</strong> — the number currently on your needles or that you plan to cast on.</li>
+          <li>Enter your <strong>pattern repeat size</strong> — for example, if the pattern says "8-stitch repeat," enter 8.</li>
+          <li>Optionally enter <strong>edge stitches per side</strong> — these are plain stitches that frame the pattern (e.g., selvedge stitches).</li>
+          <li>The result shows how many full repeats fit, how many leftover stitches there are, and the nearest valid counts.</li>
+          <li>The <strong>written formula</strong> shows how the stitches break down as a cast-on instruction.</li>
+        </ul>
+        <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">
+          <strong>Example:</strong> For a 100-stitch count with an 8-stitch repeat and 2 edge stitches each side:<br>
+          Available for repeats = 100 − 4 = 96 stitches. 96 ÷ 8 = 12 full repeats, 0 leftover. Formula: "2 edge + (8 × 12) + 2 edge = 100 stitches."
+        </p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    function calculate() {
+      const total = parseInt(document.getElementById('totalSt').value);
+      const repeat = parseInt(document.getElementById('repeatSize').value);
+      const edge = parseInt(document.getElementById('edgeSt').value) || 0;
+      const res = document.getElementById('result');
+
+      if (!total || !repeat || isNaN(total) || isNaN(repeat) || repeat < 1) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Please enter your stitch count and repeat size.</p>'; return;
+      }
+
+      const totalEdge = edge * 2;
+      const available = total - totalEdge;
+
+      if (available < 0) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Edge stitches exceed total stitch count.</p>'; return;
+      }
+
+      const fullRepeats = Math.floor(available / repeat);
+      const leftover = available % repeat;
+      const isPerfect = leftover === 0;
+
+      // Adjusted counts
+      const lowerRepeats = fullRepeats;
+      const upperRepeats = fullRepeats + (leftover > 0 ? 1 : 0);
+      const lowerTotal = lowerRepeats * repeat + totalEdge;
+      const upperTotal = upperRepeats * repeat + totalEdge;
+
+      const edgeStr = edge > 0 ? `${edge} edge + ` : '';
+      const edgeEnd = edge > 0 ? ` + ${edge} edge` : '';
+
+      const lowerFormula = `${edgeStr}(${repeat}-stitch repeat × ${lowerRepeats})${edgeEnd} = ${lowerTotal} stitches`;
+      const upperFormula = `${edgeStr}(${repeat}-stitch repeat × ${upperRepeats})${edgeEnd} = ${upperTotal} stitches`;
+
+      res.innerHTML = `
+        <div class="result-box">
+          <div class="stat-row">
+            <div class="stat-box"><div class="stat-num">${total}</div><div class="stat-lbl">Your Count</div></div>
+            <div class="stat-box"><div class="stat-num">${fullRepeats}</div><div class="stat-lbl">Full Repeats</div></div>
+            <div class="stat-box"><div class="stat-num">${leftover}</div><div class="stat-lbl">Leftover Stitches</div></div>
+            ${edge > 0 ? `<div class="stat-box"><div class="stat-num">${totalEdge}</div><div class="stat-lbl">Edge Stitches (total)</div></div>` : ''}
+          </div>
+
+          ${isPerfect
+            ? `<p style="color:#38a169;font-weight:700;margin-bottom:0.75rem;">Your stitch count fits the repeat perfectly!</p>`
+            : `<p style="font-weight:600;color:var(--primary);margin-bottom:0.5rem;">Your count leaves ${leftover} leftover stitch${leftover!==1?'es':''}. Adjust to one of these:</p>`
+          }
+
+          ${!isPerfect ? `<div class="adj-grid">
+            <div class="adj-box">
+              <div class="adj-num">${lowerTotal}</div>
+              <div class="adj-lbl">Round down (${lowerRepeats} repeats)</div>
+              <div class="adj-diff">${total > lowerTotal ? `Remove ${total - lowerTotal} stitch${total-lowerTotal!==1?'es':''}` : 'No change needed'}</div>
+            </div>
+            <div class="adj-box">
+              <div class="adj-num">${upperTotal}</div>
+              <div class="adj-lbl">Round up (${upperRepeats} repeats)</div>
+              <div class="adj-diff">Add ${upperTotal - total} stitch${upperTotal-total!==1?'es':''}</div>
+            </div>
+          </div>` : ''}
+
+          <div style="margin-top:0.75rem;font-size:0.82rem;font-weight:600;color:var(--text-muted);">WRITTEN CAST-ON FORMULA</div>
+          <div class="formula-box">"Cast on ${lowerTotal} stitches: ${lowerFormula}."</div>
+          ${!isPerfect ? `<div class="formula-box">"Cast on ${upperTotal} stitches: ${upperFormula}."</div>` : ''}
+        </div>`;
+    }
+  </script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{injectNav('pattern-repeat-calculator.html');injectFooter();});</script>
+</body>
+</html>

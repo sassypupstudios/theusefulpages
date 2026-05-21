@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Blanket Border Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate the stitch count for each side of a crochet blanket border, total border stitches, and yarn needed. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-blanket-border-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Blanket Border Calculator</h1>
+      <p class="page-subtitle">Find the stitch count for every side of your blanket border and estimate yarn needed.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Blanket Width (inches)</label>
+            <input class="form-input" type="number" id="bl-width" min="1" step="0.5" placeholder="e.g. 40">
+          </div>
+          <div>
+            <label class="label">Blanket Length (inches)</label>
+            <input class="form-input" type="number" id="bl-length" min="1" step="0.5" placeholder="e.g. 50">
+          </div>
+          <div>
+            <label class="label">Your Stitch Gauge (sts/inch)</label>
+            <input class="form-input" type="number" id="bl-spi" min="0.1" step="0.1" placeholder="e.g. 4">
+          </div>
+          <div>
+            <label class="label">Your Row Gauge (rows/inch)</label>
+            <input class="form-input" type="number" id="bl-rpi" min="0.1" step="0.1" placeholder="e.g. 3.5">
+          </div>
+        </div>
+
+        <hr style="margin:1rem 0;border:none;border-top:1px solid var(--border);">
+        <h2 style="font-size:1rem;margin-bottom:0.75rem;">Border Yarn Estimate (optional)</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Number of Border Rounds</label>
+            <input class="form-input" type="number" id="border-rounds" min="1" value="1" placeholder="e.g. 2">
+          </div>
+          <div>
+            <label class="label">Yards per Stitch (approx.)</label>
+            <input class="form-input" type="number" id="yds-per-st" min="0.01" step="0.01" value="0.12" placeholder="e.g. 0.12">
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;">~0.10 sc, ~0.12 dc, ~0.15 tr</p>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="calcBorder()">Calculate Border</button>
+        <div id="border-result" style="margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Enter your finished blanket dimensions and gauge (from your swatch).</li>
+          <li>Optionally enter the number of border rounds and yards per stitch for a yarn estimate.</li>
+          <li>The calculator uses stitch gauge for the top/bottom sides and row gauge for the left/right sides, since each side is worked differently.</li>
+        </ul>
+        <h2>About Blanket Borders</h2>
+        <p>The top and bottom edges of a blanket are picked up based on stitch gauge (one stitch per stitch). The left and right edges are picked up based on row gauge (typically one stitch per row end, or sometimes 2 stitches per 3 row ends to keep things flat). This calculator uses row gauge directly — adjust for your pattern if needed.</p>
+        <p>For a flat, non-ruffling border, work 3 stitches into each corner. For a ruffled border, use 5 stitches in corners.</p>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcBorder() {
+    const w = parseFloat(document.getElementById('bl-width').value);
+    const l = parseFloat(document.getElementById('bl-length').value);
+    const spi = parseFloat(document.getElementById('bl-spi').value);
+    const rpi = parseFloat(document.getElementById('bl-rpi').value);
+    const rounds = parseInt(document.getElementById('border-rounds').value) || 1;
+    const yds = parseFloat(document.getElementById('yds-per-st').value) || 0.12;
+    const res = document.getElementById('border-result');
+    if (!w||!l||!spi||!rpi) {
+      res.innerHTML='<p style="color:var(--color-error)">Please fill in all four required fields.</p>'; return;
+    }
+    const topBottom = Math.round(w * spi);
+    const sides = Math.round(l * rpi);
+    const cornerSts = 3; // 3 sts in each corner for flat border
+    const totalPerRound = (topBottom * 2) + (sides * 2) + (cornerSts * 4);
+    const totalBorderSts = totalPerRound * rounds;
+    const yardage = Math.ceil(totalBorderSts * yds);
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid">
+        <div class="stat-box"><div class="label">Top & Bottom Sides</div><strong>${topBottom} sts</strong><br><span style="font-size:0.85rem;color:var(--text-muted)">each side</span></div>
+        <div class="stat-box"><div class="label">Left & Right Sides</div><strong>${sides} sts</strong><br><span style="font-size:0.85rem;color:var(--text-muted)">each side</span></div>
+        <div class="stat-box"><div class="label">Corner Treatment</div><strong>3 sts per corner</strong><br><span style="font-size:0.85rem;color:var(--text-muted)">flat border</span></div>
+        <div class="stat-box"><div class="label">Total per Round</div><strong style="font-size:1.5rem">${totalPerRound} sts</strong></div>
+        <div class="stat-box"><div class="label">Total Stitches (${rounds} round${rounds>1?'s':''})</div><strong style="font-size:1.5rem">${totalBorderSts} sts</strong></div>
+        <div class="stat-box"><div class="label">Estimated Yarn</div><strong style="font-size:1.5rem">~${yardage} yds</strong></div>
+      </div>
+    </div>`;
+  }
+  document.addEventListener('DOMContentLoaded', () => { injectNav('crochet-blanket-border-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

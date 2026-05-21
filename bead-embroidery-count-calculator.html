@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bead Embroidery Count Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate how many beads you need for an embroidery or beading project by area, row count, or design dimensions. Free bead count calculator — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/bead-embroidery-count-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Bead Embroidery Count Calculator</h1>
+      <p class="page-subtitle">Estimate how many beads you need for a project based on design dimensions and bead size.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" style="margin-bottom:1.25rem;">
+          <button class="tab-btn active" onclick="showTab('by-area')">By Area</button>
+          <button class="tab-btn" onclick="showTab('by-grid')">By Grid (rows × columns)</button>
+        </div>
+
+        <!-- BY AREA -->
+        <div id="by-area">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Design width</label>
+              <input type="number" id="area-w" class="form-input" placeholder="e.g. 5" min="0.1" step="0.1">
+            </div>
+            <div>
+              <label class="label">Design height</label>
+              <input type="number" id="area-h" class="form-input" placeholder="e.g. 7" min="0.1" step="0.1">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Unit</label>
+              <select id="area-unit" class="form-select">
+                <option value="in">Inches</option>
+                <option value="cm">Centimeters</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">Bead size</label>
+              <select id="area-bead" class="form-select">
+                <option value="15">Size 15 (1.5mm) — ~40/in</option>
+                <option value="11" selected>Size 11 (2.2mm) — ~18/in</option>
+                <option value="8">Size 8 (3mm) — ~13/in</option>
+                <option value="6">Size 6 (4mm) — ~10/in</option>
+                <option value="custom">Custom beads per inch</option>
+              </select>
+            </div>
+          </div>
+          <div id="area-custom-row" style="display:none;margin-bottom:1rem;">
+            <label class="label">Beads per inch (custom)</label>
+            <input type="number" id="area-custom-bpi" class="form-input" placeholder="e.g. 20" min="1" style="max-width:180px;">
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label class="label">Coverage % (how much of area is beaded)</label>
+            <input type="number" id="area-coverage" class="form-input" value="100" min="1" max="100" style="max-width:180px;">
+            <span style="font-size:0.85rem;color:var(--text-muted);margin-left:0.5rem;">% (100 = fully beaded)</span>
+          </div>
+          <button class="btn-primary" onclick="calcByArea()">Calculate Bead Count</button>
+          <div id="area-result" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+        </div>
+
+        <!-- BY GRID -->
+        <div id="by-grid" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Columns (beads wide)</label>
+              <input type="number" id="grid-cols" class="form-input" placeholder="e.g. 80" min="1">
+            </div>
+            <div>
+              <label class="label">Rows (beads tall)</label>
+              <input type="number" id="grid-rows" class="form-input" placeholder="e.g. 120" min="1">
+            </div>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label class="label">Number of colors</label>
+            <input type="number" id="grid-colors" class="form-input" value="1" min="1" max="50" style="max-width:180px;">
+          </div>
+          <button class="btn-primary" onclick="calcByGrid()">Calculate Bead Count</button>
+          <div id="grid-result" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+        </div>
+
+        <div style="margin-top:2rem;">
+          <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 0.75rem;">Seed bead size reference</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Size</th><th>Approx diameter</th><th>Beads per inch</th><th>Beads per cm</th></tr></thead>
+              <tbody>
+                <tr><td>15/0</td><td>~1.5mm</td><td>~40</td><td>~16</td></tr>
+                <tr><td>11/0</td><td>~2.2mm</td><td>~18</td><td>~7</td></tr>
+                <tr><td>8/0</td><td>~3.0mm</td><td>~13</td><td>~5</td></tr>
+                <tr><td>6/0</td><td>~4.0mm</td><td>~10</td><td>~4</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">How to use this calculator</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Use the <strong>By Area</strong> tab if you know the finished size of your beaded design. Use the <strong>By Grid</strong> tab if you have a grid pattern and know the exact bead count per row and column. Results include a 15% waste buffer for rejects, dropped beads, and color sorting.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Size 11/0 seed beads are the most common for bead embroidery on fabric</li>
+          <li>Coverage % lets you account for partially beaded areas — e.g. 60% if half the design is bare fabric</li>
+          <li>For multi-color designs, divide total bead count by the number of colors as a starting estimate</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Bead counts are estimates. Actual usage varies by technique (brick stitch, peyote, backstitch) and bead lot size variation.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const BPI = { '15': 40, '11': 18, '8': 13, '6': 10 };
+
+  document.getElementById('area-bead').addEventListener('change', function() {
+    document.getElementById('area-custom-row').style.display = this.value === 'custom' ? '' : 'none';
+  });
+
+  function showTab(id) {
+    ['by-area','by-grid'].forEach(t => document.getElementById(t).style.display = t===id?'':'none');
+    document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i===(id==='by-area'?0:1)));
+  }
+
+  function calcByArea() {
+    let w = parseFloat(document.getElementById('area-w').value);
+    let h = parseFloat(document.getElementById('area-h').value);
+    const unit = document.getElementById('area-unit').value;
+    const beadSz = document.getElementById('area-bead').value;
+    const coverage = parseFloat(document.getElementById('area-coverage').value) || 100;
+    if (!w || !h) { alert('Enter design dimensions.'); return; }
+    if (unit === 'cm') { w /= 2.54; h /= 2.54; }
+    let bpi;
+    if (beadSz === 'custom') {
+      bpi = parseFloat(document.getElementById('area-custom-bpi').value);
+      if (!bpi) { alert('Enter beads per inch.'); return; }
+    } else {
+      bpi = BPI[beadSz];
+    }
+    const totalBeads = Math.ceil(w * h * bpi * bpi * (coverage / 100));
+    const withWaste = Math.ceil(totalBeads * 1.15);
+    const el = document.getElementById('area-result');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Design Area</div><div class="stat-value">${w.toFixed(1)}" × ${h.toFixed(1)}"</div></div>
+      <div class="stat-box"><div class="stat-label">Beads Needed</div><div class="stat-value">${totalBeads.toLocaleString()}</div></div>
+      <div class="stat-box"><div class="stat-label">With 15% Waste</div><div class="stat-value">${withWaste.toLocaleString()}</div></div>
+      <div class="stat-box"><div class="stat-label">Beads per inch²</div><div class="stat-value">${(bpi*bpi).toLocaleString()}</div></div>
+    </div>`;
+  }
+
+  function calcByGrid() {
+    const cols = parseInt(document.getElementById('grid-cols').value);
+    const rows = parseInt(document.getElementById('grid-rows').value);
+    const colors = parseInt(document.getElementById('grid-colors').value) || 1;
+    if (!cols || !rows) { alert('Enter grid dimensions.'); return; }
+    const total = cols * rows;
+    const withWaste = Math.ceil(total * 1.15);
+    const perColor = Math.ceil(withWaste / colors);
+    const el = document.getElementById('grid-result');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Grid Size</div><div class="stat-value">${cols} × ${rows}</div></div>
+      <div class="stat-box"><div class="stat-label">Total Beads</div><div class="stat-value">${total.toLocaleString()}</div></div>
+      <div class="stat-box"><div class="stat-label">With 15% Waste</div><div class="stat-value">${withWaste.toLocaleString()}</div></div>
+      <div class="stat-box"><div class="stat-label">Per Color (${colors})</div><div class="stat-value">${perColor.toLocaleString()}</div></div>
+    </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('bead-embroidery-count-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

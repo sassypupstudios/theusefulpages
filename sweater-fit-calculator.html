@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweater Fit Calculator — Free Knitting Tool | The Useful Pages</title>
+  <meta name="description" content="Find your recommended sweater knitting size from body measurements and fit preference. Free sweater fit calculator with size chart — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/sweater-fit-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Sweater Fit Calculator</h1>
+      <p class="page-subtitle">Enter your measurements and preferred fit to find the recommended sweater size and finished measurements to target.</p>
+
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Bust / chest (inches)</label>
+            <input type="number" id="bust" class="form-input" placeholder="e.g. 38" min="24" max="70" step="0.5">
+          </div>
+          <div>
+            <label class="label">Fit preference</label>
+            <select id="fit-pref" class="form-select">
+              <option value="fitted">Fitted (0 to +1" ease)</option>
+              <option value="standard" selected>Standard (+2 to +3" ease)</option>
+              <option value="relaxed">Relaxed (+3 to +5" ease)</option>
+              <option value="oversized">Oversized (+5 to +8" ease)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="calcFit()">Find My Size</button>
+
+        <div id="fit-result" class="result-card" style="display:none;margin-top:1.25rem;">
+          <div class="stat-grid">
+            <div class="stat-box"><div class="stat-label">Your Bust</div><div class="stat-value" id="r-bust"></div></div>
+            <div class="stat-box"><div class="stat-label">Recommended Size</div><div class="stat-value" id="r-size"></div></div>
+            <div class="stat-box"><div class="stat-label">Target Finished Bust</div><div class="stat-value" id="r-target"></div></div>
+          </div>
+          <div id="r-detail" style="margin-top:1rem;padding:0.75rem;background:var(--bg-secondary);border-radius:6px;font-size:0.9rem;color:var(--text-muted);"></div>
+        </div>
+
+        <div style="margin-top:2rem;">
+          <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 0.75rem;">Standard size chart (bust in inches)</h3>
+          <div class="table-wrap">
+            <table class="data-table" id="size-chart">
+              <thead><tr><th>Size</th><th>Bust</th><th>Fitted finish</th><th>Standard finish</th><th>Relaxed finish</th><th>Oversized finish</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.5rem;">Finished measurements shown include ease. Always compare to the specific pattern's schematic.</p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">How to choose your sweater size</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Most knitting patterns are sized by finished measurements, not body measurements. Measure your actual bust, decide how you want the sweater to fit, then choose the pattern size whose finished bust matches your target (body measurement + desired ease).</p>
+        <h3 style="font-size:0.95rem;margin:1rem 0 0.5rem;">Common uses</h3>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Determine which pattern size to knit based on fit preference</li>
+          <li>Compare finished measurements across sizes before starting</li>
+          <li>Decide whether to adjust a size up or down for a specific fit</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Always swatch before starting a garment. Gauge affects every finished dimension. When in doubt, knit a larger size and work short-row or seam adjustments rather than a size too small.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const SIZES = [
+    { label:'XS', bust:30 }, { label:'S', bust:32 }, { label:'S/M', bust:34 },
+    { label:'M', bust:36 }, { label:'M/L', bust:38 }, { label:'L', bust:40 },
+    { label:'XL', bust:42 }, { label:'1X', bust:44 }, { label:'2X', bust:46 },
+    { label:'3X', bust:50 }, { label:'4X', bust:54 }, { label:'5X', bust:58 },
+  ];
+  const EASE = { fitted:0.5, standard:2.5, relaxed:4, oversized:6.5 };
+
+  function buildChart() {
+    const tb = document.querySelector('#size-chart tbody');
+    tb.innerHTML = SIZES.map(s => `<tr>
+      <td><strong>${s.label}</strong></td>
+      <td>${s.bust}"</td>
+      <td>${(s.bust+0.5).toFixed(1)}"</td>
+      <td>${(s.bust+2.5).toFixed(1)}"</td>
+      <td>${(s.bust+4).toFixed(1)}"</td>
+      <td>${(s.bust+6.5).toFixed(1)}"</td>
+    </tr>`).join('');
+  }
+
+  function calcFit() {
+    const bust = parseFloat(document.getElementById('bust').value);
+    if (isNaN(bust) || bust < 24) { alert('Please enter your bust measurement.'); return; }
+    const fit = document.getElementById('fit-pref').value;
+    const easeVal = EASE[fit];
+    const target = bust + easeVal;
+    // Find nearest size
+    let best = SIZES[0], bestDiff = Math.abs(SIZES[0].bust - bust);
+    SIZES.forEach(s => { const d = Math.abs(s.bust - bust); if (d < bestDiff) { bestDiff = d; best = s; } });
+    const fitLabels = { fitted:'Fitted', standard:'Standard', relaxed:'Relaxed', oversized:'Oversized' };
+    document.getElementById('r-bust').textContent = bust + '"';
+    document.getElementById('r-size').textContent = best.label;
+    document.getElementById('r-target').textContent = target.toFixed(1) + '"';
+    document.getElementById('r-detail').innerHTML = `<strong>${fitLabels[fit]} fit</strong> adds approximately +${easeVal}" ease.<br>Look for a pattern size with a finished bust of about <strong>${target.toFixed(1)}"</strong>. The nearest standard size is <strong>${best.label}</strong> (${best.bust}" body). If your pattern's finished measurements don't match exactly, choose the closest size that gives you the finished bust nearest your target.`;
+    document.getElementById('fit-result').style.display = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('sweater-fit-calculator.html'); injectFooter(); buildChart(); });
+  </script>
+</body>
+</html>

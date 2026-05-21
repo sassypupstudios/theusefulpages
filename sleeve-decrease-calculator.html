@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleeve Decrease Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate sleeve decrease schedule for knitting or crochet. Get a written decrease instruction with exact row intervals. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/sleeve-decrease-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-box { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:1.25rem; margin-top:1rem; }
+    .instruction-block { background:var(--bg); border:1px solid var(--primary); border-radius:8px; padding:0.85rem 1rem; font-size:0.95rem; font-weight:600; color:var(--primary); margin:0.75rem 0; line-height:1.7; }
+    .stat-row { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.75rem; }
+    .stat-box { background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:0.65rem 0.9rem; flex:1; min-width:100px; text-align:center; }
+    .stat-num { font-size:1.5rem; font-weight:700; color:var(--primary); }
+    .stat-lbl { font-size:0.73rem; color:var(--text-muted); }
+    .schedule-table { width:100%; border-collapse:collapse; font-size:0.875rem; margin-top:0.5rem; }
+    .schedule-table th { background:var(--bg-secondary); padding:0.5rem 0.75rem; text-align:left; font-weight:600; font-size:0.78rem; color:var(--text-muted); }
+    .schedule-table td { padding:0.5rem 0.75rem; border-bottom:1px solid var(--border); }
+    .schedule-table tr:last-child td { border-bottom:none; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Sleeve Decrease Calculator</h1>
+      <p class="page-subtitle">Calculate a sleeve decrease schedule — how often to decrease and how many times — for a perfectly tapered sleeve.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="startSt">Starting Stitch Count (upper arm / cast-on)</label>
+            <input type="number" id="startSt" class="form-input" placeholder="e.g. 80" min="2" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="endSt">Ending Stitch Count (wrist / cuff)</label>
+            <input type="number" id="endSt" class="form-input" placeholder="e.g. 48" min="1" step="1">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="totalRows">Total Sleeve Length (in rows)</label>
+            <input type="number" id="totalRows" class="form-input" placeholder="e.g. 120" min="2" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Craft Type</label>
+            <div style="display:flex;gap:0.75rem;margin-top:0.5rem;">
+              <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;"><input type="radio" name="craftSleeve" value="knit" checked> Knitting</label>
+              <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;"><input type="radio" name="craftSleeve" value="crochet"> Crochet</label>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calculate()">Calculate Decrease Schedule</button>
+        <div id="result"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your <strong>starting stitch count</strong> (the count at the widest point, usually upper arm).</li>
+          <li>Enter your <strong>ending stitch count</strong> (at the wrist/cuff, before the ribbing).</li>
+          <li>Enter the <strong>total rows</strong> for the sleeve body (not including cuff ribbing rows).</li>
+          <li>Decreases are worked 1 stitch each end of a row, so each decrease row reduces the count by 2.</li>
+          <li>When rows don't divide evenly, a mixed interval schedule is provided (some decreases spaced X rows apart, others Y rows apart).</li>
+        </ul>
+        <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">
+          <strong>Tip:</strong> When working flat (back and forth), work decreases on RS rows only. When working in the round, work decrease rounds on even intervals.
+        </p>
+        <p class="disclaimer" style="margin-top:0.75rem;">Actual sleeve fit depends on ease allowances and body measurements. Always check a pattern's schematic before substituting calculations.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    function calculate() {
+      const start = parseInt(document.getElementById('startSt').value);
+      const end = parseInt(document.getElementById('endSt').value);
+      const totalRows = parseInt(document.getElementById('totalRows').value);
+      const craft = document.querySelector('input[name="craftSleeve"]:checked').value;
+      const res = document.getElementById('result');
+
+      if (!start || !end || !totalRows || isNaN(start) || isNaN(end) || isNaN(totalRows)) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Please fill in all fields.</p>'; return;
+      }
+      if (end >= start) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Ending stitch count must be less than starting count.</p>'; return;
+      }
+
+      const diff = start - end;
+      if (diff % 2 !== 0) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">The difference between starting and ending stitch counts must be even (decreases are worked 1 stitch each end = 2 sts decreased per decrease row).</p>'; return;
+      }
+
+      const numDecRows = diff / 2; // number of decrease rows needed
+      const decAbbr = craft === 'knit' ? 'k2tog' : 'sc2tog';
+      const workAbbr = craft === 'knit' ? 'k' : 'sc';
+      const decEnd = craft === 'knit' ? 'ssk' : 'sc2tog';
+
+      // Calculate intervals
+      // We need numDecRows decrease events spread over totalRows rows
+      const interval = totalRows / numDecRows;
+      const floorInterval = Math.floor(interval);
+      const ceilInterval = Math.ceil(interval);
+
+      let instruction = '';
+      let detail = '';
+      let scheduleRows = [];
+
+      if (floorInterval === ceilInterval) {
+        // Perfect division
+        instruction = `Decrease 1 stitch each end every ${floorInterval} rows, ${numDecRows} time${numDecRows!==1?'s':''}.`;
+        detail = `Work: ${workAbbr}1, ${decAbbr}, work to last 3 sts, ${decEnd}, ${workAbbr}1 on every Row ${floorInterval}.`;
+        // Build schedule
+        for (let i = 0; i < numDecRows; i++) {
+          scheduleRows.push({ row: (i + 1) * floorInterval, decRow: i + 1, countAfter: start - (i + 1) * 2 });
+        }
+      } else {
+        // Mixed intervals: some every floorInterval, some every ceilInterval
+        // remainder rows need to be distributed
+        // n_ceil * ceilInterval + n_floor * floorInterval = totalRows
+        // n_ceil + n_floor = numDecRows
+        // solving: n_ceil = totalRows - numDecRows * floorInterval
+        const nCeil = totalRows - numDecRows * floorInterval;
+        const nFloor = numDecRows - nCeil;
+
+        if (nCeil > 0 && nFloor > 0) {
+          instruction = `Decrease 1 stitch each end every ${floorInterval} rows ${nFloor} time${nFloor!==1?'s':''}, then every ${ceilInterval} rows ${nCeil} time${nCeil!==1?'s':''}.`;
+          detail = `Total ${numDecRows} decrease rows. Work shorter intervals first to keep decreases evenly spaced.`;
+        } else if (nCeil === 0) {
+          instruction = `Decrease 1 stitch each end every ${floorInterval} rows, ${numDecRows} times.`;
+          detail = `Even spacing — decrease every ${floorInterval} rows.`;
+        } else {
+          instruction = `Decrease 1 stitch each end every ${ceilInterval} rows, ${numDecRows} times.`;
+          detail = `Even spacing — decrease every ${ceilInterval} rows.`;
+        }
+
+        // Build simplified schedule (just the dec row numbers)
+        let row = 0;
+        let applied = 0;
+        // alternate intervals for better distribution
+        for (let i = 0; i < numDecRows; i++) {
+          const useFloor = (i < nFloor);
+          row += useFloor ? floorInterval : ceilInterval;
+          applied++;
+          scheduleRows.push({ row, decRow: applied, countAfter: start - applied * 2 });
+        }
+      }
+
+      let schedHTML = '';
+      if (scheduleRows.length <= 20) {
+        schedHTML = `<div style="margin-top:1rem;"><div style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:0.5rem;">DECREASE SCHEDULE</div>
+          <table class="schedule-table">
+            <thead><tr><th>Decrease #</th><th>On Row</th><th>Stitches After</th></tr></thead>
+            <tbody>${scheduleRows.map(r => `<tr><td>#${r.decRow}</td><td>Row ${r.row}</td><td>${r.countAfter}</td></tr>`).join('')}</tbody>
+          </table></div>`;
+      }
+
+      res.innerHTML = `
+        <div class="result-box">
+          <div class="stat-row">
+            <div class="stat-box"><div class="stat-num">${start}</div><div class="stat-lbl">Start Stitches</div></div>
+            <div class="stat-box"><div class="stat-num">${numDecRows}</div><div class="stat-lbl">Decrease Rows</div></div>
+            <div class="stat-box"><div class="stat-num">${end}</div><div class="stat-lbl">End Stitches</div></div>
+            <div class="stat-box"><div class="stat-num">${totalRows}</div><div class="stat-lbl">Total Rows</div></div>
+          </div>
+          <div style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:0.35rem;">WRITTEN INSTRUCTION</div>
+          <div class="instruction-block">"${instruction}"</div>
+          <p style="font-size:0.875rem;color:var(--text-muted);">${detail}</p>
+          <p style="font-size:0.875rem;color:var(--text-muted);margin-top:0.5rem;">
+            Decrease row: <code style="background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:0.1rem 0.4rem;font-size:0.82rem;">${workAbbr}1, ${decAbbr}, work to last 3 sts, ${decEnd}, ${workAbbr}1.</code>
+          </p>
+          ${schedHTML}
+        </div>`;
+    }
+  </script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{injectNav('sleeve-decrease-calculator.html');injectFooter();});</script>
+</body>
+</html>

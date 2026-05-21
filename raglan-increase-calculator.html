@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raglan Increase Calculator — Free Knitting Calculator | The Useful Pages</title>
+  <meta name="description" content="Generate a round-by-round raglan increase table showing stitch counts for back, front, and each sleeve. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/raglan-increase-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Raglan Increase Calculator</h1>
+      <p class="page-subtitle">Enter your starting stitch counts and number of increase rounds to get a complete round-by-round table.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Back starting stitches</label>
+            <input class="form-input" type="number" id="back-sts" min="4" placeholder="e.g. 30">
+          </div>
+          <div>
+            <label class="label">Front starting stitches</label>
+            <input class="form-input" type="number" id="front-sts" min="4" placeholder="e.g. 30">
+          </div>
+          <div>
+            <label class="label">Each sleeve starting stitches</label>
+            <input class="form-input" type="number" id="sleeve-sts" min="4" placeholder="e.g. 10">
+          </div>
+          <div>
+            <label class="label">Raglan stitches (each line)</label>
+            <select class="form-select" id="raglan-line-sts">
+              <option value="1">1 stitch per raglan line</option>
+              <option value="2">2 stitches per raglan line</option>
+              <option value="4">4 stitches per raglan line</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Number of increase rounds</label>
+            <input class="form-input" type="number" id="inc-rounds" min="1" max="80" placeholder="e.g. 20">
+          </div>
+          <div>
+            <label class="label">Increase every N rounds</label>
+            <select class="form-select" id="inc-freq">
+              <option value="1">Every round</option>
+              <option value="2">Every 2 rounds</option>
+              <option value="3">Every 3 rounds</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcRaglan()">Generate Table</button>
+
+        <div id="raglan-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid" style="margin-bottom:1.5rem;">
+            <div class="stat-box">
+              <div class="stat-value" id="res-total-start"></div>
+              <div class="stat-label">Starting total</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-inc-per-round"></div>
+              <div class="stat-label">Sts added per inc round</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-total-end"></div>
+              <div class="stat-label">Final total</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-back-end"></div>
+              <div class="stat-label">Final back sts</div>
+            </div>
+          </div>
+
+          <h3 style="margin-bottom:0.75rem;">Increase Round Instructions</h3>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.9rem;line-height:1.8;margin-bottom:1.5rem;" id="raglan-instructions"></div>
+
+          <h3 style="margin-bottom:0.75rem;">Round-by-Round Stitch Count Table</h3>
+          <p style="color:var(--text-muted);font-size:0.875rem;margin-bottom:0.5rem;">Showing stitch counts after each increase round (raglan sts not included in section counts).</p>
+          <div class="table-wrap">
+            <table class="data-table" id="raglan-table">
+              <thead>
+                <tr>
+                  <th>Inc Round #</th>
+                  <th>Back</th>
+                  <th>Front</th>
+                  <th>Each Sleeve</th>
+                  <th>Total (excl. raglan)</th>
+                </tr>
+              </thead>
+              <tbody id="raglan-tbody"></tbody>
+            </table>
+          </div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always swatch before starting a garment project.</p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Enter the starting stitch count for each section at cast-on. These come from your pattern or your own math.</li>
+          <li>Choose the raglan stitch count (the stitches between sections, usually 1 or 2).</li>
+          <li>Enter the total number of increase rounds and how often they occur.</li>
+          <li>Click <em>Generate Table</em> to see the full round-by-round breakdown.</li>
+        </ol>
+        <h3 style="margin-top:1rem;">How Raglan Increases Work</h3>
+        <ul>
+          <li>A standard raglan has 4 increase lines (8 increase points total per round).</li>
+          <li>Each increase round adds 1 stitch on each side of each raglan line = +8 total per round.</li>
+          <li>Raglan stitches themselves do not increase — only body and sleeve sections grow.</li>
+          <li>After separation, the raglan stitches are typically placed on waste yarn or worked into the underarm.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{injectNav('raglan-increase-calculator.html');injectFooter();});
+
+  function calcRaglan() {
+    const back = parseInt(document.getElementById('back-sts').value);
+    const front = parseInt(document.getElementById('front-sts').value);
+    const sleeve = parseInt(document.getElementById('sleeve-sts').value);
+    const raglanSts = parseInt(document.getElementById('raglan-line-sts').value);
+    const incRounds = parseInt(document.getElementById('inc-rounds').value);
+    const incFreq = parseInt(document.getElementById('inc-freq').value);
+
+    if (!back || !front || !sleeve || !incRounds) {
+      alert('Please fill in all stitch count fields.');
+      return;
+    }
+
+    // Per increase round: back +2, front +2, each sleeve +2 = +8 total (excl raglan)
+    const incPerRound = 8;
+    const raglanTotal = raglanSts * 4;
+    const startTotal = back + front + (sleeve * 2) + raglanTotal;
+    const endBack = back + (incRounds * 2);
+    const endFront = front + (incRounds * 2);
+    const endSleeve = sleeve + (incRounds * 2);
+    const endTotal = startTotal + (incPerRound * incRounds);
+
+    document.getElementById('res-total-start').textContent = startTotal;
+    document.getElementById('res-inc-per-round').textContent = incPerRound;
+    document.getElementById('res-total-end').textContent = endTotal;
+    document.getElementById('res-back-end').textContent = endBack;
+
+    const raglanLabel = raglanSts === 1 ? 'pm' : `k${raglanSts}, pm`;
+    let instr = `INCREASE ROUND (repeat every ${incFreq === 1 ? 'round' : incFreq + ' rounds'}):\n\n`;
+    instr += `*K1, m1R, knit to ${raglanSts === 1 ? 'marker' : '1 st before marker'}, m1L, k1${raglanSts > 1 ? `, k${raglanSts}` : ''}, sm*\n`;
+    instr += `Repeat from * to * at each of the 4 raglan lines. (8 sts increased)\n\n`;
+    instr += `If working every ${incFreq} round(s):\n`;
+    if (incFreq > 1) instr += `  Plain rounds: Knit all stitches.\n`;
+    instr += `  Increase round: Work increase round as above.\n\n`;
+    instr += `Total rounds worked to complete increases: ${incRounds * incFreq}`;
+    document.getElementById('raglan-instructions').textContent = instr;
+
+    const tbody = document.getElementById('raglan-tbody');
+    tbody.innerHTML = '';
+    let b = back, f = front, s = sleeve;
+    // Start row
+    let row0 = document.createElement('tr');
+    row0.innerHTML = `<td>Cast-on</td><td>${b}</td><td>${f}</td><td>${s}</td><td>${b+f+(s*2)}</td>`;
+    tbody.appendChild(row0);
+
+    for (let i = 1; i <= incRounds; i++) {
+      b += 2; f += 2; s += 2;
+      let tr = document.createElement('tr');
+      tr.innerHTML = `<td>${i}</td><td>${b}</td><td>${f}</td><td>${s}</td><td>${b+f+(s*2)}</td>`;
+      tbody.appendChild(tr);
+    }
+
+    document.getElementById('raglan-result').style.display = 'block';
+  }
+  </script>
+</body>
+</html>

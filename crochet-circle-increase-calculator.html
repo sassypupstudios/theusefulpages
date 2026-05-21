@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Circle Increase Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate round-by-round stitch counts and increase instructions for crocheted circles. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-circle-increase-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Circle Increase Calculator</h1>
+      <p class="page-subtitle">Get round-by-round stitch counts and written instructions for a flat crochet circle.</p>
+
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div>
+            <label class="label">Starting Stitches (Magic Ring)</label>
+            <select id="start-count" class="form-select">
+              <option value="6">6 stitches (most common)</option>
+              <option value="8">8 stitches</option>
+              <option value="4">4 stitches</option>
+              <option value="5">5 stitches</option>
+              <option value="10">10 stitches</option>
+              <option value="12">12 stitches</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Number of Rounds</label>
+            <input type="number" id="num-rounds" class="form-input" value="8" min="1" max="50" placeholder="e.g. 8">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calculate()">Calculate</button>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div id="result" style="display:none;">
+        <div class="result-card" style="margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+            <h2 style="margin:0;font-size:1.1rem;">Round-by-Round Chart</h2>
+            <button class="btn-outline" onclick="copyInstructions()" style="font-size:0.85rem;padding:6px 14px;">Copy Instructions</button>
+          </div>
+          <div class="table-wrap" style="margin-top:12px;">
+            <table class="data-table" id="result-table">
+              <thead><tr><th>Round</th><th>Stitches</th><th>Written Instruction</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="result-card">
+          <h3 style="margin-bottom:8px;">Full Written Pattern</h3>
+          <pre id="written-pattern" style="white-space:pre-wrap;font-size:0.88rem;line-height:1.7;background:var(--bg-secondary);padding:14px;border-radius:8px;margin:0;"></pre>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How Crochet Circle Increases Work</h2>
+        <p>A flat crochet circle is formed by increasing the stitch count by the same number every round — equal to the starting stitch count. This keeps the circle flat rather than curving into a sphere or cup shape.</p>
+        <ul>
+          <li><strong>Round 1:</strong> Work the starting stitches into a magic ring (e.g., 6 sc into ring).</li>
+          <li><strong>Round 2:</strong> 2 sc in each stitch (doubles the count).</li>
+          <li><strong>Round 3+:</strong> Alternate single crochets with increases (inc = 2 sc in 1 st) to add the same count each round.</li>
+        </ul>
+        <p>The formula: each round adds <em>N</em> stitches (where N = starting count). Between increases, work <em>(round number − 2)</em> plain sc before each increase.</p>
+        <p class="disclaimer">Gauge and yarn thickness affect the finished size. If your circle cups or ruffles, adjust your hook size.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{ injectNav('crochet-circle-increase-calculator.html'); injectFooter(); calculate(); });
+
+  function calculate(){
+    const start = parseInt(document.getElementById('start-count').value);
+    const rounds = parseInt(document.getElementById('num-rounds').value);
+    if(isNaN(rounds)||rounds<1||rounds>50) return;
+
+    const tbody = document.querySelector('#result-table tbody');
+    tbody.innerHTML='';
+    let instructions = '';
+    const rows = [];
+
+    for(let r=1; r<=rounds; r++){
+      const totalSt = start * r;
+      let instr = '';
+      if(r===1){
+        instr = `${start} sc into magic ring. (${totalSt} sts)`;
+      } else if(r===2){
+        instr = `2 sc in each st around. (${totalSt} sts)`;
+      } else {
+        const plainBefore = r-2;
+        if(plainBefore===0){
+          instr = `[Inc] × ${start}. (${totalSt} sts)`;
+        } else {
+          const plain = plainBefore===1 ? '1 sc' : `${plainBefore} sc`;
+          instr = `[${plain}, inc] × ${start}. (${totalSt} sts)`;
+        }
+      }
+      rows.push({r, totalSt, instr});
+      const tr = document.createElement('tr');
+      tr.innerHTML=`<td><strong>R${r}</strong></td><td>${totalSt}</td><td>${instr}</td>`;
+      tbody.appendChild(tr);
+      instructions += `R${r}: ${instr}\n`;
+    }
+    document.getElementById('written-pattern').textContent = instructions.trim();
+    document.getElementById('result').style.display='';
+    window._circleInstructions = instructions;
+  }
+
+  function copyInstructions(){
+    navigator.clipboard.writeText(window._circleInstructions||'').then(()=>alert('Instructions copied!'));
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cast-On Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate how many stitches to cast on based on your gauge and desired finished width. Adjust for pattern multiples. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/cast-on-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-box { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:1.25rem; margin-top:1rem; }
+    .cast-on-num { font-size:2.5rem; font-weight:700; color:var(--primary); line-height:1; }
+    .multiple-table { width:100%; border-collapse:collapse; margin-top:0.75rem; font-size:0.875rem; }
+    .multiple-table th { background:var(--bg-secondary); padding:0.5rem 0.75rem; text-align:left; font-weight:600; font-size:0.78rem; color:var(--text-muted); }
+    .multiple-table td { padding:0.5rem 0.75rem; border-bottom:1px solid var(--border); }
+    .multiple-table tr:last-child td { border-bottom:none; }
+    .unit-toggle { display:flex; gap:0.5rem; margin-bottom:0.5rem; }
+    .unit-btn { padding:0.3rem 0.8rem; border-radius:6px; border:1px solid var(--border); background:var(--bg-secondary); color:var(--text-muted); cursor:pointer; font-size:0.85rem; font-weight:500; transition:all 0.15s; }
+    .unit-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Cast-On Calculator</h1>
+      <p class="page-subtitle">Calculate how many stitches to cast on for your desired finished width and gauge, with optional pattern multiple adjustment.</p>
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label">Unit</label>
+          <div class="unit-toggle">
+            <button class="unit-btn active" id="btnIn" onclick="setUnit('in')">Inches</button>
+            <button class="unit-btn" id="btnCm" onclick="setUnit('cm')">Centimeters</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="finishedWidth">Desired Finished Width (<span class="unit-label">in</span>)</label>
+            <input type="number" id="finishedWidth" class="form-input" placeholder="e.g. 18" min="0.1" step="0.1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="gauge">Your Gauge (stitches per <span class="unit-label">in</span>)</label>
+            <input type="number" id="gauge" class="form-input" placeholder="e.g. 5" min="0.1" step="0.1">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="patternMultiple">Pattern Multiple (optional)</label>
+            <input type="number" id="patternMultiple" class="form-input" placeholder="e.g. 6" min="1" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="extraStitches">Plus extra stitches (optional)</label>
+            <input type="number" id="extraStitches" class="form-input" placeholder="e.g. 2 for multiple of 6+2" min="0" step="1" value="0">
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calculate()">Calculate Cast-On</button>
+        <div id="result"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your <strong>desired finished width</strong> — the measurement you want the finished piece to be.</li>
+          <li>Enter your <strong>gauge</strong> — check your swatch! Gauge is stitches per inch (or cm).</li>
+          <li>If your pattern requires a specific multiple (e.g., "multiple of 6"), enter it in the Pattern Multiple field.</li>
+          <li>The calculator shows the exact count and adjusted counts for common multiples.</li>
+        </ul>
+        <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">
+          <strong>Tip:</strong> Always knit a gauge swatch before starting a project. An accurate gauge is the most important factor in getting the right finished size.
+        </p>
+        <p class="disclaimer" style="margin-top:0.75rem;">Finished dimensions may vary based on blocking, yarn fiber, and tension. These are estimates based on gauge.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let currentUnit = 'in';
+
+    function setUnit(u) {
+      currentUnit = u;
+      document.getElementById('btnIn').classList.toggle('active', u === 'in');
+      document.getElementById('btnCm').classList.toggle('active', u === 'cm');
+      document.querySelectorAll('.unit-label').forEach(el => el.textContent = u);
+    }
+
+    function nearestMultiple(n, base, extra) {
+      // find nearest valid count (n - extra) divisible by base
+      const adjusted = n - extra;
+      if (adjusted <= 0) return extra > 0 ? base + extra : base;
+      const lower = Math.floor(adjusted / base) * base + extra;
+      const upper = Math.ceil(adjusted / base) * base + extra;
+      return { lower: lower > 0 ? lower : upper, upper };
+    }
+
+    function calculate() {
+      const width = parseFloat(document.getElementById('finishedWidth').value);
+      const gauge = parseFloat(document.getElementById('gauge').value);
+      const patMult = parseInt(document.getElementById('patternMultiple').value) || 0;
+      const extra = parseInt(document.getElementById('extraStitches').value) || 0;
+      const res = document.getElementById('result');
+
+      if (!width || !gauge || isNaN(width) || isNaN(gauge)) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Please enter width and gauge.</p>'; return;
+      }
+
+      const exact = width * gauge;
+      const exactRounded = Math.round(exact);
+      const actualWidth = (exactRounded / gauge).toFixed(2);
+      const unit = currentUnit;
+
+      let html = `<div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-top:1rem;">`;
+      html += `<div style="margin-bottom:1rem;">
+        <div style="font-size:0.78rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.25rem;">Exact Cast-On</div>
+        <div style="font-size:2.5rem;font-weight:700;color:var(--primary);line-height:1;">${exactRounded}</div>
+        <div style="font-size:0.875rem;color:var(--text-muted);margin-top:0.25rem;">stitches &nbsp;·&nbsp; actual width: ${actualWidth} ${unit}</div>
+      </div>`;
+
+      if (patMult > 0) {
+        const { lower, upper } = nearestMultiple(exactRounded, patMult, extra);
+        const multDesc = extra > 0 ? `multiple of ${patMult} + ${extra}` : `multiple of ${patMult}`;
+        const lowerWidth = (lower / gauge).toFixed(2);
+        const upperWidth = (upper / gauge).toFixed(2);
+        html += `<div style="border-top:1px solid var(--border);padding-top:1rem;margin-top:0.5rem;">
+          <div style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:0.75rem;">ADJUSTED FOR PATTERN (${multDesc.toUpperCase()})</div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <div style="flex:1;min-width:120px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center;">
+              <div style="font-size:1.75rem;font-weight:700;color:var(--primary);">${lower}</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);">Round down</div>
+              <div style="font-size:0.82rem;margin-top:0.25rem;">${lowerWidth} ${unit}</div>
+            </div>
+            <div style="flex:1;min-width:120px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center;">
+              <div style="font-size:1.75rem;font-weight:700;color:var(--primary);">${upper}</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);">Round up</div>
+              <div style="font-size:0.82rem;margin-top:0.25rem;">${upperWidth} ${unit}</div>
+            </div>
+          </div>
+        </div>`;
+      }
+
+      // Common multiples table
+      const commonMults = [2, 4, 6, 8];
+      html += `<div style="border-top:1px solid var(--border);padding-top:1rem;margin-top:1rem;">
+        <div style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:0.5rem;">ADJUSTED FOR COMMON MULTIPLES</div>
+        <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+          <thead><tr><th style="text-align:left;padding:0.4rem 0.5rem;font-size:0.78rem;color:var(--text-muted);">Multiple</th><th style="text-align:center;padding:0.4rem 0.5rem;font-size:0.78rem;color:var(--text-muted);">Round Down</th><th style="text-align:center;padding:0.4rem 0.5rem;font-size:0.78rem;color:var(--text-muted);">Round Up</th></tr></thead>
+          <tbody>`;
+      commonMults.forEach(m => {
+        const lower = Math.floor(exactRounded / m) * m;
+        const upper = Math.ceil(exactRounded / m) * m;
+        const lowerEq = lower === exactRounded;
+        const upperEq = upper === exactRounded;
+        html += `<tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.4rem 0.5rem;">Multiple of ${m}</td>
+          <td style="text-align:center;padding:0.4rem 0.5rem;font-weight:${lowerEq?'700':'400'};color:${lowerEq?'var(--primary)':'inherit'};">${lower}</td>
+          <td style="text-align:center;padding:0.4rem 0.5rem;font-weight:${upperEq?'700':'400'};color:${upperEq?'var(--primary)':'inherit'};">${upper === lower ? '—' : upper}</td>
+        </tr>`;
+      });
+      html += `</tbody></table></div></div>`;
+      res.innerHTML = html;
+    }
+  </script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{injectNav('cast-on-calculator.html');injectFooter();});</script>
+</body>
+</html>

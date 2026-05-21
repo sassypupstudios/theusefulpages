@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Painting Size Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate finished diamond painting canvas size from diamond count, or find diamond count from a desired finished size. Free calculator — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/diamond-painting-size-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Diamond Painting Size Calculator</h1>
+      <p class="page-subtitle">Convert between diamond count and finished canvas size. Find how many diamonds you need, or calculate the finished dimensions from your canvas.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" style="margin-bottom:1.25rem;">
+          <button class="tab-btn active" onclick="showDP('count-to-size')">Diamond Count → Finished Size</button>
+          <button class="tab-btn" onclick="showDP('size-to-count')">Desired Size → Diamond Count</button>
+        </div>
+
+        <!-- COUNT TO SIZE -->
+        <div id="count-to-size">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Diamonds wide</label>
+              <input type="number" id="dw-count" class="form-input" placeholder="e.g. 120" min="1">
+            </div>
+            <div>
+              <label class="label">Diamonds tall</label>
+              <input type="number" id="dh-count" class="form-input" placeholder="e.g. 160" min="1">
+            </div>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label class="label">Diamond size</label>
+            <select id="diamond-size" class="form-select" style="max-width:280px;">
+              <option value="2.5" selected>2.5mm (standard round or square drill)</option>
+              <option value="3.0">3.0mm (larger drill)</option>
+              <option value="2.8">2.8mm</option>
+            </select>
+          </div>
+          <button class="btn-primary" onclick="countToSize()">Calculate Finished Size</button>
+          <div id="cts-result" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+        </div>
+
+        <!-- SIZE TO COUNT -->
+        <div id="size-to-count" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Desired finished width</label>
+              <input type="number" id="fw-size" class="form-input" placeholder="e.g. 30" min="1" step="0.5">
+            </div>
+            <div>
+              <label class="label">Desired finished height</label>
+              <input type="number" id="fh-size" class="form-input" placeholder="e.g. 40" min="1" step="0.5">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Unit</label>
+              <select id="size-unit" class="form-select">
+                <option value="cm" selected>Centimeters</option>
+                <option value="in">Inches</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">Diamond size</label>
+              <select id="diamond-size2" class="form-select">
+                <option value="2.5" selected>2.5mm (standard)</option>
+                <option value="3.0">3.0mm</option>
+                <option value="2.8">2.8mm</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn-primary" onclick="sizeToCount()">Calculate Diamond Count</button>
+          <div id="stc-result" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+        </div>
+
+        <div style="margin-top:2rem;">
+          <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 0.75rem;">Common canvas sizes reference</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Canvas size (cm)</th><th>Canvas size (in)</th><th>Approx diamonds (2.5mm)</th></tr></thead>
+              <tbody>
+                <tr><td>20×30 cm</td><td>~8×12"</td><td>80×120 = 9,600</td></tr>
+                <tr><td>30×40 cm</td><td>~12×16"</td><td>120×160 = 19,200</td></tr>
+                <tr><td>40×50 cm</td><td>~16×20"</td><td>160×200 = 32,000</td></tr>
+                <tr><td>50×70 cm</td><td>~20×28"</td><td>200×280 = 56,000</td></tr>
+                <tr><td>60×80 cm</td><td>~24×32"</td><td>240×320 = 76,800</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About diamond painting sizes</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Standard diamond painting drills are 2.5mm wide. Each diamond covers 2.5mm × 2.5mm of the canvas. To find the finished size, multiply the diamond count by the drill size. Round drills and square drills are both 2.5mm for most kits.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>A 120×160 diamond canvas with 2.5mm drills = 30cm × 40cm finished</li>
+          <li>Add 10–20% extra diamonds per color for waste and replacements</li>
+          <li>Square drills give denser coverage than round drills</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Canvas sizes listed by sellers are usually the total canvas including blank borders, not the stitching area. The stitching area is typically a few centimeters smaller on each side.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function showDP(id) {
+    ['count-to-size','size-to-count'].forEach(t => document.getElementById(t).style.display = t===id?'':'none');
+    document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',i===(id==='count-to-size'?0:1)));
+  }
+
+  function countToSize() {
+    const dw = parseInt(document.getElementById('dw-count').value);
+    const dh = parseInt(document.getElementById('dh-count').value);
+    const ds = parseFloat(document.getElementById('diamond-size').value);
+    if(!dw||!dh){alert('Enter diamond counts.');return;}
+    const wcm = (dw*ds/10).toFixed(1), hcm = (dh*ds/10).toFixed(1);
+    const win = (wcm/2.54).toFixed(1), hin = (hcm/2.54).toFixed(1);
+    const total = dw*dh, withWaste = Math.ceil(total*1.1);
+    document.getElementById('cts-result').style.display='';
+    document.getElementById('cts-result').innerHTML=`
+      <div class="stat-grid">
+        <div class="stat-box"><div class="stat-label">Finished Width</div><div class="stat-value">${wcm} cm / ${win}"</div></div>
+        <div class="stat-box"><div class="stat-label">Finished Height</div><div class="stat-value">${hcm} cm / ${hin}"</div></div>
+        <div class="stat-box"><div class="stat-label">Total Diamonds</div><div class="stat-value">${total.toLocaleString()}</div></div>
+        <div class="stat-box"><div class="stat-label">With 10% Waste</div><div class="stat-value">${withWaste.toLocaleString()}</div></div>
+      </div>`;
+  }
+
+  function sizeToCount() {
+    let fw = parseFloat(document.getElementById('fw-size').value);
+    let fh = parseFloat(document.getElementById('fh-size').value);
+    const unit = document.getElementById('size-unit').value;
+    const ds = parseFloat(document.getElementById('diamond-size2').value);
+    if(!fw||!fh){alert('Enter desired dimensions.');return;}
+    if(unit==='in'){fw*=2.54;fh*=2.54;}
+    const dw = Math.floor((fw*10)/ds), dh = Math.floor((fh*10)/ds);
+    const total = dw*dh;
+    document.getElementById('stc-result').style.display='';
+    document.getElementById('stc-result').innerHTML=`
+      <div class="stat-grid">
+        <div class="stat-box"><div class="stat-label">Diamonds Wide</div><div class="stat-value">${dw}</div></div>
+        <div class="stat-box"><div class="stat-label">Diamonds Tall</div><div class="stat-value">${dh}</div></div>
+        <div class="stat-box"><div class="stat-label">Total Diamonds</div><div class="stat-value">${total.toLocaleString()}</div></div>
+        <div class="stat-box"><div class="stat-label">With 10% Waste</div><div class="stat-value">${Math.ceil(total*1.1).toLocaleString()}</div></div>
+      </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('diamond-painting-size-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

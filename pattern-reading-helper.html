@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Reading Helper — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Paste a crochet or knitting pattern row and get a plain-English explanation with abbreviations expanded. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-reading-helper.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .toggle-group { display:flex; gap:0.5rem; margin-bottom:1rem; }
+    .toggle-btn { padding:0.4rem 1.2rem; border-radius:6px; border:2px solid var(--border); background:transparent; cursor:pointer; font-size:0.9rem; color:var(--text); }
+    .toggle-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .expanded-row { padding:0.6rem 0; border-bottom:1px solid var(--border); line-height:1.6; }
+    .expanded-row:last-child { border-bottom:none; }
+    .abbr-highlight { background:var(--primary-light,#eff6ff); color:var(--primary); padding:0 3px; border-radius:3px; font-weight:600; font-size:0.9em; }
+    [data-theme="dark"] .abbr-highlight { background:#1e3a5f; color:#93c5fd; }
+    .example-btn { font-size:0.8rem; padding:0.25rem 0.7rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Reading Helper</h1>
+      <p class="page-subtitle">Paste a pattern row or round and see abbreviations expanded to plain English.</p>
+      <div class="tool-card">
+        <div class="toggle-group">
+          <button class="toggle-btn active" id="btn-crochet" onclick="setCraft('crochet')">Crochet</button>
+          <button class="toggle-btn" id="btn-knitting" onclick="setCraft('knitting')">Knitting</button>
+        </div>
+        <label class="label">Pattern Row / Round</label>
+        <textarea class="form-textarea" id="pattern-input" rows="4" placeholder="e.g. ch3, dc in next 4 sts, sk 2, dc in next 4 sts"></textarea>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.75rem;margin-bottom:0.75rem;">
+          <button class="btn-ghost example-btn" onclick="loadExample('crochet1')">Example: Crochet row</button>
+          <button class="btn-ghost example-btn" onclick="loadExample('crochet2')">Example: Crochet round</button>
+          <button class="btn-ghost example-btn" onclick="loadExample('knit1')">Example: Knitting row</button>
+        </div>
+        <button class="btn-primary" onclick="expandPattern()">Expand Pattern</button>
+        <div id="result" style="display:none;margin-top:1.5rem;">
+          <h3 style="margin-bottom:0.75rem;">Plain-English Expansion</h3>
+          <div id="expansion-output"></div>
+        </div>
+        <p class="disclaimer" style="margin-top:1rem;">This tool uses rule-based pattern recognition. Always verify with the original pattern.</p>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Select your craft type (Crochet or Knitting).</li>
+          <li>Paste or type a single row or round instruction.</li>
+          <li>Click <strong>Expand Pattern</strong> to see abbreviations expanded inline.</li>
+        </ol>
+        <h2>Tips</h2>
+        <ul>
+          <li>Separate instructions with commas for best results.</li>
+          <li>Abbreviations are case-insensitive (DC, dc, Dc all work).</li>
+          <li>Unknown abbreviations will be flagged so you can look them up.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  let craft = 'crochet';
+
+  const CROCHET_MAP = {
+    'ch': v => v ? `chain ${v}` : 'chain',
+    'sl st': v => v ? `slip stitch in ${v}` : 'slip stitch',
+    'sc': v => v ? `single crochet in ${v}` : 'single crochet',
+    'hdc': v => v ? `half double crochet in ${v}` : 'half double crochet',
+    'dc': v => v ? `double crochet in ${v}` : 'double crochet',
+    'tr': v => v ? `treble crochet in ${v}` : 'treble crochet',
+    'dtr': v => v ? `double treble crochet in ${v}` : 'double treble crochet',
+    'yo': () => 'yarn over',
+    'sk': v => v ? `skip ${v}` : 'skip next stitch',
+    'sk2': () => 'skip 2 stitches',
+    'rep': () => 'repeat',
+    'pm': () => 'place marker',
+    'sm': () => 'slip marker',
+    'blo': () => 'through back loop only',
+    'flo': () => 'through front loop only',
+    'inc': () => 'increase (work 2 stitches into same stitch)',
+    'dec': () => 'decrease',
+    'sc2tog': () => 'single crochet 2 together (decrease)',
+    'dc2tog': () => 'double crochet 2 together (decrease)',
+    'mr': () => 'magic ring',
+    'turn': () => 'turn your work',
+    'join': () => 'join with slip stitch',
+    'fasten off': () => 'fasten off and cut yarn',
+    'ch sp': () => 'chain space',
+    'tch': v => v ? `turning chain of ${v}` : 'turning chain',
+    'sp': () => 'space',
+    'st': () => 'stitch',
+    'sts': () => 'stitches',
+    'rnd': v => v ? `round ${v}` : 'round',
+    'rs': () => 'right side facing',
+    'ws': () => 'wrong side facing',
+    'fpdc': () => 'front post double crochet',
+    'bpdc': () => 'back post double crochet',
+    'puff st': () => 'puff stitch',
+    'bobble': () => 'bobble stitch',
+    'shell': () => 'shell stitch',
+    'v-st': () => 'v-stitch (dc, ch1, dc in same stitch)',
+    'mc': () => 'main color',
+    'cc': () => 'contrast color',
+    'cl': () => 'cluster',
+  };
+
+  const KNITTING_MAP = {
+    'k': v => v ? `knit ${v} stitches` : 'knit',
+    'p': v => v ? `purl ${v} stitches` : 'purl',
+    'k2tog': () => 'knit 2 together (right-leaning decrease)',
+    'p2tog': () => 'purl 2 together',
+    'ssk': () => 'slip, slip, knit (left-leaning decrease)',
+    'ssp': () => 'slip, slip, purl',
+    'yo': () => 'yarn over (creates new stitch)',
+    'co': v => v ? `cast on ${v} stitches` : 'cast on',
+    'bo': v => v ? `bind off ${v} stitches` : 'bind off',
+    'sm': () => 'slip marker',
+    'pm': () => 'place marker',
+    'm1': () => 'make 1 (increase)',
+    'm1l': () => 'make 1 left (left-leaning increase)',
+    'm1r': () => 'make 1 right (right-leaning increase)',
+    'kfb': () => 'knit into front and back (increase)',
+    'pfb': () => 'purl into front and back (increase)',
+    'sl': v => v ? `slip ${v} stitch${v>1?'es':''}` : 'slip 1 stitch',
+    'sl1': () => 'slip 1 stitch',
+    'psso': () => 'pass slipped stitch over',
+    'wyib': () => 'with yarn in back',
+    'wyif': () => 'with yarn in front',
+    'tbl': () => 'through back loop',
+    'cn': () => 'cable needle',
+    'c4b': () => 'cable 4 back (slip 2 to CN, hold back, k2, k2 from CN)',
+    'c4f': () => 'cable 4 front (slip 2 to CN, hold front, k2, k2 from CN)',
+    'c6b': () => 'cable 6 back',
+    'c6f': () => 'cable 6 front',
+    'rs': () => 'right side facing',
+    'ws': () => 'wrong side facing',
+    'rnd': v => v ? `round ${v}` : 'round',
+    'rep': () => 'repeat',
+    'sk2p': () => 'slip 1, k2tog, pass slipped stitch over (double decrease)',
+    's2kp': () => 'slip 2 together, k1, pass both slipped stitches over (centered double decrease)',
+    'mc': () => 'main color',
+    'cc': () => 'contrast color',
+    'st': () => 'stitch',
+    'sts': () => 'stitches',
+    'turn': () => 'turn your work',
+    'k1': () => 'knit 1 stitch',
+    'p1': () => 'purl 1 stitch',
+    'k3': () => 'knit 3 stitches',
+    'p3': () => 'purl 3 stitches',
+  };
+
+  const EXAMPLES = {
+    crochet1: 'ch3, dc in next 4 sts, sk 2, dc in next 4 sts',
+    crochet2: 'sc in each st around, inc in last 2 sts, join, turn',
+    knit1: 'k2, p2, k2tog, yo, ssk, p2, k2',
+  };
+
+  function setCraft(c) {
+    craft = c;
+    document.getElementById('btn-crochet').classList.toggle('active', c==='crochet');
+    document.getElementById('btn-knitting').classList.toggle('active', c==='knitting');
+  }
+
+  function loadExample(key) {
+    const ex = EXAMPLES[key];
+    if (!ex) return;
+    document.getElementById('pattern-input').value = ex;
+    if (key.startsWith('knit')) setCraft('knitting'); else setCraft('crochet');
+    expandPattern();
+  }
+
+  function expandPattern() {
+    const raw = document.getElementById('pattern-input').value.trim();
+    if (!raw) { alert('Please enter a pattern row first.'); return; }
+
+    const map = craft === 'crochet' ? CROCHET_MAP : KNITTING_MAP;
+    // Split on comma or semicolon
+    const parts = raw.split(/[,;]+/).map(s => s.trim()).filter(Boolean);
+
+    const expanded = parts.map(part => {
+      const lower = part.toLowerCase();
+      // Try to match abbreviation + context
+      let matched = false;
+      let result = part;
+
+      // Try longest match first
+      const keys = Object.keys(map).sort((a,b) => b.length - a.length);
+      for (const key of keys) {
+        const re = new RegExp(`^\\s*${escapeRegex(key)}\\s*(\\d+|next\\s+\\d+|each|all|around|to\\s+end)?\\s*(.*)$`, 'i');
+        const m = lower.match(re);
+        if (m) {
+          const suffix = m[2] ? ` ${m[2]}` : '';
+          const num = m[1] || '';
+          const expansion = map[key](num + (suffix ? ' ' + suffix.trim() : '')) ;
+          result = expansion;
+          matched = true;
+          break;
+        }
+      }
+
+      if (!matched) {
+        // Check for "X in next Y sts" pattern
+        const inMatch = lower.match(/^(\w+)\s+in\s+(next\s+\d+|same|each|next)(.*)$/i);
+        if (inMatch) {
+          const abbr = inMatch[1].toLowerCase();
+          const where = inMatch[2] + (inMatch[3] || '');
+          if (map[abbr]) {
+            result = map[abbr](where);
+            matched = true;
+          }
+        }
+      }
+
+      if (!matched) {
+        result = `<span style="color:var(--warning,#d97706)" title="Unrecognized abbreviation">[? ${escH(part)}]</span>`;
+      } else {
+        result = capitalizeFirst(result);
+      }
+
+      return `<div class="expanded-row">${escH(part)} <span style="color:var(--text-muted)">→</span> ${result}</div>`;
+    });
+
+    document.getElementById('expansion-output').innerHTML = expanded.join('');
+    document.getElementById('result').style.display = 'block';
+  }
+
+  function capitalizeFirst(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  function escH(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function escapeRegex(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('pattern-reading-helper.html');
+    injectFooter();
+  });
+  </script>
+</body>
+</html>

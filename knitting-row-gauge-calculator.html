@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Row Gauge Calculator — Free Knitting Calculator | The Useful Pages</title>
+  <meta name="description" content="Convert between rows and inches using your row gauge. Enter gauge and length, or rows worked and gauge, to get instant results. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-row-gauge-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Row Gauge Calculator</h1>
+      <p class="page-subtitle">Convert between rows and inches. Updates live as you type — no button needed.</p>
+      <div class="tool-card">
+        <!-- Tab nav -->
+        <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;border-bottom:2px solid var(--border);">
+          <button class="btn-primary" id="tab-rows" onclick="switchTab('rows')" style="border-radius:4px 4px 0 0;">Rows → Length</button>
+          <button class="btn-outline" id="tab-length" onclick="switchTab('length')" style="border-radius:4px 4px 0 0;">Length → Rows</button>
+        </div>
+
+        <!-- Panel 1: Rows to Length -->
+        <div id="panel-rows">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Rows worked</label>
+              <input class="form-input" type="number" id="rows-worked" min="1" placeholder="e.g. 56" oninput="liveCalcRowsToLength()">
+            </div>
+            <div>
+              <label class="label">Row gauge</label>
+              <input class="form-input" type="number" id="rg-gauge1" min="1" step="0.5" placeholder="e.g. 7" oninput="liveCalcRowsToLength()">
+            </div>
+            <div>
+              <label class="label">Gauge unit</label>
+              <select class="form-select" id="rg-unit1" onchange="liveCalcRowsToLength()">
+                <option value="1">Rows per inch</option>
+                <option value="4">Rows per 4 inches</option>
+                <option value="10">Rows per 10 cm</option>
+              </select>
+            </div>
+          </div>
+          <div id="r2l-result" style="display:none;">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="stat-value" id="res-inches"></div>
+                <div class="stat-label">Inches</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="res-cm"></div>
+                <div class="stat-label">Centimeters</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="res-rpi"></div>
+                <div class="stat-label">Rows per inch</div>
+              </div>
+            </div>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-top:0.75rem;" id="r2l-formula"></p>
+          </div>
+        </div>
+
+        <!-- Panel 2: Length to Rows -->
+        <div id="panel-length" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Desired length (inches)</label>
+              <input class="form-input" type="number" id="desired-length" min="0.5" step="0.5" placeholder="e.g. 8" oninput="liveCalcLengthToRows()">
+            </div>
+            <div>
+              <label class="label">Row gauge</label>
+              <input class="form-input" type="number" id="rg-gauge2" min="1" step="0.5" placeholder="e.g. 7" oninput="liveCalcLengthToRows()">
+            </div>
+            <div>
+              <label class="label">Gauge unit</label>
+              <select class="form-select" id="rg-unit2" onchange="liveCalcLengthToRows()">
+                <option value="1">Rows per inch</option>
+                <option value="4">Rows per 4 inches</option>
+                <option value="10">Rows per 10 cm</option>
+              </select>
+            </div>
+          </div>
+          <div id="l2r-result" style="display:none;">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="stat-value" id="res-rows-needed"></div>
+                <div class="stat-label">Rows to knit</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="res-length-check"></div>
+                <div class="stat-label">Actual length</div>
+              </div>
+            </div>
+            <p style="color:var(--text-muted);font-size:0.85rem;margin-top:0.75rem;" id="l2r-formula"></p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;" class="tool-card">
+        <h3 style="margin-bottom:1rem;">Typical Row Gauges by Yarn Weight</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Yarn Weight</th><th>Rows/Inch (typical)</th><th>Rows/4"</th><th>Common Needle</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Lace (0)</td><td>12–16</td><td>48–64</td><td>US 000–1</td></tr>
+              <tr><td>Fingering / Sock (1)</td><td>9–13</td><td>36–52</td><td>US 1–3</td></tr>
+              <tr><td>Sport (2)</td><td>8–11</td><td>32–44</td><td>US 3–5</td></tr>
+              <tr><td>DK (3)</td><td>7–9</td><td>28–36</td><td>US 5–7</td></tr>
+              <tr><td>Worsted (4)</td><td>5–7</td><td>20–28</td><td>US 7–9</td></tr>
+              <tr><td>Bulky (5)</td><td>4–6</td><td>16–24</td><td>US 9–11</td></tr>
+              <tr><td>Super Bulky (6)</td><td>3–4</td><td>12–16</td><td>US 11–17</td></tr>
+              <tr><td>Jumbo (7)</td><td>1–3</td><td>4–12</td><td>US 17+</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li><strong>Rows → Length:</strong> Know how many rows you've worked? Enter that plus your gauge to find out how many inches you've knitted.</li>
+          <li><strong>Length → Rows:</strong> Know the finished length you need? Enter that plus your gauge to find out how many rows to knit.</li>
+          <li>Results update live as you type — no button needed.</li>
+        </ul>
+        <h3 style="margin-top:1rem;">Formulas</h3>
+        <ul>
+          <li>Length (in) = Rows worked ÷ Rows per inch</li>
+          <li>Rows needed = Desired length (in) × Rows per inch</li>
+          <li>Rows per 4" ÷ 4 = Rows per inch</li>
+        </ul>
+        <h3 style="margin-top:1rem;">Tips</h3>
+        <ul>
+          <li>Row gauge can shift after blocking — always measure your blocked swatch.</li>
+          <li>Row gauge is especially critical for sleeve length, yoke depth, and body length.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{injectNav('knitting-row-gauge-calculator.html');injectFooter();});
+
+  function switchTab(tab) {
+    document.getElementById('panel-rows').style.display = tab === 'rows' ? '' : 'none';
+    document.getElementById('panel-length').style.display = tab === 'length' ? '' : 'none';
+    document.getElementById('tab-rows').className = tab === 'rows' ? 'btn-primary' : 'btn-outline';
+    document.getElementById('tab-length').className = tab === 'length' ? 'btn-primary' : 'btn-outline';
+  }
+
+  function getRowsPerInch(gauge, unit) {
+    // unit: 1=rows/inch, 4=rows/4in, 10=rows/10cm
+    if (unit == 4) return gauge / 4;
+    if (unit == 10) return gauge / 10 * 2.54; // rows/10cm -> rows/inch
+    return gauge;
+  }
+
+  function liveCalcRowsToLength() {
+    const rows = parseFloat(document.getElementById('rows-worked').value);
+    const gauge = parseFloat(document.getElementById('rg-gauge1').value);
+    const unit = parseFloat(document.getElementById('rg-unit1').value);
+    if (!rows || !gauge) { document.getElementById('r2l-result').style.display='none'; return; }
+    const rpi = getRowsPerInch(gauge, unit);
+    const inches = rows / rpi;
+    const cm = inches * 2.54;
+    document.getElementById('res-inches').textContent = inches.toFixed(2) + '"';
+    document.getElementById('res-cm').textContent = cm.toFixed(1) + ' cm';
+    document.getElementById('res-rpi').textContent = rpi.toFixed(2);
+    document.getElementById('r2l-formula').textContent = `Formula: ${rows} rows ÷ ${rpi.toFixed(2)} rows/inch = ${inches.toFixed(2)}"`;
+    document.getElementById('r2l-result').style.display = '';
+  }
+
+  function liveCalcLengthToRows() {
+    const length = parseFloat(document.getElementById('desired-length').value);
+    const gauge = parseFloat(document.getElementById('rg-gauge2').value);
+    const unit = parseFloat(document.getElementById('rg-unit2').value);
+    if (!length || !gauge) { document.getElementById('l2r-result').style.display='none'; return; }
+    const rpi = getRowsPerInch(gauge, unit);
+    const rowsNeeded = Math.ceil(length * rpi);
+    const actualLength = (rowsNeeded / rpi).toFixed(2);
+    document.getElementById('res-rows-needed').textContent = rowsNeeded;
+    document.getElementById('res-length-check').textContent = actualLength + '"';
+    document.getElementById('l2r-formula').textContent = `Formula: ${length}" × ${rpi.toFixed(2)} rows/inch = ${rowsNeeded} rows (rounded up)`;
+    document.getElementById('l2r-result').style.display = '';
+  }
+  </script>
+</body>
+</html>

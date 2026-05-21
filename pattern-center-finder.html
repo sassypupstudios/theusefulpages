@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Center Finder — Free Embroidery Tool | The Useful Pages</title>
+  <meta name="description" content="Find the center stitch of any cross-stitch pattern and get step-by-step fabric marking instructions. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-center-finder.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Center Finder</h1>
+      <p class="page-subtitle">Find your pattern's center stitch and get fabric marking instructions for accurate placement.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;align-items:end;">
+          <div>
+            <label class="label">Pattern Width (stitches)</label>
+            <input class="form-input" type="number" id="pw" placeholder="e.g. 140" min="1">
+          </div>
+          <div>
+            <label class="label">Pattern Height (stitches)</label>
+            <input class="form-input" type="number" id="ph" placeholder="e.g. 100" min="1">
+          </div>
+          <div>
+            <label class="label">Fabric Count</label>
+            <select class="form-select" id="fc">
+              <option value="11">11-count</option>
+              <option value="14" selected>14-count</option>
+              <option value="16">16-count</option>
+              <option value="18">18-count</option>
+              <option value="22">22-count</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" style="margin-top:1rem;" onclick="findCenter()">Find Center</button>
+        <div id="result" style="display:none;margin-top:1.5rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use This Tool</h2>
+        <p>Enter your pattern's stitch count (width × height). The tool shows you exactly which stitch is at the center — or, for even-count patterns, which two stitches straddle the center.</p>
+        <h3>Odd Count vs. Even Count</h3>
+        <p><strong>Odd stitch count:</strong> There is one exact center stitch. Place this stitch at the marked center of your fabric.</p>
+        <p><strong>Even stitch count:</strong> The center falls between two stitches. The two center stitches are identified. Start stitching to one side of the fabric center mark, or place your first stitch at the center of the fabric and work symmetrically outward.</p>
+        <h3>Starting Stitch Recommendation</h3>
+        <p>Many stitchers prefer not to start at the exact center — instead, start at a highly detailed area of the design, or at the top-left of the center section, to keep the pattern easy to read. The center coordinates help you count out to wherever you want to begin.</p>
+        <h3>From Fabric Center to Corner</h3>
+        <p>The calculator shows how many stitches to count from the fabric center to reach each corner of the pattern. This helps you verify there is enough fabric on all sides before you begin.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('pattern-center-finder.html');injectFooter();});
+
+    function findCenter() {
+      const pw = parseInt(document.getElementById('pw').value);
+      const ph = parseInt(document.getElementById('ph').value);
+      const fc = parseFloat(document.getElementById('fc').value);
+      if (!pw || !ph || pw<1 || ph<1) { alert('Please enter stitch counts.'); return; }
+
+      const wOdd = pw % 2 === 1;
+      const hOdd = ph % 2 === 1;
+
+      let colDesc, colDetail, rowDesc, rowDetail;
+      if (wOdd) {
+        const c = Math.ceil(pw/2);
+        colDesc = `Column ${c} (exact center stitch)`;
+        colDetail = `Odd width — stitch ${c} is the exact horizontal center.`;
+      } else {
+        const c1 = pw/2, c2 = pw/2+1;
+        colDesc = `Between columns ${c1} and ${c2}`;
+        colDetail = `Even width — center falls between stitches ${c1} and ${c2}. Place these equally on either side of fabric center.`;
+      }
+      if (hOdd) {
+        const r = Math.ceil(ph/2);
+        rowDesc = `Row ${r} (exact center stitch)`;
+        rowDetail = `Odd height — stitch ${r} is the exact vertical center.`;
+      } else {
+        const r1 = ph/2, r2 = ph/2+1;
+        rowDesc = `Between rows ${r1} and ${r2}`;
+        rowDetail = `Even height — center falls between stitches ${r1} and ${r2}. Place these equally above and below fabric center.`;
+      }
+
+      const wIn = (pw/fc).toFixed(2);
+      const hIn = (ph/fc).toFixed(2);
+      const halfW = Math.floor(pw/2);
+      const halfH = Math.floor(ph/2);
+
+      document.getElementById('result').style.display='';
+      document.getElementById('result').innerHTML=`
+        <div class="stat-grid" style="margin-bottom:1.5rem;">
+          <div class="stat-box"><div class="stat-label">Pattern Size</div><div class="stat-value">${pw} × ${ph} stitches</div></div>
+          <div class="stat-box"><div class="stat-label">Finished Size (${fc}-ct)</div><div class="stat-value">${wIn}" × ${hIn}"</div></div>
+          <div class="stat-box"><div class="stat-label">Horizontal Center</div><div class="stat-value">${wOdd ? 'Column '+Math.ceil(pw/2) : 'Between '+pw/2+' & '+(pw/2+1)}</div></div>
+          <div class="stat-box"><div class="stat-label">Vertical Center</div><div class="stat-value">${hOdd ? 'Row '+Math.ceil(ph/2) : 'Between '+ph/2+' & '+(ph/2+1)}</div></div>
+        </div>
+        <div class="table-wrap" style="margin-bottom:1.5rem;"><table class="data-table">
+          <thead><tr><th>Axis</th><th>Center Position</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Horizontal (columns)</td><td>${colDesc}</td><td>${colDetail}</td></tr>
+            <tr><td>Vertical (rows)</td><td>${rowDesc}</td><td>${rowDetail}</td></tr>
+          </tbody>
+        </table></div>
+        <div style="background:var(--surface-alt,rgba(99,102,241,.06));border:1px solid var(--border);border-radius:8px;padding:1rem;">
+          <strong>Fabric marking instructions:</strong>
+          <ol style="margin:.5rem 0 0 1.2rem;padding:0;line-height:1.8;">
+            <li>Fold fabric in half top-to-bottom, crease lightly. This line = horizontal center.</li>
+            <li>Fold in half left-to-right, crease lightly. Intersection = fabric center.</li>
+            <li>Mark center with a water-soluble pen or basting thread cross.</li>
+            <li>From center, count <strong>${halfW} stitches left</strong> and <strong>${halfW} stitches right</strong> to reach the pattern's left and right edges.</li>
+            <li>From center, count <strong>${halfH} stitches up</strong> and <strong>${halfH} stitches down</strong> to reach the pattern's top and bottom edges.</li>
+            <li>Verify at least 3" of fabric remains beyond the pattern edges on all sides.</li>
+          </ol>
+        </div>`;
+    }
+  </script>
+</body>
+</html>

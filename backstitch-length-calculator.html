@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backstitch Length Calculator — Free Embroidery Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate how much floss you need for backstitching outlines in cross-stitch. Enter outline length, stitch size, strands, and fabric count. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/backstitch-length-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Backstitch Length Calculator</h1>
+      <p class="page-subtitle">Estimate how much floss you need for backstitched outlines and detail lines.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Outline Length (inches)</label>
+            <input class="form-input" type="number" id="outline" placeholder="e.g. 12" min="0.1" step="0.1">
+          </div>
+          <div>
+            <label class="label">Fabric Count</label>
+            <select class="form-select" id="count" onchange="updateStitchSize()">
+              <option value="11">11-count Aida</option>
+              <option value="14" selected>14-count Aida</option>
+              <option value="16">16-count Aida</option>
+              <option value="18">18-count Aida</option>
+              <option value="22">22-count Aida</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Backstitch Stitch Length</label>
+            <select class="form-select" id="stitch-len">
+              <option value="quarter">1/4 of count square (finest)</option>
+              <option value="half" selected>1/2 of count square (standard)</option>
+              <option value="full">1 full count square (bold)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Strands Used</label>
+            <select class="form-select" id="strands">
+              <option value="1" selected>1 strand (fine outline)</option>
+              <option value="2">2 strands (bold outline)</option>
+            </select>
+          </div>
+        </div>
+        <div id="stitch-size-display" style="margin-top:.75rem;font-size:.9rem;color:var(--text-muted);"></div>
+        <button class="btn-primary" style="margin-top:1rem;" onclick="calc()">Calculate Floss Needed</button>
+        <div id="result" class="result-card" style="display:none;margin-top:1.5rem;"></div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+          <h3>Example Calculations</h3>
+          <div class="table-wrap">
+            <table class="data-table" id="examples-table">
+              <thead><tr><th>Outline</th><th>Count</th><th>Stitch</th><th>Strands</th><th>Length (in)</th><th>Skeins</th></tr></thead>
+              <tbody id="examples-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How Backstitch Floss Is Calculated</h2>
+        <p>The formula used:</p>
+        <p><strong>Length = (outline_inches ÷ stitch_size_inches) × 1.5 × strands</strong></p>
+        <p>The 1.5 multiplier accounts for thread travel on the back of the fabric between stitches. Backstitch typically uses about 15–25% more floss per project compared to the main cross-stitching.</p>
+        <h3>Backstitch Stitch Size</h3>
+        <p>Backstitch stitch length is usually described relative to the fabric count square:</p>
+        <ul>
+          <li><strong>1/4 square:</strong> Very fine, used for tiny detail (e.g. facial features on miniatures).</li>
+          <li><strong>1/2 square:</strong> Standard backstitch length for most outlines.</li>
+          <li><strong>1 full square:</strong> Bold outline, good for thick borders.</li>
+        </ul>
+        <h3>Measuring Outline Length</h3>
+        <p>On your printed pattern, measure the total length of all backstitch lines (in inches at finished size). Add up all outlines of the same color, then run the calculator separately for each color.</p>
+        <h3>Strands</h3>
+        <p>Most backstitch uses 1 strand on 14-count or higher. Use 2 strands for bold outlines or on 11-count Aida.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('backstitch-length-calculator.html');injectFooter();updateStitchSize();buildExamples();});
+
+    const SKEIN_IN = 314;
+
+    function getStitchSizeIn(count, stitchLen) {
+      const sq = 1/count;
+      if (stitchLen==='quarter') return sq/4;
+      if (stitchLen==='half') return sq/2;
+      return sq;
+    }
+
+    function updateStitchSize() {
+      const count = parseFloat(document.getElementById('count').value);
+      const el = document.getElementById('stitch-size-display');
+      el.textContent = `At ${count}-count: 1 square = ${(1/count).toFixed(4)}" | 1/2 square (standard) = ${(1/(count*2)).toFixed(4)}"`;
+    }
+
+    function calcBS(outlineIn, count, stitchLen, strands) {
+      const ss = getStitchSizeIn(count, stitchLen);
+      return (outlineIn / ss) * 1.5 * strands;
+    }
+
+    function calc() {
+      const outline = parseFloat(document.getElementById('outline').value);
+      const count = parseFloat(document.getElementById('count').value);
+      const stitchLen = document.getElementById('stitch-len').value;
+      const strands = parseFloat(document.getElementById('strands').value);
+      if (!outline || outline<=0) { alert('Please enter outline length.'); return; }
+      const lengthIn = calcBS(outline, count, stitchLen, strands);
+      const skeins = lengthIn / SKEIN_IN;
+      const labels = {quarter:'1/4 square',half:'1/2 square',full:'1 full square'};
+      document.getElementById('result').style.display='';
+      document.getElementById('result').innerHTML=`
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-label">Floss Length</div><div class="stat-value">${lengthIn.toFixed(0)}"</div></div>
+          <div class="stat-box"><div class="stat-label">Floss Length</div><div class="stat-value">${(lengthIn*2.54/100).toFixed(2)} m</div></div>
+          <div class="stat-box"><div class="stat-label">DMC Skeins</div><div class="stat-value">${skeins.toFixed(2)}</div></div>
+          <div class="stat-box"><div class="stat-label">Skeins to Buy</div><div class="stat-value">${Math.ceil(skeins)}</div></div>
+        </div>
+        <p style="margin-top:.75rem;font-size:.9rem;color:var(--text-muted);">Example: ${outline}" of backstitch on ${count}-count, ${labels[stitchLen]}, ${strands} strand${strands>1?'s':''} ≈ ${lengthIn.toFixed(0)}" ≈ ${Math.ceil(skeins)} skein${Math.ceil(skeins)>1?'s':''}. Note: backstitch adds ~15–25% more floss to a project.</p>`;
+    }
+
+    function buildExamples() {
+      const ex = [
+        [6,14,'half',1],[12,14,'half',1],[6,14,'half',2],[6,11,'half',2],
+        [12,18,'half',1],[6,22,'quarter',1],[12,14,'full',2]
+      ];
+      document.getElementById('examples-body').innerHTML = ex.map(([o,c,sl,str])=>{
+        const l = calcBS(o,c,sl,str);
+        const labels={quarter:'1/4 sq',half:'1/2 sq',full:'Full sq'};
+        return `<tr><td>${o}"</td><td>${c}-ct</td><td>${labels[sl]}</td><td>${str}</td><td>${l.toFixed(0)}</td><td>${Math.ceil(l/SKEIN_IN)}</td></tr>`;
+      }).join('');
+    }
+  </script>
+</body>
+</html>

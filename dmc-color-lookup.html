@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DMC Color Lookup — Free Embroidery Tool | The Useful Pages</title>
+  <meta name="description" content="Search and browse 80+ DMC embroidery floss colors with approximate swatches, color families, and favorites. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/dmc-color-lookup.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .swatch{display:inline-block;width:28px;height:28px;border-radius:4px;border:1px solid rgba(0,0,0,.2);vertical-align:middle;}
+    .fav-btn{cursor:pointer;background:none;border:none;font-size:1.2rem;padding:0 4px;color:var(--text-muted);}
+    .fav-btn.active{color:#f59e0b;}
+    #color-table tbody tr:hover{background:var(--surface-alt,rgba(99,102,241,.05));}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">DMC Color Lookup</h1>
+      <p class="page-subtitle">Search DMC floss colors by number or name. Save favorites. Filter by color family.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr auto auto auto;gap:.75rem;align-items:end;flex-wrap:wrap;">
+          <div>
+            <label class="label">Search (number or name)</label>
+            <input class="form-input" type="text" id="search" placeholder="e.g. 321 or red" oninput="renderTable()">
+          </div>
+          <div>
+            <label class="label">Color Family</label>
+            <select class="form-select" id="family" onchange="renderTable()">
+              <option value="">All Colors</option>
+              <option value="black">Blacks &amp; Whites</option>
+              <option value="gray">Grays</option>
+              <option value="red">Reds</option>
+              <option value="pink">Pinks &amp; Peach</option>
+              <option value="orange">Oranges</option>
+              <option value="yellow">Yellows</option>
+              <option value="green">Greens</option>
+              <option value="blue">Blues</option>
+              <option value="purple">Purples</option>
+              <option value="brown">Browns &amp; Tans</option>
+              <option value="neutral">Neutrals</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">&nbsp;</label>
+            <button class="btn-outline" onclick="filterFavs()">★ Favorites</button>
+          </div>
+          <div>
+            <label class="label">&nbsp;</label>
+            <button class="btn-outline" onclick="clearFavFilter()">Show All</button>
+          </div>
+        </div>
+        <p class="disclaimer" style="margin-top:.75rem;">CSS color swatches are approximate. Actual floss colors vary by lot and monitor.</p>
+        <div class="table-wrap" style="margin-top:1rem;">
+          <table class="data-table" id="color-table">
+            <thead><tr><th>Fav</th><th>Swatch</th><th>Number</th><th>Name</th><th>Family</th></tr></thead>
+            <tbody id="color-tbody"></tbody>
+          </table>
+        </div>
+        <div id="no-results" style="display:none;text-align:center;padding:2rem;color:var(--text-muted);">No colors match your search.</div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>About DMC Floss Colors</h2>
+        <p>DMC produces over 500 embroidery floss colors. This table includes 80+ of the most popular. Search by number (e.g. "321") or by name (e.g. "coral"). Filter by color family using the dropdown.</p>
+        <h3>Saving Favorites</h3>
+        <p>Click the star (☆) next to any color to save it as a favorite. Favorites are stored in your browser and persist between visits. Click "★ Favorites" to show only your saved colors.</p>
+        <h3>Color Families</h3>
+        <p>Use the color family filter to quickly browse a category. This is especially helpful when you need to find a specific shade of red, blue, or brown for your project.</p>
+        <h3>About the Swatches</h3>
+        <p>The color swatches shown are CSS approximations of the actual DMC floss colors. They are meant as a rough guide only — always refer to a physical DMC color card or the actual thread for accurate color matching. Colors vary significantly by monitor calibration and lot number.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('dmc-color-lookup.html');injectFooter();renderTable();});
+
+    // [number, name, hex, family]
+    const DMC = [
+      ['310','Black','#1a1a1a','black'],
+      ['Ecru','Ecru','#f0e0c0','neutral'],
+      ['White','White','#ffffff','black'],
+      ['B5200','Snow White','#f8f8ff','black'],
+      ['318','Steel Gray Lt','#aaaaaa','gray'],
+      ['414','Steel Gray Dk','#888888','gray'],
+      ['415','Pearl Gray','#c8c8c8','gray'],
+      ['762','Pearl Gray Vy Lt','#e8e8e8','gray'],
+      ['317','Pewter Gray','#777777','gray'],
+      ['3799','Pewter Gray Vy Dk','#444444','gray'],
+      ['321','Christmas Red','#c80000','red'],
+      ['498','Christmas Red Dk','#8b0000','red'],
+      ['666','Christmas Red Bright','#ff0000','red'],
+      ['304','Christmas Red Med','#aa0000','red'],
+      ['816','Garnet','#990000','red'],
+      ['815','Garnet Med','#880000','red'],
+      ['814','Garnet Dk','#660000','red'],
+      ['350','Coral Med','#dd4040','red'],
+      ['349','Coral Dk','#cc2020','red'],
+      ['351','Coral','#ff7055','pink'],
+      ['352','Coral Lt','#ff8070','pink'],
+      ['353','Peach','#ffc0a0','pink'],
+      ['754','Peach Lt','#ffd0b0','pink'],
+      ['3779','Terra Cotta Vy Lt','#ffb090','pink'],
+      ['224','Shell Pink Vy Lt','#f0c0b0','pink'],
+      ['223','Shell Pink Lt','#d09080','pink'],
+      ['3713','Salmon Vy Lt','#ffaaaa','pink'],
+      ['761','Salmon Lt','#ff9999','pink'],
+      ['760','Salmon','#ee7070','pink'],
+      ['550','Violet Vy Dk','#6600aa','purple'],
+      ['552','Violet Med','#8800cc','purple'],
+      ['553','Violet','#aa44cc','purple'],
+      ['554','Violet Lt','#cc88ee','purple'],
+      ['210','Lavender Med','#c080ff','purple'],
+      ['208','Lavender Vy Dk','#8040bb','purple'],
+      ['209','Lavender Dk','#aa60dd','purple'],
+      ['211','Lavender Lt','#ddb0ff','purple'],
+      ['327','Violet Dk','#5500aa','purple'],
+      ['333','Blue Violet Vy Dk','#440088','purple'],
+      ['311','Navy Blue Med','#003366','blue'],
+      ['336','Navy Blue','#003399','blue'],
+      ['322','Navy Blue Lt','#4466aa','blue'],
+      ['312','Baby Blue Vy Dk','#224488','blue'],
+      ['334','Baby Blue Med','#5577bb','blue'],
+      ['932','Antique Blue Lt','#8899bb','blue'],
+      ['931','Antique Blue Med','#667799','blue'],
+      ['930','Antique Blue Dk','#445577','blue'],
+      ['3755','Baby Blue','#88aadd','blue'],
+      ['827','Electric Blue Vy Lt','#aaccee','blue'],
+      ['813','Blue Lt','#99bbdd','blue'],
+      ['826','Blue Med','#5588cc','blue'],
+      ['825','Blue Dk','#2266bb','blue'],
+      ['701','Christmas Green Lt','#228b22','green'],
+      ['700','Christmas Green Bright','#006600','green'],
+      ['702','Kelly Green','#33aa33','green'],
+      ['703','Chartreuse','#66cc44','green'],
+      ['704','Chartreuse Bright','#88ee22','green'],
+      ['471','Avocado Green Vy Lt','#8fbc8f','green'],
+      ['470','Avocado Green Lt','#6aaa44','green'],
+      ['469','Avocado Green','#558833','green'],
+      ['937','Avocado Green Med','#446622','green'],
+      ['936','Avocado Green Vy Dk','#334411','green'],
+      ['988','Forest Green Med','#558844','green'],
+      ['987','Forest Green Dk','#336622','green'],
+      ['745','Yellow Pale Lt','#fffacd','yellow'],
+      ['744','Yellow Pale Med','#ffee88','yellow'],
+      ['743','Yellow Med','#ffd700','yellow'],
+      ['742','Tangerine Lt','#ffa040','orange'],
+      ['741','Tangerine Med','#ff8800','orange'],
+      ['740','Tangerine','#ff8000','orange'],
+      ['608','Orange Bright','#ff4500','orange'],
+      ['606','Orange Red Bright','#ff2200','orange'],
+      ['444','Lemon Dk','#f0c000','yellow'],
+      ['307','Lemon','#ffff00','yellow'],
+      ['726','Topaz Lt','#ffdf00','yellow'],
+      ['725','Topaz Med Lt','#ffcc00','yellow'],
+      ['973','Canary Bright','#ffff00','yellow'],
+      ['972','Canary Dk','#ffbb00','yellow'],
+      ['3820','Straw Dk','#daa520','yellow'],
+      ['3821','Straw','#e8b030','yellow'],
+      ['780','Topaz Vy Dk','#804000','brown'],
+      ['781','Topaz Dk','#904800','brown'],
+      ['433','Brown Med','#8b4513','brown'],
+      ['434','Brown Lt','#9a5020','brown'],
+      ['435','Brown Vy Lt','#a0522d','brown'],
+      ['436','Tan','#bc6830','brown'],
+      ['437','Tan Lt','#d2b48c','brown'],
+      ['739','Tan Ultra Vy Lt','#f5deb3','neutral'],
+      ['738','Tan Vy Lt','#e8c888','neutral'],
+      ['3371','Black Brown','#1a0a00','brown'],
+      ['838','Beige Brown Vy Dk','#4a2000','brown'],
+      ['839','Beige Brown Dk','#5a2800','brown'],
+      ['840','Beige Brown Med','#7a4400','brown'],
+      ['841','Beige Brown Lt','#aa7755','brown'],
+      ['842','Beige Brown Vy Lt','#ccaa88','brown'],
+      ['400','Mahogany Dk','#8b2000','brown'],
+      ['301','Mahogany Med','#a0522d','brown'],
+      ['3810','Turquoise Dk','#007080','blue'],
+      ['3811','Turquoise Vy Lt','#80d0d8','blue'],
+      ['3808','Turquoise Ultra Dk','#005566','blue'],
+    ];
+
+    let favFilter = false;
+    let FAVS = JSON.parse(localStorage.getItem('dmc_favs')||'[]');
+
+    function toggleFav(num) {
+      if (FAVS.includes(num)) FAVS = FAVS.filter(f=>f!==num);
+      else FAVS.push(num);
+      localStorage.setItem('dmc_favs', JSON.stringify(FAVS));
+      renderTable();
+    }
+    function filterFavs(){favFilter=true;renderTable();}
+    function clearFavFilter(){favFilter=false;renderTable();}
+
+    function renderTable() {
+      const q = document.getElementById('search').value.toLowerCase().trim();
+      const fam = document.getElementById('family').value;
+      let rows = DMC.filter(c=>{
+        if (favFilter && !FAVS.includes(c[0])) return false;
+        if (fam && c[3]!==fam) return false;
+        if (q && !c[0].toLowerCase().includes(q) && !c[1].toLowerCase().includes(q)) return false;
+        return true;
+      });
+      const tbody = document.getElementById('color-tbody');
+      if (rows.length===0) {
+        tbody.innerHTML='';
+        document.getElementById('no-results').style.display='';
+      } else {
+        document.getElementById('no-results').style.display='none';
+        tbody.innerHTML = rows.map(c=>{
+          const isFav = FAVS.includes(c[0]);
+          return `<tr>
+            <td><button class="fav-btn${isFav?' active':''}" onclick="toggleFav('${c[0]}')" title="${isFav?'Remove from favorites':'Add to favorites'}">${isFav?'★':'☆'}</button></td>
+            <td><span class="swatch" style="background:${c[2]};" title="${c[2]}"></span></td>
+            <td><strong>${c[0]}</strong></td>
+            <td>${c[1]}</td>
+            <td style="text-transform:capitalize;">${c[3]}</td>
+          </tr>`;
+        }).join('');
+      }
+    }
+  </script>
+</body>
+</html>

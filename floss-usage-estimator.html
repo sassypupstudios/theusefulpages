@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floss Usage Estimator — Free Embroidery Tool | The Useful Pages</title>
+  <meta name="description" content="Estimate how much embroidery floss you need for a color. Enter stitch count, fabric count, and strands to calculate length and DMC skeins needed. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/floss-usage-estimator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Floss Usage Estimator</h1>
+      <p class="page-subtitle">Calculate how much embroidery floss you need and how many DMC skeins to buy.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Number of Stitches (this color)</label>
+            <input class="form-input" type="number" id="stitches" placeholder="e.g. 500" min="1">
+          </div>
+          <div>
+            <label class="label">Fabric Count (stitches/inch)</label>
+            <select class="form-select" id="count">
+              <option value="11">11-count Aida</option>
+              <option value="14" selected>14-count Aida</option>
+              <option value="16">16-count Aida</option>
+              <option value="18">18-count Aida</option>
+              <option value="22">22-count Aida</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Strands Used</label>
+            <select class="form-select" id="strands">
+              <option value="1">1 strand</option>
+              <option value="2" selected>2 strands (most common)</option>
+              <option value="3">3 strands</option>
+              <option value="4">4 strands</option>
+              <option value="6">6 strands (full thread)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Buffer</label>
+            <select class="form-select" id="buffer">
+              <option value="1.2" selected>20% extra (recommended)</option>
+              <option value="1.0">No buffer</option>
+              <option value="1.1">10% extra</option>
+              <option value="1.3">30% extra (complex areas)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" style="margin-top:1rem;" onclick="estimate()">Estimate Floss</button>
+        <div id="result" class="result-card" style="display:none;margin-top:1.5rem;"></div>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+          <h3>Quick Examples</h3>
+          <div class="table-wrap">
+            <table class="data-table" id="example-table">
+              <thead><tr><th>Stitches</th><th>Count</th><th>Strands</th><th>Length (in)</th><th>Length (cm)</th><th>DMC Skeins</th></tr></thead>
+              <tbody id="example-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How Floss Usage Is Calculated</h2>
+        <p>Each cross-stitch requires thread to cover both diagonal legs of the X. The formula used here:</p>
+        <p><strong>Length = stitches × 2.5 × (1/count × 2) × strands × buffer</strong></p>
+        <p>Where <em>1/count × 2</em> converts stitch count to inches of fabric covered (each stitch covers two thread lengths at that count), and 2.5 is an empirical factor for thread travel and thread tension.</p>
+        <h3>DMC Skein Size</h3>
+        <p>A standard DMC skein is 8 meters = 314 inches. One skein typically covers 200–400 stitches depending on count and strands.</p>
+        <h3>Tips</h3>
+        <ul>
+          <li>Use 2 strands on 14-count Aida for standard coverage.</li>
+          <li>Use 1 strand on 18-count or 22-count for finer work.</li>
+          <li>Use 3 strands on 11-count for fuller coverage.</li>
+          <li>Always buy one extra skein of each color — dye lots can vary.</li>
+          <li>Add 20% buffer (already included) for thread starts, ends, and tension.</li>
+        </ul>
+        <h3>Note</h3>
+        <p>This is an estimate. Actual usage varies with your stitching tension, the direction you work, and whether you use a loop start method.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      injectNav('floss-usage-estimator.html');
+      injectFooter();
+      buildExamples();
+    });
+
+    const SKEIN_IN = 314; // 8m in inches
+
+    function calcFloss(stitches, count, strands, buffer) {
+      // Each cross stitch: thread length = 2.5 × stitch_size_in × 2 (two diagonals) × strands
+      const stitchSizeIn = 1 / count;
+      const lengthIn = stitches * 2.5 * stitchSizeIn * 2 * strands * buffer;
+      return lengthIn;
+    }
+
+    function estimate() {
+      const stitches = parseFloat(document.getElementById('stitches').value);
+      const count = parseFloat(document.getElementById('count').value);
+      const strands = parseFloat(document.getElementById('strands').value);
+      const buffer = parseFloat(document.getElementById('buffer').value);
+      if (!stitches || stitches <= 0) { alert('Please enter a stitch count.'); return; }
+      const lengthIn = calcFloss(stitches, count, strands, buffer);
+      const lengthCm = lengthIn * 2.54;
+      const skeins = lengthIn / SKEIN_IN;
+      const el = document.getElementById('result');
+      el.style.display = '';
+      el.innerHTML = `
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-label">Floss Length</div><div class="stat-value">${lengthIn.toFixed(0)}&quot;</div></div>
+          <div class="stat-box"><div class="stat-label">Floss Length</div><div class="stat-value">${(lengthCm/100).toFixed(2)} m</div></div>
+          <div class="stat-box"><div class="stat-label">DMC Skeins Needed</div><div class="stat-value">${skeins.toFixed(2)}</div></div>
+          <div class="stat-box"><div class="stat-label">Skeins to Buy</div><div class="stat-value">${Math.ceil(skeins)}</div></div>
+        </div>
+        <p style="margin-top:.75rem;font-size:.9rem;color:var(--text-muted);">Example: ${stitches} stitches on ${count}-count Aida with ${strands} strand${strands>1?'s':''} ≈ ${lengthIn.toFixed(0)}" ≈ ${Math.ceil(skeins)} skein${Math.ceil(skeins)>1?'s':''}.</p>`;
+    }
+
+    function buildExamples() {
+      const examples = [
+        [100,14,2],[200,14,2],[500,14,2],[1000,14,2],
+        [500,11,3],[500,18,1],[500,22,1],[200,14,3]
+      ];
+      const tbody = document.getElementById('example-body');
+      tbody.innerHTML = examples.map(([s,c,str])=>{
+        const l = calcFloss(s,c,str,1.2);
+        return `<tr><td>${s}</td><td>${c}-count</td><td>${str}</td><td>${l.toFixed(0)}</td><td>${(l*2.54).toFixed(0)}</td><td>${Math.ceil(l/SKEIN_IN)}</td></tr>`;
+      }).join('');
+    }
+  </script>
+</body>
+</html>

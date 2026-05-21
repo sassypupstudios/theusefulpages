@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Abbreviation Dictionary — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Look up any crochet abbreviation instantly. Searchable dictionary of 60+ crochet terms with full names and notes. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-abbreviation-dictionary.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Abbreviation Dictionary</h1>
+      <p class="page-subtitle">Search 60+ crochet abbreviations. Type an abbreviation or keyword to filter instantly.</p>
+      <div class="tool-card">
+        <input class="form-input" type="text" id="search" placeholder="Search abbreviation or name (e.g. dc, chain, slip...)" style="margin-bottom:1rem;" oninput="filterTable()">
+        <p id="count-label" style="margin-bottom:0.5rem;font-size:0.9rem;color:var(--text-muted)"></p>
+        <div class="table-wrap">
+          <table class="data-table" id="abbr-table">
+            <thead>
+              <tr><th>Abbreviation</th><th>Full Name</th><th>Notes</th></tr>
+            </thead>
+            <tbody id="abbr-body"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <p>Type any abbreviation (e.g. <strong>dc</strong>) or keyword (e.g. <strong>double</strong>) in the search box to filter the table instantly. Abbreviations follow standard US crochet terminology. UK terms differ — see our <a href="us-uk-crochet-terms-converter.html">US/UK Converter</a>.</p>
+        <h2>About Crochet Abbreviations</h2>
+        <p>Crochet patterns use standardized abbreviations to keep instructions concise. Most patterns include a key, but this dictionary covers the most commonly used terms across US patterns.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const CROCHET_ABBR = [
+    {abbr:'ch',name:'Chain',notes:'Foundation stitch; creates a series of loops'},
+    {abbr:'sl st',name:'Slip Stitch',notes:'Joining stitch; no height added'},
+    {abbr:'sc',name:'Single Crochet',notes:'Shortest standard stitch; US term'},
+    {abbr:'hdc',name:'Half Double Crochet',notes:'Intermediate height between sc and dc'},
+    {abbr:'dc',name:'Double Crochet',notes:'Most commonly used stitch'},
+    {abbr:'tr',name:'Treble Crochet',notes:'Also called triple crochet; taller than dc'},
+    {abbr:'dtr',name:'Double Treble Crochet',notes:'Yarn over 3 times before inserting hook'},
+    {abbr:'trtr',name:'Triple Treble Crochet',notes:'Yarn over 4 times; very tall stitch'},
+    {abbr:'ch sp',name:'Chain Space',notes:'The space created by a chain; work into this space'},
+    {abbr:'MC',name:'Main Color',notes:'Primary yarn color in a multicolor project'},
+    {abbr:'CC',name:'Contrast Color',notes:'Secondary yarn color; used for accents'},
+    {abbr:'rep',name:'Repeat',notes:'Work the instructions again as directed'},
+    {abbr:'pm',name:'Place Marker',notes:'Insert a stitch marker at this point'},
+    {abbr:'sm',name:'Slip Marker',notes:'Move the stitch marker from one needle/hook position to next'},
+    {abbr:'blo',name:'Back Loop Only',notes:'Insert hook through back loop only of the stitch'},
+    {abbr:'flo',name:'Front Loop Only',notes:'Insert hook through front loop only of the stitch'},
+    {abbr:'yo',name:'Yarn Over',notes:'Wrap yarn over hook; fundamental technique'},
+    {abbr:'sk',name:'Skip',notes:'Skip the indicated stitch(es) without working into them'},
+    {abbr:'sp',name:'Space',notes:'Work into the space, not the stitch top'},
+    {abbr:'tog',name:'Together',notes:'Used with stitch names; e.g., sc2tog = decrease'},
+    {abbr:'inc',name:'Increase',notes:'Work 2 stitches into the same stitch'},
+    {abbr:'dec',name:'Decrease',notes:'Work 2 stitches together to reduce stitch count'},
+    {abbr:'MR',name:'Magic Ring',notes:'Also called magic circle; adjustable starting ring'},
+    {abbr:'sc2tog',name:'Single Crochet 2 Together',notes:'Decrease: work 2 sc as one stitch'},
+    {abbr:'dc2tog',name:'Double Crochet 2 Together',notes:'Decrease: work 2 dc as one stitch'},
+    {abbr:'dc3tog',name:'Double Crochet 3 Together',notes:'Decrease: work 3 dc as one stitch'},
+    {abbr:'hdc2tog',name:'Half Double Crochet 2 Together',notes:'Decrease: work 2 hdc as one'},
+    {abbr:'cl',name:'Cluster',notes:'Multiple incomplete stitches joined at top; creates texture'},
+    {abbr:'fpdc',name:'Front Post Double Crochet',notes:'Work dc around the post from the front; creates raised texture'},
+    {abbr:'bpdc',name:'Back Post Double Crochet',notes:'Work dc around the post from the back'},
+    {abbr:'fpsc',name:'Front Post Single Crochet',notes:'Work sc around the post from the front'},
+    {abbr:'bpsc',name:'Back Post Single Crochet',notes:'Work sc around the post from the back'},
+    {abbr:'fptr',name:'Front Post Treble Crochet',notes:'Work tr around the post from the front'},
+    {abbr:'bptr',name:'Back Post Treble Crochet',notes:'Work tr around the post from the back'},
+    {abbr:'puff st',name:'Puff Stitch',notes:'Multiple hdc pulled together to form a puffy stitch'},
+    {abbr:'bobble st',name:'Bobble Stitch',notes:'Multiple dc worked into same stitch, joined at top'},
+    {abbr:'shell',name:'Shell Stitch',notes:'Multiple dc worked into same stitch or space'},
+    {abbr:'v-st',name:'V-Stitch',notes:'dc, ch1, dc all worked into same stitch or space'},
+    {abbr:'picot',name:'Picot',notes:'Decorative point; typically ch3, sl st in first ch'},
+    {abbr:'lp',name:'Loop',notes:'A loop of yarn on hook or in stitch'},
+    {abbr:'lps',name:'Loops',notes:'Plural of loop'},
+    {abbr:'st',name:'Stitch',notes:'A single crochet stitch'},
+    {abbr:'sts',name:'Stitches',notes:'Plural of stitch'},
+    {abbr:'rnd',name:'Round',notes:'One complete circuit when working in the round'},
+    {abbr:'rnds',name:'Rounds',notes:'Plural of round'},
+    {abbr:'row',name:'Row',notes:'One horizontal line of stitches worked back and forth'},
+    {abbr:'ch-X',name:'Chain X',notes:'A chain of a specific number; e.g., ch-3 = chain of 3'},
+    {abbr:'beg',name:'Beginning',notes:'Start of the row or pattern section'},
+    {abbr:'cont',name:'Continue',notes:'Keep working as established'},
+    {abbr:'rem',name:'Remaining',notes:'Stitches or rows left to work'},
+    {abbr:'RS',name:'Right Side',notes:'The public/front face of the work'},
+    {abbr:'WS',name:'Wrong Side',notes:'The back/private face of the work'},
+    {abbr:'tch',name:'Turning Chain',notes:'Chain(s) at start of row to match stitch height'},
+    {abbr:'approx',name:'Approximately',notes:'Measurement is not exact; close to this value'},
+    {abbr:'alt',name:'Alternate',notes:'Work every other stitch or row as indicated'},
+    {abbr:'ea',name:'Each',notes:'Work the instruction in each stitch'},
+    {abbr:'prev',name:'Previous',notes:'The row or stitch worked before the current one'},
+    {abbr:'bet',name:'Between',notes:'Work in the space between two stitches'},
+    {abbr:'blp',name:'Both Loops',notes:'Work through both loops of the stitch (default)'},
+    {abbr:'invisible dec',name:'Invisible Decrease',notes:'Decrease method that leaves no visible seam on RS'},
+    {abbr:'join',name:'Join',notes:'Connect two points; usually with a slip stitch'},
+    {abbr:'fasten off',name:'Fasten Off',notes:'Cut yarn and secure the last loop to end work'},
+    {abbr:'weave in ends',name:'Weave In Ends',notes:'Hide yarn tails by threading through finished work'},
+    {abbr:'turn',name:'Turn',notes:'Rotate work to begin next row in opposite direction'},
+  ];
+
+  function renderTable(data) {
+    const tbody = document.getElementById('abbr-body');
+    tbody.innerHTML = data.map(r =>
+      `<tr><td><strong>${escH(r.abbr)}</strong></td><td>${escH(r.name)}</td><td>${escH(r.notes)}</td></tr>`
+    ).join('');
+    document.getElementById('count-label').textContent = `Showing ${data.length} of ${CROCHET_ABBR.length} entries`;
+  }
+
+  function escH(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function filterTable() {
+    const q = document.getElementById('search').value.trim().toLowerCase();
+    if (!q) { renderTable(CROCHET_ABBR); return; }
+    renderTable(CROCHET_ABBR.filter(r =>
+      r.abbr.toLowerCase().includes(q) || r.name.toLowerCase().includes(q) || r.notes.toLowerCase().includes(q)
+    ));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('crochet-abbreviation-dictionary.html');
+    injectFooter();
+    renderTable(CROCHET_ABBR);
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Chart Symbol Lookup — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Look up standard knitting chart symbols with RS and WS meanings. Searchable reference for 40+ symbols including cables, decreases, and increases. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-chart-symbol-lookup.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .sym-cell { font-size:1.5rem; font-weight:700; text-align:center; color:var(--primary); min-width:2rem; display:inline-block; }
+    .rs-badge { background:#d1fae5; color:#065f46; padding:1px 6px; border-radius:4px; font-size:0.75rem; }
+    .ws-badge { background:#dbeafe; color:#1e40af; padding:1px 6px; border-radius:4px; font-size:0.75rem; }
+    [data-theme="dark"] .rs-badge { background:#064e3b; color:#6ee7b7; }
+    [data-theme="dark"] .ws-badge { background:#1e3a5f; color:#93c5fd; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Chart Symbol Lookup</h1>
+      <p class="page-subtitle">Standard knitting chart symbols with Right Side (RS) and Wrong Side (WS) meanings. Searchable reference.</p>
+      <div class="tool-card">
+        <input class="form-input" type="text" id="search" placeholder="Search symbol name or meaning (e.g. knit, decrease, cable...)" style="margin-bottom:1rem;" oninput="filterTable()">
+        <p id="count-label" style="font-size:0.9rem;color:var(--text-muted);margin-bottom:0.75rem;"></p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Symbol</th><th>Name / Abbr</th><th><span class="rs-badge">RS</span> Meaning</th><th><span class="ws-badge">WS</span> Meaning</th></tr>
+            </thead>
+            <tbody id="symbol-body"></tbody>
+          </table>
+        </div>
+        <p class="disclaimer" style="margin-top:1rem;">Knitting chart symbols vary between publishers. Always refer to the symbol key provided in your specific pattern. These follow common international conventions.</p>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Read Knitting Charts</h2>
+        <p>Knitting charts are read from bottom to top, mirroring how the knitting grows. For flat knitting, <strong>RS rows are read right to left</strong> and <strong>WS rows are read left to right</strong>. For knitting in the round, all rows are read right to left.</p>
+        <p>Each square in the chart represents one stitch. The symbol in the square tells you what to do on the RS. When you turn and work the WS, the same symbol has a different meaning (e.g., a knit symbol on RS = purl on WS).</p>
+        <h2>Cable Symbols</h2>
+        <p>Cable symbols show multiple stitches as a group. The direction of the cable (front vs. back) indicates which way the cable twists. Cables with a "/" lean right; cables with a "\" lean left.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const SYMBOLS = [
+    {sym:'□',name:'Knit / k',rs:'Knit',ws:'Purl',cat:'basic'},
+    {sym:'•',name:'Purl / p',rs:'Purl',ws:'Knit',cat:'basic'},
+    {sym:'—',name:'Purl (alt symbol)',rs:'Purl',ws:'Knit',cat:'basic'},
+    {sym:'O',name:'Yarn Over / yo',rs:'Yarn over (new stitch, eyelet hole)',ws:'Yarn over',cat:'increase'},
+    {sym:'/',name:'K2tog (right lean)',rs:'Knit 2 together (right-leaning decrease)',ws:'SSP (purl version of ssk)',cat:'decrease'},
+    {sym:'\\',name:'SSK (left lean)',rs:'Slip, slip, knit (left-leaning decrease)',ws:'P2tog',cat:'decrease'},
+    {sym:'X',name:'Slip Stitch / sl',rs:'Slip 1 stitch purlwise with yarn in back',ws:'Slip 1 stitch purlwise with yarn in front',cat:'basic'},
+    {sym:'⊠',name:'Knit TBL / k tbl',rs:'Knit through back loop',ws:'Purl through back loop',cat:'basic'},
+    {sym:'⊡',name:'Purl TBL / p tbl',rs:'Purl through back loop',ws:'Knit through back loop',cat:'basic'},
+    {sym:'△',name:'Make 1 Left / m1l',rs:'Make 1 Left (left-leaning increase)',ws:'Make 1 Left purlwise',cat:'increase'},
+    {sym:'▷',name:'Make 1 Right / m1r',rs:'Make 1 Right (right-leaning increase)',ws:'Make 1 Right purlwise',cat:'increase'},
+    {sym:'V',name:'KFB / kfb',rs:'Knit front and back (increase)',ws:'Purl front and back',cat:'increase'},
+    {sym:'⋀',name:'Double Decrease / sk2p',rs:'Slip 1, k2tog, pass slipped stitch over',ws:'P3tog',cat:'decrease'},
+    {sym:'⋁',name:'Centered Double Decrease / s2kp',rs:'Slip 2 together knitwise, k1, pass 2 slipped over',ws:'Centered double decrease purlwise',cat:'decrease'},
+    {sym:'⬡',name:'Bobble',rs:'Work 5 stitches into 1 then turn back to 1',ws:'Purl the bobble stitch',cat:'texture'},
+    {sym:'⬬',name:'Nupp',rs:'Work (k1, yo) × 4, k1 into same stitch',ws:'Purl 9 stitches together tightly',cat:'texture'},
+    {sym:'≡',name:'Garter Stitch / g st',rs:'Purl (creates garter ridge)',ws:'Knit',cat:'texture'},
+    {sym:'◁',name:'No Stitch',rs:'No stitch; placeholder to align chart columns',ws:'No stitch; skip this square',cat:'basic'},
+    {sym:'|',name:'Knit (chart side bars)',rs:'Knit on RS',ws:'Purl on WS',cat:'basic'},
+    {sym:'↑',name:'Elongated Stitch',rs:'Knit wrapping yarn twice around needle',ws:'Drop extra loop to elongate',cat:'texture'},
+    {sym:'C2B',name:'Cable 2 Back / c2b',rs:'Slip 1 to CN hold back, k1, k1 from CN (right-twist)',ws:'Work WS sts across cable',cat:'cable'},
+    {sym:'C2F',name:'Cable 2 Front / c2f',rs:'Slip 1 to CN hold front, k1, k1 from CN (left-twist)',ws:'Work WS sts across cable',cat:'cable'},
+    {sym:'C4B',name:'Cable 4 Back / c4b',rs:'Slip 2 to CN hold back, k2, k2 from CN',ws:'Purl across cable stitches',cat:'cable'},
+    {sym:'C4F',name:'Cable 4 Front / c4f',rs:'Slip 2 to CN hold front, k2, k2 from CN',ws:'Purl across cable stitches',cat:'cable'},
+    {sym:'C6B',name:'Cable 6 Back / c6b',rs:'Slip 3 to CN hold back, k3, k3 from CN',ws:'Purl across cable stitches',cat:'cable'},
+    {sym:'C6F',name:'Cable 6 Front / c6f',rs:'Slip 3 to CN hold front, k3, k3 from CN',ws:'Purl across cable stitches',cat:'cable'},
+    {sym:'T4B',name:'Twist 4 Back (with purl)',rs:'Slip 2 to CN hold back, k2, p2 from CN',ws:'Work sts as they appear',cat:'cable'},
+    {sym:'T4F',name:'Twist 4 Front (with purl)',rs:'Slip 2 to CN hold front, p2, k2 from CN',ws:'Work sts as they appear',cat:'cable'},
+    {sym:'///',name:'K3tog',rs:'Knit 3 together (2-st decrease)',ws:'P3tog',cat:'decrease'},
+    {sym:'\\\\\\',name:'SSSK',rs:'Slip 3 knitwise one at a time, k3tog tbl (2-st decrease)',ws:'—',cat:'decrease'},
+    {sym:'⊕',name:'Marker',rs:'Place or slip stitch marker',ws:'Slip marker',cat:'basic'},
+    {sym:'W',name:'Wrap and Turn / w&t',rs:'Wrap yarn around next stitch and turn work (short rows)',ws:'Work wrap together with wrapped stitch',cat:'shaping'},
+    {sym:'⟨⟩',name:'Repeat Box',rs:'Work stitches inside brackets the specified number of times',ws:'Work stitches inside brackets the specified number of times',cat:'basic'},
+    {sym:'▣',name:'Selvedge Stitch',rs:'Slip 1 knitwise (or knit 1) for neat edge',ws:'Purl 1 for neat edge',cat:'basic'},
+    {sym:'∅',name:'Double Yarn Over / dyo',rs:'Yarn over twice around needle',ws:'(K1, p1) into the double yarn over',cat:'increase'},
+    {sym:'↗',name:'Inc Row / lifted increase',rs:'Lift right loop of stitch below and knit it',ws:'Lift loop and purl',cat:'increase'},
+    {sym:'↙',name:'Left Lifted Increase',rs:'Lift left loop of stitch below and knit it',ws:'Lift loop and purl',cat:'increase'},
+    {sym:'⊟',name:'Brioche Knit / brk',rs:'Knit stitch together with its yarn over',ws:'Brp (brioche purl)',cat:'texture'},
+    {sym:'⊞',name:'Brioche Purl / brp',rs:'Purl stitch together with its yarn over',ws:'Brk (brioche knit)',cat:'texture'},
+    {sym:'⟲',name:'Work in Round Symbol',rs:'Continue working in rounds',ws:'N/A (in-the-round)',cat:'basic'},
+  ];
+
+  function escH(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function renderTable(data) {
+    document.getElementById('count-label').textContent = `Showing ${data.length} of ${SYMBOLS.length} symbols`;
+    document.getElementById('symbol-body').innerHTML = data.map(r =>
+      `<tr>
+        <td style="text-align:center;"><span class="sym-cell">${escH(r.sym)}</span></td>
+        <td><strong>${escH(r.name)}</strong></td>
+        <td>${escH(r.rs)}</td>
+        <td>${escH(r.ws)}</td>
+      </tr>`
+    ).join('');
+  }
+
+  function filterTable() {
+    const q = document.getElementById('search').value.trim().toLowerCase();
+    if (!q) { renderTable(SYMBOLS); return; }
+    renderTable(SYMBOLS.filter(r =>
+      r.name.toLowerCase().includes(q) || r.rs.toLowerCase().includes(q) ||
+      r.ws.toLowerCase().includes(q) || r.cat.toLowerCase().includes(q) || r.sym.toLowerCase().includes(q)
+    ));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('knitting-chart-symbol-lookup.html');
+    injectFooter();
+    renderTable(SYMBOLS);
+  });
+  </script>
+</body>
+</html>

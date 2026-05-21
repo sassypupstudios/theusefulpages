@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Rewrite Helper for Beginners — Free Pattern Tool | The Useful Pages</title>
+  <meta name="description" content="Paste a compact crochet or knitting pattern row and see it rewritten in plain English. Great for beginners learning abbreviations. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-rewrite-helper.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .mode-toggle { display:flex; gap:0.5rem; margin-bottom:1rem; }
+    .mode-btn { flex:1; padding:0.5rem; border-radius:9px; border:1.5px solid var(--border); background:var(--bg-secondary); color:var(--text-muted); cursor:pointer; font-weight:600; font-size:0.9rem; transition:all 0.15s; }
+    .mode-btn.active { border-color:var(--primary); background:var(--primary); color:#fff; }
+    .side-by-side { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:0.75rem; }
+    @media(max-width:600px){ .side-by-side{grid-template-columns:1fr;} }
+    .result-panel { background:var(--bg-secondary); border:1.5px solid var(--border); border-radius:12px; padding:1rem; }
+    .result-panel h3 { font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin:0 0 0.65rem; }
+    .original-text { font-family:'Courier New',monospace; font-size:0.9rem; color:var(--text); line-height:1.6; white-space:pre-wrap; word-break:break-word; }
+    .expanded-text { font-size:0.9rem; color:var(--text); line-height:1.8; }
+    .expanded-text .stitch-exp { color:var(--primary); font-weight:500; }
+    .unknown-abbrev { background:rgba(237,137,54,0.15); color:#c05621; border-radius:3px; padding:1px 4px; font-weight:700; }
+    [data-theme="dark"] .unknown-abbrev { color:#fbd38d; }
+    .dict-table-wrap { max-height:280px; overflow-y:auto; margin-top:0.5rem; }
+    .example-btns { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.5rem; }
+    .ex-btn { padding:0.25rem 0.6rem; border-radius:14px; border:1.5px solid var(--border); background:var(--bg-secondary); font-size:0.76rem; cursor:pointer; color:var(--text-muted); font-family:'Courier New',monospace; transition:all 0.15s; white-space:nowrap; }
+    .ex-btn:hover { border-color:var(--primary); color:var(--primary); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Rewrite Helper for Beginners</h1>
+      <p class="page-subtitle">Paste a compact pattern row and get a plain-English expansion — perfect for learning what abbreviations actually mean.</p>
+
+      <div class="tool-card">
+        <div class="mode-toggle">
+          <button class="mode-btn active" id="modeCrochet" onclick="setMode('crochet')">Crochet</button>
+          <button class="mode-btn" id="modeKnitting" onclick="setMode('knitting')">Knitting</button>
+        </div>
+
+        <div class="label">Compact Pattern Row</div>
+        <textarea class="form-textarea" id="patInput" rows="4" placeholder="e.g. sc in next 4, [dc, ch1, dc] in next, sc in next 4"></textarea>
+
+        <div class="example-btns" id="exampleBtns"></div>
+
+        <button class="btn btn-primary" style="margin-top:0.85rem;" onclick="expand()">Rewrite in Plain English</button>
+
+        <div id="resultArea" style="display:none;">
+          <div class="side-by-side">
+            <div class="result-panel">
+              <h3>Original (Compact)</h3>
+              <div class="original-text" id="origPanel"></div>
+            </div>
+            <div class="result-panel">
+              <h3>Plain English Expansion</h3>
+              <div class="expanded-text" id="expandedPanel"></div>
+            </div>
+          </div>
+          <div id="unknownNote" style="display:none;margin-top:0.6rem;font-size:0.83rem;color:#c05621;"></div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">Built-in Abbreviation Dictionary</h2>
+        <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:0.5rem;">These abbreviations are recognized and expanded to plain English. Unknown terms will be highlighted in orange.</p>
+        <div class="dict-table-wrap">
+          <table class="data-table" id="dictTable">
+            <thead><tr><th>Abbrev</th><th>Plain English</th></tr></thead>
+            <tbody id="dictBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    const DICTS = {
+      crochet: [
+        ['sl st','slip stitch'],['slst','slip stitch'],['ss','slip stitch'],
+        ['ch','chain'],['sc','single crochet'],['hdc','half double crochet'],
+        ['dc','double crochet'],['tr','treble crochet'],['dtr','double treble crochet'],
+        ['tc','treble crochet'],
+        ['sc2tog','single crochet 2 together (decrease)'],
+        ['dc2tog','double crochet 2 together (decrease)'],
+        ['hdc2tog','half double crochet 2 together (decrease)'],
+        ['inc','increase (2 stitches in 1)'],['dec','decrease (2 stitches together)'],
+        ['fpdc','front post double crochet'],['bpdc','back post double crochet'],
+        ['fpsc','front post single crochet'],['bpsc','back post single crochet'],
+        ['fptr','front post treble crochet'],['bptr','back post treble crochet'],
+        ['blo','back loop only'],['flo','front loop only'],
+        ['yo','yarn over'],['sp','space'],['st','stitch'],['sts','stitches'],
+        ['sk','skip'],['skip','skip the next stitch'],['join','join with a slip stitch'],
+        ['turn','turn your work'],['pm','place marker'],['sm','slip marker'],
+        ['rnd','round'],['rnds','rounds'],['rep','repeat'],['beg','beginning'],
+        ['rem','remaining'],['tog','together'],['approx','approximately'],
+        ['mr','magic ring'],['mc','main color'],['cc','contrasting color'],
+        ['ws','wrong side'],['rs','right side'],
+        ['pb','place bead'],['ch-sp','chain space'],
+        ['pc','popcorn stitch'],['bob','bobble stitch'],
+        ['pic','picot'],['cl','cluster'],
+      ],
+      knitting: [
+        ['k','knit'],['p','purl'],['k2tog','knit 2 together (right-leaning decrease)'],
+        ['p2tog','purl 2 together (decrease)'],['ssk','slip, slip, knit (left-leaning decrease)'],
+        ['sl1','slip 1 stitch'],['sl2','slip 2 stitches'],
+        ['kfb','knit into front and back (increase)'],['pfb','purl into front and back (increase)'],
+        ['m1','make 1 stitch (increase)'],['m1l','make 1 left (increase)'],
+        ['m1r','make 1 right (increase)'],['m1p','make 1 purlwise'],
+        ['yo','yarn over'],['psso','pass slipped stitch over'],
+        ['skpo','slip, knit, pass over'],['tbl','through back loop'],
+        ['ktbl','knit through back loop'],['bo','bind off'],['co','cast on'],
+        ['pm','place marker'],['sm','slip marker'],['rm','remove marker'],
+        ['cn','cable needle'],['mb','make bobble'],
+        ['c4f','cable 4 forward (hold 2 sts on cable needle in front)'],
+        ['c4b','cable 4 back (hold 2 sts on cable needle in back)'],
+        ['c6f','cable 6 forward'],['c6b','cable 6 back'],
+        ['wyif','with yarn in front'],['wyib','with yarn in back'],
+        ['rep','repeat'],['beg','beginning'],['rem','remaining'],
+        ['ws','wrong side'],['rs','right side'],['lh','left-hand needle'],
+        ['rh','right-hand needle'],['st','stitch'],['sts','stitches'],
+        ['tog','together'],['approx','approximately'],
+        ['mc','main color'],['cc','contrasting color'],
+      ]
+    };
+
+    const EXAMPLES = {
+      crochet: [
+        'sc in next 4, [dc, ch1, dc] in next, sc in next 4',
+        'ch 3, dc in same st, *ch1, sk 1, dc in next* rep 5 times, sl st to top of beg ch-3',
+        'hdc2tog, hdc in next 3, inc, hdc in next 3, hdc2tog',
+        'fpdc around next st, bpdc around next st, rep across',
+        'sc in blo of each st across',
+      ],
+      knitting: [
+        'k2, p2, rep to last 2, k2',
+        'ssk, k to last 2, k2tog',
+        'k1, *yo, k2tog* rep to last, k1',
+        'c4f, k4, c4b',
+        'kfb, k to last, kfb',
+      ]
+    };
+
+    let mode = 'crochet';
+
+    function setMode(m) {
+      mode = m;
+      document.getElementById('modeCrochet').className='mode-btn'+(m==='crochet'?' active':'');
+      document.getElementById('modeKnitting').className='mode-btn'+(m==='knitting'?' active':'');
+      renderExamples(); renderDict();
+      document.getElementById('resultArea').style.display='none';
+    }
+
+    function renderExamples() {
+      document.getElementById('exampleBtns').innerHTML = EXAMPLES[mode].map(e=>
+        `<span class="ex-btn" onclick="useEx(this)">${escHtml(e)}</span>`
+      ).join('');
+    }
+
+    function useEx(el) {
+      document.getElementById('patInput').value = el.textContent;
+      expand();
+    }
+
+    function renderDict() {
+      const dict = DICTS[mode];
+      document.getElementById('dictBody').innerHTML = dict.map(([abbr, exp])=>
+        `<tr><td style="font-family:'Courier New',monospace;font-weight:700;">${escHtml(abbr)}</td><td>${escHtml(exp)}</td></tr>`
+      ).join('');
+    }
+
+    function expand() {
+      const raw = document.getElementById('patInput').value.trim();
+      if (!raw) return;
+      const dict = DICTS[mode];
+      // Sort by length descending so longer matches take priority
+      const sorted = [...dict].sort((a,b)=>b[0].length-a[0].length);
+
+      const ra = document.getElementById('resultArea');
+      document.getElementById('origPanel').textContent = raw;
+
+      // Tokenize: split on commas and preserve structure
+      // We'll do a replacement pass on the raw text
+      let expanded = raw;
+      // Handle "X times" first — expand repeats
+      expanded = expandRepeats(expanded);
+
+      // Now replace abbreviations
+      let result = expandAbbrevs(expanded, sorted);
+
+      document.getElementById('expandedPanel').innerHTML = formatExpanded(result.text);
+
+      const unknownNote = document.getElementById('unknownNote');
+      if (result.unknown.length > 0) {
+        unknownNote.style.display='block';
+        unknownNote.innerHTML = `<strong>Unrecognized terms</strong> (highlighted in orange): ${result.unknown.map(u=>`<code>${escHtml(u)}</code>`).join(', ')} — these may be custom abbreviations not in our dictionary.`;
+      } else {
+        unknownNote.style.display='none';
+      }
+
+      ra.style.display='block';
+    }
+
+    function expandRepeats(text) {
+      // Expand [A, B] X times → A, B, A, B, … (up to 6 times for readability)
+      text = text.replace(/\[([^\]]+)\]\s*(\d+)\s*times?/gi, (match, inner, num) => {
+        const n = Math.min(parseInt(num), 8);
+        const parts = [];
+        for (let i=0;i<n;i++) parts.push(inner.trim());
+        return parts.join(', ') + ` [×${num}]`;
+      });
+      text = text.replace(/\*([^*]+)\*\s*(?:rep(?:eat)?\s+)?(\d+)\s*times?/gi, (match, inner, num) => {
+        const n = Math.min(parseInt(num), 8);
+        const parts = [];
+        for (let i=0;i<n;i++) parts.push(inner.trim());
+        return parts.join(', ') + ` [×${num}]`;
+      });
+      return text;
+    }
+
+    function expandAbbrevs(text, dict) {
+      const unknown = [];
+      // Split into segments by comma to process each instruction
+      const segments = text.split(',').map(s=>s.trim());
+      const expandedSegments = segments.map(seg => {
+        let s = seg;
+        // Apply dictionary replacements (case-insensitive)
+        for (const [abbr, exp] of dict) {
+          const re = new RegExp('(?<![a-z])' + abbr.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '(?![a-z])', 'gi');
+          s = s.replace(re, exp);
+        }
+        // Check for remaining all-caps short words that weren't expanded
+        const leftover = s.match(/\b[a-z]{2,6}\b/gi);
+        // We check original segment for un-expanded abbreviations
+        const origWords = seg.match(/\b[a-zA-Z]{2,8}\b/g) || [];
+        origWords.forEach(w => {
+          const lw = w.toLowerCase();
+          if (!dict.some(([a])=>a===lw) && /^[a-z]{2,6}$/i.test(w) && !/^\d/.test(w)) {
+            // Only flag if it still looks like an abbreviation (mostly uppercase or short)
+            if (w === w.toUpperCase() && w.length >= 2 && w.length <= 6) {
+              if (!unknown.includes(w)) unknown.push(w);
+            }
+          }
+        });
+        return s;
+      });
+      return { text: expandedSegments.join('. '), unknown };
+    }
+
+    function formatExpanded(text) {
+      // Capitalize sentences and clean up
+      let t = text.replace(/\.\s+/g, '.\n').trim();
+      t = t.replace(/(\. ?|\n)([a-z])/g, (m,p,c)=>p+c.toUpperCase());
+      t = t.charAt(0).toUpperCase()+t.slice(1);
+      if (!t.endsWith('.')) t += '.';
+      return escHtml(t).replace(/\n/g,'<br>');
+    }
+
+    function escHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      injectNav('pattern-rewrite-helper.html');
+      injectFooter();
+      renderExamples(); renderDict();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Gauge Swatch Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate your knitting gauge from a swatch and adjust your cast-on count to match a pattern. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-gauge-swatch-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Gauge Swatch Calculator</h1>
+      <p class="page-subtitle">Measure your swatch, get your gauge, and adjust your cast-on count to match any pattern.</p>
+      <div class="tool-card">
+        <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;border-bottom:2px solid var(--border);padding-bottom:0;">
+          <button class="btn-primary" id="tab-swatch" onclick="switchTab('swatch')" style="border-radius:4px 4px 0 0;">Measure Swatch</button>
+          <button class="btn-outline" id="tab-adjust" onclick="switchTab('adjust')" style="border-radius:4px 4px 0 0;">Adjust for Pattern</button>
+        </div>
+
+        <!-- Tab 1: Swatch Measurement -->
+        <div id="panel-swatch">
+          <p style="color:var(--text-muted);margin-bottom:1rem;">Enter your swatch measurements to calculate your gauge.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Stitches counted</label>
+              <input class="form-input" type="number" id="sw-sts" min="1" placeholder="e.g. 22">
+            </div>
+            <div>
+              <label class="label">Rows counted</label>
+              <input class="form-input" type="number" id="sw-rows" min="1" placeholder="e.g. 28">
+            </div>
+            <div>
+              <label class="label">Measured width (inches)</label>
+              <input class="form-input" type="number" id="sw-width" min="0.5" step="0.25" placeholder="e.g. 4">
+            </div>
+            <div>
+              <label class="label">Measured height (inches)</label>
+              <input class="form-input" type="number" id="sw-height" min="0.5" step="0.25" placeholder="e.g. 4">
+            </div>
+          </div>
+          <button class="btn-primary" onclick="calcSwatch()" style="margin-top:1rem;">Calculate Gauge</button>
+          <div id="swatch-result" style="display:none;margin-top:1.5rem;">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="stat-value" id="r-spi"></div>
+                <div class="stat-label">Stitches / inch</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-rpi"></div>
+                <div class="stat-label">Rows / inch</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-s4"></div>
+                <div class="stat-label">Stitches per 4"</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-r4"></div>
+                <div class="stat-label">Rows per 4"</div>
+              </div>
+            </div>
+            <div class="result-card" style="margin-top:1rem;">
+              <p style="margin:0;font-size:0.9rem;color:var(--text-muted);" id="r-swatch-note"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Pattern Adjustment -->
+        <div id="panel-adjust" style="display:none;">
+          <p style="color:var(--text-muted);margin-bottom:1rem;">Compare your gauge to a pattern's stated gauge and find your adjusted cast-on.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Pattern gauge (sts per 4")</label>
+              <input class="form-input" type="number" id="pat-g" min="1" step="0.5" placeholder="e.g. 20">
+            </div>
+            <div>
+              <label class="label">Your gauge (sts per 4")</label>
+              <input class="form-input" type="number" id="my-g" min="1" step="0.5" placeholder="e.g. 22">
+            </div>
+            <div>
+              <label class="label">Pattern cast-on stitches</label>
+              <input class="form-input" type="number" id="pat-co" min="1" placeholder="e.g. 120">
+            </div>
+            <div>
+              <label class="label">Desired finished width (inches)</label>
+              <input class="form-input" type="number" id="des-w" min="1" step="0.5" placeholder="e.g. 18">
+            </div>
+          </div>
+          <button class="btn-primary" onclick="calcAdjust()" style="margin-top:1rem;">Calculate Adjustment</button>
+          <div id="adjust-result" style="display:none;margin-top:1.5rem;">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="stat-value" id="r-adj-sts"></div>
+                <div class="stat-label">Adjusted Cast-On</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-adj-diff"></div>
+                <div class="stat-label">Gauge Difference</div>
+              </div>
+            </div>
+            <div class="result-card" style="margin-top:1rem;">
+              <p style="margin:0;font-size:0.95rem;" id="r-adj-note"></p>
+            </div>
+            <div class="result-card" style="margin-top:0.75rem;background:var(--bg-secondary);">
+              <p style="margin:0;font-size:0.9rem;color:var(--text-muted);" id="r-adj-advice"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <h3>Measuring Your Swatch</h3>
+        <ul>
+          <li>Knit a swatch at least 6"×6" using your project yarn and needles in the stated stitch pattern.</li>
+          <li>Wash and block the swatch before measuring — many yarns change size significantly after washing.</li>
+          <li>Place the swatch flat. Measure from the center, avoiding the edges (which are less accurate).</li>
+          <li>Count stitches and rows within a 4" area for the most accurate result.</li>
+        </ul>
+        <h3>Adjusting for a Pattern</h3>
+        <ul>
+          <li>Patterns state gauge as "X stitches over 4 inches" — enter that in the Pattern Gauge field.</li>
+          <li>Enter your swatch gauge in the Your Gauge field.</li>
+          <li>Enter either the pattern's cast-on count or your desired finished width.</li>
+          <li>The calculator will tell you how many stitches to cast on to achieve the correct size.</li>
+        </ul>
+        <h3>What the Percentage Difference Means</h3>
+        <ul>
+          <li>0%: Your gauge matches exactly — use the pattern as written.</li>
+          <li>+5% or more: Your gauge is tighter — try one needle size larger.</li>
+          <li>-5% or more: Your gauge is looser — try one needle size smaller.</li>
+          <li>Differences over 10% may affect drape and fabric quality even after adjustment.</li>
+        </ul>
+        <p class="disclaimer">Results are estimates. Gauge, yarn, and needle type affect actual results. Always swatch before starting a garment.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('knitting-gauge-swatch-calculator.html');injectFooter();});
+
+    function switchTab(tab){
+      document.getElementById('panel-swatch').style.display = tab==='swatch' ? 'block' : 'none';
+      document.getElementById('panel-adjust').style.display = tab==='adjust' ? 'block' : 'none';
+      document.getElementById('tab-swatch').className = tab==='swatch' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('tab-adjust').className = tab==='adjust' ? 'btn-primary' : 'btn-outline';
+    }
+
+    function calcSwatch(){
+      const sts  = parseFloat(document.getElementById('sw-sts').value);
+      const rows = parseFloat(document.getElementById('sw-rows').value);
+      const w    = parseFloat(document.getElementById('sw-width').value);
+      const h    = parseFloat(document.getElementById('sw-height').value);
+      if([sts,rows,w,h].some(v=>isNaN(v)||v<=0)){alert('Please fill in all four fields.');return;}
+      const spi = sts/w;
+      const rpi = rows/h;
+      document.getElementById('r-spi').textContent = spi.toFixed(2);
+      document.getElementById('r-rpi').textContent = rpi.toFixed(2);
+      document.getElementById('r-s4').textContent  = (spi*4).toFixed(1);
+      document.getElementById('r-r4').textContent  = (rpi*4).toFixed(1);
+      document.getElementById('r-swatch-note').textContent =
+        `Your gauge: ${(spi*4).toFixed(1)} sts × ${(rpi*4).toFixed(1)} rows over 4 inches. `+
+        `Patterns typically state gauge over 4" — use these numbers to compare.`;
+      document.getElementById('swatch-result').style.display='block';
+    }
+
+    function calcAdjust(){
+      const patG = parseFloat(document.getElementById('pat-g').value);
+      const myG  = parseFloat(document.getElementById('my-g').value);
+      const patCO= parseFloat(document.getElementById('pat-co').value);
+      const desW = parseFloat(document.getElementById('des-w').value);
+      if(isNaN(patG)||isNaN(myG)||patG<=0||myG<=0){alert('Please enter both gauge values.');return;}
+      if(isNaN(patCO)&&isNaN(desW)){alert('Please enter a pattern cast-on count or desired width.');return;}
+
+      const patSPI = patG/4;
+      const mySPI  = myG/4;
+      let adjSts, finW;
+      if(!isNaN(desW)&&desW>0){
+        finW = desW;
+        adjSts = Math.round(finW * mySPI);
+      } else {
+        finW = patCO/patSPI;
+        adjSts = Math.round(finW * mySPI);
+      }
+      const pct = ((myG - patG)/patG*100);
+      const pctStr = (pct>=0?'+':'')+pct.toFixed(1)+'%';
+      let advice='';
+      if(Math.abs(pct)<3) advice='Your gauge is very close to the pattern gauge — the pattern adjusts minimally.';
+      else if(pct>0) advice='Your gauge is tighter than the pattern (more stitches per inch). Try going up a needle size, or use this adjusted cast-on.';
+      else advice='Your gauge is looser than the pattern (fewer stitches per inch). Try going down a needle size, or use this adjusted cast-on.';
+
+      document.getElementById('r-adj-sts').textContent  = adjSts;
+      document.getElementById('r-adj-diff').textContent = pctStr;
+      document.getElementById('r-adj-note').textContent =
+        `Cast on ${adjSts} stitches to achieve approximately ${finW.toFixed(1)}" at your gauge of ${myG} sts/4".`;
+      document.getElementById('r-adj-advice').textContent = advice;
+      document.getElementById('adjust-result').style.display='block';
+    }
+  </script>
+</body>
+</html>

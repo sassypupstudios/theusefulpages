@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time to Make Calculator — Free Craft Business Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate how long it will take to make a set of handmade items given daily work hours. Plan craft fair prep and production deadlines. Free — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/time-to-make-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Time to Make Calculator</h1>
+      <p class="page-subtitle">Find out how many days it will take to make a target number of items given your available daily work hours.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" style="margin-bottom:1.25rem;">
+          <button class="tab-btn active" onclick="showTTM('days-to-deadline')">How long will this take?</button>
+          <button class="tab-btn" onclick="showTTM('items-by-date')">How many can I make by a date?</button>
+        </div>
+
+        <!-- HOW LONG -->
+        <div id="days-to-deadline">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Items to make</label>
+              <input type="number" id="ttm-qty" class="form-input" placeholder="e.g. 50" min="1">
+            </div>
+            <div>
+              <label class="label">Minutes per item</label>
+              <input type="number" id="ttm-mpi" class="form-input" placeholder="e.g. 30" min="1">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Hours available per day</label>
+              <input type="number" id="ttm-hpd" class="form-input" placeholder="e.g. 2" min="0.25" step="0.25">
+            </div>
+            <div>
+              <label class="label">Work days per week</label>
+              <input type="number" id="ttm-dpw" class="form-input" value="5" min="1" max="7">
+            </div>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label class="label">Start date (optional)</label>
+            <input type="date" id="ttm-start" class="form-input" style="max-width:200px;">
+          </div>
+          <button class="btn-primary" onclick="calcHowLong()">Calculate</button>
+          <div id="ttm-result1" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+        </div>
+
+        <!-- HOW MANY BY DATE -->
+        <div id="items-by-date" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Deadline / event date</label>
+              <input type="date" id="ibd-deadline" class="form-input">
+            </div>
+            <div>
+              <label class="label">Minutes per item</label>
+              <input type="number" id="ibd-mpi" class="form-input" placeholder="e.g. 30" min="1">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Hours available per day</label>
+              <input type="number" id="ibd-hpd" class="form-input" placeholder="e.g. 2" min="0.25" step="0.25">
+            </div>
+            <div>
+              <label class="label">Work days per week</label>
+              <input type="number" id="ibd-dpw" class="form-input" value="5" min="1" max="7">
+            </div>
+          </div>
+          <button class="btn-primary" onclick="calcHowMany()">Calculate</button>
+          <div id="ttm-result2" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this calculator</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Use this tool to plan your production schedule before a craft fair, holiday rush, or wholesale order. Time how long one item takes to make, then enter your available daily hours and this tool tells you exactly when you'll finish — or how many items you can realistically complete by a deadline.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Time yourself making one item first for the most accurate result</li>
+          <li>Build in buffer time — don't schedule every available minute</li>
+          <li>Use this alongside the Batch Production Calculator to account for batch efficiency</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Finish dates are calculated as calendar days, skipping non-work days based on your days-per-week setting.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function showTTM(id) {
+    ['days-to-deadline','items-by-date'].forEach(t => document.getElementById(t).style.display = t===id?'':'none');
+    document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i===(id==='days-to-deadline'?0:1)));
+  }
+
+  function addWorkDays(startDate, workDays, daysPerWeek) {
+    let d = new Date(startDate);
+    let added = 0;
+    const workDayRatio = daysPerWeek / 7;
+    while (added < workDays) {
+      d.setDate(d.getDate() + 1);
+      const dow = d.getDay();
+      if (daysPerWeek >= 7) { added++; }
+      else if (daysPerWeek >= 6 && dow !== 0) { added++; }
+      else if (dow !== 0 && dow !== 6) { added++; }
+    }
+    return d;
+  }
+
+  function countWorkDays(start, end, daysPerWeek) {
+    let d = new Date(start);
+    const e = new Date(end);
+    let count = 0;
+    while (d <= e) {
+      const dow = d.getDay();
+      if (daysPerWeek >= 7) count++;
+      else if (daysPerWeek >= 6 && dow !== 0) count++;
+      else if (dow !== 0 && dow !== 6) count++;
+      d.setDate(d.getDate() + 1);
+    }
+    return count;
+  }
+
+  function calcHowLong() {
+    const qty = parseInt(document.getElementById('ttm-qty').value);
+    const mpi = parseFloat(document.getElementById('ttm-mpi').value);
+    const hpd = parseFloat(document.getElementById('ttm-hpd').value);
+    const dpw = parseInt(document.getElementById('ttm-dpw').value) || 5;
+    const startStr = document.getElementById('ttm-start').value;
+    if (!qty || !mpi || !hpd) { alert('Enter items, minutes per item, and hours per day.'); return; }
+    const totalMinutes = qty * mpi;
+    const totalHours = totalMinutes / 60;
+    const workDaysNeeded = Math.ceil(totalHours / hpd);
+    const calendarDays = Math.ceil(workDaysNeeded / (dpw / 7));
+    let finishStr = '';
+    if (startStr) {
+      const finish = addWorkDays(startStr, workDaysNeeded, dpw);
+      finishStr = `<div class="stat-box"><div class="stat-label">Finish Date</div><div class="stat-value">${finish.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</div></div>`;
+    }
+    const el = document.getElementById('ttm-result1');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Total Time</div><div class="stat-value">${totalHours.toFixed(1)} hrs</div></div>
+      <div class="stat-box"><div class="stat-label">Work Days Needed</div><div class="stat-value">${workDaysNeeded}</div></div>
+      <div class="stat-box"><div class="stat-label">Calendar Days</div><div class="stat-value">~${calendarDays}</div></div>
+      <div class="stat-box"><div class="stat-label">Items/Day</div><div class="stat-value">${(hpd*60/mpi).toFixed(1)}</div></div>
+      ${finishStr}
+    </div>`;
+  }
+
+  function calcHowMany() {
+    const deadline = document.getElementById('ibd-deadline').value;
+    const mpi = parseFloat(document.getElementById('ibd-mpi').value);
+    const hpd = parseFloat(document.getElementById('ibd-hpd').value);
+    const dpw = parseInt(document.getElementById('ibd-dpw').value) || 5;
+    if (!deadline || !mpi || !hpd) { alert('Enter a deadline, minutes per item, and hours per day.'); return; }
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const workDays = countWorkDays(today, new Date(deadline), dpw);
+    const totalMinutes = workDays * hpd * 60;
+    const itemsCount = Math.floor(totalMinutes / mpi);
+    const el = document.getElementById('ttm-result2');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Work Days Left</div><div class="stat-value">${workDays}</div></div>
+      <div class="stat-box"><div class="stat-label">Available Hours</div><div class="stat-value">${(workDays*hpd).toFixed(1)} hrs</div></div>
+      <div class="stat-box"><div class="stat-label">Items You Can Make</div><div class="stat-value">${itemsCount}</div></div>
+      <div class="stat-box"><div class="stat-label">Items/Day</div><div class="stat-value">${(hpd*60/mpi).toFixed(1)}</div></div>
+    </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('time-to-make-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

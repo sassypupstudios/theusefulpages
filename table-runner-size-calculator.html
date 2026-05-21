@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table Runner Size Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate table runner dimensions and fabric yardage. Enter your table size and desired overhang to get runner length, width suggestions, and total yardage. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/table-runner-size-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Table Runner Size Calculator</h1>
+      <p class="page-subtitle">Find the perfect runner dimensions and fabric yardage for any table.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div style="grid-column:1/-1;">
+            <label class="label">Table Preset</label>
+            <select class="form-select" id="table-preset" onchange="applyTablePreset()">
+              <option value="">— Select a preset or enter manually —</option>
+              <option value="60,30">Standard Dining (60" × 30")</option>
+              <option value="72,36">Large Dining (72" × 36")</option>
+              <option value="84,40">Extra Long Dining (84" × 40")</option>
+              <option value="96,42">Banquet Table (96" × 42")</option>
+              <option value="48,22">Coffee Table (48" × 22")</option>
+              <option value="54,16">Console Table (54" × 16")</option>
+              <option value="36,18">Small Console (36" × 18")</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Table Length (inches)</label>
+            <input class="form-input" type="number" id="tbl-l" min="1" step="0.5" placeholder="e.g. 72" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Table Width (inches)</label>
+            <input class="form-input" type="number" id="tbl-w" min="1" step="0.5" placeholder="e.g. 36" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Overhang Each End (inches)</label>
+            <select class="form-select" id="overhang" onchange="calculate()">
+              <option value="6">6" (minimal)</option>
+              <option value="8" selected>8" (standard)</option>
+              <option value="10">10"</option>
+              <option value="12">12" (generous)</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+          <div id="overhang-custom-wrap" style="display:none;">
+            <label class="label">Custom Overhang (inches)</label>
+            <input class="form-input" type="number" id="overhang-custom" min="0" step="0.5" placeholder="e.g. 9" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Seam Allowance</label>
+            <select class="form-select" id="sa" onchange="calculate()">
+              <option value="0.5" selected>½" (standard)</option>
+              <option value="0.625">⅝"</option>
+              <option value="1">1"</option>
+            </select>
+          </div>
+          <div style="grid-column:1/-1;">
+            <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+              <input type="checkbox" id="backing" onchange="calculate()" style="width:1rem;height:1rem;">
+              <span class="label" style="margin:0;">Include backing fabric yardage</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="result-area" style="display:none;">
+          <div class="result-card">
+            <div class="stat-grid" id="stat-grid"></div>
+          </div>
+          <div id="width-suggestions" style="margin-top:1rem;"></div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Table Runner Size Calculator</h2>
+        <p>Select a table preset or enter your table's length and width manually. Choose your desired overhang on each end and a seam allowance. The calculator shows your finished runner dimensions, suggested widths, and how much fabric to buy.</p>
+        <h3>Runner Width Guide</h3>
+        <ul>
+          <li><strong>⅓ of table width</strong> is the classic proportion (e.g., 12" runner on a 36" table).</li>
+          <li><strong>Narrow (10–12")</strong> works well for console and sideboard tables.</li>
+          <li><strong>Wide (16–20")</strong> creates a bold statement on large dining tables.</li>
+        </ul>
+        <h3>Standard Table & Runner Reference</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Table Type</th><th>Table Size</th><th>Runner Length</th><th>Runner Width</th></tr></thead>
+            <tbody>
+              <tr><td>Dining (seats 4)</td><td>60" × 30"</td><td>76" (8" overhang)</td><td>10–14"</td></tr>
+              <tr><td>Dining (seats 6)</td><td>72" × 36"</td><td>88"</td><td>12–16"</td></tr>
+              <tr><td>Dining (seats 8)</td><td>84" × 40"</td><td>100"</td><td>14–18"</td></tr>
+              <tr><td>Coffee Table</td><td>48" × 22"</td><td>64"</td><td>7–10"</td></tr>
+              <tr><td>Console Table</td><td>54" × 16"</td><td>70"</td><td>10–14"</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('table-runner-size-calculator.html'); injectFooter(); });
+
+    function applyTablePreset() {
+      const v = document.getElementById('table-preset').value;
+      if (!v) return;
+      const [l, w] = v.split(',').map(Number);
+      document.getElementById('tbl-l').value = l;
+      document.getElementById('tbl-w').value = w;
+      calculate();
+    }
+
+    document.getElementById('overhang').addEventListener('change', function() {
+      document.getElementById('overhang-custom-wrap').style.display = this.value === 'custom' ? '' : 'none';
+      calculate();
+    });
+
+    function getOverhang() {
+      const sel = document.getElementById('overhang').value;
+      if (sel === 'custom') return parseFloat(document.getElementById('overhang-custom').value) || 0;
+      return parseFloat(sel);
+    }
+
+    function toYards(inches) { return (inches / 36).toFixed(3); }
+
+    function calculate() {
+      const tblL = parseFloat(document.getElementById('tbl-l').value);
+      const tblW = parseFloat(document.getElementById('tbl-w').value);
+      const overhang = getOverhang();
+      const sa = parseFloat(document.getElementById('sa').value);
+      const backing = document.getElementById('backing').checked;
+
+      if (!tblL || !tblW || tblL <= 0 || tblW <= 0) {
+        document.getElementById('result-area').style.display = 'none'; return;
+      }
+
+      const finishedL = tblL + 2 * overhang;
+      const suggestedNarrow = Math.round(tblW / 3);
+      const suggestedStd = Math.round(tblW * 0.4);
+      const suggestedWide = Math.round(tblW / 2);
+
+      const cutL = finishedL + 2 * sa;
+      const cutWNarrow = suggestedNarrow + 2 * sa;
+      const cutWStd = suggestedStd + 2 * sa;
+
+      // Yardage for standard width (most common)
+      const yardsMain = parseFloat(toYards(cutL));
+      const totalYards = yardsMain;
+
+      const stats = [
+        { label: 'Finished Runner Length', value: finishedL.toFixed(1) + '"' },
+        { label: 'Overhang Each End', value: overhang + '"' },
+        { label: 'Cut Length (with SA)', value: cutL.toFixed(1) + '"' },
+        { label: 'Suggested Narrow Width (⅓)', value: suggestedNarrow + '" finished / ' + cutWNarrow.toFixed(1) + '" cut' },
+        { label: 'Suggested Standard Width (40%)', value: suggestedStd + '" finished / ' + cutWStd.toFixed(1) + '" cut' },
+        { label: 'Suggested Wide Width (½)', value: suggestedWide + '" finished' },
+        { label: 'Fabric Yardage Needed', value: totalYards.toFixed(2) + ' yd (for 1 runner)' },
+      ];
+
+      if (backing) {
+        stats.push({ label: 'Backing Yardage', value: totalYards.toFixed(2) + ' yd' });
+        stats.push({ label: 'Total with Backing', value: (totalYards * 2).toFixed(2) + ' yd' });
+      }
+
+      const grid = document.getElementById('stat-grid');
+      grid.innerHTML = stats.map(s => `<div class="stat-box"><div class="stat-label">${s.label}</div><div class="stat-value">${s.value}</div></div>`).join('');
+      document.getElementById('result-area').style.display = '';
+    }
+  </script>
+</body>
+</html>

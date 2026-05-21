@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Row Counter — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="A simple tap-to-count row counter for knitting and crochet. Save up to 5 named counters with target rows and progress tracking. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/row-counter.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .counter-card {
+      background: var(--bg-secondary);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .counter-card.active-counter { border-color: var(--primary); }
+    .counter-name-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+    .counter-name-input { flex: 1; font-size: 1rem; font-weight: 600; background: transparent; border: none; border-bottom: 1px solid var(--border); padding: 0.25rem 0; color: var(--text); outline: none; }
+    .counter-name-input:focus { border-bottom-color: var(--primary); }
+    .count-display { font-size: 5rem; font-weight: 700; color: var(--primary); text-align: center; line-height: 1; margin: 0.5rem 0; user-select: none; }
+    .count-display.complete { color: #38a169; }
+    .btn-row-counter { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin: 0.75rem 0; }
+    .btn-counter-main {
+      min-width: 80px;
+      min-height: 80px;
+      font-size: 2rem;
+      font-weight: 700;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.1s, opacity 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-counter-main:active { transform: scale(0.92); opacity: 0.85; }
+    .btn-plus { background: var(--primary); color: #fff; width: 100px; height: 100px; font-size: 2.5rem; }
+    .btn-minus { background: var(--bg); border: 2px solid var(--border) !important; color: var(--text-muted); }
+    .btn-counter-sm { padding: 0.4rem 0.85rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-secondary); color: var(--text-muted); cursor: pointer; font-size: 0.82rem; font-weight: 500; transition: all 0.15s; }
+    .btn-counter-sm:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-delete-counter { border-color: #e53e3e; color: #e53e3e; }
+    .btn-delete-counter:hover { background: #e53e3e; color: #fff; }
+    .progress-wrap { margin-top: 0.5rem; }
+    .progress-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-top: 0.35rem; }
+    .progress-fill { height: 100%; background: var(--primary); border-radius: 4px; transition: width 0.3s; }
+    .progress-fill.complete { background: #38a169; }
+    .target-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+    .target-row input { width: 70px; padding: 0.25rem 0.4rem; border-radius:6px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 0.85rem; text-align: center; }
+    .add-counter-area { text-align: center; padding: 1rem; }
+    .max-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+    .empty-state { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Row Counter</h1>
+      <p class="page-subtitle">Tap the big button to count rows. Save up to 5 named counters with target tracking — all saved automatically.</p>
+      <div class="tool-card" style="padding:1rem;">
+        <div id="countersArea"></div>
+        <div class="add-counter-area">
+          <button class="btn btn-primary" onclick="addCounter()" id="addBtn">+ Add Counter</button>
+          <div class="max-note" id="maxNote" style="display:none;">Maximum of 5 counters reached.</div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Tap the large <strong>+</strong> button to count up one row or round.</li>
+          <li>Use the <strong>−</strong> button to undo the last count.</li>
+          <li>Give your counter a name (e.g., "Left Sleeve" or "Body").</li>
+          <li>Set a <strong>target row count</strong> to see a progress bar.</li>
+          <li>Up to <strong>5 counters</strong> can be saved at once — great for tracking multiple pieces.</li>
+          <li>All counters are saved automatically to your browser — they'll still be here when you return.</li>
+          <li>Use <strong>Reset</strong> to set a counter back to 0, or <strong>Delete</strong> to remove it.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    const MAX_COUNTERS = 5;
+    const STORAGE_KEY = 'tup_row_counters';
+
+    function loadCounters() {
+      try {
+        const d = localStorage.getItem(STORAGE_KEY);
+        return d ? JSON.parse(d) : [];
+      } catch(e) { return []; }
+    }
+
+    function saveCounters(counters) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(counters));
+    }
+
+    let counters = loadCounters();
+
+    function renderAll() {
+      const area = document.getElementById('countersArea');
+      const addBtn = document.getElementById('addBtn');
+      const maxNote = document.getElementById('maxNote');
+
+      if (counters.length === 0) {
+        area.innerHTML = '<div class="empty-state">No counters yet. Add one below to get started!</div>';
+      } else {
+        area.innerHTML = counters.map((c, i) => renderCounter(c, i)).join('');
+      }
+
+      const atMax = counters.length >= MAX_COUNTERS;
+      addBtn.style.display = atMax ? 'none' : 'inline-flex';
+      maxNote.style.display = atMax ? 'block' : 'none';
+    }
+
+    function renderCounter(c, i) {
+      const target = c.target || 0;
+      const count = c.count || 0;
+      const complete = target > 0 && count >= target;
+      const pct = target > 0 ? Math.min(100, Math.round((count / target) * 100)) : 0;
+      const name = c.name || `Counter ${i + 1}`;
+
+      return `<div class="counter-card${complete ? '' : ''}" id="cc-${i}">
+        <div class="counter-name-row">
+          <input class="counter-name-input" type="text" value="${name.replace(/"/g,'&quot;')}" placeholder="Project name…" onchange="updateName(${i}, this.value)" oninput="updateName(${i}, this.value)">
+          <button class="btn-counter-sm btn-delete-counter" onclick="deleteCounter(${i})">Delete</button>
+        </div>
+        <div class="count-display${complete ? ' complete' : ''}" id="cd-${i}">${count}</div>
+        <div class="btn-row-counter">
+          <button class="btn-counter-main btn-minus" onclick="decrement(${i})" aria-label="Decrease">−</button>
+          <button class="btn-counter-main btn-plus" onclick="increment(${i})" aria-label="Increase">+</button>
+        </div>
+        <div style="display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.5rem;">
+          <button class="btn-counter-sm" onclick="resetCounter(${i})">Reset</button>
+        </div>
+        <div class="target-row">
+          <label style="white-space:nowrap;">Target rows:</label>
+          <input type="number" min="0" step="1" value="${target || ''}" placeholder="—" onchange="updateTarget(${i}, this.value)">
+          ${target > 0 ? `<span style="margin-left:auto;">${count}/${target} (${pct}%)</span>` : ''}
+        </div>
+        ${target > 0 ? `<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill${complete ? ' complete' : ''}" style="width:${pct}%"></div></div></div>` : ''}
+        ${complete ? `<p style="text-align:center;color:#38a169;font-weight:700;font-size:0.9rem;margin-top:0.5rem;">Target reached!</p>` : ''}
+      </div>`;
+    }
+
+    function increment(i) {
+      counters[i].count = (counters[i].count || 0) + 1;
+      saveCounters(counters);
+      renderAll();
+    }
+
+    function decrement(i) {
+      if ((counters[i].count || 0) > 0) {
+        counters[i].count = counters[i].count - 1;
+        saveCounters(counters);
+        renderAll();
+      }
+    }
+
+    function resetCounter(i) {
+      counters[i].count = 0;
+      saveCounters(counters);
+      renderAll();
+    }
+
+    function updateName(i, val) {
+      counters[i].name = val;
+      saveCounters(counters);
+    }
+
+    function updateTarget(i, val) {
+      const n = parseInt(val);
+      counters[i].target = isNaN(n) || n < 0 ? 0 : n;
+      saveCounters(counters);
+      renderAll();
+    }
+
+    function deleteCounter(i) {
+      counters.splice(i, 1);
+      saveCounters(counters);
+      renderAll();
+    }
+
+    function addCounter() {
+      if (counters.length >= MAX_COUNTERS) return;
+      counters.push({ name: '', count: 0, target: 0 });
+      saveCounters(counters);
+      renderAll();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('row-counter.html');
+      injectFooter();
+      if (counters.length === 0) {
+        counters.push({ name: 'My Project', count: 0, target: 0 });
+        saveCounters(counters);
+      }
+      renderAll();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hook & Needle Size Converter — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Combined crochet hook and knitting needle size converter. Look up any size across US, metric, and UK systems for both hooks and needles. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/hook-needle-size-converter.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tab-bar{display:flex;gap:0.5rem;margin-bottom:1.5rem;}
+    .tab-btn{padding:0.5rem 1.25rem;border-radius:6px;border:2px solid var(--border);background:transparent;cursor:pointer;font-weight:600;color:var(--text-muted);transition:all .2s;}
+    .tab-btn.active{background:var(--primary);border-color:var(--primary);color:#fff;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Hook & Needle Size Converter</h1>
+      <p class="page-subtitle">Find any crochet hook or knitting needle size across US, metric, and UK systems.</p>
+      <div class="tool-card">
+
+        <h2 style="font-size:1.1rem;margin-bottom:1rem;">Find My Size</h2>
+        <p style="margin-bottom:0.75rem;color:var(--text-muted);font-size:0.95rem;">Type any size — US letter, metric mm, or UK number — to find equivalents across both systems.</p>
+        <div style="display:flex;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap;">
+          <input class="form-input" type="text" id="find-input" placeholder="e.g. G/6, 4, 8, 5mm…" oninput="findSize()" style="flex:1;min-width:200px;">
+          <button class="btn-ghost" onclick="document.getElementById('find-input').value='';document.getElementById('find-results').innerHTML='';document.getElementById('find-results').style.display='none';">Clear</button>
+        </div>
+        <div id="find-results" style="display:none;margin-bottom:1.5rem;"></div>
+
+        <div class="tab-bar">
+          <button class="tab-btn active" onclick="switchTab('hooks',this)">Crochet Hooks</button>
+          <button class="tab-btn" onclick="switchTab('needles',this)">Knitting Needles</button>
+        </div>
+
+        <div id="tab-hooks" class="tab-panel active">
+          <input class="form-input" type="text" id="search-hooks" placeholder="Filter crochet hooks…" oninput="filterHooks()" style="margin-bottom:1rem;">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>US Size</th><th>Metric (mm)</th><th>UK / Canadian</th></tr></thead>
+              <tbody id="hooks-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="tab-needles" class="tab-panel">
+          <input class="form-input" type="text" id="search-needles" placeholder="Filter knitting needles…" oninput="filterNeedles()" style="margin-bottom:1rem;">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>US Size</th><th>Metric (mm)</th><th>UK / Canadian</th></tr></thead>
+              <tbody id="needles-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Tool</h2>
+        <ul>
+          <li><strong>Find My Size:</strong> Type any size in any system into the search box and instantly see matches across both crochet hooks and knitting needles, in all three measurement systems.</li>
+          <li>Switch between the <strong>Crochet Hooks</strong> and <strong>Knitting Needles</strong> tabs to browse full reference tables.</li>
+          <li>Use the filter boxes inside each tab to narrow down rows quickly.</li>
+        </ul>
+        <h2>Hooks vs. Needles — What Sizes Overlap?</h2>
+        <p>Crochet hooks and knitting needles share the same metric (mm) shaft diameter system, so a 5mm hook and a 5mm (US8) needle are the same diameter. However, US numbering differs between the two tools — a "G/6" crochet hook is 4mm, while a "US6" knitting needle is also 4mm (they match!).</p>
+        <ul>
+          <li>UK/Canadian numbers are different for hooks vs. needles — always verify by mm.</li>
+          <li>Steel crochet hooks use a separate numbering system not shown in the main table.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('hook-needle-size-converter.html');injectFooter();init();});
+
+    const hooks = [
+      {us:'B/1',    mm:2.25, uk:14},
+      {us:'C/2',    mm:2.75, uk:12},
+      {us:'D/3',    mm:3.25, uk:10},
+      {us:'E/4',    mm:3.5,  uk:9},
+      {us:'F/5',    mm:3.75, uk:8},
+      {us:'G/6',    mm:4.0,  uk:8},
+      {us:'H/8',    mm:5.0,  uk:6},
+      {us:'I/9',    mm:5.5,  uk:5},
+      {us:'J/10',   mm:6.0,  uk:4},
+      {us:'K/10.5', mm:6.5,  uk:3},
+      {us:'L/11',   mm:8.0,  uk:0},
+      {us:'M-N/13', mm:9.0,  uk:'—'},
+      {us:'N/15',   mm:10.0, uk:'000'},
+      {us:'P/Q',    mm:15.0, uk:'—'},
+      {us:'Q',      mm:16.0, uk:'—'},
+      {us:'S',      mm:19.0, uk:'—'},
+    ];
+
+    const needles = [
+      {us:'0',    mm:2.0,   uk:14},
+      {us:'1',    mm:2.25,  uk:13},
+      {us:'2',    mm:2.75,  uk:12},
+      {us:'3',    mm:3.25,  uk:10},
+      {us:'4',    mm:3.5,   uk:9},
+      {us:'5',    mm:3.75,  uk:9},
+      {us:'6',    mm:4.0,   uk:8},
+      {us:'7',    mm:4.5,   uk:7},
+      {us:'8',    mm:5.0,   uk:6},
+      {us:'9',    mm:5.5,   uk:5},
+      {us:'10',   mm:6.0,   uk:4},
+      {us:'10.5', mm:6.5,   uk:3},
+      {us:'11',   mm:8.0,   uk:0},
+      {us:'13',   mm:9.0,   uk:'00'},
+      {us:'15',   mm:10.0,  uk:'000'},
+      {us:'17',   mm:12.75, uk:'—'},
+      {us:'19',   mm:15.0,  uk:'—'},
+      {us:'35',   mm:19.0,  uk:'—'},
+      {us:'50',   mm:25.0,  uk:'—'},
+    ];
+
+    function init(){
+      renderHooks(hooks);
+      renderNeedles(needles);
+    }
+
+    function renderHooks(data){
+      document.getElementById('hooks-tbody').innerHTML =
+        data.map(h=>`<tr><td>${h.us}</td><td>${h.mm}</td><td>${h.uk}</td></tr>`).join('');
+    }
+
+    function renderNeedles(data){
+      document.getElementById('needles-tbody').innerHTML =
+        data.map(n=>`<tr><td>${n.us}</td><td>${n.mm}</td><td>${n.uk}</td></tr>`).join('');
+    }
+
+    function filterHooks(){
+      const q = document.getElementById('search-hooks').value.toLowerCase();
+      renderHooks(hooks.filter(h=>h.us.toLowerCase().includes(q)||String(h.mm).includes(q)||String(h.uk).toLowerCase().includes(q)));
+    }
+
+    function filterNeedles(){
+      const q = document.getElementById('search-needles').value.toLowerCase();
+      renderNeedles(needles.filter(n=>n.us.toLowerCase().includes(q)||String(n.mm).includes(q)||String(n.uk).toLowerCase().includes(q)));
+    }
+
+    function switchTab(tab, btn){
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.getElementById('tab-'+tab).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function findSize(){
+      const q = document.getElementById('find-input').value.trim().toLowerCase();
+      const res = document.getElementById('find-results');
+      if(!q){res.style.display='none';return;}
+      const hMatches = hooks.filter(h=>h.us.toLowerCase().includes(q)||String(h.mm).includes(q)||String(h.uk).toLowerCase().includes(q));
+      const nMatches = needles.filter(n=>n.us.toLowerCase().includes(q)||String(n.mm).includes(q)||String(n.uk).toLowerCase().includes(q));
+      let html = '';
+      if(hMatches.length){
+        html += `<p style="font-weight:600;margin-bottom:0.5rem;">Crochet Hook Matches:</p>`;
+        html += `<div class="table-wrap"><table class="data-table"><thead><tr><th>US Hook</th><th>mm</th><th>UK/CA</th></tr></thead><tbody>`;
+        html += hMatches.map(h=>`<tr><td>${h.us}</td><td>${h.mm}</td><td>${h.uk}</td></tr>`).join('');
+        html += `</tbody></table></div>`;
+      }
+      if(nMatches.length){
+        html += `<p style="font-weight:600;margin:1rem 0 0.5rem;">Knitting Needle Matches:</p>`;
+        html += `<div class="table-wrap"><table class="data-table"><thead><tr><th>US Needle</th><th>mm</th><th>UK/CA</th></tr></thead><tbody>`;
+        html += nMatches.map(n=>`<tr><td>${n.us}</td><td>${n.mm}</td><td>${n.uk}</td></tr>`).join('');
+        html += `</tbody></table></div>`;
+      }
+      if(!hMatches.length && !nMatches.length){
+        html = `<p style="color:var(--text-muted);">No matches found. Try a different size value.</p>`;
+      }
+      res.innerHTML = html;
+      res.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

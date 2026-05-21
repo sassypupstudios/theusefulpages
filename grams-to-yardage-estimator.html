@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grams to Yardage Estimator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Estimate yardage from yarn weight in grams. Great for unlabeled yarn. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/grams-to-yardage-estimator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .range-result { background:var(--result-bg); border:1px solid var(--result-border); border-radius:var(--radius); padding:20px; margin-top:16px; text-align:center; }
+    .range-big { font-size:2rem; font-weight:800; color:var(--primary); }
+    .range-sub { font-size:0.9rem; color:var(--text-muted); margin-top:6px; }
+    .yd-per-g { font-size:1rem; color:var(--text-muted); margin-top:10px; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Grams to Yardage Estimator</h1>
+      <p class="page-subtitle">Estimate how many yards are in a ball of yarn based on its weight and yarn category.</p>
+
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div>
+            <label class="label">Yarn Weight (grams)</label>
+            <input type="number" id="grams" class="form-input" placeholder="e.g. 100" min="1" oninput="estimate()">
+          </div>
+          <div>
+            <label class="label">Yarn Weight Category</label>
+            <select id="yarn-weight" class="form-select" onchange="estimate()">
+              <option value="">Select weight...</option>
+              <option value="lace">Lace (0)</option>
+              <option value="fingering">Fingering / Sock (1)</option>
+              <option value="sport">Sport / Baby (2)</option>
+              <option value="dk">DK / Light Worsted (3)</option>
+              <option value="worsted">Worsted / Aran (4)</option>
+              <option value="bulky">Bulky (5)</option>
+              <option value="superbulky">Super Bulky (6)</option>
+            </select>
+          </div>
+        </div>
+        <div id="estimate-result" class="range-result" style="display:none;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="result-card">
+        <h2 style="margin-bottom:12px;font-size:1.1rem;">Yards-per-Gram Reference</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Yarn Weight</th><th>Yd/g Range</th><th>50g Skein</th><th>100g Skein</th></tr></thead>
+            <tbody id="ref-tbody"></tbody>
+          </table>
+        </div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-top:8px;">Ranges are approximate. Fiber content, plying, and brand affect actual yardage.</p>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Estimate Yardage from Grams</h2>
+        <p>Every yarn weight category has a typical yards-per-gram (yd/g) ratio. By weighing your yarn and knowing the category, you can estimate how much yardage you have — perfect for mystery skeins, inherited yarn stashes, or unlabeled balls.</p>
+        <ul>
+          <li>Use a kitchen scale to weigh your yarn in grams.</li>
+          <li>Identify the yarn weight by wrapping it around a ruler and counting wraps per inch (WPI).</li>
+          <li>The result is a range — use the lower end for planning to be safe.</li>
+        </ul>
+        <p class="disclaimer">These are estimates. Actual yardage may vary. For precision, wind and measure a length of yarn with a niddy noddy or yarn swift.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    injectNav('grams-to-yardage-estimator.html');
+    injectFooter();
+    renderRef();
+  });
+
+  const WEIGHTS = {
+    lace:     { label:'Lace',          min:2.5, max:4.0, wpi:'30+' },
+    fingering:{ label:'Fingering/Sock',min:2.0, max:3.0, wpi:'14-20' },
+    sport:    { label:'Sport',         min:1.5, max:2.5, wpi:'12-14' },
+    dk:       { label:'DK',            min:1.2, max:2.0, wpi:'11-14' },
+    worsted:  { label:'Worsted',       min:1.0, max:1.5, wpi:'9-12' },
+    bulky:    { label:'Bulky',         min:0.5, max:1.0, wpi:'6-9' },
+    superbulky:{ label:'Super Bulky',  min:0.3, max:0.6, wpi:'1-6' },
+  };
+
+  function estimate(){
+    const g = parseFloat(document.getElementById('grams').value);
+    const wt = document.getElementById('yarn-weight').value;
+    const el = document.getElementById('estimate-result');
+    if(isNaN(g)||g<=0||!wt){ el.style.display='none'; return; }
+    const w = WEIGHTS[wt];
+    const low = Math.round(g * w.min);
+    const high = Math.round(g * w.max);
+    el.innerHTML = `
+      <div class="range-big">${low}–${high} yards</div>
+      <div class="range-sub">Estimated yardage for ${g}g of ${w.label} yarn</div>
+      <div class="yd-per-g">${w.min}–${w.max} yards per gram · ${Math.round(low*0.9144)}–${Math.round(high*0.9144)} meters</div>`;
+    el.style.display='';
+  }
+
+  function renderRef(){
+    const tbody = document.getElementById('ref-tbody');
+    Object.values(WEIGHTS).forEach(w=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML=`<td>${w.label}</td><td>${w.min}–${w.max}</td><td>${Math.round(50*w.min)}–${Math.round(50*w.max)}</td><td>${Math.round(100*w.min)}–${Math.round(100*w.max)}</td>`;
+      tbody.appendChild(tr);
+    });
+  }
+  </script>
+</body>
+</html>

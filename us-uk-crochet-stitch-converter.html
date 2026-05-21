@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US/UK Crochet Stitch Converter — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Convert US crochet stitch names to UK and vice versa. Paste a pattern row and toggle between US/UK terminology instantly. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/us-uk-crochet-stitch-converter.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">US/UK Crochet Stitch Converter</h1>
+      <p class="page-subtitle">Convert between US and UK crochet stitch names — individually or paste an entire pattern row.</p>
+      <div class="tool-card">
+        <div class="disclaimer" style="margin-bottom:1.25rem;">
+          <strong>Warning:</strong> US and UK crochet terminology is NOT the same. A US "double crochet" is a UK "treble crochet." Always verify which system your pattern uses before starting!
+        </div>
+
+        <h2 style="font-size:1.1rem;margin-bottom:1rem;">Quick Stitch Lookup</h2>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+          <div style="flex:1;min-width:200px;">
+            <label class="label">Select US Stitch Name</label>
+            <select class="form-select" id="us-select" onchange="syncFromUS()">
+              <option value="">-- Select US stitch --</option>
+            </select>
+          </div>
+          <div style="flex:1;min-width:200px;">
+            <label class="label">Select UK Stitch Name</label>
+            <select class="form-select" id="uk-select" onchange="syncFromUK()">
+              <option value="">-- Select UK stitch --</option>
+            </select>
+          </div>
+        </div>
+        <div id="quick-result" class="result-card" style="display:none;"></div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--border);">
+
+        <h2 style="font-size:1.1rem;margin-bottom:0.5rem;">Pattern Row Converter</h2>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1rem;">Paste a pattern row below and choose conversion direction.</p>
+        <div style="display:flex;gap:1rem;margin-bottom:0.75rem;flex-wrap:wrap;align-items:center;">
+          <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+            <input type="radio" name="direction" value="us-to-uk" checked onchange="convertPattern()"> Convert US → UK
+          </label>
+          <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+            <input type="radio" name="direction" value="uk-to-us" onchange="convertPattern()"> Convert UK → US
+          </label>
+        </div>
+        <textarea class="form-textarea" id="pattern-input" rows="4" placeholder="e.g. Row 3: ch 3, dc in next 4 sts, sc in last st, turn." oninput="convertPattern()"></textarea>
+        <label class="label" style="margin-top:1rem;">Converted Pattern</label>
+        <textarea class="form-textarea" id="pattern-output" rows="4" readonly placeholder="Converted result will appear here..." style="background:var(--bg-alt);"></textarea>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--border);">
+
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Full Conversion Table</h2>
+        <input class="form-input" type="text" id="table-search" placeholder="Search stitch name or abbreviation..." oninput="filterConversionTable()" style="margin-bottom:1rem;">
+        <div class="table-wrap">
+          <table class="data-table" id="conv-table">
+            <thead>
+              <tr>
+                <th>US Stitch Name</th>
+                <th>US Abbr.</th>
+                <th>UK Stitch Name</th>
+                <th>UK Abbr.</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="conv-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Use the <strong>Quick Stitch Lookup</strong> dropdowns to find the equivalent stitch in either direction.</li>
+          <li>Paste any pattern row into the <strong>Pattern Row Converter</strong> and select US→UK or UK→US. Stitch abbreviations are replaced automatically.</li>
+          <li>Search the <strong>Full Conversion Table</strong> to browse all stitch equivalents.</li>
+        </ul>
+        <h2>Why US and UK Terms Differ</h2>
+        <p>US and UK crochet terminology evolved separately, leading to the same words meaning different stitches. The confusion most often trips up crafters when a pattern calls for "double crochet" — in the US that is a medium-height stitch (yarn over once), while in the UK it refers to what Americans call single crochet.</p>
+        <p>Always check your pattern's country of origin or look for a terminology key at the top of the pattern. If in doubt, check whether the pattern uses "sc" (likely US) or "dc" for the shortest standard stitch (likely UK).</p>
+        <p class="disclaimer">Results are estimates. Verify conversions against your pattern's stitch key.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const STITCH_MAP = [
+    {usName:'Slip Stitch',      usAbbr:'sl st', ukName:'Slip Stitch',         ukAbbr:'ss',   notes:'Same in both systems'},
+    {usName:'Single Crochet',   usAbbr:'sc',    ukName:'Double Crochet',       ukAbbr:'dc',   notes:'Most commonly confused pair'},
+    {usName:'Half Double Crochet', usAbbr:'hdc', ukName:'Half Treble Crochet', ukAbbr:'htr',  notes:''},
+    {usName:'Double Crochet',   usAbbr:'dc',    ukName:'Treble Crochet',       ukAbbr:'tr',   notes:''},
+    {usName:'Treble Crochet',   usAbbr:'tr',    ukName:'Double Treble Crochet',ukAbbr:'dtr',  notes:''},
+    {usName:'Double Treble Crochet', usAbbr:'dtr', ukName:'Triple Treble Crochet', ukAbbr:'trtr', notes:''},
+    {usName:'Triple Treble Crochet', usAbbr:'trtr', ukName:'Quadruple Treble Crochet', ukAbbr:'qtr', notes:'Very tall stitch'},
+    {usName:'Chain',            usAbbr:'ch',    ukName:'Chain',                ukAbbr:'ch',   notes:'Same in both systems'},
+    {usName:'Magic Ring',       usAbbr:'mr',    ukName:'Magic Ring',           ukAbbr:'mr',   notes:'Same in both systems'},
+    {usName:'Single Crochet 2 Together', usAbbr:'sc2tog', ukName:'Double Crochet 2 Together', ukAbbr:'dc2tog', notes:'Decrease stitch'},
+    {usName:'Double Crochet 2 Together', usAbbr:'dc2tog', ukName:'Treble Crochet 2 Together', ukAbbr:'tr2tog', notes:'Decrease stitch'},
+    {usName:'Back Loop Only',   usAbbr:'BLO',   ukName:'Back Loop Only',       ukAbbr:'BLO',  notes:'Same in both systems'},
+    {usName:'Front Loop Only',  usAbbr:'FLO',   ukName:'Front Loop Only',      ukAbbr:'FLO',  notes:'Same in both systems'},
+  ];
+
+  // Pattern-level abbr replacement pairs (US abbr → UK abbr and vice versa)
+  const US_TO_UK_ABBR = [
+    ['sc2tog','dc2tog'],['dc2tog','tr2tog'],
+    ['hdc','htr'],['dtr','trtr'],['trtr','qtr'],
+    ['\\bdc\\b','tr'],['\\btr\\b','dtr'],
+    ['\\bsc\\b','dc'],
+    ['sl st','ss'],
+  ];
+  const UK_TO_US_ABBR = [
+    ['dc2tog','sc2tog'],['tr2tog','dc2tog'],
+    ['htr','hdc'],['trtr','dtr'],['qtr','trtr'],
+    ['\\bdtr\\b','tr'],['\\btr\\b','dc'],
+    ['\\bdc\\b','sc'],
+    ['\\bss\\b','sl st'],
+  ];
+
+  function buildSelects() {
+    const us = document.getElementById('us-select');
+    const uk = document.getElementById('uk-select');
+    STITCH_MAP.forEach((s,i) => {
+      us.add(new Option(s.usName + ' (' + s.usAbbr + ')', i));
+      uk.add(new Option(s.ukName + ' (' + s.ukAbbr + ')', i));
+    });
+  }
+
+  function syncFromUS() {
+    const idx = document.getElementById('us-select').value;
+    if (idx === '') { document.getElementById('quick-result').style.display='none'; return; }
+    document.getElementById('uk-select').value = idx;
+    showQuickResult(idx, 'us');
+  }
+  function syncFromUK() {
+    const idx = document.getElementById('uk-select').value;
+    if (idx === '') { document.getElementById('quick-result').style.display='none'; return; }
+    document.getElementById('us-select').value = idx;
+    showQuickResult(idx, 'uk');
+  }
+  function showQuickResult(idx, from) {
+    const s = STITCH_MAP[idx];
+    const r = document.getElementById('quick-result');
+    r.style.display = 'block';
+    r.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="label">US Name</div><strong>${s.usName}</strong><br><span style="color:var(--text-muted)">${s.usAbbr}</span></div>
+      <div class="stat-box"><div class="label">UK Name</div><strong>${s.ukName}</strong><br><span style="color:var(--text-muted)">${s.ukAbbr}</span></div>
+      ${s.notes ? `<div class="stat-box" style="flex-basis:100%"><div class="label">Note</div>${s.notes}</div>` : ''}
+    </div>`;
+  }
+
+  function convertPattern() {
+    const input = document.getElementById('pattern-input').value;
+    const direction = document.querySelector('input[name="direction"]:checked').value;
+    const pairs = direction === 'us-to-uk' ? US_TO_UK_ABBR : UK_TO_US_ABBR;
+    let result = input;
+    pairs.forEach(([from, to]) => {
+      result = result.replace(new RegExp(from, 'gi'), to);
+    });
+    document.getElementById('pattern-output').value = result;
+  }
+
+  function buildConversionTable() {
+    renderConversionTable(STITCH_MAP);
+  }
+
+  function renderConversionTable(data) {
+    const tbody = document.getElementById('conv-body');
+    tbody.innerHTML = data.map(s => `<tr>
+      <td>${s.usName}</td><td><strong>${s.usAbbr}</strong></td>
+      <td>${s.ukName}</td><td><strong>${s.ukAbbr}</strong></td>
+      <td>${s.notes}</td>
+    </tr>`).join('');
+  }
+
+  function filterConversionTable() {
+    const q = document.getElementById('table-search').value.toLowerCase();
+    const filtered = q ? STITCH_MAP.filter(s =>
+      s.usName.toLowerCase().includes(q) || s.ukName.toLowerCase().includes(q) ||
+      s.usAbbr.toLowerCase().includes(q) || s.ukAbbr.toLowerCase().includes(q)
+    ) : STITCH_MAP;
+    renderConversionTable(filtered);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('us-uk-crochet-stitch-converter.html');
+    injectFooter();
+    buildSelects();
+    buildConversionTable();
+  });
+  </script>
+</body>
+</html>

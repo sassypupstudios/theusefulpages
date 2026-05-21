@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hat Size Calculator — Free Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate cast-on stitches for a knitted or crocheted hat based on head circumference and gauge. Includes crown shaping guide. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/hat-size-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Hat Size Calculator</h1>
+      <p class="page-subtitle">Find your cast-on or chain count, and get a crown shaping guide for knit or crochet hats.</p>
+      <div class="tool-card">
+        <!-- Mode toggle -->
+        <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;">
+          <button class="btn-primary" id="mode-knit" onclick="setMode('knit')">Knitting</button>
+          <button class="btn-outline" id="mode-crochet" onclick="setMode('crochet')">Crochet</button>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Head Size Preset</label>
+            <select class="form-select" id="head-preset" onchange="loadHeadPreset()">
+              <option value="custom">Custom (enter below)</option>
+              <option value="preemie">Preemie (10")</option>
+              <option value="newborn">Newborn (13")</option>
+              <option value="baby">Baby 3–6 mo (14")</option>
+              <option value="toddler">Toddler 1–3 yr (17")</option>
+              <option value="child">Child 3–12 yr (19")</option>
+              <option value="teen-sm">Teen / Adult XS (20")</option>
+              <option value="adult-sm">Adult S/M (21")</option>
+              <option value="adult-lg">Adult L/XL (23")</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Head Circumference (inches)</label>
+            <input class="form-input" type="number" id="head-circ" min="8" step="0.5" placeholder="e.g. 22">
+          </div>
+          <div>
+            <label class="label">Gauge: stitches per inch</label>
+            <input class="form-input" type="number" id="gauge-spi" min="0.5" step="0.5" placeholder="e.g. 5">
+          </div>
+          <div>
+            <label class="label">Ease (inches, usually −1 to −2")</label>
+            <input class="form-input" type="number" id="ease" value="-1" step="0.5" placeholder="e.g. -1">
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcHat()">Calculate</button>
+          <button class="btn-ghost" onclick="resetHat()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="hat-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-cast-on"></div>
+              <div class="stat-label" id="label-cast-on">Cast-On Stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-worked-circ"></div>
+              <div class="stat-label">Worked Circumference</div>
+            </div>
+          </div>
+          <div class="result-card" style="margin-top:1rem;">
+            <h3 style="margin:0 0 0.5rem;font-size:1rem;">Crown Shaping Guide</h3>
+            <div id="res-crown" style="color:var(--text-muted);font-size:0.9rem;line-height:1.7;"></div>
+          </div>
+          <p class="disclaimer" style="margin-top:0.75rem;">Results are estimates. Adjust stitch count to match your pattern's stitch multiple if needed.</p>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Head Circumference Reference</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Size</th><th>Circumference</th><th>Age / Head Type</th></tr></thead>
+            <tbody>
+              <tr><td>Preemie</td><td>10"</td><td>Premature newborn</td></tr>
+              <tr><td>Newborn</td><td>13"</td><td>Newborn (0–3 mo)</td></tr>
+              <tr><td>Baby</td><td>14–16"</td><td>3–12 months</td></tr>
+              <tr><td>Toddler</td><td>17–18"</td><td>1–3 years</td></tr>
+              <tr><td>Child</td><td>19–20"</td><td>3–12 years</td></tr>
+              <tr><td>Adult S/M</td><td>21–22"</td><td>Average adult</td></tr>
+              <tr><td>Adult L/XL</td><td>23–24"</td><td>Larger adult</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <ul>
+          <li>Toggle between <strong>Knitting</strong> and <strong>Crochet</strong> mode.</li>
+          <li>Select a head size preset or enter the head circumference in inches.</li>
+          <li>Enter your gauge in stitches per inch (from a swatch worked in the round if possible).</li>
+          <li>Adjust ease — hats are usually worked 1–2" smaller than the actual head size so they fit snugly.</li>
+          <li>Click <strong>Calculate</strong> to get your cast-on count and a crown shaping guide.</li>
+        </ul>
+        <h2>Tips</h2>
+        <ul>
+          <li>Hats knit in the round typically use negative ease (the hat is smaller than the head circumference).</li>
+          <li>For a slouchy hat, use 0 ease or even 1–2" of positive ease.</li>
+          <li>The crown shaping guide is a starting point — always check your pattern's specific instructions.</li>
+          <li>If your stitch count doesn't divide evenly by the decrease number, round to the nearest multiple.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('hat-size-calculator.html');injectFooter();});
+    let currentMode = 'knit';
+    function setMode(m){
+      currentMode = m;
+      document.getElementById('mode-knit').className    = m==='knit'    ? 'btn-primary' : 'btn-outline';
+      document.getElementById('mode-crochet').className = m==='crochet' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('hat-result').style.display='none';
+    }
+    const headPresets = {
+      preemie:10, newborn:13, baby:14, toddler:17, child:19,
+      'teen-sm':20, 'adult-sm':21, 'adult-lg':23
+    };
+    function loadHeadPreset(){
+      const v = document.getElementById('head-preset').value;
+      if(v==='custom') return;
+      document.getElementById('head-circ').value = headPresets[v];
+    }
+    function calcHat(){
+      const circ  = parseFloat(document.getElementById('head-circ').value);
+      const spi   = parseFloat(document.getElementById('gauge-spi').value);
+      const ease  = parseFloat(document.getElementById('ease').value)||0;
+      if(isNaN(circ)||circ<=0||isNaN(spi)||spi<=0){alert('Please enter head circumference and gauge.');return;}
+      const workedCirc = Math.max(circ + ease, 1);
+      let castOn = Math.round(workedCirc * spi);
+      // round to nearest even for decreases
+      if(castOn % 2 !== 0) castOn++;
+      // crown shaping
+      let crown = '';
+      if(currentMode === 'knit'){
+        const sections = 8;
+        const perSection = Math.round(castOn / sections);
+        crown = `Starting with ${castOn} stitches, work the crown as follows:<br>`;
+        let remaining = castOn;
+        let round = 1;
+        while(remaining > sections){
+          crown += `Round ${round}: *k${perSection-1}, k2tog* repeat ${sections} times — ${remaining - sections} sts<br>`;
+          remaining -= sections;
+          round++;
+        }
+        crown += `Final round: k2tog to end — ${Math.floor(remaining/2)} sts. Cut yarn and draw through remaining sts.`;
+      } else {
+        // crochet
+        const sections = 6;
+        const perSection = Math.round(castOn / sections);
+        crown = `Starting with ${castOn} stitches, work the crown as follows:<br>`;
+        let remaining = castOn;
+        let round = 1;
+        while(remaining > sections){
+          crown += `Round ${round}: *sc${perSection-1}, sc2tog* repeat ${sections} times — ${remaining - sections} sts<br>`;
+          remaining -= sections;
+          round++;
+        }
+        crown += `Final round: sc2tog to end — ${Math.floor(remaining/2)} sts. Fasten off and weave in ends.`;
+      }
+      document.getElementById('res-cast-on').textContent    = castOn;
+      document.getElementById('label-cast-on').textContent  = currentMode==='knit' ? 'Cast-On Stitches' : 'Foundation Chain / Round Sts';
+      document.getElementById('res-worked-circ').textContent = workedCirc.toFixed(1) + '"';
+      document.getElementById('res-crown').innerHTML        = crown;
+      document.getElementById('hat-result').style.display   = 'block';
+    }
+    function resetHat(){
+      document.getElementById('head-preset').value='custom';
+      document.getElementById('head-circ').value='';
+      document.getElementById('gauge-spi').value='';
+      document.getElementById('ease').value='-1';
+      document.getElementById('hat-result').style.display='none';
+    }
+  </script>
+</body>
+</html>

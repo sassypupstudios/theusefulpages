@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skein Converter — Free Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Convert skein sizes, calculate yards per gram, estimate partial skein yardage, and look up typical yardage for common skein sizes by yarn weight. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/skein-converter.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tool-section{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+    .tool-section:last-child{border-bottom:none;}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Skein Converter</h1>
+      <p class="page-subtitle">Calculate yardage-per-gram ratios, estimate partial skeins, and convert between units.</p>
+      <div class="tool-card">
+
+        <div class="tool-section">
+          <h2 style="font-size:1.1rem;margin-bottom:1rem;">Yards Per Gram Calculator</h2>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">Enter your skein's total weight and yardage to find its yards-per-gram and yards-per-oz ratios.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Total Weight</label>
+              <div style="display:flex;gap:0.5rem;">
+                <input class="form-input" type="number" id="ypg-weight" min="1" placeholder="e.g. 100" oninput="calcYPG()">
+                <select class="form-select" id="ypg-unit" onchange="calcYPG()" style="width:80px;">
+                  <option value="g">g</option>
+                  <option value="oz">oz</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="label">Total Yardage</label>
+              <input class="form-input" type="number" id="ypg-yards" min="1" placeholder="e.g. 220" oninput="calcYPG()">
+            </div>
+          </div>
+          <div id="ypg-result" style="display:none;"></div>
+        </div>
+
+        <div class="tool-section">
+          <h2 style="font-size:1.1rem;margin-bottom:1rem;">Partial Skein Yardage Estimator</h2>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">How many yards are left in a partial skein? Enter the full skein specs and the remaining weight.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Full Skein Weight (g)</label>
+              <input class="form-input" type="number" id="ps-full-g" min="1" placeholder="e.g. 100" oninput="calcPartial()">
+            </div>
+            <div>
+              <label class="label">Full Skein Yardage</label>
+              <input class="form-input" type="number" id="ps-full-yd" min="1" placeholder="e.g. 220" oninput="calcPartial()">
+            </div>
+            <div>
+              <label class="label">Remaining Weight (g)</label>
+              <input class="form-input" type="number" id="ps-remain-g" min="0" placeholder="e.g. 30" oninput="calcPartial()">
+            </div>
+          </div>
+          <div id="ps-result" style="display:none;"></div>
+        </div>
+
+        <div class="tool-section">
+          <h2 style="font-size:1.1rem;margin-bottom:1rem;">Typical Skein Yardage by Weight</h2>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">Common commercial skein sizes and their typical yardage ranges by yarn weight.</p>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Skein Size</th><th>Lace/Fingering</th><th>Sport/DK</th><th>Worsted</th><th>Bulky</th><th>Super Bulky</th></tr></thead>
+              <tbody>
+                <tr><td>25g</td><td>110–200 yd</td><td>65–110 yd</td><td>45–70 yd</td><td>25–40 yd</td><td>15–25 yd</td></tr>
+                <tr><td>50g</td><td>220–400 yd</td><td>130–220 yd</td><td>90–135 yd</td><td>50–75 yd</td><td>30–50 yd</td></tr>
+                <tr><td>100g</td><td>440–800 yd</td><td>260–440 yd</td><td>180–270 yd</td><td>100–150 yd</td><td>60–100 yd</td></tr>
+                <tr><td>200g</td><td>880–1600 yd</td><td>520–880 yd</td><td>360–540 yd</td><td>200–300 yd</td><td>120–200 yd</td></tr>
+                <tr><td>400g (cone)</td><td>1760+ yd</td><td>1040+ yd</td><td>720+ yd</td><td>400+ yd</td><td>240+ yd</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="disclaimer">Typical yardage ranges. Actual yardage on labels may vary by brand, fiber content, and twist.</p>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Tool</h2>
+        <ul>
+          <li><strong>Yards Per Gram:</strong> Enter your skein's weight and yardage to find its yd/g and yd/oz ratios. Useful for comparing yarns with different skein sizes.</li>
+          <li><strong>Partial Skein:</strong> Enter the full skein specs plus the weight you have remaining to estimate how many yards are left. Formula: remaining yards = (remaining g ÷ full g) × full yardage.</li>
+          <li><strong>Reference Table:</strong> Use to estimate yardage when labels are missing or when planning purchases.</li>
+        </ul>
+        <h2>Comparing Yarn Prices by Yards Per Gram</h2>
+        <p>A 50g skein at 220 yards and a 100g skein at 200 yards are very different values! Yards per gram (yd/g) is the best way to compare yarn prices fairly across different skein sizes. Higher yd/g = more yardage per gram = better value for fine work.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('skein-converter.html');injectFooter();});
+
+    function calcYPG(){
+      const weightRaw = parseFloat(document.getElementById('ypg-weight').value);
+      const unit = document.getElementById('ypg-unit').value;
+      const yards = parseFloat(document.getElementById('ypg-yards').value);
+      const res = document.getElementById('ypg-result');
+      if(isNaN(weightRaw)||weightRaw<=0||isNaN(yards)||yards<=0){res.style.display='none';return;}
+      const grams = unit==='oz' ? weightRaw*28.3495 : weightRaw;
+      const oz = grams/28.3495;
+      const ypg = yards/grams;
+      const ypo = yards/oz;
+      res.innerHTML = `
+        <div class="result-card"><div class="stat-grid">
+          <div class="stat-box"><div class="stat-value">${ypg.toFixed(2)}</div><div class="stat-label">Yards per Gram</div></div>
+          <div class="stat-box"><div class="stat-value">${ypo.toFixed(1)}</div><div class="stat-label">Yards per Oz</div></div>
+          <div class="stat-box"><div class="stat-value">${(grams/yards*100).toFixed(1)}g</div><div class="stat-label">Grams per 100 Yards</div></div>
+        </div></div>
+      `;
+      res.style.display='block';
+    }
+
+    function calcPartial(){
+      const fullG = parseFloat(document.getElementById('ps-full-g').value);
+      const fullYd = parseFloat(document.getElementById('ps-full-yd').value);
+      const remG = parseFloat(document.getElementById('ps-remain-g').value);
+      const res = document.getElementById('ps-result');
+      if(isNaN(fullG)||fullG<=0||isNaN(fullYd)||fullYd<=0||isNaN(remG)||remG<0){res.style.display='none';return;}
+      if(remG>fullG){res.innerHTML='<p style="color:var(--danger);">Remaining weight cannot exceed full skein weight.</p>';res.style.display='block';return;}
+      const remYd = (remG/fullG)*fullYd;
+      const pct = (remG/fullG*100).toFixed(0);
+      res.innerHTML = `
+        <div class="result-card"><div class="stat-grid">
+          <div class="stat-box"><div class="stat-value">${remYd.toFixed(0)} yd</div><div class="stat-label">Estimated Yards Remaining</div></div>
+          <div class="stat-box"><div class="stat-value">${(remYd*0.9144).toFixed(0)} m</div><div class="stat-label">Estimated Meters Remaining</div></div>
+          <div class="stat-box"><div class="stat-value">${pct}%</div><div class="stat-label">Skein Remaining</div></div>
+        </div></div>
+      `;
+      res.style.display='block';
+    }
+  </script>
+</body>
+</html>

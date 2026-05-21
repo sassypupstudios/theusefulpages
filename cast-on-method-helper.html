@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cast-On Method Helper — Free Knitting Tool | The Useful Pages</title>
+  <meta name="description" content="Find the best cast-on method for your knitting project. Answer 3 questions and get personalized recommendations with step counts and difficulty ratings. Free.">
+  <link rel="canonical" href="https://theusefulpages.com/cast-on-method-helper.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Cast-On Method Helper</h1>
+      <p class="page-subtitle">Answer 3 questions to find the best cast-on method for your project.</p>
+      <div class="tool-card">
+        <div style="display:grid;gap:1.25rem;">
+          <div>
+            <label class="label">1. Project type</label>
+            <select class="form-select" id="q-project">
+              <option value="">— Select —</option>
+              <option value="flat">Flat knitting (scarves, blankets, dishcloths)</option>
+              <option value="circular">Circular knitting (hats, socks, sleeves)</option>
+              <option value="both">Either / not sure</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">2. Edge needs</label>
+            <select class="form-select" id="q-edge">
+              <option value="">— Select —</option>
+              <option value="stretchy">Stretchy (cuffs, necklines, sock cuffs)</option>
+              <option value="firm">Firm (button bands, hems, edges that hold shape)</option>
+              <option value="decorative">Decorative / pretty edge</option>
+              <option value="temporary">Temporary (to be removed later / picked up)</option>
+              <option value="any">No strong preference</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">3. Skill level</label>
+            <select class="form-select" id="q-skill">
+              <option value="">— Select —</option>
+              <option value="beginner">Beginner — I want simple</option>
+              <option value="intermediate">Intermediate — I know basic cast-ons</option>
+              <option value="advanced">Advanced — I'm comfortable with complex techniques</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="recommend()" style="margin-top:1.25rem;">Find Cast-On Methods</button>
+        <div id="results" style="display:none;margin-top:1.5rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>About Cast-On Methods</h2>
+        <p>The cast-on is the foundation of your knitting project. Different methods produce different edges — some stretchy, some firm, some decorative. Choosing the right one makes a big difference in the final result.</p>
+        <h3>Quick Reference</h3>
+        <ul>
+          <li><strong>Long-Tail Cast-On:</strong> The most commonly taught method. Produces a neat, firm, slightly stretchy edge suitable for most projects.</li>
+          <li><strong>German Twisted (Old Norwegian):</strong> Like long-tail but with a twisted loop, giving extra stretch. Ideal for cuffs and necklines.</li>
+          <li><strong>Cable Cast-On:</strong> Uses two needles. Creates a very firm, decorative edge. Great for button bands and mid-project cast-ons.</li>
+          <li><strong>Backward Loop:</strong> The simplest possible cast-on. Good for beginners or adding stitches mid-row, but can be loose and hard to knit into.</li>
+          <li><strong>Provisional Cast-On:</strong> A temporary cast-on using waste yarn. Use when you want to knit in the other direction later (e.g., picking up stitches for a hem).</li>
+          <li><strong>Judy's Magic Cast-On:</strong> Casts on stitches across two needles simultaneously. The standard for toe-up sock toes.</li>
+          <li><strong>Knitted Cast-On:</strong> Easy to learn, uses two needles. Less stretchy than long-tail but good for beginners wanting more control.</li>
+          <li><strong>Turkish Cast-On:</strong> An alternative to Judy's for toe-up socks, using a single circular needle wrapped around itself.</li>
+        </ul>
+        <p class="disclaimer">Results are estimates. Gauge, yarn, and needle type affect actual results.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('cast-on-method-helper.html');injectFooter();});
+
+    const METHODS = [
+      {
+        name: 'Long-Tail Cast-On',
+        desc: 'The most popular cast-on. Uses a long tail of yarn and one needle. Produces a neat, firm, slightly stretchy edge.',
+        stretch: 'medium', firmness: 'medium', decorative: false, temporary: false,
+        circular: true, flat: true,
+        steps: 5, difficulty: 'Beginner–Intermediate',
+        tip: 'Estimate ~1" per stitch for your tail length, plus 6" extra.'
+      },
+      {
+        name: 'German Twisted Cast-On',
+        desc: 'A variation of long-tail with a twisted loop that creates extra elasticity. Ideal for cuffs, hats, and sock leg cast-ons.',
+        stretch: 'high', firmness: 'medium', decorative: false, temporary: false,
+        circular: true, flat: true,
+        steps: 6, difficulty: 'Intermediate',
+        tip: 'The extra twist can feel awkward at first — practice on a swatch.'
+      },
+      {
+        name: 'Cable Cast-On',
+        desc: 'Uses two needles. Creates a firm, decorative, cord-like edge. Also used to add stitches mid-project.',
+        stretch: 'low', firmness: 'high', decorative: true, temporary: false,
+        circular: false, flat: true,
+        steps: 4, difficulty: 'Beginner–Intermediate',
+        tip: 'For a slightly stretchier version, insert needle between stitches instead of into the last stitch.'
+      },
+      {
+        name: 'Backward Loop Cast-On',
+        desc: 'The simplest cast-on: just loop yarn over your thumb. Best for beginners or adding a few stitches mid-row.',
+        stretch: 'medium', firmness: 'low', decorative: false, temporary: false,
+        circular: true, flat: true,
+        steps: 2, difficulty: 'Beginner',
+        tip: 'The stitches can be loose and twisty. Avoid for large cast-on counts — use long-tail instead.'
+      },
+      {
+        name: 'Provisional Cast-On',
+        desc: 'A temporary cast-on using waste yarn. Remove it later to pick up live stitches for knitting in the opposite direction.',
+        stretch: 'medium', firmness: 'medium', decorative: false, temporary: true,
+        circular: true, flat: true,
+        steps: 7, difficulty: 'Intermediate',
+        tip: 'Use a smooth, slippery waste yarn (like cotton) so it pulls out easily.'
+      },
+      {
+        name: "Judy's Magic Cast-On",
+        desc: 'Casts stitches onto two needles simultaneously, creating a seamless toe or center. The standard for toe-up socks.',
+        stretch: 'medium', firmness: 'medium', decorative: false, temporary: false,
+        circular: true, flat: false,
+        steps: 8, difficulty: 'Advanced',
+        tip: 'Use with two circular needles or magic loop technique.'
+      },
+      {
+        name: 'Knitted Cast-On',
+        desc: 'Uses two needles. Easy to learn, gives a firm edge. Good for beginners who find long-tail tricky.',
+        stretch: 'low', firmness: 'medium', decorative: false, temporary: false,
+        circular: false, flat: true,
+        steps: 4, difficulty: 'Beginner',
+        tip: 'Knit loosely to keep stitches from being too tight to knit into.'
+      },
+      {
+        name: 'Turkish Cast-On',
+        desc: 'An alternative to Judy\'s Magic for toe-up socks. Wraps yarn around two parallel needles.',
+        stretch: 'medium', firmness: 'medium', decorative: false, temporary: false,
+        circular: true, flat: false,
+        steps: 6, difficulty: 'Advanced',
+        tip: 'Works well with a long circular needle folded in half (magic loop).'
+      }
+    ];
+
+    function stars(n){return '★'.repeat(n)+'☆'.repeat(3-n);}
+    function diffToStars(d){
+      if(d==='Beginner') return stars(1);
+      if(d==='Beginner–Intermediate') return stars(2);
+      if(d==='Intermediate') return stars(2);
+      return stars(3);
+    }
+
+    function recommend(){
+      const proj  = document.getElementById('q-project').value;
+      const edge  = document.getElementById('q-edge').value;
+      const skill = document.getElementById('q-skill').value;
+      if(!proj||!edge||!skill){alert('Please answer all three questions.');return;}
+
+      let scored = METHODS.map(m=>{
+        let score=0;
+        // project type
+        if(proj==='flat'&&m.flat) score+=2;
+        if(proj==='circular'&&m.circular) score+=2;
+        if(proj==='both') score+=1;
+        // edge
+        if(edge==='stretchy'&&m.stretch==='high') score+=3;
+        if(edge==='stretchy'&&m.stretch==='medium') score+=1;
+        if(edge==='firm'&&m.firmness==='high') score+=3;
+        if(edge==='firm'&&m.firmness==='medium') score+=1;
+        if(edge==='decorative'&&m.decorative) score+=3;
+        if(edge==='temporary'&&m.temporary) score+=4;
+        if(edge==='any') score+=1;
+        // skill
+        const begOnly = m.difficulty==='Beginner';
+        const intOk   = m.difficulty.includes('Intermediate')||m.difficulty==='Beginner';
+        if(skill==='beginner'&&begOnly) score+=2;
+        if(skill==='beginner'&&!begOnly) score-=2;
+        if(skill==='intermediate'&&intOk) score+=1;
+        if(skill==='advanced') score+=1;
+        return {m, score};
+      });
+
+      scored.sort((a,b)=>b.score-a.score);
+      const top = scored.filter(s=>s.score>0).slice(0,4);
+
+      if(top.length===0){
+        document.getElementById('results').innerHTML='<p>No strong matches found. Try different selections.</p>';
+        document.getElementById('results').style.display='block';
+        return;
+      }
+
+      let html='<h3 style="margin:0 0 1rem">Recommended Cast-On Methods</h3>';
+      top.forEach((item,i)=>{
+        const m=item.m;
+        html+=`<div style="border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:0.75rem;background:var(--bg-secondary);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem;flex-wrap:wrap;">
+            <strong style="font-size:1.05rem;">${i===0?'⭐ ':''} ${m.name}</strong>
+            <span style="font-size:0.8rem;color:var(--text-muted);white-space:nowrap;">Difficulty: ${diffToStars(m.difficulty)} ${m.difficulty}</span>
+          </div>
+          <p style="margin:0.5rem 0 0.25rem;font-size:0.9rem;">${m.desc}</p>
+          <p style="margin:0;font-size:0.85rem;color:var(--accent);">Tip: ${m.tip}</p>
+          <div style="display:flex;gap:1rem;margin-top:0.5rem;font-size:0.8rem;color:var(--text-muted);">
+            <span>Steps: ~${m.steps}</span>
+            <span>Stretch: ${m.stretch}</span>
+            <span>Firmness: ${m.firmness}</span>
+          </div>
+        </div>`;
+      });
+      document.getElementById('results').innerHTML=html;
+      document.getElementById('results').style.display='block';
+    }
+  </script>
+</body>
+</html>

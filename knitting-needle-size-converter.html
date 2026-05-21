@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Needle Size Converter — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Convert knitting needle sizes between US, metric (mm), and UK/Canadian systems. Searchable table plus a quick converter. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-needle-size-converter.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Needle Size Converter</h1>
+      <p class="page-subtitle">Convert needle sizes between US, metric (mm), and UK/Canadian systems.</p>
+      <div class="tool-card">
+        <h2 style="font-size:1.1rem;margin-bottom:1rem;">Quick Converter</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+          <div>
+            <label class="label">Select System</label>
+            <select class="form-select" id="conv-system" onchange="rebuildDropdown()">
+              <option value="us">US Size</option>
+              <option value="mm">Metric (mm)</option>
+              <option value="uk">UK / Canadian</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Select Size</label>
+            <select class="form-select" id="conv-size" onchange="doConvert()"></select>
+          </div>
+        </div>
+        <div id="conv-result" style="display:none;" class="result-card">
+          <div class="stat-grid" id="conv-stats"></div>
+        </div>
+
+        <h2 style="font-size:1.1rem;margin:1.5rem 0 1rem;">Full Conversion Reference Table</h2>
+        <input class="form-input" type="text" id="search-needles" placeholder="Filter by US, mm, or UK size…" oninput="filterTable()" style="margin-bottom:1rem;">
+        <div class="table-wrap">
+          <table class="data-table" id="needle-table">
+            <thead><tr><th>US Size</th><th>Metric (mm)</th><th>UK / Canadian</th></tr></thead>
+            <tbody id="needle-tbody"></tbody>
+          </table>
+        </div>
+
+        <h2 style="font-size:1.1rem;margin:2rem 0 1rem;">Metric-Only Sizes (No US Equivalent)</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Metric (mm)</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>2.5 mm</td><td>Between US 1 and 2; common in European patterns</td></tr>
+              <tr><td>3.0 mm</td><td>Between US 2 and 3; common in European patterns</td></tr>
+              <tr><td>3.5 mm (US 4)</td><td>Also listed as metric 3.5 in some EU patterns</td></tr>
+              <tr><td>4.5 mm</td><td>Between US 7 and 8; used in some European patterns</td></tr>
+              <tr><td>5.5 mm</td><td>Between US 9 and 10; common in some EU designs</td></tr>
+              <tr><td>7.0 mm</td><td>Between US 10.5 and 11</td></tr>
+              <tr><td>11.0 mm</td><td>Between US 15 and 17</td></tr>
+              <tr><td>13.0 mm</td><td>Between US 17 and 19</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Converter</h2>
+        <ul>
+          <li>Use the <strong>Quick Converter</strong> — choose a size system and select a needle size to see all equivalents instantly.</li>
+          <li>Use the <strong>search box</strong> above the table to filter by US number, mm size, or UK number.</li>
+          <li>Note that some US sizes share the same metric size (e.g., US 4 and US 5 are both close to 3.5–3.75mm).</li>
+        </ul>
+        <h2>Understanding Needle Size Systems</h2>
+        <ul>
+          <li><strong>US:</strong> Numbered 0–50. Larger numbers = larger needles.</li>
+          <li><strong>Metric (mm):</strong> Measures actual shaft diameter. The most accurate and internationally consistent system.</li>
+          <li><strong>UK/Canadian (old system):</strong> Numbered in reverse — higher numbers = smaller needles. This system is largely obsolete but still appears in vintage patterns.</li>
+          <li>When in doubt, always use the mm measurement to match your needle correctly.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('knitting-needle-size-converter.html');injectFooter();init();});
+
+    const needles = [
+      {us:'0',    mm:2.0,   uk:14},
+      {us:'1',    mm:2.25,  uk:13},
+      {us:'2',    mm:2.75,  uk:12},
+      {us:'3',    mm:3.25,  uk:10},
+      {us:'4',    mm:3.5,   uk:9},
+      {us:'5',    mm:3.75,  uk:9},
+      {us:'6',    mm:4.0,   uk:8},
+      {us:'7',    mm:4.5,   uk:7},
+      {us:'8',    mm:5.0,   uk:6},
+      {us:'9',    mm:5.5,   uk:5},
+      {us:'10',   mm:6.0,   uk:4},
+      {us:'10.5', mm:6.5,   uk:3},
+      {us:'11',   mm:8.0,   uk:0},
+      {us:'13',   mm:9.0,   uk:'00'},
+      {us:'15',   mm:10.0,  uk:'000'},
+      {us:'17',   mm:12.75, uk:'—'},
+      {us:'19',   mm:15.0,  uk:'—'},
+      {us:'35',   mm:19.0,  uk:'—'},
+      {us:'50',   mm:25.0,  uk:'—'},
+    ];
+
+    function init(){
+      renderTable(needles);
+      rebuildDropdown();
+    }
+
+    function renderTable(data){
+      document.getElementById('needle-tbody').innerHTML =
+        data.map(n=>`<tr><td>${n.us}</td><td>${n.mm}</td><td>${n.uk}</td></tr>`).join('');
+    }
+
+    function filterTable(){
+      const q = document.getElementById('search-needles').value.toLowerCase();
+      renderTable(needles.filter(n=>
+        n.us.toLowerCase().includes(q)||
+        String(n.mm).includes(q)||
+        String(n.uk).toLowerCase().includes(q)
+      ));
+    }
+
+    function rebuildDropdown(){
+      const sys = document.getElementById('conv-system').value;
+      const sel = document.getElementById('conv-size');
+      sel.innerHTML = '';
+      let opts = [];
+      if(sys==='us') opts = needles.map(n=>({val:n.us, label:'US '+n.us}));
+      else if(sys==='mm') opts = needles.map(n=>({val:n.mm, label:n.mm+' mm'}));
+      else opts = needles.filter(n=>n.uk!=='—').map(n=>({val:n.uk, label:'UK '+n.uk}));
+      opts.forEach(o=>{
+        const opt=document.createElement('option');
+        opt.value=o.val; opt.textContent=o.label;
+        sel.appendChild(opt);
+      });
+      doConvert();
+    }
+
+    function doConvert(){
+      const sys = document.getElementById('conv-system').value;
+      const val = document.getElementById('conv-size').value;
+      let needle = null;
+      if(sys==='us') needle = needles.find(n=>n.us===val);
+      else if(sys==='mm') needle = needles.find(n=>String(n.mm)===val);
+      else needle = needles.find(n=>String(n.uk)===val);
+      if(!needle){document.getElementById('conv-result').style.display='none';return;}
+      document.getElementById('conv-stats').innerHTML = `
+        <div class="stat-box"><div class="stat-value">US ${needle.us}</div><div class="stat-label">US Size</div></div>
+        <div class="stat-box"><div class="stat-value">${needle.mm} mm</div><div class="stat-label">Metric</div></div>
+        <div class="stat-box"><div class="stat-value">${needle.uk}</div><div class="stat-label">UK / Canadian</div></div>
+      `;
+      document.getElementById('conv-result').style.display='block';
+    }
+  </script>
+</body>
+</html>

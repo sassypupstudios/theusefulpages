@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handmade Profit Margin Calculator — Free Craft Business Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate profit margin and suggested retail price for handmade items. Enter material cost, labor, and overhead to find your break-even and target sell price. Free — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/handmade-profit-margin-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Handmade Profit Margin Calculator</h1>
+      <p class="page-subtitle">Enter your costs and desired margin to find a fair selling price — or enter a selling price to see what margin you're actually earning.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" style="margin-bottom:1.25rem;">
+          <button class="tab-btn active" onclick="showPM('cost-to-price')">Find Selling Price</button>
+          <button class="tab-btn" onclick="showPM('price-to-margin')">Check Existing Price</button>
+        </div>
+
+        <!-- COST TO PRICE -->
+        <div id="cost-to-price">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Materials cost ($)</label>
+              <input type="number" id="pm-mat" class="form-input" placeholder="e.g. 8.50" min="0" step="0.01">
+            </div>
+            <div>
+              <label class="label">Labor cost ($)</label>
+              <input type="number" id="pm-labor" class="form-input" placeholder="e.g. 12.00" min="0" step="0.01" value="0">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Overhead per item ($) <span style="font-size:0.8rem;color:var(--text-muted);">(packaging, fees)</span></label>
+              <input type="number" id="pm-overhead" class="form-input" placeholder="e.g. 1.50" min="0" step="0.01" value="0">
+            </div>
+            <div>
+              <label class="label">Marketplace fee (%) <span style="font-size:0.8rem;color:var(--text-muted);">(Etsy, etc.)</span></label>
+              <input type="number" id="pm-fee" class="form-input" placeholder="e.g. 6.5" min="0" max="100" step="0.1" value="0">
+            </div>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label class="label">Target profit margin (%)</label>
+            <input type="number" id="pm-margin" class="form-input" value="30" min="0" max="500" step="1" style="max-width:180px;">
+          </div>
+          <button class="btn-primary" onclick="calcPrice()">Calculate Selling Price</button>
+          <div id="pm-result1" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+        </div>
+
+        <!-- PRICE TO MARGIN -->
+        <div id="price-to-margin" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Your selling price ($)</label>
+              <input type="number" id="chk-price" class="form-input" placeholder="e.g. 35.00" min="0" step="0.01">
+            </div>
+            <div>
+              <label class="label">Total cost (materials + labor + overhead)</label>
+              <input type="number" id="chk-cost" class="form-input" placeholder="e.g. 22.00" min="0" step="0.01">
+            </div>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label class="label">Marketplace fee (%) <span style="font-size:0.8rem;color:var(--text-muted);">(deducted from price)</span></label>
+            <input type="number" id="chk-fee" class="form-input" placeholder="e.g. 6.5" min="0" max="100" step="0.1" value="0" style="max-width:180px;">
+          </div>
+          <button class="btn-primary" onclick="calcMargin()">Check Margin</button>
+          <div id="pm-result2" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+        </div>
+
+        <div style="margin-top:2rem;">
+          <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 0.75rem;">Common marketplace fees reference</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Platform</th><th>Transaction fee</th><th>Listing fee</th></tr></thead>
+              <tbody>
+                <tr><td>Etsy</td><td>6.5% + payment processing</td><td>$0.20/listing</td></tr>
+                <tr><td>Shopify</td><td>0–2% (plan-dependent)</td><td>Monthly subscription</td></tr>
+                <tr><td>Amazon Handmade</td><td>15%</td><td>No listing fee</td></tr>
+                <tr><td>eBay</td><td>~13.25% (category varies)</td><td>Up to 250 free/mo</td></tr>
+                <tr><td>Local market / craft show</td><td>0% transaction</td><td>Table/booth fee (varies)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">Pricing handmade items</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">A common formula: <strong>Price = (Materials + Labor + Overhead) ÷ (1 − Margin%)</strong>. This ensures margin is calculated on revenue, not cost. A 30% margin means 30 cents of every dollar sold is profit after all costs.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Pay yourself a real hourly rate — at least minimum wage, ideally market rate for your skill</li>
+          <li>Marketplace fees come off your revenue, so build them into your price</li>
+          <li>A 30–50% margin is a common starting target for handmade businesses</li>
+          <li>If your market won't bear your true cost + margin, consider premium positioning or reducing costs</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">These calculations are for guidance only. Actual profitability depends on volume, overhead allocation, and tax obligations.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function showPM(id) {
+    ['cost-to-price','price-to-margin'].forEach(t => document.getElementById(t).style.display = t===id?'':'none');
+    document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i===(id==='cost-to-price'?0:1)));
+  }
+
+  function calcPrice() {
+    const mat = parseFloat(document.getElementById('pm-mat').value) || 0;
+    const labor = parseFloat(document.getElementById('pm-labor').value) || 0;
+    const overhead = parseFloat(document.getElementById('pm-overhead').value) || 0;
+    const fee = parseFloat(document.getElementById('pm-fee').value) || 0;
+    const margin = parseFloat(document.getElementById('pm-margin').value) || 30;
+    if (!mat && !labor) { alert('Enter at least materials or labor cost.'); return; }
+    const totalCost = mat + labor + overhead;
+    const divisor = 1 - (margin / 100) - (fee / 100);
+    if (divisor <= 0) { alert('Margin + fee cannot exceed 100%.'); return; }
+    const price = totalCost / divisor;
+    const profit = price - totalCost - (price * fee / 100);
+    const actualMargin = (profit / price) * 100;
+    const el = document.getElementById('pm-result1');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Total Cost</div><div class="stat-value">$${totalCost.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Marketplace Fee</div><div class="stat-value">$${(price*fee/100).toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Your Profit</div><div class="stat-value">$${profit.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Actual Margin</div><div class="stat-value">${actualMargin.toFixed(1)}%</div></div>
+    </div>
+    <div style="margin-top:1rem;padding:1rem;background:var(--result-bg,var(--bg-secondary));border-radius:8px;text-align:center;">
+      <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.25rem;">Suggested selling price</div>
+      <div style="font-size:2rem;font-weight:700;color:var(--accent);">$${price.toFixed(2)}</div>
+      <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.25rem;">Break-even at $${(totalCost/(1-fee/100)).toFixed(2)}</div>
+    </div>`;
+  }
+
+  function calcMargin() {
+    const price = parseFloat(document.getElementById('chk-price').value);
+    const cost = parseFloat(document.getElementById('chk-cost').value);
+    const fee = parseFloat(document.getElementById('chk-fee').value) || 0;
+    if (!price || !cost) { alert('Enter selling price and total cost.'); return; }
+    const feeAmt = price * fee / 100;
+    const netRevenue = price - feeAmt;
+    const profit = netRevenue - cost;
+    const margin = (profit / price) * 100;
+    const markup = (profit / cost) * 100;
+    const el = document.getElementById('pm-result2');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Selling Price</div><div class="stat-value">$${price.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Marketplace Fee</div><div class="stat-value">$${feeAmt.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Net Revenue</div><div class="stat-value">$${netRevenue.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Total Cost</div><div class="stat-value">$${cost.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Profit</div><div class="stat-value" style="color:${profit>=0?'#22c55e':'#ef4444'}">$${profit.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Profit Margin</div><div class="stat-value" style="color:${margin>=20?'#22c55e':margin>=0?'#f59e0b':'#ef4444'}">${margin.toFixed(1)}%</div></div>
+      <div class="stat-box"><div class="stat-label">Markup on Cost</div><div class="stat-value">${markup.toFixed(1)}%</div></div>
+    </div>
+    <p style="margin-top:0.75rem;font-size:0.88rem;color:var(--text-muted);">${margin < 0 ? '⚠️ You are selling below cost.' : margin < 15 ? '⚠️ Low margin — consider raising price or reducing costs.' : margin >= 30 ? '✅ Healthy margin.' : '⚠️ Moderate margin — OK for high volume, consider improving for lower volume.'}</p>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('handmade-profit-margin-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

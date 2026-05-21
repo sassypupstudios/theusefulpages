@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C2C Blanket Calculator — Corner to Corner Crochet | The Useful Pages</title>
+  <meta name="description" content="Calculate blocks, rows, and yardage for a corner-to-corner (C2C) crochet blanket. Enter finished size and gauge for a complete breakdown. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/c2c-blanket-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">C2C Blanket Calculator</h1>
+      <p class="page-subtitle">Calculate blocks, increase rows, decrease rows, and yardage for a corner-to-corner crochet blanket.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Finished Width (inches)</label>
+            <input class="form-input" type="number" id="c2c-width" min="1" step="0.5" placeholder="e.g. 50">
+          </div>
+          <div>
+            <label class="label">Finished Length (inches)</label>
+            <input class="form-input" type="number" id="c2c-length" min="1" step="0.5" placeholder="e.g. 60">
+          </div>
+          <div>
+            <label class="label">C2C Gauge (blocks per inch)</label>
+            <input class="form-input" type="number" id="c2c-gauge" min="0.1" step="0.05" placeholder="e.g. 0.8" value="0.8">
+          </div>
+          <div>
+            <label class="label">Yarn Weight</label>
+            <select class="form-select" id="c2c-yarn">
+              <option value="fingering">Fingering / Sock</option>
+              <option value="sport">Sport</option>
+              <option value="dk">DK</option>
+              <option value="worsted" selected>Worsted</option>
+              <option value="bulky">Bulky</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcC2C()">Calculate C2C Blanket</button>
+        <div id="c2c-result" style="margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Enter your desired finished width and length in inches.</li>
+          <li>Enter your C2C gauge — how many blocks fit in one inch (typically 0.7–1.0 for worsted weight).</li>
+          <li>Select your yarn weight for a yardage estimate.</li>
+          <li>Click <strong>Calculate C2C Blanket</strong> for your complete breakdown.</li>
+        </ul>
+        <h2>How C2C Works</h2>
+        <p>Corner-to-corner crochet starts at one corner and works diagonally across the blanket. Each C2C block consists of a chain-6, then 3 double crochets worked into a ch-3 space.</p>
+        <p><strong>Increase phase:</strong> You add one block to each row, growing the diagonal from corner 1 block to the full width. The number of increase rows equals the number of blocks across the short side (width).</p>
+        <p><strong>Decrease phase:</strong> After reaching the widest diagonal, you decrease one block per row to reach the opposite corner. Decrease rows equal the blocks along the long side (length) minus the short side.</p>
+        <p><strong>Total rows</strong> = increase rows + decrease rows. The maximum row width = blocks across + blocks down.</p>
+        <h2>Common C2C Gauges</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Yarn</th><th>Hook</th><th>Blocks/inch</th></tr></thead>
+            <tbody>
+              <tr><td>Fingering</td><td>B/C (2.5–3mm)</td><td>~1.2–1.5</td></tr>
+              <tr><td>DK</td><td>F/G (3.75–4mm)</td><td>~0.9–1.1</td></tr>
+              <tr><td>Worsted</td><td>H/I (5–5.5mm)</td><td>~0.7–0.9</td></tr>
+              <tr><td>Bulky</td><td>K/L (6.5–8mm)</td><td>~0.5–0.7</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcC2C() {
+    const width = parseFloat(document.getElementById('c2c-width').value);
+    const length = parseFloat(document.getElementById('c2c-length').value);
+    const gauge = parseFloat(document.getElementById('c2c-gauge').value);
+    const yarn = document.getElementById('c2c-yarn').value;
+    const res = document.getElementById('c2c-result');
+
+    if (!width || !length || !gauge || width <= 0 || length <= 0 || gauge <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid width, length, and gauge.</p>'; return;
+    }
+
+    const blocksW = Math.round(width * gauge);
+    const blocksL = Math.round(length * gauge);
+    const totalBlocks = blocksW * blocksL;
+
+    // C2C structure: increase rows = short side blocks, then flat rows, then decrease rows
+    const shortSide = Math.min(blocksW, blocksL);
+    const longSide = Math.max(blocksW, blocksL);
+    const increaseRows = shortSide;
+    const flatRows = longSide - shortSide; // rows at max width (for rectangles)
+    const decreaseRows = shortSide;
+    const totalRows = increaseRows + flatRows + decreaseRows;
+    const maxRowBlocks = longSide; // maximum blocks in a single row
+
+    // Yardage estimate: yards per block by weight
+    const yardsPerBlock = { fingering: 3, sport: 4, dk: 5.5, worsted: 7, bulky: 11 };
+    const ypb = yardsPerBlock[yarn] || 7;
+    const totalYards = Math.round(totalBlocks * ypb * 1.1);
+    const totalMeters = Math.round(totalYards * 0.9144);
+    const skeins437 = Math.ceil(totalYards / 437);
+    const skeins200 = Math.ceil(totalYards / 200);
+
+    const actualW = (blocksW / gauge).toFixed(1);
+    const actualL = (blocksL / gauge).toFixed(1);
+
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid" style="margin-bottom:1rem;">
+        <div class="stat-box"><div class="label">Blocks Wide</div><strong>${blocksW}</strong></div>
+        <div class="stat-box"><div class="label">Blocks Long</div><strong>${blocksL}</strong></div>
+        <div class="stat-box"><div class="label">Total Blocks</div><strong>${totalBlocks.toLocaleString()}</strong></div>
+        <div class="stat-box"><div class="label">Actual Size</div><strong>${actualW}" × ${actualL}"</strong></div>
+      </div>
+      <div class="stat-grid" style="margin-bottom:1rem;">
+        <div class="stat-box"><div class="label">Increase Rows</div><strong>${increaseRows}</strong></div>
+        <div class="stat-box"><div class="label">Even Rows</div><strong>${flatRows}</strong></div>
+        <div class="stat-box"><div class="label">Decrease Rows</div><strong>${decreaseRows}</strong></div>
+        <div class="stat-box"><div class="label">Total Rows</div><strong>${totalRows}</strong></div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-box"><div class="label">Est. Yardage</div><strong>~${totalYards.toLocaleString()} yds</strong></div>
+        <div class="stat-box"><div class="label">Est. Meters</div><strong>~${totalMeters.toLocaleString()} m</strong></div>
+        <div class="stat-box"><div class="label">200 yd Skeins</div><strong>${skeins200}</strong></div>
+        <div class="stat-box"><div class="label">437 yd Skeins</div><strong>${skeins437}</strong></div>
+      </div>
+      <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--color-text-muted)">Yardage includes ~10% extra for joining and finishing. Always buy extra.</p>
+      <div style="margin-top:1rem;padding:0.75rem;background:var(--color-bg-secondary);border-radius:0.5rem;">
+        <strong>Pattern summary:</strong> Start at corner. Increase 1 block per row for ${increaseRows} rows (reach max ${maxRowBlocks} blocks wide). Work ${flatRows} even row${flatRows !== 1 ? 's' : ''} at max width. Decrease 1 block per row for ${decreaseRows} rows to reach opposite corner.
+      </div>
+    </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('c2c-blanket-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

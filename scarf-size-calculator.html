@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scarf Size Calculator — Free Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate cast-on stitches, row count, and yardage for any knitted or crocheted scarf. Includes recommended dimensions for standard, infinity, and cowl scarves. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/scarf-size-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Scarf Size Calculator</h1>
+      <p class="page-subtitle">Get your cast-on count, row count, and yardage for any scarf style.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Scarf Style Preset</label>
+            <select class="form-select" id="scarf-preset" onchange="loadScarfPreset()">
+              <option value="custom">Custom</option>
+              <option value="standard">Standard Scarf (8" × 60")</option>
+              <option value="wide">Wide Scarf (12" × 60")</option>
+              <option value="infinity">Infinity Scarf (8" × 60" loop)</option>
+              <option value="cowl-narrow">Narrow Cowl (9" × 24" loop)</option>
+              <option value="cowl-wide">Wide Cowl (14" × 24" loop)</option>
+              <option value="mini">Mini / Kids Scarf (5" × 36")</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Yarn Weight</label>
+            <select class="form-select" id="yarn-weight">
+              <option value="lace">Lace (0)</option>
+              <option value="fingering">Fingering (1)</option>
+              <option value="sport">Sport (2)</option>
+              <option value="dk">DK (3)</option>
+              <option value="worsted" selected>Worsted (4)</option>
+              <option value="bulky">Bulky (5)</option>
+              <option value="super-bulky">Super Bulky (6)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Width (inches)</label>
+            <input class="form-input" type="number" id="scarf-width" min="1" step="0.5" placeholder="e.g. 8">
+          </div>
+          <div>
+            <label class="label">Length (inches)</label>
+            <input class="form-input" type="number" id="scarf-length" min="1" placeholder="e.g. 60">
+          </div>
+          <div>
+            <label class="label">Gauge: stitches per inch</label>
+            <input class="form-input" type="number" id="gauge-spi" min="0.5" step="0.5" placeholder="e.g. 4.5">
+          </div>
+          <div>
+            <label class="label">Gauge: rows per inch</label>
+            <input class="form-input" type="number" id="gauge-rpi" min="0.5" step="0.5" placeholder="e.g. 6">
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcScarf()">Calculate</button>
+          <button class="btn-ghost" onclick="resetScarf()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="scarf-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-cast-on"></div>
+              <div class="stat-label">Cast-On Stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-rows"></div>
+              <div class="stat-label">Total Rows</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yards"></div>
+              <div class="stat-label">Estimated Yards</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-buffer"></div>
+              <div class="stat-label">Yards + 15% Buffer</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-meters"></div>
+              <div class="stat-label">Estimated Meters</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-skeins"></div>
+              <div class="stat-label">Approx. Skeins (200yd)</div>
+            </div>
+          </div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Actual yarn use varies by stitch pattern, tension, and yarn brand.</p>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Recommended Scarf Dimensions</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Style</th><th>Width</th><th>Length</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Standard Scarf</td><td>6–8"</td><td>55–65"</td><td>Drapes around neck</td></tr>
+              <tr><td>Wide Scarf</td><td>10–14"</td><td>60–72"</td><td>Extra warmth</td></tr>
+              <tr><td>Infinity Scarf</td><td>8–10"</td><td>55–65"</td><td>Sewn or joined into a loop</td></tr>
+              <tr><td>Narrow Cowl</td><td>8–10"</td><td>20–26" circ.</td><td>Single loop around neck</td></tr>
+              <tr><td>Wide Cowl</td><td>12–16"</td><td>22–28" circ.</td><td>Can double-loop</td></tr>
+              <tr><td>Kids Scarf</td><td>4–5"</td><td>36–48"</td><td>Shorter for smaller frames</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <ul>
+          <li>Select a scarf style preset or enter your own dimensions.</li>
+          <li>Enter your gauge in stitches per inch and rows per inch from your swatch.</li>
+          <li>Select your yarn weight for a yardage estimate.</li>
+          <li>Click <strong>Calculate</strong> to see your stitch count, row count, and yarn needed.</li>
+        </ul>
+        <h2>Tips</h2>
+        <ul>
+          <li>For an infinity scarf, the "length" is the total circumference of the loop (usually 55–65").</li>
+          <li>Lacy or open stitch patterns may use more yarn than plain stockinette or sc/dc for the same area.</li>
+          <li>Add fringe yardage separately — typically 2–3× the width of the scarf per fringe segment.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('scarf-size-calculator.html');injectFooter();});
+    const presets = {
+      standard:{w:8,l:60}, wide:{w:12,l:60}, infinity:{w:8,l:60},
+      'cowl-narrow':{w:9,l:24}, 'cowl-wide':{w:14,l:24}, mini:{w:5,l:36}
+    };
+    const ydsPerSt = {lace:0.08,fingering:0.06,sport:0.05,dk:0.04,worsted:0.035,bulky:0.025,'super-bulky':0.018};
+    function loadScarfPreset(){
+      const p = presets[document.getElementById('scarf-preset').value];
+      if(!p) return;
+      document.getElementById('scarf-width').value  = p.w;
+      document.getElementById('scarf-length').value = p.l;
+    }
+    function calcScarf(){
+      const w   = parseFloat(document.getElementById('scarf-width').value);
+      const l   = parseFloat(document.getElementById('scarf-length').value);
+      const spi = parseFloat(document.getElementById('gauge-spi').value);
+      const rpi = parseFloat(document.getElementById('gauge-rpi').value);
+      const wt  = document.getElementById('yarn-weight').value;
+      if([w,l,spi,rpi].some(v=>isNaN(v)||v<=0)){alert('Please fill in all fields.');return;}
+      const castOn    = Math.round(w * spi);
+      const rows      = Math.round(l * rpi);
+      const totalSts  = castOn * rows;
+      const yards     = totalSts * ydsPerSt[wt];
+      const buffer    = yards * 1.15;
+      const meters    = yards * 0.9144;
+      const skeins    = Math.ceil(buffer/200);
+      document.getElementById('res-cast-on').textContent = castOn;
+      document.getElementById('res-rows').textContent    = rows;
+      document.getElementById('res-yards').textContent   = Math.round(yards).toLocaleString();
+      document.getElementById('res-buffer').textContent  = Math.round(buffer).toLocaleString();
+      document.getElementById('res-meters').textContent  = Math.round(meters).toLocaleString();
+      document.getElementById('res-skeins').textContent  = skeins;
+      document.getElementById('scarf-result').style.display='block';
+    }
+    function resetScarf(){
+      document.getElementById('scarf-preset').value='custom';
+      ['scarf-width','scarf-length','gauge-spi','gauge-rpi'].forEach(id=>{document.getElementById(id).value='';});
+      document.getElementById('scarf-result').style.display='none';
+    }
+  </script>
+</body>
+</html>

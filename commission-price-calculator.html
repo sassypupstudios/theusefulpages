@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commission Price Calculator — Free Craft Business Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate a fair price for commissioned handmade work. Factor in materials, time, complexity, and your desired wage. Free commission pricing calculator — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/commission-price-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Commission Price Calculator</h1>
+      <p class="page-subtitle">Build a fair, justified price for commission work. Includes materials, your time, complexity, client revision allowance, and your target profit.</p>
+
+      <div class="tool-card">
+        <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 1rem;">Materials</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <label class="label">Material cost ($)</label>
+            <input type="number" id="cp-mat" class="form-input" placeholder="e.g. 12.00" min="0" step="0.01">
+          </div>
+          <div>
+            <label class="label">Material markup (%) <span style="font-size:0.8rem;color:var(--text-muted);">to cover waste</span></label>
+            <input type="number" id="cp-mat-markup" class="form-input" value="15" min="0" max="100" step="1">
+          </div>
+        </div>
+
+        <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 1rem;">Labor</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <label class="label">Estimated hours</label>
+            <input type="number" id="cp-hours" class="form-input" placeholder="e.g. 4" min="0" step="0.25">
+          </div>
+          <div>
+            <label class="label">Your hourly rate ($/hr)</label>
+            <input type="number" id="cp-rate" class="form-input" placeholder="e.g. 25" min="0" step="0.01">
+          </div>
+          <div>
+            <label class="label">Complexity level</label>
+            <select id="cp-complexity" class="form-select">
+              <option value="1.0">Standard (×1.0)</option>
+              <option value="1.2">Moderate (×1.2)</option>
+              <option value="1.4">Complex (×1.4)</option>
+              <option value="1.6">Expert / unique (×1.6)</option>
+              <option value="2.0">Master-level (×2.0)</option>
+            </select>
+          </div>
+        </div>
+
+        <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 1rem;">Additional charges</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <label class="label">Design / consultation time (hrs)</label>
+            <input type="number" id="cp-consult" class="form-input" value="0" min="0" step="0.25" placeholder="e.g. 0.5">
+          </div>
+          <div>
+            <label class="label">Revisions included</label>
+            <select id="cp-revisions" class="form-select">
+              <option value="0">No revisions</option>
+              <option value="0.25">1 revision (+15 min)</option>
+              <option value="0.5" selected>2 revisions (+30 min)</option>
+              <option value="1.0">3+ revisions (+1 hr)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Rush premium (%)</label>
+            <input type="number" id="cp-rush" class="form-input" value="0" min="0" max="100" step="5" placeholder="e.g. 25">
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Profit margin (%)</label>
+            <input type="number" id="cp-margin" class="form-input" value="20" min="0" max="200" step="1">
+          </div>
+          <div>
+            <label class="label">Platform / transaction fee (%)</label>
+            <input type="number" id="cp-fee" class="form-input" value="0" min="0" max="30" step="0.1">
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="calcCommission()">Calculate Commission Price</button>
+
+        <div id="cp-result" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+
+        <div style="margin-top:2rem;">
+          <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 0.75rem;">Commission pricing quick reference</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Factor</th><th>What to charge</th></tr></thead>
+              <tbody>
+                <tr><td>Rush delivery (&lt;48 hrs)</td><td>+50–100% of base price</td></tr>
+                <tr><td>Rush delivery (1 week)</td><td>+25–50% of base price</td></tr>
+                <tr><td>Additional revisions (beyond included)</td><td>$15–50/revision or hourly rate</td></tr>
+                <tr><td>Design from scratch</td><td>Add 30–60 min at your hourly rate</td></tr>
+                <tr><td>Exclusive rights / no-resale clause</td><td>+20–50% of base price</td></tr>
+                <tr><td>Deadline extension penalty</td><td>Offer, don't charge — note your policy upfront</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">Pricing commission work</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Commission pricing is often higher than production pricing because each piece is unique, requires back-and-forth communication, and carries the emotional weight of creating something specifically for one person. Use this calculator to build a transparent, defensible price you can explain to clients.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Never drop below your material cost + minimum wage in labor — that is your absolute floor</li>
+          <li>Include consultation time: even a 30-minute planning conversation is worth money</li>
+          <li>State your revision policy clearly before starting — unlimited changes is not sustainable</li>
+          <li>Complexity multiplier rewards expertise — a master quilter's time is worth more than a beginner's</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Use this as a starting point. Market rates, local cost of living, and your experience level all affect what the market will bear.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcCommission() {
+    const mat = parseFloat(document.getElementById('cp-mat').value) || 0;
+    const matMarkup = parseFloat(document.getElementById('cp-mat-markup').value) || 0;
+    const hours = parseFloat(document.getElementById('cp-hours').value) || 0;
+    const rate = parseFloat(document.getElementById('cp-rate').value) || 0;
+    const complexity = parseFloat(document.getElementById('cp-complexity').value);
+    const consultHrs = parseFloat(document.getElementById('cp-consult').value) || 0;
+    const revisionHrs = parseFloat(document.getElementById('cp-revisions').value) || 0;
+    const rush = parseFloat(document.getElementById('cp-rush').value) || 0;
+    const margin = parseFloat(document.getElementById('cp-margin').value) || 0;
+    const fee = parseFloat(document.getElementById('cp-fee').value) || 0;
+
+    if (!mat && !hours) { alert('Enter at least material cost or hours.'); return; }
+    if (hours && !rate) { alert('Enter your hourly rate.'); return; }
+
+    const materialsCost = mat * (1 + matMarkup / 100);
+    const productionHrs = (hours + consultHrs + revisionHrs) * complexity;
+    const laborCost = productionHrs * rate;
+    const baseCost = materialsCost + laborCost;
+    const rushAmt = baseCost * (rush / 100);
+    const costWithRush = baseCost + rushAmt;
+    const divisor = 1 - (margin / 100) - (fee / 100);
+    if (divisor <= 0) { alert('Margin + fee cannot exceed 100%.'); return; }
+    const finalPrice = costWithRush / divisor;
+    const profitAmt = finalPrice * (margin / 100);
+    const feeAmt = finalPrice * (fee / 100);
+
+    const el = document.getElementById('cp-result');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Materials (with markup)</div><div class="stat-value">$${materialsCost.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Total Hours</div><div class="stat-value">${productionHrs.toFixed(2)} hrs</div></div>
+      <div class="stat-box"><div class="stat-label">Labor Cost</div><div class="stat-value">$${laborCost.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Rush Premium</div><div class="stat-value">$${rushAmt.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Your Profit</div><div class="stat-value">$${profitAmt.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Platform Fee</div><div class="stat-value">$${feeAmt.toFixed(2)}</div></div>
+    </div>
+    <div style="margin-top:1rem;padding:1rem;background:var(--result-bg,var(--bg-secondary));border-radius:8px;text-align:center;">
+      <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.25rem;">Commission price to quote</div>
+      <div style="font-size:2rem;font-weight:700;color:var(--accent);">$${finalPrice.toFixed(2)}</div>
+      <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.25rem;">Complexity ×${complexity} · ${margin}% margin · ${rush}% rush</div>
+    </div>
+    <p style="margin-top:0.75rem;font-size:0.88rem;color:var(--text-muted);">Minimum floor price (cost only): <strong>$${baseCost.toFixed(2)}</strong>. Never quote below this.</p>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('commission-price-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

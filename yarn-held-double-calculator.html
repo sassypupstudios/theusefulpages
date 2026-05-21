@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarn Held Double Calculator — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Find the equivalent yarn weight when held double. Estimate held-double gauge from single-strand gauge. Includes reference table of common combinations. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/yarn-held-double-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Yarn Held Double Calculator</h1>
+      <p class="page-subtitle">Find the equivalent weight and estimated gauge when holding two strands of yarn together.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Single Strand Weight</label>
+            <select class="form-select" id="single-weight" onchange="calcDouble()">
+              <option value="">-- Select --</option>
+              <option value="lace">Lace / Cobweb</option>
+              <option value="fingering">Fingering / Sock</option>
+              <option value="sport">Sport / Baby</option>
+              <option value="dk">DK / Light Worsted</option>
+              <option value="worsted">Worsted</option>
+              <option value="aran">Aran / Heavy Worsted</option>
+              <option value="bulky">Bulky / Chunky</option>
+              <option value="superbulky">Super Bulky</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Single Strand Gauge (sts per 4")<br><small style="color:var(--text-muted);">optional — for held-double gauge estimate</small></label>
+            <input class="form-input" type="number" id="single-gauge" min="1" max="60" placeholder="e.g. 22" oninput="calcDouble()">
+          </div>
+        </div>
+        <div id="double-result" style="display:none;"></div>
+        <p class="disclaimer">Held-double results are estimates. Actual gauge depends on needle/hook size, tension, and yarn fiber. Always swatch.</p>
+
+        <h2 style="font-size:1.1rem;margin:2rem 0 1rem;">Common Held-Double Combinations</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Single Strand</th><th>Held Double ≈</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Lace × 2</td><td>Fingering / Sock</td><td>Good for lightweight sock yarn effects</td></tr>
+              <tr><td>Fingering × 2</td><td>Sport / DK</td><td>Very common — creates a soft, lofty fabric</td></tr>
+              <tr><td>Sport × 2</td><td>Worsted</td><td>Great for bulking up light sport yarns</td></tr>
+              <tr><td>DK × 2</td><td>Bulky / Chunky</td><td>Popular for quick blankets and outerwear</td></tr>
+              <tr><td>Worsted × 2</td><td>Super Bulky</td><td>Works up very fast; great for cozy items</td></tr>
+              <tr><td>Fingering + Mohair</td><td>Lace Weight look, DK weight body</td><td>Classic halo yarn technique</td></tr>
+              <tr><td>DK + Fingering</td><td>Between Worsted and DK</td><td>Useful for color blending effects</td></tr>
+              <tr><td>Two different DK colors</td><td>Bulky weight</td><td>Natural color-blending — heathered effect</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Tool</h2>
+        <ul>
+          <li>Select your single-strand yarn weight to see the approximate equivalent when held double.</li>
+          <li>Optionally enter your single-strand gauge (stitches per 4 inches) to get an estimated held-double gauge.</li>
+          <li>Use the reference table below for common double-strand combinations.</li>
+        </ul>
+        <h2>About Held-Double Knitting and Crochet</h2>
+        <ul>
+          <li>Holding yarn double means working with two strands simultaneously through the same needle or hook.</li>
+          <li>The resulting fabric is roughly one weight category heavier, denser, and warmer than the single strand.</li>
+          <li>Held-double gauge is approximately 70–80% of the single-strand gauge — you'll get fewer stitches per inch.</li>
+          <li>You'll typically use a needle or hook 1–2 sizes larger than the single-strand recommendation.</li>
+          <li>Holding two colors together creates a beautiful tweedy, blended effect.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('yarn-held-double-calculator.html');injectFooter();});
+
+    const doubleMap = {
+      lace:      {result:'Fingering / Sock',    needle:'2.25–3.25 mm', hook:'2.25–3.5 mm'},
+      fingering: {result:'Sport / DK',          needle:'3.25–4.5 mm',  hook:'3.5–5.5 mm'},
+      sport:     {result:'Worsted',             needle:'4.5–5.5 mm',   hook:'5.0–6.5 mm'},
+      dk:        {result:'Bulky / Chunky',      needle:'5.5–8.0 mm',   hook:'6.5–9.0 mm'},
+      worsted:   {result:'Super Bulky',         needle:'8.0–12.75 mm', hook:'9.0–15.0 mm'},
+      aran:      {result:'Super Bulky / Jumbo', needle:'9.0–12.75 mm', hook:'10.0–15.0 mm'},
+      bulky:     {result:'Jumbo',               needle:'12.75+ mm',    hook:'15.0+ mm'},
+      superbulky:{result:'Extreme Jumbo',       needle:'15.0+ mm',     hook:'20.0+ mm'},
+    };
+
+    function calcDouble(){
+      const w = document.getElementById('single-weight').value;
+      const g = parseFloat(document.getElementById('single-gauge').value);
+      const res = document.getElementById('double-result');
+      if(!w){res.style.display='none';return;}
+      const d = doubleMap[w];
+      const gaugeHtml = !isNaN(g) && g>0 ?
+        `<div class="stat-box"><div class="stat-value">~${Math.round(g*0.75)} sts</div><div class="stat-label">Est. Held-Double Gauge (4")</div></div>` : '';
+      res.innerHTML = `
+        <div class="result-card">
+          <div class="stat-grid">
+            <div class="stat-box"><div class="stat-value">${d.result}</div><div class="stat-label">Approx. Held-Double Weight</div></div>
+            <div class="stat-box"><div class="stat-value">${d.needle}</div><div class="stat-label">Rec. Needle Size</div></div>
+            <div class="stat-box"><div class="stat-value">${d.hook}</div><div class="stat-label">Rec. Hook Size</div></div>
+            ${gaugeHtml}
+          </div>
+        </div>
+      `;
+      res.style.display='block';
+    }
+  </script>
+</body>
+</html>

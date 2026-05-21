@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heel Turn Calculator — Free Knitting Calculator | The Useful Pages</title>
+  <meta name="description" content="Get complete heel flap and heel turn instructions with exact stitch counts. Supports standard heel turn and German short-row options. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/heel-turn-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Heel Turn Calculator</h1>
+      <p class="page-subtitle">Enter your heel flap stitch count and get complete, row-by-row heel turn instructions with exact stitch counts.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Heel flap stitch count</label>
+            <input class="form-input" type="number" id="heel-sts" min="10" max="80" step="2" placeholder="e.g. 32">
+          </div>
+          <div>
+            <label class="label">Total sock stitch count</label>
+            <input class="form-input" type="number" id="total-sts" min="20" max="160" step="2" placeholder="e.g. 64">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcHeel()">Generate Instructions</button>
+
+        <div id="heel-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid" style="margin-bottom:1.5rem;">
+            <div class="stat-box">
+              <div class="stat-value" id="res-heel-sts"></div>
+              <div class="stat-label">Heel flap stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-center"></div>
+              <div class="stat-label">Center stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-live-sts"></div>
+              <div class="stat-label">Live sts after turn</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-pickup"></div>
+              <div class="stat-label">Pick up each side</div>
+            </div>
+          </div>
+
+          <h3 style="margin-bottom:0.75rem;">Heel Flap</h3>
+          <div id="flap-instructions" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.9rem;line-height:1.8;white-space:pre-wrap;"></div>
+
+          <h3 style="margin:1.25rem 0 0.75rem;">Standard Heel Turn</h3>
+          <div id="turn-instructions" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.9rem;line-height:1.8;white-space:pre-wrap;"></div>
+
+          <h3 style="margin:1.25rem 0 0.75rem;">Gusset Pick-Up</h3>
+          <div id="gusset-instructions" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.9rem;line-height:1.8;white-space:pre-wrap;"></div>
+
+          <h3 style="margin:1.25rem 0 0.75rem;">German Short-Row Heel (Alternative)</h3>
+          <div id="gsr-instructions" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-size:0.9rem;line-height:1.7;"></div>
+
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always swatch before starting a garment project.</p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li><strong>Heel flap stitch count:</strong> This is typically half your total sock stitch count (e.g., for 64-stitch socks, enter 32).</li>
+          <li><strong>Total sock stitch count:</strong> The full round stitch count of your sock.</li>
+          <li>Click <em>Generate Instructions</em> to get your complete heel-turn recipe.</li>
+        </ol>
+        <h3 style="margin-top:1rem;">Tips</h3>
+        <ul>
+          <li>The heel flap must be an even number of stitches for a standard turn.</li>
+          <li>Pick up one stitch for every slipped stitch along each edge of the heel flap.</li>
+          <li>Work the gusset decreases every other round until you return to your original stitch count.</li>
+          <li>German short-row heels create no gap and are great for narrow heels.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{injectNav('heel-turn-calculator.html');injectFooter();});
+
+  function calcHeel() {
+    const heelSts = parseInt(document.getElementById('heel-sts').value);
+    const totalSts = parseInt(document.getElementById('total-sts').value);
+    if (!heelSts || heelSts < 10 || heelSts % 2 !== 0) {
+      alert('Please enter an even heel flap stitch count (minimum 10).');
+      return;
+    }
+    if (!totalSts || totalSts < 20) {
+      alert('Please enter a valid total sock stitch count.');
+      return;
+    }
+
+    const center = Math.floor(heelSts / 2);
+    const flapRows = heelSts; // standard: 1 row per stitch
+    const pickUp = Math.floor(flapRows / 2);
+
+    // After turn, live stitches = center
+    document.getElementById('res-heel-sts').textContent = heelSts;
+    document.getElementById('res-center').textContent = center;
+    document.getElementById('res-live-sts').textContent = center;
+    document.getElementById('res-pickup').textContent = pickUp;
+
+    // Heel flap instructions
+    let flap = `Setup: Place ${heelSts} heel stitches on one needle.\n\n`;
+    flap += `Row 1 (RS): *Sl1 wyib, k1; repeat from * to end. (${heelSts} sts)\n`;
+    flap += `Row 2 (WS): Sl1 wyif, p to end. (${heelSts} sts)\n`;
+    flap += `\nRepeat Rows 1–2 for ${flapRows} rows total (${flapRows/2} times each).\n`;
+    flap += `You will have ${pickUp} slipped stitches along each edge.`;
+    document.getElementById('flap-instructions').textContent = flap;
+
+    // Standard heel turn
+    const sideL = Math.floor((heelSts - center) / 2);
+    let turn = '';
+    let remaining = heelSts;
+    let leftSide = sideL;
+    let rightSide = sideL;
+    let rowNum = 1;
+    let rsFirst = true;
+
+    // Row 1 RS
+    turn += `Row ${rowNum} (RS): Sl1, k${center}, ssk, k1, turn. (${heelSts - 1} sts)\n`;
+    rowNum++;
+    // Row 2 WS
+    turn += `Row ${rowNum} (WS): Sl1, p${center + 1 - 1}, p2tog, p1, turn. (${heelSts - 2} sts)\n`;
+    rowNum++;
+
+    // Subsequent rows reduce by 1 each side
+    let worked = center + 2; // sts between slipped and dec after first 2 rows
+    let totalLeft = heelSts - 2;
+    let gapSts = leftSide - 1;
+
+    for (let i = 1; i < gapSts; i++) {
+      const workSts = center + i * 2;
+      const remRS = heelSts - (i * 2) - 1;
+      const remWS = heelSts - (i * 2) - 2;
+      turn += `Row ${rowNum} (RS): Sl1, k${workSts}, ssk, k1, turn. (${remRS} sts)\n`;
+      rowNum++;
+      turn += `Row ${rowNum} (WS): Sl1, p${workSts + 1}, p2tog, p1, turn. (${remWS} sts)\n`;
+      rowNum++;
+    }
+
+    // Final row(s) — depends on even/odd
+    const finalSts = center + (leftSide % 2 === 0 ? 2 : 1);
+    turn += `\nFinal Row (RS): Sl1, k to last 2 sts, ssk, turn — OR — k to end if no sts remain.\n`;
+    turn += `Final Row (WS): Sl1, p to last 2 sts, p2tog — OR — p to end if no sts remain.\n`;
+    turn += `\n${center} live heel stitches remain on needle.`;
+    document.getElementById('turn-instructions').textContent = turn;
+
+    // Gusset
+    const instepSts = totalSts - heelSts;
+    const afterPickup = center + (pickUp * 2) + instepSts;
+    let gusset = `After heel turn, ${center} live stitches on needle.\n\n`;
+    gusset += `Pick up and knit ${pickUp} stitches along left heel flap edge.\n`;
+    gusset += `Knit across ${instepSts} instep stitches.\n`;
+    gusset += `Pick up and knit ${pickUp} stitches along right heel flap edge.\n`;
+    gusset += `Knit across ${center} heel stitches to center of heel.\n`;
+    gusset += `Total stitches now: ${afterPickup}\n\n`;
+    gusset += `GUSSET DECREASE ROUND:\n`;
+    gusset += `  Needle 1: Knit to last 3 sts, k2tog, k1.\n`;
+    gusset += `  Needle 2: Knit all ${instepSts} instep sts.\n`;
+    gusset += `  Needle 3: K1, ssk, knit to end.\n`;
+    gusset += `\nWork plain round, then repeat decrease round.\n`;
+    gusset += `Continue until ${totalSts} total stitches remain (${Math.ceil(totalSts/2)} instep + ${Math.floor(totalSts/2)} sole).`;
+    document.getElementById('gusset-instructions').textContent = gusset;
+
+    // GSR
+    const gsrHalf = Math.floor(heelSts / 2);
+    document.getElementById('gsr-instructions').innerHTML = `
+      <p>The German short-row heel works across all <strong>${heelSts}</strong> heel stitches — no flap needed.</p>
+      <p><strong>Phase 1 — Work short rows:</strong></p>
+      <ul>
+        <li>RS: Knit to last stitch, turn. Make double stitch (DS): slip 1 wyif, bring yarn back.</li>
+        <li>WS: Purl to last stitch, turn. Make DS.</li>
+        <li>Continue: knit/purl to DS (don't work it), turn, make DS — repeat ${gsrHalf - 1} times each side.</li>
+        <li>You'll have ${gsrHalf} centre sts with a DS on each side.</li>
+      </ul>
+      <p><strong>Phase 2 — Close short rows:</strong></p>
+      <ul>
+        <li>RS: Knit to DS, knit DS as 2 sts together (k2tog), turn, make DS. Repeat across.</li>
+        <li>WS: Purl to DS, purl DS as 2 sts together (p2tog), turn, make DS. Repeat across.</li>
+        <li>Continue until all DS are worked. All ${heelSts} sts active again.</li>
+      </ul>
+      <p>No gaps! Pick up gusset stitches as described above.</p>
+    `;
+
+    document.getElementById('heel-result').style.display = 'block';
+  }
+  </script>
+</body>
+</html>

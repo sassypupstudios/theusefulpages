@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quilt Batting Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate quilt batting dimensions needed for your quilt top. Get minimum and recommended batting sizes and compare common batting package sizes. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/quilt-batting-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Quilt Batting Calculator</h1>
+      <p class="page-subtitle">Find the batting dimensions you need for your quilt top — minimum and recommended sizes.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Quilt Top Width (inches)</label>
+            <input class="form-input" type="number" id="quilt-width" min="1" placeholder="e.g. 60">
+          </div>
+          <div>
+            <label class="label">Quilt Top Length (inches)</label>
+            <input class="form-input" type="number" id="quilt-length" min="1" placeholder="e.g. 80">
+          </div>
+          <div>
+            <label class="label">Overhang Each Side (inches)</label>
+            <select class="form-select" id="overhang">
+              <option value="4">4" (minimum for machine quilting)</option>
+              <option value="6" selected>6" (standard recommended)</option>
+              <option value="8">8" (hand quilting / extra safety)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Batting Shrinkage Factor</label>
+            <select class="form-select" id="shrinkage">
+              <option value="0">0% — Polyester (no shrinkage)</option>
+              <option value="2">2% — Poly-Cotton blend</option>
+              <option value="3" selected>3% — Cotton (average)</option>
+              <option value="5">5% — Cotton (pre-shrink recommended)</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcBatting()">Calculate Batting</button>
+          <button class="btn-outline" onclick="resetBatting()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="batting-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-min-w"></div>
+              <div class="stat-label">Minimum Width (in)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-min-l"></div>
+              <div class="stat-label">Minimum Length (in)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-rec-w"></div>
+              <div class="stat-label">Recommended Width (in)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-rec-l"></div>
+              <div class="stat-label">Recommended Length (in)</div>
+            </div>
+          </div>
+          <div id="shrink-note" style="margin-top:0.75rem;" class="disclaimer"></div>
+          <p class="disclaimer">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+          <h3 style="margin-top:1.5rem;">Common Batting Package Sizes</h3>
+          <div class="table-wrap">
+            <table class="data-table" id="batting-table">
+              <thead><tr><th>Package Name</th><th>Size (inches)</th><th>Fits Your Quilt?</th></tr></thead>
+              <tbody id="batting-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use the Quilt Batting Calculator</h2>
+        <ul>
+          <li>Enter your finished quilt top width and length in inches.</li>
+          <li>Select the overhang amount for each side. More overhang makes quilting easier and gives you room to fix mistakes. 6" per side is the most common recommendation.</li>
+          <li>Select the batting shrinkage factor based on the fiber content of your chosen batting.</li>
+          <li>Click <strong>Calculate Batting</strong> to see your minimum and recommended batting dimensions, plus which packaged batting sizes will work for your quilt.</li>
+        </ul>
+        <h2>Understanding Batting Overhang</h2>
+        <ul>
+          <li><strong>4" per side</strong> — Minimum for machine quilting on a home machine. Leaves little room for shifting.</li>
+          <li><strong>6" per side</strong> — Standard recommendation. Gives you comfortable working room when loading the quilt.</li>
+          <li><strong>8" per side</strong> — Best for hand quilting or if using a longarm quilting service. Provides maximum flexibility.</li>
+        </ul>
+        <h2>Batting Shrinkage Notes</h2>
+        <ul>
+          <li>Cotton batting can shrink 2–5% when washed. Many quilters pre-wash batting to prevent quilt puckering.</li>
+          <li>Polyester batting has virtually no shrinkage and is a good choice if you skip pre-washing.</li>
+          <li>The recommended batting size already accounts for the shrinkage percentage you selected.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('quilt-batting-calculator.html');injectFooter();});
+
+    const battingPackages = [
+      {name:'Crib / Lap',     w:45,  l:60},
+      {name:'Twin',           w:72,  l:90},
+      {name:'Full / Double',  w:81,  l:96},
+      {name:'Queen',          w:90,  l:108},
+      {name:'King',           w:120, l:120},
+      {name:'California King',w:120, l:122},
+    ];
+
+    function calcBatting(){
+      const qw  = parseFloat(document.getElementById('quilt-width').value);
+      const ql  = parseFloat(document.getElementById('quilt-length').value);
+      const oh  = parseInt(document.getElementById('overhang').value);
+      const shr = parseInt(document.getElementById('shrinkage').value) / 100;
+
+      if(isNaN(qw)||qw<=0||isNaN(ql)||ql<=0){alert('Please enter valid quilt top dimensions.');return;}
+
+      const minW = qw + oh * 2;
+      const minL = ql + oh * 2;
+      // Add shrinkage compensation: divide by (1 - shrinkage) to end up with enough after shrinking
+      const recW = shr > 0 ? Math.ceil(minW / (1 - shr)) : minW;
+      const recL = shr > 0 ? Math.ceil(minL / (1 - shr)) : minL;
+
+      document.getElementById('res-min-w').textContent = minW + '"';
+      document.getElementById('res-min-l').textContent = minL + '"';
+      document.getElementById('res-rec-w').textContent = recW + '"';
+      document.getElementById('res-rec-l').textContent = recL + '"';
+
+      if(shr > 0){
+        document.getElementById('shrink-note').textContent =
+          'Recommended size includes ' + (shr*100) + '% extra to compensate for batting shrinkage after washing.';
+      } else {
+        document.getElementById('shrink-note').textContent = '';
+      }
+
+      const tbody = document.getElementById('batting-table-body');
+      tbody.innerHTML = '';
+      battingPackages.forEach(pkg => {
+        const fits = pkg.w >= recW && pkg.l >= recL;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${pkg.name}</td><td>${pkg.w}" × ${pkg.l}"</td><td style="color:${fits?'var(--color-success,#22c55e)':'var(--color-danger,#ef4444)'}">${fits ? '✓ Fits' : '✗ Too small'}</td>`;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('batting-result').style.display = 'block';
+    }
+
+    function resetBatting(){
+      document.getElementById('quilt-width').value = '';
+      document.getElementById('quilt-length').value = '';
+      document.getElementById('batting-result').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Symbol Lookup — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Look up standard crochet chart symbols with descriptions of appearance and how each is worked. Searchable reference for 30+ symbols. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-symbol-lookup.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .symbol-char { font-size:1.4rem; font-weight:700; color:var(--primary); display:inline-block; min-width:2rem; text-align:center; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Symbol Lookup</h1>
+      <p class="page-subtitle">Reference guide to standard crochet chart symbols — appearance, abbreviation, and how each is worked.</p>
+      <div class="tool-card">
+        <input class="form-input" type="text" id="search" placeholder="Search symbol name or abbreviation (e.g. chain, dc, bobble...)" style="margin-bottom:1rem;" oninput="filterTable()">
+        <p id="count-label" style="font-size:0.9rem;color:var(--text-muted);margin-bottom:0.75rem;"></p>
+        <div class="table-wrap">
+          <table class="data-table" id="symbol-table">
+            <thead>
+              <tr><th>Symbol</th><th>Name</th><th>Abbr</th><th>Appearance</th><th>How It's Worked</th></tr>
+            </thead>
+            <tbody id="symbol-body"></tbody>
+          </table>
+        </div>
+        <p class="disclaimer" style="margin-top:1rem;">Symbol styles can vary between pattern publishers and between US and international standards. Always check the symbol key included with your specific pattern.</p>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>About Crochet Chart Symbols</h2>
+        <p>Crochet charts use standardized symbols to represent stitches visually. Each symbol depicts the shape of the finished stitch. Charts are read from bottom to top; rows alternate direction (right to left, left to right) while rounds are read counterclockwise.</p>
+        <h2>US vs. International Symbols</h2>
+        <p>Most modern patterns follow international symbol conventions (as used by Craft Yarn Council), but older patterns and some publishers may use different symbols. The term names also differ between US and UK — a US "single crochet" = UK "double crochet."</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const SYMBOLS = [
+    {sym:'○',name:'Chain',abbr:'ch',appearance:'Oval or elongated loop shape',worked:'Yarn over, pull through loop on hook'},
+    {sym:'•',name:'Slip Stitch',abbr:'sl st',appearance:'Small filled dot or circle',worked:'Insert hook, yo, pull through both loops at once'},
+    {sym:'+',name:'Single Crochet',abbr:'sc',appearance:'Plus sign (+) or X symbol',worked:'Insert hook, yo pull up loop, yo pull through both loops'},
+    {sym:'T',name:'Half Double Crochet',abbr:'hdc',appearance:'T-shape with one extra horizontal bar at top',worked:'Yo, insert hook, yo pull up loop, yo pull through all 3 loops'},
+    {sym:'T̈',name:'Double Crochet',abbr:'dc',appearance:'T-shape with a diagonal bar crossing the post',worked:'Yo, insert hook, yo pull up loop, [yo pull through 2 loops] twice'},
+    {sym:'Ṫ',name:'Treble Crochet',abbr:'tr',appearance:'T-shape with two diagonal bars crossing the post',worked:'Yo twice, insert hook, yo pull up loop, [yo pull through 2 loops] 3 times'},
+    {sym:'⊤',name:'Double Treble Crochet',abbr:'dtr',appearance:'T-shape with three diagonal bars on the post',worked:'Yo 3 times, insert hook, yo pull up loop, [yo pull through 2 loops] 4 times'},
+    {sym:'◇',name:'Magic Ring / Magic Circle',abbr:'MR',appearance:'Circle with an arrow indicating adjustable ring',worked:'Loop yarn around fingers, insert hook, pull up working yarn through loop'},
+    {sym:'⊕',name:'Chain Space',abbr:'ch sp',appearance:'Circle with a line through it',worked:'Work into the gap created by chains in previous row/round'},
+    {sym:'∧',name:'Increase',abbr:'inc',appearance:'V-shape or fan with arrows spreading outward',worked:'Work 2 stitches into the same stitch'},
+    {sym:'∨',name:'Decrease (sc2tog)',abbr:'sc2tog',appearance:'Inverted V or two lines joining into one',worked:'Draw up loop in 2 stitches, yo pull through all 3 loops'},
+    {sym:'⋀',name:'Decrease (dc2tog)',abbr:'dc2tog',appearance:'Two diagonal posts merging at top',worked:'Work two incomplete dc, yo pull through all loops'},
+    {sym:'❧',name:'Bobble Stitch',abbr:'bobble',appearance:'Teardrop or bump shape above the stitch line',worked:'5 incomplete dc in same stitch, yo pull through all loops'},
+    {sym:'⬬',name:'Puff Stitch',abbr:'puff st',appearance:'Oval or puffy shape above the stitch line',worked:'[Yo, pull up long loop] 3–5 times in same stitch, yo pull through all loops'},
+    {sym:'🌸',name:'Shell Stitch',abbr:'shell',appearance:'Fan or half-circle of several tall stitches',worked:'Work 5 dc (or as specified) into same stitch or space'},
+    {sym:'V',name:'V-Stitch',abbr:'v-st',appearance:'V-shape opening from a single base point',worked:'dc, ch 1, dc all in same stitch or space'},
+    {sym:'◦',name:'Picot',abbr:'picot',appearance:'Small raised bump or spike at fabric edge',worked:'Ch 3 (or as specified), slip stitch in first chain made'},
+    {sym:'⇑',name:'Front Post Double Crochet',abbr:'fpdc',appearance:'T-shape with curved base wrapping around a post',worked:'Yo, insert hook from front around post of stitch below, yo pull up loop, [yo pull through 2 loops] twice'},
+    {sym:'⇓',name:'Back Post Double Crochet',abbr:'bpdc',appearance:'T-shape with curved base going behind a post',worked:'Yo, insert hook from back around post of stitch below, yo pull up loop, [yo pull through 2 loops] twice'},
+    {sym:'↙',name:'Back Loop Only Stitch',abbr:'blo',appearance:'Standard stitch symbol with a line under the base',worked:'Insert hook through back loop only of indicated stitch'},
+    {sym:'↗',name:'Front Loop Only Stitch',abbr:'flo',appearance:'Standard stitch symbol with a line over the base',worked:'Insert hook through front loop only of indicated stitch'},
+    {sym:'⌂',name:'Cluster',abbr:'cl',appearance:'Multiple posts drawn together at the top',worked:'Several incomplete stitches worked then joined with one final pull-through'},
+    {sym:'⁕',name:'Spike Stitch',abbr:'spike',appearance:'Extended downward spike below normal row level',worked:'Insert hook into stitch 1 or more rows below, draw up elongated loop, complete sc'},
+    {sym:'〰',name:'Slip Stitch Join',abbr:'join',appearance:'Curved connecting arrow or small horizontal line',worked:'Slip stitch through both edge stitches to join'},
+    {sym:'⊗',name:'Linked Double Crochet',abbr:'ldc',appearance:'T-shape with a small horizontal link to adjacent stitch',worked:'Insert hook horizontally into middle bar of adjacent dc before completing stitch'},
+    {sym:'⌇',name:'Reverse Single Crochet',abbr:'rev sc',appearance:'X or plus with backward curved arrows',worked:'Work sc in reverse direction (right to left for right-handers); creates corded edge'},
+    {sym:'⊙',name:'Bullion Stitch',abbr:'bullion',appearance:'Elongated oval with multiple wraps visible',worked:'Yo 7+ times around hook, insert, pull up loop, yo through all loops'},
+    {sym:'★',name:'Solomon\'s Knot',abbr:'sk',appearance:'Elongated chain loop with a locking stitch',worked:'Draw up a long loop, yo pull through, insert hook in left strand, yo pull through both loops'},
+    {sym:'◎',name:'Starting Magic Ring with Chain',abbr:'ch ring',appearance:'Circle with chains numbered around perimeter',worked:'Work the specified number of chains, join into a ring with slip stitch'},
+    {sym:'⟳',name:'Work in Round',abbr:'work in rnd',appearance:'Circular arrow or spiral symbol',worked:'Continue working in a spiral or joined rounds without turning'},
+    {sym:'↩',name:'Turn Work',abbr:'turn',appearance:'Curved arrow pointing back on itself',worked:'Rotate work to begin next row in the opposite direction'},
+    {sym:'✂',name:'Fasten Off',abbr:'fasten off',appearance:'Scissors or cut line symbol',worked:'Cut yarn leaving a tail, pull tail through last loop and secure'},
+  ];
+
+  function escH(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function renderTable(data) {
+    document.getElementById('count-label').textContent = `Showing ${data.length} of ${SYMBOLS.length} symbols`;
+    document.getElementById('symbol-body').innerHTML = data.map(r =>
+      `<tr>
+        <td><span class="symbol-char">${escH(r.sym)}</span></td>
+        <td><strong>${escH(r.name)}</strong></td>
+        <td>${escH(r.abbr)}</td>
+        <td>${escH(r.appearance)}</td>
+        <td>${escH(r.worked)}</td>
+      </tr>`
+    ).join('');
+  }
+
+  function filterTable() {
+    const q = document.getElementById('search').value.trim().toLowerCase();
+    if (!q) { renderTable(SYMBOLS); return; }
+    renderTable(SYMBOLS.filter(r =>
+      r.name.toLowerCase().includes(q) || r.abbr.toLowerCase().includes(q) ||
+      r.appearance.toLowerCase().includes(q) || r.worked.toLowerCase().includes(q)
+    ));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('crochet-symbol-lookup.html');
+    injectFooter();
+    renderTable(SYMBOLS);
+  });
+  </script>
+</body>
+</html>

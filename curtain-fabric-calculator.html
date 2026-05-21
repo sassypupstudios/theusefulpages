@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curtain Fabric Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate how much fabric you need for curtains. Enter window size, fullness, heading type, and fabric width to get total yardage for 1 or 2 panels. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/curtain-fabric-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Curtain Fabric Calculator</h1>
+      <p class="page-subtitle">Calculate total yardage for curtain panels including fullness, hems, and heading allowances.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Window Width (inches)</label>
+            <input class="form-input" type="number" id="win-w" min="1" step="0.5" placeholder="e.g. 72" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Window Height / Drop (inches)</label>
+            <input class="form-input" type="number" id="win-h" min="1" step="0.5" placeholder="e.g. 84" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Number of Panels</label>
+            <select class="form-select" id="panels" onchange="calculate()">
+              <option value="1">1 Panel</option>
+              <option value="2" selected>2 Panels</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Fullness Factor</label>
+            <select class="form-select" id="fullness" onchange="calculate()">
+              <option value="1.5">1.5× — Minimal/Sheers</option>
+              <option value="2" selected>2× — Standard</option>
+              <option value="2.5">2.5× — Full</option>
+              <option value="3">3× — Luxurious</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Heading Type</label>
+            <select class="form-select" id="heading" onchange="calculate()">
+              <option value="rod-pocket">Rod Pocket (+3")</option>
+              <option value="grommet" selected>Grommet (+1")</option>
+              <option value="tab-top">Tab Top (+4")</option>
+              <option value="pinch-pleat">Pinch Pleat (+4")</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Fabric Width (inches)</label>
+            <select class="form-select" id="fab-w" onchange="calculate()">
+              <option value="44">44–45" (quilting/cotton)</option>
+              <option value="54" selected>54" (home dec)</option>
+              <option value="60">60"</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Bottom Hem Allowance (inches)</label>
+            <input class="form-input" type="number" id="hem-bot" value="4" min="0" step="0.5" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Top Hem/Seam Allowance (inches)</label>
+            <input class="form-input" type="number" id="hem-top" value="1.5" min="0" step="0.25" oninput="calculate()">
+          </div>
+          <div style="grid-column:1/-1;">
+            <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+              <input type="checkbox" id="lining" onchange="calculate()" style="width:1rem;height:1rem;">
+              <span class="label" style="margin:0;">Include lining yardage</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="result-area" style="display:none;margin-top:1.5rem;">
+          <div class="result-card">
+            <div class="stat-grid" id="stat-grid"></div>
+          </div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Curtain Fabric Calculator</h2>
+        <p>Enter your window measurements and preferences. The calculator handles all the math for fullness, hems, and heading allowances.</p>
+        <h3>Key Terms</h3>
+        <ul>
+          <li><strong>Window Width:</strong> Measure your rod from end to end, not just the window glass.</li>
+          <li><strong>Drop:</strong> Distance from rod to where curtain should end (floor, sill, or apron).</li>
+          <li><strong>Fullness Factor:</strong> How gathered/full the curtains will look. 2× is standard for most fabrics.</li>
+          <li><strong>Heading:</strong> The top treatment. Rod pocket and tab-top need extra fabric for the pocket/tabs.</li>
+        </ul>
+        <h3>Fullness Guide</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Factor</th><th>Look</th><th>Best For</th></tr></thead>
+            <tbody>
+              <tr><td>1.5×</td><td>Minimal gather</td><td>Sheer fabrics, modern style</td></tr>
+              <tr><td>2×</td><td>Standard</td><td>Most fabrics and styles</td></tr>
+              <tr><td>2.5×</td><td>Full</td><td>Heavier fabrics, formal look</td></tr>
+              <tr><td>3×</td><td>Very full</td><td>Luxurious draping, velvet/silk</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('curtain-fabric-calculator.html'); injectFooter(); });
+
+    const HEADING_EXTRA = { 'rod-pocket': 3, 'grommet': 1, 'tab-top': 4, 'pinch-pleat': 4 };
+
+    function calculate() {
+      const winW = parseFloat(document.getElementById('win-w').value);
+      const winH = parseFloat(document.getElementById('win-h').value);
+      const panels = parseInt(document.getElementById('panels').value);
+      const fullness = parseFloat(document.getElementById('fullness').value);
+      const heading = document.getElementById('heading').value;
+      const fabW = parseFloat(document.getElementById('fab-w').value);
+      const hemBot = parseFloat(document.getElementById('hem-bot').value) || 4;
+      const hemTop = parseFloat(document.getElementById('hem-top').value) || 1.5;
+      const lining = document.getElementById('lining').checked;
+
+      if (!winW || !winH || winW <= 0 || winH <= 0) {
+        document.getElementById('result-area').style.display = 'none'; return;
+      }
+
+      const headingExtra = HEADING_EXTRA[heading];
+      // Cut length per panel
+      const cutLength = winH + hemBot + hemTop + headingExtra;
+
+      // Total fabric width needed for all panels combined
+      const totalWidthNeeded = winW * fullness;
+      // Widths per panel
+      const widthsPerPanel = Math.ceil(totalWidthNeeded / panels / fabW);
+
+      // Yardage per panel
+      const yardsPerPanel = (widthsPerPanel * cutLength) / 36;
+      const totalYards = yardsPerPanel * panels;
+      const liningYards = lining ? totalYards * 0.95 : 0;
+
+      const stats = [
+        { label: 'Cut Length per Panel', value: cutLength.toFixed(1) + '"' },
+        { label: 'Fabric Widths per Panel', value: widthsPerPanel + ' width' + (widthsPerPanel > 1 ? 's' : '') },
+        { label: 'Total Widths Needed', value: (widthsPerPanel * panels) + ' cuts of ' + fabW + '"' },
+        { label: 'Yardage per Panel', value: yardsPerPanel.toFixed(2) + ' yd' },
+        { label: 'Total Fabric Needed', value: totalYards.toFixed(2) + ' yd' },
+        { label: 'Recommended Buy', value: (Math.ceil(totalYards * 4) / 4 + 0.25).toFixed(2) + ' yd (adds buffer)' },
+      ];
+
+      if (lining) {
+        stats.push({ label: 'Lining Fabric Needed', value: liningYards.toFixed(2) + ' yd' });
+      }
+
+      const grid = document.getElementById('stat-grid');
+      grid.innerHTML = stats.map(s => `<div class="stat-box"><div class="stat-label">${s.label}</div><div class="stat-value">${s.value}</div></div>`).join('');
+      document.getElementById('result-area').style.display = '';
+    }
+  </script>
+</body>
+</html>

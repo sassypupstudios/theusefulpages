@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Circle Calculator — Flat Circle Round-by-Round | The Useful Pages</title>
+  <meta name="description" content="Calculate round-by-round stitch counts for a flat crochet circle. Enter desired diameter and gauge for written instructions. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-circle-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Circle Calculator</h1>
+      <p class="page-subtitle">Get round-by-round stitch counts and written instructions for a flat crochet circle.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Desired Finished Diameter (inches)</label>
+            <input class="form-input" type="number" id="circ-diameter" min="1" step="0.5" placeholder="e.g. 8">
+          </div>
+          <div>
+            <label class="label">Stitches per Inch (gauge)</label>
+            <input class="form-input" type="number" id="circ-spi" min="0.5" step="0.5" placeholder="e.g. 4">
+          </div>
+          <div>
+            <label class="label">Starting Ring Stitches</label>
+            <select class="form-select" id="circ-start">
+              <option value="6" selected>6 stitches (tighter center)</option>
+              <option value="8">8 stitches (flatter center)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcCircle()">Generate Circle Pattern</button>
+        <div id="circle-result" style="margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Enter your target finished diameter and stitch gauge.</li>
+          <li>Choose a 6-stitch start for a tighter, less visible center hole, or an 8-stitch start for a flatter, more even center.</li>
+          <li>The calculator generates round-by-round instructions following the standard flat circle formula.</li>
+        </ul>
+        <h2>The Flat Circle Formula</h2>
+        <p>A mathematically flat crochet circle increases by the starting stitch count every round. Start with 6 stitches → add 6 each round (round 1: 6, round 2: 12, round 3: 18, etc.). Start with 8 → add 8 each round.</p>
+        <p>In practice, stitches are spaced evenly around the round with increases distributed to avoid a spiral. Increase placement shifts each round to keep the circle truly flat.</p>
+        <p><strong>Common uses:</strong> potholders, coasters, bag bases, hat brims, appliqués, mandalas.</p>
+        <p class="disclaimer">Results are estimates. Actual finished diameter varies by yarn weight, hook size, and tension.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcCircle() {
+    const diam = parseFloat(document.getElementById('circ-diameter').value);
+    const spi = parseFloat(document.getElementById('circ-spi').value);
+    const startSts = parseInt(document.getElementById('circ-start').value);
+    const res = document.getElementById('circle-result');
+    if (!diam || !spi || diam <= 0 || spi <= 0) {
+      res.innerHTML='<p style="color:var(--color-error)">Please enter valid diameter and gauge.</p>'; return;
+    }
+    // Circumference of target circle = pi * diameter; stitches = circ * spi
+    // Rounds needed: totalSts at final round = startSts * rounds => rounds = totalSts/startSts
+    // Approximate: each round adds ~startSts stitches; after N rounds stitches = startSts * N
+    // Diameter after N rounds ≈ (startSts * N) / (pi * spi)
+    // Solve for N: N = pi * diam * spi / startSts
+    const totalRounds = Math.ceil(Math.PI * diam * spi / startSts);
+    const finalSts = startSts * totalRounds;
+    const estimatedDiam = (finalSts / (Math.PI * spi)).toFixed(2);
+
+    let rows = [];
+    rows.push({rnd:1, sts:startSts, inst:`Make magic ring. Work ${startSts} sc into ring. Pull to close. (${startSts} sts)`});
+    for (let r = 2; r <= totalRounds; r++) {
+      const sts = startSts * r;
+      const prevSts = startSts * (r - 1);
+      const incCount = startSts;
+      const spacing = r - 1; // sc between increases = (r-1) plain sts
+      let inst;
+      if (spacing === 1) {
+        inst = `Round ${r}: *2 sc in next st, sc in next ${spacing} st* × ${incCount}. (${sts} sts)`;
+      } else if (spacing === 0) {
+        inst = `Round ${r}: 2 sc in each st. (${sts} sts)`;
+      } else {
+        inst = `Round ${r}: *2 sc in next st, sc in next ${spacing} sts* × ${incCount}. (${sts} sts)`;
+      }
+      rows.push({rnd:r, sts, inst});
+    }
+
+    let tableRows = rows.map(r => `<tr><td>${r.rnd}</td><td>${r.sts}</td><td>${r.inst}</td></tr>`).join('');
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid" style="margin-bottom:1rem;">
+        <div class="stat-box"><div class="label">Target Diameter</div><strong>${diam}"</strong></div>
+        <div class="stat-box"><div class="label">Estimated Diameter</div><strong>${estimatedDiam}"</strong></div>
+        <div class="stat-box"><div class="label">Total Rounds</div><strong>${totalRounds}</strong></div>
+        <div class="stat-box"><div class="label">Final Stitch Count</div><strong>${finalSts} sts</strong></div>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Round</th><th>Stitches</th><th>Instructions</th></tr></thead>
+          <tbody>${tableRows}</tbody>
+        </table>
+      </div>
+    </div>`;
+  }
+  document.addEventListener('DOMContentLoaded', () => { injectNav('crochet-circle-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fabric Yardage Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate how much fabric you need for any sewing project. Enter project type, size, and fabric width to get yardage estimates in yards and meters. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/fabric-yardage-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Fabric Yardage Calculator</h1>
+      <p class="page-subtitle">Estimate how much fabric you need for shirts, dresses, quilts, curtains, and more.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Project Type</label>
+            <select class="form-select" id="project-type" onchange="updateSizeOptions()">
+              <option value="shirt">Shirt / Blouse</option>
+              <option value="dress">Dress</option>
+              <option value="skirt">Skirt</option>
+              <option value="pants">Pants / Trousers</option>
+              <option value="quilt">Quilt Top</option>
+              <option value="curtains">Curtains (per panel)</option>
+              <option value="pillow">Pillow Cover (18"×18")</option>
+              <option value="table-runner">Table Runner</option>
+              <option value="custom">Custom Dimensions</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Fabric Width</label>
+            <select class="form-select" id="fabric-width">
+              <option value="36">36" wide</option>
+              <option value="44" selected>44–45" wide</option>
+              <option value="54">54" wide</option>
+              <option value="60">60" wide</option>
+            </select>
+          </div>
+          <div id="size-group">
+            <label class="label" id="size-label">Size</label>
+            <select class="form-select" id="size-select">
+              <option value="xs">XS</option>
+              <option value="s">S</option>
+              <option value="m" selected>M</option>
+              <option value="l">L</option>
+              <option value="xl">XL</option>
+              <option value="2xl">2XL</option>
+            </select>
+          </div>
+          <div id="custom-group" style="display:none;">
+            <label class="label">Custom Width (inches)</label>
+            <input class="form-input" type="number" id="custom-width" placeholder="e.g. 54" min="1">
+          </div>
+          <div id="custom-length-group" style="display:none;">
+            <label class="label">Custom Length (inches)</label>
+            <input class="form-input" type="number" id="custom-length" placeholder="e.g. 72" min="1">
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calculate()">Calculate Yardage</button>
+        </div>
+        <div id="results" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-label">Fabric Needed</div>
+              <div class="stat-value" id="yards-needed">—</div>
+              <div class="stat-sub">yards</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">In Meters</div>
+              <div class="stat-value" id="meters-needed">—</div>
+              <div class="stat-sub">meters</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">With 10% Extra</div>
+              <div class="stat-value" id="yards-extra">—</div>
+              <div class="stat-sub">yards (recommended)</div>
+            </div>
+          </div>
+          <div id="notes" style="margin-top:1rem;padding:0.75rem;background:var(--bg-secondary,#f8f9fa);border-radius:8px;font-size:0.9rem;"></div>
+          <p class="disclaimer">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Select your project type from the dropdown.</li>
+          <li>Choose the garment size or enter custom dimensions.</li>
+          <li>Select the fabric width you plan to use.</li>
+          <li>Click <strong>Calculate Yardage</strong> to see your estimate.</li>
+        </ol>
+        <h2>Common Project Yardage Guide</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Project</th><th>Size</th><th>44" Fabric</th><th>60" Fabric</th></tr></thead>
+            <tbody>
+              <tr><td>Shirt / Blouse</td><td>S–M</td><td>1.5–2 yds</td><td>1.25–1.5 yds</td></tr>
+              <tr><td>Shirt / Blouse</td><td>L–XL</td><td>2–2.5 yds</td><td>1.75–2 yds</td></tr>
+              <tr><td>Dress (knee)</td><td>S–M</td><td>2.5–3 yds</td><td>2–2.5 yds</td></tr>
+              <tr><td>A-Line Skirt</td><td>S–M</td><td>1.5–2 yds</td><td>1.25–1.5 yds</td></tr>
+              <tr><td>Pants</td><td>S–M</td><td>2.5–3 yds</td><td>2–2.25 yds</td></tr>
+              <tr><td>Throw Quilt (60"×80")</td><td>—</td><td>3.5–4 yds</td><td>3–3.5 yds</td></tr>
+              <tr><td>Pillow Cover (18"×18")</td><td>—</td><td>0.75 yd</td><td>0.5 yd</td></tr>
+              <tr><td>Table Runner (14"×72")</td><td>—</td><td>0.5 yd</td><td>0.5 yd</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Always pre-wash fabric before cutting to account for shrinkage.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  // Presets: [baseYards_at_44, baseYards_at_44_large] — scaled by width
+  const presets = {
+    shirt:        { sizes: ['XS','S','M','L','XL','2XL'], yards44: [1.25,1.5,1.75,2,2.25,2.5], notes: 'Includes body and basic sleeves. Add 0.5 yd for long sleeves.' },
+    dress:        { sizes: ['XS','S','M','L','XL','2XL'], yards44: [2.25,2.5,2.75,3,3.5,4],   notes: 'For knee-length dress. Add 1 yd for floor-length.' },
+    skirt:        { sizes: ['XS','S','M','L','XL','2XL'], yards44: [1.25,1.5,1.75,2,2.25,2.5], notes: 'For A-line or straight skirt, knee length.' },
+    pants:        { sizes: ['XS','S','M','L','XL','2XL'], yards44: [2,2.25,2.5,2.75,3,3.5],    notes: 'Full-length trousers. Subtract 0.5 yd for shorts.' },
+    quilt:        { sizes: ['Baby (36"×45")','Throw (60"×80")','Full (80"×90")','Queen (90"×108")','King (108"×108")'], yards44: [2,3.5,5,6.5,8], notes: 'Quilt top piecing estimate. Does not include backing or batting.' },
+    curtains:     { sizes: ['Short (40"L)','Standard (63"L)','Long (84"L)','Floor (96"L)'], yards44: [2,3,4,4.5], notes: 'Per panel at 2× fullness. Double for pair.' },
+    pillow:       { sizes: ['12"×12"','14"×14"','16"×16"','18"×18"','20"×20"','22"×22"'], yards44: [0.5,0.5,0.75,0.75,1,1], notes: 'Includes front and back panels with seam allowance.' },
+    'table-runner':{ sizes: ['12"×36"','14"×54"','14"×72"','16"×90"'], yards44: [0.5,0.5,0.75,1], notes: 'Includes top and backing panels.' },
+  };
+
+  const sizeKeys = { shirt:['xs','s','m','l','xl','2xl'], dress:['xs','s','m','l','xl','2xl'], skirt:['xs','s','m','l','xl','2xl'], pants:['xs','s','m','l','xl','2xl'], quilt:[0,1,2,3,4], curtains:[0,1,2,3], pillow:[0,1,2,3,4,5], 'table-runner':[0,1,2,3] };
+
+  function updateSizeOptions() {
+    const type = document.getElementById('project-type').value;
+    const sg = document.getElementById('size-group');
+    const cg = document.getElementById('custom-group');
+    const clg = document.getElementById('custom-length-group');
+    const sel = document.getElementById('size-select');
+
+    if (type === 'custom') {
+      sg.style.display = 'none';
+      cg.style.display = '';
+      clg.style.display = '';
+      return;
+    }
+    cg.style.display = 'none';
+    clg.style.display = 'none';
+    sg.style.display = '';
+
+    const p = presets[type];
+    sel.innerHTML = p.sizes.map((s,i) => `<option value="${i}">${s}</option>`).join('');
+    // default to middle size
+    sel.selectedIndex = Math.floor(p.sizes.length / 2);
+    document.getElementById('size-label').textContent = ['shirt','dress','skirt','pants'].includes(type) ? 'Garment Size' : 'Size';
+  }
+
+  function calculate() {
+    const type = document.getElementById('project-type').value;
+    const fw = parseFloat(document.getElementById('fabric-width').value);
+    let yards;
+    let notes = '';
+
+    if (type === 'custom') {
+      const cw = parseFloat(document.getElementById('custom-width').value);
+      const cl = parseFloat(document.getElementById('custom-length').value);
+      if (!cw || !cl) { alert('Please enter custom width and length.'); return; }
+      // add 1" seam allowance each side
+      const adjustedLength = cl + 2;
+      const stripsNeeded = Math.ceil(cw / fw);
+      yards = (stripsNeeded * adjustedLength) / 36;
+      notes = `Custom: ${cw}"×${cl}" finished + seam allowances → ${stripsNeeded} strip(s) of fabric.`;
+    } else {
+      const p = presets[type];
+      const idx = parseInt(document.getElementById('size-select').value);
+      const base44 = p.yards44[idx];
+      // scale by fabric width: wider fabric = less yardage needed
+      yards = base44 * (44 / fw);
+      notes = p.notes;
+    }
+
+    const extra = yards * 1.10;
+    const meters = yards * 0.9144;
+    const metersExtra = extra * 0.9144;
+
+    document.getElementById('yards-needed').textContent = yards.toFixed(2);
+    document.getElementById('meters-needed').textContent = meters.toFixed(2);
+    document.getElementById('yards-extra').textContent = extra.toFixed(2);
+    document.getElementById('notes').textContent = notes;
+    document.getElementById('results').style.display = '';
+  }
+
+  updateSizeOptions();
+  </script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{injectNav('fabric-yardage-calculator.html');injectFooter();});</script>
+</body>
+</html>

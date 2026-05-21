@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pillow Cover Size Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate cutting dimensions for pillow covers — envelope, zippered, or standard seam allowance styles. Enter your insert size and get exact fabric cuts. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/pillow-cover-size-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Pillow Cover Size Calculator</h1>
+      <p class="page-subtitle">Get exact cutting dimensions for any pillow insert size and closure style.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;">
+          <div>
+            <label class="label">Pillow Insert Size</label>
+            <select class="form-select" id="preset-size" onchange="applyPreset()">
+              <option value="14">14" square</option>
+              <option value="16">16" square</option>
+              <option value="18" selected>18" square</option>
+              <option value="20">20" square</option>
+              <option value="22">22" square</option>
+              <option value="24">24" square</option>
+              <option value="26">26" square</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Seam Allowance</label>
+            <select class="form-select" id="seam-allow" onchange="calculate()">
+              <option value="0.5" selected>½" (standard)</option>
+              <option value="0.625">⅝"</option>
+              <option value="0.75">¾"</option>
+              <option value="1">1"</option>
+            </select>
+          </div>
+          <div id="custom-w-wrap" style="display:none;">
+            <label class="label">Insert Width (inches)</label>
+            <input class="form-input" type="number" id="ins-w" min="1" step="0.5" placeholder="e.g. 18" oninput="calculate()">
+          </div>
+          <div id="custom-h-wrap" style="display:none;">
+            <label class="label">Insert Height (inches)</label>
+            <input class="form-input" type="number" id="ins-h" min="1" step="0.5" placeholder="e.g. 18" oninput="calculate()">
+          </div>
+        </div>
+
+        <div id="results" style="display:none;">
+          <h3 style="margin:0 0 1rem;font-size:1rem;font-weight:600;">Cutting Dimensions</h3>
+
+          <div style="display:grid;gap:1rem;">
+            <!-- Envelope -->
+            <div class="result-card">
+              <div style="font-weight:600;margin-bottom:0.75rem;color:var(--primary);">Envelope Closure (No Zipper)</div>
+              <div class="stat-grid" id="env-grid"></div>
+              <p style="font-size:0.82rem;color:var(--text-muted);margin:0.5rem 0 0;">Front: 1 piece. Back: 2 overlapping pieces with extra overlap allowance.</p>
+            </div>
+
+            <!-- Zippered -->
+            <div class="result-card">
+              <div style="font-weight:600;margin-bottom:0.75rem;color:var(--primary);">Zippered Cover</div>
+              <div class="stat-grid" id="zip-grid"></div>
+              <p style="font-size:0.82rem;color:var(--text-muted);margin:0.5rem 0 0;">Front + Back: 1 piece each. Add ½" zipper seam allowance already included.</p>
+            </div>
+
+            <!-- Simple seam -->
+            <div class="result-card">
+              <div style="font-weight:600;margin-bottom:0.75rem;color:var(--primary);">Simple Sewn Closure (Hand-stitch to close)</div>
+              <div class="stat-grid" id="simple-grid"></div>
+              <p style="font-size:0.82rem;color:var(--text-muted);margin:0.5rem 0 0;">2 identical pieces sewn together; close opening by hand.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Pillow Cover Size Calculator</h2>
+        <p>Select your pillow insert size from the dropdown or enter a custom size. Choose your preferred seam allowance. The calculator will show cutting dimensions for three closure types:</p>
+        <ul>
+          <li><strong>Envelope Closure:</strong> Two overlapping back pieces — no zipper needed. Quick and easy to remove for washing.</li>
+          <li><strong>Zippered Cover:</strong> Clean finish with an invisible zipper. Front and back panels cut to the same size with zipper allowance built in.</li>
+          <li><strong>Simple Sewn:</strong> Two identical panels sewn together. Stuff the insert then hand-stitch or slip-stitch to close.</li>
+        </ul>
+        <h3>Common Pillow Insert Sizes Reference</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Insert Size</th><th>Front Cut</th><th>Env. Back (each)</th><th>Zip Front/Back</th></tr></thead>
+            <tbody>
+              <tr><td>14" sq</td><td>15" × 15"</td><td>15" × 10.5"</td><td>15" × 15"</td></tr>
+              <tr><td>16" sq</td><td>17" × 17"</td><td>17" × 11.5"</td><td>17" × 17"</td></tr>
+              <tr><td>18" sq</td><td>19" × 19"</td><td>19" × 12.5"</td><td>19" × 19"</td></tr>
+              <tr><td>20" sq</td><td>21" × 21"</td><td>21" × 13.5"</td><td>21" × 21"</td></tr>
+              <tr><td>22" sq</td><td>23" × 23"</td><td>23" × 14.5"</td><td>23" × 23"</td></tr>
+              <tr><td>24" sq</td><td>25" × 25"</td><td>25" × 15.5"</td><td>25" × 25"</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Note:</strong> Sizes above use ½" seam allowance. Adjust per your chosen seam allowance.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('pillow-cover-size-calculator.html'); injectFooter(); calculate(); });
+
+    function applyPreset() {
+      const v = document.getElementById('preset-size').value;
+      const cw = document.getElementById('custom-w-wrap');
+      const ch = document.getElementById('custom-h-wrap');
+      if (v === 'custom') {
+        cw.style.display = ''; ch.style.display = '';
+        document.getElementById('ins-w').value = '';
+        document.getElementById('ins-h').value = '';
+        document.getElementById('results').style.display = 'none';
+      } else {
+        cw.style.display = 'none'; ch.style.display = 'none';
+        calculate();
+      }
+    }
+
+    function f(n) { return n % 1 === 0 ? n + '"' : n.toFixed(2) + '"'; }
+
+    function calculate() {
+      const preset = document.getElementById('preset-size').value;
+      const sa = parseFloat(document.getElementById('seam-allow').value);
+      let W, H;
+      if (preset === 'custom') {
+        W = parseFloat(document.getElementById('ins-w').value);
+        H = parseFloat(document.getElementById('ins-h').value);
+        if (!W || !H) { document.getElementById('results').style.display = 'none'; return; }
+      } else {
+        W = H = parseFloat(preset);
+      }
+
+      // Front cut: insert + 2 × SA each dimension
+      const frontW = W + 2 * sa;
+      const frontH = H + 2 * sa;
+
+      // Envelope back: 2 pieces, each = front width × (front height / 2 + 2" overlap)
+      const envBackH = (frontH / 2) + 2;
+
+      // Zipper: front & back same as front cut; zipper seam included via normal SA
+      const zipW = frontW;
+      const zipH = frontH;
+
+      function makeGrid(items) {
+        return items.map(i => `<div class="stat-box"><div class="stat-label">${i.label}</div><div class="stat-value">${i.value}</div></div>`).join('');
+      }
+
+      document.getElementById('env-grid').innerHTML = makeGrid([
+        { label: 'Front Panel (1 piece)', value: f(frontW) + ' × ' + f(frontH) },
+        { label: 'Back Panels (2 pieces each)', value: f(frontW) + ' × ' + f(envBackH) },
+        { label: 'Seam Allowance', value: f(sa) },
+      ]);
+
+      document.getElementById('zip-grid').innerHTML = makeGrid([
+        { label: 'Front Panel (1 piece)', value: f(zipW) + ' × ' + f(zipH) },
+        { label: 'Back Panel (1 piece)', value: f(zipW) + ' × ' + f(zipH) },
+        { label: 'Zipper Length', value: '≥ ' + f(W - 2) + ' (insert W − 2")' },
+      ]);
+
+      document.getElementById('simple-grid').innerHTML = makeGrid([
+        { label: 'Front + Back (2 identical pieces)', value: f(frontW) + ' × ' + f(frontH) },
+        { label: 'Seam Allowance', value: f(sa) },
+        { label: 'Leave open for turning', value: '≈ ' + f(W * 0.4) + ' on one side' },
+      ]);
+
+      document.getElementById('results').style.display = '';
+    }
+  </script>
+</body>
+</html>

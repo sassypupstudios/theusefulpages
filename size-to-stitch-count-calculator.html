@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finished Size to Stitch Count Calculator — Free Cross-Stitch Tool | The Useful Pages</title>
+  <meta name="description" content="Find the stitch count needed to fill a finished area size on cross-stitch or embroidery fabric. Free calculator for Aida and evenweave — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/size-to-stitch-count-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Finished Size to Stitch Count Calculator</h1>
+      <p class="page-subtitle">Enter a desired finished area size and fabric count to find the stitch count needed to fill it.</p>
+
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Desired width</label>
+            <input type="number" id="dw" class="form-input" placeholder="e.g. 8" min="0.5" step="0.5">
+          </div>
+          <div>
+            <label class="label">Desired height</label>
+            <input type="number" id="dh" class="form-input" placeholder="e.g. 10" min="0.5" step="0.5">
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Unit</label>
+            <select id="unit" class="form-select">
+              <option value="in">Inches</option>
+              <option value="cm">Centimeters</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Fabric count</label>
+            <select id="fc" class="form-select">
+              <option value="6">6-count Aida</option>
+              <option value="11">11-count Aida</option>
+              <option value="14" selected>14-count Aida (most common)</option>
+              <option value="16">16-count Aida</option>
+              <option value="18">18-count Aida</option>
+              <option value="22">22-count Hardanger</option>
+              <option value="14e">28-count evenweave (over 2)</option>
+              <option value="16e">32-count evenweave (over 2)</option>
+              <option value="18e">36-count evenweave (over 2)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="calcStitches()">Calculate Stitch Count</button>
+
+        <div id="stitch-result" class="result-card" style="display:none;margin-top:1.25rem;">
+          <div class="stat-grid">
+            <div class="stat-box"><div class="stat-label">Stitch Count Width</div><div class="stat-value" id="r-sw"></div></div>
+            <div class="stat-box"><div class="stat-label">Stitch Count Height</div><div class="stat-value" id="r-sh"></div></div>
+            <div class="stat-box"><div class="stat-label">Total Stitches</div><div class="stat-value" id="r-total"></div></div>
+          </div>
+          <div id="r-note" style="margin-top:0.75rem;font-size:0.9rem;color:var(--text-muted);"></div>
+        </div>
+
+        <div style="margin-top:2rem;">
+          <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 0.75rem;">Stitch count at all fabric counts (for your size)</h3>
+          <div id="compare-all"></div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">How to use this calculator</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">If you know the finished size you want (e.g. to fit a specific frame), enter the dimensions and select your fabric count. The calculator tells you how many stitches wide and tall your design needs to be to fill that area. Useful when designing from scratch or scaling an existing pattern.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Design a custom piece to fit an 8" × 10" frame on 14-count Aida = 112 × 140 stitches</li>
+          <li>Compare how different fabric counts change the stitch count for the same design area</li>
+          <li>Plan pixel-art designs at a target size</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">These are the stitches needed to fill the area. Your actual pattern may be smaller — that is fine. The calculation shows the maximum stitch count that will fit in that area.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const FC_MAP = {'6':6,'11':11,'14':14,'16':16,'18':18,'22':22,'14e':14,'16e':16,'18e':18};
+  const COUNTS = [6,11,14,16,18,22];
+
+  function calcStitches() {
+    let dw = parseFloat(document.getElementById('dw').value);
+    let dh = parseFloat(document.getElementById('dh').value);
+    const unit = document.getElementById('unit').value;
+    const fc = document.getElementById('fc').value;
+    if (!dw||!dh) { alert('Enter desired dimensions.'); return; }
+    if (unit === 'cm') { dw /= 2.54; dh /= 2.54; }
+    const spi = FC_MAP[fc];
+    const sw = Math.floor(dw * spi), sh = Math.floor(dh * spi);
+    document.getElementById('r-sw').textContent = sw + ' stitches';
+    document.getElementById('r-sh').textContent = sh + ' stitches';
+    document.getElementById('r-total').textContent = (sw*sh).toLocaleString() + ' stitches';
+    document.getElementById('r-note').textContent = `A design of ${sw} × ${sh} stitches on ${spi}-count fabric will produce a stitched area of approximately ${(sw/spi).toFixed(2)}" × ${(sh/spi).toFixed(2)}".`;
+    document.getElementById('stitch-result').style.display = '';
+
+    const tb = COUNTS.map(c => {
+      const csw = Math.floor(dw*c), csh = Math.floor(dh*c);
+      return `<tr ${c==spi?'style="font-weight:700;background:var(--result-bg)"':''}><td>${c}-count</td><td>${csw}</td><td>${csh}</td><td>${(csw*csh).toLocaleString()}</td></tr>`;
+    }).join('');
+    document.getElementById('compare-all').innerHTML = `<div class="table-wrap"><table class="data-table"><thead><tr><th>Fabric Count</th><th>Stitches Wide</th><th>Stitches Tall</th><th>Total Stitches</th></tr></thead><tbody>${tb}</tbody></table></div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('size-to-stitch-count-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

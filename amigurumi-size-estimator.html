@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amigurumi Size Estimator — Free Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Estimate the finished size of your amigurumi from the magic ring count, or find the starting ring needed for a target size. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/amigurumi-size-estimator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Amigurumi Size Estimator</h1>
+      <p class="page-subtitle">Estimate finished amigurumi size from your magic ring, or find the ring count for a target size.</p>
+      <div class="tool-card">
+        <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;">
+          <button class="btn-primary" id="tab-forward" onclick="switchTab('forward')">Ring → Size</button>
+          <button class="btn-outline" id="tab-reverse" onclick="switchTab('reverse')">Size → Ring</button>
+        </div>
+
+        <!-- Forward: ring count → estimated size -->
+        <div id="panel-forward">
+          <p style="color:var(--text-muted);margin-bottom:1rem;">Enter your magic ring stitch count, yarn weight, and hook size to estimate finished diameter.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Magic Ring Starting Stitches</label>
+              <input class="form-input" type="number" id="ring-count" min="4" value="6" placeholder="e.g. 6">
+            </div>
+            <div>
+              <label class="label">Yarn Weight</label>
+              <select class="form-select" id="yarn-weight-f">
+                <option value="sport">Sport / Baby (2)</option>
+                <option value="dk">DK (3)</option>
+                <option value="worsted" selected>Worsted (4)</option>
+                <option value="bulky">Bulky (5)</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">Hook Size (mm)</label>
+              <input class="form-input" type="number" id="hook-mm" min="1" step="0.5" placeholder="e.g. 3.5">
+            </div>
+            <div>
+              <label class="label">Number of Rounds (full sphere)</label>
+              <input class="form-input" type="number" id="num-rounds" min="3" value="6" placeholder="e.g. 6">
+            </div>
+          </div>
+          <div style="margin-top:1rem;">
+            <button class="btn-primary" onclick="calcForward()">Estimate Size</button>
+          </div>
+          <div id="forward-result" style="display:none;margin-top:1.5rem;">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="stat-value" id="res-diameter-in"></div>
+                <div class="stat-label">Approx. Diameter (inches)</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="res-diameter-cm"></div>
+                <div class="stat-label">Approx. Diameter (cm)</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="res-max-sts"></div>
+                <div class="stat-label">Max Stitches (at widest)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reverse: target size → ring count -->
+        <div id="panel-reverse" style="display:none;">
+          <p style="color:var(--text-muted);margin-bottom:1rem;">Enter your desired finished size and yarn weight to find the recommended starting ring count.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Desired Diameter (inches)</label>
+              <input class="form-input" type="number" id="target-size" min="1" step="0.5" placeholder="e.g. 4">
+            </div>
+            <div>
+              <label class="label">Yarn Weight</label>
+              <select class="form-select" id="yarn-weight-r">
+                <option value="sport">Sport / Baby (2)</option>
+                <option value="dk">DK (3)</option>
+                <option value="worsted" selected>Worsted (4)</option>
+                <option value="bulky">Bulky (5)</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-top:1rem;">
+            <button class="btn-primary" onclick="calcReverse()">Find Ring Count</button>
+          </div>
+          <div id="reverse-result" style="display:none;margin-top:1.5rem;">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="stat-value" id="res-ring-count"></div>
+                <div class="stat-label">Recommended Ring Count</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="res-rounds-needed"></div>
+                <div class="stat-label">Rounds to Work</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1.5rem;">Results are estimates. Finished size varies significantly with hook size, tension, and whether stuffing is used. Always test with your specific yarn and hook.</p>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Common Amigurumi Yarn / Hook Combos</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Yarn Weight</th><th>Recommended Hook</th><th>Typical Gauge (per 4 rounds)</th><th>Approx. Sphere Diameter</th></tr></thead>
+            <tbody>
+              <tr><td>Sport (2)</td><td>2.25–3mm</td><td>20–22 sc / 4"</td><td>2–3" (6-st ring)</td></tr>
+              <tr><td>DK (3)</td><td>3–3.5mm</td><td>18–20 sc / 4"</td><td>3–4" (6-st ring)</td></tr>
+              <tr><td>Worsted (4)</td><td>3.5–4mm</td><td>14–16 sc / 4"</td><td>4–5" (6-st ring)</td></tr>
+              <tr><td>Bulky (5)</td><td>5–6mm</td><td>10–12 sc / 4"</td><td>5–7" (6-st ring)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <h3>Ring → Size</h3>
+        <ul>
+          <li>Enter the number of stitches in your magic ring (commonly 6 or 8).</li>
+          <li>Select your yarn weight and enter your hook size in mm.</li>
+          <li>Enter how many increase rounds you plan to work (the increases add 6 stitches per round for a 6-stitch ring).</li>
+          <li>Click <strong>Estimate Size</strong> to see the approximate finished diameter.</li>
+        </ul>
+        <h3>Size → Ring</h3>
+        <ul>
+          <li>Enter your desired finished diameter in inches.</li>
+          <li>Select yarn weight.</li>
+          <li>Click <strong>Find Ring Count</strong> for the recommended starting ring size and number of rounds.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('amigurumi-size-estimator.html');injectFooter();});
+    // stitch height (inches) per round approximate by weight
+    const stitchHeight = {sport:0.15, dk:0.18, worsted:0.22, bulky:0.3};
+    // stitch width (circumference contribution) approximate
+    const stitchWidth  = {sport:0.14, dk:0.17, worsted:0.21, bulky:0.28};
+
+    function switchTab(tab){
+      document.getElementById('panel-forward').style.display  = tab==='forward' ? 'block' : 'none';
+      document.getElementById('panel-reverse').style.display  = tab==='reverse' ? 'block' : 'none';
+      document.getElementById('tab-forward').className = tab==='forward' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('tab-reverse').className = tab==='reverse' ? 'btn-primary' : 'btn-outline';
+    }
+
+    function calcForward(){
+      const ring   = parseInt(document.getElementById('ring-count').value)||6;
+      const wt     = document.getElementById('yarn-weight-f').value;
+      const rounds = parseInt(document.getElementById('num-rounds').value)||6;
+      // max stitches at widest part (each round adds ring count stitches)
+      const maxSts   = ring + ring * rounds;
+      // diameter ≈ circumference / π, circumference ≈ maxSts × stitch width
+      const circ     = maxSts * stitchWidth[wt];
+      const diam     = circ / Math.PI;
+      document.getElementById('res-diameter-in').textContent = diam.toFixed(1) + '"';
+      document.getElementById('res-diameter-cm').textContent = (diam * 2.54).toFixed(1) + ' cm';
+      document.getElementById('res-max-sts').textContent     = maxSts;
+      document.getElementById('forward-result').style.display = 'block';
+    }
+
+    function calcReverse(){
+      const targetIn = parseFloat(document.getElementById('target-size').value);
+      const wt       = document.getElementById('yarn-weight-r').value;
+      if(isNaN(targetIn)||targetIn<=0){alert('Please enter a target diameter.');return;}
+      // work backwards: circumference = π × diameter, sts = circ / stitchWidth
+      const circ    = Math.PI * targetIn;
+      const maxSts  = Math.round(circ / stitchWidth[wt]);
+      // ring usually 6; rounds = (maxSts - ring) / ring
+      const ring    = 6;
+      const rounds  = Math.max(1, Math.round((maxSts - ring) / ring));
+      document.getElementById('res-ring-count').textContent   = ring;
+      document.getElementById('res-rounds-needed').textContent = rounds;
+      document.getElementById('reverse-result').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

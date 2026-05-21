@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yoke Increase Calculator — Free Knitting Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate your circular yoke increase schedule. Enter neck cast-on and desired body stitches to get a complete increase plan. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/yoke-increase-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Yoke Increase Calculator</h1>
+      <p class="page-subtitle">Plan your circular yoke increases from neck cast-on to underarm. Not locked to raglan seam lines.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Neck cast-on stitch count</label>
+            <input class="form-input" type="number" id="neck-sts" min="40" max="200" placeholder="e.g. 80">
+          </div>
+          <div>
+            <label class="label">Target body stitches at underarm</label>
+            <input class="form-input" type="number" id="body-sts" min="80" max="400" placeholder="e.g. 200">
+          </div>
+          <div>
+            <label class="label">Yoke depth (inches)</label>
+            <input class="form-input" type="number" id="yoke-depth" min="2" max="15" step="0.5" placeholder="e.g. 8">
+          </div>
+          <div>
+            <label class="label">Row gauge (rows per inch)</label>
+            <input class="form-input" type="number" id="row-gauge" min="1" step="0.5" placeholder="e.g. 7">
+          </div>
+          <div>
+            <label class="label">Number of increase sections</label>
+            <select class="form-select" id="inc-sections">
+              <option value="2">2 sections (simple)</option>
+              <option value="3" selected>3 sections (typical)</option>
+              <option value="4">4 sections (gradual)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Increase type</label>
+            <select class="form-select" id="inc-type">
+              <option value="m1">M1 (make one)</option>
+              <option value="kfb">kfb (knit front &amp; back)</option>
+              <option value="yo">yo (yarnover)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcYoke()">Calculate Yoke Schedule</button>
+
+        <div id="yoke-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid" style="margin-bottom:1.5rem;">
+            <div class="stat-box">
+              <div class="stat-value" id="res-neck"></div>
+              <div class="stat-label">Neck stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-total-inc"></div>
+              <div class="stat-label">Total increases needed</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yoke-rounds"></div>
+              <div class="stat-label">Yoke rounds total</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-body-final"></div>
+              <div class="stat-label">Final body stitches</div>
+            </div>
+          </div>
+
+          <h3 style="margin-bottom:0.75rem;">Yoke Increase Schedule</h3>
+          <div id="yoke-schedule" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.9rem;line-height:1.9;white-space:pre-wrap;"></div>
+
+          <h3 style="margin:1.25rem 0 0.75rem;">Section Summary Table</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Section</th><th>Increases per Round</th><th>Frequency</th><th>Rounds in Section</th><th>Stitches After</th></tr></thead>
+              <tbody id="yoke-section-tbody"></tbody>
+            </table>
+          </div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always swatch before starting a garment project.</p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li><strong>Neck cast-on:</strong> The number of stitches you cast on at the neck edge (top-down) or bind off at the neck (bottom-up).</li>
+          <li><strong>Target body stitches:</strong> The total round count at the underarm separation point.</li>
+          <li><strong>Yoke depth:</strong> Measured from neck to underarm in inches.</li>
+          <li><strong>Row gauge:</strong> How many rows or rounds per inch from your gauge swatch.</li>
+          <li>Choose sections and increase type, then click <em>Calculate Yoke Schedule</em>.</li>
+        </ol>
+        <h3 style="margin-top:1rem;">About Circular Yoke Increases</h3>
+        <ul>
+          <li>Unlike raglan, circular yoke increases are not tied to specific seam lines — they can happen anywhere in the round.</li>
+          <li>Increases are typically spread evenly around the round (e.g., every 5th stitch for a round of 20 increases).</li>
+          <li>Using 3 sections creates a natural curve: dense increases early, then tapering off.</li>
+          <li>Space increases further apart for a more drapey yoke; closer together for a structured fit.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{injectNav('yoke-increase-calculator.html');injectFooter();});
+
+  function calcYoke() {
+    const neck = parseInt(document.getElementById('neck-sts').value);
+    const body = parseInt(document.getElementById('body-sts').value);
+    const depth = parseFloat(document.getElementById('yoke-depth').value);
+    const rowGauge = parseFloat(document.getElementById('row-gauge').value);
+    const sections = parseInt(document.getElementById('inc-sections').value);
+    const incType = document.getElementById('inc-type').value;
+
+    if (!neck || !body || !depth || !rowGauge) {
+      alert('Please fill in all fields.');
+      return;
+    }
+    if (body <= neck) { alert('Body stitch count must be greater than neck stitch count.'); return; }
+
+    const totalInc = body - neck;
+    const yokeRounds = Math.round(depth * rowGauge);
+
+    document.getElementById('res-neck').textContent = neck;
+    document.getElementById('res-total-inc').textContent = totalInc;
+    document.getElementById('res-yoke-rounds').textContent = yokeRounds;
+    document.getElementById('res-body-final').textContent = body;
+
+    // Distribute increases across sections
+    // Weights: gradual start (fewer sts/round), heavier middle, taper
+    // Simple weighting by section
+    const weights = sections === 2 ? [0.45, 0.55] :
+                    sections === 3 ? [0.3, 0.45, 0.25] :
+                    [0.2, 0.3, 0.3, 0.2];
+
+    const sectionRounds = Array.from({length: sections}, (_, i) => Math.floor(yokeRounds / sections));
+    // distribute leftover rounds
+    let leftoverRnds = yokeRounds - sectionRounds.reduce((a,b)=>a+b,0);
+    for (let i = 0; i < leftoverRnds; i++) sectionRounds[i]++;
+
+    // Calculate increases per section
+    const sectionInc = weights.map(w => Math.round(w * totalInc));
+    // Correct rounding
+    let incDiff = totalInc - sectionInc.reduce((a,b)=>a+b,0);
+    sectionInc[sectionInc.length-1] += incDiff;
+
+    let incType_word = incType === 'm1' ? 'm1L' : incType === 'kfb' ? 'kfb' : 'yo';
+
+    let schedule = '';
+    let currentSts = neck;
+    const tbody = document.getElementById('yoke-section-tbody');
+    tbody.innerHTML = '';
+
+    for (let sec = 0; sec < sections; sec++) {
+      const secInc = sectionInc[sec];
+      const secRnds = sectionRounds[sec];
+      // How many increases per increase round to spread across yoke
+      // Use evenly spaced rounds within the section
+      const incPerIncRound = Math.ceil(secInc / Math.max(1, Math.floor(secRnds / 2)));
+      const actualIncRounds = Math.ceil(secInc / incPerIncRound);
+      const freq = Math.max(1, Math.floor(secRnds / actualIncRounds));
+      const spacing = Math.floor(currentSts / incPerIncRound);
+
+      schedule += `=== SECTION ${sec+1} (${secRnds} rounds) ===\n`;
+      schedule += `Work ${actualIncRounds} increase round(s) every ${freq} round(s).\n`;
+      schedule += `Each increase round: Work ${incPerIncRound} increases evenly spaced\n`;
+      schedule += `  (approximately every ${spacing} sts: k${spacing-1}, ${incType_word})\n`;
+      schedule += `Plain rounds: Knit all stitches.\n`;
+      const afterSec = currentSts + secInc;
+      schedule += `Stitches after section ${sec+1}: ${afterSec}\n\n`;
+
+      let tr = document.createElement('tr');
+      tr.innerHTML = `<td>Section ${sec+1}</td><td>${incPerIncRound}</td><td>Every ${freq} rounds</td><td>${secRnds}</td><td>${afterSec}</td>`;
+      tbody.appendChild(tr);
+      currentSts = afterSec;
+    }
+
+    schedule += `Final stitch count: ${currentSts} (target: ${body})`;
+    if (currentSts !== body) schedule += ` — adjust last section by ${body - currentSts} stitch(es)`;
+
+    document.getElementById('yoke-schedule').textContent = schedule;
+    document.getElementById('yoke-result').style.display = 'block';
+  }
+  </script>
+</body>
+</html>

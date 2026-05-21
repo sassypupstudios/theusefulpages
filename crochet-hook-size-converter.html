@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Hook Size Converter — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Convert crochet hook sizes between US letter, metric (mm), and UK/Canadian systems. Searchable table plus a quick converter. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-hook-size-converter.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Hook Size Converter</h1>
+      <p class="page-subtitle">Convert hook sizes between US letter, metric (mm), and UK/Canadian systems.</p>
+      <div class="tool-card">
+        <h2 style="font-size:1.1rem;margin-bottom:1rem;">Quick Converter</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+          <div>
+            <label class="label">Select System</label>
+            <select class="form-select" id="conv-system" onchange="doConvert()">
+              <option value="us">US Letter/Number</option>
+              <option value="mm">Metric (mm)</option>
+              <option value="uk">UK / Canadian</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Select Size</label>
+            <select class="form-select" id="conv-size" onchange="doConvert()"></select>
+          </div>
+        </div>
+        <div id="conv-result" style="display:none;" class="result-card">
+          <div class="stat-grid" id="conv-stats"></div>
+        </div>
+
+        <h2 style="font-size:1.1rem;margin:1.5rem 0 1rem;">Standard Hook Sizes — Full Reference Table</h2>
+        <input class="form-input" type="text" id="search-hooks" placeholder="Filter by US, mm, or UK size…" oninput="filterTable()" style="margin-bottom:1rem;">
+        <div class="table-wrap">
+          <table class="data-table" id="hook-table">
+            <thead><tr><th>US Size</th><th>Metric (mm)</th><th>UK / Canadian</th></tr></thead>
+            <tbody id="hook-tbody"></tbody>
+          </table>
+        </div>
+
+        <h2 style="font-size:1.1rem;margin:2rem 0 1rem;">Steel Crochet Hook Sizes (Thread/Lace)</h2>
+        <input class="form-input" type="text" id="search-steel" placeholder="Filter steel hooks…" oninput="filterSteel()" style="margin-bottom:1rem;">
+        <div class="table-wrap">
+          <table class="data-table" id="steel-table">
+            <thead><tr><th>Steel Size (US)</th><th>Metric (mm)</th><th>Notes</th></tr></thead>
+            <tbody id="steel-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Converter</h2>
+        <ul>
+          <li>Use the <strong>Quick Converter</strong> at the top — select your size system and the hook size, and see all equivalents instantly.</li>
+          <li>Use the <strong>search box</strong> above each table to filter rows as you type. Type a US size like "G/6", a metric size like "4", or a UK number like "8".</li>
+          <li><strong>Standard hooks</strong> (B/1 through S/19) are for regular yarn. <strong>Steel hooks</strong> (sizes 00–14) are for fine thread and lace work.</li>
+        </ul>
+        <h2>Understanding Hook Size Systems</h2>
+        <ul>
+          <li><strong>US:</strong> Uses a letter/number combo (B/1, C/2…). Larger letters = larger hooks.</li>
+          <li><strong>Metric (mm):</strong> The most precise system — measures the actual shaft diameter. Used internationally.</li>
+          <li><strong>UK/Canadian:</strong> An older numbering system where <em>higher numbers mean smaller hooks</em> — the opposite of the US system. Less common today.</li>
+          <li>When patterns list only one system, use the mm measurement to match accurately.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('crochet-hook-size-converter.html');injectFooter();init();});
+
+    const hooks = [
+      {us:'B/1', mm:2.25, uk:14},
+      {us:'C/2', mm:2.75, uk:12},
+      {us:'D/3', mm:3.25, uk:10},
+      {us:'E/4', mm:3.5,  uk:9},
+      {us:'F/5', mm:3.75, uk:8},
+      {us:'G/6', mm:4.0,  uk:8},
+      {us:'H/8', mm:5.0,  uk:6},
+      {us:'I/9', mm:5.5,  uk:5},
+      {us:'J/10', mm:6.0, uk:4},
+      {us:'K/10.5', mm:6.5, uk:3},
+      {us:'L/11', mm:8.0,  uk:0},
+      {us:'M-N/13', mm:9.0, uk:'—'},
+      {us:'N/15', mm:10.0,  uk:'000'},
+      {us:'P/Q',  mm:15.0,  uk:'—'},
+      {us:'Q',    mm:16.0,  uk:'—'},
+      {us:'S',    mm:19.0,  uk:'—'},
+    ];
+
+    const steelHooks = [
+      {size:'00', mm:3.5,  note:'Largest steel hook'},
+      {size:'0',  mm:3.25, note:''},
+      {size:'1',  mm:2.75, note:''},
+      {size:'2',  mm:2.25, note:''},
+      {size:'3',  mm:2.1,  note:''},
+      {size:'4',  mm:2.0,  note:''},
+      {size:'5',  mm:1.9,  note:''},
+      {size:'6',  mm:1.8,  note:''},
+      {size:'7',  mm:1.65, note:''},
+      {size:'8',  mm:1.5,  note:''},
+      {size:'9',  mm:1.4,  note:''},
+      {size:'10', mm:1.3,  note:''},
+      {size:'11', mm:1.1,  note:''},
+      {size:'12', mm:1.0,  note:''},
+      {size:'13', mm:0.85, note:''},
+      {size:'14', mm:0.75, note:'Smallest steel hook'},
+    ];
+
+    function init(){
+      renderHookTable(hooks);
+      renderSteelTable(steelHooks);
+      populateConvDropdown();
+    }
+
+    function renderHookTable(data){
+      const tb = document.getElementById('hook-tbody');
+      tb.innerHTML = data.map(h=>`<tr><td>${h.us}</td><td>${h.mm}</td><td>${h.uk}</td></tr>`).join('');
+    }
+
+    function renderSteelTable(data){
+      const tb = document.getElementById('steel-tbody');
+      tb.innerHTML = data.map(h=>`<tr><td>${h.size}</td><td>${h.mm}</td><td>${h.note||'—'}</td></tr>`).join('');
+    }
+
+    function filterTable(){
+      const q = document.getElementById('search-hooks').value.toLowerCase();
+      const filtered = hooks.filter(h=>
+        h.us.toLowerCase().includes(q)||
+        String(h.mm).includes(q)||
+        String(h.uk).includes(q)
+      );
+      renderHookTable(filtered);
+    }
+
+    function filterSteel(){
+      const q = document.getElementById('search-steel').value.toLowerCase();
+      const filtered = steelHooks.filter(h=>
+        h.size.toLowerCase().includes(q)||
+        String(h.mm).includes(q)
+      );
+      renderSteelTable(filtered);
+    }
+
+    function populateConvDropdown(){
+      const sys = document.getElementById('conv-system').value;
+      const sel = document.getElementById('conv-size');
+      sel.innerHTML = '';
+      let options = [];
+      if(sys==='us') options = hooks.map(h=>({val:h.us, label:h.us}));
+      else if(sys==='mm') options = hooks.map(h=>({val:h.mm, label:h.mm+' mm'}));
+      else options = hooks.filter(h=>h.uk!=='—').map(h=>({val:h.uk, label:'UK '+h.uk}));
+      options.forEach(o=>{
+        const opt = document.createElement('option');
+        opt.value = o.val; opt.textContent = o.label;
+        sel.appendChild(opt);
+      });
+      doConvert();
+    }
+
+    function doConvert(){
+      populateConvDropdownSilent();
+      const sys = document.getElementById('conv-system').value;
+      const val = document.getElementById('conv-size').value;
+      let hook = null;
+      if(sys==='us') hook = hooks.find(h=>h.us===val);
+      else if(sys==='mm') hook = hooks.find(h=>String(h.mm)===val);
+      else hook = hooks.find(h=>String(h.uk)===val);
+      if(!hook){document.getElementById('conv-result').style.display='none';return;}
+      const stats = document.getElementById('conv-stats');
+      stats.innerHTML = `
+        <div class="stat-box"><div class="stat-value">${hook.us}</div><div class="stat-label">US Size</div></div>
+        <div class="stat-box"><div class="stat-value">${hook.mm} mm</div><div class="stat-label">Metric</div></div>
+        <div class="stat-box"><div class="stat-value">${hook.uk}</div><div class="stat-label">UK / Canadian</div></div>
+      `;
+      document.getElementById('conv-result').style.display='block';
+    }
+
+    let _convInit = false;
+    function populateConvDropdownSilent(){
+      if(_convInit) return;
+      _convInit = true;
+    }
+
+    document.getElementById('conv-system').addEventListener('change', ()=>{
+      _convInit=false;
+      populateConvDropdown();
+    });
+  </script>
+</body>
+</html>

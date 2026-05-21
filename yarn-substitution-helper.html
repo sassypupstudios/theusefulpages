@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarn Substitution Helper — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Compare two yarns to see if they're compatible substitutes. Check weight, gauge, fiber, and care compatibility. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/yarn-substitution-helper.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .yarn-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+    @media(max-width:600px){.yarn-cols{grid-template-columns:1fr;}}
+    .yarn-col-head{font-weight:700;font-size:1rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--primary);}
+    .check-row{display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;}
+    .check-icon{font-size:1.2rem;width:1.5rem;text-align:center;}
+    .rating-good{color:#22c55e;font-weight:700;}
+    .rating-fair{color:#f59e0b;font-weight:700;}
+    .rating-risky{color:#ef4444;font-weight:700;}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Yarn Substitution Helper</h1>
+      <p class="page-subtitle">Compare your original yarn and substitute to check compatibility before you start your project.</p>
+      <div class="tool-card">
+        <div class="yarn-cols">
+          <div>
+            <div class="yarn-col-head">Original Yarn</div>
+            <label class="label">Weight</label>
+            <select class="form-select" id="orig-weight">
+              <option value="">-- Select --</option>
+              <option>Lace / Cobweb</option><option>Fingering / Sock</option><option>Sport / Baby</option>
+              <option>DK / Light Worsted</option><option>Worsted</option><option>Aran / Heavy Worsted</option>
+              <option>Bulky / Chunky</option><option>Super Bulky</option><option>Jumbo</option>
+            </select>
+            <label class="label" style="margin-top:0.75rem;">Fiber Content</label>
+            <select class="form-select" id="orig-fiber">
+              <option value="">-- Select --</option>
+              <option>Wool</option><option>Superwash Wool</option><option>Cotton</option><option>Acrylic</option>
+              <option>Linen</option><option>Alpaca</option><option>Silk</option><option>Bamboo</option>
+              <option>Mohair</option><option>Blend</option><option>Synthetic</option>
+            </select>
+            <label class="label" style="margin-top:0.75rem;">WPI</label>
+            <input class="form-input" type="number" id="orig-wpi" min="1" max="60" placeholder="e.g. 10">
+            <label class="label" style="margin-top:0.75rem;">Gauge (sts per 4")</label>
+            <input class="form-input" type="number" id="orig-gauge" min="1" max="60" placeholder="e.g. 18">
+            <label class="label" style="margin-top:0.75rem;">Care Instructions</label>
+            <select class="form-select" id="orig-care">
+              <option value="">-- Select --</option>
+              <option>Hand wash only</option><option>Machine wash cold</option><option>Machine wash warm</option>
+              <option>Dry clean only</option><option>Any / Machine washable</option>
+            </select>
+          </div>
+          <div>
+            <div class="yarn-col-head">Substitute Yarn</div>
+            <label class="label">Weight</label>
+            <select class="form-select" id="sub-weight">
+              <option value="">-- Select --</option>
+              <option>Lace / Cobweb</option><option>Fingering / Sock</option><option>Sport / Baby</option>
+              <option>DK / Light Worsted</option><option>Worsted</option><option>Aran / Heavy Worsted</option>
+              <option>Bulky / Chunky</option><option>Super Bulky</option><option>Jumbo</option>
+            </select>
+            <label class="label" style="margin-top:0.75rem;">Fiber Content</label>
+            <select class="form-select" id="sub-fiber">
+              <option value="">-- Select --</option>
+              <option>Wool</option><option>Superwash Wool</option><option>Cotton</option><option>Acrylic</option>
+              <option>Linen</option><option>Alpaca</option><option>Silk</option><option>Bamboo</option>
+              <option>Mohair</option><option>Blend</option><option>Synthetic</option>
+            </select>
+            <label class="label" style="margin-top:0.75rem;">WPI</label>
+            <input class="form-input" type="number" id="sub-wpi" min="1" max="60" placeholder="e.g. 10">
+            <label class="label" style="margin-top:0.75rem;">Gauge (sts per 4")</label>
+            <input class="form-input" type="number" id="sub-gauge" min="1" max="60" placeholder="e.g. 18">
+            <label class="label" style="margin-top:0.75rem;">Care Instructions</label>
+            <select class="form-select" id="sub-care">
+              <option value="">-- Select --</option>
+              <option>Hand wash only</option><option>Machine wash cold</option><option>Machine wash warm</option>
+              <option>Dry clean only</option><option>Any / Machine washable</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <button class="btn-primary" onclick="compare()">Compare Yarns</button>
+          <button class="btn-ghost" onclick="resetForm()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="compare-result" style="display:none;margin-top:1.5rem;"></div>
+        <p class="disclaimer" style="margin-top:1rem;">This tool provides general guidance only. Always swatch with your substitute yarn before starting any project.</p>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Tool</h2>
+        <ul>
+          <li>Fill in the details for your <strong>original yarn</strong> (from the pattern) and your <strong>substitute yarn</strong>.</li>
+          <li>Click <strong>Compare Yarns</strong> to see a compatibility checklist and overall substitution rating.</li>
+          <li>A rating of <strong class="rating-good">Good</strong> means 3–4 factors match. <strong class="rating-fair">Fair</strong> means 2 match. <strong class="rating-risky">Risky</strong> means 0–1 match.</li>
+        </ul>
+        <h2>Key Substitution Factors</h2>
+        <ul>
+          <li><strong>Weight:</strong> The most important factor. Mismatched weights require significant pattern adjustments.</li>
+          <li><strong>Gauge:</strong> Even with matching weight, different yarns can knit/crochet at different tensions. Always swatch!</li>
+          <li><strong>Fiber:</strong> Affects drape, warmth, care, and behavior. A cotton substitute for wool will drape differently and won't felt.</li>
+          <li><strong>Care:</strong> If the finished item will be machine washed but the substitute requires hand washing, reconsider.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('yarn-substitution-helper.html');injectFooter();});
+
+    function careCompat(a, b){
+      if(!a||!b) return null;
+      const strict = ['Hand wash only','Dry clean only'];
+      const aStrict = strict.some(s=>a.includes(s));
+      const bStrict = strict.some(s=>b.includes(s));
+      if(a===b) return true;
+      // machine wash → hand wash: risky (sub harder to care for)
+      if(b.includes('Hand wash') && !a.includes('Hand wash')) return false;
+      if(b.includes('Dry clean') && !a.includes('Dry clean')) return false;
+      return true;
+    }
+
+    function fiberCompat(a, b){
+      if(!a||!b) return null;
+      if(a===b) return true;
+      // broad groups: plant-based, animal, synthetic
+      const plant = ['Cotton','Linen','Bamboo'];
+      const animal = ['Wool','Superwash Wool','Alpaca','Silk','Mohair'];
+      const syn = ['Acrylic','Synthetic'];
+      const group = f => plant.includes(f)?'plant': animal.includes(f)?'animal': syn.includes(f)?'syn':'blend';
+      return group(a)===group(b);
+    }
+
+    function compare(){
+      const ow = document.getElementById('orig-weight').value;
+      const sw = document.getElementById('sub-weight').value;
+      const of_ = document.getElementById('orig-fiber').value;
+      const sf = document.getElementById('sub-fiber').value;
+      const owpi = parseFloat(document.getElementById('orig-wpi').value);
+      const swpi = parseFloat(document.getElementById('sub-wpi').value);
+      const og = parseFloat(document.getElementById('orig-gauge').value);
+      const sg = parseFloat(document.getElementById('sub-gauge').value);
+      const oc = document.getElementById('orig-care').value;
+      const sc = document.getElementById('sub-care').value;
+
+      const checks = [];
+      let score = 0;
+
+      // Weight
+      const wMatch = ow && sw && ow===sw;
+      if(ow&&sw) { checks.push({label:'Weight matches', ok: wMatch, detail: wMatch ? `Both: ${ow}` : `Original: ${ow} | Substitute: ${sw}`}); if(wMatch) score++; }
+
+      // WPI
+      const wpiMatch = !isNaN(owpi)&&!isNaN(swpi) && Math.abs(owpi-swpi)<=1;
+      if(!isNaN(owpi)&&!isNaN(swpi)) { checks.push({label:'WPI similar (within 1)', ok: wpiMatch, detail:`Original: ${owpi} WPI | Substitute: ${swpi} WPI (diff: ${Math.abs(owpi-swpi)})`}); if(wpiMatch) score++; }
+
+      // Gauge
+      const gaugeMatch = !isNaN(og)&&!isNaN(sg) && Math.abs(og-sg)<=2;
+      if(!isNaN(og)&&!isNaN(sg)) { checks.push({label:'Gauge similar (within 2 sts/4")', ok: gaugeMatch, detail:`Original: ${og} sts | Substitute: ${sg} sts (diff: ${Math.abs(og-sg)})`}); if(gaugeMatch) score++; }
+
+      // Fiber
+      const fc = fiberCompat(of_, sf);
+      if(fc!==null) { checks.push({label:'Fiber family compatible', ok: fc, detail: fc ? `Both from similar fiber group (${of_} / ${sf})` : `Different fiber groups: ${of_} vs ${sf} — expect different drape and behavior`}); if(fc) score++; }
+
+      // Care
+      const cc = careCompat(oc, sc);
+      if(cc!==null) { checks.push({label:'Care instructions compatible', ok: cc, detail: cc ? `Care is compatible` : `Substitute (${sc}) is harder to care for than original (${oc})`}); if(cc) score++; }
+
+      if(!checks.length){
+        document.getElementById('compare-result').innerHTML='<p style="color:var(--text-muted);">Please fill in at least some fields for both yarns.</p>';
+        document.getElementById('compare-result').style.display='block';
+        return;
+      }
+
+      const total = checks.length;
+      let ratingLabel, ratingClass, advice;
+      const pct = score/total;
+      if(pct>=0.75){ ratingLabel='Good Substitution'; ratingClass='rating-good'; advice='Most compatibility factors match. Swatch to confirm gauge and proceed with confidence.'; }
+      else if(pct>=0.5){ ratingLabel='Fair Substitution'; ratingClass='rating-fair'; advice='Some differences exist. You may need to adjust needle/hook size or pattern sizing. Always swatch first.'; }
+      else { ratingLabel='Risky Substitution'; ratingClass='rating-risky'; advice='Significant differences detected. This substitution may require major adjustments or may not work for the intended project.'; }
+
+      const rows = checks.map(c=>`
+        <div class="check-row">
+          <span class="check-icon">${c.ok ? '✅' : '⚠️'}</span>
+          <div><strong>${c.label}</strong><br><span style="color:var(--text-muted);font-size:0.9rem;">${c.detail}</span></div>
+        </div>
+      `).join('');
+
+      document.getElementById('compare-result').innerHTML = `
+        <div class="result-card">
+          <p style="font-size:1.1rem;">Overall Rating: <span class="${ratingClass}">${ratingLabel}</span> (${score}/${total} factors match)</p>
+          <p style="color:var(--text-muted);margin-bottom:1rem;">${advice}</p>
+          ${rows}
+        </div>
+      `;
+      document.getElementById('compare-result').style.display='block';
+    }
+
+    function resetForm(){
+      ['orig-weight','sub-weight','orig-fiber','sub-fiber','orig-care','sub-care'].forEach(id=>{document.getElementById(id).value='';});
+      ['orig-wpi','sub-wpi','orig-gauge','sub-gauge'].forEach(id=>{document.getElementById(id).value='';});
+      document.getElementById('compare-result').style.display='none';
+    }
+  </script>
+</body>
+</html>

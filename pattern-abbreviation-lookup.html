@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Abbreviation Lookup — Free Online Reference | The Useful Pages</title>
+  <meta name="description" content="Search crochet and knitting abbreviations together in one place. Instant results from both dictionaries with craft-type labels. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-abbreviation-lookup.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:0.75rem; font-weight:600; }
+    .badge-crochet { background:#d1fae5; color:#065f46; }
+    .badge-knitting { background:#dbeafe; color:#1e40af; }
+    .badge-both { background:#ede9fe; color:#5b21b6; }
+    [data-theme="dark"] .badge-crochet { background:#064e3b; color:#6ee7b7; }
+    [data-theme="dark"] .badge-knitting { background:#1e3a5f; color:#93c5fd; }
+    [data-theme="dark"] .badge-both { background:#3b2f6b; color:#c4b5fd; }
+    .tab-bar { display:flex; gap:0.5rem; margin-bottom:1rem; }
+    .tab-btn { padding:0.4rem 1rem; border-radius:6px; border:2px solid var(--border); background:transparent; cursor:pointer; font-size:0.9rem; color:var(--text); }
+    .tab-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Abbreviation Lookup</h1>
+      <p class="page-subtitle">Search crochet and knitting abbreviations together. Results are labeled by craft type.</p>
+      <div class="tool-card">
+        <input class="form-input" type="text" id="search" placeholder="Type abbreviation or keyword (e.g. yo, decrease, cable...)" style="margin-bottom:1rem;" oninput="handleSearch()">
+        <div id="search-results" style="display:none;">
+          <p id="search-count" style="font-size:0.9rem;color:var(--text-muted);margin-bottom:0.5rem;"></p>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Abbreviation</th><th>Full Name</th><th>Type</th><th>Notes</th></tr></thead>
+              <tbody id="search-body"></tbody>
+            </table>
+          </div>
+        </div>
+        <div id="browse-section">
+          <div class="tab-bar">
+            <button class="tab-btn active" onclick="showTab('crochet',this)">Crochet</button>
+            <button class="tab-btn" onclick="showTab('knitting',this)">Knitting</button>
+          </div>
+          <p id="browse-count" style="font-size:0.9rem;color:var(--text-muted);margin-bottom:0.5rem;"></p>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Abbreviation</th><th>Full Name</th><th>Notes</th></tr></thead>
+              <tbody id="browse-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <p>Type an abbreviation or keyword in the search box to search both dictionaries simultaneously. Results show a <span class="badge badge-crochet">Crochet</span>, <span class="badge badge-knitting">Knitting</span>, or <span class="badge badge-both">Both</span> label.</p>
+        <p>When the search box is empty, use the <strong>Crochet</strong> / <strong>Knitting</strong> tabs to browse all entries by craft type.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const CROCHET = [
+    {abbr:'ch',name:'Chain',notes:'Foundation stitch'},
+    {abbr:'sl st',name:'Slip Stitch',notes:'Joining stitch; no height'},
+    {abbr:'sc',name:'Single Crochet',notes:'Shortest standard stitch (US)'},
+    {abbr:'hdc',name:'Half Double Crochet',notes:'Between sc and dc height'},
+    {abbr:'dc',name:'Double Crochet',notes:'Most common stitch'},
+    {abbr:'tr',name:'Treble Crochet',notes:'Taller than dc'},
+    {abbr:'dtr',name:'Double Treble Crochet',notes:'Yarn over 3 times'},
+    {abbr:'trtr',name:'Triple Treble Crochet',notes:'Yarn over 4 times'},
+    {abbr:'ch sp',name:'Chain Space',notes:'Work into the chain gap'},
+    {abbr:'MC',name:'Main Color',notes:'Primary yarn color'},
+    {abbr:'CC',name:'Contrast Color',notes:'Secondary yarn color'},
+    {abbr:'rep',name:'Repeat',notes:'Work instructions again'},
+    {abbr:'pm',name:'Place Marker',notes:'Insert stitch marker here'},
+    {abbr:'sm',name:'Slip Marker',notes:'Move marker to next position'},
+    {abbr:'blo',name:'Back Loop Only',notes:'Insert hook through back loop'},
+    {abbr:'flo',name:'Front Loop Only',notes:'Insert hook through front loop'},
+    {abbr:'yo',name:'Yarn Over',notes:'Wrap yarn over hook'},
+    {abbr:'sk',name:'Skip',notes:'Skip stitches without working'},
+    {abbr:'sp',name:'Space',notes:'Work into gap not stitch top'},
+    {abbr:'tog',name:'Together',notes:'Join stitches as a decrease'},
+    {abbr:'inc',name:'Increase',notes:'2 stitches into same stitch'},
+    {abbr:'dec',name:'Decrease',notes:'2 stitches worked as one'},
+    {abbr:'MR',name:'Magic Ring',notes:'Adjustable starting ring'},
+    {abbr:'sc2tog',name:'Single Crochet 2 Together',notes:'sc decrease'},
+    {abbr:'dc2tog',name:'Double Crochet 2 Together',notes:'dc decrease'},
+    {abbr:'cl',name:'Cluster',notes:'Multiple partial stitches joined at top'},
+    {abbr:'fpdc',name:'Front Post Double Crochet',notes:'Raised texture; work around post from front'},
+    {abbr:'bpdc',name:'Back Post Double Crochet',notes:'Work around post from back'},
+    {abbr:'puff st',name:'Puff Stitch',notes:'Multiple hdc joined at top'},
+    {abbr:'bobble st',name:'Bobble Stitch',notes:'Multiple dc in same stitch, joined at top'},
+    {abbr:'shell',name:'Shell Stitch',notes:'Multiple dc in same stitch/space'},
+    {abbr:'v-st',name:'V-Stitch',notes:'dc, ch1, dc in same stitch'},
+    {abbr:'picot',name:'Picot',notes:'Decorative point; ch3, sl st in first ch'},
+    {abbr:'tch',name:'Turning Chain',notes:'Chains to match stitch height at row start'},
+    {abbr:'fasten off',name:'Fasten Off',notes:'Cut yarn and secure last loop'},
+    {abbr:'rnd',name:'Round',notes:'One complete circuit in the round'},
+    {abbr:'RS',name:'Right Side',notes:'Front/public face of work'},
+    {abbr:'WS',name:'Wrong Side',notes:'Back/private face of work'},
+    {abbr:'st',name:'Stitch',notes:'A single crochet stitch'},
+    {abbr:'sts',name:'Stitches',notes:'Plural of stitch'},
+  ];
+
+  const KNITTING = [
+    {abbr:'k',name:'Knit',notes:'Basic knit stitch'},
+    {abbr:'p',name:'Purl',notes:'Basic purl stitch'},
+    {abbr:'k2tog',name:'Knit 2 Together',notes:'Right-leaning decrease'},
+    {abbr:'p2tog',name:'Purl 2 Together',notes:'Right-leaning purl decrease'},
+    {abbr:'ssk',name:'Slip Slip Knit',notes:'Left-leaning decrease'},
+    {abbr:'ssp',name:'Slip Slip Purl',notes:'Left-leaning purl decrease'},
+    {abbr:'yo',name:'Yarn Over',notes:'Creates new stitch and eyelet'},
+    {abbr:'CO',name:'Cast On',notes:'Create initial stitches on needle'},
+    {abbr:'BO',name:'Bind Off',notes:'Secure stitches at end of work'},
+    {abbr:'RS',name:'Right Side',notes:'Front/public face of work'},
+    {abbr:'WS',name:'Wrong Side',notes:'Back/private face of work'},
+    {abbr:'sm',name:'Slip Marker',notes:'Move marker from left to right needle'},
+    {abbr:'pm',name:'Place Marker',notes:'Place marker on needle'},
+    {abbr:'m1',name:'Make 1',notes:'Pick up bar between stitches and knit'},
+    {abbr:'m1l',name:'Make 1 Left',notes:'Left-leaning increase'},
+    {abbr:'m1r',name:'Make 1 Right',notes:'Right-leaning increase'},
+    {abbr:'kfb',name:'Knit Front and Back',notes:'Increase; knit front and back of same st'},
+    {abbr:'pfb',name:'Purl Front and Back',notes:'Increase on purl side'},
+    {abbr:'sl',name:'Slip',notes:'Transfer stitch without working'},
+    {abbr:'psso',name:'Pass Slipped Stitch Over',notes:'Decrease; lift slipped st over last worked'},
+    {abbr:'wyib',name:'With Yarn In Back',notes:'Hold yarn behind work'},
+    {abbr:'wyif',name:'With Yarn In Front',notes:'Hold yarn in front of work'},
+    {abbr:'cn',name:'Cable Needle',notes:'Hold stitches for cable work'},
+    {abbr:'c4b',name:'Cable 4 Back',notes:'Right-twisting 4-stitch cable'},
+    {abbr:'c4f',name:'Cable 4 Front',notes:'Left-twisting 4-stitch cable'},
+    {abbr:'tbl',name:'Through Back Loop',notes:'Work through back loop instead of front'},
+    {abbr:'rnd',name:'Round',notes:'Complete circuit when knitting in the round'},
+    {abbr:'beg',name:'Beginning',notes:'Start of row or section'},
+    {abbr:'cont',name:'Continue',notes:'Keep working as set'},
+    {abbr:'rem',name:'Remaining',notes:'Stitches left after shaping'},
+    {abbr:'rep',name:'Repeat',notes:'Work instructions again'},
+    {abbr:'dpn',name:'Double-Pointed Needle',notes:'For small circumferences in the round'},
+    {abbr:'MC',name:'Main Color',notes:'Primary yarn color'},
+    {abbr:'CC',name:'Contrast Color',notes:'Secondary yarn color'},
+    {abbr:'dec',name:'Decrease',notes:'Reduce stitch count'},
+    {abbr:'inc',name:'Increase',notes:'Add a stitch'},
+    {abbr:'sk2p',name:'Slip 1, K2tog, PSSO',notes:'Double decrease; right-leaning'},
+    {abbr:'s2kp',name:'Slip 2, K1, PSSO',notes:'Centered double decrease'},
+    {abbr:'w&t',name:'Wrap and Turn',notes:'Short-row technique'},
+    {abbr:'st',name:'Stitch',notes:'A single knitting stitch'},
+    {abbr:'sts',name:'Stitches',notes:'Plural of stitch'},
+  ];
+
+  // Find abbreviations shared between both (same abbr key)
+  const sharedAbbrs = new Set(CROCHET.map(r=>r.abbr.toLowerCase()).filter(a => KNITTING.some(r=>r.abbr.toLowerCase()===a)));
+
+  let currentTab = 'crochet';
+
+  function escH(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function badge(type) {
+    if(type==='crochet') return '<span class="badge badge-crochet">Crochet</span>';
+    if(type==='knitting') return '<span class="badge badge-knitting">Knitting</span>';
+    return '<span class="badge badge-both">Both</span>';
+  }
+
+  function handleSearch() {
+    const q = document.getElementById('search').value.trim().toLowerCase();
+    const search = document.getElementById('search-results');
+    const browse = document.getElementById('browse-section');
+    if (!q) {
+      search.style.display = 'none';
+      browse.style.display = 'block';
+      renderBrowse(currentTab);
+      return;
+    }
+    search.style.display = 'block';
+    browse.style.display = 'none';
+
+    const cResults = CROCHET.filter(r => r.abbr.toLowerCase().includes(q)||r.name.toLowerCase().includes(q)||r.notes.toLowerCase().includes(q));
+    const kResults = KNITTING.filter(r => r.abbr.toLowerCase().includes(q)||r.name.toLowerCase().includes(q)||r.notes.toLowerCase().includes(q));
+
+    // Merge, tag type
+    const merged = [];
+    const seen = new Set();
+    cResults.forEach(r => {
+      const isAlso = kResults.some(kr=>kr.abbr.toLowerCase()===r.abbr.toLowerCase());
+      merged.push({...r, type: isAlso?'both':'crochet'});
+      seen.add(r.abbr.toLowerCase());
+    });
+    kResults.forEach(r => {
+      if(!seen.has(r.abbr.toLowerCase())) merged.push({...r, type:'knitting'});
+    });
+
+    document.getElementById('search-count').textContent = `${merged.length} result${merged.length!==1?'s':''} found`;
+    document.getElementById('search-body').innerHTML = merged.map(r =>
+      `<tr><td><strong>${escH(r.abbr)}</strong></td><td>${escH(r.name)}</td><td>${badge(r.type)}</td><td>${escH(r.notes)}</td></tr>`
+    ).join('') || '<tr><td colspan="4" style="text-align:center;color:var(--text-muted)">No results found</td></tr>';
+  }
+
+  function showTab(tab, btn) {
+    currentTab = tab;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderBrowse(tab);
+  }
+
+  function renderBrowse(tab) {
+    const data = tab === 'crochet' ? CROCHET : KNITTING;
+    document.getElementById('browse-count').textContent = `${data.length} entries`;
+    document.getElementById('browse-body').innerHTML = data.map(r =>
+      `<tr><td><strong>${escH(r.abbr)}</strong></td><td>${escH(r.name)}</td><td>${escH(r.notes)}</td></tr>`
+    ).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('pattern-abbreviation-lookup.html');
+    injectFooter();
+    renderBrowse('crochet');
+  });
+  </script>
+</body>
+</html>

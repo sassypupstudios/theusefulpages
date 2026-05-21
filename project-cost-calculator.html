@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Cost Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate the full cost of a craft project including materials and labor. Export as text. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/project-cost-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .mat-row { display:grid; grid-template-columns:2fr 80px 100px auto; gap:8px; align-items:center; margin-bottom:8px; }
+    .mat-row input { width:100%; }
+    .row-total { font-size:0.9rem; font-weight:600; color:var(--primary); text-align:right; padding-right:4px; }
+    .summary-line { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:0.95rem; }
+    .summary-line:last-child { border:none; font-weight:700; font-size:1.05rem; color:var(--primary); }
+    .btn-sm { padding:5px 10px; font-size:0.8rem; border-radius:6px; border:none; cursor:pointer; background:var(--primary); color:#fff; }
+    .btn-danger { background:#ef4444; }
+    @media(max-width:520px){ .mat-row{grid-template-columns:1fr 70px 90px auto;} }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Project Cost Calculator</h1>
+      <p class="page-subtitle">Build a materials list, add labor time, and calculate the full cost of your craft project.</p>
+
+      <div class="tool-card">
+        <h2 style="font-size:1rem;margin-bottom:12px;">Materials</h2>
+        <div style="display:grid;grid-template-columns:2fr 80px 100px auto;gap:8px;margin-bottom:6px;">
+          <div style="font-size:0.78rem;color:var(--text-muted);font-weight:600;">ITEM</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);font-weight:600;">QTY</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);font-weight:600;">UNIT COST ($)</div>
+          <div></div>
+        </div>
+        <div id="mat-rows"></div>
+        <button class="btn-outline" onclick="addRow()" style="margin-top:4px;font-size:0.88rem;">+ Add Item</button>
+
+        <hr style="margin:20px 0;border-color:var(--border);">
+
+        <h2 style="font-size:1rem;margin-bottom:12px;">Labor</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div><label class="label">Hours Worked</label><input type="number" id="hours" class="form-input" placeholder="e.g. 8" min="0" step="0.25" oninput="updateSummary()"></div>
+          <div><label class="label">Hourly Rate ($)</label><input type="number" id="rate" class="form-input" placeholder="e.g. 15" min="0" step="0.01" oninput="updateSummary()"></div>
+        </div>
+
+        <hr style="margin:20px 0;border-color:var(--border);">
+
+        <h2 style="font-size:1rem;margin-bottom:12px;">Overhead</h2>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+          <div style="flex:1;"><label class="label">Overhead Percentage (%)</label><input type="number" id="overhead" class="form-input" placeholder="e.g. 10" min="0" max="200" step="1" oninput="updateSummary()"></div>
+          <div style="font-size:0.82rem;color:var(--text-muted);padding-top:20px;">Applied to materials + labor</div>
+        </div>
+
+        <div id="summary" style="margin-top:8px;"></div>
+        <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+          <button class="btn-primary" onclick="exportTxt()">Export as Text</button>
+          <button class="btn-outline" onclick="clearAll()">Clear All</button>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Project Cost Calculator</h2>
+        <ol>
+          <li>Add each material (yarn, notions, buttons, etc.) with quantity and unit cost.</li>
+          <li>Enter how many hours you spent and your desired hourly rate (use minimum wage, your craft rate, or $0 for personal projects).</li>
+          <li>Add an overhead percentage to cover electricity, packaging, or general expenses (optional).</li>
+          <li>Your totals update live. Use "Export as Text" to save a copy.</li>
+        </ol>
+        <p>Your data is saved automatically in your browser.</p>
+        <p class="disclaimer">All data stays in your browser. Nothing is sent to any server.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const STORAGE_KEY='tup_projcost';
+  let rows=[];
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    injectNav('project-cost-calculator.html');
+    injectFooter();
+    load();
+    if(rows.length===0) addRow();
+    render();
+  });
+
+  function load(){
+    try{
+      const s=localStorage.getItem(STORAGE_KEY);
+      if(s){
+        const d=JSON.parse(s);
+        rows=d.rows||[];
+        document.getElementById('hours').value=d.hours||'';
+        document.getElementById('rate').value=d.rate||'';
+        document.getElementById('overhead').value=d.overhead||'';
+      }
+    }catch(e){}
+  }
+
+  function save(){
+    const d={rows, hours:document.getElementById('hours').value, rate:document.getElementById('rate').value, overhead:document.getElementById('overhead').value};
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(d));
+  }
+
+  function addRow(){ rows.push({name:'',qty:'1',cost:''}); render(); }
+  function removeRow(i){ rows.splice(i,1); if(rows.length===0) addRow(); else render(); }
+
+  function updateRow(i,field,val){ rows[i][field]=val; save(); updateSummary(); }
+
+  function render(){
+    const c=document.getElementById('mat-rows');
+    c.innerHTML='';
+    rows.forEach((r,i)=>{
+      const div=document.createElement('div');
+      div.className='mat-row';
+      const rowTotal=(parseFloat(r.qty)||0)*(parseFloat(r.cost)||0);
+      div.innerHTML=`
+        <input type="text" class="form-input" placeholder="Item name" value="${r.name}" oninput="updateRow(${i},'name',this.value)">
+        <input type="number" class="form-input" placeholder="1" min="0" step="0.01" value="${r.qty}" oninput="updateRow(${i},'qty',this.value)">
+        <input type="number" class="form-input" placeholder="0.00" min="0" step="0.01" value="${r.cost}" oninput="updateRow(${i},'cost',this.value)">
+        <button class="btn-sm btn-danger" onclick="removeRow(${i})">✕</button>`;
+      c.appendChild(div);
+    });
+    updateSummary();
+  }
+
+  function updateSummary(){
+    save();
+    const matTotal = rows.reduce((s,r)=>s+(parseFloat(r.qty)||0)*(parseFloat(r.cost)||0),0);
+    const hrs=parseFloat(document.getElementById('hours').value)||0;
+    const rate=parseFloat(document.getElementById('rate').value)||0;
+    const labor=hrs*rate;
+    const ovPct=(parseFloat(document.getElementById('overhead').value)||0)/100;
+    const sub=matTotal+labor;
+    const overhead=sub*ovPct;
+    const grand=sub+overhead;
+    const fmt=n=>'$'+n.toFixed(2);
+    const s=document.getElementById('summary');
+    s.innerHTML=`<div style="background:var(--bg-secondary);border-radius:var(--radius);padding:14px;">
+      <div class="summary-line"><span>Materials</span><span>${fmt(matTotal)}</span></div>
+      <div class="summary-line"><span>Labor (${hrs}h × ${fmt(rate)})</span><span>${fmt(labor)}</span></div>
+      ${ovPct>0?`<div class="summary-line"><span>Overhead (${(ovPct*100).toFixed(0)}%)</span><span>${fmt(overhead)}</span></div>`:''}
+      <div class="summary-line"><span>Grand Total</span><span>${fmt(grand)}</span></div>
+    </div>`;
+  }
+
+  function exportTxt(){
+    const matTotal=rows.reduce((s,r)=>s+(parseFloat(r.qty)||0)*(parseFloat(r.cost)||0),0);
+    const hrs=parseFloat(document.getElementById('hours').value)||0;
+    const rate=parseFloat(document.getElementById('rate').value)||0;
+    const labor=hrs*rate;
+    const ovPct=(parseFloat(document.getElementById('overhead').value)||0)/100;
+    const overhead=(matTotal+labor)*ovPct;
+    const grand=matTotal+labor+overhead;
+    const fmt=n=>'$'+n.toFixed(2);
+    let out='PROJECT COST ESTIMATE\n'+'='.repeat(30)+'\n\nMATERIALS:\n';
+    rows.forEach(r=>{ const t=(parseFloat(r.qty)||0)*(parseFloat(r.cost)||0); out+=`  ${r.name||'(unnamed)'}  qty:${r.qty}  @${fmt(parseFloat(r.cost)||0)}  = ${fmt(t)}\n`; });
+    out+=`\nMaterials Total: ${fmt(matTotal)}\nLabor (${hrs}h × ${fmt(rate)}): ${fmt(labor)}\n`;
+    if(ovPct>0) out+=`Overhead (${(ovPct*100).toFixed(0)}%): ${fmt(overhead)}\n`;
+    out+=`\nGRAND TOTAL: ${fmt(grand)}\n`;
+    const blob=new Blob([out],{type:'text/plain'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='project-cost.txt'; a.click();
+  }
+
+  function clearAll(){
+    if(!confirm('Clear all materials and reset the form?')) return;
+    rows=[]; localStorage.removeItem(STORAGE_KEY);
+    document.getElementById('hours').value='';
+    document.getElementById('rate').value='';
+    document.getElementById('overhead').value='';
+    addRow(); render();
+  }
+  </script>
+</body>
+</html>

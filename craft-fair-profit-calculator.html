@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Craft Fair Profit Calculator — Free Calculator for Handmade Sellers | The Useful Pages</title>
+  <meta name="description" content="Calculate your craft fair profit, break-even point, and how many items you need to sell. Free craft show profit calculator, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/craft-fair-profit-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .profit-positive { color: #16a34a; font-weight: 700; }
+    .profit-negative { color: #dc2626; font-weight: 700; }
+    .break-even-item { background: var(--bg-secondary); border-radius: 8px; padding: 0.75rem; margin-bottom: 0.5rem; display:flex; justify-content:space-between; align-items:center; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Craft Fair Profit Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate your profit, break-even point, and units needed to cover your craft fair costs.</p>
+
+      <div class="tool-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:1rem;">Your Costs</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Booth Fee ($)</label>
+            <input type="number" class="form-input" id="boothFee" placeholder="0.00" min="0" step="0.01" oninput="calcFair()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Setup / Travel Costs ($)</label>
+            <input type="number" class="form-input" id="setupCosts" placeholder="0.00" min="0" step="0.01" oninput="calcFair()">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Total Material Cost of Inventory ($)</label>
+          <input type="number" class="form-input" id="inventoryCost" placeholder="0.00" min="0" step="0.01" oninput="calcFair()">
+        </div>
+
+        <h2 style="font-size:1rem;font-weight:700;margin:1.25rem 0 1rem;">Your Revenue</h2>
+        <div class="form-group">
+          <label class="form-label">Expected (or Actual) Sales Revenue ($)</label>
+          <input type="number" class="form-input" id="salesRevenue" placeholder="0.00" min="0" step="0.01" oninput="calcFair()">
+        </div>
+
+        <div class="result-card" id="mainResults">
+          <div class="result-row"><span class="result-label">Total Fixed Costs (booth + setup)</span><span id="fixedCosts">—</span></div>
+          <div class="result-row"><span class="result-label">Total All Costs (including inventory)</span><span id="totalCosts">—</span></div>
+          <div class="result-row"><span class="result-label">Gross Profit (Revenue − Inventory)</span><span id="grossProfit">—</span></div>
+          <div class="result-row"><span class="result-label">Net Profit (Revenue − All Costs)</span><span id="netProfit" style="font-size:1.25rem;">—</span></div>
+          <div class="result-row"><span class="result-label">Net Margin %</span><span id="netMargin">—</span></div>
+          <div class="result-row"><span class="result-label">Break-Even Revenue Needed</span><span id="breakEven" style="font-weight:700;color:var(--primary);">—</span></div>
+        </div>
+
+        <div style="margin-top:1.25rem;">
+          <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:0.75rem;">Break-Even Units at Different Price Points</h3>
+          <div class="form-row" style="margin-bottom:0.75rem;">
+            <div class="form-group">
+              <label class="form-label">Price Point A ($)</label>
+              <input type="number" class="form-input" id="priceA" placeholder="20" min="0.01" step="0.01" oninput="calcFair()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Price Point B ($)</label>
+              <input type="number" class="form-input" id="priceB" placeholder="35" min="0.01" step="0.01" oninput="calcFair()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Price Point C ($)</label>
+              <input type="number" class="form-input" id="priceC" placeholder="50" min="0.01" step="0.01" oninput="calcFair()">
+            </div>
+          </div>
+          <div id="unitsBreakdown"></div>
+        </div>
+
+        <p class="disclaimer" style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">These calculators provide estimates for planning purposes. Consult a tax professional for business financial advice.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to Use</h2>
+        <ul style="margin:0 0 1rem 0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter all your costs: booth fee, travel, setup supplies, display materials.</li>
+          <li>Enter the total material cost you spent making the inventory you're bringing.</li>
+          <li>Enter your expected or actual sales to see profit and margin.</li>
+          <li>Use the break-even unit calculator to know how many items you need to sell at each price point.</li>
+        </ul>
+        <h3 style="font-size:0.875rem;font-weight:700;margin-bottom:0.5rem;">Craft Fair Tips</h3>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>A good rule of thumb: aim to make 3–5× your booth fee in sales.</li>
+          <li>Track actual vs. expected sales to know which shows are worth returning to.</li>
+          <li>Consider your time as a cost — even if you don't enter it here.</li>
+          <li>Keep unsold inventory for the next show rather than discounting on the day.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="handmade-pricing-calculator.html">Handmade Pricing Calculator</a>
+          <a href="craft-show-break-even-calculator.html">Craft Show Break-Even</a>
+          <a href="etsy-fee-calculator.html">Etsy Fee Calculator</a>
+          <a href="handmade-profit-margin-calculator.html">Profit Margin Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('craft-fair-profit-calculator.html'); injectFooter(); calcFair(); });
+
+    function fmt(n) { return '$' + n.toFixed(2); }
+    function fmtClass(n) { return n >= 0 ? 'profit-positive' : 'profit-negative'; }
+
+    function calcFair() {
+      const booth = parseFloat(document.getElementById('boothFee').value) || 0;
+      const setup = parseFloat(document.getElementById('setupCosts').value) || 0;
+      const inv = parseFloat(document.getElementById('inventoryCost').value) || 0;
+      const rev = parseFloat(document.getElementById('salesRevenue').value) || 0;
+
+      const fixed = booth + setup;
+      const total = fixed + inv;
+      const gross = rev - inv;
+      const net = rev - total;
+      const margin = rev > 0 ? (net / rev * 100) : 0;
+      const breakEven = total;
+
+      document.getElementById('fixedCosts').textContent = fmt(fixed);
+      document.getElementById('totalCosts').textContent = fmt(total);
+
+      const gpEl = document.getElementById('grossProfit');
+      gpEl.textContent = fmt(gross);
+      gpEl.className = fmtClass(gross);
+
+      const npEl = document.getElementById('netProfit');
+      npEl.textContent = fmt(net);
+      npEl.className = fmtClass(net);
+
+      document.getElementById('netMargin').textContent = margin.toFixed(1) + '%';
+      document.getElementById('breakEven').textContent = fmt(breakEven);
+
+      // Units breakdown
+      const prices = [
+        parseFloat(document.getElementById('priceA').value),
+        parseFloat(document.getElementById('priceB').value),
+        parseFloat(document.getElementById('priceC').value)
+      ];
+      let html = '';
+      prices.forEach(p => {
+        if (!isNaN(p) && p > 0) {
+          const units = Math.ceil(breakEven / p);
+          html += `<div class="break-even-item"><span style="font-size:0.875rem;color:var(--text-muted);">At ${fmt(p)} per item</span><span style="font-weight:700;color:var(--primary);">${units} unit${units!==1?'s':''} to break even</span></div>`;
+        }
+      });
+      document.getElementById('unitsBreakdown').innerHTML = html || '<p style="font-size:0.875rem;color:var(--text-muted);">Enter price points above to see unit calculations.</p>';
+    }
+  </script>
+</body>
+</html>

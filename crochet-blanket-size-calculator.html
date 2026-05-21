@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Blanket Size Calculator — Free Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate how many stitches to chain and how many rows for your crochet blanket. Get yardage estimates by yarn weight. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-blanket-size-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Blanket Size Calculator</h1>
+      <p class="page-subtitle">Find your chain count, row count, and yardage estimate for any crochet blanket.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Blanket Size Preset</label>
+            <select class="form-select" id="size-preset" onchange="loadBlanketPreset()">
+              <option value="custom">Custom</option>
+              <option value="baby">Baby (30" × 36")</option>
+              <option value="lap">Lap / Stroller (36" × 48")</option>
+              <option value="throw">Throw (50" × 60")</option>
+              <option value="full">Full / Double (54" × 75")</option>
+              <option value="queen">Queen (60" × 80")</option>
+              <option value="king">King (76" × 80")</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Hook Size</label>
+            <input class="form-input" type="text" id="hook-size" placeholder="e.g. 5mm / H-8">
+          </div>
+          <div>
+            <label class="label">Width (inches)</label>
+            <input class="form-input" type="number" id="blanket-width" min="1" placeholder="e.g. 50">
+          </div>
+          <div>
+            <label class="label">Length (inches)</label>
+            <input class="form-input" type="number" id="blanket-length" min="1" placeholder="e.g. 60">
+          </div>
+          <div>
+            <label class="label">Gauge: stitches per 4 inches</label>
+            <input class="form-input" type="number" id="gauge-sts" min="1" step="0.5" placeholder="e.g. 14">
+          </div>
+          <div>
+            <label class="label">Gauge: rows per 4 inches</label>
+            <input class="form-input" type="number" id="gauge-rows" min="1" step="0.5" placeholder="e.g. 16">
+          </div>
+          <div>
+            <label class="label">Yarn Weight</label>
+            <select class="form-select" id="blanket-weight">
+              <option value="fingering">Fingering (1)</option>
+              <option value="sport">Sport (2)</option>
+              <option value="dk">DK (3)</option>
+              <option value="worsted" selected>Worsted (4)</option>
+              <option value="bulky">Bulky (5)</option>
+              <option value="super-bulky">Super Bulky (6)</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcBlanket()">Calculate</button>
+          <button class="btn-ghost" onclick="resetBlanket()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="blanket-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-chain"></div>
+              <div class="stat-label">Starting Chain (sts)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-total-rows"></div>
+              <div class="stat-label">Total Rows</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-total-sts"></div>
+              <div class="stat-label">Total Stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yards-blanket"></div>
+              <div class="stat-label">Estimated Yards</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yards-buffer"></div>
+              <div class="stat-label">Yards + 15% Buffer</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-skeins-blanket"></div>
+              <div class="stat-label">Approx. Skeins (200yd)</div>
+            </div>
+          </div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Actual yarn use varies by gauge, stitch pattern, tension, and yarn brand.</p>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Standard Blanket Dimensions Reference</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Size</th><th>Width</th><th>Length</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td>Baby</td><td>30"</td><td>36"</td><td>Crib / stroller</td></tr>
+              <tr><td>Lap</td><td>36"</td><td>48"</td><td>Wheelchair, travel</td></tr>
+              <tr><td>Throw</td><td>50"</td><td>60"</td><td>Couch throw</td></tr>
+              <tr><td>Full / Double</td><td>54"</td><td>75"</td><td>Full size bed</td></tr>
+              <tr><td>Queen</td><td>60"</td><td>80"</td><td>Queen size bed</td></tr>
+              <tr><td>King</td><td>76"</td><td>80"</td><td>King size bed</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <ul>
+          <li>Select a standard blanket size or choose "Custom" and enter your own dimensions.</li>
+          <li>Enter your crochet gauge — work a 4"×4" swatch and count stitches and rows.</li>
+          <li>Select your yarn weight for a yardage estimate.</li>
+          <li>Click <strong>Calculate</strong> to see your chain count, row count, and yardage.</li>
+        </ul>
+        <h2>Tips</h2>
+        <ul>
+          <li>Add extra stitches to your foundation chain for turning chains (usually 1–3 depending on stitch height).</li>
+          <li>Gauge varies significantly by stitch pattern — always work a swatch in the actual stitch you plan to use.</li>
+          <li>For blankets with borders, reduce your main stitch area slightly to account for border width.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('crochet-blanket-size-calculator.html');injectFooter();});
+
+    const blanketPresets = {
+      baby:{w:30,l:36}, lap:{w:36,l:48}, throw:{w:50,l:60},
+      full:{w:54,l:75}, queen:{w:60,l:80}, king:{w:76,l:80}
+    };
+    const ydsPerSt = {fingering:0.06,sport:0.05,dk:0.04,worsted:0.035,bulky:0.025,'super-bulky':0.018};
+
+    function loadBlanketPreset(){
+      const p = blanketPresets[document.getElementById('size-preset').value];
+      if(!p) return;
+      document.getElementById('blanket-width').value  = p.w;
+      document.getElementById('blanket-length').value = p.l;
+    }
+
+    function calcBlanket(){
+      const w  = parseFloat(document.getElementById('blanket-width').value);
+      const l  = parseFloat(document.getElementById('blanket-length').value);
+      const gS = parseFloat(document.getElementById('gauge-sts').value);
+      const gR = parseFloat(document.getElementById('gauge-rows').value);
+      const wt = document.getElementById('blanket-weight').value;
+      if([w,l,gS,gR].some(v=>isNaN(v)||v<=0)){alert('Please fill in all required fields.');return;}
+      const stsPerIn  = gS/4;
+      const rowsPerIn = gR/4;
+      const chainCount = Math.round(w * stsPerIn);
+      const rowCount   = Math.round(l * rowsPerIn);
+      const totalSts   = chainCount * rowCount;
+      const yards      = totalSts * ydsPerSt[wt];
+      const buffer     = yards * 1.15;
+      const skeins     = Math.ceil(buffer/200);
+      document.getElementById('res-chain').textContent         = chainCount.toLocaleString();
+      document.getElementById('res-total-rows').textContent    = rowCount.toLocaleString();
+      document.getElementById('res-total-sts').textContent     = totalSts.toLocaleString();
+      document.getElementById('res-yards-blanket').textContent = Math.round(yards).toLocaleString();
+      document.getElementById('res-yards-buffer').textContent  = Math.round(buffer).toLocaleString();
+      document.getElementById('res-skeins-blanket').textContent= skeins;
+      document.getElementById('blanket-result').style.display  = 'block';
+    }
+
+    function resetBlanket(){
+      document.getElementById('size-preset').value = 'custom';
+      ['blanket-width','blanket-length','gauge-sts','gauge-rows','hook-size'].forEach(id=>{
+        document.getElementById(id).value='';
+      });
+      document.getElementById('blanket-result').style.display='none';
+    }
+  </script>
+</body>
+</html>

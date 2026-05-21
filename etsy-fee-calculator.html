@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etsy Fee Calculator — Free Calculator for Handmade Sellers | The Useful Pages</title>
+  <meta name="description" content="Calculate your exact Etsy fees including listing, transaction, payment processing, and Offsite Ads. See your net payout instantly. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/etsy-fee-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .fee-row { display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0; border-bottom:1px solid var(--border); font-size:0.875rem; gap:1rem; }
+    .fee-row:last-child { border-bottom:none; }
+    .fee-label { color:var(--text-muted); flex:1; }
+    .fee-formula { color:var(--text-muted); font-size:0.75rem; flex:1; text-align:center; }
+    .fee-amount { font-weight:600; min-width:80px; text-align:right; }
+    .fee-negative { color:#dc2626; }
+    .payout-banner { background:var(--primary); color:white; border-radius:12px; padding:1.25rem; text-align:center; margin-top:1rem; }
+    .payout-amt { font-size:2.25rem; font-weight:700; }
+    .toggle-row { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
+    .toggle-label { font-size:0.875rem; font-weight:600; color:var(--text); flex:1; }
+    .toggle-switch { position:relative; width:44px; height:24px; }
+    .toggle-switch input { opacity:0; width:0; height:0; }
+    .toggle-slider { position:absolute; cursor:pointer; top:0;left:0;right:0;bottom:0; background:var(--border); border-radius:24px; transition:0.2s; }
+    .toggle-slider:before { position:absolute; content:""; height:18px; width:18px; left:3px; bottom:3px; background:white; border-radius:50%; transition:0.2s; }
+    input:checked + .toggle-slider { background:var(--primary); }
+    input:checked + .toggle-slider:before { transform:translateX(20px); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Etsy Fee Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">See exactly what Etsy takes and what you keep. Based on 2024 Etsy fee structure.</p>
+
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Item Price ($)</label>
+            <input type="number" class="form-input" id="itemPrice" placeholder="0.00" min="0" step="0.01" oninput="calcEtsy()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Shipping Charged to Buyer ($)</label>
+            <input type="number" class="form-input" id="shippingCharged" placeholder="0.00" min="0" step="0.01" oninput="calcEtsy()">
+          </div>
+        </div>
+
+        <div class="toggle-row">
+          <span class="toggle-label">Offsite Ads (seller opted-in or required)</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="offsiteAds" onchange="calcEtsy()">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-top:-0.75rem;margin-bottom:1rem;">Sellers who made over $10,000/yr on Etsy are required to participate (15% fee). Others can opt out (12% for under $10k).</p>
+
+        <div id="feeBreakdown" style="margin-top:0.5rem;">
+          <h3 style="font-size:0.875rem;font-weight:700;margin-bottom:0.75rem;">Fee Breakdown</h3>
+          <div style="padding:0 0.25rem;">
+            <div class="fee-row">
+              <span class="fee-label">Listing Fee</span>
+              <span class="fee-formula">flat fee per listing</span>
+              <span class="fee-amount fee-negative" id="fListingFee">−$0.20</span>
+            </div>
+            <div class="fee-row">
+              <span class="fee-label">Transaction Fee</span>
+              <span class="fee-formula">6.5% of (price + shipping)</span>
+              <span class="fee-amount fee-negative" id="fTransactionFee">—</span>
+            </div>
+            <div class="fee-row">
+              <span class="fee-label">Payment Processing</span>
+              <span class="fee-formula">3% + $0.25</span>
+              <span class="fee-amount fee-negative" id="fProcessingFee">—</span>
+            </div>
+            <div class="fee-row" id="offsiteRow" style="display:none;">
+              <span class="fee-label">Offsite Ads Fee</span>
+              <span class="fee-formula">15% of item price</span>
+              <span class="fee-amount fee-negative" id="fOffsiteFee">—</span>
+            </div>
+            <div class="fee-row" style="border-top:2px solid var(--border);margin-top:0.5rem;padding-top:0.75rem;">
+              <span class="fee-label" style="font-weight:700;">Total Fees</span>
+              <span class="fee-formula" id="fEffectivePct" style="color:var(--primary);font-weight:600;">—</span>
+              <span class="fee-amount fee-negative" id="fTotalFees" style="font-size:1.1rem;">—</span>
+            </div>
+          </div>
+          <div class="payout-banner">
+            <div style="font-size:0.875rem;opacity:0.85;margin-bottom:0.25rem;">Your Net Payout</div>
+            <div class="payout-amt" id="netPayout">$0.00</div>
+          </div>
+        </div>
+
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;padding:0.75rem;background:var(--bg-secondary);border-radius:8px;line-height:1.6;">
+          <strong>Note:</strong> Fees shown are based on Etsy's 2024 rate structure. Always verify current fees at <strong>etsy.com/help/article/350</strong>. Regulatory fees may apply in some regions. This does not include VAT/sales tax collected by Etsy.
+        </p>
+        <p class="disclaimer" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">These calculators provide estimates for planning purposes. Consult a tax professional for business financial advice.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How Etsy Fees Work (2024)</h2>
+        <ul style="margin:0 0 1rem 0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Listing Fee ($0.20)</strong> — Charged each time you list or renew an item. Auto-renews every 4 months or when sold.</li>
+          <li><strong>Transaction Fee (6.5%)</strong> — Applied to the full sale price including shipping you charge the buyer.</li>
+          <li><strong>Payment Processing (3% + $0.25)</strong> — For Etsy Payments (required in most countries).</li>
+          <li><strong>Offsite Ads (12–15%)</strong> — Only charged when a buyer clicks an Etsy ad outside the platform and then purchases.</li>
+        </ul>
+        <h3 style="font-size:0.875rem;font-weight:700;margin-bottom:0.5rem;">Tips to Maximize Your Payout</h3>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Factor in all fees when setting your prices — don't price based on item price alone.</li>
+          <li>Charge accurate shipping — transaction fees apply to shipping, so free shipping isn't always worth it.</li>
+          <li>If you're under $10k/yr, consider opting out of Offsite Ads to save 12% on those sales.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="handmade-pricing-calculator.html">Handmade Pricing Calculator</a>
+          <a href="handmade-profit-margin-calculator.html">Profit Margin Calculator</a>
+          <a href="wholesale-price-calculator.html">Wholesale Price Calculator</a>
+          <a href="commission-price-calculator.html">Commission Price Calculator</a>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('etsy-fee-calculator.html'); injectFooter(); calcEtsy(); });
+
+    function fmt(n) { return '$' + n.toFixed(2); }
+
+    function calcEtsy() {
+      const price = parseFloat(document.getElementById('itemPrice').value) || 0;
+      const ship = parseFloat(document.getElementById('shippingCharged').value) || 0;
+      const offsite = document.getElementById('offsiteAds').checked;
+
+      const listing = 0.20;
+      const transaction = (price + ship) * 0.065;
+      const processing = price * 0.03 + 0.25;
+      const offsiteFee = offsite ? price * 0.15 : 0;
+      const total = listing + transaction + processing + offsiteFee;
+      const gross = price + ship;
+      const net = gross - total;
+      const effectivePct = gross > 0 ? (total / gross * 100) : 0;
+
+      document.getElementById('fListingFee').textContent = '−' + fmt(listing);
+      document.getElementById('fTransactionFee').textContent = '−' + fmt(transaction);
+      document.getElementById('fProcessingFee').textContent = '−' + fmt(processing);
+      document.getElementById('fTotalFees').textContent = '−' + fmt(total);
+      document.getElementById('fEffectivePct').textContent = effectivePct.toFixed(1) + '% effective rate';
+      document.getElementById('netPayout').textContent = fmt(Math.max(0, net));
+
+      const offsiteRow = document.getElementById('offsiteRow');
+      if (offsite) {
+        offsiteRow.style.display = 'flex';
+        document.getElementById('fOffsiteFee').textContent = '−' + fmt(offsiteFee);
+      } else {
+        offsiteRow.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

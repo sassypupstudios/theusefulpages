@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Granny Square Size Calculator — Rounds, Size &amp; Blanket Layout | The Useful Pages</title>
+  <meta name="description" content="Calculate granny square size by round count, find rounds needed for a target size, and plan blanket layouts. Free crochet calculator, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/granny-square-size-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Granny Square Size Calculator</h1>
+      <p class="page-subtitle">Estimate granny square size by round count, find how many rounds to reach a target size, and plan your blanket layout.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+          <!-- Left: Size by rounds -->
+          <div style="border:1px solid var(--color-border);border-radius:0.5rem;padding:1rem;">
+            <h3 style="margin-bottom:0.75rem;font-size:1rem;">Size by Round Count</h3>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Inches Added per Round</label>
+              <input class="form-input" type="number" id="sq-inc-per-round" min="0.1" step="0.1" placeholder="e.g. 0.75" value="0.75">
+              <p style="font-size:0.8rem;color:var(--color-text-muted);margin-top:0.25rem;">Typical: 0.5–1" per round depending on yarn weight</p>
+            </div>
+            <button class="btn-primary" style="width:100%" onclick="calcByRounds()">Show 1–8 Round Sizes</button>
+            <div id="rounds-result" style="margin-top:1rem;"></div>
+          </div>
+          <!-- Right: Rounds by target size -->
+          <div style="border:1px solid var(--color-border);border-radius:0.5rem;padding:1rem;">
+            <h3 style="margin-bottom:0.75rem;font-size:1rem;">Rounds for Target Size</h3>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Desired Square Size (inches)</label>
+              <input class="form-input" type="number" id="sq-target" min="0.5" step="0.25" placeholder="e.g. 5">
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Inches Added per Round</label>
+              <input class="form-input" type="number" id="sq-inc2" min="0.1" step="0.1" placeholder="e.g. 0.75" value="0.75">
+            </div>
+            <button class="btn-outline" style="width:100%" onclick="calcRoundsNeeded()">Calculate Rounds Needed</button>
+            <div id="target-result" style="margin-top:1rem;"></div>
+          </div>
+        </div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--color-border);">
+
+        <h3 style="margin-bottom:0.75rem;font-size:1rem;">Blanket Layout Calculator</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Square Size (inches)</label>
+            <input class="form-input" type="number" id="sq-size" min="0.5" step="0.25" placeholder="e.g. 6">
+          </div>
+          <div>
+            <label class="label">Desired Blanket Width (inches)</label>
+            <input class="form-input" type="number" id="blanket-w" min="1" step="1" placeholder="e.g. 50">
+          </div>
+          <div>
+            <label class="label">Desired Blanket Length (inches)</label>
+            <input class="form-input" type="number" id="blanket-l" min="1" step="1" placeholder="e.g. 60">
+          </div>
+        </div>
+        <button class="btn-outline" onclick="calcBlanket()">Calculate Blanket Layout</button>
+        <div id="blanket-result" style="margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Use <strong>Size by Round Count</strong> to see how large your square will be after each round.</li>
+          <li>Use <strong>Rounds for Target Size</strong> to find how many rounds give you the size you want.</li>
+          <li>Use <strong>Blanket Layout</strong> to find how many squares fit in a given blanket size.</li>
+        </ul>
+        <h2>Typical Granny Square Sizes by Yarn Weight</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Yarn Weight</th><th>Per Round Growth</th><th>5-Round Square</th><th>8-Round Square</th></tr></thead>
+            <tbody>
+              <tr><td>Fingering</td><td>~0.4–0.5"</td><td>~2–2.5"</td><td>~3.5–4"</td></tr>
+              <tr><td>Sport / DK</td><td>~0.5–0.65"</td><td>~2.5–3.5"</td><td>~4.5–5.5"</td></tr>
+              <tr><td>Worsted</td><td>~0.65–0.85"</td><td>~3.5–4.5"</td><td>~5.5–7"</td></tr>
+              <tr><td>Bulky</td><td>~0.9–1.2"</td><td>~5–6"</td><td>~8–10"</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h2>Common Uses</h2>
+        <ul>
+          <li>Granny square blankets and afghans</li>
+          <li>Patchwork bags and totes</li>
+          <li>Pillow covers and cushions</li>
+          <li>Colorwork sampler projects</li>
+        </ul>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcByRounds() {
+    const incPerRound = parseFloat(document.getElementById('sq-inc-per-round').value);
+    const res = document.getElementById('rounds-result');
+    if (!incPerRound || incPerRound <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter a valid increment per round.</p>'; return;
+    }
+    let rows = '';
+    for (let r = 1; r <= 8; r++) {
+      const size = (r * incPerRound).toFixed(2);
+      rows += `<tr><td>${r}</td><td>${size}"</td></tr>`;
+    }
+    res.innerHTML = `<div class="table-wrap"><table class="data-table">
+      <thead><tr><th>Rounds</th><th>Est. Size</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>`;
+  }
+
+  function calcRoundsNeeded() {
+    const target = parseFloat(document.getElementById('sq-target').value);
+    const inc = parseFloat(document.getElementById('sq-inc2').value);
+    const res = document.getElementById('target-result');
+    if (!target || !inc || target <= 0 || inc <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid target size and increment.</p>'; return;
+    }
+    const rounds = Math.ceil(target / inc);
+    const actualSize = (rounds * inc).toFixed(2);
+    res.innerHTML = `<div class="result-card">
+      <p><strong>${rounds} round${rounds !== 1 ? 's' : ''}</strong> needed for a ${target}" square.</p>
+      <p style="font-size:0.875rem;color:var(--color-text-muted)">Estimated actual size: ${actualSize}"</p>
+    </div>`;
+  }
+
+  function calcBlanket() {
+    const sqSize = parseFloat(document.getElementById('sq-size').value);
+    const bw = parseFloat(document.getElementById('blanket-w').value);
+    const bl = parseFloat(document.getElementById('blanket-l').value);
+    const res = document.getElementById('blanket-result');
+    if (!sqSize || !bw || !bl || sqSize <= 0 || bw <= 0 || bl <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid square size and blanket dimensions.</p>'; return;
+    }
+    const cols = Math.round(bw / sqSize);
+    const rows = Math.round(bl / sqSize);
+    const total = cols * rows;
+    const actualW = (cols * sqSize).toFixed(1);
+    const actualL = (rows * sqSize).toFixed(1);
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid">
+        <div class="stat-box"><div class="label">Grid Layout</div><strong>${cols} × ${rows}</strong></div>
+        <div class="stat-box"><div class="label">Total Squares</div><strong>${total}</strong></div>
+        <div class="stat-box"><div class="label">Actual Width</div><strong>${actualW}"</strong></div>
+        <div class="stat-box"><div class="label">Actual Length</div><strong>${actualL}"</strong></div>
+      </div>
+    </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('granny-square-size-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

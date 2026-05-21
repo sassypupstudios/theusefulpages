@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Increase/Decrease Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate evenly spaced knitting increases or decreases over a number of rows. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-increase-decrease-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .mode-tabs { display:flex; gap:0; margin-bottom:20px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); }
+    .mode-tab { flex:1; padding:10px; text-align:center; cursor:pointer; background:var(--bg-secondary); font-weight:500; transition:background 0.2s,color 0.2s; border:none; font-family:inherit; font-size:0.95rem; color:var(--text); }
+    .mode-tab.active { background:var(--primary); color:#fff; }
+    .result-box { background:var(--result-bg); border:1px solid var(--result-border); border-radius:var(--radius); padding:18px; margin-top:16px; }
+    .result-headline { font-size:1.25rem; font-weight:700; color:var(--primary); margin-bottom:8px; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Increase / Decrease Calculator</h1>
+      <p class="page-subtitle">Find how often to increase or decrease stitches evenly across a set number of rows.</p>
+
+      <div class="tool-card">
+        <div class="mode-tabs">
+          <button class="mode-tab active" id="tab-inc" onclick="setMode('increase')">Increase</button>
+          <button class="mode-tab" id="tab-dec" onclick="setMode('decrease')">Decrease</button>
+        </div>
+
+        <div id="inputs-increase">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+            <div><label class="label">Current Stitches</label><input type="number" id="inc-from" class="form-input" placeholder="e.g. 80" min="1"></div>
+            <div><label class="label">Target Stitches</label><input type="number" id="inc-to" class="form-input" placeholder="e.g. 120" min="1"></div>
+            <div><label class="label">Over How Many Rows</label><input type="number" id="inc-rows" class="form-input" placeholder="e.g. 40" min="1"></div>
+          </div>
+          <button class="btn-primary" style="margin-top:14px;" onclick="calcIncrease()">Calculate</button>
+          <div id="inc-result" class="result-box" style="display:none;"></div>
+        </div>
+
+        <div id="inputs-decrease" style="display:none;">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+            <div><label class="label">Current Stitches</label><input type="number" id="dec-from" class="form-input" placeholder="e.g. 120" min="1"></div>
+            <div><label class="label">Target Stitches</label><input type="number" id="dec-to" class="form-input" placeholder="e.g. 80" min="1"></div>
+            <div><label class="label">Over How Many Rows</label><input type="number" id="dec-rows" class="form-input" placeholder="e.g. 40" min="1"></div>
+          </div>
+          <button class="btn-primary" style="margin-top:14px;" onclick="calcDecrease()">Calculate</button>
+          <div id="dec-result" class="result-box" style="display:none;"></div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How It Works</h2>
+        <p>This calculator evenly distributes increases or decreases across the given number of rows.</p>
+        <ul>
+          <li><strong>Increase:</strong> The number of increases needed = target − current. These are spaced as evenly as possible across the available rows. If the rows don't divide evenly, some intervals will be 1 row longer.</li>
+          <li><strong>Decrease:</strong> Same logic in reverse. If your stitch change count is greater than the rows available, you'll need to work multiple increases/decreases per row (the calculator will note this).</li>
+          <li><strong>Even vs. odd rows:</strong> The instructions assume you work increases/decreases on right-side rows only. Adjust if you work in the round or on every row.</li>
+        </ul>
+        <p class="disclaimer">These are guidelines — your pattern may require specific placement at edges or center. Always read your full pattern before adjusting.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{ injectNav('knitting-increase-decrease-calculator.html'); injectFooter(); });
+
+  let currentMode = 'increase';
+  function setMode(m){
+    currentMode = m;
+    document.getElementById('inputs-increase').style.display = m==='increase' ? '' : 'none';
+    document.getElementById('inputs-decrease').style.display = m==='decrease' ? '' : 'none';
+    document.getElementById('tab-inc').classList.toggle('active', m==='increase');
+    document.getElementById('tab-dec').classList.toggle('active', m==='decrease');
+  }
+
+  function distribute(changes, rows){
+    if(changes <= 0) return null;
+    if(changes > rows){
+      return { type:'multi', perRow: Math.ceil(changes/rows), rows };
+    }
+    const baseInterval = Math.floor(rows / changes);
+    const remainder = rows % changes;
+    // remainder rows get (baseInterval+1), rest get baseInterval
+    const longRows = remainder;
+    const shortRows = changes - remainder;
+    return { type:'single', baseInterval, longRows, shortRows, changes, rows };
+  }
+
+  function formatResult(dist, action, fromSt, toSt){
+    if(!dist){
+      return `<p>No ${action}s needed — stitch counts are equal.</p>`;
+    }
+    const diff = Math.abs(toSt - fromSt);
+    let html = `<div class="result-headline">${diff} ${action}${diff!==1?'s':''} over ${dist.rows} rows</div>`;
+    if(dist.type==='multi'){
+      html += `<p>Work <strong>${dist.perRow} ${action}s per row</strong> for approximately ${dist.rows} rows.</p>`;
+      html += `<p style="color:var(--text-muted);font-size:0.9rem;">Since there are more ${action}s than rows, you must work multiple ${action}s per row.</p>`;
+    } else {
+      if(dist.longRows > 0 && dist.shortRows > 0){
+        html += `<p><strong>${dist.shortRows} times:</strong> Work ${action} every <strong>${dist.baseInterval}${dist.baseInterval===1?'st':'th'} row</strong>.</p>`;
+        html += `<p><strong>${dist.longRows} times:</strong> Work ${action} every <strong>${dist.baseInterval+1}${(dist.baseInterval+1)===1?'st':'th'} row</strong>.</p>`;
+        html += `<p style="font-size:0.9rem;color:var(--text-muted);">Mix longer and shorter intervals for a smooth, even distribution.</p>`;
+      } else {
+        html += `<p><strong>${action.charAt(0).toUpperCase()+action.slice(1)} every ${dist.baseInterval}${dist.baseInterval===1?'st':dist.baseInterval===2?'nd':dist.baseInterval===3?'rd':'th'} row, ${dist.changes} times.</strong></p>`;
+      }
+      html += `<p style="margin-top:10px;font-size:0.9rem;">Start: <strong>${fromSt} sts</strong> → End: <strong>${toSt} sts</strong></p>`;
+    }
+    return html;
+  }
+
+  function calcIncrease(){
+    const from = parseInt(document.getElementById('inc-from').value);
+    const to = parseInt(document.getElementById('inc-to').value);
+    const rows = parseInt(document.getElementById('inc-rows').value);
+    const el = document.getElementById('inc-result');
+    if(isNaN(from)||isNaN(to)||isNaN(rows)||from<1||to<1||rows<1){
+      el.innerHTML='<p style="color:#ef4444;">Please fill in all three fields with positive numbers.</p>'; el.style.display=''; return;
+    }
+    if(to < from){ el.innerHTML='<p style="color:#ef4444;">Target stitches must be greater than current stitches for an increase.</p>'; el.style.display=''; return; }
+    const diff = to - from;
+    const dist = distribute(diff, rows);
+    el.innerHTML = formatResult(dist, 'increase', from, to);
+    el.style.display='';
+  }
+
+  function calcDecrease(){
+    const from = parseInt(document.getElementById('dec-from').value);
+    const to = parseInt(document.getElementById('dec-to').value);
+    const rows = parseInt(document.getElementById('dec-rows').value);
+    const el = document.getElementById('dec-result');
+    if(isNaN(from)||isNaN(to)||isNaN(rows)||from<1||to<1||rows<1){
+      el.innerHTML='<p style="color:#ef4444;">Please fill in all three fields with positive numbers.</p>'; el.style.display=''; return;
+    }
+    if(to > from){ el.innerHTML='<p style="color:#ef4444;">Target stitches must be less than current stitches for a decrease.</p>'; el.style.display=''; return; }
+    const diff = from - to;
+    const dist = distribute(diff, rows);
+    el.innerHTML = formatResult(dist, 'decrease', from, to);
+    el.style.display='';
+  }
+  </script>
+</body>
+</html>

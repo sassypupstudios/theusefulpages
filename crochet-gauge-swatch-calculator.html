@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Gauge Swatch Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate your crochet gauge from a swatch, compare to pattern gauge, and adjust stitch counts to match the correct finished size. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-gauge-swatch-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Gauge Swatch Calculator</h1>
+      <p class="page-subtitle">Measure your swatch, compare to pattern gauge, and adjust stitch counts automatically.</p>
+      <div class="tool-card">
+
+        <!-- Section 1: Swatch Measurement -->
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Step 1 — Measure Your Swatch</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Stitches Counted</label>
+            <input class="form-input" type="number" id="swatch-stitches" min="1" placeholder="e.g. 20">
+          </div>
+          <div>
+            <label class="label">Width of Sample (inches)</label>
+            <input class="form-input" type="number" id="swatch-width" min="0.1" step="0.1" placeholder="e.g. 4">
+          </div>
+          <div>
+            <label class="label">Rows Counted</label>
+            <input class="form-input" type="number" id="swatch-rows" min="1" placeholder="e.g. 16">
+          </div>
+          <div>
+            <label class="label">Height of Sample (inches)</label>
+            <input class="form-input" type="number" id="swatch-height" min="0.1" step="0.1" placeholder="e.g. 4">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcGauge()">Calculate My Gauge</button>
+        <div id="gauge-result" style="margin-top:1rem;"></div>
+
+        <hr style="margin:1.75rem 0;border:none;border-top:1px solid var(--border);">
+
+        <!-- Section 2: Compare to Pattern -->
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Step 2 — Compare to Pattern Gauge</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Pattern: Stitches per Inch</label>
+            <input class="form-input" type="number" id="pat-spi" min="0.1" step="0.1" placeholder="e.g. 5">
+          </div>
+          <div>
+            <label class="label">Pattern: Rows per Inch</label>
+            <input class="form-input" type="number" id="pat-rpi" min="0.1" step="0.1" placeholder="e.g. 4">
+          </div>
+        </div>
+        <button class="btn-outline" onclick="compareGauge()">Compare Gauge</button>
+        <div id="compare-result" style="margin-top:1rem;"></div>
+
+        <hr style="margin:1.75rem 0;border:none;border-top:1px solid var(--border);">
+
+        <!-- Section 3: Adjust Stitch Count -->
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Step 3 — Adjust Stitch Count for Your Gauge</h2>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:0.75rem;">Enter the pattern's stitch count and gauges to find the adjusted count for your gauge.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Pattern Stitch Count</label>
+            <input class="form-input" type="number" id="adj-pat-count" min="1" placeholder="e.g. 100">
+          </div>
+          <div>
+            <label class="label">Pattern SPI</label>
+            <input class="form-input" type="number" id="adj-pat-spi" min="0.1" step="0.1" placeholder="e.g. 5">
+          </div>
+          <div>
+            <label class="label">Your SPI</label>
+            <input class="form-input" type="number" id="adj-my-spi" min="0.1" step="0.1" placeholder="e.g. 4.5">
+          </div>
+        </div>
+        <button class="btn-outline" onclick="adjustCount()">Calculate Adjusted Count</button>
+        <div id="adjust-result" style="margin-top:1rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li><strong>Step 1:</strong> Crochet a swatch (at least 4×4 inches). Count stitches across and rows vertically, then enter those numbers with the measured sample dimensions.</li>
+          <li><strong>Step 2:</strong> Enter the gauge listed in your pattern to see how your gauge compares — includes advice on adjusting hook size.</li>
+          <li><strong>Step 3:</strong> Enter the pattern's stitch count, pattern gauge, and your gauge to get the adjusted stitch count that will produce the correct finished size.</li>
+        </ul>
+        <h2>Why Gauge Matters</h2>
+        <p>Even a small difference in gauge compounds over many stitches. A swatch that is 10% too loose means a finished blanket could be several inches wider than intended. Always swatch before starting size-sensitive projects like garments.</p>
+        <p class="disclaimer">Results are estimates. Actual results vary by yarn weight, hook size, and personal tension.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  let mySPI = null, myRPI = null;
+
+  function calcGauge() {
+    const st = parseFloat(document.getElementById('swatch-stitches').value);
+    const sw = parseFloat(document.getElementById('swatch-width').value);
+    const ro = parseFloat(document.getElementById('swatch-rows').value);
+    const sh = parseFloat(document.getElementById('swatch-height').value);
+    const res = document.getElementById('gauge-result');
+    if (!st||!sw||!ro||!sh||sw<=0||sh<=0) {
+      res.innerHTML='<p style="color:var(--color-error)">Please fill in all four swatch fields.</p>'; return;
+    }
+    mySPI = (st / sw);
+    myRPI = (ro / sh);
+    document.getElementById('adj-my-spi').value = mySPI.toFixed(2);
+    res.innerHTML = `<div class="result-card"><div class="stat-grid">
+      <div class="stat-box"><div class="label">Your Stitch Gauge</div><strong style="font-size:1.6rem">${mySPI.toFixed(2)}</strong><br>stitches per inch</div>
+      <div class="stat-box"><div class="label">Your Row Gauge</div><strong style="font-size:1.6rem">${myRPI.toFixed(2)}</strong><br>rows per inch</div>
+    </div></div>`;
+  }
+
+  function compareGauge() {
+    const patSPI = parseFloat(document.getElementById('pat-spi').value);
+    const patRPI = parseFloat(document.getElementById('pat-rpi').value);
+    const res = document.getElementById('compare-result');
+    if (!mySPI || !myRPI) {
+      res.innerHTML='<p style="color:var(--color-error)">Please calculate your gauge in Step 1 first.</p>'; return;
+    }
+    if (!patSPI||!patRPI) {
+      res.innerHTML='<p style="color:var(--color-error)">Please enter pattern gauge values.</p>'; return;
+    }
+    document.getElementById('adj-pat-spi').value = patSPI;
+    const spiDiff = ((mySPI - patSPI) / patSPI * 100).toFixed(1);
+    const rpiDiff = ((myRPI - patRPI) / patRPI * 100).toFixed(1);
+    let stitchAdvice = '', rowAdvice = '';
+    if (Math.abs(spiDiff) < 3) stitchAdvice = 'Your stitch gauge is within 3% — good to go!';
+    else if (mySPI > patSPI) stitchAdvice = 'Your stitches are tighter than pattern. Try going up one hook size.';
+    else stitchAdvice = 'Your stitches are looser than pattern. Try going down one hook size.';
+    if (Math.abs(rpiDiff) < 3) rowAdvice = 'Your row gauge is within 3% — good to go!';
+    else if (myRPI > patRPI) rowAdvice = 'Your rows are shorter than pattern. Try going up one hook size.';
+    else rowAdvice = 'Your rows are taller than pattern. Try going down one hook size.';
+    res.innerHTML = `<div class="result-card"><div class="stat-grid">
+      <div class="stat-box"><div class="label">Stitch Diff</div><strong style="font-size:1.4rem;color:${Math.abs(spiDiff)<3?'var(--color-success)':'var(--color-warning)'}">${spiDiff > 0?'+':''}${spiDiff}%</strong></div>
+      <div class="stat-box"><div class="label">Row Diff</div><strong style="font-size:1.4rem;color:${Math.abs(rpiDiff)<3?'var(--color-success)':'var(--color-warning)'}">${rpiDiff > 0?'+':''}${rpiDiff}%</strong></div>
+      <div class="stat-box" style="flex-basis:100%"><div class="label">Stitch Advice</div>${stitchAdvice}</div>
+      <div class="stat-box" style="flex-basis:100%"><div class="label">Row Advice</div>${rowAdvice}</div>
+    </div></div>`;
+  }
+
+  function adjustCount() {
+    const patCount = parseFloat(document.getElementById('adj-pat-count').value);
+    const patSPI = parseFloat(document.getElementById('adj-pat-spi').value);
+    const mySPIv = parseFloat(document.getElementById('adj-my-spi').value);
+    const res = document.getElementById('adjust-result');
+    if (!patCount||!patSPI||!mySPIv) {
+      res.innerHTML='<p style="color:var(--color-error)">Please fill in all three fields.</p>'; return;
+    }
+    const finishedWidth = patCount / patSPI;
+    const newCount = Math.round(finishedWidth * mySPIv);
+    res.innerHTML = `<div class="result-card"><div class="stat-grid">
+      <div class="stat-box"><div class="label">Finished Width</div><strong>${finishedWidth.toFixed(2)}"</strong></div>
+      <div class="stat-box"><div class="label">Pattern Stitch Count</div>${patCount} sts</div>
+      <div class="stat-box"><div class="label">Your Adjusted Count</div><strong style="font-size:1.6rem">${newCount} sts</strong></div>
+    </div></div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('crochet-gauge-swatch-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

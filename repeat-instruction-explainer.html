@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repeat Instruction Explainer — Free Pattern Tool | The Useful Pages</title>
+  <meta name="description" content="Paste a crochet or knitting repeat instruction and see it fully expanded. Shows stitch count and plain-English breakdown. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/repeat-instruction-explainer.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-box { background:var(--bg-secondary); border:1.5px solid var(--border); border-radius:12px; padding:1.1rem; margin-top:0.75rem; }
+    .result-box h3 { font-size:0.85rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin:0 0 0.5rem; }
+    .expand-text { font-size:0.95rem; line-height:1.7; color:var(--text); font-family:'Courier New',monospace; word-break:break-word; }
+    .stitch-count-badge { display:inline-flex; align-items:center; gap:0.4rem; background:var(--primary); color:#fff; border-radius:8px; padding:0.35rem 0.85rem; font-weight:700; font-size:0.92rem; margin-top:0.75rem; }
+    .iteration-block { margin-bottom:0.4rem; }
+    .iteration-label { font-size:0.78rem; color:var(--text-muted); font-weight:600; }
+    .more-note { font-style:italic; color:var(--text-muted); font-size:0.85rem; margin-top:0.35rem; }
+    .example-chips { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.5rem; }
+    .example-chip { padding:0.28rem 0.65rem; border-radius:16px; border:1.5px solid var(--border); background:var(--bg-secondary); font-size:0.78rem; cursor:pointer; color:var(--text-muted); transition:all 0.15s; white-space:nowrap; }
+    .example-chip:hover { border-color:var(--primary); color:var(--primary); }
+    .mode-toggle { display:flex; gap:0.5rem; margin-bottom:0.75rem; }
+    .mode-btn { flex:1; padding:0.45rem; border-radius:8px; border:1.5px solid var(--border); background:var(--bg-secondary); color:var(--text-muted); cursor:pointer; font-size:0.85rem; font-weight:600; transition:all 0.15s; }
+    .mode-btn.active { border-color:var(--primary); background:var(--primary); color:#fff; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Repeat Instruction Explainer</h1>
+      <p class="page-subtitle">Type or paste a repeat instruction and see it fully expanded stitch-by-stitch, with a total stitch count.</p>
+
+      <div class="tool-card">
+        <div class="mode-toggle">
+          <button class="mode-btn active" id="modeCrochet" onclick="setMode('crochet')">Crochet</button>
+          <button class="mode-btn" id="modeKnitting" onclick="setMode('knitting')">Knitting</button>
+        </div>
+
+        <div class="label">Repeat Instruction</div>
+        <input class="form-input" id="repeatInput" type="text"
+          placeholder="*sc, dc, ch1* repeat 6 times"
+          style="font-family:'Courier New',monospace;">
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.35rem;">
+          Supported formats: <code>*…* repeat X times</code> · <code>[…] X times</code> · <code>(…) repeat to end</code> · <code>…, repeat from * X times</code>
+        </div>
+
+        <div class="example-chips" id="exampleChips"></div>
+
+        <button class="btn btn-primary" style="margin-top:1rem;" onclick="explain()">Expand Repeat</button>
+
+        <div id="resultArea" style="display:none;">
+          <div class="result-box" style="margin-top:1rem;">
+            <h3>Expanded (showing first 3 iterations)</h3>
+            <div id="expandedText" class="expand-text"></div>
+            <div id="moreNote" class="more-note" style="display:none;"></div>
+          </div>
+          <div class="result-box">
+            <h3>Stitch Count</h3>
+            <div id="stitchCount"></div>
+          </div>
+        </div>
+        <div id="errorMsg" style="display:none;color:#e53e3e;font-size:0.88rem;margin-top:0.75rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Type or paste a repeat instruction from your pattern.</li>
+          <li>Click an example chip to prefill with a common pattern format.</li>
+          <li>Click <strong>Expand Repeat</strong> to see every stitch written out.</li>
+          <li>The tool shows the first 3 iterations in full, then notes how many more remain.</li>
+          <li><strong>Total stitch count</strong> counts each stitch token in the full expansion.</li>
+          <li>Switch between <strong>Crochet</strong> and <strong>Knitting</strong> mode for mode-specific examples.</li>
+          <li>Chains (ch) count as stitches for the purposes of the total count shown.</li>
+        </ul>
+        <div style="margin-top:0.75rem;font-size:0.82rem;color:var(--text-muted);">
+          <strong>Supported formats:</strong> <code>*sc, dc* repeat 4 times</code> — <code>[k2, p2] 6 times</code> — <code>(dc, ch1, dc) repeat to end</code> — <code>repeat from * to end 5 times</code>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let mode = 'crochet';
+
+    const EXAMPLES = {
+      crochet: [
+        '*sc, dc, ch1* repeat 6 times',
+        '[sc in next 2, dc in next] repeat 4 times',
+        '(dc, ch2, dc) repeat 5 times',
+        '*sc, hdc, dc, hdc* repeat to end 3 times',
+        '*ch1, skip 1, sc in next* repeat 8 times',
+      ],
+      knitting: [
+        '[k2, p2] repeat 6 times',
+        '*k1, p1* repeat to end 10 times',
+        '(ssk, k4, k2tog) repeat 3 times',
+        '*k3, p1, k3* repeat 4 times',
+        '[yo, k2tog] repeat 5 times',
+      ]
+    };
+
+    function setMode(m) {
+      mode = m;
+      document.getElementById('modeCrochet').className = 'mode-btn' + (m==='crochet'?' active':'');
+      document.getElementById('modeKnitting').className = 'mode-btn' + (m==='knitting'?' active':'');
+      renderExamples();
+      document.getElementById('resultArea').style.display='none';
+      document.getElementById('errorMsg').style.display='none';
+    }
+
+    function renderExamples() {
+      const chips = EXAMPLES[mode].map(e =>
+        `<span class="example-chip" onclick="useExample(this)">${e}</span>`
+      ).join('');
+      document.getElementById('exampleChips').innerHTML = chips;
+    }
+
+    function useExample(el) {
+      document.getElementById('repeatInput').value = el.textContent;
+      explain();
+    }
+
+    function parseRepeat(raw) {
+      raw = raw.trim();
+      let inner = '', times = 0;
+
+      // Pattern: *...* repeat X times / *...* X times / repeat from * X times
+      let m;
+      m = raw.match(/\*([^*]+)\*\s*(?:repeat\s+)?(\d+)\s*times?/i);
+      if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+
+      // Pattern: *...* repeat to end X times
+      if (!inner) {
+        m = raw.match(/\*([^*]+)\*\s*(?:repeat\s+)?to\s+end\s+(\d+)\s*times?/i);
+        if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+      }
+
+      // Pattern: [...] X times
+      if (!inner) {
+        m = raw.match(/\[([^\]]+)\]\s*(?:repeat\s+)?(\d+)\s*times?/i);
+        if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+      }
+
+      // Pattern: (...) X times / (...) repeat X times
+      if (!inner) {
+        m = raw.match(/\(([^)]+)\)\s*(?:repeat\s+)?(\d+)\s*times?/i);
+        if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+      }
+
+      // Pattern: (...) repeat to end X times
+      if (!inner) {
+        m = raw.match(/\(([^)]+)\)\s*repeat\s+to\s+end\s+(\d+)\s*times?/i);
+        if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+      }
+
+      // Pattern: repeat from * to end X times (inner is everything before "repeat")
+      if (!inner) {
+        m = raw.match(/^(.+?)\s*,?\s*repeat\s+from\s+\*\s+(?:to\s+end\s+)?(\d+)\s*times?/i);
+        if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+      }
+
+      // Fallback: just look for any "X times" at end
+      if (!inner) {
+        m = raw.match(/^(.+?)\s+(\d+)\s*times?$/i);
+        if (m) {
+          inner = m[1].replace(/^\*|\*$/g,'').replace(/^\[|\]$/g,'').replace(/^\(|\)$/g,'').trim();
+          times = parseInt(m[2]);
+        }
+      }
+
+      return { inner, times };
+    }
+
+    function countStitches(stitchList) {
+      return stitchList.filter(s => s.trim().length > 0).length;
+    }
+
+    function explain() {
+      const raw = document.getElementById('repeatInput').value.trim();
+      const errorEl = document.getElementById('errorMsg');
+      const resultArea = document.getElementById('resultArea');
+      errorEl.style.display='none';
+      resultArea.style.display='none';
+
+      if (!raw) { errorEl.textContent = 'Please enter a repeat instruction.'; errorEl.style.display='block'; return; }
+
+      const { inner, times } = parseRepeat(raw);
+
+      if (!inner || times < 1 || times > 200) {
+        errorEl.textContent = 'Could not parse this repeat instruction. Make sure it includes a repeat group (*…*, […], or (…)) and a number of times (e.g. "6 times").';
+        errorEl.style.display='block';
+        return;
+      }
+
+      const stitches = inner.split(',').map(s => s.trim()).filter(s => s.length > 0);
+      const perRepeat = stitches.length;
+      const totalStitches = perRepeat * times;
+
+      // Build expansion (show up to 3 full iterations)
+      const showIterations = Math.min(3, times);
+      const expandedEl = document.getElementById('expandedText');
+      const moreNote = document.getElementById('moreNote');
+
+      let htmlParts = [];
+      for (let i = 0; i < showIterations; i++) {
+        htmlParts.push(
+          `<div class="iteration-block"><span class="iteration-label">Repeat ${i+1}: </span>${stitches.join(', ')}</div>`
+        );
+      }
+      expandedEl.innerHTML = htmlParts.join('');
+
+      if (times > 3) {
+        moreNote.textContent = `… continuing for ${times - 3} more iteration${times-3>1?'s':''} (× ${times} total)`;
+        moreNote.style.display = 'block';
+      } else {
+        moreNote.style.display = 'none';
+      }
+
+      // Stitch count
+      const countEl = document.getElementById('stitchCount');
+      countEl.innerHTML = `
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;">
+          <div class="stitch-count-badge">Total: ${totalStitches} stitches</div>
+          <div style="font-size:0.85rem;color:var(--text-muted);">${perRepeat} per repeat × ${times} repeats</div>
+        </div>
+        <div style="margin-top:0.5rem;font-size:0.85rem;color:var(--text-muted);">
+          Stitches per repeat: ${stitches.join(' · ')}
+        </div>
+      `;
+
+      resultArea.style.display = 'block';
+    }
+
+    document.getElementById('repeatInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') explain();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('repeat-instruction-explainer.html');
+      injectFooter();
+      renderExamples();
+    });
+  </script>
+</body>
+</html>

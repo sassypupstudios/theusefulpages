@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motif Join Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate how many crochet or knitting motifs fit across a project and the total count needed. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/motif-join-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .preset-grid { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+    .preset-btn { padding:6px 12px; border-radius:20px; border:1px solid var(--border); background:var(--bg-secondary); cursor:pointer; font-size:0.82rem; transition:background 0.2s; color:var(--text); font-family:inherit; }
+    .preset-btn:hover { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .layout-visual { display:grid; gap:3px; margin:14px auto 0; width:max-content; max-width:100%; }
+    .layout-cell { width:28px; height:28px; border-radius:4px; background:var(--primary); opacity:0.7; }
+    .layout-cell:nth-child(even) { opacity:0.45; }
+    .big-num { font-size:2.2rem; font-weight:800; color:var(--primary); line-height:1; }
+    .result-box { background:var(--result-bg); border:1px solid var(--result-border); border-radius:var(--radius); padding:18px; margin-top:16px; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Motif Join Calculator</h1>
+      <p class="page-subtitle">Find out how many motifs you need and how they lay out in your project.</p>
+
+      <div class="tool-card">
+        <h3 style="margin-bottom:8px;font-size:0.95rem;">Common Blanket Presets</h3>
+        <div class="preset-grid" id="presets"></div>
+
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px;">
+          <div><label class="label">Motif Size (inches)</label><input type="number" id="motif-size" class="form-input" placeholder="e.g. 6" min="0.5" step="0.5" oninput="calculate()"></div>
+          <div><label class="label">Join Allowance (inches)</label><input type="number" id="join-allow" class="form-input" value="0" min="0" step="0.25" oninput="calculate()"></div>
+          <div><label class="label">Project Width (inches)</label><input type="number" id="proj-width" class="form-input" placeholder="e.g. 48" min="1" oninput="calculate()"></div>
+          <div><label class="label">Project Length (inches)</label><input type="number" id="proj-length" class="form-input" placeholder="e.g. 60" min="1" oninput="calculate()"></div>
+        </div>
+        <div style="margin-bottom:14px;">
+          <label class="label">Border Width (inches, 0 = none)</label>
+          <input type="number" id="border-width" class="form-input" value="0" min="0" step="0.5" oninput="calculate()" style="max-width:160px;">
+        </div>
+
+        <div id="result" class="result-box" style="display:none;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Motif Join Calculator</h2>
+        <ul>
+          <li><strong>Motif size:</strong> Measure your blocked motif from edge to edge (in inches).</li>
+          <li><strong>Join allowance:</strong> If your joining method adds or reduces the effective size (e.g., slip-stitch joins that pull in), enter the reduction per join in inches. Leave 0 for flat joins.</li>
+          <li><strong>Project dimensions:</strong> Enter the finished width and length you want.</li>
+          <li><strong>Border:</strong> If you plan a border, enter its width — the calculator subtracts it from the motif area so the layout is accurate.</li>
+        </ul>
+        <p>The calculator floors the count (only complete motifs), so the actual size may be slightly smaller than requested. Order a few extra motifs as a buffer.</p>
+        <p class="disclaimer">Actual sizes depend on your gauge, blocking, and joining technique.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    injectNav('motif-join-calculator.html');
+    injectFooter();
+    renderPresets();
+  });
+
+  const PRESETS = [
+    { label:'Baby Blanket 36×45"', w:36, l:45 },
+    { label:'Lap Blanket 40×50"', w:40, l:50 },
+    { label:'Throw 50×60"', w:50, l:60 },
+    { label:'Full/Queen 60×80"', w:60, l:80 },
+    { label:'King 80×80"', w:80, l:80 },
+    { label:'Table Runner 14×72"', w:14, l:72 },
+    { label:'Dishcloth 9×9"', w:9, l:9 },
+  ];
+
+  function renderPresets(){
+    const c = document.getElementById('presets');
+    PRESETS.forEach(p=>{
+      const btn = document.createElement('button');
+      btn.className='preset-btn'; btn.textContent=p.label;
+      btn.onclick=()=>{ document.getElementById('proj-width').value=p.w; document.getElementById('proj-length').value=p.l; calculate(); };
+      c.appendChild(btn);
+    });
+  }
+
+  function calculate(){
+    const motif = parseFloat(document.getElementById('motif-size').value);
+    const join = parseFloat(document.getElementById('join-allow').value)||0;
+    const pw = parseFloat(document.getElementById('proj-width').value);
+    const pl = parseFloat(document.getElementById('proj-length').value);
+    const border = parseFloat(document.getElementById('border-width').value)||0;
+    const el = document.getElementById('result');
+
+    if(isNaN(motif)||isNaN(pw)||isNaN(pl)||motif<=0||pw<=0||pl<=0){
+      el.style.display='none'; return;
+    }
+
+    const effectiveMotif = motif - join;
+    if(effectiveMotif <= 0){ el.innerHTML='<p style="color:#ef4444;">Join allowance must be less than motif size.</p>'; el.style.display=''; return; }
+
+    const innerW = pw - border*2;
+    const innerL = pl - border*2;
+    if(innerW <= 0 || innerL <= 0){ el.innerHTML='<p style="color:#ef4444;">Border is too wide for the project dimensions.</p>'; el.style.display=''; return; }
+
+    const across = Math.floor(innerW / effectiveMotif);
+    const down = Math.floor(innerL / effectiveMotif);
+    const total = across * down;
+
+    const actualW = across * effectiveMotif + border*2;
+    const actualL = down * effectiveMotif + border*2;
+
+    let html = `<div class="stat-grid" style="margin-bottom:14px;">
+      <div class="stat-box"><div class="big-num">${total}</div><div>Total Motifs</div></div>
+      <div class="stat-box"><div class="big-num">${across}×${down}</div><div>Layout (W × L)</div></div>
+      <div class="stat-box"><div class="big-num">${actualW.toFixed(1)}"</div><div>Actual Width</div></div>
+      <div class="stat-box"><div class="big-num">${actualL.toFixed(1)}"</div><div>Actual Length</div></div>
+    </div>`;
+
+    if(border > 0){
+      html += `<p style="font-size:0.88rem;color:var(--text-muted);">Motif area: ${innerW.toFixed(1)}" × ${innerL.toFixed(1)}" + ${border}" border on each side</p>`;
+    }
+
+    // Mini visual (cap at 20×14 for display)
+    const dispAcross = Math.min(across, 20);
+    const dispDown = Math.min(down, 14);
+    if(across > 0 && down > 0){
+      html += `<div class="layout-visual" style="grid-template-columns:repeat(${dispAcross},28px);">`;
+      for(let i=0; i<dispDown*dispAcross; i++) html += `<div class="layout-cell"></div>`;
+      html += `</div>`;
+      if(across > 20 || down > 14) html += `<p style="font-size:0.8rem;color:var(--text-muted);text-align:center;margin-top:6px;">Preview showing ${dispAcross}×${dispDown} of ${across}×${down}</p>`;
+    }
+
+    el.innerHTML = html;
+    el.style.display='';
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Bracket & Parentheses Explainer — Free Pattern Tool | The Useful Pages</title>
+  <meta name="description" content="Paste a crochet or knitting pattern section and instantly understand what each bracket and parenthesis means. Color-coded explanations. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-bracket-explainer.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legend { display:flex; flex-wrap:wrap; gap:0.6rem; margin-bottom:1rem; }
+    .legend-item { display:flex; align-items:center; gap:0.35rem; font-size:0.82rem; font-weight:600; }
+    .legend-dot { width:14px; height:14px; border-radius:50%; flex-shrink:0; }
+
+    .highlighted-pattern {
+      background:var(--bg-secondary); border:1.5px solid var(--border);
+      border-radius:10px; padding:1rem; font-family:'Courier New',monospace;
+      font-size:0.95rem; line-height:1.8; word-break:break-word;
+      margin-bottom:1rem;
+    }
+    .hl-paren { background:rgba(66,153,225,0.18); color:#2b6cb0; border-radius:3px; padding:1px 2px; }
+    .hl-bracket { background:rgba(237,137,54,0.18); color:#c05621; border-radius:3px; padding:1px 2px; }
+    .hl-curly { background:rgba(72,187,120,0.2); color:#276749; border-radius:3px; padding:1px 2px; }
+    .hl-asterisk { background:rgba(159,122,234,0.18); color:#6b46c1; border-radius:3px; padding:1px 2px; font-style:italic; }
+
+    [data-theme="dark"] .hl-paren { background:rgba(66,153,225,0.22); color:#90cdf4; }
+    [data-theme="dark"] .hl-bracket { background:rgba(237,137,54,0.22); color:#fbd38d; }
+    [data-theme="dark"] .hl-curly { background:rgba(72,187,120,0.22); color:#9ae6b4; }
+    [data-theme="dark"] .hl-asterisk { background:rgba(159,122,234,0.22); color:#d6bcfa; }
+
+    .explanation-card {
+      border-radius:10px; border:1.5px solid var(--border);
+      padding:0.85rem 1rem; margin-bottom:0.6rem;
+      background:var(--bg-secondary);
+    }
+    .expl-header { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.35rem; font-weight:700; font-size:0.95rem; }
+    .expl-badge { border-radius:6px; padding:0.2rem 0.5rem; font-size:0.82rem; font-weight:700; font-family:'Courier New',monospace; }
+    .badge-paren { background:rgba(66,153,225,0.18); color:#2b6cb0; }
+    .badge-bracket { background:rgba(237,137,54,0.18); color:#c05621; }
+    .badge-curly { background:rgba(72,187,120,0.2); color:#276749; }
+    .badge-asterisk { background:rgba(159,122,234,0.18); color:#6b46c1; }
+    [data-theme="dark"] .badge-paren { background:rgba(66,153,225,0.22); color:#90cdf4; }
+    [data-theme="dark"] .badge-bracket { background:rgba(237,137,54,0.22); color:#fbd38d; }
+    [data-theme="dark"] .badge-curly { background:rgba(72,187,120,0.22); color:#9ae6b4; }
+    [data-theme="dark"] .badge-asterisk { background:rgba(159,122,234,0.22); color:#d6bcfa; }
+
+    .expl-desc { font-size:0.87rem; color:var(--text-muted); line-height:1.55; }
+    .expl-quote { font-family:'Courier New',monospace; font-size:0.85rem; color:var(--text); margin-top:0.25rem; display:block; }
+    .example-quick-btns { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.5rem; }
+    .eq-btn { padding:0.28rem 0.6rem; border-radius:16px; border:1.5px solid var(--border); background:var(--bg-secondary); font-size:0.77rem; cursor:pointer; color:var(--text-muted); transition:all 0.15s; white-space:nowrap; font-family:'Courier New',monospace; }
+    .eq-btn:hover { border-color:var(--primary); color:var(--primary); }
+    .no-found { color:var(--text-muted); font-size:0.9rem; font-style:italic; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Bracket &amp; Parentheses Explainer</h1>
+      <p class="page-subtitle">Paste a pattern section and get a color-coded breakdown of what every bracket, parenthesis, and asterisk means.</p>
+
+      <div class="tool-card">
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#4299e1;"></div><span class="badge-paren" style="border-radius:4px;padding:1px 6px;">( )</span> Parentheses</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ed8936;"></div><span class="badge-bracket" style="border-radius:4px;padding:1px 6px;">[ ]</span> Square brackets</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#48bb78;"></div><span class="badge-curly" style="border-radius:4px;padding:1px 6px;">{ }</span> Curly braces</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#9f7aea;"></div><span class="badge-asterisk" style="border-radius:4px;padding:1px 6px;">* *</span> Asterisks</div>
+        </div>
+
+        <div class="label">Paste Pattern Section</div>
+        <textarea class="form-textarea" id="patInput" rows="5"
+          placeholder="e.g. *sc in next 3, [dc, ch1, dc] in next st* repeat 4 times. {18 sts}&#10;Size: (S, M, L, XL)"></textarea>
+
+        <div class="example-quick-btns">
+          <span class="eq-btn" onclick="useEx(this)">*sc, dc* repeat 4 times</span>
+          <span class="eq-btn" onclick="useEx(this)">[dc, ch1, dc] in next st {12 sts}</span>
+          <span class="eq-btn" onclick="useEx(this)">(S, M, L): Cast on (80, 96, 112) sts</span>
+          <span class="eq-btn" onclick="useEx(this)">*k2, p2* repeat to end {48 sts}</span>
+          <span class="eq-btn" onclick="useEx(this)">sc in next (2, 3, 4) sts, [hdc, dc] in next {18 sts}</span>
+        </div>
+
+        <button class="btn btn-primary" style="margin-top:0.85rem;" onclick="explain()">Explain Brackets</button>
+
+        <div id="resultArea" style="display:none;margin-top:1rem;">
+          <div class="label">Pattern with Color Coding</div>
+          <div class="highlighted-pattern" id="highlightedPat"></div>
+          <div class="label">What Each Symbol Means</div>
+          <div id="explanations"></div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">Understanding Pattern Symbols</h2>
+        <div style="display:grid;gap:0.75rem;font-size:0.875rem;">
+          <div class="explanation-card">
+            <div class="expl-header"><span class="expl-badge badge-paren">( )</span> Parentheses — three common uses</div>
+            <div class="expl-desc">
+              1. <strong>Alternate sizes:</strong> numbers for each size in order — e.g. <code>(S, M, L)</code>: cast on <code>(80, 96, 112)</code> sts.<br>
+              2. <strong>Repeat group:</strong> work the stitches inside as a unit — e.g. <code>(dc, ch1, dc) in next st</code>.<br>
+              3. <strong>Clarifying note:</strong> additional info such as <code>(turn work)</code> or <code>(right side)</code>.
+            </div>
+          </div>
+          <div class="explanation-card">
+            <div class="expl-header"><span class="expl-badge badge-bracket">[ ]</span> Square Brackets — repeat groups and notes</div>
+            <div class="expl-desc">
+              1. <strong>Repeat group:</strong> work all stitches inside as a unit, then repeat — e.g. <code>[sc, dc] 3 times</code>.<br>
+              2. <strong>Editor's note / correction:</strong> clarification added by the pattern publisher — e.g. <code>[Note: WS row]</code>.<br>
+              3. Used interchangeably with <code>( )</code> in many patterns.
+            </div>
+          </div>
+          <div class="explanation-card">
+            <div class="expl-header"><span class="expl-badge badge-curly">{ }</span> Curly Braces — stitch counts</div>
+            <div class="expl-desc">
+              Almost always indicates a <strong>stitch count check</strong> at the end of a row or round — e.g. <code>{24 sts}</code>.<br>
+              This tells you how many stitches you should have after completing that row. Use it to verify you haven't made an error.
+            </div>
+          </div>
+          <div class="explanation-card">
+            <div class="expl-header"><span class="expl-badge badge-asterisk">* *</span> Asterisks — repeat section markers</div>
+            <div class="expl-desc">
+              Mark the beginning and end of a section to repeat — e.g. <code>*sc, dc, ch1* repeat 4 times</code>.<br>
+              Sometimes only an opening asterisk is used: <code>*sc, dc, ch1, repeat from * 4 times</code>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    function useEx(el) {
+      document.getElementById('patInput').value = el.textContent;
+      explain();
+    }
+
+    function escHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function highlightPattern(text) {
+      let result = escHtml(text);
+      // Curly braces first (stitch counts) - green
+      result = result.replace(/\{([^}]*)\}/g, '<span class="hl-curly">{$1}</span>');
+      // Square brackets - orange
+      result = result.replace(/\[([^\]]*)\]/g, '<span class="hl-bracket">[$1]</span>');
+      // Parentheses - blue
+      result = result.replace(/\(([^)]*)\)/g, '<span class="hl-paren">($1)</span>');
+      // Asterisks pairs
+      result = result.replace(/\*([^*]+)\*/g, '<span class="hl-asterisk">*$1*</span>');
+      // Single asterisks
+      result = result.replace(/(?<![a-z])\*(?![^<]*>)/gi, '<span class="hl-asterisk">*</span>');
+      return result;
+    }
+
+    function explain() {
+      const text = document.getElementById('patInput').value.trim();
+      if (!text) return;
+
+      const highlighted = highlightPattern(text);
+      document.getElementById('highlightedPat').innerHTML = highlighted;
+
+      const found = [];
+      const explanations = [];
+
+      // Detect asterisks
+      if (/\*/.test(text)) {
+        const pairMatch = text.match(/\*([^*]+)\*/);
+        found.push('asterisk');
+        let desc = 'Asterisks mark a <strong>repeat section</strong>. Work all stitches between the asterisks as a group.';
+        let quote = '';
+        if (pairMatch) {
+          const inner = pairMatch[1].trim();
+          const timesM = text.match(/repeat\s+(\d+)\s*times?|(\d+)\s*times?/i);
+          const times = timesM ? (timesM[1]||timesM[2]) : null;
+          quote = `*${inner}*${times ? ` repeated ${times} times` : ''}`;
+          desc += times ? ` In this case: work <strong>${inner}</strong>, then repeat that group <strong>${times} times total</strong>.` : '';
+        }
+        explanations.push({ type:'asterisk', label:'* * Asterisks', badge:'badge-asterisk', desc, quote });
+      }
+
+      // Detect parentheses
+      const parenMatches = text.match(/\(([^)]+)\)/g);
+      if (parenMatches) {
+        found.push('paren');
+        parenMatches.forEach(match => {
+          const inner = match.slice(1,-1).trim();
+          let meaning = '';
+          // Size list: contains commas and numbers or size letters
+          if (/,/.test(inner) && /\d/.test(inner)) {
+            meaning = `<strong>Size values</strong> — these are different values for each size (S, M, L, XL in order). Use the number that matches your chosen size.`;
+          } else if (/\d+\s*sts?/.test(inner)) {
+            meaning = `<strong>Stitch count check</strong> — you should have ${inner} after this step.`;
+          } else if (/turn|side|rs|ws|right|wrong/i.test(inner)) {
+            meaning = `<strong>Note/direction</strong> — a clarifying instruction: "${inner}".`;
+          } else {
+            meaning = `<strong>Repeat group or note</strong> — work the stitches/instructions inside as a unit: "${inner}".`;
+          }
+          explanations.push({ type:'paren', label:`( ) Parentheses: ${match}`, badge:'badge-paren', desc: meaning, quote: match });
+        });
+      }
+
+      // Detect square brackets
+      const bracketMatches = text.match(/\[([^\]]+)\]/g);
+      if (bracketMatches) {
+        found.push('bracket');
+        bracketMatches.forEach(match => {
+          const inner = match.slice(1,-1).trim();
+          let meaning = '';
+          const afterMatch = text.slice(text.indexOf(match)+match.length).match(/^\s*(\d+)\s*times?/i);
+          if (afterMatch) {
+            meaning = `<strong>Repeat group</strong> — work "${inner}" as a unit, repeated <strong>${afterMatch[1]} times</strong>.`;
+          } else if (/note|see|ref|WS|RS/i.test(inner)) {
+            meaning = `<strong>Editor's note</strong> — additional information: "${inner}".`;
+          } else {
+            meaning = `<strong>Repeat group</strong> — work all stitches inside as a unit: "${inner}". Check after the bracket for how many times to repeat.`;
+          }
+          explanations.push({ type:'bracket', label:`[ ] Square brackets: ${match}`, badge:'badge-bracket', desc: meaning, quote: match });
+        });
+      }
+
+      // Detect curly braces
+      const curlyMatches = text.match(/\{([^}]+)\}/g);
+      if (curlyMatches) {
+        found.push('curly');
+        curlyMatches.forEach(match => {
+          const inner = match.slice(1,-1).trim();
+          explanations.push({
+            type:'curly', label:`{ } Curly braces: ${match}`, badge:'badge-curly',
+            desc: `<strong>Stitch count</strong> — after completing this row or round, you should have <strong>${inner}</strong>. Count your stitches to verify you're on track.`,
+            quote: match
+          });
+        });
+      }
+
+      const container = document.getElementById('explanations');
+      if (explanations.length === 0) {
+        container.innerHTML = '<div class="no-found">No brackets, parentheses, or asterisks found in this text.</div>';
+      } else {
+        container.innerHTML = explanations.map(e => `
+          <div class="explanation-card">
+            <div class="expl-header"><span class="expl-badge ${e.badge}">${e.label.split(':')[0]}</span><span style="font-size:0.82rem;color:var(--text-muted);">${e.quote ? e.quote : ''}</span></div>
+            <div class="expl-desc">${e.desc}</div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('resultArea').style.display='block';
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      injectNav('pattern-bracket-explainer.html');
+      injectFooter();
+    });
+  </script>
+</body>
+</html>

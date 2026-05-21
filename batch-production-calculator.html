@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batch Production Calculator — Free Craft Business Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate total materials, time, and cost needed to produce a batch of handmade items. Free batch production calculator for craft sellers — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/batch-production-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Batch Production Calculator</h1>
+      <p class="page-subtitle">Scale up your materials and time from a single item to a full production batch. Plan craft fair stock or wholesale orders with ease.</p>
+
+      <div class="tool-card">
+        <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 1rem;">Per-item inputs</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Time to make 1 item (minutes)</label>
+            <input type="number" id="time-per" class="form-input" placeholder="e.g. 45" min="1">
+          </div>
+          <div>
+            <label class="label">Material cost per item ($)</label>
+            <input type="number" id="cost-per" class="form-input" placeholder="e.g. 4.50" min="0" step="0.01">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Batch size (items to make)</label>
+            <input type="number" id="batch-qty" class="form-input" placeholder="e.g. 24" min="1">
+          </div>
+          <div>
+            <label class="label">Your hourly rate ($/hr)</label>
+            <input type="number" id="hourly-rate" class="form-input" placeholder="e.g. 20" min="0" step="0.01">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Overhead per batch ($) <span style="font-size:0.8rem;color:var(--text-muted);">(packaging, fees, etc.)</span></label>
+            <input type="number" id="overhead" class="form-input" value="0" min="0" step="0.01">
+          </div>
+          <div>
+            <label class="label">Batch efficiency savings <span style="font-size:0.8rem;color:var(--text-muted);">(%)</span></label>
+            <input type="number" id="efficiency" class="form-input" value="0" min="0" max="50" step="1" placeholder="e.g. 10">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcBatch()">Calculate Batch</button>
+
+        <div id="batch-result" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">How to use this calculator</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Enter the time and material cost for a single item, then set your batch size. The calculator scales everything up, applies any batch efficiency you've found (e.g. working in assembly-line fashion saves 10–20% time), and shows total labor cost and overall cost per item.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li><strong>Efficiency savings</strong>: Many crafters find batch-making the same item cuts time per unit by 10–25% compared to making items one at a time</li>
+          <li><strong>Overhead</strong>: Include shared costs like tissue paper, boxes, labels, or platform fees that apply to the whole batch</li>
+          <li>Use this alongside the Profit Margin Calculator to set your selling price</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Labor cost is calculated as (time × hourly rate). Set your hourly rate to what you need to earn, not minimum wage, to ensure your pricing is sustainable.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcBatch() {
+    const timePer = parseFloat(document.getElementById('time-per').value);
+    const costPer = parseFloat(document.getElementById('cost-per').value);
+    const qty = parseInt(document.getElementById('batch-qty').value);
+    const rate = parseFloat(document.getElementById('hourly-rate').value) || 0;
+    const overhead = parseFloat(document.getElementById('overhead').value) || 0;
+    const eff = parseFloat(document.getElementById('efficiency').value) || 0;
+    if (!timePer || !costPer || !qty) { alert('Enter time, material cost, and batch size.'); return; }
+
+    const effFactor = 1 - (eff / 100);
+    const timePerEffective = timePer * effFactor;
+    const totalMinutes = timePerEffective * qty;
+    const totalHours = totalMinutes / 60;
+    const totalMaterials = costPer * qty;
+    const totalLabor = totalHours * rate;
+    const totalCost = totalMaterials + totalLabor + overhead;
+    const costPerItem = totalCost / qty;
+    const timeSaved = (timePer * qty) - totalMinutes;
+
+    const el = document.getElementById('batch-result');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Batch Size</div><div class="stat-value">${qty} items</div></div>
+      <div class="stat-box"><div class="stat-label">Total Time</div><div class="stat-value">${totalHours.toFixed(1)} hrs</div></div>
+      <div class="stat-box"><div class="stat-label">Total Materials</div><div class="stat-value">$${totalMaterials.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Total Labor</div><div class="stat-value">$${totalLabor.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Overhead</div><div class="stat-value">$${overhead.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Total Batch Cost</div><div class="stat-value">$${totalCost.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Cost Per Item</div><div class="stat-value">$${costPerItem.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Time Saved (${eff}% eff.)</div><div class="stat-value">${timeSaved.toFixed(0)} min</div></div>
+    </div>
+    <p style="margin-top:0.75rem;font-size:0.88rem;color:var(--text-muted);">Each item takes <strong>${timePerEffective.toFixed(0)} min</strong> in batch mode. Total production: <strong>${Math.floor(totalHours)}h ${Math.round((totalHours%1)*60)}m</strong>.</p>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('batch-production-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

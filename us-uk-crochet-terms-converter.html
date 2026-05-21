@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US to UK Crochet Terms Converter — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Convert US crochet terms to UK equivalents and back. Free searchable reference table plus a full pattern row converter. No signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/us-uk-crochet-terms-converter.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">US to UK Crochet Terms Converter</h1>
+      <p class="page-subtitle">Convert between US and UK crochet stitch names. Search the reference table or paste a pattern row to convert all terms at once.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" style="margin-bottom:1.25rem;">
+          <button class="tab-btn active" onclick="showTab('table-tab','tab-btn-table')">Reference Table</button>
+          <button class="tab-btn" onclick="showTab('lookup-tab','tab-btn-lookup')">Quick Lookup</button>
+          <button class="tab-btn" onclick="showTab('convert-tab','tab-btn-convert')">Convert Pattern Row</button>
+        </div>
+
+        <!-- TABLE TAB -->
+        <div id="table-tab">
+          <input type="search" id="term-search" class="form-input" placeholder="Search US or UK term or abbreviation…" oninput="filterTable()" style="margin-bottom:1rem;max-width:400px;">
+          <div class="table-wrap">
+            <table class="data-table" id="terms-table">
+              <thead><tr><th>US Term</th><th>US Abbrev</th><th>UK Term</th><th>UK Abbrev</th><th>Notes</th></tr></thead>
+              <tbody id="terms-tbody"></tbody>
+            </table>
+          </div>
+          <p class="disclaimer" style="margin-top:0.75rem;">⚠️ US and UK patterns are NOT interchangeable without converting all stitch names. Always check which system a pattern uses before starting.</p>
+        </div>
+
+        <!-- LOOKUP TAB -->
+        <div id="lookup-tab" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-bottom:1rem;">
+            <div>
+              <label class="label">Enter a term or abbreviation</label>
+              <input type="text" id="lookup-input" class="form-input" placeholder="e.g. sc or double crochet" oninput="doLookup()">
+            </div>
+            <div style="display:flex;align-items:flex-end;padding-bottom:2px;">
+              <button class="btn-ghost" onclick="swapDirection()" title="Swap direction">⇄</button>
+            </div>
+            <div>
+              <label class="label" id="direction-label">Direction: US → UK</label>
+              <select id="direction-select" class="form-select" onchange="doLookup()">
+                <option value="us-uk">US → UK</option>
+                <option value="uk-us">UK → US</option>
+              </select>
+            </div>
+          </div>
+          <div id="lookup-result" class="result-card" style="display:none;"></div>
+        </div>
+
+        <!-- CONVERT ROW TAB -->
+        <div id="convert-tab" style="display:none;">
+          <div style="margin-bottom:1rem;">
+            <label class="label">Conversion direction</label>
+            <select id="row-direction" class="form-select" style="max-width:220px;">
+              <option value="us-uk">US → UK</option>
+              <option value="uk-us">UK → US</option>
+            </select>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Paste pattern row / round</label>
+              <textarea id="row-input" class="form-textarea" rows="5" placeholder="e.g. Ch 3, dc in next 4 sts, sc in next 2, sl st to join"></textarea>
+            </div>
+            <div>
+              <label class="label">Converted output</label>
+              <textarea id="row-output" class="form-textarea" rows="5" readonly placeholder="Converted text appears here…"></textarea>
+            </div>
+          </div>
+          <div style="display:flex;gap:0.75rem;margin-top:0.75rem;">
+            <button class="btn-primary" onclick="convertRow()">Convert</button>
+            <button class="btn-outline" onclick="copyRow()">Copy Result</button>
+            <button class="btn-ghost" onclick="clearRow()">Clear</button>
+          </div>
+          <p class="disclaimer" style="margin-top:0.75rem;">This converter replaces stitch abbreviations using a rule-based approach. Review the output carefully — pattern phrasing may still need manual adjustment.</p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">Why US and UK crochet terms differ</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">US and UK crochet use the same stitch techniques but different names. A US double crochet is the same stitch as a UK treble crochet — but the abbreviations are completely different. Using a UK pattern with US assumptions (or vice versa) will produce the wrong fabric height and gauge.</p>
+        <h3 style="font-size:0.95rem;margin:1rem 0 0.5rem;">Common uses</h3>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Identify whether a pattern is written in US or UK terms</li>
+          <li>Convert a UK pattern to US terms before crocheting</li>
+          <li>Paste a full pattern row and convert all abbreviations at once</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Tip: US patterns often say "sc" for single crochet. UK patterns often say "dc" for the same stitch. If a pattern uses "dc" but seems to produce very short stitches, it may be a UK pattern.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const TERMS = [
+    { us:'Slip Stitch', usA:'sl st', uk:'Slip Stitch', ukA:'sl st', note:'Same in both systems' },
+    { us:'Single Crochet', usA:'sc', uk:'Double Crochet', ukA:'dc', note:'Most common difference' },
+    { us:'Half Double Crochet', usA:'hdc', uk:'Half Treble Crochet', ukA:'htr', note:'' },
+    { us:'Double Crochet', usA:'dc', uk:'Treble Crochet', ukA:'tr', note:'' },
+    { us:'Treble Crochet', usA:'tr', uk:'Double Treble Crochet', ukA:'dtr', note:'' },
+    { us:'Double Treble Crochet', usA:'dtr', uk:'Triple Treble Crochet', ukA:'ttr', note:'' },
+    { us:'Triple Treble Crochet', usA:'ttr', uk:'Quadruple Treble Crochet', ukA:'qtr', note:'' },
+    { us:'Single Crochet 2 Together', usA:'sc2tog', uk:'Double Crochet 2 Together', ukA:'dc2tog', note:'Decrease stitch' },
+    { us:'Double Crochet 2 Together', usA:'dc2tog', uk:'Treble Crochet 2 Together', ukA:'tr2tog', note:'Decrease stitch' },
+    { us:'Magic Ring / Magic Circle', usA:'MR', uk:'Magic Ring / Magic Circle', ukA:'MR', note:'Same in both systems' },
+    { us:'Chain', usA:'ch', uk:'Chain', ukA:'ch', note:'Same in both systems' },
+    { us:'Yarn Over', usA:'yo', uk:'Yarn Over Hook', ukA:'yoh', note:'Slightly different abbreviation' },
+    { us:'Skip', usA:'sk', uk:'Miss', ukA:'miss', note:'Different word entirely' },
+    { us:'Gauge', usA:'gauge', uk:'Tension', ukA:'tension', note:'Different word entirely' },
+    { us:'Front Post Double Crochet', usA:'fpdc', uk:'Front Post Treble Crochet', ukA:'fptr', note:'' },
+    { us:'Back Post Double Crochet', usA:'bpdc', uk:'Back Post Treble Crochet', ukA:'bptr', note:'' },
+  ];
+
+  // US→UK replacements (longer/more-specific first to avoid partial matches)
+  const US_TO_UK = [
+    ['sc2tog','dc2tog'],['dc2tog','tr2tog'],
+    ['fpdc','fptr'],['bpdc','bptr'],
+    ['\\bhdc\\b','htr'],['\\bdc\\b','tr'],['\\btr\\b','dtr'],['\\bdtr\\b','ttr'],['\\bttr\\b','qtr'],
+    ['\\bsc\\b','dc'],['\\byo\\b','yoh'],['\\bsk\\b','miss'],['\\bgauge\\b','tension'],
+    ['half double crochet','half treble crochet'],
+    ['double treble crochet','triple treble crochet'],
+    ['triple treble crochet','quadruple treble crochet'],
+    ['double crochet','treble crochet'],
+    ['treble crochet','double treble crochet'],
+    ['single crochet','double crochet'],
+  ];
+
+  const UK_TO_US = [
+    ['dc2tog','sc2tog'],['tr2tog','dc2tog'],
+    ['fptr','fpdc'],['bptr','bpdc'],
+    ['\\bhtr\\b','hdc'],['\\btr\\b','dc'],['\\bdtr\\b','tr'],['\\bttr\\b','dtr'],['\\bqtr\\b','ttr'],
+    ['\\bdc\\b','sc'],['\\byoh\\b','yo'],['\\bmiss\\b','sk'],['\\btension\\b','gauge'],
+    ['half treble crochet','half double crochet'],
+    ['triple treble crochet','double treble crochet'],
+    ['quadruple treble crochet','triple treble crochet'],
+    ['treble crochet','double crochet'],
+    ['double treble crochet','treble crochet'],
+    ['double crochet','single crochet'],
+  ];
+
+  function renderTable(data) {
+    const tb = document.getElementById('terms-tbody');
+    tb.innerHTML = data.map(r => `<tr><td>${r.us}</td><td><code>${r.usA}</code></td><td>${r.uk}</td><td><code>${r.ukA}</code></td><td style="font-size:0.82rem;color:var(--text-muted)">${r.note}</td></tr>`).join('');
+  }
+
+  function filterTable() {
+    const q = document.getElementById('term-search').value.toLowerCase();
+    renderTable(TERMS.filter(r => !q || r.us.toLowerCase().includes(q) || r.usA.toLowerCase().includes(q) || r.uk.toLowerCase().includes(q) || r.ukA.toLowerCase().includes(q)));
+  }
+
+  function showTab(id, btnId) {
+    ['table-tab','lookup-tab','convert-tab'].forEach(t => document.getElementById(t).style.display = t===id ? '' : 'none');
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  function doLookup() {
+    const q = document.getElementById('lookup-input').value.toLowerCase().trim();
+    const dir = document.getElementById('direction-select').value;
+    const res = document.getElementById('lookup-result');
+    if (!q) { res.style.display='none'; return; }
+    let found = null;
+    if (dir === 'us-uk') {
+      found = TERMS.find(r => r.us.toLowerCase()===q || r.usA.toLowerCase()===q);
+      if (found) { res.innerHTML = `<strong>${found.us} (${found.usA})</strong> → <strong>${found.uk} (${found.ukA})</strong>${found.note?'<br><span style="font-size:0.85rem;color:var(--text-muted)">'+found.note+'</span>':''}`;  }
+    } else {
+      found = TERMS.find(r => r.uk.toLowerCase()===q || r.ukA.toLowerCase()===q);
+      if (found) { res.innerHTML = `<strong>${found.uk} (${found.ukA})</strong> → <strong>${found.us} (${found.usA})</strong>${found.note?'<br><span style="font-size:0.85rem;color:var(--text-muted)">'+found.note+'</span>':''}`; }
+    }
+    res.style.display = found ? '' : 'none';
+    if (!found) { res.style.display=''; res.innerHTML='<em style="color:var(--text-muted)">No exact match found. Try searching the Reference Table tab.</em>'; }
+  }
+
+  function swapDirection() {
+    const s = document.getElementById('direction-select');
+    s.value = s.value === 'us-uk' ? 'uk-us' : 'us-uk';
+    doLookup();
+  }
+
+  function convertRow() {
+    let text = document.getElementById('row-input').value;
+    const dir = document.getElementById('row-direction').value;
+    const rules = dir === 'us-uk' ? US_TO_UK : UK_TO_US;
+    let out = text;
+    rules.forEach(([from, to]) => { out = out.replace(new RegExp(from, 'gi'), match => { return to.charAt(0) + to.slice(1); }); });
+    document.getElementById('row-output').value = out;
+  }
+
+  function copyRow() {
+    const v = document.getElementById('row-output').value;
+    if (!v) return;
+    navigator.clipboard.writeText(v).then(() => showToast('Copied!')).catch(() => { document.getElementById('row-output').select(); document.execCommand('copy'); showToast('Copied!'); });
+  }
+
+  function clearRow() { document.getElementById('row-input').value=''; document.getElementById('row-output').value=''; }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('us-uk-crochet-terms-converter.html');
+    injectFooter();
+    renderTable(TERMS);
+  });
+  </script>
+</body>
+</html>

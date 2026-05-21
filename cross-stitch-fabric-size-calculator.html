@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cross-Stitch Fabric Size Calculator — Free Embroidery Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate exactly how much fabric you need for your cross-stitch project. Enter stitch count, fabric count, and border margin to get finished size and fabric to purchase. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/cross-stitch-fabric-size-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
+    .result-box{background:var(--bg-secondary);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center;}
+    .result-num{font-size:1.6rem;font-weight:700;color:var(--primary);}
+    .result-lbl{font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;}
+    .highlight-box{background:var(--primary);color:#fff;border-radius:10px;padding:1.25rem;text-align:center;margin-top:1rem;}
+    .highlight-num{font-size:1.8rem;font-weight:700;}
+    .highlight-lbl{font-size:0.85rem;opacity:0.9;}
+    .ref-table{width:100%;border-collapse:collapse;margin-top:1rem;font-size:0.88rem;}
+    .ref-table th{background:var(--bg-secondary);padding:0.5rem 0.75rem;text-align:left;border-bottom:2px solid var(--border);font-weight:600;}
+    .ref-table td{padding:0.5rem 0.75rem;border-bottom:1px solid var(--border);}
+    .ref-table tr:last-child td{border-bottom:none;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    @media(max-width:600px){.result-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Cross-Stitch Fabric Size Calculator</h1>
+      <p class="page-subtitle">Enter your pattern stitch count, fabric count, and border to find your finished stitched area and how much fabric to buy.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="stitchW">Pattern Width (stitches)</label>
+            <input type="number" id="stitchW" class="form-input" placeholder="e.g. 150" min="1" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="stitchH">Pattern Height (stitches)</label>
+            <input type="number" id="stitchH" class="form-input" placeholder="e.g. 200" min="1" step="1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="fabricCount">Fabric Count</label>
+          <select id="fabricCount" class="form-select">
+            <option value="14">Aida 14ct (14 stitches/inch)</option>
+            <option value="16">Aida 16ct (16 stitches/inch)</option>
+            <option value="18">Aida 18ct (18 stitches/inch)</option>
+            <option value="22">Aida 22ct (22 stitches/inch)</option>
+            <option value="28h2">Evenweave 28ct over 2 (14 stitches/inch)</option>
+            <option value="32h2">Evenweave 32ct over 2 (16 stitches/inch)</option>
+            <option value="36h2">Evenweave 36ct over 2 (18 stitches/inch)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="border">Border Margin (inches, each side)</label>
+          <input type="number" id="border" class="form-input" value="3" min="0" step="0.5">
+        </div>
+        <button class="btn-primary" onclick="calculate()">Calculate Fabric Size</button>
+
+        <div id="results" style="display:none;margin-top:1.5rem;">
+          <h3 style="margin-bottom:0.5rem;">Results</h3>
+          <div class="result-grid">
+            <div class="result-box">
+              <div class="result-num" id="finW">—</div>
+              <div class="result-lbl">Finished Width (in)</div>
+            </div>
+            <div class="result-box">
+              <div class="result-num" id="finH">—</div>
+              <div class="result-lbl">Finished Height (in)</div>
+            </div>
+            <div class="result-box">
+              <div class="result-num" id="finWcm">—</div>
+              <div class="result-lbl">Finished Width (cm)</div>
+            </div>
+            <div class="result-box">
+              <div class="result-num" id="finHcm">—</div>
+              <div class="result-lbl">Finished Height (cm)</div>
+            </div>
+          </div>
+          <div class="highlight-box">
+            <div class="highlight-num" id="buySize">—</div>
+            <div class="highlight-lbl">Fabric to Purchase (Width × Height)</div>
+          </div>
+          <p id="buyNote" style="font-size:0.85rem;color:var(--text-muted);margin-top:0.75rem;"></p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>Aida Count Reference Table</h2>
+        <div class="table-wrap">
+          <table class="ref-table">
+            <thead><tr><th>Fabric Count</th><th>Stitches/Inch</th><th>Stitch Size</th><th>Best For</th></tr></thead>
+            <tbody>
+              <tr><td>Aida 11ct</td><td>11</td><td>~2.3mm</td><td>Beginners, large designs, bulky thread</td></tr>
+              <tr><td>Aida 14ct</td><td>14</td><td>~1.8mm</td><td>Most popular; good detail, easy to see</td></tr>
+              <tr><td>Aida 16ct</td><td>16</td><td>~1.6mm</td><td>Slightly finer; similar to 28ct evenweave over 2</td></tr>
+              <tr><td>Aida 18ct</td><td>18</td><td>~1.4mm</td><td>Fine work; good detail in smaller areas</td></tr>
+              <tr><td>Aida 22ct</td><td>22</td><td>~1.2mm</td><td>Very fine; use 1 strand of floss</td></tr>
+              <tr><td>28ct Evenweave / 2</td><td>14</td><td>~1.8mm</td><td>Same result as 14ct Aida; softer hand</td></tr>
+              <tr><td>32ct Evenweave / 2</td><td>16</td><td>~1.6mm</td><td>Same result as 16ct Aida</td></tr>
+              <tr><td>36ct Evenweave / 2</td><td>18</td><td>~1.4mm</td><td>Same result as 18ct Aida</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 style="margin-top:1.5rem;">How to Use</h2>
+        <ol>
+          <li>Find your pattern's stitch count (usually listed on the pattern or chart — e.g., 150w × 200h).</li>
+          <li>Choose your fabric count (Aida 14ct is the most common for beginners).</li>
+          <li>Set your border margin — a 3" border on each side gives enough fabric for framing or finishing.</li>
+          <li>The calculator shows your finished stitched area and the total fabric piece you should purchase.</li>
+        </ol>
+        <h2 style="margin-top:1.5rem;">Tips</h2>
+        <ul>
+          <li>Always add at least 2" border on each side minimum; 3" is recommended for framed pieces.</li>
+          <li>Evenweave stitched "over 2 threads" produces the same stitch density as its Aida equivalent (28ct/2 = 14ct Aida).</li>
+          <li>Fabric is sold by the yard or in pre-cut pieces — round up to the nearest available size.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('cross-stitch-fabric-size-calculator.html');injectFooter();});
+
+    function getStitchesPerInch(val){
+      const map={14:14,16:16,18:18,22:22,'28h2':14,'32h2':16,'36h2':18};
+      return map[val]||14;
+    }
+
+    function calculate(){
+      const w=parseFloat(document.getElementById('stitchW').value);
+      const h=parseFloat(document.getElementById('stitchH').value);
+      const fc=document.getElementById('fabricCount').value;
+      const border=parseFloat(document.getElementById('border').value)||3;
+      if(!w||!h||w<1||h<1){alert('Please enter valid stitch counts.');return;}
+      const spi=getStitchesPerInch(fc);
+      const finWin=(w/spi).toFixed(2);
+      const finHin=(h/spi).toFixed(2);
+      const finWcm=(finWin*2.54).toFixed(2);
+      const finHcm=(finHin*2.54).toFixed(2);
+      const buyW=(parseFloat(finWin)+border*2).toFixed(2);
+      const buyH=(parseFloat(finHin)+border*2).toFixed(2);
+      const buyWcm=(buyW*2.54).toFixed(1);
+      const buyHcm=(buyH*2.54).toFixed(1);
+
+      document.getElementById('finW').textContent=finWin+'"';
+      document.getElementById('finH').textContent=finHin+'"';
+      document.getElementById('finWcm').textContent=finWcm+' cm';
+      document.getElementById('finHcm').textContent=finHcm+' cm';
+      document.getElementById('buySize').textContent=buyW+'" × '+buyH+'" ('+buyWcm+' × '+buyHcm+' cm)';
+      document.getElementById('buyNote').textContent='Stitched area: '+finWin+'" × '+finHin+'". Add '+border+'" border each side = '+buyW+'" × '+buyH+'" total fabric to purchase ('+buyWcm+' cm × '+buyHcm+' cm).';
+      document.getElementById('results').style.display='block';
+    }
+  </script>
+</body>
+</html>

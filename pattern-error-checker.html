@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Error Checker — Free Pattern Tool | The Useful Pages</title>
+  <meta name="description" content="Paste a crochet or knitting pattern and check for unmatched brackets, unknown abbreviations, stitch count mismatches, and more. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-error-checker.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .issue-row {
+      display:flex; align-items:flex-start; gap:0.65rem;
+      padding:0.65rem 0.85rem; border-radius:10px; margin-bottom:0.4rem;
+      border:1.5px solid;
+    }
+    .issue-error { border-color:#e53e3e; background:rgba(229,62,62,0.07); }
+    .issue-warning { border-color:#ed8936; background:rgba(237,137,54,0.07); }
+    .issue-info { border-color:#4299e1; background:rgba(66,153,225,0.07); }
+    .issue-icon { font-size:1rem; flex-shrink:0; margin-top:1px; }
+    .issue-content { flex:1; }
+    .issue-line { font-size:0.76rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.04em; }
+    .issue-msg { font-size:0.88rem; color:var(--text); line-height:1.45; }
+    .issue-detail { font-size:0.8rem; color:var(--text-muted); margin-top:0.15rem; font-family:'Courier New',monospace; }
+    .summary-bar {
+      display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:0.75rem;
+      padding:0.75rem; background:var(--bg-secondary); border-radius:10px; border:1.5px solid var(--border);
+    }
+    .sum-chip { display:flex; align-items:center; gap:0.3rem; font-size:0.83rem; font-weight:700; }
+    .sum-num { font-size:1.1rem; font-weight:800; }
+    .all-clear { text-align:center; padding:1.5rem; color:#276749; font-weight:700; font-size:0.95rem;
+      border:1.5px solid #38a169; border-radius:10px; background:rgba(56,161,105,0.08); }
+    [data-theme="dark"] .all-clear { color:#9ae6b4; }
+    .line-preview { font-family:'Courier New',monospace; font-size:0.8rem; color:var(--text-muted); background:var(--bg); border-radius:5px; padding:0.2rem 0.45rem; display:inline-block; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Error Checker</h1>
+      <p class="page-subtitle">Paste your crochet or knitting pattern and scan for common issues — unmatched brackets, unknown abbreviations, stitch count mismatches, and more.</p>
+
+      <div class="tool-card">
+        <div class="label">Paste Pattern Text</div>
+        <textarea class="form-textarea" id="patInput" rows="12" placeholder="Row 1: Ch 20, sc in 2nd ch from hook, sc in each ch across. (19 sts)&#10;Row 2: Ch 1, turn, sc in first 5, dc in next, hdc in next 5, dc in next, sc in last 5. (19 sts)&#10;Row 3: Ch 1, turn, *sc in next 2, dc in next* repeat 6 times, sc in last. (19 sts)"></textarea>
+        <div style="display:flex;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="checkPattern()">Check Pattern</button>
+          <button class="btn btn-outline" onclick="clearAll()">Clear</button>
+        </div>
+        <div id="resultArea" style="display:none;margin-top:1rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">What this tool checks</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Unmatched brackets</strong> — checks that every <code>(</code>, <code>[</code>, and <code>{</code> has a matching closing bracket.</li>
+          <li><strong>Unmatched asterisks</strong> — flags a lone <code>*</code> that doesn't have a paired closing <code>*</code>.</li>
+          <li><strong>Unknown abbreviations</strong> — any ALL-CAPS word not in the built-in dictionary of 60+ common crochet and knitting abbreviations is flagged.</li>
+          <li><strong>Stitch count mismatch</strong> — if a line states a count like <code>(18 sts)</code>, the tool attempts to count stitches in that line and flags large discrepancies.</li>
+          <li><strong>Missing turn/chain</strong> — warns if rows appear to start without a turning chain or turn instruction.</li>
+        </ul>
+        <div class="disclaimer" style="margin-top:0.75rem;">
+          <strong>Disclaimer:</strong> This is a rule-based checker, not a professional pattern editor. It cannot understand pattern intent, and results should be verified by the crafter. False positives are possible — especially with custom abbreviations or unusual formatting.
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    // Dictionary of known abbreviations (crochet + knitting)
+    const KNOWN_ABBREVS = new Set([
+      // Crochet
+      'SC','DC','HDC','TC','TR','DTR','DSTR','SS','SL','ST','STS','CH','SP','BLO','FLO','BL','FL','INC','DEC',
+      'SK','SKIP','MR','MC','CC','WS','RS','REP','RPT','PM','SM','RM','BEG','END','REM','RND','RNDS',
+      'ROW','ROWS','TOG','2TOG','3TOG','SC2TOG','DC2TOG','HDC2TOG','FPDC','BPDC','FPSC','BPSC',
+      'FPTR','BPTR','FPTR','BPDC','CL','CLUSTER','PC','POPCORN','BOB','BOBBLE','V','X','FAN','SHELL',
+      'PIC','PICOT','JOIN','FASTEN','OFF','TURN','CONT','PAT','PATT','FIG','NO','ST','STS','YO','YOH',
+      'CH1','CH2','CH3','CH4','CH5','CH6',
+      // Knitting
+      'K','P','BO','CO','KFB','PFB','M1','M1L','M1R','M1P','SSK','K2TOG','P2TOG','PSSO','SKPO',
+      'SL1','SL2','KW','PW','WYIF','WYIB','CN','LH','RH','LN','RN','MB','KTB','TBL','KTBL',
+      'C2F','C2B','C4F','C4B','C6F','C6B','T2F','T2B',
+      // General
+      'APPROX','APPROX','MM','CM','IN','G','OZ','YDS','M','LB','OZ','A','B','C','D',
+      'WPI','WPC','STST','GARTER','SEED','MOSS','RIB',
+      'NOTE','NOTES','TIP','SEE','REF','PG','PAGE','FIG','FIGS',
+      'S','M','L','XL','XXL','XS',
+      'US','UK','CA',
+    ]);
+
+    function checkPattern() {
+      const text = document.getElementById('patInput').value;
+      if (!text.trim()) return;
+      const lines = text.split('\n');
+      const issues = [];
+
+      lines.forEach((line, idx) => {
+        const lineNum = idx + 1;
+        const trimmed = line.trim();
+        if (!trimmed) return;
+
+        // 1. Bracket matching
+        const brackets = {open:'([{', close:')]}', pairs:{')':'(', ']':'[', '}':'{'}};
+        const stack = [];
+        let inString = false;
+        for (let ci = 0; ci < line.length; ci++) {
+          const ch = line[ci];
+          if (brackets.open.includes(ch)) stack.push({ch, pos:ci});
+          else if (brackets.close.includes(ch)) {
+            const expected = brackets.pairs[ch];
+            if (stack.length === 0 || stack[stack.length-1].ch !== expected) {
+              issues.push({type:'error', lineNum, msg:`Unmatched closing '${ch}'`, detail: trimSnip(line)});
+            } else stack.pop();
+          }
+        }
+        if (stack.length > 0) {
+          stack.forEach(({ch}) => issues.push({type:'error', lineNum, msg:`Unmatched opening '${ch}'`, detail: trimSnip(line)}));
+        }
+
+        // 2. Asterisk matching
+        const asterisks = (line.match(/\*/g) || []).length;
+        if (asterisks % 2 !== 0) {
+          // Could be valid "repeat from *" syntax — only flag if no "from *" or "to *" nearby
+          if (!/from\s*\*|to\s*\*|repeat\s+from/i.test(line)) {
+            issues.push({type:'warning', lineNum, msg:'Odd number of asterisks — possible unmatched repeat marker', detail: trimSnip(line)});
+          }
+        }
+
+        // 3. Unknown ALL-CAPS abbreviations
+        const words = line.match(/\b[A-Z]{2,10}\b/g) || [];
+        const unknown = words.filter(w => {
+          if (KNOWN_ABBREVS.has(w)) return false;
+          if (/^\d/.test(w)) return false;
+          // Skip if it looks like a size (like XL, S, M, L)
+          return true;
+        });
+        if (unknown.length > 0) {
+          issues.push({type:'info', lineNum, msg:`Unknown abbreviation${unknown.length>1?'s':''}: ${[...new Set(unknown)].join(', ')}`, detail: 'May be a custom or less-common abbreviation — verify in your pattern glossary.'});
+        }
+
+        // 4. Stitch count check
+        // Look for (X sts) or {X sts} at end of line
+        const countMatch = line.match(/[({]\s*(\d+)\s*sts?\s*[)}]/i);
+        if (countMatch) {
+          const stated = parseInt(countMatch[1]);
+          // Count stitch-like tokens: sc, dc, hdc, tr, ch1 etc
+          const stitchTokens = line.match(/\b(sc|hdc|dc|tr|dtr|ss|slst|ch\s*\d*)\b/gi) || [];
+          const numTokens = stitchTokens.length;
+          if (numTokens > 0 && Math.abs(numTokens - stated) > stated * 0.5) {
+            issues.push({type:'warning', lineNum, msg:`Stitch count mismatch: pattern states ${stated} sts, found approx. ${numTokens} stitch tokens in this line`, detail:'Note: this check is approximate — it counts stitch abbreviations, not actual stitch math.'});
+          }
+        }
+      });
+
+      renderResult(issues);
+    }
+
+    function trimSnip(line) {
+      return line.trim().substring(0, 80) + (line.trim().length > 80 ? '…' : '');
+    }
+
+    function renderResult(issues) {
+      const ra = document.getElementById('resultArea');
+      ra.style.display = 'block';
+
+      if (issues.length === 0) {
+        ra.innerHTML = '<div class="all-clear">✓ No common issues found! Always double-check manually before starting your project.</div>';
+        return;
+      }
+
+      const errors = issues.filter(i=>i.type==='error').length;
+      const warnings = issues.filter(i=>i.type==='warning').length;
+      const infos = issues.filter(i=>i.type==='info').length;
+
+      const iconMap = {error:'🔴', warning:'🟡', info:'🔵'};
+
+      ra.innerHTML = `
+        <div class="summary-bar">
+          ${errors?`<div class="sum-chip"><span class="sum-num" style="color:#e53e3e;">${errors}</span> error${errors!==1?'s':''}</div>`:''}
+          ${warnings?`<div class="sum-chip"><span class="sum-num" style="color:#ed8936;">${warnings}</span> warning${warnings!==1?'s':''}</div>`:''}
+          ${infos?`<div class="sum-chip"><span class="sum-num" style="color:#4299e1;">${infos}</span> info note${infos!==1?'s':''}</div>`:''}
+        </div>
+        ${issues.map(issue=>`
+          <div class="issue-row issue-${issue.type}">
+            <span class="issue-icon">${iconMap[issue.type]}</span>
+            <div class="issue-content">
+              <div class="issue-line">Line ${issue.lineNum}</div>
+              <div class="issue-msg">${escHtml(issue.msg)}</div>
+              ${issue.detail?`<div class="issue-detail">${escHtml(issue.detail)}</div>`:''}
+            </div>
+          </div>
+        `).join('')}
+        <div class="disclaimer" style="margin-top:0.75rem;">Rule-based checks only. Verify all flagged items manually — false positives are possible.</div>
+      `;
+    }
+
+    function clearAll() {
+      document.getElementById('patInput').value='';
+      document.getElementById('resultArea').style.display='none';
+    }
+    function escHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      injectNav('pattern-error-checker.html');
+      injectFooter();
+    });
+  </script>
+</body>
+</html>

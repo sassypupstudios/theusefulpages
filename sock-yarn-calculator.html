@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sock Yarn Calculator — Free Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate yardage, cast-on count, and heel flap stitches for hand-knit socks. Includes standard size presets for women's and men's socks. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/sock-yarn-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Sock Yarn Calculator</h1>
+      <p class="page-subtitle">Calculate yardage, cast-on stitches, and heel flap count for hand-knit socks.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Size Preset</label>
+            <select class="form-select" id="sock-preset" onchange="loadSockPreset()">
+              <option value="custom">Custom</option>
+              <option value="ws">Women's S (7.5" circ, 8.5" foot)</option>
+              <option value="wm">Women's M (8" circ, 9" foot)</option>
+              <option value="wl">Women's L (8.5" circ, 9.5" foot)</option>
+              <option value="ms">Men's S (8.5" circ, 9.5" foot)</option>
+              <option value="mm">Men's M (9" circ, 10" foot)</option>
+              <option value="ml">Men's L (9.5" circ, 11" foot)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Gauge: stitches per inch</label>
+            <input class="form-input" type="number" id="gauge-spi" min="4" step="0.5" value="8" placeholder="e.g. 8">
+          </div>
+          <div>
+            <label class="label">Foot Circumference (inches)</label>
+            <input class="form-input" type="number" id="foot-circ" min="4" step="0.5" placeholder="e.g. 8">
+          </div>
+          <div>
+            <label class="label">Foot Length (inches)</label>
+            <input class="form-input" type="number" id="foot-length" min="4" step="0.5" placeholder="e.g. 9">
+          </div>
+          <div>
+            <label class="label">Leg Length (inches)</label>
+            <input class="form-input" type="number" id="leg-length" value="6" step="0.5" placeholder="e.g. 6">
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcSocks()">Calculate</button>
+          <button class="btn-ghost" onclick="resetSocks()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="sock-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-cast-on"></div>
+              <div class="stat-label">Cast-On Stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-heel-sts"></div>
+              <div class="stat-label">Heel Flap Stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yds-one"></div>
+              <div class="stat-label">Yards (1 sock)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yds-pair"></div>
+              <div class="stat-label">Yards (pair)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yds-buffer"></div>
+              <div class="stat-label">Yards + 15% Buffer</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-skeins"></div>
+              <div class="stat-label">100g Skeins Needed</div>
+            </div>
+          </div>
+          <div class="result-card" style="margin-top:1rem;">
+            <p id="res-skein-note" style="margin:0;color:var(--text-muted);font-size:0.9rem;"></p>
+          </div>
+          <p class="disclaimer" style="margin-top:0.75rem;">Results are estimates. A standard 100g skein of fingering/sock yarn typically yields 400–450 yards. Actual usage varies by gauge, heel style, and pattern.</p>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Standard Sock Size Reference</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Size</th><th>Foot Circ.</th><th>Foot Length</th><th>US Shoe Size</th></tr></thead>
+            <tbody>
+              <tr><td>Women's S</td><td>7.5"</td><td>8.5"</td><td>5–6.5</td></tr>
+              <tr><td>Women's M</td><td>8"</td><td>9"</td><td>7–9</td></tr>
+              <tr><td>Women's L</td><td>8.5"</td><td>9.5"</td><td>9.5–11</td></tr>
+              <tr><td>Men's S</td><td>8.5"</td><td>9.5"</td><td>6–8</td></tr>
+              <tr><td>Men's M</td><td>9"</td><td>10"</td><td>8.5–10.5</td></tr>
+              <tr><td>Men's L</td><td>9.5"</td><td>11"</td><td>11–13</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <ul>
+          <li>Select a size preset or enter custom measurements.</li>
+          <li>Enter your gauge in stitches per inch — sock yarn is usually knit at 7–9 sts/inch.</li>
+          <li>Click <strong>Calculate</strong> to get your cast-on count, heel flap stitches, and yardage per sock and per pair.</li>
+        </ul>
+        <h2>Tips</h2>
+        <ul>
+          <li>Most sock patterns are knit with negative ease — the foot circumference of the sock should be about ½" less than the actual foot circumference.</li>
+          <li>A standard 100g fingering weight skein (400–450 yards) is usually enough for one average women's sock. Two skeins = one pair.</li>
+          <li>The heel flap stitch count is typically half the total cast-on stitches.</li>
+          <li>Gauge swatch in the round for the most accurate result, as gauge often differs between flat and circular knitting.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('sock-yarn-calculator.html');injectFooter();});
+    const sockPresets = {
+      ws:{c:7.5,fl:8.5}, wm:{c:8,fl:9}, wl:{c:8.5,fl:9.5},
+      ms:{c:8.5,fl:9.5}, mm:{c:9,fl:10}, ml:{c:9.5,fl:11}
+    };
+    function loadSockPreset(){
+      const p = sockPresets[document.getElementById('sock-preset').value];
+      if(!p) return;
+      document.getElementById('foot-circ').value   = p.c;
+      document.getElementById('foot-length').value = p.fl;
+    }
+    function calcSocks(){
+      const spi     = parseFloat(document.getElementById('gauge-spi').value)||8;
+      const circ    = parseFloat(document.getElementById('foot-circ').value);
+      const footL   = parseFloat(document.getElementById('foot-length').value);
+      const legL    = parseFloat(document.getElementById('leg-length').value)||6;
+      if(isNaN(circ)||circ<=0||isNaN(footL)||footL<=0){alert('Please enter foot circumference and length.');return;}
+
+      const castOn   = Math.round(circ * spi);
+      const heelSts  = Math.round(castOn / 2);
+      // Area based: leg tube + foot tube + heel area
+      const legArea  = circ * legL;
+      const footArea = circ * footL;
+      const heelArea = circ * 2; // approx heel turn
+      const totalArea= legArea + footArea + heelArea;
+      const ydsOneSock = totalArea * 0.065; // fingering gauge avg
+      const ydsPair    = ydsOneSock * 2;
+      const buffer     = ydsPair * 1.15;
+      const skein400   = Math.ceil(buffer / 425);
+      const note = `At a typical 100g fingering skein (≈425 yards), you need approximately ${skein400} skein${skein400!==1?'s':''} for a pair. Buy the same dye lot!`;
+
+      document.getElementById('res-cast-on').textContent   = castOn;
+      document.getElementById('res-heel-sts').textContent  = heelSts;
+      document.getElementById('res-yds-one').textContent   = Math.round(ydsOneSock).toLocaleString();
+      document.getElementById('res-yds-pair').textContent  = Math.round(ydsPair).toLocaleString();
+      document.getElementById('res-yds-buffer').textContent= Math.round(buffer).toLocaleString();
+      document.getElementById('res-skeins').textContent    = skein400;
+      document.getElementById('res-skein-note').textContent= note;
+      document.getElementById('sock-result').style.display ='block';
+    }
+    function resetSocks(){
+      document.getElementById('sock-preset').value='custom';
+      ['foot-circ','foot-length'].forEach(id=>{document.getElementById(id).value='';});
+      document.getElementById('gauge-spi').value=8;
+      document.getElementById('leg-length').value=6;
+      document.getElementById('sock-result').style.display='none';
+    }
+  </script>
+</body>
+</html>

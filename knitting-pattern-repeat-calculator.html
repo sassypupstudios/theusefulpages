@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Pattern Repeat Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Find how many full pattern repeats fit in your stitch count and get adjusted cast-on counts for knitting. Handles 'multiple of X plus Y' patterns. Free.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-pattern-repeat-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Pattern Repeat Calculator</h1>
+      <p class="page-subtitle">Find how many full pattern repeats fit your stitch count, with adjusted cast-on numbers.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Total stitch count</label>
+            <input class="form-input" type="number" id="total-sts" min="1" placeholder="e.g. 96">
+          </div>
+          <div>
+            <label class="label">Pattern repeat size (stitches)</label>
+            <input class="form-input" type="number" id="rep-size" min="1" placeholder="e.g. 8">
+          </div>
+          <div>
+            <label class="label">Extra stitches ("+Y" in pattern)</label>
+            <input class="form-input" type="number" id="extra-sts" min="0" value="0" placeholder="e.g. 3">
+            <p style="font-size:0.8rem;color:var(--text-muted);margin:0.25rem 0 0;">"Multiple of 8 + 3" → enter 3 here</p>
+          </div>
+          <div>
+            <label class="label">Selvedge stitches each side</label>
+            <input class="form-input" type="number" id="selv-sts" min="0" value="0" placeholder="e.g. 1">
+            <p style="font-size:0.8rem;color:var(--text-muted);margin:0.25rem 0 0;">Enter 1 for 1 selvedge on each side (total 2)</p>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcRepeat()" style="margin-top:1rem;">Calculate</button>
+        <div id="repeat-result" style="display:none;margin-top:1.5rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <ul>
+          <li>Enter your total stitch count (from your cast-on calculator or pattern).</li>
+          <li>Enter the pattern repeat size — e.g. "6" for a 6-stitch repeat.</li>
+          <li>If the pattern says "multiple of 8 plus 3," enter 8 for repeat size and 3 for extra stitches.</li>
+          <li>Selvedge stitches are edge stitches that frame the pattern — common in flat knitting. Enter 1 for a 1-stitch selvedge on each side.</li>
+        </ul>
+        <h3>Understanding "Multiple of X plus Y"</h3>
+        <p>Many patterns describe stitch multiples like "multiple of 6 plus 2." This means the repeat is 6 stitches, plus 2 extra stitches at the end to balance the pattern visually. Example: 38 stitches = 6 × 6 repeats + 2 extra = valid for "multiple of 6 plus 2."</p>
+        <h3>Written Instruction Format</h3>
+        <p>The calculator generates a written instruction like knitting patterns use, showing the breakdown of selvedge + repeats + extra stitches.</p>
+        <p class="disclaimer">Results are estimates. Gauge, yarn, and needle type affect actual results.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('knitting-pattern-repeat-calculator.html');injectFooter();});
+
+    function calcRepeat(){
+      const total = parseInt(document.getElementById('total-sts').value);
+      const rep   = parseInt(document.getElementById('rep-size').value);
+      const extra = parseInt(document.getElementById('extra-sts').value)||0;
+      const selv  = parseInt(document.getElementById('selv-sts').value)||0;
+      if(isNaN(total)||isNaN(rep)||total<1||rep<1){alert('Please enter a stitch count and repeat size.');return;}
+
+      const totalSelv = selv*2;
+      const workingStitch = total - totalSelv - extra;
+      const fullRepeats = Math.floor(workingStitch / rep);
+      const leftover    = workingStitch % rep;
+
+      // Adjacent valid cast-ons
+      const validDown = fullRepeats * rep + extra + totalSelv;
+      const validUp   = (fullRepeats+1) * rep + extra + totalSelv;
+
+      // Build written instruction
+      function buildInstruction(reps, repSize, extraSts, selvEach){
+        const parts = [];
+        const totalS = selvEach*2;
+        if(selvEach>0) parts.push(`${totalS} selvedge (${selvEach} each side)`);
+        parts.push(`(${repSize}-st repeat × ${reps})`);
+        if(extraSts>0) parts.push(`${extraSts} extra`);
+        const total = reps*repSize + extraSts + totalS;
+        return `Cast on ${total} stitches: ${parts.join(' + ')} = ${total} stitches.`;
+      }
+
+      let html = `<div class="stat-grid">
+        <div class="stat-box"><div class="stat-value">${fullRepeats}</div><div class="stat-label">Full Repeats</div></div>
+        <div class="stat-box"><div class="stat-value">${leftover}</div><div class="stat-label">Leftover Sts</div></div>
+        <div class="stat-box"><div class="stat-value">${validDown}</div><div class="stat-label">Round Down Cast-On</div></div>
+        <div class="stat-box"><div class="stat-value">${validUp}</div><div class="stat-label">Round Up Cast-On</div></div>
+      </div>`;
+
+      if(leftover===0){
+        html+=`<div class="result-card" style="margin-top:1rem;border-left:4px solid var(--success,#22c55e);">
+          <strong>Your stitch count works exactly!</strong>
+          <p style="margin:0.5rem 0 0;font-size:0.9rem;">${buildInstruction(fullRepeats,rep,extra,selv)}</p>
+        </div>`;
+      } else {
+        html+=`<div class="result-card" style="margin-top:1rem;">
+          <p style="margin:0 0 0.5rem;"><strong>Your count doesn't divide evenly.</strong> Use one of these adjusted counts:</p>
+          <p style="margin:0.25rem 0;font-size:0.9rem;"><strong>Round down (${validDown} sts):</strong> ${buildInstruction(fullRepeats,rep,extra,selv)}</p>
+          <p style="margin:0.25rem 0;font-size:0.9rem;"><strong>Round up (${validUp} sts):</strong> ${buildInstruction(fullRepeats+1,rep,extra,selv)}</p>
+        </div>`;
+      }
+
+      // Show breakdown table
+      if(fullRepeats>0){
+        html+=`<div style="margin-top:1rem;"><p style="font-size:0.9rem;color:var(--text-muted);margin:0 0 0.5rem;"><strong>Stitch breakdown for ${validDown}-stitch option:</strong></p>`;
+        html+=`<div class="table-wrap"><table class="data-table"><thead><tr><th>Section</th><th>Stitches</th></tr></thead><tbody>`;
+        if(selv>0) html+=`<tr><td>Left selvedge</td><td>${selv}</td></tr>`;
+        html+=`<tr><td>${rep}-stitch repeat × ${fullRepeats}</td><td>${fullRepeats*rep}</td></tr>`;
+        if(extra>0) html+=`<tr><td>Extra stitches</td><td>${extra}</td></tr>`;
+        if(selv>0) html+=`<tr><td>Right selvedge</td><td>${selv}</td></tr>`;
+        html+=`<tr style="font-weight:600;"><td>Total</td><td>${validDown}</td></tr>`;
+        html+=`</tbody></table></div></div>`;
+      }
+
+      document.getElementById('repeat-result').innerHTML=html;
+      document.getElementById('repeat-result').style.display='block';
+    }
+  </script>
+</body>
+</html>

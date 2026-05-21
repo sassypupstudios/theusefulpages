@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tote Bag Fabric Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate fabric yardage for a tote bag. Enter your bag dimensions to get outer fabric, lining, and strap cutting measurements. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/tote-bag-fabric-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Tote Bag Fabric Calculator</h1>
+      <p class="page-subtitle">Get cutting dimensions for every panel and total yardage for outer fabric and lining.</p>
+      <div class="tool-card">
+        <div style="margin-bottom:1rem;">
+          <label class="label">Quick Size Preset</label>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <button class="btn-outline" onclick="applyPreset(10,10,0)">Small (10×10)</button>
+            <button class="btn-outline" onclick="applyPreset(13,14,0)">Medium (13×14)</button>
+            <button class="btn-outline" onclick="applyPreset(15,16,6)">Large Grocery (15×16 +6" gusset)</button>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Bag Width (inches)</label>
+            <input class="form-input" type="number" id="bag-w" min="1" step="0.5" placeholder="e.g. 15" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Bag Height (inches)</label>
+            <input class="form-input" type="number" id="bag-h" min="1" step="0.5" placeholder="e.g. 16" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Gusset / Depth (inches, 0 for flat)</label>
+            <input class="form-input" type="number" id="bag-d" min="0" step="0.5" value="0" placeholder="0" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Seam Allowance</label>
+            <select class="form-select" id="sa" onchange="calculate()">
+              <option value="0.5" selected>½"</option>
+              <option value="0.625">⅝"</option>
+              <option value="1">1"</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Strap Width (inches)</label>
+            <select class="form-select" id="strap-w" onchange="calculate()">
+              <option value="3">3" (medium)</option>
+              <option value="3.5" selected>3.5" (standard)</option>
+              <option value="4">4" (wide)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Strap Length Each (inches)</label>
+            <select class="form-select" id="strap-l" onchange="calculate()">
+              <option value="24">24" (short)</option>
+              <option value="26" selected>26" (standard)</option>
+              <option value="28">28" (long)</option>
+              <option value="30">30" (very long)</option>
+            </select>
+          </div>
+          <div style="grid-column:1/-1;">
+            <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+              <input type="checkbox" id="lining" checked onchange="calculate()" style="width:1rem;height:1rem;">
+              <span class="label" style="margin:0;">Include lining fabric</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="result-area" style="display:none;margin-top:1.5rem;">
+          <h3 style="margin:0 0 1rem;font-size:1rem;font-weight:600;">Cutting List</h3>
+          <div class="result-card">
+            <div class="stat-grid" id="stat-grid"></div>
+          </div>
+          <div id="yardage-block" style="margin-top:1rem;"></div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Tote Bag Fabric Calculator</h2>
+        <p>Choose a quick preset or enter custom dimensions. Select your seam allowance and strap size. The calculator builds a complete cutting list for outer fabric, lining, and straps, then gives you total yardage to buy.</p>
+        <h3>Panel Overview</h3>
+        <ul>
+          <li><strong>Front &amp; Back panels:</strong> The main body of the bag (2 pieces).</li>
+          <li><strong>Bottom strip (gusset):</strong> Only needed when you enter a depth &gt; 0. Creates a box base.</li>
+          <li><strong>Straps:</strong> Cut 2 pieces. Fold in thirds or use interfacing for structure.</li>
+          <li><strong>Lining:</strong> Usually the same dimensions as the outer shell minus seam allowances for ease.</li>
+        </ul>
+        <h3>Standard Tote Sizes</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Size</th><th>Dimensions</th><th>Good For</th></tr></thead>
+            <tbody>
+              <tr><td>Small</td><td>10" × 10"</td><td>Gifts, wine bottles, small items</td></tr>
+              <tr><td>Medium</td><td>13" × 14"</td><td>Books, daily carry, farmers market</td></tr>
+              <tr><td>Large Grocery</td><td>15" × 16" + 6" gusset</td><td>Groceries, beach, storage</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('tote-bag-fabric-calculator.html'); injectFooter(); });
+
+    function applyPreset(w, h, d) {
+      document.getElementById('bag-w').value = w;
+      document.getElementById('bag-h').value = h;
+      document.getElementById('bag-d').value = d;
+      calculate();
+    }
+
+    function f(n) { return n.toFixed(2) + '"'; }
+    function yd(inches) { return (inches / 36).toFixed(2) + ' yd'; }
+
+    function calculate() {
+      const W = parseFloat(document.getElementById('bag-w').value);
+      const H = parseFloat(document.getElementById('bag-h').value);
+      const D = parseFloat(document.getElementById('bag-d').value) || 0;
+      const sa = parseFloat(document.getElementById('sa').value);
+      const strapW = parseFloat(document.getElementById('strap-w').value);
+      const strapL = parseFloat(document.getElementById('strap-l').value);
+      const inclLining = document.getElementById('lining').checked;
+
+      if (!W || !H || W <= 0 || H <= 0) {
+        document.getElementById('result-area').style.display = 'none'; return;
+      }
+
+      // Panel dimensions with SA
+      const frontW = W + 2 * sa;
+      const frontH = H + 2 * sa;
+      // Bottom strip (gusset)
+      const gussetW = D > 0 ? D + 2 * sa : 0;
+      const gussetL = D > 0 ? (W + 2 * H) + 2 * sa : 0;
+      // Straps: folded strip is 4× finished width
+      const strapCutW = strapW * 4;
+      const strapCutL = strapL + 2 * sa;
+
+      const panels = [
+        { label: 'Front Panel (1 piece)', value: f(frontW) + ' × ' + f(frontH) },
+        { label: 'Back Panel (1 piece)', value: f(frontW) + ' × ' + f(frontH) },
+      ];
+      if (D > 0) {
+        panels.push({ label: 'Bottom/Gusset Strip (1 piece)', value: f(gussetL) + ' × ' + f(gussetW) });
+      }
+      panels.push({ label: 'Straps (2 pieces each)', value: f(strapCutL) + ' × ' + f(strapCutW) });
+      if (inclLining) {
+        panels.push({ label: 'Lining Front (1 piece)', value: f(frontW) + ' × ' + f(frontH) });
+        panels.push({ label: 'Lining Back (1 piece)', value: f(frontW) + ' × ' + f(frontH) });
+        if (D > 0) panels.push({ label: 'Lining Gusset (1 piece)', value: f(gussetL) + ' × ' + f(gussetW) });
+      }
+
+      const grid = document.getElementById('stat-grid');
+      grid.innerHTML = panels.map(s => `<div class="stat-box"><div class="stat-label">${s.label}</div><div class="stat-value">${s.value}</div></div>`).join('');
+
+      // Yardage (assuming 44" fabric width)
+      // Front+back need 2 × frontH inches; gusset adds gussetW; straps each need strapCutL (can cut side-by-side on 44" if strapCutW*2<=44")
+      const outerBodyInches = 2 * frontH + (D > 0 ? gussetW + 2 : 0);
+      const outerStrapInches = strapCutW * 2 <= 44 ? strapCutL : strapCutL * 2;
+      const outerTotal44 = outerBodyInches + outerStrapInches;
+      const outerTotal60 = outerBodyInches + outerStrapInches; // same logic, body fits on 60" too
+
+      let yardageHTML = `<div class="result-card"><div style="font-weight:600;margin-bottom:0.75rem;">Yardage Estimate</div><div class="stat-grid">`;
+      yardageHTML += `<div class="stat-box"><div class="stat-label">Outer Fabric (44")</div><div class="stat-value">${yd(outerTotal44)}</div></div>`;
+      yardageHTML += `<div class="stat-box"><div class="stat-label">Outer Fabric (60")</div><div class="stat-value">${yd(outerTotal60)}</div></div>`;
+      if (inclLining) {
+        yardageHTML += `<div class="stat-box"><div class="stat-label">Lining (44")</div><div class="stat-value">${yd(2 * frontH + (D > 0 ? gussetW : 0))}</div></div>`;
+      }
+      yardageHTML += '</div></div>';
+      document.getElementById('yardage-block').innerHTML = yardageHTML;
+      document.getElementById('result-area').style.display = '';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stitch Multiple Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Find the nearest valid stitch counts for any pattern multiple. Supports multiples like 6, or 4+2. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/stitch-multiple-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-box { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:1.25rem; margin-top:1rem; }
+    .highlight-count { font-size:1.75rem; font-weight:700; color:var(--primary); }
+    .valid-grid { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.75rem; }
+    .valid-chip { padding:0.3rem 0.6rem; border-radius:6px; font-size:0.85rem; font-weight:600; border:1px solid var(--border); background:var(--bg-secondary); }
+    .valid-chip.match { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .valid-chip.near { border-color:var(--primary); color:var(--primary); }
+    .ref-table { width:100%; border-collapse:collapse; margin-top:0.75rem; font-size:0.875rem; }
+    .ref-table th { background:var(--bg-secondary); padding:0.5rem 0.75rem; text-align:left; font-weight:600; font-size:0.78rem; color:var(--text-muted); }
+    .ref-table td { padding:0.5rem 0.75rem; border-bottom:1px solid var(--border); }
+    .ref-table tr:last-child td { border-bottom:none; }
+    .explain-box { background:var(--bg-secondary); border-left:3px solid var(--primary); border-radius:0 8px 8px 0; padding:0.75rem 1rem; margin-top:1rem; font-size:0.875rem; color:var(--text-muted); line-height:1.6; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Stitch Multiple Calculator</h1>
+      <p class="page-subtitle">Check if your stitch count works for a pattern multiple. Find the nearest valid counts and see all options within a range.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="stitchCount">Your Stitch Count</label>
+            <input type="number" id="stitchCount" class="form-input" placeholder="e.g. 98" min="1" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="multipleBase">Pattern Multiple</label>
+            <input type="number" id="multipleBase" class="form-input" placeholder="e.g. 6" min="1" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="multipleExtra">Plus extra stitches (optional)</label>
+            <input type="number" id="multipleExtra" class="form-input" placeholder="e.g. 2 (for multiple of 6+2)" min="0" step="1" value="0">
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calculate()">Check My Stitch Count</button>
+        <div id="result"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">Understanding Pattern Multiples</h2>
+        <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.7;margin-bottom:0.75rem;">
+          When a pattern says <strong>"multiple of 6"</strong>, it means your cast-on must divide evenly by 6: 12, 18, 24, 30… are all valid.
+        </p>
+        <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.7;margin-bottom:0.75rem;">
+          When a pattern says <strong>"multiple of 6 + 2"</strong>, it means: a valid base multiple, plus 2 extra edge stitches. Valid counts: 8, 14, 20, 26, 32… (each is 6×n + 2).
+        </p>
+        <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.7;">
+          The "+2" often represents edge stitches or selvedge stitches that balance the pattern at the beginning and end of a row.
+        </p>
+        <h3 style="font-size:0.9rem;font-weight:700;margin:1rem 0 0.5rem;">Common Pattern Multiples</h3>
+        <div class="table-wrap">
+          <table class="ref-table">
+            <thead><tr><th>Multiple</th><th>Common Use</th><th>Example Valid Counts</th></tr></thead>
+            <tbody>
+              <tr><td>Multiple of 2</td><td>1x1 Ribbing, basic patterns</td><td>20, 22, 24, 26…</td></tr>
+              <tr><td>Multiple of 4</td><td>2x2 Ribbing, seed stitch variations</td><td>20, 24, 28, 32…</td></tr>
+              <tr><td>Multiple of 4+2</td><td>2x2 Ribbing with edge stitches</td><td>22, 26, 30, 34…</td></tr>
+              <tr><td>Multiple of 6</td><td>Lace, cable, textured patterns</td><td>18, 24, 30, 36…</td></tr>
+              <tr><td>Multiple of 6+2</td><td>Lace with selvedge</td><td>20, 26, 32, 38…</td></tr>
+              <tr><td>Multiple of 8</td><td>Cables, larger repeats</td><td>16, 24, 32, 40…</td></tr>
+              <tr><td>Multiple of 10</td><td>Large lace or textured repeats</td><td>20, 30, 40, 50…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3 style="font-size:0.9rem;font-weight:700;margin:1rem 0 0.5rem;">How to use</h3>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your current stitch count and the pattern's multiple requirement.</li>
+          <li>If the pattern says "multiple of 6 + 2", enter 6 in Multiple and 2 in Plus extra.</li>
+          <li>See the nearest valid counts above and below, and how many stitches to add or remove.</li>
+          <li>The range grid shows all valid counts within ±20 stitches of your count.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    function isValid(n, base, extra) {
+      if (n < 1) return false;
+      return (n - extra) % base === 0 && (n - extra) >= 0;
+    }
+
+    function calculate() {
+      const count = parseInt(document.getElementById('stitchCount').value);
+      const base = parseInt(document.getElementById('multipleBase').value);
+      const extra = parseInt(document.getElementById('multipleExtra').value) || 0;
+      const res = document.getElementById('result');
+
+      if (!count || !base || isNaN(count) || isNaN(base) || base < 1) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Please enter a stitch count and a pattern multiple.</p>'; return;
+      }
+
+      const multipleDesc = extra > 0 ? `multiple of ${base} + ${extra}` : `multiple of ${base}`;
+      const exact = isValid(count, base, extra);
+
+      // Find nearest below
+      let below = count;
+      while (below > 0 && !isValid(below, base, extra)) below--;
+      // Find nearest above
+      let above = count;
+      while (above < count + base * 2 && !isValid(above, base, extra)) above++;
+
+      // Generate range ±20
+      const rangeMin = Math.max(1, count - 20);
+      const rangeMax = count + 20;
+      const rangeValid = [];
+      for (let i = rangeMin; i <= rangeMax; i++) {
+        if (isValid(i, base, extra)) rangeValid.push(i);
+      }
+
+      let html = `<div class="result-box">`;
+
+      if (exact) {
+        html += `<p style="color:#38a169;font-weight:700;font-size:1rem;margin-bottom:0.75rem;">✓ ${count} is a valid ${multipleDesc}! Your stitch count works perfectly.</p>`;
+      } else {
+        html += `<p style="font-weight:600;color:var(--primary);margin-bottom:0.75rem;">${count} is <strong>not</strong> a ${multipleDesc}.</p>`;
+        html += `<div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:0.75rem;">`;
+        if (below > 0) {
+          const diff = count - below;
+          html += `<div style="flex:1;min-width:140px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center;">
+            <div style="font-size:1.5rem;font-weight:700;color:var(--primary);">${below}</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);">Nearest below</div>
+            <div style="font-size:0.82rem;margin-top:0.3rem;">Remove <strong>${diff}</strong> stitch${diff!==1?'es':''}</div>
+          </div>`;
+        }
+        if (above > count) {
+          const diff = above - count;
+          html += `<div style="flex:1;min-width:140px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center;">
+            <div style="font-size:1.5rem;font-weight:700;color:var(--primary);">${above}</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);">Nearest above</div>
+            <div style="font-size:0.82rem;margin-top:0.3rem;">Add <strong>${diff}</strong> stitch${diff!==1?'es':''}</div>
+          </div>`;
+        }
+        html += `</div>`;
+      }
+
+      html += `<div style="margin-top:0.75rem;"><div style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:0.5rem;">ALL VALID COUNTS WITHIN ±20 STITCHES</div>
+        <div class="valid-grid">`;
+      rangeValid.forEach(n => {
+        let cls = 'valid-chip';
+        if (n === count) cls += ' match';
+        else if (n === below || n === above) cls += ' near';
+        html += `<span class="${cls}">${n}</span>`;
+      });
+      if (rangeValid.length === 0) html += '<span style="font-size:0.875rem;color:var(--text-muted);">No valid counts in this range.</span>';
+      html += `</div></div>`;
+      html += `<p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.75rem;">Pattern: <strong>${multipleDesc}</strong> &nbsp;|&nbsp; Valid format: n × ${base}${extra > 0 ? ` + ${extra}` : ''}</p>`;
+      html += `</div>`;
+      res.innerHTML = html;
+    }
+  </script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{injectNav('stitch-multiple-calculator.html');injectFooter();});</script>
+</body>
+</html>

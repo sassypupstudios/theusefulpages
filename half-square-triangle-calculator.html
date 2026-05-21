@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Half-Square Triangle Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate cutting sizes for half-square triangles (HSTs) using the 2-at-a-time and 4-at-a-time methods. Enter your desired finished size and number of HSTs needed. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/half-square-triangle-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Half-Square Triangle Calculator</h1>
+      <p class="page-subtitle">Get precise cutting sizes for HSTs using the 2-at-a-time or 4-at-a-time method.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Desired Finished HST Size (inches)</label>
+            <input class="form-input" type="number" id="hst-size" min="0.5" step="0.25" placeholder="e.g. 3">
+          </div>
+          <div>
+            <label class="label">Number of HSTs Needed</label>
+            <input class="form-input" type="number" id="hst-count" min="1" step="1" placeholder="e.g. 48">
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcHST()">Calculate</button>
+          <button class="btn-outline" onclick="resetHST()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="hst-result" style="display:none;margin-top:1.5rem;">
+          <h3 style="margin-bottom:0.75rem;">Cutting Sizes</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="stat-box" style="text-align:left;padding:1rem;">
+              <div style="font-weight:600;margin-bottom:0.5rem;">2-at-a-Time Method</div>
+              <div class="stat-value" id="res-2at-cut"></div>
+              <div class="stat-label">Square cutting size</div>
+              <div style="margin-top:0.75rem;font-size:0.85rem;color:var(--color-muted);">Draw diagonal, sew ¼" each side, cut on line → 2 HSTs per pair of squares</div>
+              <div style="margin-top:0.75rem;">Squares to cut: <strong id="res-2at-squares"></strong> of each fabric</div>
+            </div>
+            <div class="stat-box" style="text-align:left;padding:1rem;">
+              <div style="font-weight:600;margin-bottom:0.5rem;">4-at-a-Time Method</div>
+              <div class="stat-value" id="res-4at-cut"></div>
+              <div class="stat-label">Square cutting size</div>
+              <div style="margin-top:0.75rem;font-size:0.85rem;color:var(--color-muted);">Draw both diagonals, sew ¼" each side of both, cut on both lines → 4 HSTs per pair of squares</div>
+              <div style="margin-top:0.75rem;">Squares to cut: <strong id="res-4at-squares"></strong> of each fabric</div>
+            </div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-unfinished"></div>
+              <div class="stat-label">Unfinished HST Size</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-finished"></div>
+              <div class="stat-label">Finished HST Size</div>
+            </div>
+          </div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+        </div>
+        <h3 style="margin-top:1.5rem;">Reference Table — Common Finished Sizes</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Finished Size</th>
+                <th>Unfinished Size</th>
+                <th>2-at-a-Time Cut Square</th>
+                <th>4-at-a-Time Cut Square</th>
+              </tr>
+            </thead>
+            <tbody id="hst-ref-table"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use the HST Calculator</h2>
+        <ul>
+          <li>Enter the <strong>finished size</strong> of your HST — the size it will be after sewing into your quilt block (not including seam allowance).</li>
+          <li>Enter how many HSTs you need total for your project.</li>
+          <li>Click <strong>Calculate</strong> to see cutting sizes for both methods and how many squares to cut.</li>
+        </ul>
+        <h2>2-at-a-Time Method</h2>
+        <ul>
+          <li>Layer two squares right sides together.</li>
+          <li>Draw a diagonal line from corner to corner.</li>
+          <li>Sew ¼" on each side of the drawn line.</li>
+          <li>Cut on the drawn line. Press open. Trim to unfinished size.</li>
+          <li>Each pair of squares yields <strong>2 HSTs</strong>.</li>
+        </ul>
+        <h2>4-at-a-Time Method</h2>
+        <ul>
+          <li>Layer two squares right sides together.</li>
+          <li>Draw both diagonal lines (X pattern).</li>
+          <li>Sew ¼" on each side of both drawn lines.</li>
+          <li>Cut on both diagonal lines. Press open. Trim to unfinished size.</li>
+          <li>Each pair of squares yields <strong>4 HSTs</strong> (but they will be slightly less accurate than the 2-at-a-time method).</li>
+        </ul>
+        <h2>Formula Reference</h2>
+        <ul>
+          <li><strong>2-at-a-time cutting size</strong> = Finished size + 0.875"</li>
+          <li><strong>4-at-a-time cutting size</strong> = Finished size + 1.25"</li>
+          <li><strong>Unfinished HST size</strong> = Finished size + 0.5"</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      injectNav('half-square-triangle-calculator.html');
+      injectFooter();
+      buildRefTable();
+    });
+
+    function fracStr(val){
+      // Convert decimal to nearest fraction for display
+      const whole = Math.floor(val);
+      const dec   = Math.round((val - whole) * 8) / 8;
+      const fracs = {0:'', 0.125:'⅛', 0.25:'¼', 0.375:'⅜', 0.5:'½', 0.625:'⅝', 0.75:'¾', 0.875:'⅞'};
+      const frac  = fracs[dec] || dec.toString();
+      return whole > 0 ? whole + (frac ? frac : '') + '"' : frac + '"';
+    }
+
+    function calcHST(){
+      const finished = parseFloat(document.getElementById('hst-size').value);
+      const count    = parseInt(document.getElementById('hst-count').value);
+
+      if(isNaN(finished)||finished<=0){alert('Please enter a valid finished HST size.');return;}
+
+      const cut2  = finished + 0.875;
+      const cut4  = finished + 1.25;
+      const unfinished = finished + 0.5;
+
+      document.getElementById('res-2at-cut').textContent  = fracStr(cut2);
+      document.getElementById('res-4at-cut').textContent  = fracStr(cut4);
+      document.getElementById('res-unfinished').textContent = fracStr(unfinished);
+      document.getElementById('res-finished').textContent   = fracStr(finished);
+
+      if(!isNaN(count)&&count>0){
+        document.getElementById('res-2at-squares').textContent = Math.ceil(count/2) + ' squares';
+        document.getElementById('res-4at-squares').textContent = Math.ceil(count/4) + ' squares';
+      } else {
+        document.getElementById('res-2at-squares').textContent = '—';
+        document.getElementById('res-4at-squares').textContent = '—';
+      }
+
+      document.getElementById('hst-result').style.display = 'block';
+    }
+
+    function resetHST(){
+      document.getElementById('hst-size').value  = '';
+      document.getElementById('hst-count').value = '';
+      document.getElementById('hst-result').style.display = 'none';
+    }
+
+    function buildRefTable(){
+      const tbody = document.getElementById('hst-ref-table');
+      const sizes = [1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8];
+      sizes.forEach(s => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${fracStr(s)}</td><td>${fracStr(s+0.5)}</td><td>${fracStr(s+0.875)}</td><td>${fracStr(s+1.25)}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+  </script>
+</body>
+</html>

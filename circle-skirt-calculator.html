@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Skirt Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate circle skirt measurements for full, three-quarter, half, or quarter circle skirts. Get inner radius, outer radius, cutting dimensions, and fabric yardage. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/circle-skirt-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Circle Skirt Calculator</h1>
+      <p class="page-subtitle">Calculate radii, cutting dimensions, and yardage for full, 3/4, half, and quarter circle skirts.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Waist Measurement (inches)</label>
+            <select class="form-select" id="waist-preset" onchange="applyWaistPreset()">
+              <option value="">— Quick preset —</option>
+              <option value="24">24"</option>
+              <option value="26">26"</option>
+              <option value="28">28"</option>
+              <option value="30">30"</option>
+              <option value="32">32"</option>
+              <option value="34">34"</option>
+              <option value="36">36"</option>
+              <option value="38">38"</option>
+              <option value="40">40"</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Or Enter Waist (inches)</label>
+            <input class="form-input" type="number" id="waist" min="10" step="0.25" placeholder="e.g. 30" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Skirt Length (inches)</label>
+            <input class="form-input" type="number" id="length" min="1" step="0.5" placeholder="e.g. 25" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Seam Allowance (waist)</label>
+            <select class="form-select" id="sa" onchange="calculate()">
+              <option value="0.5" selected>½"</option>
+              <option value="0.625">⅝"</option>
+              <option value="1">1"</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Hem Allowance</label>
+            <select class="form-select" id="hem" onchange="calculate()">
+              <option value="0.5">½" narrow hem</option>
+              <option value="1" selected>1" standard hem</option>
+              <option value="1.5">1½" hem</option>
+              <option value="2">2" deep hem</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="result-area" style="display:none;">
+          <div style="display:grid;gap:1rem;" id="circles-output"></div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Circle Skirt Calculator</h2>
+        <p>Enter your waist measurement (the finished waist size, not the fabric cut) and desired skirt length. The calculator shows results for all four circle variants simultaneously so you can compare.</p>
+        <h3>Circle Type Guide</h3>
+        <ul>
+          <li><strong>Full Circle (360°):</strong> Maximum fullness and flare. Uses the most fabric. Dramatic, twirly look.</li>
+          <li><strong>3/4 Circle (270°):</strong> Very full with slightly less fabric. Great middle ground.</li>
+          <li><strong>Half Circle (180°):</strong> Moderate flare, fabric-efficient. One cut from folded fabric.</li>
+          <li><strong>Quarter Circle (90°):</strong> Minimal flare, very fabric-efficient. Two panels sewn together.</li>
+        </ul>
+        <h3>The Formula</h3>
+        <p style="font-family:monospace;background:var(--mono-bg);color:var(--mono-text);padding:0.75rem;border-radius:8px;font-size:0.9rem;">
+          Inner Radius = Waist ÷ (2π × fraction)<br>
+          Outer Radius = Inner Radius + Skirt Length<br>
+          Cutting Square = 2 × Outer Radius (full circle)<br>
+          fraction: full=1, 3/4=0.75, half=0.5, quarter=0.25
+        </p>
+        <p><strong>Tip:</strong> Add your seam and hem allowances to the inner and outer radii respectively before cutting.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('circle-skirt-calculator.html'); injectFooter(); });
+
+    function applyWaistPreset() {
+      const v = document.getElementById('waist-preset').value;
+      if (v) { document.getElementById('waist').value = v; calculate(); }
+    }
+
+    function f(n) { return n.toFixed(2) + '"'; }
+    function yd(sq) { return (sq / 1296).toFixed(2) + ' yd²'; }
+
+    const CIRCLES = [
+      { name: 'Full Circle (360°)', fraction: 1, panels: 1, note: '1 piece; fold fabric in quarters to cut arc' },
+      { name: '3/4 Circle (270°)', fraction: 0.75, panels: 1, note: '1 piece; fold in half twice, cut single arc' },
+      { name: 'Half Circle (180°)', fraction: 0.5, panels: 2, note: '2 identical pieces; fold fabric in half to cut' },
+      { name: 'Quarter Circle (90°)', fraction: 0.25, panels: 4, note: '4 identical pieces sewn together' },
+    ];
+
+    function calculate() {
+      const waist = parseFloat(document.getElementById('waist').value);
+      const length = parseFloat(document.getElementById('length').value);
+      const sa = parseFloat(document.getElementById('sa').value);
+      const hem = parseFloat(document.getElementById('hem').value);
+
+      if (!waist || !length || waist <= 0 || length <= 0) {
+        document.getElementById('result-area').style.display = 'none'; return;
+      }
+
+      const output = document.getElementById('circles-output');
+      output.innerHTML = CIRCLES.map(c => {
+        const innerR = waist / (2 * Math.PI * c.fraction);
+        const outerR = innerR + length;
+        const innerCut = innerR - sa; // subtract SA from inner for waist seam
+        const outerCut = outerR + hem; // add hem to outer
+        const sqNeeded = 2 * outerCut; // cutting square dimension (for full/3/4); for smaller fractions, smaller square
+        // For yardage: assume 44" fabric, determine how pieces lay
+        let yardage;
+        if (c.fraction === 1) {
+          // One piece, needs square of 2×outerCut; may need 2 widths
+          yardage = sqNeeded <= 44 ? (sqNeeded / 36).toFixed(2) : ((sqNeeded * 2) / 36).toFixed(2);
+        } else {
+          yardage = ((outerCut * 2 * c.panels) / 36).toFixed(2);
+        }
+        // Simpler: total fabric area approach
+        const totalArea = Math.PI * (outerCut * outerCut - innerCut * innerCut) * c.fraction;
+        const yardage44 = ((2 * outerCut * Math.ceil(2 * outerCut / 44) * 44) / 1296).toFixed(2);
+
+        return `<div class="result-card">
+          <div style="font-weight:600;color:var(--primary);margin-bottom:0.75rem;">${c.name}</div>
+          <div class="stat-grid">
+            <div class="stat-box"><div class="stat-label">Inner Radius (waist arc)</div><div class="stat-value">${f(innerR)}</div></div>
+            <div class="stat-box"><div class="stat-label">Outer Radius (hem edge)</div><div class="stat-value">${f(outerR)}</div></div>
+            <div class="stat-box"><div class="stat-label">Inner Cut Radius (−SA)</div><div class="stat-value">${f(innerCut)}</div></div>
+            <div class="stat-box"><div class="stat-label">Outer Cut Radius (+hem)</div><div class="stat-value">${f(outerCut)}</div></div>
+            <div class="stat-box"><div class="stat-label">Cutting Square Needed</div><div class="stat-value">${f(sqNeeded)} × ${f(sqNeeded)}</div></div>
+            <div class="stat-box"><div class="stat-label">Number of Panels</div><div class="stat-value">${c.panels}</div></div>
+            <div class="stat-box"><div class="stat-label">Approx. Yardage (44" fabric)</div><div class="stat-value">~${yardage44} yd</div></div>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin:0.5rem 0 0;">${c.note}</p>
+        </div>`;
+      }).join('');
+
+      document.getElementById('result-area').style.display = '';
+    }
+  </script>
+</body>
+</html>

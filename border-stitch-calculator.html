@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Border Stitch Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate how many stitches to pick up for a border on a finished knitting or crochet piece. Handles rectangular and square pieces with corner options. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/border-stitch-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-box { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:1.25rem; margin-top:1rem; }
+    .side-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0.75rem; margin-bottom:0.75rem; }
+    .side-box { background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:0.75rem; text-align:center; }
+    .side-num { font-size:1.5rem; font-weight:700; color:var(--primary); }
+    .side-lbl { font-size:0.78rem; color:var(--text-muted); }
+    .total-box { background:var(--primary); color:#fff; border-radius:8px; padding:1rem; text-align:center; }
+    .total-num { font-size:2rem; font-weight:700; }
+    .total-lbl { font-size:0.82rem; opacity:0.85; }
+    .unit-toggle { display:flex; gap:0.5rem; margin-bottom:0.5rem; }
+    .unit-btn { padding:0.3rem 0.8rem; border-radius:6px; border:1px solid var(--border); background:var(--bg-secondary); color:var(--text-muted); cursor:pointer; font-size:0.85rem; font-weight:500; transition:all 0.15s; }
+    .unit-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Border Stitch Calculator</h1>
+      <p class="page-subtitle">Calculate how many stitches to pick up around the perimeter of a finished piece for adding a border.</p>
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label">Unit</label>
+          <div class="unit-toggle">
+            <button class="unit-btn active" id="btnIn" onclick="setUnit('in')">Inches</button>
+            <button class="unit-btn" id="btnCm" onclick="setUnit('cm')">Centimeters</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="pieceWidth">Piece Width (<span class="unit-label">in</span>)</label>
+            <input type="number" id="pieceWidth" class="form-input" placeholder="e.g. 24" min="0.1" step="0.1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pieceLength">Piece Length (<span class="unit-label">in</span>)</label>
+            <input type="number" id="pieceLength" class="form-input" placeholder="e.g. 36" min="0.1" step="0.1">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="stPerUnit">Stitches per <span class="unit-label">in</span> (horizontal gauge)</label>
+            <input type="number" id="stPerUnit" class="form-input" placeholder="e.g. 5" min="0.1" step="0.1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="rowPerUnit">Rows per <span class="unit-label">in</span> (vertical gauge)</label>
+            <input type="number" id="rowPerUnit" class="form-input" placeholder="e.g. 7" min="0.1" step="0.1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Craft Type (affects corners)</label>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;"><input type="radio" name="craftBorder" value="crochet" checked> Crochet (add 3 sts at each corner)</label>
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;"><input type="radio" name="craftBorder" value="knit"> Knitting (no extra corner stitches)</label>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calculate()">Calculate Border Stitches</button>
+        <div id="result"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter the <strong>finished dimensions</strong> of your piece (after blocking, if applicable).</li>
+          <li>Enter your <strong>horizontal gauge</strong> (stitches per inch) and <strong>vertical gauge</strong> (rows per inch).</li>
+          <li>Select your craft type — crochet borders typically add 3 stitches at each corner for a flat, turned corner.</li>
+          <li>The result shows stitches for each side and the total perimeter count.</li>
+        </ul>
+        <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">
+          <strong>Tip:</strong> For row edges (the long sides), you generally pick up about 2 sts for every 3 rows in knitting, or 1 st per row in crochet. Adjust the row gauge accordingly or use the "rows per inch" to calculate how many stitches you'll pick up along each side.
+        </p>
+        <p style="margin-top:0.5rem;font-size:0.875rem;color:var(--text-muted);">
+          For a <strong>knitted border</strong>, pick up the exact number calculated. For a <strong>crochet border</strong>, work sc evenly along edges and 3 sc in each corner stitch for a classic mitered corner.
+        </p>
+        <p class="disclaimer" style="margin-top:0.75rem;">Stitch pickup ratios can vary by yarn weight and pattern. These calculations are starting estimates — adjust as needed for your project.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let currentUnit = 'in';
+
+    function setUnit(u) {
+      currentUnit = u;
+      document.getElementById('btnIn').classList.toggle('active', u === 'in');
+      document.getElementById('btnCm').classList.toggle('active', u === 'cm');
+      document.querySelectorAll('.unit-label').forEach(el => el.textContent = u);
+    }
+
+    function calculate() {
+      const w = parseFloat(document.getElementById('pieceWidth').value);
+      const l = parseFloat(document.getElementById('pieceLength').value);
+      const stG = parseFloat(document.getElementById('stPerUnit').value);
+      const rowG = parseFloat(document.getElementById('rowPerUnit').value);
+      const craft = document.querySelector('input[name="craftBorder"]:checked').value;
+      const res = document.getElementById('result');
+
+      if (!w || !l || !stG || !rowG || isNaN(w) || isNaN(l) || isNaN(stG) || isNaN(rowG)) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Please fill in all fields.</p>'; return;
+      }
+
+      const topSt = Math.round(w * stG);
+      const bottomSt = Math.round(w * stG);
+      const leftSt = Math.round(l * rowG);
+      const rightSt = Math.round(l * rowG);
+
+      const isSquare = (w === l);
+      const cornerExtra = craft === 'crochet' ? 3 * 4 : 0; // 3 extra sts × 4 corners
+      const perimeterBase = topSt + bottomSt + leftSt + rightSt;
+      const total = perimeterBase + cornerExtra;
+
+      const unit = currentUnit;
+
+      res.innerHTML = `
+        <div class="result-box">
+          <div style="margin-bottom:1rem;">
+            <div style="font-size:0.78rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.5rem;">Stitches Per Side</div>
+            <div class="side-grid">
+              <div class="side-box"><div class="side-num">${topSt}</div><div class="side-lbl">Top (${w} ${unit})</div></div>
+              <div class="side-box"><div class="side-num">${rightSt}</div><div class="side-lbl">Right side (${l} ${unit})</div></div>
+              <div class="side-box"><div class="side-num">${bottomSt}</div><div class="side-lbl">Bottom (${w} ${unit})</div></div>
+              <div class="side-box"><div class="side-num">${leftSt}</div><div class="side-lbl">Left side (${l} ${unit})</div></div>
+            </div>
+          </div>
+          ${craft === 'crochet' ? `<p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:0.75rem;">+ 3 corner stitches × 4 corners = <strong>12 extra stitches</strong></p>` : ''}
+          <div class="total-box">
+            <div class="total-num">${total}</div>
+            <div class="total-lbl">Total Border Stitches${craft==='crochet'?' (including corners)':''}</div>
+          </div>
+          <p style="font-size:0.875rem;color:var(--text-muted);margin-top:0.75rem;">
+            ${isSquare ? '<strong>Square piece</strong> — all sides equal.' : '<strong>Rectangle</strong> — top/bottom match, sides match.'}
+            &nbsp;Perimeter: <strong>${(2*w + 2*l).toFixed(1)} ${unit}</strong>
+          </p>
+          ${craft === 'crochet' ? '<p style="font-size:0.875rem;color:var(--text-muted);margin-top:0.25rem;"><strong>Crochet tip:</strong> Work sc around the piece and work 3 sc into the corner stitch at each corner.</p>' : '<p style="font-size:0.875rem;color:var(--text-muted);margin-top:0.25rem;"><strong>Knitting tip:</strong> Pick up stitches as calculated, then work your chosen border stitch (garter, seed, etc.) in the round or flat.</p>'}
+        </div>`;
+    }
+  </script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{injectNav('border-stitch-calculator.html');injectFooter();});</script>
+</body>
+</html>

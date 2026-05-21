@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Craft Show Break-Even Calculator — Free Craft Business Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate how much you need to sell at a craft fair to break even and turn a profit. Enter booth fees, supplies, and travel costs. Free — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/craft-show-break-even-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Craft Show Break-Even Calculator</h1>
+      <p class="page-subtitle">Find out how much you need to sell at a craft fair to cover your costs and reach your profit goal.</p>
+
+      <div class="tool-card">
+        <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 1rem;">Show costs</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Booth / table fee ($)</label>
+            <input type="number" id="be-booth" class="form-input" placeholder="e.g. 75" min="0" step="0.01">
+          </div>
+          <div>
+            <label class="label">Travel / gas ($)</label>
+            <input type="number" id="be-travel" class="form-input" placeholder="e.g. 20" min="0" step="0.01" value="0">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Display / setup supplies ($)</label>
+            <input type="number" id="be-display" class="form-input" placeholder="e.g. 15" min="0" step="0.01" value="0">
+          </div>
+          <div>
+            <label class="label">Food / parking / other ($)</label>
+            <input type="number" id="be-misc" class="form-input" placeholder="e.g. 10" min="0" step="0.01" value="0">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Your time at show (hours)</label>
+            <input type="number" id="be-time" class="form-input" placeholder="e.g. 8" min="0" step="0.5" value="0">
+          </div>
+          <div>
+            <label class="label">Your hourly rate ($/hr)</label>
+            <input type="number" id="be-rate" class="form-input" placeholder="e.g. 20" min="0" step="0.01" value="0">
+          </div>
+        </div>
+
+        <h3 style="font-size:0.95rem;font-weight:700;margin:1rem 0 0.75rem;">Your inventory</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Avg selling price per item ($)</label>
+            <input type="number" id="be-price" class="form-input" placeholder="e.g. 25" min="0.01" step="0.01">
+          </div>
+          <div>
+            <label class="label">Avg material cost per item ($)</label>
+            <input type="number" id="be-mat" class="form-input" placeholder="e.g. 8" min="0" step="0.01" value="0">
+          </div>
+          <div>
+            <label class="label">Profit goal ($, optional)</label>
+            <input type="number" id="be-goal" class="form-input" placeholder="e.g. 200" min="0" step="0.01" value="0">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcBreakEven()">Calculate</button>
+
+        <div id="be-result" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">How to use this calculator</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Enter every cost associated with attending a craft fair — booth fee, travel, display supplies, food, parking, and your own time. Then enter your average item selling price and material cost. The calculator tells you how many items you need to sell to cover all costs, and how many more to reach your profit goal.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Include your time (setup, the show, teardown) at a realistic hourly rate — that's a real cost</li>
+          <li>If a show's break-even feels too high, the booth fee may not be worth it for your price point</li>
+          <li>A general rule of thumb: aim for revenue of 5–10× the booth fee to make a show worthwhile</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">This calculator uses average values. Actual results depend on foot traffic, your display, product mix, and market demand.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcBreakEven() {
+    const booth = parseFloat(document.getElementById('be-booth').value) || 0;
+    const travel = parseFloat(document.getElementById('be-travel').value) || 0;
+    const display = parseFloat(document.getElementById('be-display').value) || 0;
+    const misc = parseFloat(document.getElementById('be-misc').value) || 0;
+    const time = parseFloat(document.getElementById('be-time').value) || 0;
+    const rate = parseFloat(document.getElementById('be-rate').value) || 0;
+    const price = parseFloat(document.getElementById('be-price').value);
+    const mat = parseFloat(document.getElementById('be-mat').value) || 0;
+    const goal = parseFloat(document.getElementById('be-goal').value) || 0;
+
+    if (!booth && !travel && !display) { alert('Enter at least your booth fee.'); return; }
+    if (!price) { alert('Enter your average selling price per item.'); return; }
+
+    const laborCost = time * rate;
+    const totalFixed = booth + travel + display + misc + laborCost;
+    const profitPerItem = price - mat;
+    if (profitPerItem <= 0) { alert('Average material cost must be less than selling price.'); return; }
+    const breakEvenItems = Math.ceil(totalFixed / profitPerItem);
+    const breakEvenRevenue = breakEvenItems * price;
+    const goalItems = goal > 0 ? Math.ceil((totalFixed + goal) / profitPerItem) : null;
+    const goalRevenue = goalItems ? goalItems * price : null;
+
+    const el = document.getElementById('be-result');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Total Show Costs</div><div class="stat-value">$${totalFixed.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Profit per Item Sold</div><div class="stat-value">$${profitPerItem.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Break-Even Items</div><div class="stat-value">${breakEvenItems}</div></div>
+      <div class="stat-box"><div class="stat-label">Break-Even Revenue</div><div class="stat-value">$${breakEvenRevenue.toFixed(2)}</div></div>
+      ${goalItems ? `<div class="stat-box"><div class="stat-label">Items for $${goal} Profit</div><div class="stat-value">${goalItems}</div></div>
+      <div class="stat-box"><div class="stat-label">Revenue for Goal</div><div class="stat-value">$${goalRevenue.toFixed(2)}</div></div>` : ''}
+    </div>
+    <div style="margin-top:1rem;padding:0.75rem;background:var(--bg-secondary);border-radius:6px;font-size:0.88rem;color:var(--text-muted);">
+      Cost breakdown: Booth $${booth.toFixed(2)} · Travel $${travel.toFixed(2)} · Display $${display.toFixed(2)} · Other $${misc.toFixed(2)} · Your time $${laborCost.toFixed(2)}
+      <br>Rule of thumb: target revenue ≥ $${(booth*5).toFixed(0)} (5× booth fee) to $${(booth*10).toFixed(0)} (10× booth fee).
+    </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('craft-show-break-even-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

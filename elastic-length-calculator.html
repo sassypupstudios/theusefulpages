@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elastic Length Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate how much elastic to cut for waistbands, cuffs, swimwear, and underwear. Select elastic type and fit preference to get the right elastic length. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/elastic-length-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Elastic Length Calculator</h1>
+      <p class="page-subtitle">Calculate exactly how much elastic to cut for waistbands, cuffs, lingerie, and swimwear.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Body Measurement (inches)</label>
+            <input class="form-input" type="number" id="body-meas" min="10" step="0.25" placeholder="e.g. 30">
+            <div style="font-size:0.8rem;color:var(--color-muted);margin-top:0.25rem;">Measure the body part where elastic will sit</div>
+          </div>
+          <div>
+            <label class="label">Elastic Type</label>
+            <select class="form-select" id="elastic-type" onchange="updateRecommendation()">
+              <option value="non-roll">Non-roll / Woven</option>
+              <option value="braided">Braided</option>
+              <option value="knit" selected>Knit / Plush-back</option>
+              <option value="lingerie">Lingerie / Swimwear</option>
+              <option value="fold-over">Fold-over (FOE)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Application</label>
+            <select class="form-select" id="application" onchange="updateRecommendation()">
+              <option value="waistband">Waistband (skirt/pants)</option>
+              <option value="cuff">Sleeve / Leg Cuff</option>
+              <option value="underwear">Underwear / Briefs</option>
+              <option value="swimwear">Swimwear</option>
+              <option value="neckline">Neckline</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Fit Preference</label>
+            <select class="form-select" id="fit-pref">
+              <option value="snug">Snug (athletic / swimwear)</option>
+              <option value="standard" selected>Standard (everyday wear)</option>
+              <option value="relaxed">Relaxed (loungewear / pajamas)</option>
+            </select>
+          </div>
+        </div>
+        <div id="rec-note" style="margin-top:0.75rem;padding:0.6rem 0.9rem;background:var(--color-surface-2,rgba(0,0,0,0.04));border-radius:0.4rem;font-size:0.88rem;"></div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcElastic()">Calculate Elastic Length</button>
+          <button class="btn-outline" onclick="resetElastic()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+
+        <div id="elastic-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-elastic-in"></div>
+              <div class="stat-label">Elastic Length (inches)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-reduction"></div>
+              <div class="stat-label">Reduction from body measurement</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-percent"></div>
+              <div class="stat-label">Elastic ratio applied</div>
+            </div>
+          </div>
+          <div id="elastic-tip" style="margin-top:0.75rem;font-size:0.9rem;color:var(--color-muted);"></div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching. Test elastic stretch and recovery before cutting your final length.</p>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">Elastic Reduction Reference by Type &amp; Application</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Elastic Type</th><th>Application</th><th>Snug Ratio</th><th>Standard Ratio</th><th>Relaxed Ratio</th></tr></thead>
+            <tbody>
+              <tr><td>Non-roll / Woven</td><td>Waistband</td><td>75%</td><td>85%</td><td>90%</td></tr>
+              <tr><td>Braided</td><td>Waistband</td><td>72%</td><td>83%</td><td>88%</td></tr>
+              <tr><td>Knit / Plush-back</td><td>Waistband</td><td>75%</td><td>85%</td><td>90%</td></tr>
+              <tr><td>Lingerie / Swimwear</td><td>Swimwear</td><td>65%</td><td>75%</td><td>80%</td></tr>
+              <tr><td>Lingerie / Swimwear</td><td>Underwear</td><td>70%</td><td>78%</td><td>85%</td></tr>
+              <tr><td>Fold-over (FOE)</td><td>Neckline</td><td>80%</td><td>88%</td><td>93%</td></tr>
+              <tr><td>Any</td><td>Sleeve / Leg Cuff</td><td>75%</td><td>85%</td><td>90%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use the Elastic Length Calculator</h2>
+        <ul>
+          <li>Measure the body part where the elastic will sit (e.g., your natural waist for a waistband).</li>
+          <li>Select the type of elastic you are using — different elastic types have different stretch and recovery properties.</li>
+          <li>Select the application (waistband, cuff, underwear, etc.) and your desired fit.</li>
+          <li>Click <strong>Calculate</strong> to get your cut elastic length.</li>
+        </ul>
+        <h2>Elastic Types</h2>
+        <ul>
+          <li><strong>Non-roll / Woven:</strong> Firm, holds shape well. Good for waistbands. Does not narrow when stretched.</li>
+          <li><strong>Braided:</strong> Narrows when stretched, loses strength when pierced by needles. Best used in a casing. Most economical type.</li>
+          <li><strong>Knit / Plush-back:</strong> Soft and comfortable against skin. Good for activewear and waistbands worn against the body.</li>
+          <li><strong>Lingerie / Swimwear:</strong> Narrow, strong, and often has a decorative edge. Designed for high-stretch, chlorine-resistant use.</li>
+          <li><strong>Fold-over (FOE):</strong> Used to finish edges while adding stretch. Common on necklines and armholes.</li>
+        </ul>
+        <h2>Tips</h2>
+        <ul>
+          <li>Always cut elastic about 2–3" longer than calculated, then try on and trim to fit. It is easier to remove length than add it back.</li>
+          <li>When joining elastic ends, overlap 1" and sew a box or zigzag stitch to secure. Factor this into your cut length.</li>
+          <li>Elastic loses stretch and recovery over time — use quality elastic rated for the application (swimwear elastic for swimwear, etc.).</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('elastic-length-calculator.html');injectFooter();updateRecommendation();});
+
+    // Ratios: [snug, standard, relaxed]
+    const ratios = {
+      'non-roll': {waistband:[0.75,0.85,0.90], cuff:[0.75,0.85,0.90], underwear:[0.75,0.85,0.90], swimwear:[0.72,0.80,0.87], neckline:[0.80,0.88,0.93]},
+      'braided':  {waistband:[0.72,0.83,0.88], cuff:[0.72,0.83,0.88], underwear:[0.73,0.82,0.88], swimwear:[0.70,0.78,0.85], neckline:[0.78,0.86,0.92]},
+      'knit':     {waistband:[0.75,0.85,0.90], cuff:[0.75,0.85,0.90], underwear:[0.75,0.84,0.90], swimwear:[0.70,0.80,0.86], neckline:[0.80,0.88,0.93]},
+      'lingerie': {waistband:[0.70,0.80,0.87], cuff:[0.72,0.82,0.88], underwear:[0.70,0.78,0.85], swimwear:[0.65,0.75,0.80], neckline:[0.75,0.85,0.90]},
+      'fold-over':{waistband:[0.78,0.87,0.93], cuff:[0.78,0.87,0.93], underwear:[0.78,0.85,0.91], swimwear:[0.72,0.80,0.87], neckline:[0.80,0.88,0.93]},
+    };
+
+    function getRatio(){
+      const type = document.getElementById('elastic-type').value;
+      const app  = document.getElementById('application').value;
+      const fit  = document.getElementById('fit-pref').value;
+      const r    = ratios[type][app];
+      return fit === 'snug' ? r[0] : fit === 'standard' ? r[1] : r[2];
+    }
+
+    function updateRecommendation(){
+      const type = document.getElementById('elastic-type').value;
+      const app  = document.getElementById('application').value;
+      const tips = {
+        'braided': 'Braided elastic narrows when stretched — use only in a casing, not sewn directly to fabric.',
+        'lingerie': 'Lingerie/swimwear elastic is designed for high stretch. Ensure your elastic is rated for the application.',
+        'fold-over': 'Fold-over elastic is used to finish and bind edges. Fold in half lengthwise when applying.',
+      };
+      const appTips = {
+        'swimwear': 'Swimwear elastic must be chlorine and saltwater resistant. Use elastic specifically labeled for swimwear.',
+      };
+      let msg = tips[type] || '';
+      if(appTips[app]) msg = (msg ? msg + ' ' : '') + appTips[app];
+      document.getElementById('rec-note').textContent = msg || 'Select elastic type and application above for usage tips.';
+    }
+
+    function calcElastic(){
+      const body = parseFloat(document.getElementById('body-meas').value);
+      if(isNaN(body)||body<=0){alert('Please enter a valid body measurement.');return;}
+
+      const ratio = getRatio();
+      const elasticLen = body * ratio;
+      const reduction  = body - elasticLen;
+      const pct        = Math.round(ratio * 100);
+
+      document.getElementById('res-elastic-in').textContent = elasticLen.toFixed(2) + '"';
+      document.getElementById('res-reduction').textContent  = '−' + reduction.toFixed(2) + '"';
+      document.getElementById('res-percent').textContent    = pct + '% of body measurement';
+      document.getElementById('elastic-tip').textContent    = 'Cut elastic: ' + elasticLen.toFixed(2) + '" (' + body + '" × ' + ratio + '). Add 1" overlap for joining seam: total to purchase = ' + (elasticLen + 1).toFixed(2) + '"';
+      document.getElementById('elastic-result').style.display = 'block';
+    }
+
+    function resetElastic(){
+      document.getElementById('body-meas').value = '';
+      document.getElementById('elastic-result').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

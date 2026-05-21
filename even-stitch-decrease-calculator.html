@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Even Stitch Decrease Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate how to decrease stitches evenly across a knitting or crochet row. Get written instructions with exact spacing. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/even-stitch-decrease-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-box { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:1.25rem; margin-top:1rem; }
+    .result-instruction { font-size:1rem; font-weight:600; color:var(--primary); line-height:1.6; margin-bottom:0.75rem; }
+    .result-detail { font-size:0.875rem; color:var(--text-muted); line-height:1.7; }
+    .stat-row { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .stat-item { background:var(--bg-secondary); border:1px solid var(--border); border-radius:8px; padding:0.75rem 1rem; flex:1; min-width:120px; text-align:center; }
+    .stat-num { font-size:1.5rem; font-weight:700; color:var(--primary); }
+    .stat-lbl { font-size:0.75rem; color:var(--text-muted); font-weight:500; margin-top:0.2rem; }
+    .decrease-type { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .decrease-type label { display:flex; align-items:center; gap:0.4rem; font-size:0.9rem; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Even Stitch Decrease Calculator</h1>
+      <p class="page-subtitle">Find out exactly how to space your decreases evenly across a knitting or crochet row.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="currentCount">Current Stitch Count</label>
+            <input type="number" id="currentCount" class="form-input" placeholder="e.g. 120" min="2" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="desiredCount">Desired Stitch Count</label>
+            <input type="number" id="desiredCount" class="form-input" placeholder="e.g. 96" min="1" step="1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Craft Type</label>
+          <div class="decrease-type">
+            <label><input type="radio" name="craftType" value="knit" checked> Knitting (k2tog)</label>
+            <label><input type="radio" name="craftType" value="crochet"> Crochet (sc2tog / dec)</label>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calculate()">Calculate Decreases</button>
+        <div id="result"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your <strong>current stitch count</strong> — the number you have on your needles now.</li>
+          <li>Enter your <strong>desired stitch count</strong> — it must be lower than the current count.</li>
+          <li>Select your craft type to get the correct decrease abbreviation.</li>
+          <li>Click <strong>Calculate Decreases</strong> for step-by-step written instructions.</li>
+          <li>When decreases don't divide perfectly, the calculator creates two groups: some sections with slightly different spacing so the result is as even as possible.</li>
+        </ul>
+        <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">A <strong>k2tog</strong> (knit 2 together) reduces your stitch count by 1. A <strong>sc2tog</strong> (single crochet 2 together) does the same in crochet.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    function calculate() {
+      const current = parseInt(document.getElementById('currentCount').value);
+      const desired = parseInt(document.getElementById('desiredCount').value);
+      const craft = document.querySelector('input[name="craftType"]:checked').value;
+      const decAbbr = craft === 'knit' ? 'k2tog' : 'sc2tog';
+      const workAbbr = craft === 'knit' ? 'k' : 'sc';
+      const res = document.getElementById('result');
+
+      if (!current || !desired || isNaN(current) || isNaN(desired)) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Please enter both stitch counts.</p>'; return;
+      }
+      if (desired >= current) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Desired count must be less than current count.</p>'; return;
+      }
+      if (desired < 1) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Desired count must be at least 1.</p>'; return;
+      }
+
+      const numDec = current - desired;
+
+      // We distribute `current` stitches into `numDec` groups.
+      // Each group ends with a decrease (consumes 2 sts) except we knit some sts first.
+      // Total stitches consumed: numDec * 2 + plain stitches worked between = current
+      // Plain stitches between decreases = current - numDec*2 ... but each decrease eats 2 sts
+      // Better approach: treat each decrease as consuming 2 sts. We have `current` sts total,
+      // divide into numDec sections each ending in a decrease.
+      // Each section has floor(current/numDec) sts, of which the last 2 are the decrease.
+      // plain sts in section = floor(current/numDec) - 2
+      // remainder sections get one extra st.
+
+      const baseSection = Math.floor(current / numDec);
+      const remainder = current % numDec; // these sections get baseSection+1 sts
+      const normalSections = numDec - remainder;
+
+      const plainNormal = baseSection - 2;
+      const plainLonger = baseSection - 1; // +1 section with extra st
+
+      let instruction = '';
+      let detail = '';
+
+      if (remainder === 0) {
+        // Perfect division
+        if (plainNormal < 0) {
+          res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Too many decreases for this stitch count. The desired count is too low relative to current count.</p>'; return;
+        }
+        if (plainNormal === 0) {
+          instruction = `*${decAbbr}* repeat ${numDec} times.`;
+          detail = `Work all ${numDec} decreases consecutively with no plain stitches between them.`;
+        } else {
+          instruction = `*${workAbbr}${plainNormal}, ${decAbbr}* repeat ${numDec} times.`;
+          detail = `Work ${plainNormal} plain stitch${plainNormal!==1?'es':''}, then decrease. Repeat this ${numDec} times across the row.`;
+        }
+      } else {
+        // Mixed sections
+        if (plainNormal < 0) {
+          res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Too many decreases for this stitch count.</p>'; return;
+        }
+        // normalSections sections of (plainNormal plain + decrease)
+        // remainder sections of (plainLonger plain + decrease)
+        if (plainNormal === 0 && plainLonger === 0) {
+          instruction = `Work ${normalSections} consecutive decreases, then ${remainder} more consecutive decreases — ${numDec} total.`;
+          detail = 'All decreases worked consecutively.';
+        } else if (plainNormal === 0) {
+          instruction = `[${decAbbr}] × ${normalSections}, then [${workAbbr}${plainLonger}, ${decAbbr}] × ${remainder}.`;
+          detail = `First ${normalSections} decrease${normalSections!==1?'s':''}: work decrease immediately. Last ${remainder} decrease${remainder!==1?'s':''}: work ${plainLonger} plain stitch${plainLonger!==1?'es':''} before each decrease.`;
+        } else {
+          instruction = `*${workAbbr}${plainNormal}, ${decAbbr}* repeat ${normalSections} time${normalSections!==1?'s':''}, then *${workAbbr}${plainLonger}, ${decAbbr}* repeat ${remainder} time${remainder!==1?'s':''}.`;
+          detail = `Two groups: ${normalSections} section${normalSections!==1?'s':''} with ${plainNormal} plain stitch${plainNormal!==1?'es':''} before the decrease, and ${remainder} section${remainder!==1?'s':''} with ${plainLonger} plain stitch${plainLonger!==1?'es':''} before the decrease.`;
+        }
+      }
+
+      res.innerHTML = `
+        <div class="result-box">
+          <div class="stat-row">
+            <div class="stat-item"><div class="stat-num">${current}</div><div class="stat-lbl">Starting Stitches</div></div>
+            <div class="stat-item"><div class="stat-num">${numDec}</div><div class="stat-lbl">Decreases to Work</div></div>
+            <div class="stat-item"><div class="stat-num">${desired}</div><div class="stat-lbl">Ending Stitches</div></div>
+          </div>
+          <div class="result-instruction">"${instruction}"</div>
+          <div class="result-detail">${detail}</div>
+          ${remainder > 0 ? '<p class="result-detail" style="margin-top:0.5rem;"><strong>Note:</strong> Because the stitches don\'t divide perfectly, two slightly different spacing intervals are used to keep decreases as even as possible.</p>' : ''}
+        </div>`;
+    }
+  </script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{injectNav('even-stitch-decrease-calculator.html');injectFooter();});</script>
+</body>
+</html>

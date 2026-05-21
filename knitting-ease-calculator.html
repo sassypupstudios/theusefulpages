@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Ease Calculator — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate finished garment measurements from body measurements and ease preference. Free knitting ease calculator — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-ease-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Ease Calculator</h1>
+      <p class="page-subtitle">Find the right finished garment measurement for your body size and preferred fit. Includes ease guide by garment type.</p>
+
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Body measurement (bust / chest)</label>
+            <input type="number" id="body-meas" class="form-input" placeholder="e.g. 38" min="10" max="80" step="0.5">
+          </div>
+          <div>
+            <label class="label">Unit</label>
+            <select id="unit" class="form-select">
+              <option value="in">Inches</option>
+              <option value="cm">Centimeters</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <label class="label">Ease preference</label>
+          <select id="ease-type" class="form-select" style="max-width:320px;">
+            <option value="-2">Negative ease (very fitted, -2 to -1")</option>
+            <option value="-1">Negative ease (fitted, -1 to 0")</option>
+            <option value="0" selected>Zero ease (exact, 0")</option>
+            <option value="1">Positive ease (relaxed, +1 to +2")</option>
+            <option value="2">Positive ease (comfortable, +2 to +4")</option>
+            <option value="4">Positive ease (oversized, +4 to +6")</option>
+            <option value="custom">Custom ease amount</option>
+          </select>
+        </div>
+
+        <div id="custom-ease-row" style="display:none;margin-bottom:1rem;">
+          <label class="label">Custom ease amount (positive = larger, negative = smaller)</label>
+          <input type="number" id="custom-ease" class="form-input" placeholder="e.g. 3 or -1" step="0.5" style="max-width:200px;">
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <label class="label">Garment type (for recommendation)</label>
+          <select id="garment-type" class="form-select" style="max-width:320px;">
+            <option value="sweater">Sweater / pullover</option>
+            <option value="cardigan">Cardigan</option>
+            <option value="tshirt">T-shirt style</option>
+            <option value="hat">Hat</option>
+            <option value="sock">Sock</option>
+            <option value="mittens">Mittens / gloves</option>
+          </select>
+        </div>
+
+        <button class="btn-primary" onclick="calcEase()">Calculate</button>
+
+        <div id="ease-result" class="result-card" style="display:none;margin-top:1.25rem;">
+          <div class="stat-grid">
+            <div class="stat-box"><div class="stat-label">Body Measurement</div><div class="stat-value" id="r-body"></div></div>
+            <div class="stat-box"><div class="stat-label">Ease Applied</div><div class="stat-value" id="r-ease"></div></div>
+            <div class="stat-box"><div class="stat-label">Finished Garment</div><div class="stat-value" id="r-finished"></div></div>
+          </div>
+          <div id="r-advice" style="margin-top:1rem;padding:0.75rem;background:var(--bg-secondary);border-radius:6px;font-size:0.9rem;color:var(--text-muted);"></div>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 0.75rem;">Ease reference by garment type</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Garment</th><th>Typical Ease</th><th>Fit Description</th></tr></thead>
+              <tbody>
+                <tr><td>Sock</td><td>-10% to -15%</td><td>Negative ease — must stretch to grip the foot</td></tr>
+                <tr><td>Fitted T-shirt</td><td>0 to +1"</td><td>Zero to very slight positive</td></tr>
+                <tr><td>Classic sweater</td><td>+1" to +3"</td><td>Standard positive ease — comfortable fit</td></tr>
+                <tr><td>Cardigan</td><td>+2" to +4"</td><td>Slightly more ease than a pullover</td></tr>
+                <tr><td>Oversized sweater</td><td>+4" to +8"</td><td>Intentionally roomy</td></tr>
+                <tr><td>Hat</td><td>-1" to -2"</td><td>Negative ease — hat must stretch to stay on</td></tr>
+                <tr><td>Mittens</td><td>0 to +0.5"</td><td>Close-fitting with slight ease for movement</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About ease in knitting</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Ease is the difference between your actual body measurement and the finished garment measurement. Positive ease means the garment is larger than your body — it hangs loosely. Negative ease means the garment is smaller — it stretches to fit and clings to the body.</p>
+        <h3 style="font-size:0.95rem;margin:1rem 0 0.5rem;">Common uses</h3>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Find the finished measurement to target when choosing a pattern size</li>
+          <li>Compare ease across different fit styles before casting on</li>
+          <li>Understand why a pattern might be knit in a size larger than your measurements</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Always check a pattern's schematic for the finished measurements and compare to your body measurements plus desired ease before choosing your size.</p>
+      </div>
+    </main>
+
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.getElementById('ease-type').addEventListener('change', function() {
+    document.getElementById('custom-ease-row').style.display = this.value === 'custom' ? '' : 'none';
+  });
+
+  const GARMENT_ADVICE = {
+    sweater: { rec: '+2" to +3"', note: 'Most classic sweater patterns include 2–3" of positive ease. Choose a pattern size with a finished bust 2–3" larger than your actual measurement.' },
+    cardigan: { rec: '+2" to +4"', note: 'Cardigans typically have a bit more ease than pullovers. A finished measurement 2–4" larger than your bust is common.' },
+    tshirt: { rec: '0 to +1"', note: 'A T-shirt style should fit close to the body. Zero to 1" of positive ease works well.' },
+    hat: { rec: '-1" to -2"', note: 'Hats need negative ease to stay on the head. Knit a hat with a circumference 1–2" smaller than your head circumference.' },
+    sock: { rec: '-10% to -15% of foot circumference', note: 'Sock fabric must stretch. Cast on for a circumference 10–15% smaller than your actual foot circumference.' },
+    mittens: { rec: '0 to +0.5"', note: 'Mittens should fit snugly with just a little ease for comfortable movement.' },
+  };
+
+  function calcEase() {
+    const body = parseFloat(document.getElementById('body-meas').value);
+    const unit = document.getElementById('unit').value;
+    const easeType = document.getElementById('ease-type').value;
+    const garment = document.getElementById('garment-type').value;
+
+    if (isNaN(body) || body <= 0) { alert('Please enter your body measurement.'); return; }
+
+    const easeMap = { '-2': -1.5, '-1': -0.5, '0': 0, '1': 1.5, '2': 3, '4': 5 };
+    let easeVal = easeType === 'custom' ? parseFloat(document.getElementById('custom-ease').value) : easeMap[easeType];
+    if (isNaN(easeVal)) { alert('Please enter a custom ease amount.'); return; }
+
+    const u = unit === 'in' ? '"' : ' cm';
+    const finished = body + easeVal;
+    const easeSign = easeVal >= 0 ? '+' : '';
+    const adv = GARMENT_ADVICE[garment];
+
+    document.getElementById('r-body').textContent = body.toFixed(1) + u;
+    document.getElementById('r-ease').textContent = easeSign + easeVal.toFixed(1) + u;
+    document.getElementById('r-finished').textContent = finished.toFixed(1) + u;
+    document.getElementById('r-advice').innerHTML = `<strong>Recommended ease for ${garment}:</strong> ${adv.rec}<br>${adv.note}`;
+    document.getElementById('ease-result').style.display = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('knitting-ease-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

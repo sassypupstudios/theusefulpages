@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Difficulty Estimator — Free Pattern Tool | The Useful Pages</title>
+  <meta name="description" content="Answer 15 quick yes/no questions about a crochet or knitting pattern and get an estimated difficulty level from Beginner to Expert. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-difficulty-estimator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .question-row {
+      display:flex; align-items:flex-start; gap:0.85rem;
+      padding:0.75rem 0.85rem; border-radius:10px;
+      border:1.5px solid var(--border); background:var(--bg-secondary);
+      margin-bottom:0.5rem; cursor:pointer; transition:border-color 0.15s, background 0.15s;
+    }
+    .question-row.answered-yes { border-color:var(--primary); background:rgba(90,103,216,0.07); }
+    .q-toggle {
+      flex-shrink:0; width:44px; height:24px; border-radius:12px;
+      background:var(--border); border:none; cursor:pointer;
+      position:relative; transition:background 0.2s;
+      margin-top:2px;
+    }
+    .q-toggle::after {
+      content:''; position:absolute; left:3px; top:3px;
+      width:18px; height:18px; border-radius:50%; background:#fff;
+      transition:left 0.2s; box-shadow:0 1px 3px rgba(0,0,0,0.2);
+    }
+    .q-toggle.on { background:var(--primary); }
+    .q-toggle.on::after { left:23px; }
+    .q-label { font-size:0.9rem; color:var(--text); line-height:1.45; flex:1; }
+    .q-label strong { display:block; font-size:0.78rem; color:var(--text-muted); font-weight:400; margin-top:0.15rem; }
+    .q-num { font-size:0.78rem; font-weight:700; color:var(--text-muted); min-width:20px; margin-top:4px; }
+
+    .result-banner {
+      border-radius:14px; padding:1.25rem 1.5rem; text-align:center;
+      margin-bottom:1rem; border:2px solid;
+    }
+    .result-level { font-size:1.8rem; font-weight:800; margin-bottom:0.2rem; }
+    .result-score { font-size:0.9rem; font-weight:500; opacity:0.8; }
+
+    .level-beginner { border-color:#38a169; background:rgba(56,161,105,0.1); color:#276749; }
+    .level-easy { border-color:#4299e1; background:rgba(66,153,225,0.1); color:#2b6cb0; }
+    .level-intermediate { border-color:#ed8936; background:rgba(237,137,54,0.1); color:#c05621; }
+    .level-advanced { border-color:#e53e3e; background:rgba(229,62,62,0.1); color:#c53030; }
+    .level-expert { border-color:#9f7aea; background:rgba(159,122,234,0.1); color:#553c9a; }
+
+    [data-theme="dark"] .level-beginner { color:#9ae6b4; }
+    [data-theme="dark"] .level-easy { color:#90cdf4; }
+    [data-theme="dark"] .level-intermediate { color:#fbd38d; }
+    [data-theme="dark"] .level-advanced { color:#feb2b2; }
+    [data-theme="dark"] .level-expert { color:#d6bcfa; }
+
+    .factors-list { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.75rem; }
+    .factor-tag {
+      padding:0.25rem 0.65rem; border-radius:16px; font-size:0.8rem; font-weight:600;
+    }
+    .factor-yes { background:rgba(229,62,62,0.12); color:#c53030; border:1px solid rgba(229,62,62,0.25); }
+    .factor-no { background:var(--bg-secondary); color:var(--text-muted); border:1px solid var(--border); }
+    [data-theme="dark"] .factor-yes { color:#feb2b2; }
+
+    .score-progress { height:10px; background:var(--border); border-radius:5px; overflow:hidden; margin:0.5rem 0; }
+    .score-fill { height:100%; border-radius:5px; transition:width 0.4s; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Difficulty Estimator</h1>
+      <p class="page-subtitle">Answer 15 yes/no questions about your pattern. Get an estimated difficulty level: Beginner to Expert.</p>
+
+      <div class="tool-card">
+        <div id="resultArea" style="display:none;"></div>
+        <div id="questionsArea"></div>
+        <div style="display:flex;gap:0.5rem;margin-top:1rem;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="estimate()">Estimate Difficulty</button>
+          <button class="btn btn-outline" onclick="resetAll()">Reset</button>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">About Difficulty Levels</h2>
+        <div style="display:grid;gap:0.5rem;font-size:0.875rem;">
+          <div><strong style="color:#276749;">Beginner (0–3):</strong> Simple stitches, straight construction, no shaping. Perfect for first projects.</div>
+          <div><strong style="color:#2b6cb0;">Easy (4–6):</strong> Basic shaping or a few colors. Straightforward but requires some attention.</div>
+          <div><strong style="color:#c05621;">Intermediate (7–9):</strong> Multiple techniques, in-the-round construction, charts, or moderate shaping.</div>
+          <div><strong style="color:#c53030;">Advanced (10–12):</strong> Complex construction, special stitches, multiple simultaneous techniques.</div>
+          <div><strong style="color:#553c9a;">Expert (13–15):</strong> All the hard stuff at once — charts, multiple colors, intricate shaping, seaming, and more.</div>
+        </div>
+        <p style="margin-top:0.75rem;font-size:0.82rem;color:var(--text-muted);">This is an estimate based on common difficulty factors. Your personal experience level will also affect how challenging you find a pattern.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    const QUESTIONS = [
+      { q: 'Does the pattern require a gauge swatch?', detail: 'A gauge requirement indicates precision matters and results vary by crafter.', weight: 1 },
+      { q: 'Does it use more than one color?', detail: 'Color changes, stranding, or intarsia add complexity.', weight: 1 },
+      { q: 'Does it use any special or advanced stitches?', detail: 'e.g. popcorn, bobble, cable, brioche, tunisian, tapestry, etc.', weight: 1 },
+      { q: 'Is it worked in the round?', detail: 'Circular construction (magic ring, joined rounds) adds a new skill over flat rows.', weight: 1 },
+      { q: 'Does it include shaping (increases and/or decreases)?', detail: 'Shaping requires counting and placing stitches accurately.', weight: 1 },
+      { q: 'Does it have more than 10 steps or pattern rows?', detail: 'Longer patterns require sustained attention and tracking.', weight: 1 },
+      { q: 'Does it include a chart or diagram?', detail: 'Reading charts is an extra skill beyond written instructions.', weight: 1 },
+      { q: 'Are instructions written in compact abbreviations only?', detail: 'Patterns with little plain-English explanation require abbreviation fluency.', weight: 1 },
+      { q: 'Does it require seaming or joining pieces?', detail: 'Seaming separate pieces neatly is an intermediate-to-advanced technique.', weight: 1 },
+      { q: 'Does it come in more than 3 sizes?', detail: 'Following multi-size patterns requires careful number tracking.', weight: 1 },
+      { q: 'Does it require stitch markers throughout?', detail: 'Marker placement indicates complex structure or multiple sections.', weight: 1 },
+      { q: 'Does it use a non-standard construction method?', detail: 'e.g. top-down, side-to-side, modular, entrelac, mitered, etc.', weight: 1 },
+      { q: 'Does it include any lace work or openwork sections?', detail: 'Lace patterns with yarn-overs and decreases require close attention.', weight: 1 },
+      { q: 'Does it require any finishing techniques (blocking, embroidery, zippers, buttons)?', detail: 'Finishing adds steps that require additional tools and knowledge.', weight: 1 },
+      { q: 'Is the yarn weight very fine (lace, fingering, or sport)?', detail: 'Fine yarn is harder to work with, errors are less visible, and projects take longer.', weight: 1 },
+    ];
+
+    const LEVELS = [
+      { label: 'Beginner',     min: 0,  max: 3,  cls: 'level-beginner',     desc: 'Great for newer crafters. Simple stitches and straightforward construction.' },
+      { label: 'Easy',         min: 4,  max: 6,  cls: 'level-easy',         desc: 'A step up from beginner — some shaping or color work, but still approachable.' },
+      { label: 'Intermediate', min: 7,  max: 9,  cls: 'level-intermediate', desc: 'Requires solid skills. Multiple techniques used together.' },
+      { label: 'Advanced',     min: 10, max: 12, cls: 'level-advanced',     desc: 'Challenging pattern. Strong experience in multiple areas recommended.' },
+      { label: 'Expert',       min: 13, max: 15, cls: 'level-expert',       desc: 'Pulls out all the stops. Expect charts, shaping, seaming, and more simultaneously.' },
+    ];
+
+    let answers = new Array(QUESTIONS.length).fill(false);
+
+    function renderQuestions() {
+      document.getElementById('questionsArea').innerHTML = QUESTIONS.map((q, i) => `
+        <div class="question-row${answers[i]?' answered-yes':''}" onclick="toggle(${i})" id="qrow-${i}">
+          <span class="q-num">${i+1}.</span>
+          <div class="q-label">${q.q}<strong>${q.detail}</strong></div>
+          <button class="q-toggle${answers[i]?' on':''}" id="qtog-${i}" aria-label="Toggle" onclick="toggle(${i});event.stopPropagation()"></button>
+        </div>
+      `).join('');
+    }
+
+    function toggle(i) {
+      answers[i] = !answers[i];
+      const row = document.getElementById('qrow-'+i);
+      const tog = document.getElementById('qtog-'+i);
+      if (row) row.className = 'question-row' + (answers[i]?' answered-yes':'');
+      if (tog) tog.className = 'q-toggle' + (answers[i]?' on':'');
+      // auto-update result if already shown
+      if (document.getElementById('resultArea').style.display !== 'none') estimate();
+    }
+
+    function estimate() {
+      const score = answers.filter(Boolean).length;
+      const level = LEVELS.find(l => score >= l.min && score <= l.max) || LEVELS[LEVELS.length-1];
+      const pct = Math.round((score/15)*100);
+      const fillColor = ['#38a169','#4299e1','#ed8936','#e53e3e','#9f7aea'][LEVELS.indexOf(level)];
+
+      const yesFactors = QUESTIONS.filter((_,i) => answers[i]).map(q => q.q.replace(/\?$/,'').replace(/Does it /i,'').replace(/Is it /i,'').replace(/Is the /i,''));
+      const noFactors = QUESTIONS.filter((_,i) => !answers[i]).map(q => q.q.replace(/\?$/,'').replace(/Does it /i,'').replace(/Is it /i,'').replace(/Is the /i,''));
+
+      const ra = document.getElementById('resultArea');
+      ra.style.display = 'block';
+      ra.innerHTML = `
+        <div class="result-banner ${level.cls}">
+          <div class="result-level">${level.label}</div>
+          <div class="result-score">Score: ${score} / 15</div>
+          <div class="score-progress" style="max-width:240px;margin:0.5rem auto 0;"><div class="score-fill" style="width:${pct}%;background:${fillColor};"></div></div>
+          <div style="font-size:0.88rem;margin-top:0.5rem;">${level.desc}</div>
+        </div>
+        ${yesFactors.length > 0 ? `
+        <div style="margin-bottom:0.75rem;">
+          <div class="label" style="margin-bottom:0.4rem;">Contributing difficulty factors (${yesFactors.length})</div>
+          <div class="factors-list">${yesFactors.map(f=>`<span class="factor-tag factor-yes">+ ${f}</span>`).join('')}</div>
+        </div>` : ''}
+        ${noFactors.length > 0 ? `
+        <div style="margin-bottom:0.75rem;">
+          <div class="label" style="margin-bottom:0.4rem;">Not applicable (${noFactors.length})</div>
+          <div class="factors-list">${noFactors.map(f=>`<span class="factor-tag factor-no">${f}</span>`).join('')}</div>
+        </div>` : ''}
+      `;
+      ra.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    function resetAll() {
+      answers = new Array(QUESTIONS.length).fill(false);
+      document.getElementById('resultArea').style.display='none';
+      renderQuestions();
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      injectNav('pattern-difficulty-estimator.html');
+      injectFooter();
+      renderQuestions();
+    });
+  </script>
+</body>
+</html>

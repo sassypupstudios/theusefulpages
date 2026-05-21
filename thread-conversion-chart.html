@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thread Conversion Chart — Free Embroidery Tool | The Useful Pages</title>
+  <meta name="description" content="Convert DMC floss numbers to Anchor equivalents. Searchable chart of 80+ common thread conversions. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/thread-conversion-chart.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Thread Conversion Chart</h1>
+      <p class="page-subtitle">Convert between DMC and Anchor embroidery floss numbers. Search by either brand or color name.</p>
+      <div class="tool-card">
+        <p class="disclaimer">Conversions are approximate. No two brands are exact matches — always compare threads in person when possible.</p>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.75rem;align-items:end;margin-top:1rem;">
+          <div>
+            <label class="label">Search (DMC number, Anchor number, or color name)</label>
+            <input class="form-input" type="text" id="search" placeholder="e.g. 321 or red or 9046" oninput="renderTable()">
+          </div>
+          <div>
+            <label class="label">&nbsp;</label>
+            <button class="btn-outline" onclick="document.getElementById('search').value='';renderTable();">Clear</button>
+          </div>
+        </div>
+        <div class="table-wrap" style="margin-top:1rem;">
+          <table class="data-table">
+            <thead><tr><th>DMC</th><th>Anchor</th><th>Color Name</th><th>Notes</th></tr></thead>
+            <tbody id="conv-tbody"></tbody>
+          </table>
+        </div>
+        <div id="no-results" style="display:none;text-align:center;padding:2rem;color:var(--text-muted);">No matches found.</div>
+        <p id="count-label" style="margin-top:.5rem;font-size:.85rem;color:var(--text-muted);"></p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>About Thread Conversions</h2>
+        <p>DMC and Anchor are the two most popular brands of embroidery floss worldwide. Many patterns list DMC numbers; this chart helps you find the nearest Anchor equivalent when DMC is unavailable.</p>
+        <h3>Are Conversions Exact?</h3>
+        <p>No. DMC and Anchor use different dye lots and color mixing processes. The converted color is the closest visual match, but there will often be a slight difference in hue, saturation, or value. For critical color matching, always compare threads side by side in natural light.</p>
+        <h3>How to Search</h3>
+        <ul>
+          <li>Type a DMC number (e.g. "321") to find the Anchor equivalent.</li>
+          <li>Type an Anchor number (e.g. "9046") to find the DMC equivalent.</li>
+          <li>Type a color name (e.g. "red" or "navy") to browse by description.</li>
+        </ul>
+        <h3>What About Madeira?</h3>
+        <p>Madeira thread also has a popular conversion system. A future version of this chart may include Madeira numbers. For now, Madeira publishes a free conversion chart on their website.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('thread-conversion-chart.html');injectFooter();renderTable();});
+
+    // [DMC, Anchor, Name, Note]
+    const CONV = [
+      ['310','403','Black',''],
+      ['Ecru','387','Ecru',''],
+      ['White','1','White',''],
+      ['B5200','1','Snow White','Slight difference'],
+      ['321','9046','Christmas Red',''],
+      ['666','46','Christmas Red Bright',''],
+      ['304','1006','Christmas Red Med',''],
+      ['498','1005','Christmas Red Dk',''],
+      ['816','1005','Garnet','Approx'],
+      ['815','43','Garnet Med','Approx'],
+      ['550','101','Violet Vy Dk',''],
+      ['552','99','Violet Med',''],
+      ['553','98','Violet',''],
+      ['554','96','Violet Lt',''],
+      ['210','108','Lavender Med',''],
+      ['208','110','Lavender Vy Dk',''],
+      ['209','109','Lavender Dk',''],
+      ['211','342','Lavender Lt',''],
+      ['327','100','Violet Dk',''],
+      ['333','119','Blue Violet Vy Dk',''],
+      ['311','148','Navy Blue Med',''],
+      ['336','150','Navy Blue',''],
+      ['322','978','Navy Blue Lt',''],
+      ['312','979','Baby Blue Vy Dk',''],
+      ['334','977','Baby Blue Med',''],
+      ['932','920','Antique Blue Lt',''],
+      ['931','921','Antique Blue Med',''],
+      ['930','922','Antique Blue Dk',''],
+      ['3755','140','Baby Blue',''],
+      ['827','9159','Electric Blue Vy Lt','Approx'],
+      ['813','160','Blue Lt',''],
+      ['826','161','Blue Med',''],
+      ['825','162','Blue Dk',''],
+      ['318','399','Steel Gray Lt',''],
+      ['414','235','Steel Gray Dk',''],
+      ['415','398','Pearl Gray',''],
+      ['762','397','Pearl Gray Vy Lt',''],
+      ['317','400','Pewter Gray',''],
+      ['701','227','Christmas Green Lt',''],
+      ['700','229','Christmas Green Bright',''],
+      ['702','226','Kelly Green',''],
+      ['703','238','Chartreuse',''],
+      ['471','265','Avocado Green Vy Lt',''],
+      ['470','267','Avocado Green Lt',''],
+      ['469','268','Avocado Green',''],
+      ['937','268','Avocado Green Med','Approx'],
+      ['988','243','Forest Green Med',''],
+      ['987','244','Forest Green Dk',''],
+      ['745','300','Yellow Pale Lt',''],
+      ['744','301','Yellow Pale Med',''],
+      ['743','302','Yellow Med',''],
+      ['742','303','Tangerine Lt',''],
+      ['741','316','Tangerine Med',''],
+      ['740','316','Tangerine',''],
+      ['608','332','Orange Bright',''],
+      ['606','334','Orange Red Bright','Approx'],
+      ['444','290','Lemon Dk',''],
+      ['307','289','Lemon',''],
+      ['726','295','Topaz Lt',''],
+      ['725','305','Topaz Med Lt',''],
+      ['973','290','Canary Bright','Approx'],
+      ['972','298','Canary Dk',''],
+      ['3820','306','Straw Dk',''],
+      ['3821','305','Straw','Approx'],
+      ['780','309','Topaz Vy Dk',''],
+      ['781','308','Topaz Dk',''],
+      ['433','358','Brown Med',''],
+      ['434','310','Brown Lt',''],
+      ['435','1046','Brown Vy Lt',''],
+      ['436','1045','Tan',''],
+      ['437','362','Tan Lt',''],
+      ['739','366','Tan Ultra Vy Lt',''],
+      ['738','367','Tan Vy Lt',''],
+      ['3371','382','Black Brown',''],
+      ['838','380','Beige Brown Vy Dk',''],
+      ['839','360','Beige Brown Dk',''],
+      ['840','379','Beige Brown Med',''],
+      ['841','378','Beige Brown Lt',''],
+      ['842','376','Beige Brown Vy Lt',''],
+      ['400','351','Mahogany Dk',''],
+      ['301','1049','Mahogany Med',''],
+      ['3810','168','Turquoise Dk',''],
+      ['3811','928','Turquoise Vy Lt','Approx'],
+      ['351','10','Coral',''],
+      ['352','9','Coral Lt',''],
+      ['353','8','Peach',''],
+      ['754','6','Peach Lt','Approx'],
+      ['224','893','Shell Pink Vy Lt','Approx'],
+      ['223','895','Shell Pink Lt','Approx'],
+      ['3713','1020','Salmon Vy Lt','Approx'],
+      ['761','1021','Salmon Lt','Approx'],
+      ['760','1022','Salmon','Approx'],
+      ['334','977','Baby Blue Med',''],
+      ['932','920','Antique Blue Lt',''],
+    ];
+
+    function renderTable() {
+      const q = document.getElementById('search').value.toLowerCase().trim();
+      let rows = CONV.filter(r => {
+        if (!q) return true;
+        return r[0].toLowerCase().includes(q) || r[1].toLowerCase().includes(q) || r[2].toLowerCase().includes(q);
+      });
+      // Deduplicate by DMC+Anchor
+      const seen = new Set();
+      rows = rows.filter(r => {
+        const k = r[0]+'|'+r[1];
+        if (seen.has(k)) return false;
+        seen.add(k); return true;
+      });
+      const tbody = document.getElementById('conv-tbody');
+      document.getElementById('count-label').textContent = `Showing ${rows.length} of ${CONV.length} conversions.`;
+      if (rows.length===0) {
+        tbody.innerHTML=''; document.getElementById('no-results').style.display='';
+      } else {
+        document.getElementById('no-results').style.display='none';
+        tbody.innerHTML = rows.map(r=>`<tr><td><strong>DMC ${r[0]}</strong></td><td><strong>Anchor ${r[1]}</strong></td><td>${r[2]}</td><td style="font-size:.85rem;color:var(--text-muted);">${r[3]||'Close match'}</td></tr>`).join('');
+      }
+    }
+  </script>
+</body>
+</html>

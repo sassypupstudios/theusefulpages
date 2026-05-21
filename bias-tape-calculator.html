@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bias Tape Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate how much fabric you need to make continuous bias tape. Enter tape length, width, and fabric square size to get cutting instructions. Also shows purchased packages needed. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/bias-tape-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Bias Tape Calculator</h1>
+      <p class="page-subtitle">Calculate the fabric square needed to make continuous bias tape, or how many purchased packages to buy.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Total Bias Tape Length Needed (inches)</label>
+            <input class="form-input" type="number" id="tape-length" min="1" step="1" placeholder="e.g. 200">
+            <div style="font-size:0.8rem;color:var(--color-muted);margin-top:0.25rem;">Measure all edges you need to bind</div>
+          </div>
+          <div>
+            <label class="label">Bias Tape Width (unfolded strip width, inches)</label>
+            <select class="form-select" id="tape-width">
+              <option value="1">1" strip → ½" double-fold tape</option>
+              <option value="1.5">1.5" strip → ¾" double-fold tape</option>
+              <option value="2" selected>2" strip → 1" double-fold tape</option>
+              <option value="2.5">2.5" strip → standard single-fold wide</option>
+              <option value="3">3" strip → 1½" binding (quilts)</option>
+              <option value="custom">Custom width</option>
+            </select>
+          </div>
+          <div id="custom-width-wrap" style="display:none;">
+            <label class="label">Custom Strip Width (inches)</label>
+            <input class="form-input" type="number" id="custom-tape-width" min="0.5" step="0.25" placeholder="e.g. 2.5">
+          </div>
+          <div>
+            <label class="label">Seam Allowance for Joining Strips</label>
+            <select class="form-select" id="join-sa">
+              <option value="0.25">¼" (standard for bias)</option>
+              <option value="0.5">½"</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Add Safety Buffer</label>
+            <select class="form-select" id="buffer">
+              <option value="1.0">None (exact calculation)</option>
+              <option value="1.10">10% extra</option>
+              <option value="1.15" selected>15% extra (recommended)</option>
+              <option value="1.20">20% extra</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcBiasTape()">Calculate</button>
+          <button class="btn-outline" onclick="resetBias()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+
+        <div id="bias-result" style="display:none;margin-top:1.5rem;">
+          <h3>Make Your Own Continuous Bias Tape</h3>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-square-size"></div>
+              <div class="stat-label">Fabric Square Size Needed</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-strip-width"></div>
+              <div class="stat-label">Unfolded Strip Width</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-tape-yards"></div>
+              <div class="stat-label">Tape Length (yards)</div>
+            </div>
+          </div>
+          <div id="bias-steps" style="margin-top:1rem;padding:1rem;background:var(--color-surface-2,rgba(0,0,0,0.04));border-radius:0.5rem;"></div>
+
+          <h3 style="margin-top:1.5rem;">Buy Pre-made Bias Tape Instead</h3>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-pkgs-3yd"></div>
+              <div class="stat-label">3-yard packages needed</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-pkgs-5yd"></div>
+              <div class="stat-label">5-yard packages needed</div>
+            </div>
+          </div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching. The continuous bias method yields a little less than the theoretical maximum — always buy or cut more than calculated.</p>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">Common Bias Tape Uses</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Application</th><th>Common Tape Width</th><th>Type</th></tr></thead>
+            <tbody>
+              <tr><td>Quilt binding</td><td>2½" strips (makes 1¼" binding)</td><td>Double-fold</td></tr>
+              <tr><td>Garment neckline / armhole</td><td>1" strip (½" finished)</td><td>Double-fold or single-fold</td></tr>
+              <tr><td>Appliqué outline</td><td>½" strip</td><td>Single-fold</td></tr>
+              <tr><td>Bag / tote edge</td><td>2" strip</td><td>Double-fold</td></tr>
+              <tr><td>Facing alternative</td><td>1–2" strip</td><td>Single-fold</td></tr>
+              <tr><td>Piping casing</td><td>Varies by cord size</td><td>Bias-cut strip</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+      <div class="instructions-card">
+        <h2>How to Use the Bias Tape Calculator</h2>
+        <ul>
+          <li>Measure all the edges you need to bind and add them together for the total tape length needed (in inches).</li>
+          <li>Select the strip width — for double-fold bias tape, the standard is 2" wide strips folded to 1" finished.</li>
+          <li>Choose your joining seam allowance (¼" is standard for bias tape joins).</li>
+          <li>Select a safety buffer to account for waste and errors.</li>
+          <li>Click <strong>Calculate</strong> to see the fabric square size needed and how many purchased packages to buy.</li>
+        </ul>
+        <h2>How Continuous Bias Tape Works</h2>
+        <ol>
+          <li>Cut a square of fabric. The size of the square determines how much tape you get.</li>
+          <li>Cut the square in half diagonally to make two triangles.</li>
+          <li>Sew the triangles together along the short straight edge (¼" seam) to make a parallelogram.</li>
+          <li>Draw parallel lines across the fabric at the desired strip width.</li>
+          <li>Join the top and bottom edges with a ¼" offset to make a tube. Sew together.</li>
+          <li>Cut along the spiral lines to produce one continuous bias strip.</li>
+        </ol>
+        <h2>Formula Used</h2>
+        <ul>
+          <li>The area of the fabric square (side²) divided by the strip width gives the theoretical tape length.</li>
+          <li>A small amount is lost to seam allowances when joining; the calculator accounts for this.</li>
+          <li>For a 20" square cut into 2" strips: 20" × 20" ÷ 2" = 200" of tape (theoretical).</li>
+        </ul>
+        <h2>Tips</h2>
+        <ul>
+          <li>Cut strips on the true bias (45° to the grain) for maximum stretch and smooth curves.</li>
+          <li>Pre-cut quilting strips are not bias — they are cut straight and do not stretch around curves.</li>
+          <li>Use a bias tape maker tool to fold and press strips quickly and evenly.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      injectNav('bias-tape-calculator.html');
+      injectFooter();
+      document.getElementById('tape-width').addEventListener('change', function(){
+        document.getElementById('custom-width-wrap').style.display = this.value === 'custom' ? '' : 'none';
+      });
+    });
+
+    function getStripWidth(){
+      const sel = document.getElementById('tape-width').value;
+      if(sel === 'custom'){
+        const cw = parseFloat(document.getElementById('custom-tape-width').value);
+        return isNaN(cw)||cw<=0 ? NaN : cw;
+      }
+      return parseFloat(sel);
+    }
+
+    function calcBiasTape(){
+      const tapeLenIn = parseFloat(document.getElementById('tape-length').value);
+      const stripW    = getStripWidth();
+      const joinSA    = parseFloat(document.getElementById('join-sa').value);
+      const buffer    = parseFloat(document.getElementById('buffer').value);
+
+      if(isNaN(tapeLenIn)||tapeLenIn<=0){alert('Please enter a valid tape length.');return;}
+      if(isNaN(stripW)||stripW<=0){alert('Please enter a valid strip width.');return;}
+
+      // Apply buffer
+      const totalNeeded = tapeLenIn * buffer;
+
+      // Fabric area needed (in²): area = strip_width × total_length
+      // Add ~10% for seam losses in continuous method
+      const areaNeeded = stripW * totalNeeded * 1.08;
+
+      // Square side: sqrt(area)
+      const squareSide = Math.sqrt(areaNeeded);
+      // Round up to nearest 0.5"
+      const squareSideRounded = Math.ceil(squareSide * 2) / 2;
+
+      // Actual yield from rounded square
+      const actualYield = (squareSideRounded * squareSideRounded) / stripW / 1.08;
+
+      const tapeYards   = (totalNeeded / 36).toFixed(2);
+      const pkgs3       = Math.ceil(totalNeeded / 108); // 3yd = 108"
+      const pkgs5       = Math.ceil(totalNeeded / 180); // 5yd = 180"
+
+      document.getElementById('res-square-size').textContent = squareSideRounded + '" × ' + squareSideRounded + '"';
+      document.getElementById('res-strip-width').textContent = stripW + '"';
+      document.getElementById('res-tape-yards').textContent  = tapeYards + ' yards';
+      document.getElementById('res-pkgs-3yd').textContent   = pkgs3 + ' package' + (pkgs3===1?'':'s');
+      document.getElementById('res-pkgs-5yd').textContent   = pkgs5 + ' package' + (pkgs5===1?'':'s');
+
+      const steps = document.getElementById('bias-steps');
+      steps.innerHTML = `
+        <strong>Steps for a ${squareSideRounded}" × ${squareSideRounded}" square:</strong>
+        <ol style="margin:0.5rem 0 0 1.2rem;padding:0;line-height:1.8;">
+          <li>Cut a <strong>${squareSideRounded}" × ${squareSideRounded}"</strong> square of fabric.</li>
+          <li>Cut diagonally from corner to corner to make 2 triangles.</li>
+          <li>Sew the two triangles together on the short straight edge with a ¼" seam. Press open. You now have a parallelogram.</li>
+          <li>Draw lines parallel to the long bias edges every <strong>${stripW}"</strong> across the parallelogram.</li>
+          <li>Bring the short straight edges together (right sides facing), offset by exactly one strip width so the drawn lines align. Sew with a ¼" seam and press open.</li>
+          <li>Cut along the spiral to produce one continuous strip approximately <strong>${Math.round(actualYield)}"</strong> long.</li>
+          <li>Fold and press into bias tape using your preferred method.</li>
+        </ol>`;
+
+      document.getElementById('bias-result').style.display = 'block';
+    }
+
+    function resetBias(){
+      document.getElementById('tape-length').value = '';
+      document.getElementById('bias-result').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

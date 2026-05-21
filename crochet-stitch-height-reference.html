@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Stitch Height Reference — Free Chart & Calculator | The Useful Pages</title>
+  <meta name="description" content="Reference chart for crochet stitch heights, turning chains, and height ratios. Plus a calculator: enter your gauge and target height to find the stitch count needed. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-stitch-height-reference.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Stitch Height Reference</h1>
+      <p class="page-subtitle">Stitch heights, turning chains, and height ratios — plus a vertical stitch count calculator.</p>
+      <div class="tool-card">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Stitch Height Reference Chart</h2>
+        <div class="table-wrap">
+          <table class="data-table" id="height-table">
+            <thead>
+              <tr>
+                <th>Stitch Name</th>
+                <th>Abbreviation</th>
+                <th>Turning Chains</th>
+                <th>Height Ratio vs SC</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Slip Stitch</td><td><strong>sl st</strong></td><td>0</td><td>0.5×</td><td>Almost no height; used for joining or surface work</td></tr>
+              <tr><td>Single Crochet</td><td><strong>sc</strong></td><td>1</td><td>1× (baseline)</td><td>Short, dense stitch; baseline for comparison</td></tr>
+              <tr><td>Half Double Crochet</td><td><strong>hdc</strong></td><td>2</td><td>1.5×</td><td>Slightly taller than sc; has a distinctive third loop</td></tr>
+              <tr><td>Double Crochet</td><td><strong>dc</strong></td><td>3</td><td>2×</td><td>Most commonly used stitch; open and drapey</td></tr>
+              <tr><td>Treble Crochet</td><td><strong>tr</strong></td><td>4</td><td>3×</td><td>Tall stitch; yarn over twice before inserting hook</td></tr>
+              <tr><td>Double Treble Crochet</td><td><strong>dtr</strong></td><td>5</td><td>4×</td><td>Very tall; yarn over 3 times</td></tr>
+              <tr><td>Triple Treble Crochet</td><td><strong>trtr</strong></td><td>6</td><td>5×</td><td>Extremely tall; yarn over 4 times</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr style="margin:1.75rem 0;border:none;border-top:1px solid var(--border);">
+
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Vertical Stitch Count Calculator</h2>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1rem;">Enter your gauge and target finished height to find how many rows you need.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Target Height (inches)</label>
+            <input class="form-input" type="number" id="target-height" min="0.1" step="0.1" placeholder="e.g. 12">
+          </div>
+          <div>
+            <label class="label">Rows per Inch (gauge)</label>
+            <input class="form-input" type="number" id="rows-per-inch" min="0.1" step="0.1" placeholder="e.g. 5">
+          </div>
+          <div>
+            <label class="label">Stitch Type</label>
+            <select class="form-select" id="stitch-type">
+              <option value="1">Single Crochet (sc)</option>
+              <option value="1.5">Half Double Crochet (hdc)</option>
+              <option value="2" selected>Double Crochet (dc)</option>
+              <option value="3">Treble Crochet (tr)</option>
+              <option value="4">Double Treble (dtr)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcHeight()">Calculate Rows</button>
+        <div id="height-result" style="margin-top:1rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Use the <strong>reference chart</strong> to compare stitch heights and find the correct turning chain count for any stitch.</li>
+          <li>In the <strong>calculator</strong>, enter your target height (e.g. 12 inches), rows per inch from your gauge swatch, and stitch type to get the exact row count needed.</li>
+        </ul>
+        <h2>About Stitch Heights</h2>
+        <p>Stitch height determines how many rows fit in a given vertical measurement. Taller stitches like treble crochet work up faster vertically — you need fewer rows to reach the same height as with single crochet. Turning chains at the beginning of a row compensate for the height of the stitch and keep your edges straight.</p>
+        <p>Note: Some patterns treat the turning chain as the first stitch; others do not. This affects stitch counts per row.</p>
+        <p class="disclaimer">Results are estimates. Actual row heights vary by yarn weight, hook size, and personal tension.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcHeight() {
+    const h = parseFloat(document.getElementById('target-height').value);
+    const rpi = parseFloat(document.getElementById('rows-per-inch').value);
+    const ratio = parseFloat(document.getElementById('stitch-type').value);
+    const res = document.getElementById('height-result');
+    if (!h || !rpi || h <= 0 || rpi <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid values for height and gauge.</p>';
+      return;
+    }
+    const rows = Math.ceil(h * rpi);
+    const heightCheck = (rows / rpi).toFixed(2);
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid">
+        <div class="stat-box"><div class="label">Rows Needed</div><strong style="font-size:1.6rem">${rows}</strong></div>
+        <div class="stat-box"><div class="label">Actual Height</div><strong style="font-size:1.6rem">${heightCheck}"</strong></div>
+        <div class="stat-box"><div class="label">Your Row Gauge</div>${rpi} rows/inch</div>
+        <div class="stat-box"><div class="label">Stitch Height Ratio</div>${ratio}× vs single crochet</div>
+      </div>
+    </div>`;
+  }
+  document.addEventListener('DOMContentLoaded', () => { injectNav('crochet-stitch-height-reference.html'); injectFooter(); });
+  </script>
+</body>
+</html>

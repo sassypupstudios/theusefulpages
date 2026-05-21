@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Hexagon Calculator — Size, Rounds &amp; Yardage | The Useful Pages</title>
+  <meta name="description" content="Calculate rounds needed for a crochet hexagon of any size, plus blanket yardage estimates. Enter gauge and target size for written instructions. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-hexagon-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Hexagon Calculator</h1>
+      <p class="page-subtitle">Calculate rounds, stitch counts, and yardage for crocheted hexagons — including blanket yardage estimates.</p>
+      <div class="tool-card">
+        <h3 style="margin-bottom:0.75rem;font-size:1rem;">Hexagon Size Calculator</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Desired Size — Flat to Flat (inches)</label>
+            <input class="form-input" type="number" id="hex-size" min="0.5" step="0.25" placeholder="e.g. 6">
+          </div>
+          <div>
+            <label class="label">Stitches per Inch (gauge)</label>
+            <input class="form-input" type="number" id="hex-gauge" min="0.5" step="0.5" placeholder="e.g. 4">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcHex()">Calculate Hexagon</button>
+        <div id="hex-result" style="margin-top:1.25rem;"></div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--color-border);">
+
+        <h3 style="margin-bottom:0.75rem;font-size:1rem;">Blanket Yardage Estimator</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Number of Hexagons</label>
+            <input class="form-input" type="number" id="hex-count" min="1" step="1" placeholder="e.g. 30">
+          </div>
+          <div>
+            <label class="label">Yarn Weight</label>
+            <select class="form-select" id="hex-yarn-weight">
+              <option value="fingering">Fingering / Sock</option>
+              <option value="sport">Sport</option>
+              <option value="dk">DK</option>
+              <option value="worsted" selected>Worsted</option>
+              <option value="bulky">Bulky</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Hexagon Size — Flat to Flat (inches)</label>
+            <input class="form-input" type="number" id="hex-size2" min="0.5" step="0.25" placeholder="e.g. 6">
+          </div>
+        </div>
+        <button class="btn-outline" onclick="calcYardage()">Estimate Yardage</button>
+        <div id="yarn-result" style="margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Enter the desired flat-to-flat size of your hexagon and your gauge.</li>
+          <li>Click <strong>Calculate Hexagon</strong> to get rounds needed and round-by-round stitch counts with written instructions.</li>
+          <li>Use the Blanket Yardage section to estimate total yarn needed for a multi-hexagon project.</li>
+        </ul>
+        <h2>Hexagon Math</h2>
+        <p>A crochet hexagon starts with a magic ring and adds 6 stitches per round (one at each of the 6 corners). After Round 1 (6 sts), Round 2 has 12 sts, Round 3 has 18 sts, and so on.</p>
+        <p>The flat-to-flat diameter grows approximately 2 stitches' worth per round on each side. The calculator uses your gauge to determine how many rounds reach your target size.</p>
+        <h2>Common Uses</h2>
+        <ul>
+          <li>Hexagon blankets and afghans</li>
+          <li>Decorative motifs and appliqués</li>
+          <li>Honeycomb-style bags and pouches</li>
+          <li>Hexagon baskets</li>
+        </ul>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcHex() {
+    const size = parseFloat(document.getElementById('hex-size').value);
+    const gauge = parseFloat(document.getElementById('hex-gauge').value);
+    const res = document.getElementById('hex-result');
+
+    if (!size || !gauge || size <= 0 || gauge <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid size and gauge values.</p>'; return;
+    }
+
+    // Hexagon: flat-to-flat = 2 * apothem. For a regular hexagon made in SC:
+    // Each round adds ~(2/gauge) inches to flat-to-flat diameter
+    // Stitches per round = 6 * roundNumber (round 1 = 6, round 2 = 12, etc.)
+    const stsPerInch = gauge;
+    const stsAcross = Math.ceil(size * stsPerInch);
+    // Rounds: each round contributes roughly 2 rows * (1/gauge) to flat-to-flat
+    // flat-to-flat ≈ (rounds * 2) / gauge  => rounds = size * gauge / 2
+    const rounds = Math.max(1, Math.round(size * gauge / 2));
+    const finalSts = 6 * rounds;
+    const estSize = (rounds * 2 / gauge).toFixed(2);
+
+    let instructions = [];
+    instructions.push({
+      round: 1,
+      total: 6,
+      text: 'Make a magic ring. Work 6 sc into ring. Pull tail to close. (6 sts)'
+    });
+
+    for (let r = 2; r <= rounds; r++) {
+      const total = 6 * r;
+      const prev = 6 * (r - 1);
+      const plain = r - 2; // sc between increases
+      let text;
+      if (plain === 0) {
+        text = `Round ${r}: *2 sc in next st* × 6. (${total} sts)`;
+      } else {
+        text = `Round ${r}: *2 sc in next st, sc in next ${plain} st${plain > 1 ? 's' : ''}* × 6. (${total} sts)`;
+      }
+      instructions.push({ round: r, total, text });
+    }
+
+    let tableRows = instructions.map(r =>
+      `<tr><td>${r.round}</td><td>${r.total}</td><td>${r.text}</td></tr>`
+    ).join('');
+
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid" style="margin-bottom:1rem;">
+        <div class="stat-box"><div class="label">Target Size</div><strong>${size}"</strong></div>
+        <div class="stat-box"><div class="label">Estimated Size</div><strong>${estSize}"</strong></div>
+        <div class="stat-box"><div class="label">Rounds Needed</div><strong>${rounds}</strong></div>
+        <div class="stat-box"><div class="label">Final Stitch Count</div><strong>${finalSts} sts</strong></div>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Round</th><th>Total Sts</th><th>Instructions</th></tr></thead>
+          <tbody>${tableRows}</tbody>
+        </table>
+      </div>
+    </div>`;
+  }
+
+  function calcYardage() {
+    const count = parseInt(document.getElementById('hex-count').value);
+    const weight = document.getElementById('hex-yarn-weight').value;
+    const size = parseFloat(document.getElementById('hex-size2').value);
+    const res = document.getElementById('yarn-result');
+
+    if (!count || !size || count <= 0 || size <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter number of hexagons and size.</p>'; return;
+    }
+
+    // Approximate yards per square inch of crochet by weight
+    const yardsPerSqIn = { fingering: 0.25, sport: 0.20, dk: 0.17, worsted: 0.13, bulky: 0.09 };
+    const ypi = yardsPerSqIn[weight] || 0.13;
+
+    // Area of a regular hexagon with flat-to-flat = s: A = (s^2 * sqrt(3)) / 2
+    const area = (size * size * Math.sqrt(3)) / 2;
+    const yardsPerHex = Math.round(area * ypi * 1.15); // 15% extra for joining/weaving
+    const totalYards = yardsPerHex * count;
+    const totalMeters = Math.round(totalYards * 0.9144);
+    // Typical skein sizes
+    const skein200 = Math.ceil(totalYards / 200);
+    const skein437 = Math.ceil(totalYards / 437);
+
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid">
+        <div class="stat-box"><div class="label">Per Hexagon</div><strong>~${yardsPerHex} yds</strong></div>
+        <div class="stat-box"><div class="label">Total Yardage</div><strong>~${totalYards} yds</strong></div>
+        <div class="stat-box"><div class="label">Total Meters</div><strong>~${totalMeters} m</strong></div>
+        <div class="stat-box"><div class="label">200 yd Skeins</div><strong>${skein200}</strong></div>
+        <div class="stat-box"><div class="label">437 yd Skeins</div><strong>${skein437}</strong></div>
+      </div>
+      <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--color-text-muted)">Includes ~15% extra for joining seams and weaving ends. Buy extra for safety.</p>
+    </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('crochet-hexagon-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

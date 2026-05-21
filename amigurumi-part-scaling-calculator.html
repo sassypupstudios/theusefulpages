@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amigurumi Part Scaling Calculator — Resize Any Amigurumi | The Useful Pages</title>
+  <meta name="description" content="Scale amigurumi parts proportionally by percentage or gauge. Enter body size and ratios to get all part dimensions. Free crochet calculator, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/amigurumi-part-scaling-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Amigurumi Part Scaling Calculator</h1>
+      <p class="page-subtitle">Scale all amigurumi parts proportionally from a reference body size, or resize by changing gauge.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+          <!-- Proportion scaling -->
+          <div style="border:1px solid var(--color-border);border-radius:0.5rem;padding:1rem;">
+            <h3 style="margin-bottom:0.75rem;font-size:1rem;">Scale by Proportions</h3>
+            <p style="font-size:0.875rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Enter the body diameter and percentage ratios for each part.</p>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Body Diameter (inches)</label>
+              <input class="form-input" type="number" id="body-diam" min="0.1" step="0.25" placeholder="e.g. 4">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.75rem;">
+              <div>
+                <label class="label">Head %</label>
+                <input class="form-input" type="number" id="pct-head" min="1" max="300" step="1" value="80">
+              </div>
+              <div>
+                <label class="label">Arms %</label>
+                <input class="form-input" type="number" id="pct-arms" min="1" max="300" step="1" value="60">
+              </div>
+              <div>
+                <label class="label">Legs %</label>
+                <input class="form-input" type="number" id="pct-legs" min="1" max="300" step="1" value="70">
+              </div>
+              <div>
+                <label class="label">Ears %</label>
+                <input class="form-input" type="number" id="pct-ears" min="1" max="300" step="1" value="25">
+              </div>
+              <div>
+                <label class="label">Tail %</label>
+                <input class="form-input" type="number" id="pct-tail" min="1" max="300" step="1" value="30">
+              </div>
+              <div>
+                <label class="label">Snout %</label>
+                <input class="form-input" type="number" id="pct-snout" min="1" max="300" step="1" value="35">
+              </div>
+            </div>
+            <button class="btn-primary" style="width:100%" onclick="calcProportions()">Calculate Parts</button>
+            <div id="prop-result" style="margin-top:1rem;"></div>
+          </div>
+
+          <!-- Gauge scaling -->
+          <div style="border:1px solid var(--color-border);border-radius:0.5rem;padding:1rem;">
+            <h3 style="margin-bottom:0.75rem;font-size:1rem;">Resize by Gauge Change</h3>
+            <p style="font-size:0.875rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Enter the original pattern gauge and your new gauge to proportionally scale all dimensions.</p>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Original Gauge (stitches per inch)</label>
+              <input class="form-input" type="number" id="orig-gauge" min="0.5" step="0.5" placeholder="e.g. 5">
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">New Gauge (stitches per inch)</label>
+              <input class="form-input" type="number" id="new-gauge" min="0.5" step="0.5" placeholder="e.g. 3.5">
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Original Dimensions (one per line, e.g. "Body: 4")</label>
+              <textarea class="form-textarea" id="orig-dims" rows="6" placeholder="Body: 4&#10;Head: 3.5&#10;Arms: 2.5&#10;Legs: 3&#10;Ears: 1"></textarea>
+            </div>
+            <button class="btn-outline" style="width:100%" onclick="calcGaugeScale()">Scale All Dimensions</button>
+            <div id="gauge-result" style="margin-top:1rem;"></div>
+          </div>
+        </div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--color-border);">
+
+        <h3 style="margin-bottom:0.75rem;font-size:1rem;">Common Amigurumi Proportion Reference</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Part</th><th>Typical % of Body</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Head</td><td>75–90%</td><td>Large heads = cuter / more "chibi" look</td></tr>
+              <tr><td>Arms</td><td>50–70%</td><td>Shorter arms look more huggable</td></tr>
+              <tr><td>Legs</td><td>60–80%</td><td>Longer legs = more doll-like</td></tr>
+              <tr><td>Ears</td><td>20–35%</td><td>Varies widely by animal type</td></tr>
+              <tr><td>Snout / nose</td><td>25–40%</td><td>Larger snout = more animal, smaller = cuter</td></tr>
+              <tr><td>Tail</td><td>20–50%</td><td>Decorative; varies by species</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use — Proportion Scaling</h2>
+        <ul>
+          <li>Enter the diameter of the body piece you want to make.</li>
+          <li>Enter percentage ratios for each other part (e.g., head at 80% means head is 80% the diameter of the body).</li>
+          <li>Click <strong>Calculate Parts</strong> to see all dimension targets in inches.</li>
+        </ul>
+        <h2>How to Use — Gauge Scaling</h2>
+        <ul>
+          <li>Enter the original pattern's gauge and your actual gauge.</li>
+          <li>Enter the original dimensions (one per line, any format).</li>
+          <li>Click <strong>Scale All Dimensions</strong> to see how each measurement changes at your gauge.</li>
+        </ul>
+        <h2>Why Scale by Gauge?</h2>
+        <p>If a pattern is written for 5 sts/inch and you crochet at 3.5 sts/inch, your finished pieces will be (5 ÷ 3.5 = 1.43×) larger than the pattern states. The gauge scaler applies this multiplier to all dimensions so you can predict exactly how big your finished ami will be — or adjust to hit a target size.</p>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcProportions() {
+    const body = parseFloat(document.getElementById('body-diam').value);
+    const res = document.getElementById('prop-result');
+
+    if (!body || body <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter a valid body diameter.</p>'; return;
+    }
+
+    const parts = [
+      { name: 'Body', id: null, pct: 100 },
+      { name: 'Head', id: 'pct-head', pct: null },
+      { name: 'Arms', id: 'pct-arms', pct: null },
+      { name: 'Legs', id: 'pct-legs', pct: null },
+      { name: 'Ears', id: 'pct-ears', pct: null },
+      { name: 'Tail', id: 'pct-tail', pct: null },
+      { name: 'Snout', id: 'pct-snout', pct: null },
+    ];
+
+    for (const p of parts) {
+      if (p.id) p.pct = parseFloat(document.getElementById(p.id).value) || 50;
+    }
+
+    let rows = parts.map(p => {
+      const dim = (body * p.pct / 100).toFixed(2);
+      return `<tr><td>${p.name}</td><td>${p.pct}%</td><td>${dim}"</td></tr>`;
+    }).join('');
+
+    res.innerHTML = `<div class="table-wrap"><table class="data-table">
+      <thead><tr><th>Part</th><th>% of Body</th><th>Target Size</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>`;
+  }
+
+  function calcGaugeScale() {
+    const origGauge = parseFloat(document.getElementById('orig-gauge').value);
+    const newGauge = parseFloat(document.getElementById('new-gauge').value);
+    const dimsText = document.getElementById('orig-dims').value.trim();
+    const res = document.getElementById('gauge-result');
+
+    if (!origGauge || !newGauge || origGauge <= 0 || newGauge <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid original and new gauge values.</p>'; return;
+    }
+    if (!dimsText) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter at least one dimension.</p>'; return;
+    }
+
+    const scaleFactor = origGauge / newGauge;
+    const lines = dimsText.split('\n').filter(l => l.trim());
+    let rows = '';
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      // Extract all numbers from the line
+      const nums = trimmed.match(/[\d.]+/g);
+      if (!nums) { rows += `<tr><td colspan="3">${trimmed} (no number found)</td></tr>`; continue; }
+      let newLine = trimmed;
+      const scaledNums = nums.map(n => {
+        const val = parseFloat(n);
+        return (val * scaleFactor).toFixed(2);
+      });
+      rows += `<tr><td>${trimmed}</td><td>${nums.map(n => n + '"').join(', ')}</td><td>${scaledNums.map(n => n + '"').join(', ')}</td></tr>`;
+    }
+
+    const pct = Math.round((scaleFactor - 1) * 100);
+    const direction = scaleFactor > 1 ? `${Math.abs(pct)}% larger` : scaleFactor < 1 ? `${Math.abs(pct)}% smaller` : 'same size';
+
+    res.innerHTML = `<div class="result-card">
+      <p style="margin-bottom:0.75rem;font-size:0.875rem;"><strong>Scale factor: ${scaleFactor.toFixed(3)}×</strong> — your finished pieces will be <strong>${direction}</strong> than the original pattern.</p>
+      <div class="table-wrap"><table class="data-table">
+        <thead><tr><th>Part / Label</th><th>Original</th><th>Scaled (your gauge)</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>
+    </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('amigurumi-part-scaling-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

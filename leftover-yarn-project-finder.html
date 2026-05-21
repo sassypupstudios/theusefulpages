@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leftover Yarn Project Finder — Free Online Tool | The Useful Pages</title>
+  <meta name="description" content="Find projects that fit your leftover yarn yardage and weight. Get project ideas instantly. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/leftover-yarn-project-finder.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .project-card { background:var(--bg-secondary); border:1px solid var(--border); border-radius:var(--radius); padding:14px 18px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; }
+    .project-name { font-weight:600; font-size:1rem; }
+    .project-meta { font-size:0.83rem; color:var(--text-muted); margin-top:2px; }
+    .yardage-badge { background:var(--primary); color:#fff; border-radius:20px; padding:4px 12px; font-size:0.82rem; font-weight:600; white-space:nowrap; }
+    .fit-perfect { border-color:var(--primary); }
+    .fit-close { border-color:var(--accent); }
+    .no-result { text-align:center; padding:30px; color:var(--text-muted); }
+    .weight-pill { display:inline-block; padding:3px 10px; border-radius:12px; font-size:0.78rem; font-weight:600; background:var(--primary); color:#fff; margin-bottom:4px; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Leftover Yarn Project Finder</h1>
+      <p class="page-subtitle">Enter your yardage and yarn weight to find projects you can make right now.</p>
+
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <div>
+            <label class="label">Yardage Available</label>
+            <input type="number" id="yards" class="form-input" placeholder="e.g. 350" min="1" oninput="find()">
+          </div>
+          <div>
+            <label class="label">Yarn Weight</label>
+            <select id="weight" class="form-select" onchange="find()">
+              <option value="">Select weight...</option>
+              <option value="fingering">Fingering / Sock</option>
+              <option value="dk">DK</option>
+              <option value="worsted">Worsted</option>
+              <option value="bulky">Bulky</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="results">
+          <div class="no-result">Enter yardage and weight above to find matching projects.</div>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="result-card">
+        <h2 style="margin-bottom:12px;font-size:1.1rem;">Full Project Reference</h2>
+        <div id="full-ref"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Find Projects for Leftover Yarn</h2>
+        <p>Have a partial skein and not sure what to make? This tool matches your yardage to a list of common projects by weight category.</p>
+        <ul>
+          <li>Projects marked as a <strong>perfect fit</strong> are well within your yardage.</li>
+          <li>Projects marked as a <strong>close fit</strong> may work but leave very little yarn — or require a tight gauge.</li>
+          <li>Yardage requirements vary by needle/hook size, gauge, and pattern. These are typical ranges.</li>
+          <li>Mix-and-match colors! Many of these small projects are great for using up multiple partial skeins.</li>
+        </ul>
+        <p class="disclaimer">Yardage shown is an approximate range. Always check your specific pattern for exact requirements.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    injectNav('leftover-yarn-project-finder.html');
+    injectFooter();
+    renderFullRef();
+  });
+
+  const PROJECTS = {
+    fingering: [
+      { name:'Washcloth', min:50, max:100, notes:'Quick, great for scraps' },
+      { name:'Baby Booties', min:100, max:200, notes:'Tiny but adorable gift' },
+      { name:'Fingerless Mitts', min:150, max:250, notes:'Great beginner project' },
+      { name:'Hat (child)', min:200, max:300, notes:'Snug and warm' },
+      { name:'Hat (adult)', min:250, max:400, notes:'A classic go-to' },
+      { name:'Socks (child)', min:250, max:350, notes:'Mini socks from sock yarn scraps' },
+      { name:'Socks (adult)', min:400, max:800, notes:'Full pair, standard size' },
+      { name:'Baby Blanket', min:800, max:1500, notes:'Simple stitch pattern' },
+      { name:'Shawlette', min:400, max:700, notes:'Small triangular shawl' },
+    ],
+    dk: [
+      { name:'Headband / Ear Warmer', min:50, max:100, notes:'Fast, practical project' },
+      { name:'Dishcloth', min:60, max:120, notes:'Great stash buster' },
+      { name:'Hat (child)', min:100, max:150, notes:'Works up quickly' },
+      { name:'Hat (adult)', min:150, max:200, notes:'Classic beanie or slouch' },
+      { name:'Cowl (narrow)', min:150, max:250, notes:'Infinity loop style' },
+      { name:'Cowl (wide)', min:200, max:500, notes:'More coverage and warmth' },
+      { name:'Baby Sweater', min:500, max:1000, notes:'Newborn to 12 months' },
+      { name:'Fingerless Gloves', min:100, max:200, notes:'Pair in DK weight' },
+      { name:'Small Blanket Square', min:60, max:130, notes:'Great for blanket projects' },
+    ],
+    worsted: [
+      { name:'Dishcloth', min:50, max:150, notes:'Use cotton worsted for best results' },
+      { name:'Hat (adult)', min:150, max:300, notes:'Quick evening project' },
+      { name:'Hat (child)', min:100, max:200, notes:'Beginner-friendly' },
+      { name:'Cowl', min:200, max:400, notes:'Works up fast in worsted' },
+      { name:'Mittens', min:200, max:400, notes:'Cozy winter accessory' },
+      { name:'Baby Blanket', min:600, max:1200, notes:'Lap or crib size' },
+      { name:'Scarf', min:300, max:600, notes:'Basic or textured stitch' },
+      { name:'Bag / Tote', min:200, max:500, notes:'Market bag or project bag' },
+      { name:'Stuffed Animal / Amigurumi', min:100, max:300, notes:'Great for small amounts' },
+    ],
+    bulky: [
+      { name:'Headband / Ear Warmer', min:50, max:100, notes:'Works up in minutes' },
+      { name:'Hat (adult)', min:100, max:200, notes:'1-hour knit or crochet hat' },
+      { name:'Hat (child)', min:80, max:150, notes:'Quick gift project' },
+      { name:'Cowl', min:150, max:350, notes:'Chunky and cozy' },
+      { name:'Wrist Warmers', min:80, max:150, notes:'Fast accessory project' },
+      { name:'Lap Blanket', min:600, max:1200, notes:'Chunky blanket for the couch' },
+      { name:'Throw Pillow Cover', min:200, max:400, notes:'Textured home decor' },
+    ],
+  };
+
+  function find(){
+    const yd = parseFloat(document.getElementById('yards').value);
+    const wt = document.getElementById('weight').value;
+    const el = document.getElementById('results');
+    if(isNaN(yd)||yd<=0||!wt){ el.innerHTML='<div class="no-result">Enter yardage and weight above to find matching projects.</div>'; return; }
+    const projects = PROJECTS[wt];
+    const matches = projects.filter(p => yd >= p.min * 0.85); // show if within 15% of minimum
+    if(matches.length===0){
+      el.innerHTML=`<div class="no-result">No matches found for ${yd} yards of ${wt} yarn. Try a smaller project or check a different weight.</div>`;
+      return;
+    }
+    let html='';
+    matches.sort((a,b)=>a.min-b.min).forEach(p=>{
+      const fits = yd >= p.max ? 'perfect' : yd >= p.min ? 'good' : 'close';
+      const badgeText = `${p.min}–${p.max===Infinity?'1000+':p.max} yd`;
+      const fitClass = fits==='perfect' ? 'fit-perfect' : fits==='close' ? 'fit-close' : '';
+      const fitLabel = fits==='perfect' ? '✓ Comfortable fit' : fits==='good' ? '✓ Good fit' : '~ Tight fit';
+      html+=`<div class="project-card ${fitClass}">
+        <div>
+          <div class="project-name">${p.name}</div>
+          <div class="project-meta">${p.notes} · ${fitLabel}</div>
+        </div>
+        <div class="yardage-badge">${badgeText}</div>
+      </div>`;
+    });
+    const notEnough = projects.filter(p=>yd < p.min * 0.85);
+    if(notEnough.length>0){
+      html+=`<details style="margin-top:12px;"><summary style="cursor:pointer;font-size:0.88rem;color:var(--text-muted);">Show projects that need more yarn (${notEnough.length})</summary>`;
+      notEnough.sort((a,b)=>a.min-b.min).forEach(p=>{
+        html+=`<div class="project-card" style="opacity:0.55;margin-top:6px;">
+          <div><div class="project-name">${p.name}</div><div class="project-meta">${p.notes} · Need ${p.min-yd}+ more yards</div></div>
+          <div class="yardage-badge" style="background:var(--text-muted);">${p.min}–${p.max===Infinity?'1000+':p.max} yd</div>
+        </div>`;
+      });
+      html+='</details>';
+    }
+    el.innerHTML=html;
+  }
+
+  function renderFullRef(){
+    const el=document.getElementById('full-ref');
+    const WEIGHT_LABELS={fingering:'Fingering / Sock',dk:'DK',worsted:'Worsted',bulky:'Bulky'};
+    let html='';
+    Object.entries(PROJECTS).forEach(([wt,projs])=>{
+      html+=`<div style="margin-bottom:16px;"><div class="weight-pill">${WEIGHT_LABELS[wt]}</div>`;
+      html+=`<div class="table-wrap" style="margin-top:8px;"><table class="data-table"><thead><tr><th>Project</th><th>Min Yards</th><th>Max Yards</th><th>Notes</th></tr></thead><tbody>`;
+      projs.forEach(p=>{
+        html+=`<tr><td>${p.name}</td><td>${p.min}</td><td>${p.max}</td><td>${p.notes}</td></tr>`;
+      });
+      html+='</tbody></table></div></div>';
+    });
+    el.innerHTML=html;
+  }
+  </script>
+</body>
+</html>

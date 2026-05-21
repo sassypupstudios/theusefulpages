@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttonhole Spacing Calculator — Free Knitting Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate perfectly spaced buttonhole positions for knitted button bands. Shows stitch positions and a visual text ruler. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/buttonhole-spacing-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Buttonhole Spacing Calculator</h1>
+      <p class="page-subtitle">Enter your band stitch count and number of buttonholes to get perfectly spaced positions with a visual layout.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Band stitch count (total)</label>
+            <input class="form-input" type="number" id="band-sts" min="10" max="500" placeholder="e.g. 120">
+          </div>
+          <div>
+            <label class="label">Number of buttonholes</label>
+            <input class="form-input" type="number" id="num-holes" min="1" max="20" placeholder="e.g. 5">
+          </div>
+          <div>
+            <label class="label">Buttonhole size (stitches)</label>
+            <select class="form-select" id="hole-size">
+              <option value="1">1 stitch (small button)</option>
+              <option value="2" selected>2 stitches (standard)</option>
+              <option value="3">3 stitches (large button)</option>
+              <option value="4">4 stitches (extra large)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Edge stitches each end</label>
+            <input class="form-input" type="number" id="edge-sts" min="0" max="10" value="2" placeholder="e.g. 2">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcButtonholes()">Calculate Spacing</button>
+
+        <div id="bh-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid" style="margin-bottom:1.5rem;">
+            <div class="stat-box">
+              <div class="stat-value" id="res-spacing"></div>
+              <div class="stat-label">Stitches between holes</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-first"></div>
+              <div class="stat-label">First hole starts at st</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-last"></div>
+              <div class="stat-label">Last hole starts at st</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-leftover"></div>
+              <div class="stat-label">Extra sts (distributed)</div>
+            </div>
+          </div>
+
+          <h3 style="margin-bottom:0.75rem;">Buttonhole Positions</h3>
+          <div id="bh-positions" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.9rem;line-height:1.8;white-space:pre-wrap;"></div>
+
+          <h3 style="margin:1.25rem 0 0.75rem;">Written Instructions</h3>
+          <div id="bh-instructions" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-size:0.9rem;line-height:1.7;white-space:pre-wrap;font-family:monospace;"></div>
+
+          <h3 style="margin:1.25rem 0 0.5rem;">Visual Ruler</h3>
+          <p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.5rem;">"|" = edge, "o" = buttonhole position, "-" = band stitch (scaled display)</p>
+          <div id="bh-ruler" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.85rem;overflow-x:auto;white-space:pre;word-break:break-all;"></div>
+
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always swatch before starting a garment project.</p>
+        </div>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li><strong>Band stitch count:</strong> Total stitches in your button band, usually picked up along the front edge.</li>
+          <li><strong>Number of buttonholes:</strong> Count your buttons — each button needs one hole.</li>
+          <li><strong>Buttonhole size:</strong> For most adult garments, 2 stitches is standard (bind off 2, cast on 2 on next row).</li>
+          <li><strong>Edge stitches:</strong> Stitches at each end that are never used for a buttonhole (keeps edges neat).</li>
+        </ol>
+        <h3 style="margin-top:1rem;">Tips</h3>
+        <ul>
+          <li>The top and bottom buttonholes are typically 2–3 stitches in from each edge.</li>
+          <li>For a 1-row buttonhole: bind off the number of stitches, then on the next row cast on the same number over the gap.</li>
+          <li>Test your button through a sample buttonhole before committing to the full band.</li>
+          <li>If spacing comes out uneven, add extra stitches to the spaces closest to the center of the band.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{injectNav('buttonhole-spacing-calculator.html');injectFooter();});
+
+  function calcButtonholes() {
+    const band = parseInt(document.getElementById('band-sts').value);
+    const holes = parseInt(document.getElementById('num-holes').value);
+    const holeSize = parseInt(document.getElementById('hole-size').value);
+    const edge = parseInt(document.getElementById('edge-sts').value) || 0;
+
+    if (!band || !holes) { alert('Please enter band stitch count and number of buttonholes.'); return; }
+
+    const usable = band - (edge * 2) - (holes * holeSize);
+    if (usable < 0) { alert('Not enough stitches for that many buttonholes with those edge stitches.'); return; }
+
+    // Gaps: between holes and from edge to first hole, last hole to edge
+    // Holes: 1 buttonhole has 2 gaps (edge left, gap, hole, gap, edge right)
+    // n holes -> n+1 gaps (including edge gaps on both sides, but edge sts are separate)
+    // gaps = holes + 1 (between + before + after, excluding edge sts)
+    const gaps = holes + 1;
+    const baseGap = Math.floor(usable / gaps);
+    const remainder = usable % gaps;
+
+    // First hole starts after: edge + first gap
+    // Distribute remainder to middle gaps first (gaps 2..n)
+    const gapSizes = Array(gaps).fill(baseGap);
+    for (let i = 1; i <= remainder; i++) {
+      gapSizes[i % gaps]++;
+    }
+
+    // Compute start positions
+    let positions = [];
+    let pos = edge + gapSizes[0] + 1; // 1-indexed
+    positions.push(pos);
+    for (let i = 1; i < holes; i++) {
+      pos += holeSize + gapSizes[i];
+      positions.push(pos);
+    }
+
+    document.getElementById('res-spacing').textContent = baseGap + (remainder > 0 ? `–${baseGap+1}` : '');
+    document.getElementById('res-first').textContent = positions[0];
+    document.getElementById('res-last').textContent = positions[positions.length-1];
+    document.getElementById('res-leftover').textContent = remainder;
+
+    // Position list
+    let posText = '';
+    positions.forEach((p, i) => {
+      posText += `Buttonhole ${i+1}: begins at stitch ${p}, ends at stitch ${p + holeSize - 1}\n`;
+    });
+    document.getElementById('bh-positions').textContent = posText.trim();
+
+    // Written instructions
+    let instr = `ROW 1 (Buttonhole row):\n`;
+    let cursor = 1;
+    let parts = [];
+    parts.push(`K${edge > 0 ? edge : '0 (no edge sts)'}`);
+    positions.forEach((p, i) => {
+      const kBeforeHole = p - cursor;
+      if (kBeforeHole > 0) parts.push(`k${kBeforeHole}`);
+      parts.push(`BO ${holeSize} (buttonhole ${i+1})`);
+      cursor = p + holeSize;
+    });
+    const kAfter = band - cursor - edge + 1;
+    if (kAfter > 0) parts.push(`k${kAfter}`);
+    if (edge > 0) parts.push(`k${edge}`);
+    instr += `  ${parts.join(', ')}\n\n`;
+    instr += `ROW 2 (Close buttonholes):\n`;
+    instr += `  Work to each gap; cast on ${holeSize} stitch${holeSize>1?'es':''} over each bound-off gap using backward-loop or cable cast-on.`;
+    document.getElementById('bh-instructions').textContent = instr;
+
+    // Visual ruler (scaled to max ~80 chars)
+    const scale = band <= 80 ? 1 : Math.ceil(band / 80);
+    let ruler = '|';
+    for (let s = 1; s <= band; s++) {
+      const isEdge = (s <= edge) || (s > band - edge);
+      const isHole = positions.some(p => s >= p && s < p + holeSize);
+      if (s % scale !== 0 && scale > 1) continue;
+      if (isHole) ruler += 'o';
+      else if (isEdge) ruler += '=';
+      else ruler += '-';
+    }
+    ruler += '|';
+    ruler += `\n(Each character ≈ ${scale} stitch${scale>1?'es':''})`;
+    document.getElementById('bh-ruler').textContent = ruler;
+
+    document.getElementById('bh-result').style.display = 'block';
+  }
+  </script>
+</body>
+</html>

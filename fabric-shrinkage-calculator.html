@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fabric Shrinkage Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate how much fabric shrinks after washing by fabric type. Get post-wash dimensions and plan how much extra fabric to buy. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/fabric-shrinkage-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Fabric Shrinkage Calculator</h1>
+      <p class="page-subtitle">Estimate post-wash dimensions and plan how much extra fabric to buy.</p>
+      <div class="tool-card">
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+          <button class="btn-primary" id="tab-forward" onclick="switchMode('forward')">Pre-wash → Post-wash</button>
+          <button class="btn-outline" id="tab-reverse" onclick="switchMode('reverse')">Desired Finish → Pre-wash Needed</button>
+        </div>
+
+        <div id="mode-forward">
+          <p style="margin:0 0 1rem;color:var(--text-muted);font-size:0.9rem;">Enter your pre-wash dimensions to find estimated post-wash size.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Pre-wash Length</label>
+              <input class="form-input" type="number" id="fw-length" min="0.1" step="0.1" placeholder="e.g. 36" oninput="calculate()">
+            </div>
+            <div>
+              <label class="label">Pre-wash Width</label>
+              <input class="form-input" type="number" id="fw-width" min="0.1" step="0.1" placeholder="e.g. 44" oninput="calculate()">
+            </div>
+            <div>
+              <label class="label">Unit</label>
+              <select class="form-select" id="fw-unit" onchange="calculate()">
+                <option value="in">Inches</option>
+                <option value="yd">Yards</option>
+                <option value="cm">Centimeters</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">Fabric Type</label>
+              <select class="form-select" id="fw-fabric" onchange="syncFabric('fw'); calculate()">
+                <option value="cotton">Cotton (3–5%)</option>
+                <option value="linen">Linen (3–4%)</option>
+                <option value="wool">Wool (5–10%)</option>
+                <option value="polyester">Polyester (&lt;1%)</option>
+                <option value="silk">Silk (2–3%)</option>
+                <option value="rayon">Rayon (5–10%)</option>
+                <option value="bamboo">Bamboo (3–5%)</option>
+                <option value="custom">Custom %</option>
+              </select>
+            </div>
+            <div id="fw-custom-wrap" style="display:none;">
+              <label class="label">Custom Shrink %</label>
+              <input class="form-input" type="number" id="fw-custom-pct" min="0" max="50" step="0.1" placeholder="e.g. 6" oninput="calculate()">
+            </div>
+          </div>
+        </div>
+
+        <div id="mode-reverse" style="display:none;">
+          <p style="margin:0 0 1rem;color:var(--text-muted);font-size:0.9rem;">Enter your desired finished (post-wash) size to find how much to buy.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Desired Finished Length</label>
+              <input class="form-input" type="number" id="rv-length" min="0.1" step="0.1" placeholder="e.g. 34" oninput="calculate()">
+            </div>
+            <div>
+              <label class="label">Desired Finished Width</label>
+              <input class="form-input" type="number" id="rv-width" min="0.1" step="0.1" placeholder="e.g. 42" oninput="calculate()">
+            </div>
+            <div>
+              <label class="label">Unit</label>
+              <select class="form-select" id="rv-unit" onchange="calculate()">
+                <option value="in">Inches</option>
+                <option value="yd">Yards</option>
+                <option value="cm">Centimeters</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">Fabric Type</label>
+              <select class="form-select" id="rv-fabric" onchange="syncFabric('rv'); calculate()">
+                <option value="cotton">Cotton (3–5%)</option>
+                <option value="linen">Linen (3–4%)</option>
+                <option value="wool">Wool (5–10%)</option>
+                <option value="polyester">Polyester (&lt;1%)</option>
+                <option value="silk">Silk (2–3%)</option>
+                <option value="rayon">Rayon (5–10%)</option>
+                <option value="bamboo">Bamboo (3–5%)</option>
+                <option value="custom">Custom %</option>
+              </select>
+            </div>
+            <div id="rv-custom-wrap" style="display:none;">
+              <label class="label">Custom Shrink %</label>
+              <input class="form-input" type="number" id="rv-custom-pct" min="0" max="50" step="0.1" placeholder="e.g. 6" oninput="calculate()">
+            </div>
+          </div>
+        </div>
+
+        <div id="result-area" style="display:none;margin-top:1.5rem;">
+          <div class="result-card">
+            <div class="stat-grid" id="stat-grid"></div>
+          </div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching. Pre-wash all fabric before cutting.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Fabric Shrinkage Calculator</h2>
+        <p><strong>Pre-wash → Post-wash mode:</strong> Enter the dimensions of your fabric before washing and select the fabric type. The calculator will estimate how much it will shrink, giving you the expected dimensions after washing.</p>
+        <p><strong>Reverse mode:</strong> If you know the finished size you need, enter that size and the calculator will tell you how much fabric to buy before washing to ensure you end up with enough.</p>
+        <h3>Shrinkage Rates by Fabric Type</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Fabric</th><th>Shrinkage Range</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Cotton</td><td>3–5%</td><td>Most common; shrinks more on first wash</td></tr>
+              <tr><td>Linen</td><td>3–4%</td><td>Pre-washing recommended</td></tr>
+              <tr><td>Wool</td><td>5–10%</td><td>Use the average unless felting is desired</td></tr>
+              <tr><td>Polyester</td><td>&lt;1%</td><td>Very stable; minimal shrinkage</td></tr>
+              <tr><td>Silk</td><td>2–3%</td><td>Dry clean or cold hand wash</td></tr>
+              <tr><td>Rayon</td><td>5–10%</td><td>Can be significant; always pre-wash</td></tr>
+              <tr><td>Bamboo</td><td>3–5%</td><td>Similar to cotton</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Tip:</strong> The calculator uses the average of the shrinkage range. Wash temperature, drying method, and weave tightness all affect actual shrinkage.</p>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('fabric-shrinkage-calculator.html'); injectFooter(); });
+
+    const SHRINK = {
+      cotton: 4, linen: 3.5, wool: 7.5, polyester: 0.5, silk: 2.5, rayon: 7.5, bamboo: 4
+    };
+
+    let currentMode = 'forward';
+
+    function switchMode(m) {
+      currentMode = m;
+      document.getElementById('mode-forward').style.display = m === 'forward' ? '' : 'none';
+      document.getElementById('mode-reverse').style.display = m === 'reverse' ? '' : 'none';
+      document.getElementById('tab-forward').className = m === 'forward' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('tab-reverse').className = m === 'reverse' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('result-area').style.display = 'none';
+      calculate();
+    }
+
+    function syncFabric(prefix) {
+      const val = document.getElementById(prefix + '-fabric').value;
+      const wrap = document.getElementById(prefix + '-custom-wrap');
+      wrap.style.display = val === 'custom' ? '' : 'none';
+    }
+
+    function getShrinkPct(prefix) {
+      const fabric = document.getElementById(prefix + '-fabric').value;
+      if (fabric === 'custom') {
+        return parseFloat(document.getElementById(prefix + '-custom-pct').value) || 0;
+      }
+      return SHRINK[fabric];
+    }
+
+    function fmt(n, unit) {
+      if (unit === 'yd') return n.toFixed(3) + ' yd';
+      if (unit === 'cm') return n.toFixed(1) + ' cm';
+      return n.toFixed(2) + '"';
+    }
+
+    function calculate() {
+      const prefix = currentMode === 'forward' ? 'fw' : 'rv';
+      const L = parseFloat(document.getElementById(prefix + '-length').value);
+      const W = parseFloat(document.getElementById(prefix + '-width').value);
+      const unit = document.getElementById(prefix + '-unit').value;
+      const pct = getShrinkPct(prefix);
+
+      if (!L || !W || L <= 0 || W <= 0) {
+        document.getElementById('result-area').style.display = 'none';
+        return;
+      }
+
+      let minPct, maxPct;
+      const fabric = document.getElementById(prefix + '-fabric').value;
+      const ranges = {cotton:[3,5],linen:[3,4],wool:[5,10],polyester:[0,1],silk:[2,3],rayon:[5,10],bamboo:[3,5]};
+      if (fabric === 'custom') { minPct = maxPct = pct; }
+      else { [minPct, maxPct] = ranges[fabric]; }
+
+      let stats = [];
+      if (currentMode === 'forward') {
+        const postL = L * (1 - pct / 100);
+        const postW = W * (1 - pct / 100);
+        const postLmin = L * (1 - maxPct / 100);
+        const postLmax = L * (1 - minPct / 100);
+        const postWmin = W * (1 - maxPct / 100);
+        const postWmax = W * (1 - minPct / 100);
+        stats = [
+          { label: 'Pre-wash Length', value: fmt(L, unit) },
+          { label: 'Pre-wash Width', value: fmt(W, unit) },
+          { label: 'Est. Post-wash Length', value: fmt(postL, unit) },
+          { label: 'Est. Post-wash Width', value: fmt(postW, unit) },
+          { label: 'Length Range', value: fmt(postLmin, unit) + ' – ' + fmt(postLmax, unit) },
+          { label: 'Width Range', value: fmt(postWmin, unit) + ' – ' + fmt(postWmax, unit) },
+          { label: 'Shrinkage Used', value: pct.toFixed(1) + '%' },
+        ];
+      } else {
+        const preL = L / (1 - pct / 100);
+        const preW = W / (1 - pct / 100);
+        const preLmax = L / (1 - minPct / 100);
+        const preLmin = L / (1 - maxPct / 100);
+        const preWmax = W / (1 - minPct / 100);
+        const preWmin = W / (1 - maxPct / 100);
+        stats = [
+          { label: 'Desired Finished Length', value: fmt(L, unit) },
+          { label: 'Desired Finished Width', value: fmt(W, unit) },
+          { label: 'Buy at Least (Length)', value: fmt(preL, unit) },
+          { label: 'Buy at Least (Width)', value: fmt(preW, unit) },
+          { label: 'Length Safe Range', value: fmt(preLmin, unit) + ' – ' + fmt(preLmax, unit) },
+          { label: 'Width Safe Range', value: fmt(preWmin, unit) + ' – ' + fmt(preWmax, unit) },
+          { label: 'Shrinkage Used', value: pct.toFixed(1) + '%' },
+        ];
+      }
+
+      const grid = document.getElementById('stat-grid');
+      grid.innerHTML = stats.map(s => `<div class="stat-box"><div class="stat-label">${s.label}</div><div class="stat-value">${s.value}</div></div>`).join('');
+      document.getElementById('result-area').style.display = '';
+    }
+  </script>
+</body>
+</html>

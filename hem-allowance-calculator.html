@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hem Allowance Calculator — Free Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate hem allowances for any garment or project. Find cut length from finished length, or how much hem can be let out. Free, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/hem-allowance-calculator.html">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="ad-container ad-top-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Hem Allowance Calculator</h1>
+      <p class="page-subtitle">Find cut length from finished length, or calculate how much you can let out an existing hem.</p>
+      <div class="tool-card">
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+          <button class="btn-primary" id="tab-new" onclick="switchMode('new')">New Hem</button>
+          <button class="btn-outline" id="tab-letout" onclick="switchMode('letout')">Let Out Existing Hem</button>
+        </div>
+
+        <div id="mode-new">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Garment / Item Type</label>
+              <select class="form-select" id="garment-type" onchange="applyGarmentPreset()">
+                <option value="">— Select for suggested hem —</option>
+                <option value="shirt">Shirt / Blouse</option>
+                <option value="dress">Dress</option>
+                <option value="pants">Pants / Trousers</option>
+                <option value="skirt">Skirt</option>
+                <option value="curtain">Curtains</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">Hem Type</label>
+              <select class="form-select" id="hem-type" onchange="syncHemType(); calculate()">
+                <option value="narrow-single">Narrow Single (¼–½")</option>
+                <option value="narrow-double">Narrow Double (¼–½" each fold)</option>
+                <option value="standard-single">Standard Single (1–1.5")</option>
+                <option value="standard-double" selected>Standard Double (1–1.5" each fold)</option>
+                <option value="deep-single">Deep Single (2–3")</option>
+                <option value="deep-double">Deep Double (2–3" each fold)</option>
+                <option value="custom">Custom Amount</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">Hem Allowance (inches)</label>
+              <input class="form-input" type="number" id="hem-amount" min="0.125" step="0.125" placeholder="e.g. 1.5" oninput="calculate()">
+            </div>
+            <div>
+              <label class="label">Folds</label>
+              <select class="form-select" id="folds" onchange="calculate()">
+                <option value="1">Single fold</option>
+                <option value="2" selected>Double fold</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">Desired Finished Length (inches)</label>
+              <input class="form-input" type="number" id="finished-len" min="1" step="0.25" placeholder="e.g. 32" oninput="calculate()">
+            </div>
+          </div>
+          <div id="new-result" style="display:none;margin-top:1.5rem;">
+            <div class="result-card"><div class="stat-grid" id="new-grid"></div></div>
+          </div>
+        </div>
+
+        <div id="mode-letout" style="display:none;">
+          <p style="margin:0 0 1rem;color:var(--text-muted);font-size:0.9rem;">Enter the current finished length and the current hem depth to find out how much longer the garment can be made.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Current Finished Length (inches)</label>
+              <input class="form-input" type="number" id="lo-current-len" min="1" step="0.25" placeholder="e.g. 30" oninput="calculate()">
+            </div>
+            <div>
+              <label class="label">Current Hem Depth (inches)</label>
+              <input class="form-input" type="number" id="lo-hem-depth" min="0.25" step="0.125" placeholder="e.g. 1.5" oninput="calculate()">
+            </div>
+            <div>
+              <label class="label">Seam Allowance to Keep (inches)</label>
+              <input class="form-input" type="number" id="lo-keep-sa" value="0.25" min="0" step="0.125" oninput="calculate()">
+            </div>
+          </div>
+          <div id="lo-result" style="display:none;margin-top:1.5rem;">
+            <div class="result-card"><div class="stat-grid" id="lo-grid"></div></div>
+          </div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+      </div>
+
+      <div class="ad-container ad-content-middle"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Hem Allowance Calculator</h2>
+        <p><strong>New Hem:</strong> Select a garment type for a suggested hem allowance, or choose a hem type and enter a custom amount. Enter your desired finished length to get the required cut length.</p>
+        <p><strong>Let Out Existing Hem:</strong> Enter the current finished length and how deep the existing hem is. The calculator tells you the maximum length you can gain by letting out the hem.</p>
+        <h3>Hem Allowance Guide by Garment Type</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Garment</th><th>Typical Hem</th><th>Fold Type</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Shirt / Blouse</td><td>½–1"</td><td>Double fold</td><td>Narrow for woven shirts</td></tr>
+              <tr><td>Dress</td><td>1–2"</td><td>Single or double</td><td>Depends on skirt fullness</td></tr>
+              <tr><td>Pants / Trousers</td><td>1.5–2"</td><td>Single fold</td><td>Wider for letting out later</td></tr>
+              <tr><td>Skirt</td><td>1–2"</td><td>Single or double</td><td>Flared skirts: narrow hem</td></tr>
+              <tr><td>Curtains</td><td>3–4" (double)</td><td>Double fold</td><td>Adds weight for drape</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Single vs. Double Fold</h3>
+        <ul>
+          <li><strong>Single fold:</strong> Fabric edge turned up once. Raw edge is hidden inside (use with serger or zigzag stitch).</li>
+          <li><strong>Double fold:</strong> Fabric edge turned up twice, enclosing the raw edge. Cleaner finish, uses more fabric.</li>
+        </ul>
+      </div>
+    </main>
+    <aside class="tool-sidebar">
+      <div class="ad-container ad-sidebar"><ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </aside>
+  </div>
+  <div class="ad-container ad-footer-banner"><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1956458497999155" data-ad-slot="YYYYYYYYYY"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('hem-allowance-calculator.html'); injectFooter(); });
+
+    let currentMode = 'new';
+
+    const GARMENT_PRESETS = {
+      shirt: { type: 'narrow-double', amount: 0.5, folds: 2 },
+      dress: { type: 'standard-single', amount: 1.5, folds: 1 },
+      pants: { type: 'standard-single', amount: 1.75, folds: 1 },
+      skirt: { type: 'standard-double', amount: 1.5, folds: 2 },
+      curtain: { type: 'deep-double', amount: 3, folds: 2 },
+    };
+
+    const HEM_TYPE_DEFAULTS = {
+      'narrow-single': { amount: 0.375, folds: 1 },
+      'narrow-double': { amount: 0.375, folds: 2 },
+      'standard-single': { amount: 1.25, folds: 1 },
+      'standard-double': { amount: 1.25, folds: 2 },
+      'deep-single': { amount: 2.5, folds: 1 },
+      'deep-double': { amount: 2.5, folds: 2 },
+    };
+
+    function switchMode(m) {
+      currentMode = m;
+      document.getElementById('mode-new').style.display = m === 'new' ? '' : 'none';
+      document.getElementById('mode-letout').style.display = m === 'letout' ? '' : 'none';
+      document.getElementById('tab-new').className = m === 'new' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('tab-letout').className = m === 'letout' ? 'btn-primary' : 'btn-outline';
+    }
+
+    function applyGarmentPreset() {
+      const v = document.getElementById('garment-type').value;
+      if (!v || v === 'custom') return;
+      const p = GARMENT_PRESETS[v];
+      document.getElementById('hem-type').value = p.type;
+      document.getElementById('hem-amount').value = p.amount;
+      document.getElementById('folds').value = p.folds;
+      calculate();
+    }
+
+    function syncHemType() {
+      const v = document.getElementById('hem-type').value;
+      if (v === 'custom') return;
+      const d = HEM_TYPE_DEFAULTS[v];
+      if (d) {
+        document.getElementById('hem-amount').value = d.amount;
+        document.getElementById('folds').value = d.folds;
+      }
+    }
+
+    function f(n) { return n.toFixed(3).replace(/\.?0+$/, '') + '"'; }
+
+    function calculate() {
+      if (currentMode === 'new') {
+        const hemAmt = parseFloat(document.getElementById('hem-amount').value);
+        const folds = parseInt(document.getElementById('folds').value);
+        const finLen = parseFloat(document.getElementById('finished-len').value);
+
+        if (!hemAmt || hemAmt <= 0) { document.getElementById('new-result').style.display = 'none'; return; }
+        const totalHemFabric = hemAmt * folds;
+        const cutLen = finLen ? finLen + totalHemFabric : null;
+
+        const stats = [
+          { label: 'Hem Amount per Fold', value: f(hemAmt) },
+          { label: 'Number of Folds', value: folds + ' fold' + (folds > 1 ? 's' : '') },
+          { label: 'Total Hem Fabric', value: f(totalHemFabric) },
+        ];
+        if (cutLen) stats.push({ label: 'Required Cut Length', value: f(cutLen) });
+        stats.push({ label: 'Add to any finished length', value: '+ ' + f(totalHemFabric) + ' to get cut length' });
+
+        document.getElementById('new-grid').innerHTML = stats.map(s => `<div class="stat-box"><div class="stat-label">${s.label}</div><div class="stat-value">${s.value}</div></div>`).join('');
+        document.getElementById('new-result').style.display = '';
+      } else {
+        const curLen = parseFloat(document.getElementById('lo-current-len').value);
+        const hemDepth = parseFloat(document.getElementById('lo-hem-depth').value);
+        const keepSA = parseFloat(document.getElementById('lo-keep-sa').value) || 0;
+
+        if (!curLen || !hemDepth || curLen <= 0 || hemDepth <= 0) {
+          document.getElementById('lo-result').style.display = 'none'; return;
+        }
+
+        const maxLetOut = hemDepth - keepSA;
+        const newMax = curLen + maxLetOut;
+
+        const stats = [
+          { label: 'Current Finished Length', value: f(curLen) },
+          { label: 'Current Hem Depth', value: f(hemDepth) },
+          { label: 'Minimum Seam Left', value: f(keepSA) },
+          { label: 'Maximum You Can Let Out', value: maxLetOut > 0 ? f(maxLetOut) : '0" (no room)' },
+          { label: 'Maximum Finished Length', value: maxLetOut > 0 ? f(newMax) : 'Cannot be lengthened' },
+        ];
+
+        document.getElementById('lo-grid').innerHTML = stats.map(s => `<div class="stat-box"><div class="stat-label">${s.label}</div><div class="stat-value">${s.value}</div></div>`).join('');
+        document.getElementById('lo-result').style.display = '';
+      }
+    }
+
+    // Live update
+    document.querySelectorAll('.form-input, .form-select').forEach(el => {
+      el.addEventListener('input', calculate);
+      el.addEventListener('change', calculate);
+    });
+  </script>
+</body>
+</html>
