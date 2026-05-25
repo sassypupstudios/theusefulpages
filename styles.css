@@ -627,6 +627,16 @@ input[type="range"] {
 .ad-top-banner, .ad-footer-banner { margin: 20px auto; }
 .ad-content-middle { margin: 30px auto; max-width: 100%; }
 
+/* Hide unfinished manual ad placeholders globally while AdSense review is pending. */
+.ad-container:has(.adsbygoogle[data-ad-slot="YYYYYYYYYY"]),
+.adsbygoogle[data-ad-slot="YYYYYYYYYY"] {
+  display: none !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 @media (max-width: 768px) {
   .ad-top-banner ins,
   .ad-footer-banner ins {
