@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Online Utilities — 72 Tools, No Signup | The Useful Pages</title>
-  <meta name="description" content="72 free online tools: calculators, converters, text tools, developer utilities, health tools, financial calculators and more. Fast, free, no signup required.">
+  <title>Free Online Utilities — Growing Tool Library, No Signup | The Useful Pages</title>
+  <meta name="description" content="A growing library of free online tools: calculators, converters, text tools, developer utilities, health tools, financial calculators and more. Fast, free, no signup required.">
   <meta name="keywords" content="free online tools, calculator, converter, text tools, developer tools, financial calculator, health calculator">
   <link rel="canonical" href="https://theusefulpages.com/">
-  <meta property="og:title" content="The Useful Pages — 72 Free Online Tools">
-  <meta property="og:description" content="72 free online utilities. Word counter, BMI calculator, mortgage calculator, JSON formatter and more. No signup required.">
+  <meta property="og:title" content="The Useful Pages — Free Online Tools">
+  <meta property="og:description" content="A growing library of free online utilities. Word counter, BMI calculator, mortgage calculator, JSON formatter and more. No signup required.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://theusefulpages.com/">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"The Useful Pages","url":"https://theusefulpages.com/","description":"72 free online utilities — no signup required."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"The Useful Pages","url":"https://theusefulpages.com/","description":"A growing library of free online utilities — no signup required."}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the tools on The Useful Pages free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The tools on The Useful Pages are free to use and do not require an account."}},{"@type":"Question","name":"Do I need to sign up to use the tools?","acceptedAnswer":{"@type":"Answer","text":"No. You can open a tool and use it right away without creating an account."}},{"@type":"Question","name":"Is my text or data uploaded?","acceptedAnswer":{"@type":"Answer","text":"Most tools run directly in your browser, so the information you enter stays on your device unless a specific tool clearly says otherwise."}},{"@type":"Question","name":"Can I use the tools on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. The site is designed to work on desktop, tablet, and mobile browsers."}}]}</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,9 +26,9 @@
 
   <div class="hero">
     <h1>Free Online Utilities</h1>
-    <p>Simple, fast, no signup required. 72 tools for text, math, finance, health, dev and more.</p>
+    <p>Simple, fast, no signup required. Search for a tool or browse by category.</p>
     <div class="hero-search">
-      <input type="search" id="hero-search" placeholder="Search 72 tools…" autocomplete="off" aria-label="Search tools">
+      <input type="search" id="hero-search" placeholder="Search tools…" autocomplete="off" aria-label="Search tools">
       <button onclick="document.getElementById('hero-search').dispatchEvent(new Event('input'))">Search</button>
     </div>
   </div>
@@ -48,7 +48,7 @@
           <h2 id="featured-tools-heading" style="font-size:1.25rem;margin:0 0 0.25rem;color:var(--text);">Featured Tools</h2>
           <p style="margin:0;color:var(--text-muted);font-size:0.9375rem;">A few useful places to start if you are not sure what you need.</p>
         </div>
-        <a href="#tool-grid" style="font-size:0.875rem;font-weight:600;text-decoration:none;">Browse all 72 tools →</a>
+        <a href="#browse-categories" style="font-size:0.875rem;font-weight:600;text-decoration:none;">Browse categories →</a>
       </div>
       <div class="tools-grid" aria-label="Featured tools">
         <a href="word-counter.html" class="tool-chip"><span class="tool-chip-icon">✍️</span><div><div class="tool-chip-name">Word Counter</div><div class="tool-chip-desc">Count words, characters, sentences, and reading time.</div></div></a>
@@ -60,12 +60,39 @@
       </div>
     </section>
 
-    <div id="search-no-results" style="display:none;text-align:center;padding:3rem;color:var(--text-muted);">
-      <p style="font-size:1.125rem;font-weight:600;">No tools found</p>
-      <p>Try a different search term.</p>
+    <section id="browse-categories" aria-labelledby="browse-categories-heading" style="margin:0 0 2.5rem;">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
+        <div>
+          <h2 id="browse-categories-heading" style="font-size:1.35rem;margin:0 0 0.25rem;color:var(--text);">Browse by Category</h2>
+          <p style="margin:0;color:var(--text-muted);font-size:0.9375rem;">Pick a category to show only those tools, or use search above to search everything.</p>
+        </div>
+        <button id="show-all-tools" class="btn btn-outline btn-sm" type="button">Show all tools</button>
+      </div>
+
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:1rem;">
+        <label for="category-select" style="display:block;font-size:0.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted);margin-bottom:0.45rem;">Jump to a category</label>
+        <select id="category-select" class="form-select" aria-label="Choose a tool category">
+          <option value="">Choose a category…</option>
+          <option value="all">All tools</option>
+        </select>
+      </div>
+
+      <div id="category-card-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0.85rem;" aria-label="Tool categories">
+        <!-- populated by JS -->
+      </div>
+    </section>
+
+    <div id="active-category-summary" class="hidden" style="display:none;background:var(--result-bg);border:1px solid var(--result-border);border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:1rem;">
+      <strong id="active-category-title"></strong>
+      <p id="active-category-desc" style="margin:0.25rem 0 0;color:var(--text-muted);font-size:0.9375rem;"></p>
     </div>
 
-    <div id="tool-grid"></div>
+    <div id="search-no-results" style="display:none;text-align:center;padding:3rem;color:var(--text-muted);">
+      <p style="font-size:1.125rem;font-weight:600;">No tools found</p>
+      <p>Try a different search term or choose a category.</p>
+    </div>
+
+    <div id="tool-grid" style="display:none;"></div>
 
     <section aria-labelledby="why-heading" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin:2rem 0;text-align:center;">
       <div style="padding:1.5rem;"><div style="font-size:2rem;margin-bottom:0.5rem;">⚡</div><strong>Instant Results</strong><p style="font-size:0.875rem;color:var(--text-muted);margin:0.25rem 0 0;">Everything runs in your browser.</p></div>
@@ -75,8 +102,8 @@
 
     <section aria-labelledby="about-tools-heading" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin:2.5rem 0;">
       <h2 id="about-tools-heading" style="margin:0 0 0.75rem;font-size:1.35rem;">Useful online tools without the extra noise</h2>
-      <p style="margin:0 0 0.85rem;color:var(--text-muted);">The Useful Pages is a collection of simple, single-purpose utilities for everyday work, writing, calculations, coding, cooking, dates, money, and more. Pick a tool, use it, and move on without signing up or digging through a complicated app.</p>
-      <p style="margin:0;color:var(--text-muted);">Use the search box to find a specific tool, browse by category below, or start with the featured tools above.</p>
+      <p style="margin:0 0 0.85rem;color:var(--text-muted);">The Useful Pages is a collection of simple, single-purpose utilities for everyday work, writing, calculations, coding, cooking, dates, money, and more. Pick a category, choose a tool, and move on without signing up or digging through a complicated app.</p>
+      <p style="margin:0;color:var(--text-muted);">Use the search box to find a specific tool, the dropdown to jump on mobile, or the category cards to browse visually.</p>
     </section>
 
     <section aria-labelledby="faq-heading" style="margin:2.5rem 0;">
@@ -108,23 +135,96 @@
       cooking: 'Simple kitchen helpers for scaling recipes, converting measurements, and adjusting cooking times.',
       health: 'Everyday health and fitness calculators for estimates, planning, and general reference.',
       finance: 'Money calculators for loans, mortgages, savings, taxes, tips, salary, debt payoff, and retirement planning.',
-      business: 'Work and school utilities for invoices, time cards, business names, pay raises, and GPA calculations.'
+      business: 'Work and school utilities for invoices, time cards, business names, pay raises, and GPA calculations.',
+      crafting: 'Yarn, crochet, knitting, and craft project helpers for planning, estimating, and tracking work.',
+      yarn_ref: 'Reference charts and converters for yarn weights, hook sizes, needle sizes, and thread colors.',
+      pattern_help: 'Pattern-reading helpers for repeats, abbreviations, row tracking, grading, and plain-language notes.',
+      crochet_tools: 'Crochet calculators for gauge, blankets, motifs, hats, circles, amigurumi, and stitch references.',
+      knitting_tools: 'Knitting calculators for gauge, cast-ons, decreases, socks, hats, sweaters, shawls, and fit.',
+      sewing: 'Sewing and quilting calculators for fabric, seams, hems, buttons, curtains, quilts, and bags.',
+      embroidery: 'Cross-stitch, embroidery, and diamond painting helpers for grids, fabric, floss, and planning.'
     };
 
     const grid = document.getElementById('tool-grid');
+    const categoryGrid = document.getElementById('category-card-grid');
+    const categorySelect = document.getElementById('category-select');
+    const summary = document.getElementById('active-category-summary');
+    const summaryTitle = document.getElementById('active-category-title');
+    const summaryDesc = document.getElementById('active-category-desc');
+    const noResults = document.getElementById('search-no-results');
+    let activeCategory = '';
+
     Object.entries(TOOLS).forEach(([key, cat]) => {
+      const description = categoryDescriptions[key] || 'Free online tools for quick everyday tasks.';
+      const count = cat.tools.length;
+
+      categorySelect.insertAdjacentHTML('beforeend', `<option value="${key}">${cat.icon} ${cat.label} (${count})</option>`);
+
+      categoryGrid.insertAdjacentHTML('beforeend', `
+        <button class="tool-card category-browse-card" type="button" data-category="${key}" style="text-align:left;margin:0;cursor:pointer;min-height:132px;display:flex;flex-direction:column;gap:0.55rem;transition:transform 0.15s,border-color 0.15s,box-shadow 0.15s;">
+          <span style="font-size:1.75rem;line-height:1;">${cat.icon}</span>
+          <span style="font-weight:700;color:var(--text);font-size:1rem;">${cat.label}</span>
+          <span style="color:var(--text-muted);font-size:0.85rem;line-height:1.35;">${count} tools · ${description}</span>
+        </button>`);
+
       const chips = cat.tools.map(t => `
-        <a href="${t.url}" class="tool-chip" data-name="${t.name.toLowerCase()}" data-desc="${t.desc.toLowerCase()}">
+        <a href="${t.url}" class="tool-chip" data-category="${key}" data-name="${t.name.toLowerCase()}" data-desc="${t.desc.toLowerCase()}">
           <span class="tool-chip-icon">${cat.icon}</span>
           <div><div class="tool-chip-name">${t.name}</div><div class="tool-chip-desc">${t.desc}</div></div>
         </a>`).join('');
+
       grid.insertAdjacentHTML('beforeend', `
-        <div class="category-section" id="${key}">
+        <div class="category-section" id="${key}" data-category="${key}">
           <h2 class="category-heading">${cat.icon} ${cat.label}</h2>
-          <p style="color:var(--text-muted);font-size:0.9375rem;margin:-0.35rem 0 1rem;max-width:760px;">${categoryDescriptions[key] || 'Free online tools for quick everyday tasks.'}</p>
+          <p style="color:var(--text-muted);font-size:0.9375rem;margin:-0.35rem 0 1rem;max-width:760px;">${description}</p>
           <div class="tools-grid">${chips}</div>
         </div>`);
     });
+
+    function setActiveCategory(category, shouldScroll = true) {
+      activeCategory = category || '';
+      const searchInput = document.getElementById('hero-search');
+      searchInput.value = '';
+      noResults.style.display = 'none';
+      grid.style.display = category ? '' : 'none';
+      categorySelect.value = category || '';
+
+      document.querySelectorAll('.category-browse-card').forEach(card => {
+        const isActive = card.dataset.category === category;
+        card.style.borderColor = isActive ? 'var(--primary)' : 'var(--border)';
+        card.style.boxShadow = isActive ? 'var(--shadow)' : '';
+        card.style.transform = isActive ? 'translateY(-2px)' : '';
+      });
+
+      document.querySelectorAll('.category-section').forEach(section => {
+        section.style.display = category === 'all' || section.dataset.category === category ? '' : 'none';
+      });
+
+      if (!category) {
+        summary.style.display = 'none';
+        summary.classList.add('hidden');
+        return;
+      }
+
+      const cat = category === 'all' ? null : TOOLS[category];
+      summaryTitle.textContent = category === 'all' ? 'All tools' : `${cat.icon} ${cat.label}`;
+      summaryDesc.textContent = category === 'all'
+        ? 'Showing the complete tool library. Use search to narrow it down.'
+        : categoryDescriptions[category] || 'Free online tools for quick everyday tasks.';
+      summary.style.display = '';
+      summary.classList.remove('hidden');
+
+      if (shouldScroll) {
+        document.getElementById('active-category-summary').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    document.querySelectorAll('.category-browse-card').forEach(card => {
+      card.addEventListener('click', () => setActiveCategory(card.dataset.category));
+    });
+
+    categorySelect.addEventListener('change', () => setActiveCategory(categorySelect.value));
+    document.getElementById('show-all-tools').addEventListener('click', () => setActiveCategory('all'));
 
     const recent = getRecentlyUsed().filter(u => u !== 'index.html');
     if (recent.length) {
@@ -140,15 +240,36 @@
     searchInput.addEventListener('input', () => {
       const q = searchInput.value.toLowerCase().trim();
       let visible = 0;
-      document.querySelectorAll('.tool-chip').forEach(c => {
-        const match = !q || c.dataset.name.includes(q) || c.dataset.desc.includes(q);
+
+      if (!q) {
+        setActiveCategory(activeCategory || '', false);
+        return;
+      }
+
+      activeCategory = '';
+      categorySelect.value = '';
+      grid.style.display = '';
+      summary.style.display = '';
+      summary.classList.remove('hidden');
+      summaryTitle.textContent = 'Search results';
+      summaryDesc.textContent = `Showing tools that match “${searchInput.value.trim()}”.`;
+
+      document.querySelectorAll('.category-browse-card').forEach(card => {
+        card.style.borderColor = 'var(--border)';
+        card.style.boxShadow = '';
+        card.style.transform = '';
+      });
+
+      document.querySelectorAll('#tool-grid .tool-chip').forEach(c => {
+        const match = c.dataset.name.includes(q) || c.dataset.desc.includes(q);
         c.classList.toggle('hidden-tool', !match);
         if (match) visible++;
       });
+
       document.querySelectorAll('.category-section').forEach(s => {
         s.style.display = [...s.querySelectorAll('.tool-chip')].some(c => !c.classList.contains('hidden-tool')) ? '' : 'none';
       });
-      document.getElementById('search-no-results').style.display = visible === 0 ? 'block' : 'none';
+      noResults.style.display = visible === 0 ? 'block' : 'none';
     });
   });
   </script>
