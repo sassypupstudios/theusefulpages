@@ -237,10 +237,8 @@
   <div id="site-footer"></div>
   <script src="script.js"></script>
   <script>
-  // ─── Airtable credentials — fill these in once the table is set up ───
-  const AT_BASE   = 'AIRTABLE_BASE_ID';   // e.g. appXXXXXXXXXXXXXX
-  const AT_TABLE  = 'TUP';                // table name
-  const AT_TOKEN  = 'AIRTABLE_PAT';       // Personal Access Token
+  // ─── Worker endpoint — paste the sps-form-proxy URL here ────────────
+  const WORKER_URL = 'WORKER_URL_HERE'; // e.g. https://sps-form-proxy.xxx.workers.dev
   // ─────────────────────────────────────────────────────────────────────
 
   const form      = document.getElementById('contact-form');
@@ -288,13 +286,10 @@
     if (email) fields['Email']     = email;
 
     try {
-      const res = await fetch('https://api.airtable.com/v0/' + AT_BASE + '/' + encodeURIComponent(AT_TABLE), {
+      const res = await fetch(WORKER_URL, {
         method: 'POST',
-        headers: {
-          'Authorization': 'Bearer ' + AT_TOKEN,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ fields })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formType: 'tup-contact', fields })
       });
 
       if (!res.ok) {
