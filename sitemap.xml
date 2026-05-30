@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://theusefulpages.com/</loc><lastmod>2026-05-20</lastmod><priority>1.0</priority></url>
+  <url><loc>https://theusefulpages.com/contact.html</loc><lastmod>2026-05-30</lastmod><priority>0.7</priority></url>
+  <url><loc>https://theusefulpages.com/about.html</loc><lastmod>2026-05-30</lastmod><priority>0.6</priority></url>
+  <url><loc>https://theusefulpages.com/privacy.html</loc><lastmod>2026-05-30</lastmod><priority>0.4</priority></url>
+  <url><loc>https://theusefulpages.com/terms.html</loc><lastmod>2026-05-30</lastmod><priority>0.4</priority></url>
   <url><loc>https://theusefulpages.com/word-counter.html</loc><lastmod>2026-05-20</lastmod><priority>0.8</priority></url>
   <url><loc>https://theusefulpages.com/character-counter.html</loc><lastmod>2026-05-20</lastmod><priority>0.8</priority></url>
   <url><loc>https://theusefulpages.com/case-converter.html</loc><lastmod>2026-05-20</lastmod><priority>0.8</priority></url>
