@@ -343,15 +343,28 @@ function injectNav(activeUrl){
 function injectFooter(){const html=`<footer class="site-footer"><div class="footer-inner"><a href="index.html" class="footer-logo">⚡ The Useful Pages</a><div class="footer-links"><a href="index.html">All Tools</a><a href="index.html#text">Text & Writing</a><a href="index.html#math">Math</a><a href="index.html#finance">Financial</a><a href="index.html#health">Health</a><a href="index.html#dev">Developer</a><a href="about.html">About</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div><div><div class="footer-copy">Free online utilities — no signup required</div><div class="footer-copy" style="margin-top:0.25rem;">Powered by <a href="https://sassypupstudios.com" style="color:#94a3b8;" target="_blank" rel="noopener">Sassy Pup Studios</a></div></div></div></footer>`;const el=document.getElementById('site-footer'); if(el) el.outerHTML=html; else document.body.insertAdjacentHTML('beforeend',html); showCookieNotice();}
 
 function showCookieNotice(){
-  if(localStorage.getItem('tup_cookie_notice_ack')==='true') return;
+  // Migrate users who clicked "Got it" on the old notice — treat as granted
+  if(localStorage.getItem('tup_cookie_notice_ack')==='true'&&!localStorage.getItem('tup_cookie_consent')){
+    localStorage.setItem('tup_cookie_consent','granted');
+    if(window.gtag) window.gtag('consent','update',{'ad_storage':'granted','analytics_storage':'granted','ad_user_data':'granted','ad_personalization':'granted'});
+    return;
+  }
+  if(localStorage.getItem('tup_cookie_consent')) return;
   if(document.getElementById('cookieNotice')) return;
   const notice=document.createElement('div');
   notice.id='cookieNotice';
   notice.style.cssText='position:fixed;left:1rem;right:1rem;bottom:1rem;max-width:860px;margin:0 auto;background:var(--bg-secondary,#fff);color:var(--text,#111);border:1px solid var(--border,#ddd);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:1rem;z-index:9999;font-size:.9rem;line-height:1.55;';
-  notice.innerHTML='<p style="margin:0 0 .75rem;">The Useful Pages uses cookies or similar technologies for site preferences, analytics, ads, and basic site functionality. Many tools run in your browser.</p><div style="display:flex;gap:.75rem;align-items:center;justify-content:space-between;flex-wrap:wrap;"><div><a href="privacy.html">Privacy Policy</a> \xb7 <a href="terms.html">Terms of Use</a></div><button id="cookieNoticeAccept" type="button" style="background:#236A77;color:#fff;border:none;padding:.5rem 1rem;cursor:pointer;border-radius:6px;">Got it</button></div>';
+  notice.innerHTML='<p style="margin:0 0 .75rem;">The Useful Pages uses cookies or similar technologies for site preferences, analytics, ads, and basic site functionality. Many tools run in your browser.</p><div style="display:flex;gap:.75rem;align-items:center;justify-content:space-between;flex-wrap:wrap;"><div><a href="privacy.html">Privacy Policy</a> \xb7 <a href="terms.html">Terms of Use</a></div><div style="display:flex;gap:.5rem;"><button id="cookieNoticeDecline" type="button" style="background:transparent;color:var(--text-muted,#666);border:1px solid var(--border,#ddd);padding:.5rem 1rem;cursor:pointer;border-radius:6px;">Decline</button><button id="cookieNoticeAccept" type="button" style="background:#236A77;color:#fff;border:none;padding:.5rem 1rem;cursor:pointer;border-radius:6px;">Accept</button></div></div>';
   document.body.appendChild(notice);
-  const btn=document.getElementById('cookieNoticeAccept');
-  if(btn){btn.addEventListener('click',function(){localStorage.setItem('tup_cookie_notice_ack','true');notice.remove();});}
+  document.getElementById('cookieNoticeAccept').addEventListener('click',function(){
+    localStorage.setItem('tup_cookie_consent','granted');
+    if(window.gtag) window.gtag('consent','update',{'ad_storage':'granted','analytics_storage':'granted','ad_user_data':'granted','ad_personalization':'granted'});
+    notice.remove();
+  });
+  document.getElementById('cookieNoticeDecline').addEventListener('click',function(){
+    localStorage.setItem('tup_cookie_consent','declined');
+    notice.remove();
+  });
 }
 
 function trackRecentlyUsed(url){if(!url)return;let recent=JSON.parse(localStorage.getItem('tup_recent')||'[]');recent=recent.filter(u=>u!==url);recent.unshift(url);recent=recent.slice(0,8);localStorage.setItem('tup_recent',JSON.stringify(recent));}
