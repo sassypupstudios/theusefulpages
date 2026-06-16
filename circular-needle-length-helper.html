@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circular Needle Length Helper — Knitting Tool | The Useful Pages</title>
+  <meta name="description" content="Find the right circular needle length for your project. Minimum length calculator plus a full project-type reference table.">
+  <link rel="canonical" href="https://theusefulpages.com/circular-needle-length-helper.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Circular Needle Length Helper</h1>
+      <p class="page-subtitle">Find the minimum needle length for your project circumference, and browse recommended lengths by project type.</p>
+
+      <div class="tool-card">
+        <h3 style="margin-bottom:0.75rem;">Minimum Length Calculator</h3>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.75rem;">Your circular needle cable must be shorter than the project circumference to knit in the round without magic loop.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0.75rem;">
+          <div>
+            <label class="label">Project circumference</label>
+            <input class="form-input" type="number" id="circ-in" min="1" step="0.5" placeholder="e.g. 22" oninput="calcMinLength()">
+          </div>
+          <div>
+            <label class="label">Unit</label>
+            <select class="form-select" id="circ-unit" onchange="calcMinLength()">
+              <option value="in">Inches</option>
+              <option value="cm">Centimeters</option>
+            </select>
+          </div>
+        </div>
+        <div id="min-length-result" style="display:none;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-min-in"></div>
+              <div class="stat-label">Max cable length (in)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-min-cm"></div>
+              <div class="stat-label">Max cable length (cm)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-suggested"></div>
+              <div class="stat-label">Best standard size</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-magic"></div>
+              <div class="stat-label">Magic loop?</div>
+            </div>
+          </div>
+          <div id="res-note" style="margin-top:0.75rem;padding:0.75rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:0.9rem;"></div>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h3 style="margin-bottom:1rem;">Recommended Lengths by Project Type</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Project</th><th>Recommended Length(s)</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Socks (2-at-a-time)</td><td>40"+ (magic loop) or 9"</td><td>9" for DPNS or short circulars; 40"+ for magic loop</td></tr>
+              <tr><td>Socks (1 at a time)</td><td>9", 12", or 40"+ magic loop</td><td>Foot circumference is ~8–9"</td></tr>
+              <tr><td>Sleeves (adult)</td><td>16" or 40"+ (magic loop)</td><td>16" for upper arm; magic loop for narrow sections</td></tr>
+              <tr><td>Hats (adult)</td><td>16"</td><td>24" works but can feel loose; 40" for magic loop</td></tr>
+              <tr><td>Hats (baby/child)</td><td>12"–16"</td><td>Small circumference; magic loop also works</td></tr>
+              <tr><td>Yoke sweaters (top-down)</td><td>24"–32"</td><td>Start with 24", switch to 32" as yoke grows</td></tr>
+              <tr><td>Sweater body (adult)</td><td>32"–40"</td><td>40" is very versatile for average adult body</td></tr>
+              <tr><td>Baby sweater body</td><td>16"–24"</td><td>16" often works for baby bodies</td></tr>
+              <tr><td>Shawls</td><td>32"–40"</td><td>Long enough to hold all sts comfortably</td></tr>
+              <tr><td>Small blankets/afghans</td><td>32"–40"</td><td>Use longest available for flat knitting</td></tr>
+              <tr><td>Large blankets</td><td>47"–60"</td><td>More sts = longer needle needed</td></tr>
+              <tr><td>Colorwork yoke</td><td>32"</td><td>Extra length helps keep colors untangled</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h3 style="margin-bottom:0.75rem;">Common Circular Needle Lengths</h3>
+        <p style="color:var(--text-muted);font-size:0.875rem;margin-bottom:0.5rem;">Standard lengths available from most manufacturers:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <span style="background:var(--border);padding:0.3rem 0.75rem;border-radius:999px;font-size:0.875rem;">9"</span>
+          <span style="background:var(--border);padding:0.3rem 0.75rem;border-radius:999px;font-size:0.875rem;">12"</span>
+          <span style="background:var(--border);padding:0.3rem 0.75rem;border-radius:999px;font-size:0.875rem;">16"</span>
+          <span style="background:var(--border);padding:0.3rem 0.75rem;border-radius:999px;font-size:0.875rem;">24"</span>
+          <span style="background:var(--border);padding:0.3rem 0.75rem;border-radius:999px;font-size:0.875rem;">32"</span>
+          <span style="background:var(--border);padding:0.3rem 0.75rem;border-radius:999px;font-size:0.875rem;">40"</span>
+          <span style="background:var(--border);padding:0.3rem 0.75rem;border-radius:999px;font-size:0.875rem;">47"</span>
+          <span style="background:var(--border);padding:0.3rem 0.75rem;border-radius:999px;font-size:0.875rem;">60"</span>
+        </div>
+        <p style="color:var(--text-muted);font-size:0.8rem;margin-top:0.5rem;">Interchangeable needle sets typically come in 24", 32", and 40" cables. Some brands offer additional lengths.</p>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h3 style="margin-bottom:0.75rem;">Magic Loop Technique</h3>
+        <p style="font-size:0.9rem;line-height:1.7;">Magic loop lets you knit small circumferences on a long (40"+) circular needle by pulling a loop of cable out between the stitches.</p>
+        <ol style="font-size:0.9rem;line-height:1.8;padding-left:1.5rem;">
+          <li>Cast on all stitches and slide them to the center of the cable.</li>
+          <li>Fold the stitches in half — pull the cable out between the two halves to form a loop.</li>
+          <li>Slide the back stitches onto the back needle tip. Knit the front stitches with the front tip.</li>
+          <li>Pull cable through again between halves. Turn work. Knit across the other half.</li>
+          <li>Repeat — you're knitting in the round on a long needle!</li>
+        </ol>
+        <p style="font-size:0.9rem;margin-top:0.5rem;color:var(--text-muted);">Magic loop works for any circumference smaller than half the cable length.</p>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Enter your project's finished circumference (in inches or cm) to find the maximum needle length for in-the-round knitting.</li>
+          <li>The calculator recommends the closest standard needle length smaller than your circumference.</li>
+          <li>If your circumference is very small, magic loop (40"+ needle) is recommended.</li>
+        </ul>
+        <h3 style="margin-top:1rem;">Key Rule</h3>
+        <p style="font-size:0.9rem;">Your circular needle cable length must be at least 2 inches shorter than your project's circumference to avoid stretching stitches. For comfort, aim for the needle to be at least 4 inches shorter.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Circular Needle Length Helper</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Circular Needle Length Helper to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{injectNav('circular-needle-length-helper.html');injectFooter();});
+
+  const STANDARD_LENGTHS_IN = [9, 12, 16, 24, 32, 40, 47, 60];
+
+  function calcMinLength() {
+    let circ = parseFloat(document.getElementById('circ-in').value);
+    const unit = document.getElementById('circ-unit').value;
+    if (!circ) { document.getElementById('min-length-result').style.display='none'; return; }
+    let circIn = unit === 'cm' ? circ / 2.54 : circ;
+    let circCm = unit === 'cm' ? circ : circ * 2.54;
+
+    const maxIn = circIn * 0.9;
+    const maxCm = maxIn * 2.54;
+
+    // Find best standard length (largest that is <= maxIn)
+    const valid = STANDARD_LENGTHS_IN.filter(l => l <= maxIn);
+    const suggested = valid.length > 0 ? valid[valid.length - 1] : null;
+    const needsMagicLoop = !suggested || suggested < 12;
+
+    document.getElementById('res-min-in').textContent = maxIn.toFixed(1) + '"';
+    document.getElementById('res-min-cm').textContent = maxCm.toFixed(0) + ' cm';
+    document.getElementById('res-suggested').textContent = suggested ? suggested + '"' : 'None';
+    document.getElementById('res-magic').textContent = needsMagicLoop ? 'Yes (40"+)' : 'Optional';
+
+    let note = '';
+    if (needsMagicLoop) {
+      note = `Your project circumference (${circIn.toFixed(1)}") is too small for most standard circular needles. Use a 40" or longer needle with the magic loop technique, or use a set of double-pointed needles (DPNs).`;
+    } else {
+      note = `A ${suggested}" circular needle is the largest standard size that fits your project circumference of ${circIn.toFixed(1)}". You can also use a longer needle with the magic loop technique.`;
+    }
+    document.getElementById('res-note').textContent = note;
+    document.getElementById('min-length-result').style.display = '';
+  }
+  </script>
+</body>
+</html>

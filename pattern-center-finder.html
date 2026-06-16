@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Center Finder — Embroidery Tool | The Useful Pages</title>
+  <meta name="description" content="Find the center stitch of any cross-stitch pattern and get step-by-step fabric marking instructions.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-center-finder.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Center Finder</h1>
+      <p class="page-subtitle">Find your pattern's center stitch and get fabric marking instructions for accurate placement.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;align-items:end;">
+          <div>
+            <label class="label">Pattern Width (stitches)</label>
+            <input class="form-input" type="number" id="pw" placeholder="e.g. 140" min="1">
+          </div>
+          <div>
+            <label class="label">Pattern Height (stitches)</label>
+            <input class="form-input" type="number" id="ph" placeholder="e.g. 100" min="1">
+          </div>
+          <div>
+            <label class="label">Fabric Count</label>
+            <select class="form-select" id="fc">
+              <option value="11">11-count</option>
+              <option value="14" selected>14-count</option>
+              <option value="16">16-count</option>
+              <option value="18">18-count</option>
+              <option value="22">22-count</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" style="margin-top:1rem;" onclick="findCenter()">Find Center</button>
+        <div id="result" style="display:none;margin-top:1.5rem;"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use This Tool</h2>
+        <p>Enter your pattern's stitch count (width × height). The tool shows you exactly which stitch is at the center — or, for even-count patterns, which two stitches straddle the center.</p>
+        <h3>Odd Count vs. Even Count</h3>
+        <p><strong>Odd stitch count:</strong> There is one exact center stitch. Place this stitch at the marked center of your fabric.</p>
+        <p><strong>Even stitch count:</strong> The center falls between two stitches. The two center stitches are identified. Start stitching to one side of the fabric center mark, or place your first stitch at the center of the fabric and work symmetrically outward.</p>
+        <h3>Starting Stitch Recommendation</h3>
+        <p>Many stitchers prefer not to start at the exact center — instead, start at a highly detailed area of the design, or at the top-left of the center section, to keep the pattern easy to read. The center coordinates help you count out to wherever you want to begin.</p>
+        <h3>From Fabric Center to Corner</h3>
+        <p>The calculator shows how many stitches to count from the fabric center to reach each corner of the pattern. This helps you verify there is enough fabric on all sides before you begin.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Pattern Center Finder</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Pattern Center Finder to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('pattern-center-finder.html');injectFooter();});
+
+    function findCenter() {
+      const pw = parseInt(document.getElementById('pw').value);
+      const ph = parseInt(document.getElementById('ph').value);
+      const fc = parseFloat(document.getElementById('fc').value);
+      if (!pw || !ph || pw<1 || ph<1) { alert('Please enter stitch counts.'); return; }
+
+      const wOdd = pw % 2 === 1;
+      const hOdd = ph % 2 === 1;
+
+      let colDesc, colDetail, rowDesc, rowDetail;
+      if (wOdd) {
+        const c = Math.ceil(pw/2);
+        colDesc = `Column ${c} (exact center stitch)`;
+        colDetail = `Odd width — stitch ${c} is the exact horizontal center.`;
+      } else {
+        const c1 = pw/2, c2 = pw/2+1;
+        colDesc = `Between columns ${c1} and ${c2}`;
+        colDetail = `Even width — center falls between stitches ${c1} and ${c2}. Place these equally on either side of fabric center.`;
+      }
+      if (hOdd) {
+        const r = Math.ceil(ph/2);
+        rowDesc = `Row ${r} (exact center stitch)`;
+        rowDetail = `Odd height — stitch ${r} is the exact vertical center.`;
+      } else {
+        const r1 = ph/2, r2 = ph/2+1;
+        rowDesc = `Between rows ${r1} and ${r2}`;
+        rowDetail = `Even height — center falls between stitches ${r1} and ${r2}. Place these equally above and below fabric center.`;
+      }
+
+      const wIn = (pw/fc).toFixed(2);
+      const hIn = (ph/fc).toFixed(2);
+      const halfW = Math.floor(pw/2);
+      const halfH = Math.floor(ph/2);
+
+      document.getElementById('result').style.display='';
+      document.getElementById('result').innerHTML=`
+        <div class="stat-grid" style="margin-bottom:1.5rem;">
+          <div class="stat-box"><div class="stat-label">Pattern Size</div><div class="stat-value">${pw} × ${ph} stitches</div></div>
+          <div class="stat-box"><div class="stat-label">Finished Size (${fc}-ct)</div><div class="stat-value">${wIn}" × ${hIn}"</div></div>
+          <div class="stat-box"><div class="stat-label">Horizontal Center</div><div class="stat-value">${wOdd ? 'Column '+Math.ceil(pw/2) : 'Between '+pw/2+' & '+(pw/2+1)}</div></div>
+          <div class="stat-box"><div class="stat-label">Vertical Center</div><div class="stat-value">${hOdd ? 'Row '+Math.ceil(ph/2) : 'Between '+ph/2+' & '+(ph/2+1)}</div></div>
+        </div>
+        <div class="table-wrap" style="margin-bottom:1.5rem;"><table class="data-table">
+          <thead><tr><th>Axis</th><th>Center Position</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Horizontal (columns)</td><td>${colDesc}</td><td>${colDetail}</td></tr>
+            <tr><td>Vertical (rows)</td><td>${rowDesc}</td><td>${rowDetail}</td></tr>
+          </tbody>
+        </table></div>
+        <div style="background:var(--surface-alt,rgba(99,102,241,.06));border:1px solid var(--border);border-radius:8px;padding:1rem;">
+          <strong>Fabric marking instructions:</strong>
+          <ol style="margin:.5rem 0 0 1.2rem;padding:0;line-height:1.8;">
+            <li>Fold fabric in half top-to-bottom, crease lightly. This line = horizontal center.</li>
+            <li>Fold in half left-to-right, crease lightly. Intersection = fabric center.</li>
+            <li>Mark center with a water-soluble pen or basting thread cross.</li>
+            <li>From center, count <strong>${halfW} stitches left</strong> and <strong>${halfW} stitches right</strong> to reach the pattern's left and right edges.</li>
+            <li>From center, count <strong>${halfH} stitches up</strong> and <strong>${halfH} stitches down</strong> to reach the pattern's top and bottom edges.</li>
+            <li>Verify at least 3" of fabric remains beyond the pattern edges on all sides.</li>
+          </ol>
+        </div>`;
+    }
+  </script>
+</body>
+</html>

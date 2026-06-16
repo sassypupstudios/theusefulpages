@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loan Payment Calculator - Online Loan Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate your monthly loan payment, total interest, and full amortization schedule instantly. Free loan calculator for personal, auto, and student loans.">
+  <link rel="canonical" href="https://theusefulpages.com/loan-calculator.html">
+  <meta property="og:title" content="Loan Payment Calculator - The Useful Pages">
+  <meta property="og:description" content="Calculate monthly loan payments, total interest, and amortization schedule instantly. Free and accurate.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Loan Payment Calculator","url":"https://theusefulpages.com/loan-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Loan Payment Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate your monthly payment, total interest, and full amortization schedule for any loan.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Loan Amount ($)</label>
+            <input type="number" class="form-input" id="loanAmount" value="20000" min="0" step="100">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Annual Interest Rate (%)</label>
+            <input type="number" class="form-input" id="interestRate" value="6.5" min="0" max="100" step="0.01">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Loan Term</label>
+            <input type="number" class="form-input" id="loanTerm" value="5" min="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Term Unit</label>
+            <select class="form-select" id="termUnit">
+              <option value="years">Years</option>
+              <option value="months">Months</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary btn-block" onclick="calculateLoan()">Calculate Payment</button>
+        </div>
+
+        <div id="results" class="hidden" style="margin-top:1.5rem;">
+          <div class="stat-grid" id="statGrid"></div>
+          <div style="margin-top:1.5rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+              <h3 style="font-size:1rem;font-weight:600;margin:0;">Amortization Schedule</h3>
+              <button class="btn btn-outline btn-sm" onclick="toggleAmortization()">Show All Months</button>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table" id="amortTable">
+                <thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+                <tbody id="amortBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <button class="btn btn-accent btn-sm" onclick="copySummary()">Copy Summary</button>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">For educational purposes only — not financial advice.</p>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter the total amount you plan to borrow in the Loan Amount field.</li>
+          <li>Input your annual interest rate (APR) as a percentage.</li>
+          <li>Set the loan term in years or switch to months for shorter loans.</li>
+          <li>Click Calculate to see your monthly payment and full amortization schedule.</li>
+          <li>Toggle "Show All Months" to view every payment period.</li>
+          <li>Use "Copy Summary" to copy the results to your clipboard.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="mortgage-calculator.html">Mortgage Calculator</a>
+          <a href="car-payment.html">Car Payment Calculator</a>
+          <a href="compound-interest.html">Compound Interest Calculator</a>
+          <a href="savings-calculator.html">Savings Calculator</a>
+          <a href="debt-payoff.html">Debt Payoff Calculator</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Loan Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free loan payment calculator to estimate monthly payments, total interest, and total loan cost from loan amount, interest rate, and term. It is useful for budgeting and comparing loans. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('loan-calculator.html'); injectFooter(); });
+
+    let fullAmortData = [];
+    let showingAll = false;
+
+    function calculateLoan() {
+      const P = parseFloat(document.getElementById('loanAmount').value) || 0;
+      const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
+      const termVal = parseFloat(document.getElementById('loanTerm').value) || 0;
+      const termUnit = document.getElementById('termUnit').value;
+      const n = termUnit === 'years' ? termVal * 12 : termVal;
+      const r = annualRate / 100 / 12;
+
+      if (P <= 0 || n <= 0) { showToast('Please enter valid loan details.'); return; }
+
+      let M;
+      if (r === 0) {
+        M = P / n;
+      } else {
+        M = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      }
+
+      const totalPayment = M * n;
+      const totalInterest = totalPayment - P;
+      const interestPct = (totalInterest / P) * 100;
+
+      document.getElementById('statGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(M)}</div><div class="stat-label">Monthly Payment</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(totalPayment)}</div><div class="stat-label">Total Payment</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(totalInterest)}</div><div class="stat-label">Total Interest</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtPct(interestPct, 1)}</div><div class="stat-label">Interest % of Loan</div></div>
+      `;
+
+      fullAmortData = [];
+      let balance = P;
+      for (let i = 1; i <= n; i++) {
+        const interestPayment = balance * r;
+        const principalPayment = M - interestPayment;
+        balance = Math.max(0, balance - principalPayment);
+        fullAmortData.push({ month: i, payment: M, principal: principalPayment, interest: interestPayment, balance });
+      }
+
+      showingAll = false;
+      renderAmortTable();
+      document.getElementById('results').classList.remove('hidden');
+      document.querySelector('[onclick="toggleAmortization()"]').textContent = 'Show All Months';
+    }
+
+    function renderAmortTable() {
+      const data = showingAll ? fullAmortData : fullAmortData.slice(0, 12);
+      const tbody = document.getElementById('amortBody');
+      tbody.innerHTML = data.map(r => `
+        <tr>
+          <td>${r.month}</td>
+          <td>${fmtCurrency(r.payment)}</td>
+          <td>${fmtCurrency(r.principal)}</td>
+          <td>${fmtCurrency(r.interest)}</td>
+          <td>${fmtCurrency(r.balance)}</td>
+        </tr>
+      `).join('');
+    }
+
+    function toggleAmortization() {
+      showingAll = !showingAll;
+      renderAmortTable();
+      document.querySelector('[onclick="toggleAmortization()"]').textContent = showingAll ? 'Show First 12' : 'Show All Months';
+    }
+
+    function copySummary() {
+      const P = parseFloat(document.getElementById('loanAmount').value) || 0;
+      const r = parseFloat(document.getElementById('interestRate').value) || 0;
+      const term = document.getElementById('loanTerm').value + ' ' + document.getElementById('termUnit').value;
+      const statBoxes = document.querySelectorAll('.stat-box');
+      let text = `Loan Calculator Summary\nLoan: ${fmtCurrency(P)} at ${r}% for ${term}\n`;
+      statBoxes.forEach(b => {
+        text += `${b.querySelector('.stat-label').textContent}: ${b.querySelector('.stat-value').textContent}\n`;
+      });
+      copyText(text, 'Summary copied!');
+    }
+  </script>
+</body>
+</html>

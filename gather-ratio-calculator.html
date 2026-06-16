@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gather Ratio Calculator — Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate fabric needed for gathering. Find cut length from finished length and ratio, or finished length from cut length. Get yardage at 44 and 60 inch widths.">
+  <link rel="canonical" href="https://theusefulpages.com/gather-ratio-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Gather Ratio Calculator</h1>
+      <p class="page-subtitle">Find cut length from finished size (or vice versa) and get total fabric yardage for ruffles and gathers.</p>
+      <div class="tool-card">
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+          <button class="btn-primary" id="tab-a" onclick="switchMode('a')">Finished → Cut Length</button>
+          <button class="btn-outline" id="tab-b" onclick="switchMode('b')">Cut Length → Finished</button>
+        </div>
+
+        <div id="mode-a">
+          <p style="margin:0 0 1rem;color:var(--text-muted);font-size:0.9rem;">Enter your desired finished (gathered) length to find how much fabric to cut.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Desired Finished Length (inches)</label>
+              <input class="form-input" type="number" id="a-finished" min="1" step="0.5" placeholder="e.g. 30" oninput="calculate()">
+            </div>
+            <div>
+              <label class="label">Gather Ratio</label>
+              <select class="form-select" id="a-ratio" onchange="calculate()">
+                <option value="1.5">1.5:1 — Light gather</option>
+                <option value="2" selected>2:1 — Standard</option>
+                <option value="2.5">2.5:1 — Full</option>
+                <option value="3">3:1 — Very full ruffles</option>
+                <option value="custom">Custom ratio</option>
+              </select>
+            </div>
+            <div id="a-custom-wrap" style="display:none;">
+              <label class="label">Custom Ratio (e.g. 2.2)</label>
+              <input class="form-input" type="number" id="a-custom-ratio" min="1" step="0.1" placeholder="e.g. 2.2" oninput="calculate()">
+            </div>
+            <div>
+              <label class="label">Strip Height / Width (inches)</label>
+              <input class="form-input" type="number" id="a-height" min="0.5" step="0.25" placeholder="e.g. 4" oninput="calculate()">
+            </div>
+          </div>
+        </div>
+
+        <div id="mode-b" style="display:none;">
+          <p style="margin:0 0 1rem;color:var(--text-muted);font-size:0.9rem;">Enter your cut length to see the finished gathered length.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Cut Length (inches)</label>
+              <input class="form-input" type="number" id="b-cut" min="1" step="0.5" placeholder="e.g. 60" oninput="calculate()">
+            </div>
+            <div>
+              <label class="label">Gather Ratio</label>
+              <select class="form-select" id="b-ratio" onchange="calculate()">
+                <option value="1.5">1.5:1 — Light gather</option>
+                <option value="2" selected>2:1 — Standard</option>
+                <option value="2.5">2.5:1 — Full</option>
+                <option value="3">3:1 — Very full ruffles</option>
+                <option value="custom">Custom ratio</option>
+              </select>
+            </div>
+            <div id="b-custom-wrap" style="display:none;">
+              <label class="label">Custom Ratio (e.g. 2.2)</label>
+              <input class="form-input" type="number" id="b-custom-ratio" min="1" step="0.1" placeholder="e.g. 2.2" oninput="calculate()">
+            </div>
+            <div>
+              <label class="label">Strip Height / Width (inches)</label>
+              <input class="form-input" type="number" id="b-height" min="0.5" step="0.25" placeholder="e.g. 4" oninput="calculate()">
+            </div>
+          </div>
+        </div>
+
+        <div id="result-area" style="display:none;margin-top:1.5rem;">
+          <div class="result-card">
+            <div class="stat-grid" id="stat-grid"></div>
+          </div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Gather Ratio Calculator</h2>
+        <p><strong>Finished → Cut Length:</strong> Enter the finished (gathered) measurement you need — for example, to gather a skirt waistband that is 30" around, enter 30. The calculator tells you how long to cut the fabric strip before gathering.</p>
+        <p><strong>Cut Length → Finished:</strong> If you already have a fabric strip cut, enter that length and ratio to find what finished gathered length you'll get.</p>
+        <h3>Gather Ratio Guide</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Ratio</th><th>Fullness Level</th><th>Best For</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>1.5:1</td><td>Light</td><td>Heavier fabrics, subtle effect</td><td>Cut 1.5× the finished length</td></tr>
+              <tr><td>2:1</td><td>Standard</td><td>Most fabrics, skirts, sleeves</td><td>Cut 2× the finished length</td></tr>
+              <tr><td>2.5:1</td><td>Full</td><td>Ruffles, light cotton, voile</td><td>Cut 2.5× the finished length</td></tr>
+              <tr><td>3:1</td><td>Very Full</td><td>Ruffles on light fabrics</td><td>Cut 3× the finished length</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Important:</strong> Heavier fabrics (denim, canvas, velvet) need a higher ratio for the same visual fullness because they don't compress as easily. Lightweight fabrics like chiffon or lawn achieve excellent fullness at 1.5:1 or 2:1.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Gather Ratio Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Gather Ratio Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('gather-ratio-calculator.html'); injectFooter(); });
+
+    let currentMode = 'a';
+
+    function switchMode(m) {
+      currentMode = m;
+      document.getElementById('mode-a').style.display = m === 'a' ? '' : 'none';
+      document.getElementById('mode-b').style.display = m === 'b' ? '' : 'none';
+      document.getElementById('tab-a').className = m === 'a' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('tab-b').className = m === 'b' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('result-area').style.display = 'none';
+    }
+
+    ['a-ratio','b-ratio'].forEach(id => {
+      document.getElementById(id).addEventListener('change', function() {
+        const prefix = id.split('-')[0];
+        document.getElementById(prefix + '-custom-wrap').style.display = this.value === 'custom' ? '' : 'none';
+        calculate();
+      });
+    });
+
+    function getRatio(prefix) {
+      const v = document.getElementById(prefix + '-ratio').value;
+      if (v === 'custom') return parseFloat(document.getElementById(prefix + '-custom-ratio').value) || 0;
+      return parseFloat(v);
+    }
+
+    function f(n) { return n.toFixed(2) + '"'; }
+    function yd44(inches, height) { return height ? ((Math.ceil(inches / 44) * height) / 36).toFixed(2) : 'N/A'; }
+    function yd60(inches, height) { return height ? ((Math.ceil(inches / 60) * height) / 36).toFixed(2) : 'N/A'; }
+
+    const RATIO_NAMES = { '1.5': 'Light', '2': 'Standard', '2.5': 'Full', '3': 'Very Full' };
+
+    function calculate() {
+      const prefix = currentMode;
+      const ratio = getRatio(prefix);
+      const height = parseFloat(document.getElementById(prefix + '-height').value) || 0;
+
+      if (!ratio || ratio < 1) { document.getElementById('result-area').style.display = 'none'; return; }
+
+      let stats = [];
+      if (currentMode === 'a') {
+        const finished = parseFloat(document.getElementById('a-finished').value);
+        if (!finished || finished <= 0) { document.getElementById('result-area').style.display = 'none'; return; }
+        const cutLen = finished * ratio;
+        stats = [
+          { label: 'Desired Finished Length', value: f(finished) },
+          { label: 'Gather Ratio', value: ratio + ':1' },
+          { label: 'Cut Length Needed', value: f(cutLen) },
+          { label: 'Strips at 44" width', value: Math.ceil(cutLen / 44) + ' strip' + (Math.ceil(cutLen / 44) > 1 ? 's' : '') },
+          { label: 'Strips at 60" width', value: Math.ceil(cutLen / 60) + ' strip' + (Math.ceil(cutLen / 60) > 1 ? 's' : '') },
+        ];
+        if (height > 0) {
+          stats.push({ label: 'Yardage at 44" wide', value: yd44(cutLen, height) + ' yd' });
+          stats.push({ label: 'Yardage at 60" wide', value: yd60(cutLen, height) + ' yd' });
+        }
+      } else {
+        const cut = parseFloat(document.getElementById('b-cut').value);
+        if (!cut || cut <= 0) { document.getElementById('result-area').style.display = 'none'; return; }
+        const finished = cut / ratio;
+        stats = [
+          { label: 'Cut Length', value: f(cut) },
+          { label: 'Gather Ratio', value: ratio + ':1' },
+          { label: 'Resulting Finished Length', value: f(finished) },
+          { label: 'Fabric Used per Finished Inch', value: ratio.toFixed(2) + '"' },
+        ];
+        if (height > 0) {
+          stats.push({ label: 'Strip Area', value: (cut * height).toFixed(1) + ' sq in' });
+        }
+      }
+
+      const grid = document.getElementById('stat-grid');
+      grid.innerHTML = stats.map(s => `<div class="stat-box"><div class="stat-label">${s.label}</div><div class="stat-value">${s.value}</div></div>`).join('');
+      document.getElementById('result-area').style.display = '';
+    }
+  </script>
+</body>
+</html>

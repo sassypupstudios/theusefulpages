@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aida Cloth Count Calculator — Embroidery Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate finished embroidery size from stitch count and Aida cloth count, or find how many stitches fit a desired size.">
+  <link rel="canonical" href="https://theusefulpages.com/aida-cloth-count-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Aida Cloth Count Calculator</h1>
+      <p class="page-subtitle">Convert stitch counts to finished sizes — or find the right count for your target dimensions.</p>
+      <div class="tool-card">
+        <div style="display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+          <button class="btn-primary" id="tab-forward" onclick="setTab('forward')">Stitch Count → Size</button>
+          <button class="btn-outline" id="tab-reverse" onclick="setTab('reverse')">Size → Stitch Count</button>
+        </div>
+
+        <!-- Forward: stitch count to size -->
+        <div id="panel-forward">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Fabric Count</label>
+              <select class="form-select" id="count-fwd">
+                <option value="6">6-count Aida</option>
+                <option value="11">11-count Aida</option>
+                <option value="14" selected>14-count Aida</option>
+                <option value="16">16-count Aida</option>
+                <option value="18">18-count Aida</option>
+                <option value="22">22-count Aida</option>
+                <option value="14">28-count (stitched over 2)</option>
+                <option value="16">32-count (stitched over 2)</option>
+              </select>
+            </div>
+            <div></div>
+            <div>
+              <label class="label">Stitch Width</label>
+              <input class="form-input" type="number" id="stitch-w" placeholder="e.g. 140" min="1">
+            </div>
+            <div>
+              <label class="label">Stitch Height</label>
+              <input class="form-input" type="number" id="stitch-h" placeholder="e.g. 120" min="1">
+            </div>
+          </div>
+          <button class="btn-primary" style="margin-top:1rem;" onclick="calcForward()">Calculate Size</button>
+          <div id="result-forward" class="result-card" style="display:none;margin-top:1rem;"></div>
+        </div>
+
+        <!-- Reverse: size to stitch count -->
+        <div id="panel-reverse" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Desired Width (inches)</label>
+              <input class="form-input" type="number" id="size-w" placeholder="e.g. 10" min="0.1" step="0.1">
+            </div>
+            <div>
+              <label class="label">Desired Height (inches)</label>
+              <input class="form-input" type="number" id="size-h" placeholder="e.g. 8" min="0.1" step="0.1">
+            </div>
+          </div>
+          <button class="btn-primary" style="margin-top:1rem;" onclick="calcReverse()">Show Stitch Counts</button>
+          <div id="result-reverse" style="display:none;margin-top:1rem;"></div>
+        </div>
+
+        <!-- Reference table always visible -->
+        <div style="margin-top:2rem;">
+          <h3 style="margin-bottom:.75rem;">Fabric Count Reference</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Count</th><th>Stitches/Inch</th><th>Stitch Size (mm)</th><th>Best For</th></tr></thead>
+              <tbody>
+                <tr><td>6-count</td><td>6</td><td>4.2 mm</td><td>Beginners, large designs</td></tr>
+                <tr><td>11-count</td><td>11</td><td>2.3 mm</td><td>Beginner–intermediate</td></tr>
+                <tr><td>14-count</td><td>14</td><td>1.8 mm</td><td>Most popular, versatile</td></tr>
+                <tr><td>16-count</td><td>16</td><td>1.6 mm</td><td>Fine detail</td></tr>
+                <tr><td>18-count</td><td>18</td><td>1.4 mm</td><td>Fine detail</td></tr>
+                <tr><td>22-count</td><td>22</td><td>1.15 mm</td><td>Very fine/miniature</td></tr>
+                <tr><td>28-count (over 2)</td><td>14</td><td>1.8 mm</td><td>Evenweave linen feel at 14ct</td></tr>
+                <tr><td>32-count (over 2)</td><td>16</td><td>1.6 mm</td><td>Evenweave linen feel at 16ct</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <h3>Stitch Count → Finished Size</h3>
+        <p>Select your Aida cloth count, enter the stitch width and height of your pattern, then click Calculate Size. The result shows your finished stitched area in both inches and centimeters.</p>
+        <h3>Finished Size → Stitch Count</h3>
+        <p>Enter the dimensions you want your finished design to be. The calculator shows a comparison table of how many stitches you would need at each fabric count — helpful for choosing which Aida to buy.</p>
+        <h3>What Is Fabric Count?</h3>
+        <p>Fabric count refers to the number of stitches (or threads) per inch. A 14-count Aida has 14 holes per inch, so a 140-stitch-wide design will measure exactly 10 inches across.</p>
+        <h3>28-count and 32-count "Stitched Over 2"</h3>
+        <p>Evenweave fabrics like 28-count linen are stitched over 2 fabric threads, which makes each cross-stitch the same size as on 14-count Aida. Similarly, 32-count stitched over 2 equals 16-count Aida.</p>
+        <h3>Formula</h3>
+        <p>Finished size (inches) = Stitch count ÷ Fabric count. Always add at least 3 inches (7.5 cm) on each side of the design area when buying fabric.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Aida Cloth Count Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Aida Cloth Count Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('aida-cloth-count-calculator.html');injectFooter();});
+
+    const COUNTS = [6,11,14,16,18,22];
+    const COUNT_LABELS = {6:'6-count',11:'11-count',14:'14-count',16:'16-count',18:'18-count',22:'22-count'};
+
+    function setTab(tab) {
+      document.getElementById('panel-forward').style.display = tab==='forward' ? '' : 'none';
+      document.getElementById('panel-reverse').style.display = tab==='reverse' ? '' : 'none';
+      document.getElementById('tab-forward').className = tab==='forward' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('tab-reverse').className = tab==='reverse' ? 'btn-primary' : 'btn-outline';
+    }
+
+    function calcForward() {
+      const count = parseFloat(document.getElementById('count-fwd').value);
+      const sw = parseFloat(document.getElementById('stitch-w').value);
+      const sh = parseFloat(document.getElementById('stitch-h').value);
+      if (!count || !sw || !sh || sw<=0 || sh<=0) { alert('Please enter valid stitch counts.'); return; }
+      const wIn = sw / count;
+      const hIn = sh / count;
+      const wCm = wIn * 2.54;
+      const hCm = hIn * 2.54;
+      const el = document.getElementById('result-forward');
+      el.style.display = '';
+      el.innerHTML = `
+        <div class="stat-grid">
+          <div class="stat-box"><div class="stat-label">Width</div><div class="stat-value">${wIn.toFixed(2)}" / ${wCm.toFixed(1)} cm</div></div>
+          <div class="stat-box"><div class="stat-label">Height</div><div class="stat-value">${hIn.toFixed(2)}" / ${hCm.toFixed(1)} cm</div></div>
+          <div class="stat-box"><div class="stat-label">Fabric to Buy (+ 3" border)</div><div class="stat-value">${(wIn+6).toFixed(1)}" × ${(hIn+6).toFixed(1)}"</div></div>
+          <div class="stat-box"><div class="stat-label">Total Stitches</div><div class="stat-value">${(sw*sh).toLocaleString()}</div></div>
+        </div>`;
+    }
+
+    function calcReverse() {
+      const sw = parseFloat(document.getElementById('size-w').value);
+      const sh = parseFloat(document.getElementById('size-h').value);
+      if (!sw || !sh || sw<=0 || sh<=0) { alert('Please enter valid dimensions.'); return; }
+      let rows = COUNTS.map(c=>{
+        const stitchW = Math.round(sw*c);
+        const stitchH = Math.round(sh*c);
+        return `<tr><td>${COUNT_LABELS[c]}</td><td>${stitchW} × ${stitchH}</td><td>${(stitchW*stitchH).toLocaleString()}</td><td>${(sw*2.54).toFixed(1)} × ${(sh*2.54).toFixed(1)} cm</td></tr>`;
+      }).join('');
+      const el = document.getElementById('result-reverse');
+      el.style.display = '';
+      el.innerHTML = `<div class="table-wrap"><table class="data-table"><thead><tr><th>Count</th><th>Stitch Count (W×H)</th><th>Total Stitches</th><th>Finished Size (cm)</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    }
+  </script>
+</body>
+</html>

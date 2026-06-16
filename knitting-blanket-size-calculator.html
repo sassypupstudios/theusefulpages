@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Blanket Size Calculator — Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate cast-on stitches, row count, and yardage for your knitted blanket. Choose from standard sizes or enter custom dimensions.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-blanket-size-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Blanket Size Calculator</h1>
+      <p class="page-subtitle">Calculate cast-on stitches, total rows, and yardage for your knitted blanket.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Blanket Size Preset</label>
+            <select class="form-select" id="size-preset" onchange="loadPreset()">
+              <option value="custom">Custom</option>
+              <option value="baby">Baby (30" × 36")</option>
+              <option value="lap">Lap (36" × 48")</option>
+              <option value="throw">Throw (50" × 60")</option>
+              <option value="full">Full / Double (54" × 75")</option>
+              <option value="queen">Queen (60" × 80")</option>
+              <option value="king">King (76" × 80")</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Construction Method</label>
+            <select class="form-select" id="construction">
+              <option value="flat">Flat (back and forth)</option>
+              <option value="round">In the Round</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Width (inches)</label>
+            <input class="form-input" type="number" id="blanket-width" min="1" placeholder="e.g. 50">
+          </div>
+          <div>
+            <label class="label">Length (inches)</label>
+            <input class="form-input" type="number" id="blanket-length" min="1" placeholder="e.g. 60">
+          </div>
+          <div>
+            <label class="label">Gauge: stitches per 4 inches</label>
+            <input class="form-input" type="number" id="gauge-sts" min="1" step="0.5" placeholder="e.g. 18">
+          </div>
+          <div>
+            <label class="label">Gauge: rows per 4 inches</label>
+            <input class="form-input" type="number" id="gauge-rows" min="1" step="0.5" placeholder="e.g. 24">
+          </div>
+          <div>
+            <label class="label">Yarn Weight</label>
+            <select class="form-select" id="yarn-weight">
+              <option value="lace">Lace (0)</option>
+              <option value="fingering">Fingering (1)</option>
+              <option value="sport">Sport (2)</option>
+              <option value="dk">DK (3)</option>
+              <option value="worsted" selected>Worsted (4)</option>
+              <option value="bulky">Bulky (5)</option>
+              <option value="super-bulky">Super Bulky (6)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Needle Size</label>
+            <input class="form-input" type="text" id="needle-size" placeholder="e.g. US 7 / 4.5mm">
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcKnitBlanket()">Calculate</button>
+          <button class="btn-ghost" onclick="resetForm()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="blanket-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-cast-on"></div>
+              <div class="stat-label">Cast-On Stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-rows"></div>
+              <div class="stat-label">Total Rows</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-total-sts"></div>
+              <div class="stat-label">Total Stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yards"></div>
+              <div class="stat-label">Estimated Yards</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-buffer"></div>
+              <div class="stat-label">Yards + 15% Buffer</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-skeins"></div>
+              <div class="stat-label">Approx. Skeins (200yd)</div>
+            </div>
+          </div>
+          <div class="result-card" style="margin-top:1rem;">
+            <p id="res-construction-note" style="margin:0;color:var(--text-muted);font-size:0.9rem;"></p>
+          </div>
+          <p class="disclaimer" style="margin-top:0.75rem;">Results are estimates. Actual yarn use varies by stitch pattern, tension, and yarn brand.</p>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Standard Knitted Blanket Sizes</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Size</th><th>Width</th><th>Length</th><th>Typical Use</th></tr></thead>
+            <tbody>
+              <tr><td>Baby / Crib</td><td>30"</td><td>36"</td><td>Newborn, crib</td></tr>
+              <tr><td>Lap</td><td>36"</td><td>48"</td><td>Wheelchair, sofa</td></tr>
+              <tr><td>Throw</td><td>50"</td><td>60"</td><td>Couch throw</td></tr>
+              <tr><td>Full / Double</td><td>54"</td><td>75"</td><td>Full size bed</td></tr>
+              <tr><td>Queen</td><td>60"</td><td>80"</td><td>Queen size bed</td></tr>
+              <tr><td>King</td><td>76"</td><td>80"</td><td>King size bed</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <ul>
+          <li>Choose a standard blanket size or enter custom dimensions in inches.</li>
+          <li>Select your construction method — flat (knitting back and forth) or in the round.</li>
+          <li>Enter your gauge from a blocked swatch: stitches per 4 inches and rows per 4 inches.</li>
+          <li>Click <strong>Calculate</strong> to get your cast-on count, row total, and yardage estimate.</li>
+        </ul>
+        <h2>Flat vs. In the Round</h2>
+        <ul>
+          <li><strong>Flat:</strong> You cast on the full width and work back and forth. Cast-on = stitches for the full width.</li>
+          <li><strong>In the round:</strong> Some blanket constructions start from the center or work in a tube (later seamed). If knitting in the round flat (e.g. for a double-knit blanket), you cast on twice the width.</li>
+          <li>Most standard rectangular blankets are knitted flat unless using a special technique.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Knitting Blanket Size Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Knitting Blanket Size Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('knitting-blanket-size-calculator.html');injectFooter();});
+
+    const presets = {baby:{w:30,l:36},lap:{w:36,l:48},throw:{w:50,l:60},full:{w:54,l:75},queen:{w:60,l:80},king:{w:76,l:80}};
+    const ydsPerSt = {lace:0.08,fingering:0.06,sport:0.05,dk:0.04,worsted:0.035,bulky:0.025,'super-bulky':0.018};
+
+    function loadPreset(){
+      const p = presets[document.getElementById('size-preset').value];
+      if(!p) return;
+      document.getElementById('blanket-width').value  = p.w;
+      document.getElementById('blanket-length').value = p.l;
+    }
+
+    function calcKnitBlanket(){
+      const w   = parseFloat(document.getElementById('blanket-width').value);
+      const l   = parseFloat(document.getElementById('blanket-length').value);
+      const gS  = parseFloat(document.getElementById('gauge-sts').value);
+      const gR  = parseFloat(document.getElementById('gauge-rows').value);
+      const wt  = document.getElementById('yarn-weight').value;
+      const con = document.getElementById('construction').value;
+      if([w,l,gS,gR].some(v=>isNaN(v)||v<=0)){alert('Please fill in all required fields.');return;}
+      const stsPerIn  = gS/4;
+      const rowsPerIn = gR/4;
+      const castOn    = con==='round' ? Math.round(w * stsPerIn * 2) : Math.round(w * stsPerIn);
+      const rowCount  = Math.round(l * rowsPerIn);
+      const totalSts  = Math.round(w * stsPerIn) * rowCount; // total sts for yardage (based on actual stitch area)
+      const yards     = totalSts * ydsPerSt[wt];
+      const buffer    = yards * 1.15;
+      const skeins    = Math.ceil(buffer/200);
+      const note = con==='round'
+        ? `Knitting in the round: cast on ${castOn} stitches (2× the width for a double-layer or tube construction). Adjust as needed for your specific technique.`
+        : `Knitting flat: cast on ${castOn} stitches across the full width of your blanket.`;
+      document.getElementById('res-cast-on').textContent    = castOn.toLocaleString();
+      document.getElementById('res-rows').textContent       = rowCount.toLocaleString();
+      document.getElementById('res-total-sts').textContent  = totalSts.toLocaleString();
+      document.getElementById('res-yards').textContent      = Math.round(yards).toLocaleString();
+      document.getElementById('res-buffer').textContent     = Math.round(buffer).toLocaleString();
+      document.getElementById('res-skeins').textContent     = skeins;
+      document.getElementById('res-construction-note').textContent = note;
+      document.getElementById('blanket-result').style.display = 'block';
+    }
+
+    function resetForm(){
+      document.getElementById('size-preset').value='custom';
+      ['blanket-width','blanket-length','gauge-sts','gauge-rows','needle-size'].forEach(id=>{document.getElementById(id).value='';});
+      document.getElementById('blanket-result').style.display='none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cast-On Calculator — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate how many stitches to cast on based on your gauge and desired finished width. Adjust for pattern multiples.">
+  <link rel="canonical" href="https://theusefulpages.com/cast-on-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-box { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:1.25rem; margin-top:1rem; }
+    .cast-on-num { font-size:2.5rem; font-weight:700; color:var(--primary); line-height:1; }
+    .multiple-table { width:100%; border-collapse:collapse; margin-top:0.75rem; font-size:0.875rem; }
+    .multiple-table th { background:var(--bg-secondary); padding:0.5rem 0.75rem; text-align:left; font-weight:600; font-size:0.78rem; color:var(--text-muted); }
+    .multiple-table td { padding:0.5rem 0.75rem; border-bottom:1px solid var(--border); }
+    .multiple-table tr:last-child td { border-bottom:none; }
+    .unit-toggle { display:flex; gap:0.5rem; margin-bottom:0.5rem; }
+    .unit-btn { padding:0.3rem 0.8rem; border-radius:6px; border:1px solid var(--border); background:var(--bg-secondary); color:var(--text-muted); cursor:pointer; font-size:0.85rem; font-weight:500; transition:all 0.15s; }
+    .unit-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Cast-On Calculator</h1>
+      <p class="page-subtitle">Calculate how many stitches to cast on for your desired finished width and gauge, with optional pattern multiple adjustment.</p>
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label">Unit</label>
+          <div class="unit-toggle">
+            <button class="unit-btn active" id="btnIn" onclick="setUnit('in')">Inches</button>
+            <button class="unit-btn" id="btnCm" onclick="setUnit('cm')">Centimeters</button>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="finishedWidth">Desired Finished Width (<span class="unit-label">in</span>)</label>
+            <input type="number" id="finishedWidth" class="form-input" placeholder="e.g. 18" min="0.1" step="0.1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="gauge">Your Gauge (stitches per <span class="unit-label">in</span>)</label>
+            <input type="number" id="gauge" class="form-input" placeholder="e.g. 5" min="0.1" step="0.1">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="patternMultiple">Pattern Multiple (optional)</label>
+            <input type="number" id="patternMultiple" class="form-input" placeholder="e.g. 6" min="1" step="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="extraStitches">Plus extra stitches (optional)</label>
+            <input type="number" id="extraStitches" class="form-input" placeholder="e.g. 2 for multiple of 6+2" min="0" step="1" value="0">
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="calculate()">Calculate Cast-On</button>
+        <div id="result"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your <strong>desired finished width</strong> — the measurement you want the finished piece to be.</li>
+          <li>Enter your <strong>gauge</strong> — check your swatch! Gauge is stitches per inch (or cm).</li>
+          <li>If your pattern requires a specific multiple (e.g., "multiple of 6"), enter it in the Pattern Multiple field.</li>
+          <li>The calculator shows the exact count and adjusted counts for common multiples.</li>
+        </ul>
+        <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--text-muted);">
+          <strong>Tip:</strong> Always knit a gauge swatch before starting a project. An accurate gauge is the most important factor in getting the right finished size.
+        </p>
+        <p class="disclaimer" style="margin-top:0.75rem;">Finished dimensions may vary based on blocking, yarn fiber, and tension. These are estimates based on gauge.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Cast On Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Cast On Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let currentUnit = 'in';
+
+    function setUnit(u) {
+      currentUnit = u;
+      document.getElementById('btnIn').classList.toggle('active', u === 'in');
+      document.getElementById('btnCm').classList.toggle('active', u === 'cm');
+      document.querySelectorAll('.unit-label').forEach(el => el.textContent = u);
+    }
+
+    function nearestMultiple(n, base, extra) {
+      // find nearest valid count (n - extra) divisible by base
+      const adjusted = n - extra;
+      if (adjusted <= 0) return extra > 0 ? base + extra : base;
+      const lower = Math.floor(adjusted / base) * base + extra;
+      const upper = Math.ceil(adjusted / base) * base + extra;
+      return { lower: lower > 0 ? lower : upper, upper };
+    }
+
+    function calculate() {
+      const width = parseFloat(document.getElementById('finishedWidth').value);
+      const gauge = parseFloat(document.getElementById('gauge').value);
+      const patMult = parseInt(document.getElementById('patternMultiple').value) || 0;
+      const extra = parseInt(document.getElementById('extraStitches').value) || 0;
+      const res = document.getElementById('result');
+
+      if (!width || !gauge || isNaN(width) || isNaN(gauge)) {
+        res.innerHTML = '<p style="color:#e53e3e;margin-top:0.75rem;">Please enter width and gauge.</p>'; return;
+      }
+
+      const exact = width * gauge;
+      const exactRounded = Math.round(exact);
+      const actualWidth = (exactRounded / gauge).toFixed(2);
+      const unit = currentUnit;
+
+      let html = `<div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:10px;padding:1.25rem;margin-top:1rem;">`;
+      html += `<div style="margin-bottom:1rem;">
+        <div style="font-size:0.78rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.25rem;">Exact Cast-On</div>
+        <div style="font-size:2.5rem;font-weight:700;color:var(--primary);line-height:1;">${exactRounded}</div>
+        <div style="font-size:0.875rem;color:var(--text-muted);margin-top:0.25rem;">stitches &nbsp;·&nbsp; actual width: ${actualWidth} ${unit}</div>
+      </div>`;
+
+      if (patMult > 0) {
+        const { lower, upper } = nearestMultiple(exactRounded, patMult, extra);
+        const multDesc = extra > 0 ? `multiple of ${patMult} + ${extra}` : `multiple of ${patMult}`;
+        const lowerWidth = (lower / gauge).toFixed(2);
+        const upperWidth = (upper / gauge).toFixed(2);
+        html += `<div style="border-top:1px solid var(--border);padding-top:1rem;margin-top:0.5rem;">
+          <div style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:0.75rem;">ADJUSTED FOR PATTERN (${multDesc.toUpperCase()})</div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <div style="flex:1;min-width:120px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center;">
+              <div style="font-size:1.75rem;font-weight:700;color:var(--primary);">${lower}</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);">Round down</div>
+              <div style="font-size:0.82rem;margin-top:0.25rem;">${lowerWidth} ${unit}</div>
+            </div>
+            <div style="flex:1;min-width:120px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem;text-align:center;">
+              <div style="font-size:1.75rem;font-weight:700;color:var(--primary);">${upper}</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);">Round up</div>
+              <div style="font-size:0.82rem;margin-top:0.25rem;">${upperWidth} ${unit}</div>
+            </div>
+          </div>
+        </div>`;
+      }
+
+      // Common multiples table
+      const commonMults = [2, 4, 6, 8];
+      html += `<div style="border-top:1px solid var(--border);padding-top:1rem;margin-top:1rem;">
+        <div style="font-size:0.82rem;font-weight:600;color:var(--text-muted);margin-bottom:0.5rem;">ADJUSTED FOR COMMON MULTIPLES</div>
+        <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+          <thead><tr><th style="text-align:left;padding:0.4rem 0.5rem;font-size:0.78rem;color:var(--text-muted);">Multiple</th><th style="text-align:center;padding:0.4rem 0.5rem;font-size:0.78rem;color:var(--text-muted);">Round Down</th><th style="text-align:center;padding:0.4rem 0.5rem;font-size:0.78rem;color:var(--text-muted);">Round Up</th></tr></thead>
+          <tbody>`;
+      commonMults.forEach(m => {
+        const lower = Math.floor(exactRounded / m) * m;
+        const upper = Math.ceil(exactRounded / m) * m;
+        const lowerEq = lower === exactRounded;
+        const upperEq = upper === exactRounded;
+        html += `<tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.4rem 0.5rem;">Multiple of ${m}</td>
+          <td style="text-align:center;padding:0.4rem 0.5rem;font-weight:${lowerEq?'700':'400'};color:${lowerEq?'var(--primary)':'inherit'};">${lower}</td>
+          <td style="text-align:center;padding:0.4rem 0.5rem;font-weight:${upperEq?'700':'400'};color:${upperEq?'var(--primary)':'inherit'};">${upper === lower ? '—' : upper}</td>
+        </tr>`;
+      });
+      html += `</tbody></table></div></div>`;
+      res.innerHTML = html;
+    }
+  </script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{injectNav('cast-on-calculator.html');injectFooter();});</script>
+</body>
+</html>

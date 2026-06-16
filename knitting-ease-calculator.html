@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Ease Calculator — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate finished garment measurements from body measurements and ease preference. Free knitting ease calculator — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-ease-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Ease Calculator</h1>
+      <p class="page-subtitle">Find the right finished garment measurement for your body size and preferred fit. Includes ease guide by garment type.</p>
+
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Body measurement (bust / chest)</label>
+            <input type="number" id="body-meas" class="form-input" placeholder="e.g. 38" min="10" max="80" step="0.5">
+          </div>
+          <div>
+            <label class="label">Unit</label>
+            <select id="unit" class="form-select">
+              <option value="in">Inches</option>
+              <option value="cm">Centimeters</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <label class="label">Ease preference</label>
+          <select id="ease-type" class="form-select" style="max-width:320px;">
+            <option value="-2">Negative ease (very fitted, -2 to -1")</option>
+            <option value="-1">Negative ease (fitted, -1 to 0")</option>
+            <option value="0" selected>Zero ease (exact, 0")</option>
+            <option value="1">Positive ease (relaxed, +1 to +2")</option>
+            <option value="2">Positive ease (comfortable, +2 to +4")</option>
+            <option value="4">Positive ease (oversized, +4 to +6")</option>
+            <option value="custom">Custom ease amount</option>
+          </select>
+        </div>
+
+        <div id="custom-ease-row" style="display:none;margin-bottom:1rem;">
+          <label class="label">Custom ease amount (positive = larger, negative = smaller)</label>
+          <input type="number" id="custom-ease" class="form-input" placeholder="e.g. 3 or -1" step="0.5" style="max-width:200px;">
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <label class="label">Garment type (for recommendation)</label>
+          <select id="garment-type" class="form-select" style="max-width:320px;">
+            <option value="sweater">Sweater / pullover</option>
+            <option value="cardigan">Cardigan</option>
+            <option value="tshirt">T-shirt style</option>
+            <option value="hat">Hat</option>
+            <option value="sock">Sock</option>
+            <option value="mittens">Mittens / gloves</option>
+          </select>
+        </div>
+
+        <button class="btn-primary" onclick="calcEase()">Calculate</button>
+
+        <div id="ease-result" class="result-card" style="display:none;margin-top:1.25rem;">
+          <div class="stat-grid">
+            <div class="stat-box"><div class="stat-label">Body Measurement</div><div class="stat-value" id="r-body"></div></div>
+            <div class="stat-box"><div class="stat-label">Ease Applied</div><div class="stat-value" id="r-ease"></div></div>
+            <div class="stat-box"><div class="stat-label">Finished Garment</div><div class="stat-value" id="r-finished"></div></div>
+          </div>
+          <div id="r-advice" style="margin-top:1rem;padding:0.75rem;background:var(--bg-secondary);border-radius:6px;font-size:0.9rem;color:var(--text-muted);"></div>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 0.75rem;">Ease reference by garment type</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Garment</th><th>Typical Ease</th><th>Fit Description</th></tr></thead>
+              <tbody>
+                <tr><td>Sock</td><td>-10% to -15%</td><td>Negative ease — must stretch to grip the foot</td></tr>
+                <tr><td>Fitted T-shirt</td><td>0 to +1"</td><td>Zero to very slight positive</td></tr>
+                <tr><td>Classic sweater</td><td>+1" to +3"</td><td>Standard positive ease — comfortable fit</td></tr>
+                <tr><td>Cardigan</td><td>+2" to +4"</td><td>Slightly more ease than a pullover</td></tr>
+                <tr><td>Oversized sweater</td><td>+4" to +8"</td><td>Intentionally roomy</td></tr>
+                <tr><td>Hat</td><td>-1" to -2"</td><td>Negative ease — hat must stretch to stay on</td></tr>
+                <tr><td>Mittens</td><td>0 to +0.5"</td><td>Close-fitting with slight ease for movement</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About ease in knitting</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Ease is the difference between your actual body measurement and the finished garment measurement. Positive ease means the garment is larger than your body — it hangs loosely. Negative ease means the garment is smaller — it stretches to fit and clings to the body.</p>
+        <h3 style="font-size:0.95rem;margin:1rem 0 0.5rem;">Common uses</h3>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Find the finished measurement to target when choosing a pattern size</li>
+          <li>Compare ease across different fit styles before casting on</li>
+          <li>Understand why a pattern might be knit in a size larger than your measurements</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Always check a pattern's schematic for the finished measurements and compare to your body measurements plus desired ease before choosing your size.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Knitting Ease Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Knitting Ease Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.getElementById('ease-type').addEventListener('change', function() {
+    document.getElementById('custom-ease-row').style.display = this.value === 'custom' ? '' : 'none';
+  });
+
+  const GARMENT_ADVICE = {
+    sweater: { rec: '+2" to +3"', note: 'Most classic sweater patterns include 2–3" of positive ease. Choose a pattern size with a finished bust 2–3" larger than your actual measurement.' },
+    cardigan: { rec: '+2" to +4"', note: 'Cardigans typically have a bit more ease than pullovers. A finished measurement 2–4" larger than your bust is common.' },
+    tshirt: { rec: '0 to +1"', note: 'A T-shirt style should fit close to the body. Zero to 1" of positive ease works well.' },
+    hat: { rec: '-1" to -2"', note: 'Hats need negative ease to stay on the head. Knit a hat with a circumference 1–2" smaller than your head circumference.' },
+    sock: { rec: '-10% to -15% of foot circumference', note: 'Sock fabric must stretch. Cast on for a circumference 10–15% smaller than your actual foot circumference.' },
+    mittens: { rec: '0 to +0.5"', note: 'Mittens should fit snugly with just a little ease for comfortable movement.' },
+  };
+
+  function calcEase() {
+    const body = parseFloat(document.getElementById('body-meas').value);
+    const unit = document.getElementById('unit').value;
+    const easeType = document.getElementById('ease-type').value;
+    const garment = document.getElementById('garment-type').value;
+
+    if (isNaN(body) || body <= 0) { alert('Please enter your body measurement.'); return; }
+
+    const easeMap = { '-2': -1.5, '-1': -0.5, '0': 0, '1': 1.5, '2': 3, '4': 5 };
+    let easeVal = easeType === 'custom' ? parseFloat(document.getElementById('custom-ease').value) : easeMap[easeType];
+    if (isNaN(easeVal)) { alert('Please enter a custom ease amount.'); return; }
+
+    const u = unit === 'in' ? '"' : ' cm';
+    const finished = body + easeVal;
+    const easeSign = easeVal >= 0 ? '+' : '';
+    const adv = GARMENT_ADVICE[garment];
+
+    document.getElementById('r-body').textContent = body.toFixed(1) + u;
+    document.getElementById('r-ease').textContent = easeSign + easeVal.toFixed(1) + u;
+    document.getElementById('r-finished').textContent = finished.toFixed(1) + u;
+    document.getElementById('r-advice').innerHTML = `<strong>Recommended ease for ${garment}:</strong> ${adv.rec}<br>${adv.note}`;
+    document.getElementById('ease-result').style.display = '';
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('knitting-ease-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

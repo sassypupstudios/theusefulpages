@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pregnancy Due Date Calculator - EDD Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate your pregnancy due date from LMP, conception date, or ultrasound. See current week, trimester, days remaining, and a full milestone timeline with key dates.">
+  <link rel="canonical" href="https://theusefulpages.com/pregnancy-due-date.html">
+  <meta property="og:title" content="Pregnancy Due Date Calculator - The Useful Pages"><meta property="og:description" content="Calculate your estimated due date and see your full pregnancy timeline."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Pregnancy Due Date Calculator","url":"https://theusefulpages.com/pregnancy-due-date.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .due-date-big { font-size:2.25rem; font-weight:700; color:var(--primary); }
+    .milestone-list { display:flex; flex-direction:column; gap:0; margin-top:0.75rem; }
+    .milestone-item { display:flex; align-items:flex-start; gap:1rem; padding:0.75rem 0; border-bottom:1px solid var(--border); position:relative; }
+    .milestone-item:last-child { border-bottom:none; }
+    .milestone-dot { width:14px; height:14px; border-radius:50%; background:var(--border); flex-shrink:0; margin-top:3px; border:2px solid var(--card-bg); box-shadow:0 0 0 2px var(--border); }
+    .milestone-dot.passed { background:var(--primary); box-shadow:0 0 0 2px var(--primary); }
+    .milestone-dot.current { background:var(--accent); box-shadow:0 0 0 2px var(--accent); animation:pulse 1.5s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.25);} }
+    .milestone-date { font-size:0.82rem; color:var(--text-muted); min-width:90px; }
+    .milestone-label { font-weight:600; font-size:0.9rem; }
+    .milestone-note { font-size:0.78rem; color:var(--text-muted); }
+    .progress-bar-wrap { margin:1rem 0; }
+    .progress-bar-bg { height:14px; background:var(--border); border-radius:7px; overflow:hidden; }
+    .progress-bar-fill { height:100%; background:linear-gradient(to right,var(--primary),var(--accent)); border-radius:7px; transition:width 0.6s; }
+    .trimester-badges { display:flex; gap:0.5rem; margin-top:0.5rem; flex-wrap:wrap; }
+    .tri-badge { padding:0.25rem 0.75rem; border-radius:20px; font-size:0.8rem; font-weight:600; }
+    .tri-1 { background:#dbeafe; color:#1d4ed8; }
+    .tri-2 { background:#dcfce7; color:#15803d; }
+    .tri-3 { background:#fef9c3; color:#a16207; }
+    .disclaimer { background:var(--result-bg); border-left:3px solid var(--accent); padding:0.75rem 1rem; border-radius:0 8px 8px 0; font-size:0.82rem; color:var(--text-muted); margin-top:1rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Pregnancy Due Date Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate your estimated due date and see your complete pregnancy timeline and milestones.</p>
+      <div class="tool-card">
+        <div class="tab-group" id="methodTabs">
+          <button class="tab-btn active" onclick="setMethod('lmp')">Last Period (LMP)</button>
+          <button class="tab-btn" onclick="setMethod('conception')">Conception Date</button>
+          <button class="tab-btn" onclick="setMethod('ultrasound')">Ultrasound</button>
+        </div>
+
+        <!-- LMP -->
+        <div id="tab-lmp" style="margin-top:1rem;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Day of Last Menstrual Period</label>
+              <input type="date" id="lmpDate" class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Average Cycle Length</label>
+              <select id="cycleLen" class="form-select">
+                <option value="21">21 days</option><option value="22">22 days</option><option value="23">23 days</option>
+                <option value="24">24 days</option><option value="25">25 days</option><option value="26">26 days</option>
+                <option value="27">27 days</option><option value="28" selected>28 days (average)</option>
+                <option value="29">29 days</option><option value="30">30 days</option><option value="31">31 days</option>
+                <option value="32">32 days</option><option value="33">33 days</option><option value="34">34 days</option>
+                <option value="35">35 days</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conception -->
+        <div id="tab-conception" style="display:none;margin-top:1rem;">
+          <div class="form-group">
+            <label class="form-label">Conception Date (approximate)</label>
+            <input type="date" id="conceptionDate" class="form-input">
+          </div>
+        </div>
+
+        <!-- Ultrasound -->
+        <div id="tab-ultrasound" style="display:none;margin-top:1rem;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Ultrasound Date</label>
+              <input type="date" id="usDate" class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Weeks Pregnant at Ultrasound</label>
+              <input type="number" id="usWeeks" class="form-input" value="12" min="4" max="40" step="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Days</label>
+              <input type="number" id="usDays" class="form-input" value="0" min="0" max="6" step="1">
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calculate()">Calculate Due Date</button>
+          <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
+        </div>
+
+        <div id="results" style="display:none;margin-top:1.25rem;">
+          <div style="margin-bottom:1.25rem;">
+            <div style="font-size:0.78rem;font-weight:600;color:var(--text-muted);margin-bottom:0.25rem;">ESTIMATED DUE DATE</div>
+            <div class="due-date-big" id="dueDateDisplay">—</div>
+            <div style="font-size:0.875rem;color:var(--text-muted);margin-top:0.25rem;" id="daysRemaining"></div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-box"><div class="stat-value" id="currentWeek">—</div><div class="stat-label">Current Week</div></div>
+            <div class="stat-box"><div class="stat-value" id="trimester">—</div><div class="stat-label">Trimester</div></div>
+            <div class="stat-box"><div class="stat-value" id="conceptionEst">—</div><div class="stat-label">Conception Est.</div></div>
+          </div>
+
+          <div class="progress-bar-wrap">
+            <div style="display:flex;justify-content:space-between;font-size:0.78rem;color:var(--text-muted);margin-bottom:0.3rem;">
+              <span>Week 1</span><span id="progressLabel"></span><span>Week 40</span>
+            </div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+            <div class="trimester-badges">
+              <span class="tri-badge tri-1">1st Trimester: Weeks 1–12</span>
+              <span class="tri-badge tri-2">2nd Trimester: Weeks 13–27</span>
+              <span class="tri-badge tri-3">3rd Trimester: Weeks 28–40</span>
+            </div>
+          </div>
+
+          <div style="margin-top:1.25rem;">
+            <div style="font-weight:700;font-size:0.95rem;margin-bottom:0.5rem;">Pregnancy Milestones</div>
+            <div class="milestone-list" id="milestoneList"></div>
+          </div>
+
+          <div class="disclaimer">For informational purposes only — not medical advice. Due dates are estimates — only about 5% of babies are born on their exact due date. Always follow your healthcare provider's guidance.</div>
+        </div>
+      </div>
+
+      <div class="instructions-card"><h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2><ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+        <li><strong>LMP method:</strong> Enter the first day of your last menstrual period — adds 280 days (40 weeks) adjusted for cycle length.</li>
+        <li><strong>Conception method:</strong> Enter your approximate conception date — adds 266 days (38 weeks).</li>
+        <li><strong>Ultrasound method:</strong> Enter the date of your scan and how many weeks/days pregnant you were at the time.</li>
+        <li>The timeline shows key milestones with dates — passed milestones are highlighted.</li>
+        <li>Your current pregnancy week and trimester update automatically.</li>
+        <li>Due dates are estimates — normal delivery ranges from 37–42 weeks.</li>
+      </ul></div>
+
+      <div class="related-card"><h3>Related Tools</h3><div class="related-links">
+        <a href="ovulation-calculator.html">Ovulation Calculator</a>
+      </div></div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Pregnancy Due Date</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free pregnancy due date calculator to estimate a due date from last menstrual period, conception date, or ultrasound information. It is useful for planning and general reference. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let method = 'lmp';
+
+    function setMethod(m) {
+      method = m;
+      document.querySelectorAll('#methodTabs .tab-btn').forEach((b,i)=>b.classList.toggle('active',['lmp','conception','ultrasound'][i]===m));
+      ['lmp','conception','ultrasound'].forEach(t=>document.getElementById('tab-'+t).style.display=t===m?'block':'none');
+    }
+
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function fmtDate(d) { return `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`; }
+    function addDays(d, n) { const r=new Date(d); r.setDate(r.getDate()+n); return r; }
+    function addWeeks(d, w) { return addDays(d, w*7); }
+
+    function calculate() {
+      let lmpDate; // we compute everything relative to LMP
+      const today = new Date(); today.setHours(0,0,0,0);
+
+      if (method === 'lmp') {
+        const raw = document.getElementById('lmpDate').value;
+        if (!raw) { showToast('Enter your last period date.'); return; }
+        lmpDate = new Date(raw+'T00:00:00');
+        const cycleAdj = parseInt(document.getElementById('cycleLen').value) - 28;
+        lmpDate = addDays(lmpDate, -cycleAdj); // adjust for cycle length
+      } else if (method === 'conception') {
+        const raw = document.getElementById('conceptionDate').value;
+        if (!raw) { showToast('Enter conception date.'); return; }
+        const conception = new Date(raw+'T00:00:00');
+        lmpDate = addDays(conception, -14); // LMP = conception - 14 days
+      } else {
+        const raw = document.getElementById('usDate').value;
+        const weeks = parseInt(document.getElementById('usWeeks').value)||0;
+        const days = parseInt(document.getElementById('usDays').value)||0;
+        if (!raw) { showToast('Enter ultrasound date.'); return; }
+        const usDate = new Date(raw+'T00:00:00');
+        lmpDate = addDays(usDate, -(weeks*7+days));
+      }
+
+      const dueDate = addDays(lmpDate, 280);
+      const conceptionEst = addDays(lmpDate, 14);
+      const daysSinceLmp = Math.floor((today - lmpDate) / 864e5);
+      const weeksPreg = Math.floor(daysSinceLmp / 7);
+      const daysExtra = daysSinceLmp % 7;
+      const daysRemaining = Math.floor((dueDate - today) / 864e5);
+
+      let trimester;
+      if (weeksPreg < 13) trimester = '1st';
+      else if (weeksPreg < 28) trimester = '2nd';
+      else trimester = '3rd';
+
+      document.getElementById('dueDateDisplay').textContent = fmtDate(dueDate);
+      document.getElementById('daysRemaining').textContent = daysRemaining > 0
+        ? `${daysRemaining} days remaining`
+        : daysRemaining === 0 ? 'Today is your due date!' : `${Math.abs(daysRemaining)} days past due date`;
+      document.getElementById('currentWeek').textContent = weeksPreg >= 0 ? `${weeksPreg}w ${daysExtra}d` : 'Not yet started';
+      document.getElementById('trimester').textContent = weeksPreg >= 0 && weeksPreg <= 42 ? trimester : '—';
+      document.getElementById('conceptionEst').textContent = fmtDate(conceptionEst);
+
+      const pct = Math.min(100, Math.max(0, daysSinceLmp / 280 * 100));
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressLabel').textContent = `Week ${weeksPreg}`;
+
+      // Milestones
+      const milestones = [
+        { week: 0, label: 'Last Menstrual Period', note: 'Start of pregnancy dating' },
+        { week: 4, label: 'Missed Period', note: 'Pregnancy test likely positive' },
+        { week: 8, label: 'Heartbeat Visible', note: 'First ultrasound often performed' },
+        { week: 10, label: 'End of Embryonic Period', note: 'Fetus is fully formed in miniature' },
+        { week: 12, label: 'End of First Trimester', note: 'Risk of miscarriage drops significantly' },
+        { week: 16, label: 'Anatomy Scan Scheduled', note: 'Mid-pregnancy ultrasound (weeks 18–20)' },
+        { week: 20, label: 'Anatomy Scan', note: 'Detailed ultrasound — can often see sex' },
+        { week: 24, label: 'Viability Milestone', note: 'Baby can survive outside womb with support' },
+        { week: 28, label: 'Third Trimester Begins', note: 'Baby gains weight rapidly' },
+        { week: 32, label: 'Lungs Maturing', note: 'Good survival rate if born now' },
+        { week: 36, label: 'Late Preterm', note: 'Baby considered late preterm' },
+        { week: 37, label: 'Full Term', note: 'Safe to deliver — baby is considered full term' },
+        { week: 40, label: 'Estimated Due Date', note: fmtDate(dueDate) },
+        { week: 42, label: 'Post-Term', note: 'Provider may discuss induction' },
+      ];
+
+      let html = '';
+      milestones.forEach(m => {
+        const mDate = addWeeks(lmpDate, m.week);
+        const isPassed = mDate <= today;
+        const isCurrent = weeksPreg === m.week;
+        const dotClass = isCurrent ? 'current' : isPassed ? 'passed' : '';
+        html += `<div class="milestone-item"><div class="milestone-dot ${dotClass}"></div><div class="milestone-date">${fmtDate(mDate)}</div><div><div class="milestone-label">Week ${m.week}: ${m.label}</div><div class="milestone-note">${m.note}</div></div></div>`;
+      });
+      document.getElementById('milestoneList').innerHTML = html;
+      document.getElementById('results').style.display = 'block';
+    }
+
+    function clearAll() {
+      document.getElementById('results').style.display = 'none';
+      document.getElementById('lmpDate').value = '';
+      document.getElementById('conceptionDate').value = '';
+      document.getElementById('usDate').value = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('pregnancy-due-date.html');
+      injectFooter();
+      // Default LMP to ~8 weeks ago
+      const d = new Date(); d.setDate(d.getDate()-56);
+      document.getElementById('lmpDate').value = d.toISOString().split('T')[0];
+    });
+  </script>
+</body>
+</html>

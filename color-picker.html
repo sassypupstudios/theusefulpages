@@ -1,0 +1,430 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Picker & Palette Generator - Online Tool | The Useful Pages</title>
+  <meta name="description" content="Free online color picker with HEX, RGB, and HSL values. Generate complementary, analogous, triadic, and monochromatic palettes. WCAG contrast checker included.">
+  <link rel="canonical" href="https://theusefulpages.com/color-picker.html">
+  <meta property="og:title" content="Color Picker & Palette Generator - The Useful Pages">
+  <meta property="og:description" content="Free online color picker with HEX, RGB, HSL values and palette generator. Includes WCAG contrast checker.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Color Picker & Palette Generator","url":"https://theusefulpages.com/color-picker.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .color-picker-wrap { display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+    #mainColorPicker { width:80px; height:80px; border:none; padding:0; cursor:pointer; border-radius:12px; background:none; }
+    .color-values { display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; flex:1; min-width:240px; }
+    .color-val-box { display:flex; flex-direction:column; gap:0.3rem; }
+    .color-val-label { font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); }
+    .color-val-row { display:flex; gap:0.4rem; align-items:center; }
+    .color-val-input { flex:1; font-family:monospace; font-size:0.85rem; padding:0.35rem 0.5rem; border:1px solid var(--border); border-radius:6px; background:var(--bg-alt); }
+    .copy-small { font-size:0.7rem; padding:0.25rem 0.5rem; }
+    .swatch-row { display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:0.75rem; }
+    .swatch { width:64px; height:64px; border-radius:10px; cursor:pointer; border:2px solid transparent; transition:transform 0.15s,border-color 0.15s; position:relative; flex-shrink:0; }
+    .swatch:hover { transform:scale(1.08); border-color: rgba(0,0,0,0.2); }
+    .swatch-label { font-size:0.7rem; text-align:center; margin-top:0.3rem; font-family:monospace; color:var(--text-muted); }
+    .swatch-wrap { display:flex; flex-direction:column; align-items:center; }
+    .contrast-preview { display:flex; gap:1rem; margin-top:0.75rem; flex-wrap:wrap; }
+    .contrast-box { flex:1; min-width:160px; padding:1rem; border-radius:10px; text-align:center; }
+    .contrast-ratio { font-size:1.25rem; font-weight:700; margin-top:0.5rem; }
+    .wcag-badge { font-size:0.7rem; padding:0.2rem 0.5rem; border-radius:999px; margin:0.15rem; display:inline-block; }
+    .wcag-pass { background:#dcfce7; color:#166534; }
+    .wcag-fail { background:#fee2e2; color:#991b1b; }
+    .export-area { font-family:monospace; font-size:0.8rem; background:var(--bg-alt); border:1px solid var(--border); border-radius:8px; padding:0.75rem; margin-top:0.75rem; white-space:pre; overflow-x:auto; }
+    .random-btn { font-size:1.2rem; padding:0.4rem 0.75rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Color Picker & Palette Generator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Pick a color, get HEX/RGB/HSL values, generate palettes, and check WCAG contrast ratios.</p>
+
+      <div class="tool-card">
+        <!-- Color picker + values -->
+        <div class="color-picker-wrap">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
+            <input type="color" id="mainColorPicker" value="#236A77" oninput="onColorChange(this.value)">
+            <button class="btn btn-ghost btn-sm random-btn" onclick="randomColor()" title="Random color">&#x1F3B2;</button>
+          </div>
+          <div class="color-values">
+            <div class="color-val-box">
+              <div class="color-val-label">HEX</div>
+              <div class="color-val-row">
+                <input class="color-val-input" id="hexInput" value="#236A77" oninput="onHexInput(this.value)">
+                <button class="btn btn-outline btn-sm copy-small" onclick="copyText(document.getElementById('hexInput').value,'HEX copied!')">Copy</button>
+              </div>
+            </div>
+            <div class="color-val-box">
+              <div class="color-val-label">RGB</div>
+              <div class="color-val-row">
+                <input class="color-val-input" id="rgbInput" readonly>
+                <button class="btn btn-outline btn-sm copy-small" onclick="copyText(document.getElementById('rgbInput').value,'RGB copied!')">Copy</button>
+              </div>
+            </div>
+            <div class="color-val-box">
+              <div class="color-val-label">HSL</div>
+              <div class="color-val-row">
+                <input class="color-val-input" id="hslInput" readonly>
+                <button class="btn btn-outline btn-sm copy-small" onclick="copyText(document.getElementById('hslInput').value,'HSL copied!')">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Palette tabs -->
+        <div class="tab-group" style="margin-bottom:1rem;">
+          <button class="tab-btn active" onclick="setPaletteType('complementary',this)">Complementary</button>
+          <button class="tab-btn" onclick="setPaletteType('analogous',this)">Analogous</button>
+          <button class="tab-btn" onclick="setPaletteType('triadic',this)">Triadic</button>
+          <button class="tab-btn" onclick="setPaletteType('monochromatic',this)">Monochromatic</button>
+          <button class="tab-btn" onclick="setPaletteType('tetradic',this)">Tetradic</button>
+        </div>
+        <div class="swatch-row" id="paletteRow"></div>
+
+        <!-- Contrast checker -->
+        <h3 style="font-size:0.9rem;font-weight:700;margin-top:1.5rem;margin-bottom:0.5rem;">Contrast Checker</h3>
+        <div class="contrast-preview" id="contrastPreview"></div>
+
+        <!-- Export -->
+        <h3 style="font-size:0.9rem;font-weight:700;margin-top:1.5rem;margin-bottom:0.5rem;">Export Palette</h3>
+        <div class="tab-group" style="margin-bottom:0.75rem;">
+          <button class="tab-btn active" onclick="setExportType('css',this)">CSS Variables</button>
+          <button class="tab-btn" onclick="setExportType('json',this)">JSON</button>
+        </div>
+        <div class="export-area" id="exportArea"></div>
+        <button class="btn btn-outline btn-sm" style="margin-top:0.5rem;" onclick="copyText(document.getElementById('exportArea').textContent,'Exported!')">Copy Export</button>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Click the color swatch to open the color picker, or type a HEX value directly.</li>
+          <li>HEX, RGB, and HSL values update in real time — copy any with the Copy button.</li>
+          <li>Click the dice button for a random color.</li>
+          <li>Choose a palette type to generate harmonious color combinations.</li>
+          <li>Click any palette swatch to set it as your active color.</li>
+          <li>The contrast checker shows WCAG AA/AAA pass/fail for white and black text.</li>
+          <li>Export your palette as CSS custom properties or JSON.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="json-formatter.html">JSON Formatter</a>
+          <a href="html-formatter.html">HTML Formatter</a>
+          <a href="qr-generator.html">QR Code Generator</a>
+          <a href="password-generator.html">Password Generator</a>
+          <a href="markdown-previewer.html">Markdown Previewer</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Color Picker</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free color picker and palette tool to choose colors and convert between HEX, RGB, and HSL values. It is useful for design, branding, CSS, websites, graphics, and quick color checks. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('color-picker.html');
+      injectFooter();
+      onColorChange('#236A77');
+    });
+
+    let currentHex = '#236A77';
+    let currentPaletteType = 'complementary';
+    let currentExportType = 'css';
+    let currentPalette = [];
+
+    function hexToRgb(hex) {
+      const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+      return {r,g,b};
+    }
+    function rgbToHex(r,g,b) { return '#'+[r,g,b].map(v=>v.toString(16).padStart(2,'0')).join(''); }
+    function rgbToHsl(r,g,b) {
+      r/=255; g/=255; b/=255;
+      const max=Math.max(r,g,b), min=Math.min(r,g,b);
+      let h,s,l=(max+min)/2;
+      if(max===min){h=s=0;}else{
+        const d=max-min; s=l>0.5?d/(2-max-min):d/(max+min);
+        switch(max){case r:h=((g-b)/d+(g<b?6:0))/6;break;case g:h=((b-r)/d+2)/6;break;case b:h=((r-g)/d+4)/6;break;}
+      }
+      return {h:Math.round(h*360),s:Math.round(s*100),l:Math.round(l*100)};
+    }
+    function hslToRgb(h,s,l) {
+      s/=100; l/=100;
+      const k=n=>(n+h/30)%12, a=s*Math.min(l,1-l);
+      const f=n=>l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));
+      return {r:Math.round(f(0)*255),g:Math.round(f(8)*255),b:Math.round(f(4)*255)};
+    }
+    function hslToHex(h,s,l) { const {r,g,b}=hslToRgb(h,s,l); return rgbToHex(r,g,b); }
+
+    function onColorChange(hex) {
+      currentHex = hex;
+      document.getElementById('mainColorPicker').value = hex;
+      document.getElementById('hexInput').value = hex.toUpperCase();
+      const {r,g,b} = hexToRgb(hex);
+      document.getElementById('rgbInput').value = `rgb(${r}, ${g}, ${b})`;
+      const {h,s,l} = rgbToHsl(r,g,b);
+      document.getElementById('hslInput').value = `hsl(${h}, ${s}%, ${l}%)`;
+      renderPalette();
+      renderContrast();
+    }
+
+    function onHexInput(val) {
+      const clean = val.startsWith('#') ? val : '#'+val;
+      if (/^#[0-9a-fA-F]{6}$/.test(clean)) onColorChange(clean);
+    }
+
+    function randomColor() {
+      const hex = '#' + Math.floor(Math.random()*0xFFFFFF).toString(16).padStart(6,'0');
+      onColorChange(hex);
+    }
+
+    function setPaletteType(type, btn) {
+      currentPaletteType = type;
+      document.querySelectorAll('.tab-group')[0].querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPalette();
+    }
+
+    function setExportType(type, btn) {
+      currentExportType = type;
+      document.querySelectorAll('.tab-group')[1].querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderExport();
+    }
+
+    function generatePalette(hex, type) {
+      const {r,g,b} = hexToRgb(hex);
+      const {h,s,l} = rgbToHsl(r,g,b);
+      switch(type) {
+        case 'complementary': return [hex, hslToHex((h+180)%360,s,l), hslToHex((h+30)%360,s,l), hslToHex((h+210)%360,s,l)];
+        case 'analogous': return [hslToHex((h-60+360)%360,s,l), hslToHex((h-30+360)%360,s,l), hex, hslToHex((h+30)%360,s,l), hslToHex((h+60)%360,s,l)];
+        case 'triadic': return [hex, hslToHex((h+120)%360,s,l), hslToHex((h+240)%360,s,l)];
+        case 'monochromatic': return [hslToHex(h,s,Math.max(10,l-30)), hslToHex(h,s,Math.max(10,l-15)), hex, hslToHex(h,s,Math.min(90,l+15)), hslToHex(h,s,Math.min(90,l+30))];
+        case 'tetradic': return [hex, hslToHex((h+90)%360,s,l), hslToHex((h+180)%360,s,l), hslToHex((h+270)%360,s,l)];
+        default: return [hex];
+      }
+    }
+
+    function renderPalette() {
+      currentPalette = generatePalette(currentHex, currentPaletteType);
+      const row = document.getElementById('paletteRow');
+      row.innerHTML = currentPalette.map(hex => `
+        <div class="swatch-wrap">
+          <div class="swatch" style="background:${hex};" onclick="onColorChange('${hex}')" title="Click to use ${hex.toUpperCase()}"></div>
+          <div class="swatch-label">${hex.toUpperCase()}</div>
+          <button class="btn btn-ghost btn-sm copy-small" style="margin-top:0.2rem;font-size:0.65rem;" onclick="copyText('${hex.toUpperCase()}','Copied!')">Copy</button>
+        </div>
+      `).join('');
+      renderExport();
+    }
+
+    function luminance(r,g,b) {
+      const [rs,gs,bs] = [r,g,b].map(v => { v/=255; return v<=0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055,2.4); });
+      return 0.2126*rs + 0.7152*gs + 0.0722*bs;
+    }
+
+    function contrastRatio(hex1, hex2) {
+      const c1 = hexToRgb(hex1), c2 = hexToRgb(hex2);
+      const l1 = luminance(c1.r,c1.g,c1.b), l2 = luminance(c2.r,c2.g,c2.b);
+      const lighter = Math.max(l1,l2), darker = Math.min(l1,l2);
+      return ((lighter+0.05)/(darker+0.05)).toFixed(2);
+    }
+
+    function wcagBadges(ratio) {
+      const r = parseFloat(ratio);
+      const aa = r >= 4.5, aaa = r >= 7, aaLarge = r >= 3;
+      return `
+        <span class="wcag-badge ${aa?'wcag-pass':'wcag-fail'}">AA ${aa?'Pass':'Fail'}</span>
+        <span class="wcag-badge ${aaa?'wcag-pass':'wcag-fail'}">AAA ${aaa?'Pass':'Fail'}</span>
+        <span class="wcag-badge ${aaLarge?'wcag-pass':'wcag-fail'}">AA Large ${aaLarge?'Pass':'Fail'}</span>
+      `;
+    }
+
+    function renderContrast() {
+      const hex = currentHex;
+      const whiteRatio = contrastRatio(hex, '#ffffff');
+      const blackRatio = contrastRatio(hex, '#000000');
+      document.getElementById('contrastPreview').innerHTML = `
+        <div class="contrast-box" style="background:${hex};color:#fff;flex:1;">
+          <div style="font-size:0.85rem;opacity:0.9;">White text on your color</div>
+          <div class="contrast-ratio">${whiteRatio}:1</div>
+          <div style="margin-top:0.4rem;">${wcagBadges(whiteRatio)}</div>
+        </div>
+        <div class="contrast-box" style="background:${hex};color:#000;flex:1;">
+          <div style="font-size:0.85rem;opacity:0.8;">Black text on your color</div>
+          <div class="contrast-ratio">${blackRatio}:1</div>
+          <div style="margin-top:0.4rem;">${wcagBadges(blackRatio)}</div>
+        </div>
+      `;
+    }
+
+    function renderExport() {
+      const el = document.getElementById('exportArea');
+      if (currentExportType === 'css') {
+        el.textContent = ':root {\n' + currentPalette.map((hex,i) => `  --color-${i+1}: ${hex.toUpperCase()};`).join('\n') + '\n}';
+      } else {
+        el.textContent = JSON.stringify(currentPalette.map((hex,i) => ({name:`color-${i+1}`,hex:hex.toUpperCase()})), null, 2);
+      }
+    }
+  </script>
+</body>
+</html>

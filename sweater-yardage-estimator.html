@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sweater Yardage Estimator — Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Estimate yarn yardage for a knit or crochet sweater by size and yarn weight. See body, sleeve, and finishing breakdowns.">
+  <link rel="canonical" href="https://theusefulpages.com/sweater-yardage-estimator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Sweater Yardage Estimator</h1>
+      <p class="page-subtitle">Estimate total yarn for your sweater with a body, sleeve, and finishing breakdown.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Size</label>
+            <select class="form-select" id="sweater-size" onchange="loadSweaterSize()">
+              <option value="custom">Custom chest size</option>
+              <option value="xs">XS (32")</option>
+              <option value="s">S (36")</option>
+              <option value="m">M (40")</option>
+              <option value="l">L (44")</option>
+              <option value="xl">XL (48")</option>
+              <option value="2xl">2XL (52")</option>
+              <option value="3xl">3XL (56")</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Chest Circumference (inches)</label>
+            <input class="form-input" type="number" id="chest-circ" min="20" placeholder="e.g. 40">
+          </div>
+          <div>
+            <label class="label">Body Length (inches)</label>
+            <input class="form-input" type="number" id="body-length" value="25" min="10" placeholder="e.g. 25">
+          </div>
+          <div>
+            <label class="label">Sleeve Length</label>
+            <select class="form-select" id="sleeve-length">
+              <option value="short">Short (7")</option>
+              <option value="3q">3/4 Length (17")</option>
+              <option value="full" selected>Full Length (24")</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Yarn Weight</label>
+            <select class="form-select" id="yarn-weight">
+              <option value="lace">Lace (0)</option>
+              <option value="fingering">Fingering (1)</option>
+              <option value="sport">Sport (2)</option>
+              <option value="dk">DK (3)</option>
+              <option value="worsted" selected>Worsted (4)</option>
+              <option value="bulky">Bulky (5)</option>
+              <option value="super-bulky">Super Bulky (6)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Construction</label>
+            <select class="form-select" id="construction">
+              <option value="standard">Standard (set-in / drop-shoulder)</option>
+              <option value="raglan">Raglan</option>
+              <option value="seamless">Seamless / top-down</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcSweater()">Estimate Yardage</button>
+          <button class="btn-ghost" onclick="resetSweater()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="sweater-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-body-yds"></div>
+              <div class="stat-label">Body Yards</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-sleeve-yds"></div>
+              <div class="stat-label">Sleeve Yards (×2)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-finish-yds"></div>
+              <div class="stat-label">Collar / Finishing Yards</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-total-yds"></div>
+              <div class="stat-label">Total Yards</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-buffer-yds"></div>
+              <div class="stat-label">Total + 15% Buffer</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-skeins"></div>
+              <div class="stat-label">Approx. Skeins (200yd)</div>
+            </div>
+          </div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Actual yarn use varies by stitch pattern, gauge, tension, and yarn brand. Always purchase an extra skein from the same dye lot.</p>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Typical Sweater Yardage by Size &amp; Weight</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Size</th><th>Fingering</th><th>DK</th><th>Worsted</th><th>Bulky</th></tr></thead>
+            <tbody>
+              <tr><td>XS (32")</td><td>1400–1600</td><td>1000–1200</td><td>800–1000</td><td>500–700</td></tr>
+              <tr><td>S (36")</td><td>1600–1900</td><td>1200–1400</td><td>950–1100</td><td>600–800</td></tr>
+              <tr><td>M (40")</td><td>1900–2200</td><td>1400–1700</td><td>1100–1300</td><td>700–900</td></tr>
+              <tr><td>L (44")</td><td>2200–2600</td><td>1700–2000</td><td>1300–1600</td><td>800–1100</td></tr>
+              <tr><td>XL (48")</td><td>2600–3000</td><td>2000–2400</td><td>1600–1900</td><td>1000–1300</td></tr>
+              <tr><td>2XL (52")</td><td>3000–3500</td><td>2400–2800</td><td>1900–2300</td><td>1200–1500</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="disclaimer" style="margin-top:0.5rem;">Yardage ranges are approximate for a standard crew-neck sweater with full-length sleeves.</p>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use This Estimator</h2>
+        <ul>
+          <li>Select a standard size or enter your chest circumference directly.</li>
+          <li>Adjust body length, sleeve length, and yarn weight.</li>
+          <li>Click <strong>Estimate Yardage</strong> to see a breakdown by section and total.</li>
+        </ul>
+        <h2>Tips</h2>
+        <ul>
+          <li>The estimate covers a standard adult sweater with 1–2" ease. Add 10–15% for textured stitches.</li>
+          <li>Buy all skeins from the same dye lot — colors can vary slightly between lots.</li>
+          <li>Cardigans typically use 5–10% less yarn than pullovers due to the front opening.</li>
+          <li>Use the reference table above to cross-check your estimate.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Sweater Yardage Estimator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Sweater Yardage Estimator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('sweater-yardage-estimator.html');injectFooter();});
+    const sizes = {xs:32,s:36,m:40,l:44,xl:48,'2xl':52,'3xl':56};
+    const sleeveLengths = {short:7,'3q':17,full:24};
+    // yards per sq inch by weight
+    const ydsPerSqIn = {lace:0.09,fingering:0.065,sport:0.05,dk:0.04,worsted:0.034,bulky:0.024,'super-bulky':0.017};
+
+    function loadSweaterSize(){
+      const v = document.getElementById('sweater-size').value;
+      if(v==='custom') return;
+      document.getElementById('chest-circ').value = sizes[v];
+    }
+
+    function calcSweater(){
+      const chest  = parseFloat(document.getElementById('chest-circ').value);
+      const bodyL  = parseFloat(document.getElementById('body-length').value)||25;
+      const slvLen = sleeveLengths[document.getElementById('sleeve-length').value];
+      const wt     = document.getElementById('yarn-weight').value;
+      if(isNaN(chest)||chest<=0){alert('Please enter chest circumference.');return;}
+
+      const yds = ydsPerSqIn[wt];
+      // Body: front + back = 2 rectangles of (chest/2) × bodyLength
+      const bodyArea  = chest * bodyL;
+      const bodyYds   = bodyArea * yds;
+
+      // Sleeves: approximate each sleeve as tapered tube — average width ≈ 40% of chest
+      const avgSlvWidth = chest * 0.4;
+      const slvArea   = avgSlvWidth * slvLen;
+      const slvYds    = slvArea * yds * 2; // both sleeves
+
+      // Collar / finishing: ~8% of body
+      const finishYds = bodyYds * 0.08;
+
+      const total  = bodyYds + slvYds + finishYds;
+      const buffer = total * 1.15;
+      const skeins = Math.ceil(buffer/200);
+
+      document.getElementById('res-body-yds').textContent   = Math.round(bodyYds).toLocaleString();
+      document.getElementById('res-sleeve-yds').textContent = Math.round(slvYds).toLocaleString();
+      document.getElementById('res-finish-yds').textContent = Math.round(finishYds).toLocaleString();
+      document.getElementById('res-total-yds').textContent  = Math.round(total).toLocaleString();
+      document.getElementById('res-buffer-yds').textContent = Math.round(buffer).toLocaleString();
+      document.getElementById('res-skeins').textContent     = skeins;
+      document.getElementById('sweater-result').style.display='block';
+    }
+
+    function resetSweater(){
+      document.getElementById('sweater-size').value='custom';
+      document.getElementById('chest-circ').value='';
+      document.getElementById('body-length').value=25;
+      document.getElementById('sweater-result').style.display='none';
+    }
+  </script>
+</body>
+</html>

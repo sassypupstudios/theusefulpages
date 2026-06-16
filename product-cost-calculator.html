@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Cost Calculator — Calculator for Handmade Sellers | The Useful Pages</title>
+  <meta name="description" content="Build a detailed cost breakdown for your handmade products. Add materials, labor, packaging, and fees. See suggested markup prices.">
+  <link rel="canonical" href="https://theusefulpages.com/product-cost-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .material-row { display:grid; grid-template-columns:1fr auto auto auto; gap:0.5rem; align-items:center; margin-bottom:0.5rem; }
+    .material-row input { min-height:38px; padding:0.4rem 0.6rem; font-size:0.875rem; }
+    .remove-btn { background:none; border:1px solid var(--border); border-radius:6px; color:var(--text-muted); cursor:pointer; width:32px; height:32px; font-size:1rem; display:flex;align-items:center;justify-content:center; flex-shrink:0; }
+    .remove-btn:hover { background:#fee2e2; color:#dc2626; border-color:#fca5a5; }
+    .markup-box { background:var(--card-bg); border:1.5px solid var(--border); border-radius:10px; padding:1rem; text-align:center; }
+    .markup-box.highlight { border-color:var(--primary); background:var(--result-bg); }
+    .markup-val { font-size:1.5rem; font-weight:700; color:var(--primary); }
+    .markup-lbl { font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem; }
+    .col-hdr { font-size:0.75rem; font-weight:600; color:var(--text-muted); }
+    .product-select-row { display:flex; gap:0.5rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Product Cost Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Build a detailed cost breakdown for any product with materials, labor, packaging, and fees.</p>
+
+      <div class="tool-card">
+        <div class="product-select-row">
+          <select class="form-select" id="productSelect" onchange="loadProduct()" style="flex:1;min-width:160px;">
+            <option value="">— Select or create a product —</option>
+          </select>
+          <button class="btn btn-outline btn-sm" onclick="newProduct()">+ New Product</button>
+          <button class="btn btn-ghost btn-sm" onclick="deleteProduct()">Delete</button>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Product Name</label>
+          <input type="text" class="form-input" id="productName" placeholder="e.g. Ceramic Mug" oninput="calcCost()">
+        </div>
+
+        <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:0.5rem;">Materials</h3>
+        <div style="display:grid;grid-template-columns:1fr auto auto auto;gap:0.5rem;margin-bottom:0.25rem;padding:0 0.1rem;">
+          <span class="col-hdr">Material Name</span>
+          <span class="col-hdr" style="min-width:60px;text-align:center;">Qty</span>
+          <span class="col-hdr" style="min-width:80px;text-align:center;">Unit Cost ($)</span>
+          <span style="width:32px;"></span>
+        </div>
+        <div id="materialsContainer"></div>
+        <button class="btn btn-ghost btn-sm" onclick="addMaterialRow()" style="margin-bottom:1rem;">+ Add Material</button>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Packaging Cost ($)</label>
+            <input type="number" class="form-input" id="packagingCost" placeholder="0.00" min="0" step="0.01" oninput="calcCost()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Labor Hours</label>
+            <input type="number" class="form-input" id="laborHours" placeholder="0" min="0" step="0.25" oninput="calcCost()">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Hourly Rate ($)</label>
+            <input type="number" class="form-input" id="laborRate" placeholder="20" min="0" step="0.50" oninput="calcCost()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Marketplace Fees %</label>
+            <input type="number" class="form-input" id="marketplaceFees" placeholder="0" min="0" max="100" step="0.1" oninput="calcCost()">
+          </div>
+        </div>
+
+        <div class="result-card" id="results">
+          <div class="result-row"><span class="result-label">Materials Total</span><span id="rMaterials">$0.00</span></div>
+          <div class="result-row"><span class="result-label">Labor</span><span id="rLabor">$0.00</span></div>
+          <div class="result-row"><span class="result-label">Packaging</span><span id="rPackaging">$0.00</span></div>
+          <div class="result-row"><span class="result-label">Marketplace Fees (on grand total)</span><span id="rFees">$0.00</span></div>
+          <div class="result-row"><span class="result-label" style="font-weight:700;">Grand Total Cost</span><span id="rTotal" style="font-size:1.25rem;font-weight:700;color:var(--primary);">$0.00</span></div>
+        </div>
+
+        <h3 style="font-size:0.9rem;font-weight:700;margin:1.25rem 0 0.75rem;">Suggested Selling Prices</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.75rem;">
+          <div class="markup-box">
+            <div class="markup-val" id="m2x">—</div>
+            <div class="markup-lbl">2× Markup</div>
+          </div>
+          <div class="markup-box highlight">
+            <div class="markup-val" id="m25x">—</div>
+            <div class="markup-lbl">2.5× Markup</div>
+          </div>
+          <div class="markup-box">
+            <div class="markup-val" id="m3x">—</div>
+            <div class="markup-lbl">3× Markup</div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="saveProduct()">Save Product</button>
+          <button class="btn btn-outline" onclick="exportProduct()">Export as Text</button>
+        </div>
+        <p class="disclaimer" style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">These calculators provide estimates for planning purposes. Consult a tax professional for business financial advice.</p>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to Use</h2>
+        <ul style="margin:0 0 1rem 0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Click "+ New Product" to start a fresh cost sheet for a new product.</li>
+          <li>Add each material with its quantity and cost per unit.</li>
+          <li>Enter packaging, labor hours, hourly rate, and any marketplace fees.</li>
+          <li>Click "Save Product" to store it in your browser for future visits.</li>
+          <li>Use "Export as Text" to copy a summary to paste into notes or emails.</li>
+        </ul>
+        <h3 style="font-size:0.875rem;font-weight:700;margin-bottom:0.5rem;">Pricing Tips</h3>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>2× markup is often used for wholesale. 2.5–3× is common for retail.</li>
+          <li>Include marketplace fees so your markup reflects true profit.</li>
+          <li>Update costs whenever material prices change.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="handmade-pricing-calculator.html">Handmade Pricing Calculator</a>
+          <a href="materials-cost-splitter.html">Materials Cost Splitter</a>
+          <a href="wholesale-price-calculator.html">Wholesale Price Calculator</a>
+          <a href="retail-markup-calculator.html">Retail Markup Calculator</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Product Cost Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Product Cost Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('product-cost-calculator.html');
+      injectFooter();
+      loadProductList();
+      addMaterialRow();
+    });
+
+    const STORAGE_KEY = 'tup_products_v1';
+
+    function getProducts() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; } }
+    function saveProducts(p) { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }
+
+    function loadProductList() {
+      const products = getProducts();
+      const sel = document.getElementById('productSelect');
+      const current = sel.value;
+      sel.innerHTML = '<option value="">— Select or create a product —</option>';
+      Object.keys(products).forEach(name => {
+        const opt = document.createElement('option');
+        opt.value = name;
+        opt.textContent = name;
+        sel.appendChild(opt);
+      });
+      if (current) sel.value = current;
+    }
+
+    function loadProduct() {
+      const name = document.getElementById('productSelect').value;
+      if (!name) return;
+      const products = getProducts();
+      const p = products[name];
+      if (!p) return;
+      document.getElementById('productName').value = p.name || '';
+      document.getElementById('packagingCost').value = p.packaging || '';
+      document.getElementById('laborHours').value = p.laborHours || '';
+      document.getElementById('laborRate').value = p.laborRate || '';
+      document.getElementById('marketplaceFees').value = p.fees || '';
+      const container = document.getElementById('materialsContainer');
+      container.innerHTML = '';
+      (p.materials || []).forEach(m => addMaterialRow(m.name, m.qty, m.cost));
+      if (!p.materials || !p.materials.length) addMaterialRow();
+      calcCost();
+    }
+
+    function newProduct() {
+      document.getElementById('productSelect').value = '';
+      document.getElementById('productName').value = '';
+      document.getElementById('packagingCost').value = '';
+      document.getElementById('laborHours').value = '';
+      document.getElementById('laborRate').value = '';
+      document.getElementById('marketplaceFees').value = '';
+      document.getElementById('materialsContainer').innerHTML = '';
+      addMaterialRow();
+      calcCost();
+    }
+
+    function deleteProduct() {
+      const name = document.getElementById('productSelect').value;
+      if (!name || !confirm('Delete "' + name + '"?')) return;
+      const products = getProducts();
+      delete products[name];
+      saveProducts(products);
+      loadProductList();
+      newProduct();
+    }
+
+    function saveProduct() {
+      const name = document.getElementById('productName').value.trim();
+      if (!name) { alert('Please enter a product name.'); return; }
+      const materials = [];
+      document.querySelectorAll('.material-row').forEach(row => {
+        const inputs = row.querySelectorAll('input');
+        const mName = inputs[0].value.trim();
+        const qty = parseFloat(inputs[1].value) || 0;
+        const cost = parseFloat(inputs[2].value) || 0;
+        if (mName || qty || cost) materials.push({ name: mName, qty, cost });
+      });
+      const products = getProducts();
+      products[name] = {
+        name,
+        materials,
+        packaging: document.getElementById('packagingCost').value,
+        laborHours: document.getElementById('laborHours').value,
+        laborRate: document.getElementById('laborRate').value,
+        fees: document.getElementById('marketplaceFees').value
+      };
+      saveProducts(products);
+      loadProductList();
+      document.getElementById('productSelect').value = name;
+      alert('Saved!');
+    }
+
+    function addMaterialRow(name='', qty='', cost='') {
+      const row = document.createElement('div');
+      row.className = 'material-row';
+      row.innerHTML = `<input type="text" class="form-input" placeholder="Material name" value="${name}" oninput="calcCost()">
+        <input type="number" class="form-input" placeholder="1" min="0" step="0.01" value="${qty}" style="min-width:60px;" oninput="calcCost()">
+        <input type="number" class="form-input" placeholder="0.00" min="0" step="0.01" value="${cost}" style="min-width:80px;" oninput="calcCost()">
+        <button class="remove-btn" onclick="this.closest('.material-row').remove();calcCost();" title="Remove">×</button>`;
+      document.getElementById('materialsContainer').appendChild(row);
+      calcCost();
+    }
+
+    function calcCost() {
+      let matTotal = 0;
+      document.querySelectorAll('.material-row').forEach(row => {
+        const inputs = row.querySelectorAll('input');
+        const qty = parseFloat(inputs[1].value) || 0;
+        const cost = parseFloat(inputs[2].value) || 0;
+        matTotal += qty * cost;
+      });
+      const packaging = parseFloat(document.getElementById('packagingCost').value) || 0;
+      const hrs = parseFloat(document.getElementById('laborHours').value) || 0;
+      const rate = parseFloat(document.getElementById('laborRate').value) || 0;
+      const feesPct = parseFloat(document.getElementById('marketplaceFees').value) || 0;
+      const labor = hrs * rate;
+      const subtotal = matTotal + labor + packaging;
+      const fees = subtotal * (feesPct / 100);
+      const total = subtotal + fees;
+
+      document.getElementById('rMaterials').textContent = '$' + matTotal.toFixed(2);
+      document.getElementById('rLabor').textContent = '$' + labor.toFixed(2);
+      document.getElementById('rPackaging').textContent = '$' + packaging.toFixed(2);
+      document.getElementById('rFees').textContent = '$' + fees.toFixed(2);
+      document.getElementById('rTotal').textContent = '$' + total.toFixed(2);
+      document.getElementById('m2x').textContent = '$' + (total * 2).toFixed(2);
+      document.getElementById('m25x').textContent = '$' + (total * 2.5).toFixed(2);
+      document.getElementById('m3x').textContent = '$' + (total * 3).toFixed(2);
+    }
+
+    function exportProduct() {
+      const name = document.getElementById('productName').value || 'Product';
+      const lines = [`Product Cost Sheet: ${name}`, '='.repeat(40)];
+      document.querySelectorAll('.material-row').forEach(row => {
+        const inputs = row.querySelectorAll('input');
+        const mName = inputs[0].value || 'Material';
+        const qty = inputs[1].value || '0';
+        const cost = inputs[2].value || '0';
+        const total = ((parseFloat(qty)||0) * (parseFloat(cost)||0)).toFixed(2);
+        lines.push(`  ${mName}: ${qty} × $${cost} = $${total}`);
+      });
+      lines.push('');
+      lines.push('  Materials Total: ' + document.getElementById('rMaterials').textContent);
+      lines.push('  Labor: ' + document.getElementById('rLabor').textContent);
+      lines.push('  Packaging: ' + document.getElementById('rPackaging').textContent);
+      lines.push('  Fees: ' + document.getElementById('rFees').textContent);
+      lines.push('  Grand Total: ' + document.getElementById('rTotal').textContent);
+      lines.push('');
+      lines.push('Suggested Prices:');
+      lines.push('  2× Markup: ' + document.getElementById('m2x').textContent);
+      lines.push('  2.5× Markup: ' + document.getElementById('m25x').textContent);
+      lines.push('  3× Markup: ' + document.getElementById('m3x').textContent);
+      const text = lines.join('\n');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => alert('Copied to clipboard!'));
+      } else {
+        prompt('Copy the text below:', text);
+      }
+    }
+  </script>
+</body>
+</html>

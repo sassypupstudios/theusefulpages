@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Height Converter - Feet & Inches to CM | The Useful Pages</title>
+  <meta name="description" content="Free height converter between feet & inches and centimeters. Includes height reference chart, BMI preview, and international height format display.">
+  <link rel="canonical" href="https://theusefulpages.com/height-converter.html">
+  <meta property="og:title" content="Height Converter - Feet/Inches to CM - The Useful Pages">
+  <meta property="og:description" content="Convert height between feet & inches and centimeters instantly. Height chart, BMI preview, and international formats.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Height Converter","url":"https://theusefulpages.com/height-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .height-main{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:1rem;}
+    @media(max-width:600px){.height-main{grid-template-columns:1fr;}}
+    .ft-in-row{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;}
+    .arrow-col{display:flex;align-items:center;justify-content:center;padding-top:1.5rem;}
+    .arrow-btn{background:none;border:1.5px solid var(--border);border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+    .arrow-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
+    .section-title{font-size:1rem;font-weight:700;color:var(--primary);margin:1.5rem 0 0.75rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+    .result-extra{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.6rem;margin-top:0.75rem;}
+    .result-box{background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.75rem;}
+    .result-box .lbl{font-size:0.72rem;color:var(--text-muted);margin-bottom:0.2rem;}
+    .result-box .val{font-size:1rem;font-weight:700;color:var(--primary);}
+    .chart-table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+    .chart-table th{background:var(--primary);color:#fff;padding:0.4rem 0.6rem;text-align:left;font-weight:600;}
+    .chart-table td{padding:0.35rem 0.6rem;border-bottom:1px solid var(--border);}
+    .chart-table tr:nth-child(even) td{background:var(--bg-secondary);}
+    .chart-table tr.highlight td{background:#e8f5f8;font-weight:600;color:var(--primary);}
+    .bmi-result{background:var(--result-bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-top:0.75rem;font-size:0.88rem;}
+    .bmi-bar-wrap{height:12px;border-radius:6px;background:linear-gradient(to right,#3498db 0%,#2ecc71 25%,#f1c40f 50%,#e67e22 75%,#e74c3c 100%);margin:0.5rem 0;position:relative;}
+    .bmi-marker{position:absolute;top:-4px;width:4px;height:20px;background:#333;border-radius:2px;transform:translateX(-50%);}
+    .bmi-labels{display:flex;justify-content:space-between;font-size:0.68rem;color:var(--text-muted);}
+    .intl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.6rem;margin-top:0.5rem;}
+    .intl-box{background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.75rem;}
+    .intl-box .country{font-size:0.72rem;color:var(--text-muted);margin-bottom:0.2rem;font-weight:500;}
+    .intl-box .fmt{font-size:0.95rem;font-weight:700;color:var(--primary);}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Height Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Convert height between feet &amp; inches and centimeters. Bidirectional, real-time conversion.</p>
+      <div class="tool-card">
+
+        <!-- Main converter -->
+        <div class="height-main">
+          <div>
+            <div class="form-label" style="margin-bottom:0.5rem;">Feet &amp; Inches</div>
+            <div class="ft-in-row">
+              <div class="form-group" style="margin:0;">
+                <input type="number" class="form-input" id="inp-ft" placeholder="ft" min="0" max="9" step="1" oninput="fromFtIn()">
+                <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.2rem;text-align:center;">feet</div>
+              </div>
+              <div class="form-group" style="margin:0;">
+                <input type="number" class="form-input" id="inp-in" placeholder="in" min="0" max="11" step="0.1" oninput="fromFtIn()">
+                <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.2rem;text-align:center;">inches</div>
+              </div>
+            </div>
+          </div>
+          <div class="arrow-col">
+            <button class="arrow-btn" title="Swap direction">⇄</button>
+          </div>
+          <div>
+            <div class="form-label" style="margin-bottom:0.5rem;">Centimeters</div>
+            <input type="number" class="form-input" id="inp-cm" placeholder="cm" min="0" step="0.1" oninput="fromCm()" style="font-size:1.1rem;">
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.2rem;text-align:center;">centimeters</div>
+          </div>
+        </div>
+
+        <!-- Additional results -->
+        <div class="result-extra" id="result-extra" style="display:none;">
+          <div class="result-box"><div class="lbl">Meters</div><div class="val" id="res-m">—</div></div>
+          <div class="result-box"><div class="lbl">Total Inches</div><div class="val" id="res-in-total">—</div></div>
+          <div class="result-box"><div class="lbl">Millimeters</div><div class="val" id="res-mm">—</div></div>
+          <div class="result-box"><div class="lbl">Formatted</div><div class="val" id="res-fmt">—</div></div>
+        </div>
+
+        <div class="btn-row" style="margin-top:1rem;">
+          <button class="btn btn-accent" onclick="copyText(document.getElementById('inp-cm').value+' cm','Copied!')">Copy CM</button>
+          <button class="btn btn-primary" onclick="copyResult()">Copy Full Result</button>
+          <button class="btn btn-outline" onclick="clearHeight()">Clear</button>
+        </div>
+
+        <!-- International formats -->
+        <div class="section-title">International Height Formats</div>
+        <div class="intl-grid" id="intl-grid">
+          <div class="intl-box"><div class="country">USA / UK (Imperial)</div><div class="fmt" id="intl-us">—</div></div>
+          <div class="intl-box"><div class="country">Metric (most countries)</div><div class="fmt" id="intl-metric">—</div></div>
+          <div class="intl-box"><div class="country">Meters only</div><div class="fmt" id="intl-m">—</div></div>
+          <div class="intl-box"><div class="country">Feet decimal</div><div class="fmt" id="intl-ft-dec">—</div></div>
+        </div>
+
+        <!-- BMI preview -->
+        <div class="section-title">BMI Preview</div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;">Enter your weight below to calculate BMI using the height above.</p>
+        <div class="form-row" style="align-items:flex-end;">
+          <div class="form-group">
+            <label class="form-label">Weight</label>
+            <input type="number" class="form-input" id="bmi-weight" placeholder="e.g. 70" min="1" oninput="calcBMI()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Unit</label>
+            <select class="form-select" id="bmi-unit" onchange="calcBMI()">
+              <option value="kg">Kilograms (kg)</option>
+              <option value="lb">Pounds (lb)</option>
+            </select>
+          </div>
+        </div>
+        <div id="bmi-result" style="display:none;" class="bmi-result">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+            <span>BMI: <strong id="bmi-val" style="font-size:1.2rem;color:var(--primary);">—</strong></span>
+            <span id="bmi-category" class="badge badge-primary">—</span>
+          </div>
+          <div class="bmi-bar-wrap"><div class="bmi-marker" id="bmi-marker" style="left:0%"></div></div>
+          <div class="bmi-labels"><span>Underweight<br>&lt;18.5</span><span>Normal<br>18.5–25</span><span>Overweight<br>25–30</span><span>Obese<br>&gt;30</span></div>
+        </div>
+
+        <!-- Height chart -->
+        <div class="section-title">Height Reference Chart</div>
+        <table class="chart-table" id="height-chart">
+          <thead><tr><th>Feet &amp; Inches</th><th>Centimeters</th><th>Meters</th></tr></thead>
+          <tbody id="chart-body"></tbody>
+        </table>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter feet and inches on the left, or centimeters on the right — the other side updates instantly</li>
+          <li>Additional results (meters, total inches, mm) appear below the main converter</li>
+          <li>International formats show how the height is written in different countries</li>
+          <li>Enter your weight in the BMI section to instantly calculate your Body Mass Index</li>
+          <li>The height reference chart highlights the row closest to the entered height</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="unit-converter.html" class="related-link">Unit Converter</a>
+          <a href="speed-converter.html" class="related-link">Speed Converter</a>
+          <a href="cooking-conversion.html" class="related-link">Cooking Conversion</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Height Converter</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free height converter to convert feet and inches to centimeters or centimeters back to feet and inches. It is useful for forms, fitness records, medical notes, travel, and product sizing. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  let currentCm = null;
+
+  function updateExtras(cm) {
+    currentCm = cm;
+    if (cm === null || isNaN(cm) || cm <= 0) {
+      document.getElementById('result-extra').style.display='none';
+      updateIntl(null); return;
+    }
+    const totalIn = cm / 2.54;
+    const ft = Math.floor(totalIn / 12);
+    const inches = totalIn % 12;
+    const m = cm / 100;
+    document.getElementById('res-m').textContent = m.toFixed(3) + ' m';
+    document.getElementById('res-in-total').textContent = totalIn.toFixed(2) + '"';
+    document.getElementById('res-mm').textContent = Math.round(cm * 10) + ' mm';
+    document.getElementById('res-fmt').textContent = ft + '\'' + inches.toFixed(1) + '"';
+    document.getElementById('result-extra').style.display='grid';
+    updateIntl(cm);
+    highlightChart(cm);
+    calcBMI();
+  }
+
+  function updateIntl(cm) {
+    if (!cm) {
+      ['intl-us','intl-metric','intl-m','intl-ft-dec'].forEach(id => document.getElementById(id).textContent='—');
+      return;
+    }
+    const totalIn = cm / 2.54;
+    const ft = Math.floor(totalIn / 12);
+    const inches = (totalIn % 12);
+    const m = cm / 100;
+    document.getElementById('intl-us').textContent = ft + ' ft ' + inches.toFixed(1) + ' in';
+    document.getElementById('intl-metric').textContent = Math.round(cm) + ' cm';
+    document.getElementById('intl-m').textContent = m.toFixed(2) + ' m';
+    document.getElementById('intl-ft-dec').textContent = (totalIn/12).toFixed(3) + ' ft';
+  }
+
+  function fromFtIn() {
+    const ft = parseFloat(document.getElementById('inp-ft').value) || 0;
+    const inches = parseFloat(document.getElementById('inp-in').value) || 0;
+    if (ft === 0 && inches === 0) { document.getElementById('inp-cm').value=''; updateExtras(null); return; }
+    const totalIn = ft * 12 + inches;
+    const cm = totalIn * 2.54;
+    document.getElementById('inp-cm').value = parseFloat(cm.toFixed(2));
+    updateExtras(cm);
+  }
+
+  function fromCm() {
+    const cm = parseFloat(document.getElementById('inp-cm').value);
+    if (isNaN(cm) || cm <= 0) { document.getElementById('inp-ft').value=''; document.getElementById('inp-in').value=''; updateExtras(null); return; }
+    const totalIn = cm / 2.54;
+    const ft = Math.floor(totalIn / 12);
+    const inches = totalIn % 12;
+    document.getElementById('inp-ft').value = ft;
+    document.getElementById('inp-in').value = parseFloat(inches.toFixed(2));
+    updateExtras(cm);
+  }
+
+  function clearHeight() {
+    document.getElementById('inp-ft').value='';
+    document.getElementById('inp-in').value='';
+    document.getElementById('inp-cm').value='';
+    document.getElementById('bmi-weight').value='';
+    document.getElementById('bmi-result').style.display='none';
+    updateExtras(null);
+  }
+
+  function copyResult() {
+    if (!currentCm) return;
+    const totalIn = currentCm / 2.54;
+    const ft = Math.floor(totalIn/12);
+    const inches = (totalIn%12).toFixed(1);
+    copyText(`${ft}'${inches}" = ${Math.round(currentCm)} cm = ${(currentCm/100).toFixed(2)} m`, 'Copied!');
+  }
+
+  function calcBMI() {
+    const wEl = document.getElementById('bmi-weight');
+    const uEl = document.getElementById('bmi-unit');
+    const resEl = document.getElementById('bmi-result');
+    if (!currentCm || !wEl.value) { resEl.style.display='none'; return; }
+    let weightKg = parseFloat(wEl.value);
+    if (isNaN(weightKg) || weightKg<=0) { resEl.style.display='none'; return; }
+    if (uEl.value==='lb') weightKg = weightKg * 0.453592;
+    const hM = currentCm / 100;
+    const bmi = weightKg / (hM * hM);
+    document.getElementById('bmi-val').textContent = bmi.toFixed(1);
+    let cat, col;
+    if (bmi<18.5){cat='Underweight';col='#3498db';}
+    else if(bmi<25){cat='Normal weight';col='#2ecc71';}
+    else if(bmi<30){cat='Overweight';col='#f1c40f';}
+    else{cat='Obese';col='#e74c3c';}
+    const catEl = document.getElementById('bmi-category');
+    catEl.textContent = cat; catEl.style.background = col;
+    // Position marker: BMI scale 15–40
+    const pct = Math.min(100, Math.max(0, (bmi-15)/25*100));
+    document.getElementById('bmi-marker').style.left = pct+'%';
+    resEl.style.display='block';
+  }
+
+  function buildChart() {
+    const tbody = document.getElementById('chart-body');
+    let html = '';
+    for (let ft=4; ft<=7; ft++) {
+      const maxIn = ft===7?0:11;
+      for (let inches=0; inches<=maxIn; inches++) {
+        const totalIn = ft*12+inches;
+        const cm = totalIn*2.54;
+        const m = cm/100;
+        html += `<tr data-cm="${cm.toFixed(1)}"><td>${ft}' ${inches}"</td><td>${cm.toFixed(1)}</td><td>${m.toFixed(2)}</td></tr>`;
+      }
+    }
+    tbody.innerHTML = html;
+  }
+
+  function highlightChart(cm) {
+    const rows = document.querySelectorAll('#chart-body tr');
+    let closest=null, minDiff=Infinity;
+    rows.forEach(r => {
+      const d = Math.abs(parseFloat(r.dataset.cm)-cm);
+      if(d<minDiff){minDiff=d;closest=r;}
+      r.classList.remove('highlight');
+    });
+    if(closest && minDiff<3) closest.classList.add('highlight');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('height-converter.html'); injectFooter();
+    buildChart();
+    // Default: 5'10"
+    document.getElementById('inp-ft').value=5;
+    document.getElementById('inp-in').value=10;
+    fromFtIn();
+  });
+  </script>
+</body>
+</html>

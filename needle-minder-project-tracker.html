@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Needle Minder Project Tracker — Embroidery Tool | The Useful Pages</title>
+  <meta name="description" content="Track your embroidery and cross-stitch projects in progress, on hold, and completed. Free browser-based project tracker — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/needle-minder-project-tracker.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Needle Minder Project Tracker</h1>
+      <p class="page-subtitle">Keep track of all your embroidery and needlework projects — in progress, queued, and finished. Data saves in your browser.</p>
+
+      <div class="tool-card">
+        <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 1rem;">Add a project</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Project name</label>
+            <input type="text" id="proj-name" class="form-input" placeholder="e.g. Blue Jay Sampler">
+          </div>
+          <div>
+            <label class="label">Type</label>
+            <select id="proj-type" class="form-select">
+              <option value="Cross Stitch">Cross Stitch</option>
+              <option value="Embroidery">Embroidery</option>
+              <option value="Needlepoint">Needlepoint</option>
+              <option value="Bead Embroidery">Bead Embroidery</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Status</label>
+            <select id="proj-status" class="form-select">
+              <option value="In Progress">In Progress</option>
+              <option value="Queued">Queued</option>
+              <option value="On Hold">On Hold</option>
+              <option value="Finished">Finished</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">% Complete</label>
+            <input type="number" id="proj-pct" class="form-input" value="0" min="0" max="100">
+          </div>
+          <div>
+            <label class="label">Started date</label>
+            <input type="date" id="proj-date" class="form-input">
+          </div>
+        </div>
+        <div style="margin-bottom:1rem;">
+          <label class="label">Notes (fabric, threads, pattern source…)</label>
+          <textarea id="proj-notes" class="form-textarea" rows="2" placeholder="e.g. 14-count Aida, DMC floss, Etsy pattern by…" style="width:100%;resize:vertical;"></textarea>
+        </div>
+        <button class="btn-primary" onclick="addProject()">Add Project</button>
+
+        <div style="margin-top:1.75rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+            <h3 style="font-size:0.95rem;font-weight:700;margin:0;" id="proj-list-heading">My Projects</h3>
+            <div style="display:flex;gap:0.5rem;align-items:center;">
+              <select id="filter-status" class="form-select" style="font-size:0.82rem;padding:0.25rem 0.5rem;" onchange="renderProjects()">
+                <option value="all">All statuses</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Queued">Queued</option>
+                <option value="On Hold">On Hold</option>
+                <option value="Finished">Finished</option>
+              </select>
+            </div>
+          </div>
+          <div id="proj-list"></div>
+          <div id="proj-empty" style="color:var(--text-muted);font-size:0.9rem;padding:1rem 0;display:none;">No projects yet. Add your first project above.</div>
+        </div>
+
+        <div id="proj-summary" style="margin-top:1rem;padding:0.75rem;background:var(--bg-secondary);border-radius:6px;font-size:0.85rem;color:var(--text-muted);display:none;"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this tracker</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Your project list is saved in your browser's localStorage — it stays between visits on the same device and browser. No account or internet connection needed to use this tool.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Add notes about the pattern source, thread colors, fabric count, or your progress notes</li>
+          <li>Update % complete as you stitch — click Edit on any project</li>
+          <li>Filter by status to focus on active projects or your finished collection</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Data is stored locally in your browser. Clearing browser data or switching devices will remove your project list.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Needle Minder Project Tracker</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Needle Minder Project Tracker to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const STORE_KEY = 'tup_needle_projects';
+  let projects = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
+
+  const STATUS_COLORS = {
+    'In Progress': '#22c55e',
+    'Queued': '#3b82f6',
+    'On Hold': '#f59e0b',
+    'Finished': '#8b5cf6'
+  };
+
+  function save() { localStorage.setItem(STORE_KEY, JSON.stringify(projects)); }
+
+  function addProject() {
+    const name = document.getElementById('proj-name').value.trim();
+    if (!name) { alert('Enter a project name.'); return; }
+    projects.push({
+      id: Date.now(),
+      name,
+      type: document.getElementById('proj-type').value,
+      status: document.getElementById('proj-status').value,
+      pct: parseInt(document.getElementById('proj-pct').value) || 0,
+      date: document.getElementById('proj-date').value,
+      notes: document.getElementById('proj-notes').value.trim()
+    });
+    save();
+    document.getElementById('proj-name').value = '';
+    document.getElementById('proj-pct').value = '0';
+    document.getElementById('proj-date').value = '';
+    document.getElementById('proj-notes').value = '';
+    renderProjects();
+  }
+
+  function deleteProject(id) {
+    if (!confirm('Remove this project?')) return;
+    projects = projects.filter(p => p.id !== id);
+    save(); renderProjects();
+  }
+
+  function updateStatus(id, status) {
+    const p = projects.find(x => x.id === id);
+    if (p) { p.status = status; save(); renderProjects(); }
+  }
+
+  function updatePct(id, pct) {
+    const p = projects.find(x => x.id === id);
+    if (p) { p.pct = Math.min(100, Math.max(0, parseInt(pct) || 0)); save(); renderProjects(); }
+  }
+
+  function renderProjects() {
+    const filter = document.getElementById('filter-status').value;
+    const list = document.getElementById('proj-list');
+    const empty = document.getElementById('proj-empty');
+    const summary = document.getElementById('proj-summary');
+    const filtered = filter === 'all' ? projects : projects.filter(p => p.status === filter);
+    if (filtered.length === 0) {
+      list.innerHTML = '';
+      empty.style.display = '';
+      summary.style.display = 'none';
+      return;
+    }
+    empty.style.display = 'none';
+    list.innerHTML = filtered.map(p => {
+      const color = STATUS_COLORS[p.status] || '#6b7280';
+      return `<div style="border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:0.75rem;background:var(--bg-secondary);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem;">
+          <div style="flex:1;">
+            <div style="font-weight:600;font-size:0.95rem;">${p.name}</div>
+            <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.2rem;">${p.type}${p.date ? ' · Started '+p.date : ''}</div>
+          </div>
+          <span style="font-size:0.75rem;font-weight:600;padding:0.2rem 0.5rem;border-radius:4px;background:${color}22;color:${color};white-space:nowrap;">${p.status}</span>
+        </div>
+        <div style="margin-top:0.75rem;">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;">
+            <div style="flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+              <div style="width:${p.pct}%;height:100%;background:${color};border-radius:3px;transition:width 0.3s;"></div>
+            </div>
+            <span style="font-size:0.82rem;color:var(--text-muted);min-width:2.5rem;text-align:right;">${p.pct}%</span>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+            <select style="font-size:0.8rem;padding:0.2rem 0.4rem;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--text);" onchange="updateStatus(${p.id},this.value)">
+              ${['In Progress','Queued','On Hold','Finished'].map(s=>`<option${s===p.status?' selected':''}>${s}</option>`).join('')}
+            </select>
+            <input type="number" value="${p.pct}" min="0" max="100" style="width:60px;font-size:0.8rem;padding:0.2rem 0.4rem;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--text);" onchange="updatePct(${p.id},this.value)" title="% complete">
+            <button class="btn-ghost" style="font-size:0.8rem;padding:0.2rem 0.6rem;" onclick="deleteProject(${p.id})">Remove</button>
+          </div>
+          ${p.notes ? `<div style="margin-top:0.5rem;font-size:0.82rem;color:var(--text-muted);">${p.notes}</div>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+
+    const counts = {};
+    projects.forEach(p => counts[p.status] = (counts[p.status]||0)+1);
+    summary.style.display = '';
+    summary.innerHTML = `Total: ${projects.length} project${projects.length!==1?'s':''} &nbsp;·&nbsp; ` +
+      Object.entries(counts).map(([s,n])=>`${n} ${s}`).join(' &nbsp;·&nbsp; ');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('needle-minder-project-tracker.html'); injectFooter(); renderProjects(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Calculate a Tip and Split a Bill the Right Way | The Useful Pages</title>
+  <meta name="description" content="A practical guide to tipping — standard rates by situation, how to calculate a tip in your head, and how to split a bill fairly among a group.">
+  <link rel="canonical" href="https://theusefulpages.com/guide-tip-calculator.html">
+  <meta property="og:title" content="How to Calculate a Tip and Split a Bill the Right Way">
+  <meta property="og:description" content="A practical guide to tipping — standard rates by situation, how to calculate a tip in your head, and how to split a bill fairly among a group.">
+  <meta property="og:type" content="article">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">How to Calculate a Tip and Split a Bill the Right Way</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Standard rates by situation, a fast mental math method, and how to divide a group bill without the usual confusion.</p>
+
+      <div class="instructions-card" style="line-height:1.75;">
+
+        <h2>Why tipping norms keep shifting</h2>
+        <p>Tipping in the United States has expanded significantly over the past decade. Touchscreen payment terminals at coffee shops, takeout counters, and self-serve kiosks now routinely prompt for a tip, often starting at 18% or higher. Meanwhile, the traditional 15% restaurant tip has become closer to 20% as an expected baseline. Understanding what is genuinely customary — versus what a default prompt is nudging you toward — helps you make informed decisions rather than just tapping the middle button.</p>
+
+        <h2>Standard tipping rates by situation</h2>
+        <p><strong>Sit-down restaurants.</strong> The current US norm is 18–20% for acceptable service and 22–25% for excellent service. Tips are calculated on the pre-tax subtotal, though tipping on the full total is common and makes little practical difference on small bills. Servers typically earn below minimum wage with the expectation that tips make up the difference, so skipping a tip at a restaurant directly reduces their income.</p>
+        <p><strong>Bars.</strong> $1–2 per drink for simple orders (beer, basic cocktail) or 15–20% on tab totals. Running a tab and tipping at the end is standard; tipping drink by drink is fine too.</p>
+        <p><strong>Food delivery.</strong> 15–20% is standard, with a $3–5 minimum on small orders. Drivers often pay their own fuel costs, so a meaningful tip on a short delivery still matters.</p>
+        <p><strong>Rideshare (Uber, Lyft).</strong> 15–20% is customary, though the apps make it easy to do this in-app after the ride. You are not obligated to tip for poor service.</p>
+        <p><strong>Hair salons and barbershops.</strong> 15–20% is standard. Tip the person who does the work, not the owner if they cut your hair themselves (conventions vary on this).</p>
+        <p><strong>Hotel housekeeping.</strong> $2–5 per night, left daily rather than at checkout since different staff may clean on different days.</p>
+        <p><strong>Takeout and counter service.</strong> No firm expectation, but 10–15% is appreciated for complex orders. Tipping nothing at a purely self-serve counter is reasonable.</p>
+
+        <h2>How to calculate a tip in your head</h2>
+        <p>The fastest mental method works in two steps. First, find 10% by moving the decimal point one place left. Then adjust from there.</p>
+        <ul>
+          <li>For a <strong>20% tip</strong>: find 10%, double it.</li>
+          <li>For a <strong>15% tip</strong>: find 10%, then add half of that.</li>
+          <li>For an <strong>18% tip</strong>: find 10%, add half (= 15%), then add a little more (roughly 3% more).</li>
+        </ul>
+        <p>Example: bill is $47. Ten percent is $4.70. Double it for a 20% tip = $9.40. Total = $56.40. Or use the free <a href="tip-calculator.html">Tip Calculator</a> to get the exact amount and per-person split instantly.</p>
+
+        <h2>Splitting a bill fairly in a group</h2>
+        <p>The easiest approach for groups: add the tip to the subtotal first, then divide the total by the number of people. This avoids rounding errors from each person calculating their own tip separately.</p>
+        <p style="font-family:monospace;background:var(--bg-secondary);padding:0.75rem 1rem;border-radius:6px;border:1px solid var(--border);">Per person = (Subtotal + Tip) ÷ Number of people</p>
+        <p>On a $120 dinner for four with a 20% tip: $120 × 1.20 = $144 total ÷ 4 = $36 per person.</p>
+        <p>When people ordered very different amounts, splitting evenly can cause friction. In that case, the cleaner approach is for each person to add up their own items, calculate their share of the tip (as a percentage of their subtotal), and contribute that amount. This is tedious to do by hand, which is why a calculator helps.</p>
+
+        <h2>Tipping on pre-tax vs. post-tax</h2>
+        <p>Technically, tips are meant to be calculated on the pre-tax food cost — you are tipping for service, not paying a percentage of government taxes. In practice, the difference on a $50 meal is under $1, so most people just tip on the total shown at the bottom of the receipt. Either approach is fine; the convention you use matters less than leaving a reasonable amount.</p>
+
+        <h2>When tipping is not expected</h2>
+        <p>Tipping is generally not customary at fast food drive-throughs, buffets where you serve yourself, grocery stores, movie theaters, or retail shops. The growth of tip prompts on card readers at these locations has created confusion, but there is no meaningful social obligation at fully counter-served or self-served businesses where workers earn standard hourly wages.</p>
+
+        <h2>Use the calculator for quick results</h2>
+        <p>The free <a href="tip-calculator.html">Tip Calculator</a> calculates tip amounts, final totals, and per-person splits from any bill size and tip percentage. For travel situations where you need to compare currencies or work with different tax rates, the <a href="sales-tax-calculator.html">Sales Tax Calculator</a> and <a href="percentage-calculator.html">Percentage Calculator</a> are also available on this site.</p>
+
+      </div>
+    </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>injectNav('guide-tip-calculator.html'); injectFooter();</script>
+</body>
+</html>

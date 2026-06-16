@@ -1,0 +1,390 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Minifier - Online JS Minifier | The Useful Pages</title>
+  <meta name="description" content="Free online JavaScript minifier. Remove comments, collapse whitespace, and reduce JS file size instantly. See bytes saved and reduction percentage. No upload needed.">
+  <link rel="canonical" href="https://theusefulpages.com/js-minifier.html">
+  <meta property="og:title" content="JavaScript Minifier - The Useful Pages">
+  <meta property="og:description" content="Free online JavaScript minifier. Remove comments and collapse whitespace to reduce JS file size instantly.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JavaScript Minifier","url":"https://theusefulpages.com/js-minifier.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .error-box { background:#fef2f2;border:1px solid #fca5a5;border-radius:8px;padding:1rem;color:#dc2626;font-size:0.875rem;margin-top:1rem; }
+    .check-label { display:flex;align-items:center;gap:0.4rem;font-size:0.875rem;cursor:pointer; }
+    .opts-row { display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">JavaScript Minifier</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Reduce JS file size by removing comments and collapsing whitespace. See exact bytes saved.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label">JavaScript Input</label>
+          <textarea id="jsInput" class="form-textarea code-area" rows="12" placeholder="Paste your JavaScript code here..."></textarea>
+        </div>
+
+        <div class="opts-row">
+          <label class="check-label"><input type="checkbox" id="removeLineComments" checked> Remove // line comments</label>
+          <label class="check-label"><input type="checkbox" id="removeBlockComments" checked> Remove /* block */ comments</label>
+          <label class="check-label"><input type="checkbox" id="collapseWS" checked> Collapse whitespace</label>
+          <label class="check-label"><input type="checkbox" id="removeNewlines" checked> Remove unnecessary newlines</label>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="minifyJS()">Minify JavaScript</button>
+          <button class="btn btn-ghost btn-sm" onclick="clearAll()">Clear</button>
+          <button class="btn btn-ghost btn-sm" onclick="loadSample()">Load Sample</button>
+        </div>
+
+        <div id="errorBox" class="error-box hidden"></div>
+
+        <div id="outputSection" class="hidden" style="margin-top:1.25rem;">
+          <div class="stat-grid" id="statsGrid" style="margin-bottom:1rem;"></div>
+          <label class="form-label">Minified Output</label>
+          <pre id="jsOutput" class="mono-output" style="max-height:400px;overflow:auto;white-space:pre-wrap;word-break:break-all;"></pre>
+          <div class="btn-row" style="margin-top:0.75rem;">
+            <button class="btn btn-outline btn-sm" onclick="copyOutput()">Copy Output</button>
+            <button class="btn btn-ghost btn-sm" onclick="downloadJS()">Download .js</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Paste your JavaScript code into the input box above.</li>
+          <li>Choose which minification options to apply using the checkboxes.</li>
+          <li>Click <strong>Minify JavaScript</strong> to compress your code.</li>
+          <li>View the original size, minified size, reduction percentage, and bytes saved.</li>
+          <li>Copy the minified output or download it as a .js file.</li>
+          <li>For maximum safety, keep all options checked — this tool only removes whitespace and comments.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="json-formatter.html">JSON Formatter</a>
+          <a href="html-formatter.html">HTML Formatter</a>
+          <a href="csv-to-json.html">CSV to JSON</a>
+          <a href="markdown-previewer.html">Markdown Previewer</a>
+          <a href="color-picker.html">Color Picker</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Js Minifier</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free JavaScript minifier to reduce JavaScript size by removing unnecessary whitespace and formatting. It is useful for small scripts, snippets, demos, and quick web performance cleanup. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('js-minifier.html'); injectFooter(); });
+
+    let currentOutput = '';
+
+    function minifyJS() {
+      const input = document.getElementById('jsInput').value;
+      if (!input.trim()) { showError('Please enter some JavaScript.'); return; }
+      clearError();
+
+      let result = input;
+
+      // Remove block comments (handle carefully to avoid regex/string content)
+      if (document.getElementById('removeBlockComments').checked) {
+        result = removeBlockComments(result);
+      }
+
+      // Remove line comments
+      if (document.getElementById('removeLineComments').checked) {
+        result = removeLineComments(result);
+      }
+
+      // Collapse whitespace
+      if (document.getElementById('collapseWS').checked) {
+        result = result.replace(/[ \t]+/g, ' ');
+        result = result.replace(/[ \t]*\n[ \t]*/g, '\n');
+      }
+
+      // Remove unnecessary newlines
+      if (document.getElementById('removeNewlines').checked) {
+        result = result.replace(/\n{2,}/g, '\n');
+        // Remove newlines between statements where safe
+        result = result.replace(/([;{}()\[\]])\n\s*/g, '$1');
+        result = result.replace(/\n\s*([;{}()\[\]])/g, '$1');
+      }
+
+      result = result.trim();
+      currentOutput = result;
+
+      const origBytes = new TextEncoder().encode(input).length;
+      const newBytes = new TextEncoder().encode(result).length;
+      const saved = origBytes - newBytes;
+      const pct = origBytes > 0 ? ((saved / origBytes) * 100).toFixed(1) : '0';
+
+      document.getElementById('statsGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtNum(origBytes)}</div><div class="stat-label">Original bytes</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtNum(newBytes)}</div><div class="stat-label">Minified bytes</div></div>
+        <div class="stat-box"><div class="stat-value">${pct}%</div><div class="stat-label">Reduction</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtNum(saved)}</div><div class="stat-label">Bytes saved</div></div>
+      `;
+
+      document.getElementById('jsOutput').textContent = result;
+      document.getElementById('outputSection').classList.remove('hidden');
+    }
+
+    function removeBlockComments(code) {
+      // State machine to avoid removing comment-like strings inside string literals
+      let out = '';
+      let i = 0;
+      while (i < code.length) {
+        if (code[i] === '/' && code[i+1] === '*') {
+          const end = code.indexOf('*/', i + 2);
+          i = end === -1 ? code.length : end + 2;
+        } else if (code[i] === '"' || code[i] === "'" || code[i] === '`') {
+          const q = code[i];
+          out += q; i++;
+          while (i < code.length && code[i] !== q) {
+            if (code[i] === '\\') { out += code[i]; i++; }
+            out += code[i]; i++;
+          }
+          out += (code[i] || ''); i++;
+        } else {
+          out += code[i]; i++;
+        }
+      }
+      return out;
+    }
+
+    function removeLineComments(code) {
+      const lines = code.split('\n');
+      return lines.map(line => {
+        // Simple approach: find // not inside strings
+        let inStr = null;
+        for (let i = 0; i < line.length; i++) {
+          const ch = line[i];
+          if (!inStr && (ch === '"' || ch === "'" || ch === '`')) { inStr = ch; }
+          else if (inStr && ch === inStr && line[i-1] !== '\\') { inStr = null; }
+          else if (!inStr && ch === '/' && line[i+1] === '/') {
+            return line.substring(0, i).trimEnd();
+          }
+        }
+        return line;
+      }).join('\n');
+    }
+
+    function showError(msg) {
+      const b = document.getElementById('errorBox');
+      b.textContent = msg; b.classList.remove('hidden');
+      document.getElementById('outputSection').classList.add('hidden');
+    }
+    function clearError() { document.getElementById('errorBox').classList.add('hidden'); }
+    function copyOutput() { copyText(currentOutput, 'JS copied!'); }
+
+    function downloadJS() {
+      const blob = new Blob([currentOutput], {type: 'application/javascript'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'output.min.js';
+      a.click();
+    }
+
+    function clearAll() {
+      document.getElementById('jsInput').value = '';
+      document.getElementById('outputSection').classList.add('hidden');
+      clearError();
+    }
+
+    function loadSample() {
+      document.getElementById('jsInput').value = `// This is a sample JavaScript file
+/*
+ * Multi-line block comment
+ * describing this module
+ */
+
+function calculateTotal(items) {
+  // Sum all item prices
+  let total = 0;
+
+  for (let i = 0; i < items.length; i++) {
+    total += items[i].price; // add each price
+  }
+
+  return total;
+}
+
+/* Format currency helper */
+function formatCurrency(amount) {
+  return '$' + amount.toFixed(2);
+}
+
+const result = calculateTotal([
+  { name: 'Apple', price: 1.50 },
+  { name: 'Banana', price: 0.75 },
+  { name: 'Cherry', price: 3.00 }
+]);
+
+console.log('Total: ' + formatCurrency(result));`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Calculate BMI and What Your Number Means | The Useful Pages</title>
+  <meta name="description" content="A plain-language guide to BMI — what the formula is, how to calculate it, what the ranges mean, and where body mass index has real limits.">
+  <link rel="canonical" href="https://theusefulpages.com/guide-bmi-calculator.html">
+  <meta property="og:title" content="How to Calculate BMI and What Your Number Means">
+  <meta property="og:description" content="A plain-language guide to body mass index — the formula, the ranges, and where BMI has real limits as a health measure.">
+  <meta property="og:type" content="article">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">How to Calculate BMI and What Your Number Means</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">A plain-language guide to body mass index — the formula, the ranges, and where BMI has real limits.</p>
+
+      <div class="instructions-card" style="line-height:1.75;">
+
+        <h2>What is BMI?</h2>
+        <p>Body mass index, or BMI, is a number calculated from your height and weight. It was developed in the 1800s by Belgian mathematician Adolphe Quetelet as a way to study population-level weight patterns — not to diagnose individuals. Despite that origin, BMI became a widely used screening tool in medicine and public health because it is fast, free, and requires no equipment beyond a scale and a measuring tape.</p>
+        <p>BMI does not measure body fat directly. It estimates whether your weight is appropriate for your height by expressing weight relative to height squared. The result is a single number used to place people into broad categories.</p>
+
+        <h2>The BMI formula</h2>
+        <p>There are two versions of the formula depending on which units you use:</p>
+        <ul>
+          <li><strong>Metric:</strong> BMI = weight (kg) ÷ height (m)<sup>2</sup></li>
+          <li><strong>Imperial:</strong> BMI = (weight (lbs) ÷ height (in)<sup>2</sup>) × 703</li>
+        </ul>
+        <p>For example, someone who weighs 70 kg and is 1.75 m tall has a BMI of 70 ÷ (1.75 × 1.75) = 22.9. In imperial terms, a person weighing 154 lbs at 5 feet 9 inches (69 inches) has a BMI of (154 ÷ 69<sup>2</sup>) × 703 = 22.7.</p>
+        <p>You can skip the math with the free <a href="bmi-calculator.html">BMI Calculator</a> on this site, which handles both metric and imperial inputs instantly.</p>
+
+        <h2>What the BMI ranges mean</h2>
+        <p>The standard adult BMI categories used by the CDC and WHO are:</p>
+        <ul>
+          <li><strong>Below 18.5</strong> — Underweight</li>
+          <li><strong>18.5 to 24.9</strong> — Healthy weight</li>
+          <li><strong>25.0 to 29.9</strong> — Overweight</li>
+          <li><strong>30.0 and above</strong> — Obesity (further divided into Class 1, 2, and 3)</li>
+        </ul>
+        <p>These thresholds were set based on population studies linking weight categories to health risks such as cardiovascular disease, type 2 diabetes, and hypertension. At the extremes — very low or very high BMI — the associations with health problems are generally strong. In the middle ranges, the picture is more nuanced.</p>
+
+        <h2>Where BMI falls short</h2>
+        <p>BMI has well-documented limitations that are worth understanding before placing too much weight (so to speak) on your number.</p>
+        <p><strong>It does not distinguish muscle from fat.</strong> A muscular athlete may have a BMI that technically places them in the "overweight" range despite having low body fat. Conversely, someone with low muscle mass may have a "healthy" BMI but carry a higher-than-ideal proportion of body fat.</p>
+        <p><strong>It does not account for where fat is stored.</strong> Fat carried around the abdomen (visceral fat) is more closely linked to health risks than fat carried in the hips or thighs. BMI cannot detect this difference.</p>
+        <p><strong>It may not apply equally across different ethnic groups.</strong> Research suggests that people of Asian descent may face increased health risks at lower BMI thresholds, while some studies have found the standard ranges less predictive in certain other populations.</p>
+        <p><strong>It does not account for age or sex differences in body composition.</strong> Older adults tend to have more body fat at the same BMI than younger adults. Women generally have more body fat than men at the same BMI.</p>
+
+        <h2>How BMI is actually used</h2>
+        <p>Despite its limitations, BMI remains useful as a population-level screening tool and a starting point for conversations about weight and health. Clinicians typically use it alongside other measures — waist circumference, blood pressure, cholesterol, blood glucose, and lifestyle factors — rather than relying on it in isolation.</p>
+        <p>For personal use, BMI is a reasonable rough check. If your number is well within the healthy range and you feel good, it is unlikely to be cause for concern. If it falls outside the healthy range, it is worth discussing with a doctor alongside a fuller picture of your health.</p>
+
+        <h2>Calculate your BMI now</h2>
+        <p>Use the free <a href="bmi-calculator.html">BMI Calculator</a> on this site to get your number instantly — no signup required. You can also use the <a href="ideal-weight.html">Ideal Weight Calculator</a> to see weight ranges for your height based on several common formulas.</p>
+
+      </div>
+    </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>injectNav('guide-bmi-calculator.html'); injectFooter();</script>
+</body>
+</html>

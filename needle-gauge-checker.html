@@ -1,0 +1,363 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Needle Gauge Checker Reference — Knitting Tool | The Useful Pages</title>
+  <meta name="description" content="Identify knitting needle sizes by mm, US size, or UK size. Full conversion table plus gauge-check tool to find suggested needle size from your swatch.">
+  <link rel="canonical" href="https://theusefulpages.com/needle-gauge-checker.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Needle Gauge Checker</h1>
+      <p class="page-subtitle">Identify any knitting needle by its mm diameter, and find suggested needle sizes from your swatch gauge.</p>
+
+      <div class="tool-card">
+        <h3 style="margin-bottom:0.75rem;">Identify My Needle</h3>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.75rem;">Measure your needle diameter with a needle gauge card and enter it below.</p>
+        <div style="display:flex;gap:1rem;align-items:flex-end;flex-wrap:wrap;">
+          <div>
+            <label class="label">Measured diameter (mm)</label>
+            <input class="form-input" type="number" id="needle-mm" min="1" max="30" step="0.25" placeholder="e.g. 3.75" oninput="identifyNeedle()">
+          </div>
+        </div>
+        <div id="needle-id-result" style="display:none;margin-top:1rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-mm"></div>
+              <div class="stat-label">mm</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-us"></div>
+              <div class="stat-label">US Size</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-uk"></div>
+              <div class="stat-label">UK/Canadian Size</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-weight"></div>
+              <div class="stat-label">Yarn Weight</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h3 style="margin-bottom:0.75rem;">Gauge-Check: Find Suggested Needle Size</h3>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.75rem;">Enter your measured stitch gauge to find what needle size is typical.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0.75rem;">
+          <div>
+            <label class="label">Stitches per 4 inches (measured)</label>
+            <input class="form-input" type="number" id="gauge-sts" min="4" max="80" step="0.5" placeholder="e.g. 22">
+          </div>
+          <div>
+            <label class="label">Yarn weight</label>
+            <select class="form-select" id="gauge-weight">
+              <option value="">— Any weight —</option>
+              <option value="lace">Lace (0)</option>
+              <option value="fingering">Fingering/Sock (1)</option>
+              <option value="sport">Sport (2)</option>
+              <option value="dk">DK (3)</option>
+              <option value="worsted">Worsted (4)</option>
+              <option value="bulky">Bulky (5)</option>
+              <option value="superbulky">Super Bulky (6+)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="gaugeCheck()">Find Suggested Needle</button>
+        <div id="gauge-check-result" style="display:none;margin-top:1rem;"></div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h3 style="margin-bottom:1rem;">Full Needle Size Conversion Table</h3>
+        <div class="table-wrap">
+          <table class="data-table" id="needle-table">
+            <thead>
+              <tr><th>mm</th><th>US Size</th><th>UK / Canadian</th><th>Yarn Weight</th></tr>
+            </thead>
+            <tbody id="needle-tbody"></tbody>
+          </table>
+        </div>
+        <p style="color:var(--text-muted);font-size:0.8rem;margin-top:0.75rem;">Note: Needle sizing varies slightly by manufacturer. Measure your needle with a gauge card for precision.</p>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li><strong>Identify My Needle:</strong> Use a needle gauge card (the metal or plastic card with holes) to measure your needle diameter in mm, then enter it above.</li>
+          <li><strong>Gauge-Check:</strong> Count stitches over 4 inches in your swatch, enter that number, and find the typical needle size for that gauge.</li>
+          <li><strong>Conversion Table:</strong> Browse the full mm ↔ US ↔ UK reference below.</li>
+        </ul>
+        <h3 style="margin-top:1rem;">How to Measure Your Needle</h3>
+        <ol>
+          <li>Insert the needle into the round holes on your needle gauge card.</li>
+          <li>Find the smallest hole the needle fits through without forcing — that is your needle size.</li>
+          <li>Read the mm measurement printed beside that hole.</li>
+        </ol>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Needle Gauge Checker</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Needle Gauge Checker to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    injectNav('needle-gauge-checker.html');
+    injectFooter();
+    buildTable();
+  });
+
+  // mm, US, UK, yarn weight
+  const NEEDLES = [
+    [1.5, '000', 17, 'Lace'],
+    [1.75, '00', 15, 'Lace'],
+    [2.0, '0', 14, 'Lace/Fingering'],
+    [2.25, '1', 13, 'Fingering/Sock'],
+    [2.5, '1.5', 12, 'Fingering'],
+    [2.75, '2', 12, 'Fingering/Sock'],
+    [3.0, '2.5', 11, 'Fingering/Sport'],
+    [3.25, '3', 10, 'Sport'],
+    [3.5, '4', 10, 'Sport/DK'],
+    [3.75, '5', 9, 'DK'],
+    [4.0, '6', 8, 'DK/Worsted'],
+    [4.5, '7', 7, 'Worsted'],
+    [5.0, '8', 6, 'Worsted'],
+    [5.5, '9', 5, 'Worsted/Aran'],
+    [6.0, '10', 4, 'Bulky'],
+    [6.5, '10.5', 3, 'Bulky'],
+    [7.0, '10.75', 2, 'Bulky'],
+    [8.0, '11', 0, 'Bulky'],
+    [9.0, '13', 00, 'Super Bulky'],
+    [10.0, '15', '000', 'Super Bulky'],
+    [12.0, '17', '—', 'Super Bulky'],
+    [15.0, '19', '—', 'Jumbo'],
+    [19.0, '35', '—', 'Jumbo'],
+    [25.0, '50', '—', 'Jumbo'],
+  ];
+
+  // Gauge ranges per weight (sts/4in)
+  const GAUGE_WEIGHTS = [
+    { w: 'lace', label: 'Lace', min: 32, max: 60, needle: '1.5–2.25mm (US 000–1)' },
+    { w: 'fingering', label: 'Fingering/Sock', min: 26, max: 36, needle: '2.25–3.25mm (US 1–3)' },
+    { w: 'sport', label: 'Sport', min: 22, max: 28, needle: '3.25–3.75mm (US 3–5)' },
+    { w: 'dk', label: 'DK', min: 18, max: 24, needle: '3.75–4.5mm (US 5–7)' },
+    { w: 'worsted', label: 'Worsted/Aran', min: 14, max: 20, needle: '4.5–5.5mm (US 7–9)' },
+    { w: 'bulky', label: 'Bulky', min: 10, max: 16, needle: '6.0–8.0mm (US 10–11)' },
+    { w: 'superbulky', label: 'Super Bulky/Jumbo', min: 4, max: 12, needle: '9.0mm+ (US 13+)' },
+  ];
+
+  function buildTable() {
+    const tbody = document.getElementById('needle-tbody');
+    NEEDLES.forEach(n => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${n[0]} mm</td><td>US ${n[1]}</td><td>${n[2]}</td><td>${n[3]}</td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function identifyNeedle() {
+    const mm = parseFloat(document.getElementById('needle-mm').value);
+    if (!mm || mm < 1) { document.getElementById('needle-id-result').style.display='none'; return; }
+    // Find closest needle
+    let closest = NEEDLES[0];
+    let minDiff = Math.abs(mm - NEEDLES[0][0]);
+    NEEDLES.forEach(n => {
+      const d = Math.abs(mm - n[0]);
+      if (d < minDiff) { minDiff = d; closest = n; }
+    });
+    document.getElementById('res-mm').textContent = closest[0] + ' mm';
+    document.getElementById('res-us').textContent = 'US ' + closest[1];
+    document.getElementById('res-uk').textContent = closest[2];
+    document.getElementById('res-weight').textContent = closest[3];
+    document.getElementById('needle-id-result').style.display = '';
+  }
+
+  function gaugeCheck() {
+    const sts = parseFloat(document.getElementById('gauge-sts').value);
+    const wt = document.getElementById('gauge-weight').value;
+    if (!sts) { alert('Please enter your stitch gauge.'); return; }
+
+    let matches = GAUGE_WEIGHTS.filter(g => sts >= g.min && sts <= g.max);
+    if (wt) matches = matches.filter(g => g.w === wt);
+
+    let html = '';
+    if (matches.length === 0) {
+      // Find closest
+      const sorted = GAUGE_WEIGHTS.slice().sort((a, b) => {
+        const da = Math.min(Math.abs(sts - a.min), Math.abs(sts - a.max));
+        const db = Math.min(Math.abs(sts - b.min), Math.abs(sts - b.max));
+        return da - db;
+      });
+      html = `<p>No exact match for ${sts} sts/4". Closest match:</p>`;
+      html += `<div class="stat-grid"><div class="stat-box"><div class="stat-value">${sorted[0].label}</div><div class="stat-label">Yarn Weight</div></div><div class="stat-box"><div class="stat-value" style="font-size:1rem;">${sorted[0].needle}</div><div class="stat-label">Suggested Needle</div></div></div>`;
+    } else {
+      html = `<p>For <strong>${sts} stitches per 4 inches</strong>:</p>`;
+      matches.forEach(m => {
+        html += `<div class="stat-grid" style="margin-bottom:0.5rem;"><div class="stat-box"><div class="stat-value">${m.label}</div><div class="stat-label">Yarn Weight</div></div><div class="stat-box"><div class="stat-value" style="font-size:1rem;">${m.needle}</div><div class="stat-label">Suggested Needle</div></div></div>`;
+      });
+    }
+    document.getElementById('gauge-check-result').innerHTML = html;
+    document.getElementById('gauge-check-result').style.display = '';
+  }
+  </script>
+</body>
+</html>

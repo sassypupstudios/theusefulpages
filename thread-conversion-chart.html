@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thread Conversion Chart — Embroidery Tool | The Useful Pages</title>
+  <meta name="description" content="Convert DMC floss numbers to Anchor equivalents. Searchable chart of 80+ common thread conversions.">
+  <link rel="canonical" href="https://theusefulpages.com/thread-conversion-chart.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Thread Conversion Chart</h1>
+      <p class="page-subtitle">Convert between DMC and Anchor embroidery floss numbers. Search by either brand or color name.</p>
+      <div class="tool-card">
+        <p class="disclaimer">Conversions are approximate. No two brands are exact matches — always compare threads in person when possible.</p>
+        <div style="display:grid;grid-template-columns:1fr auto;gap:.75rem;align-items:end;margin-top:1rem;">
+          <div>
+            <label class="label">Search (DMC number, Anchor number, or color name)</label>
+            <input class="form-input" type="text" id="search" placeholder="e.g. 321 or red or 9046" oninput="renderTable()">
+          </div>
+          <div>
+            <label class="label">&nbsp;</label>
+            <button class="btn-outline" onclick="document.getElementById('search').value='';renderTable();">Clear</button>
+          </div>
+        </div>
+        <div class="table-wrap" style="margin-top:1rem;">
+          <table class="data-table">
+            <thead><tr><th>DMC</th><th>Anchor</th><th>Color Name</th><th>Notes</th></tr></thead>
+            <tbody id="conv-tbody"></tbody>
+          </table>
+        </div>
+        <div id="no-results" style="display:none;text-align:center;padding:2rem;color:var(--text-muted);">No matches found.</div>
+        <p id="count-label" style="margin-top:.5rem;font-size:.85rem;color:var(--text-muted);"></p>
+      </div>
+
+      <div class="instructions-card">
+        <h2>About Thread Conversions</h2>
+        <p>DMC and Anchor are the two most popular brands of embroidery floss worldwide. Many patterns list DMC numbers; this chart helps you find the nearest Anchor equivalent when DMC is unavailable.</p>
+        <h3>Are Conversions Exact?</h3>
+        <p>No. DMC and Anchor use different dye lots and color mixing processes. The converted color is the closest visual match, but there will often be a slight difference in hue, saturation, or value. For critical color matching, always compare threads side by side in natural light.</p>
+        <h3>How to Search</h3>
+        <ul>
+          <li>Type a DMC number (e.g. "321") to find the Anchor equivalent.</li>
+          <li>Type an Anchor number (e.g. "9046") to find the DMC equivalent.</li>
+          <li>Type a color name (e.g. "red" or "navy") to browse by description.</li>
+        </ul>
+        <h3>What About Madeira?</h3>
+        <p>Madeira thread also has a popular conversion system. A future version of this chart may include Madeira numbers. For now, Madeira publishes a free conversion chart on their website.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Thread Conversion Chart</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Thread Conversion Chart to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('thread-conversion-chart.html');injectFooter();renderTable();});
+
+    // [DMC, Anchor, Name, Note]
+    const CONV = [
+      ['310','403','Black',''],
+      ['Ecru','387','Ecru',''],
+      ['White','1','White',''],
+      ['B5200','1','Snow White','Slight difference'],
+      ['321','9046','Christmas Red',''],
+      ['666','46','Christmas Red Bright',''],
+      ['304','1006','Christmas Red Med',''],
+      ['498','1005','Christmas Red Dk',''],
+      ['816','1005','Garnet','Approx'],
+      ['815','43','Garnet Med','Approx'],
+      ['550','101','Violet Vy Dk',''],
+      ['552','99','Violet Med',''],
+      ['553','98','Violet',''],
+      ['554','96','Violet Lt',''],
+      ['210','108','Lavender Med',''],
+      ['208','110','Lavender Vy Dk',''],
+      ['209','109','Lavender Dk',''],
+      ['211','342','Lavender Lt',''],
+      ['327','100','Violet Dk',''],
+      ['333','119','Blue Violet Vy Dk',''],
+      ['311','148','Navy Blue Med',''],
+      ['336','150','Navy Blue',''],
+      ['322','978','Navy Blue Lt',''],
+      ['312','979','Baby Blue Vy Dk',''],
+      ['334','977','Baby Blue Med',''],
+      ['932','920','Antique Blue Lt',''],
+      ['931','921','Antique Blue Med',''],
+      ['930','922','Antique Blue Dk',''],
+      ['3755','140','Baby Blue',''],
+      ['827','9159','Electric Blue Vy Lt','Approx'],
+      ['813','160','Blue Lt',''],
+      ['826','161','Blue Med',''],
+      ['825','162','Blue Dk',''],
+      ['318','399','Steel Gray Lt',''],
+      ['414','235','Steel Gray Dk',''],
+      ['415','398','Pearl Gray',''],
+      ['762','397','Pearl Gray Vy Lt',''],
+      ['317','400','Pewter Gray',''],
+      ['701','227','Christmas Green Lt',''],
+      ['700','229','Christmas Green Bright',''],
+      ['702','226','Kelly Green',''],
+      ['703','238','Chartreuse',''],
+      ['471','265','Avocado Green Vy Lt',''],
+      ['470','267','Avocado Green Lt',''],
+      ['469','268','Avocado Green',''],
+      ['937','268','Avocado Green Med','Approx'],
+      ['988','243','Forest Green Med',''],
+      ['987','244','Forest Green Dk',''],
+      ['745','300','Yellow Pale Lt',''],
+      ['744','301','Yellow Pale Med',''],
+      ['743','302','Yellow Med',''],
+      ['742','303','Tangerine Lt',''],
+      ['741','316','Tangerine Med',''],
+      ['740','316','Tangerine',''],
+      ['608','332','Orange Bright',''],
+      ['606','334','Orange Red Bright','Approx'],
+      ['444','290','Lemon Dk',''],
+      ['307','289','Lemon',''],
+      ['726','295','Topaz Lt',''],
+      ['725','305','Topaz Med Lt',''],
+      ['973','290','Canary Bright','Approx'],
+      ['972','298','Canary Dk',''],
+      ['3820','306','Straw Dk',''],
+      ['3821','305','Straw','Approx'],
+      ['780','309','Topaz Vy Dk',''],
+      ['781','308','Topaz Dk',''],
+      ['433','358','Brown Med',''],
+      ['434','310','Brown Lt',''],
+      ['435','1046','Brown Vy Lt',''],
+      ['436','1045','Tan',''],
+      ['437','362','Tan Lt',''],
+      ['739','366','Tan Ultra Vy Lt',''],
+      ['738','367','Tan Vy Lt',''],
+      ['3371','382','Black Brown',''],
+      ['838','380','Beige Brown Vy Dk',''],
+      ['839','360','Beige Brown Dk',''],
+      ['840','379','Beige Brown Med',''],
+      ['841','378','Beige Brown Lt',''],
+      ['842','376','Beige Brown Vy Lt',''],
+      ['400','351','Mahogany Dk',''],
+      ['301','1049','Mahogany Med',''],
+      ['3810','168','Turquoise Dk',''],
+      ['3811','928','Turquoise Vy Lt','Approx'],
+      ['351','10','Coral',''],
+      ['352','9','Coral Lt',''],
+      ['353','8','Peach',''],
+      ['754','6','Peach Lt','Approx'],
+      ['224','893','Shell Pink Vy Lt','Approx'],
+      ['223','895','Shell Pink Lt','Approx'],
+      ['3713','1020','Salmon Vy Lt','Approx'],
+      ['761','1021','Salmon Lt','Approx'],
+      ['760','1022','Salmon','Approx'],
+      ['334','977','Baby Blue Med',''],
+      ['932','920','Antique Blue Lt',''],
+    ];
+
+    function renderTable() {
+      const q = document.getElementById('search').value.toLowerCase().trim();
+      let rows = CONV.filter(r => {
+        if (!q) return true;
+        return r[0].toLowerCase().includes(q) || r[1].toLowerCase().includes(q) || r[2].toLowerCase().includes(q);
+      });
+      // Deduplicate by DMC+Anchor
+      const seen = new Set();
+      rows = rows.filter(r => {
+        const k = r[0]+'|'+r[1];
+        if (seen.has(k)) return false;
+        seen.add(k); return true;
+      });
+      const tbody = document.getElementById('conv-tbody');
+      document.getElementById('count-label').textContent = `Showing ${rows.length} of ${CONV.length} conversions.`;
+      if (rows.length===0) {
+        tbody.innerHTML=''; document.getElementById('no-results').style.display='';
+      } else {
+        document.getElementById('no-results').style.display='none';
+        tbody.innerHTML = rows.map(r=>`<tr><td><strong>DMC ${r[0]}</strong></td><td><strong>Anchor ${r[1]}</strong></td><td>${r[2]}</td><td style="font-size:.85rem;color:var(--text-muted);">${r[3]||'Close match'}</td></tr>`).join('');
+      }
+    }
+  </script>
+</body>
+</html>

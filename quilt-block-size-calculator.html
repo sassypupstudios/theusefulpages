@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quilt Block Size Calculator — Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate quilt block sizes, sashing dimensions, and how many blocks fit in your quilt. Enter your quilt size and block count or block size to get all measurements.">
+  <link rel="canonical" href="https://theusefulpages.com/quilt-block-size-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Quilt Block Size Calculator</h1>
+      <p class="page-subtitle">Figure out block sizes, sashing, and block counts for your quilt layout.</p>
+      <div class="tool-card">
+        <div style="margin-bottom:1rem;">
+          <label class="label">Calculation Mode</label>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+              <input type="radio" name="mode" value="block-size" checked onchange="switchMode()"> Find block size from quilt dimensions + block count
+            </label>
+            <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+              <input type="radio" name="mode" value="block-count" onchange="switchMode()"> Find how many blocks fit given a block size
+            </label>
+          </div>
+        </div>
+
+        <div id="mode-block-size">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Quilt Finished Width (inches)</label>
+              <input class="form-input" type="number" id="qw" min="1" placeholder="e.g. 60">
+            </div>
+            <div>
+              <label class="label">Quilt Finished Length (inches)</label>
+              <input class="form-input" type="number" id="ql" min="1" placeholder="e.g. 80">
+            </div>
+            <div>
+              <label class="label">Blocks Across</label>
+              <input class="form-input" type="number" id="blocks-across" min="1" step="1" placeholder="e.g. 5">
+            </div>
+            <div>
+              <label class="label">Blocks Down</label>
+              <input class="form-input" type="number" id="blocks-down" min="1" step="1" placeholder="e.g. 6">
+            </div>
+            <div>
+              <label class="label">Sashing Width (inches, 0 = no sashing)</label>
+              <input class="form-input" type="number" id="sashing-w" min="0" step="0.25" value="0" placeholder="e.g. 2">
+            </div>
+          </div>
+        </div>
+
+        <div id="mode-block-count" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Quilt Finished Width (inches)</label>
+              <input class="form-input" type="number" id="qw2" min="1" placeholder="e.g. 60">
+            </div>
+            <div>
+              <label class="label">Quilt Finished Length (inches)</label>
+              <input class="form-input" type="number" id="ql2" min="1" placeholder="e.g. 80">
+            </div>
+            <div>
+              <label class="label">Finished Block Size (inches)</label>
+              <input class="form-input" type="number" id="block-size-input" min="1" step="0.5" placeholder="e.g. 12">
+            </div>
+            <div>
+              <label class="label">Sashing Width (inches, 0 = no sashing)</label>
+              <input class="form-input" type="number" id="sashing-w2" min="0" step="0.25" value="0" placeholder="e.g. 2">
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcBlocks()">Calculate</button>
+          <button class="btn-outline" onclick="resetBlocks()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+
+        <div id="block-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid" id="block-stats"></div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">Common Quilt Sizes & Block Counts</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Quilt Size</th><th>Dimensions</th><th>Common Block Size</th><th>Blocks (no sashing)</th></tr></thead>
+            <tbody>
+              <tr><td>Baby</td><td>36" × 45"</td><td>9"</td><td>4 × 5 = 20</td></tr>
+              <tr><td>Baby</td><td>36" × 45"</td><td>6"</td><td>6 × 7 = 42</td></tr>
+              <tr><td>Lap/Throw</td><td>54" × 72"</td><td>12"</td><td>4 × 6 = 24</td></tr>
+              <tr><td>Lap/Throw</td><td>54" × 72"</td><td>9"</td><td>6 × 8 = 48</td></tr>
+              <tr><td>Twin</td><td>60" × 80"</td><td>12"</td><td>5 × 6 = 30</td></tr>
+              <tr><td>Twin</td><td>60" × 80"</td><td>10"</td><td>6 × 8 = 48</td></tr>
+              <tr><td>Full/Double</td><td>80" × 96"</td><td>12"</td><td>6 × 8 = 48</td></tr>
+              <tr><td>Queen</td><td>90" × 108"</td><td>12"</td><td>7 × 9 = 63</td></tr>
+              <tr><td>King</td><td>108" × 108"</td><td>12"</td><td>9 × 9 = 81</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use the Quilt Block Size Calculator</h2>
+        <ul>
+          <li><strong>Mode 1 — Find block size:</strong> Enter your quilt dimensions and how many blocks across and down you want. The calculator finds what block size you need, plus finished and unfinished measurements.</li>
+          <li><strong>Mode 2 — Find block count:</strong> Enter your quilt dimensions and a block size. The calculator tells you how many blocks fit and the actual resulting quilt size.</li>
+          <li>If you add sashing, enter the finished sashing width. Sashing strips appear between blocks (and optionally on the outer edges).</li>
+        </ul>
+        <h2>Finished vs. Unfinished Block Size</h2>
+        <ul>
+          <li><strong>Finished size</strong> = the block size after sewing it into the quilt (seams taken).</li>
+          <li><strong>Unfinished size</strong> = the block size when you cut it, before sewing. Always add 0.5" (¼" seam allowance × 2 sides).</li>
+        </ul>
+        <h2>Sashing Tips</h2>
+        <ul>
+          <li>Sashing strips separate blocks and can make a quilt larger without making more blocks.</li>
+          <li>The number of sashing strips equals: (blocks across − 1) vertically and (blocks down − 1) horizontally for interior sashing. Add 2 more if you want outer border sashing.</li>
+          <li>The unfinished sashing strip width = finished sashing width + 0.5".</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Quilt Block Size Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Quilt Block Size Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('quilt-block-size-calculator.html');injectFooter();});
+
+    function switchMode(){
+      const mode = document.querySelector('input[name="mode"]:checked').value;
+      document.getElementById('mode-block-size').style.display  = mode === 'block-size'  ? '' : 'none';
+      document.getElementById('mode-block-count').style.display = mode === 'block-count' ? '' : 'none';
+      document.getElementById('block-result').style.display = 'none';
+    }
+
+    function fracStr(val){
+      if(val === Math.floor(val)) return val + '"';
+      const whole = Math.floor(val);
+      const dec   = Math.round((val - whole) * 16) / 16;
+      const fracs = {0.0625:'1/16', 0.125:'⅛', 0.1875:'3/16', 0.25:'¼', 0.3125:'5/16',
+                     0.375:'⅜', 0.4375:'7/16', 0.5:'½', 0.5625:'9/16', 0.625:'⅝',
+                     0.6875:'11/16', 0.75:'¾', 0.8125:'13/16', 0.875:'⅞', 0.9375:'15/16'};
+      const frac = fracs[dec] || dec.toFixed(3);
+      return (whole > 0 ? whole : '') + frac + '"';
+    }
+
+    function stat(label, value){ return `<div class="stat-box"><div class="stat-value">${value}</div><div class="stat-label">${label}</div></div>`; }
+
+    function calcBlocks(){
+      const mode = document.querySelector('input[name="mode"]:checked').value;
+
+      if(mode === 'block-size'){
+        const qw    = parseFloat(document.getElementById('qw').value);
+        const ql    = parseFloat(document.getElementById('ql').value);
+        const ba    = parseInt(document.getElementById('blocks-across').value);
+        const bd    = parseInt(document.getElementById('blocks-down').value);
+        const sash  = parseFloat(document.getElementById('sashing-w').value) || 0;
+        if(isNaN(qw)||qw<=0||isNaN(ql)||ql<=0||isNaN(ba)||ba<=0||isNaN(bd)||bd<=0){alert('Please fill in all required fields.');return;}
+
+        // Total sashing width: (ba-1) interior strips for interior sashing
+        const totalSashW = sash * (ba - 1);
+        const totalSashH = sash * (bd - 1);
+        const blockW = (qw - totalSashW) / ba;
+        const blockH = (ql - totalSashH) / bd;
+
+        let html = stat('Finished Block Width', fracStr(Math.round(blockW*100)/100)) +
+                   stat('Finished Block Height', fracStr(Math.round(blockH*100)/100)) +
+                   stat('Unfinished Block Width', fracStr(Math.round((blockW+0.5)*100)/100)) +
+                   stat('Unfinished Block Height', fracStr(Math.round((blockH+0.5)*100)/100)) +
+                   stat('Total Blocks', ba + ' × ' + bd + ' = ' + (ba*bd));
+        if(sash > 0){
+          html += stat('Sashing Strip Width (cut)', fracStr(sash + 0.5)) +
+                  stat('Vertical Sashing Strips', (ba-1) + ' strips') +
+                  stat('Horizontal Sashing Strips', (bd-1) + ' strips');
+        }
+        document.getElementById('block-stats').innerHTML = html;
+
+      } else {
+        const qw    = parseFloat(document.getElementById('qw2').value);
+        const ql    = parseFloat(document.getElementById('ql2').value);
+        const bs    = parseFloat(document.getElementById('block-size-input').value);
+        const sash  = parseFloat(document.getElementById('sashing-w2').value) || 0;
+        if(isNaN(qw)||qw<=0||isNaN(ql)||ql<=0||isNaN(bs)||bs<=0){alert('Please fill in all required fields.');return;}
+
+        // Number of blocks: quilt_size = n*block + (n-1)*sash => n*(block+sash) - sash = quilt_size => n = (quilt_size + sash) / (block + sash)
+        const ba = Math.floor((qw + sash) / (bs + sash));
+        const bd = Math.floor((ql + sash) / (bs + sash));
+        const actualW = ba * bs + (ba-1) * sash;
+        const actualH = bd * bs + (bd-1) * sash;
+
+        let html = stat('Blocks Across', ba) +
+                   stat('Blocks Down', bd) +
+                   stat('Total Blocks', ba * bd) +
+                   stat('Resulting Quilt Width', fracStr(actualW)) +
+                   stat('Resulting Quilt Length', fracStr(actualH)) +
+                   stat('Unfinished Block Size', fracStr(bs + 0.5));
+        if(sash > 0){
+          html += stat('Sashing Cut Width', fracStr(sash + 0.5));
+        }
+        document.getElementById('block-stats').innerHTML = html;
+      }
+
+      document.getElementById('block-result').style.display = 'block';
+    }
+
+    function resetBlocks(){
+      ['qw','ql','blocks-across','blocks-down','sashing-w','qw2','ql2','block-size-input','sashing-w2'].forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.value = id.startsWith('sashing') ? '0' : '';
+      });
+      document.getElementById('block-result').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

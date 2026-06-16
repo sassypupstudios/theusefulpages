@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Gauge Swatch Calculator — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate your knitting gauge from a swatch and adjust your cast-on count to match a pattern.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-gauge-swatch-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Gauge Swatch Calculator</h1>
+      <p class="page-subtitle">Measure your swatch, get your gauge, and adjust your cast-on count to match any pattern.</p>
+      <div class="tool-card">
+        <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;border-bottom:2px solid var(--border);padding-bottom:0;">
+          <button class="btn-primary" id="tab-swatch" onclick="switchTab('swatch')" style="border-radius:4px 4px 0 0;">Measure Swatch</button>
+          <button class="btn-outline" id="tab-adjust" onclick="switchTab('adjust')" style="border-radius:4px 4px 0 0;">Adjust for Pattern</button>
+        </div>
+
+        <!-- Tab 1: Swatch Measurement -->
+        <div id="panel-swatch">
+          <p style="color:var(--text-muted);margin-bottom:1rem;">Enter your swatch measurements to calculate your gauge.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Stitches counted</label>
+              <input class="form-input" type="number" id="sw-sts" min="1" placeholder="e.g. 22">
+            </div>
+            <div>
+              <label class="label">Rows counted</label>
+              <input class="form-input" type="number" id="sw-rows" min="1" placeholder="e.g. 28">
+            </div>
+            <div>
+              <label class="label">Measured width (inches)</label>
+              <input class="form-input" type="number" id="sw-width" min="0.5" step="0.25" placeholder="e.g. 4">
+            </div>
+            <div>
+              <label class="label">Measured height (inches)</label>
+              <input class="form-input" type="number" id="sw-height" min="0.5" step="0.25" placeholder="e.g. 4">
+            </div>
+          </div>
+          <button class="btn-primary" onclick="calcSwatch()" style="margin-top:1rem;">Calculate Gauge</button>
+          <div id="swatch-result" style="display:none;margin-top:1.5rem;">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="stat-value" id="r-spi"></div>
+                <div class="stat-label">Stitches / inch</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-rpi"></div>
+                <div class="stat-label">Rows / inch</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-s4"></div>
+                <div class="stat-label">Stitches per 4"</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-r4"></div>
+                <div class="stat-label">Rows per 4"</div>
+              </div>
+            </div>
+            <div class="result-card" style="margin-top:1rem;">
+              <p style="margin:0;font-size:0.9rem;color:var(--text-muted);" id="r-swatch-note"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Pattern Adjustment -->
+        <div id="panel-adjust" style="display:none;">
+          <p style="color:var(--text-muted);margin-bottom:1rem;">Compare your gauge to a pattern's stated gauge and find your adjusted cast-on.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Pattern gauge (sts per 4")</label>
+              <input class="form-input" type="number" id="pat-g" min="1" step="0.5" placeholder="e.g. 20">
+            </div>
+            <div>
+              <label class="label">Your gauge (sts per 4")</label>
+              <input class="form-input" type="number" id="my-g" min="1" step="0.5" placeholder="e.g. 22">
+            </div>
+            <div>
+              <label class="label">Pattern cast-on stitches</label>
+              <input class="form-input" type="number" id="pat-co" min="1" placeholder="e.g. 120">
+            </div>
+            <div>
+              <label class="label">Desired finished width (inches)</label>
+              <input class="form-input" type="number" id="des-w" min="1" step="0.5" placeholder="e.g. 18">
+            </div>
+          </div>
+          <button class="btn-primary" onclick="calcAdjust()" style="margin-top:1rem;">Calculate Adjustment</button>
+          <div id="adjust-result" style="display:none;margin-top:1.5rem;">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="stat-value" id="r-adj-sts"></div>
+                <div class="stat-label">Adjusted Cast-On</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-adj-diff"></div>
+                <div class="stat-label">Gauge Difference</div>
+              </div>
+            </div>
+            <div class="result-card" style="margin-top:1rem;">
+              <p style="margin:0;font-size:0.95rem;" id="r-adj-note"></p>
+            </div>
+            <div class="result-card" style="margin-top:0.75rem;background:var(--bg-secondary);">
+              <p style="margin:0;font-size:0.9rem;color:var(--text-muted);" id="r-adj-advice"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <h3>Measuring Your Swatch</h3>
+        <ul>
+          <li>Knit a swatch at least 6"×6" using your project yarn and needles in the stated stitch pattern.</li>
+          <li>Wash and block the swatch before measuring — many yarns change size significantly after washing.</li>
+          <li>Place the swatch flat. Measure from the center, avoiding the edges (which are less accurate).</li>
+          <li>Count stitches and rows within a 4" area for the most accurate result.</li>
+        </ul>
+        <h3>Adjusting for a Pattern</h3>
+        <ul>
+          <li>Patterns state gauge as "X stitches over 4 inches" — enter that in the Pattern Gauge field.</li>
+          <li>Enter your swatch gauge in the Your Gauge field.</li>
+          <li>Enter either the pattern's cast-on count or your desired finished width.</li>
+          <li>The calculator will tell you how many stitches to cast on to achieve the correct size.</li>
+        </ul>
+        <h3>What the Percentage Difference Means</h3>
+        <ul>
+          <li>0%: Your gauge matches exactly — use the pattern as written.</li>
+          <li>+5% or more: Your gauge is tighter — try one needle size larger.</li>
+          <li>-5% or more: Your gauge is looser — try one needle size smaller.</li>
+          <li>Differences over 10% may affect drape and fabric quality even after adjustment.</li>
+        </ul>
+        <p class="disclaimer">Results are estimates. Gauge, yarn, and needle type affect actual results. Always swatch before starting a garment.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Knitting Gauge Swatch Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Knitting Gauge Swatch Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('knitting-gauge-swatch-calculator.html');injectFooter();});
+
+    function switchTab(tab){
+      document.getElementById('panel-swatch').style.display = tab==='swatch' ? 'block' : 'none';
+      document.getElementById('panel-adjust').style.display = tab==='adjust' ? 'block' : 'none';
+      document.getElementById('tab-swatch').className = tab==='swatch' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('tab-adjust').className = tab==='adjust' ? 'btn-primary' : 'btn-outline';
+    }
+
+    function calcSwatch(){
+      const sts  = parseFloat(document.getElementById('sw-sts').value);
+      const rows = parseFloat(document.getElementById('sw-rows').value);
+      const w    = parseFloat(document.getElementById('sw-width').value);
+      const h    = parseFloat(document.getElementById('sw-height').value);
+      if([sts,rows,w,h].some(v=>isNaN(v)||v<=0)){alert('Please fill in all four fields.');return;}
+      const spi = sts/w;
+      const rpi = rows/h;
+      document.getElementById('r-spi').textContent = spi.toFixed(2);
+      document.getElementById('r-rpi').textContent = rpi.toFixed(2);
+      document.getElementById('r-s4').textContent  = (spi*4).toFixed(1);
+      document.getElementById('r-r4').textContent  = (rpi*4).toFixed(1);
+      document.getElementById('r-swatch-note').textContent =
+        `Your gauge: ${(spi*4).toFixed(1)} sts × ${(rpi*4).toFixed(1)} rows over 4 inches. `+
+        `Patterns typically state gauge over 4" — use these numbers to compare.`;
+      document.getElementById('swatch-result').style.display='block';
+    }
+
+    function calcAdjust(){
+      const patG = parseFloat(document.getElementById('pat-g').value);
+      const myG  = parseFloat(document.getElementById('my-g').value);
+      const patCO= parseFloat(document.getElementById('pat-co').value);
+      const desW = parseFloat(document.getElementById('des-w').value);
+      if(isNaN(patG)||isNaN(myG)||patG<=0||myG<=0){alert('Please enter both gauge values.');return;}
+      if(isNaN(patCO)&&isNaN(desW)){alert('Please enter a pattern cast-on count or desired width.');return;}
+
+      const patSPI = patG/4;
+      const mySPI  = myG/4;
+      let adjSts, finW;
+      if(!isNaN(desW)&&desW>0){
+        finW = desW;
+        adjSts = Math.round(finW * mySPI);
+      } else {
+        finW = patCO/patSPI;
+        adjSts = Math.round(finW * mySPI);
+      }
+      const pct = ((myG - patG)/patG*100);
+      const pctStr = (pct>=0?'+':'')+pct.toFixed(1)+'%';
+      let advice='';
+      if(Math.abs(pct)<3) advice='Your gauge is very close to the pattern gauge — the pattern adjusts minimally.';
+      else if(pct>0) advice='Your gauge is tighter than the pattern (more stitches per inch). Try going up a needle size, or use this adjusted cast-on.';
+      else advice='Your gauge is looser than the pattern (fewer stitches per inch). Try going down a needle size, or use this adjusted cast-on.';
+
+      document.getElementById('r-adj-sts').textContent  = adjSts;
+      document.getElementById('r-adj-diff').textContent = pctStr;
+      document.getElementById('r-adj-note').textContent =
+        `Cast on ${adjSts} stitches to achieve approximately ${finW.toFixed(1)}" at your gauge of ${myG} sts/4".`;
+      document.getElementById('r-adj-advice').textContent = advice;
+      document.getElementById('adjust-result').style.display='block';
+    }
+  </script>
+</body>
+</html>

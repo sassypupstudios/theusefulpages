@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Blanket Planner — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Plan your temperature blanket by assigning colors to temperature ranges and logging daily temps.">
+  <link rel="canonical" href="https://theusefulpages.com/temperature-blanket-planner.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .range-row { display:grid; grid-template-columns:1fr 1fr 1fr auto; gap:8px; align-items:center; margin-bottom:8px; }
+    .range-row input { width:100%; }
+    .swatch { width:32px; height:32px; border-radius:6px; border:2px solid var(--border); display:inline-block; flex-shrink:0; }
+    .log-entry { display:grid; grid-template-columns:130px 100px 1fr 30px; gap:8px; align-items:center; margin-bottom:6px; }
+    .color-tag { display:inline-block; padding:2px 10px; border-radius:20px; font-size:0.8rem; font-weight:600; }
+    .progress-bar-wrap { background:var(--border); border-radius:99px; height:18px; margin:12px 0 4px; overflow:hidden; }
+    .progress-bar-fill { height:100%; border-radius:99px; background:linear-gradient(90deg,var(--primary),var(--accent)); transition:width 0.4s; }
+    .day-log-table { width:100%; border-collapse:collapse; font-size:0.9rem; }
+    .day-log-table th { background:var(--table-th-bg); padding:8px 10px; text-align:left; }
+    .day-log-table td { padding:7px 10px; border-bottom:1px solid var(--border); }
+    .legend-grid { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+    .legend-chip { display:flex; align-items:center; gap:6px; background:var(--bg-secondary); border-radius:8px; padding:5px 10px; font-size:0.85rem; }
+    .btn-sm { padding:4px 10px; font-size:0.8rem; border-radius:6px; border:none; cursor:pointer; background:var(--primary); color:#fff; }
+    .btn-danger { background:#ef4444; }
+    .unit-toggle { display:flex; gap:8px; margin-bottom:12px; }
+    .unit-toggle label { display:flex; align-items:center; gap:4px; cursor:pointer; font-size:0.9rem; }
+    @media(max-width:600px){
+      .range-row{grid-template-columns:1fr 1fr; gap:6px;}
+      .range-row .color-name-col{grid-column:1/3;}
+      .log-entry{grid-template-columns:1fr 1fr 1fr 30px;}
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Temperature Blanket Planner</h1>
+      <p class="page-subtitle">Assign colors to temperature ranges, then log daily temps to track your blanket progress all year.</p>
+
+      <div class="tool-card">
+        <h2 style="font-size:1.1rem;margin-bottom:12px;">Step 1 — Temperature Unit</h2>
+        <div class="unit-toggle">
+          <label><input type="radio" name="unit" value="F" checked> °F (Fahrenheit)</label>
+          <label><input type="radio" name="unit" value="C"> °C (Celsius)</label>
+        </div>
+
+        <h2 style="font-size:1.1rem;margin-bottom:12px;">Step 2 — Color Ranges <span style="font-size:0.8rem;color:var(--text-muted)">(up to 15)</span></h2>
+        <div id="ranges-container"></div>
+        <button class="btn-outline" onclick="addRange()" id="add-range-btn" style="margin-top:4px;">+ Add Range</button>
+
+        <hr style="margin:20px 0;border-color:var(--border);">
+
+        <h2 style="font-size:1.1rem;margin-bottom:12px;">Step 3 — Log a Day</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end;">
+          <div>
+            <label class="label">Date</label>
+            <input type="date" id="log-date" class="form-input">
+          </div>
+          <div>
+            <label class="label">Temperature</label>
+            <input type="number" id="log-temp" class="form-input" placeholder="e.g. 72" step="0.1">
+          </div>
+          <button class="btn-primary" onclick="logDay()" style="white-space:nowrap;">Add Day</button>
+        </div>
+        <div id="log-error" style="color:#ef4444;font-size:0.85rem;margin-top:6px;display:none;"></div>
+      </div>
+
+      <div id="results-section" style="display:none;">
+        <div class="result-card" style="margin-bottom:16px;">
+          <h3 style="margin-bottom:8px;">Color Legend</h3>
+          <div class="legend-grid" id="legend-grid"></div>
+        </div>
+
+        <div class="result-card" style="margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+            <h3 style="margin:0;">Progress</h3>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-sm" onclick="exportLog()">Export Text</button>
+              <button class="btn-sm btn-danger" onclick="clearAll()">Clear All</button>
+            </div>
+          </div>
+          <div style="margin-top:10px;">
+            <span id="progress-label" style="font-size:0.9rem;color:var(--text-muted);"></span>
+            <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-fill" style="width:0%"></div></div>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <h3 style="margin-bottom:10px;">Day-by-Day Log</h3>
+          <div class="table-wrap">
+            <table class="day-log-table">
+              <thead><tr><th>Date</th><th>Temp</th><th>Color</th><th></th></tr></thead>
+              <tbody id="log-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Temperature Blanket Planner</h2>
+        <ol>
+          <li>Choose °F or °C for your temperature unit.</li>
+          <li>Add up to 15 color ranges — enter the min temp, max temp, and color name for each range. The colors do not need to overlap.</li>
+          <li>Each day, enter the date and that day's high (or low, or average — pick one and stick with it!) temperature.</li>
+          <li>The tool will match the temperature to a color range and add it to your log.</li>
+          <li>Your data is saved automatically in your browser. Use "Export Text" to copy your log.</li>
+        </ol>
+        <p class="disclaimer">All data is stored locally in your browser. Nothing is sent to any server.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Temperature Blanket Planner</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Temperature Blanket Planner to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    injectNav('temperature-blanket-planner.html');
+    injectFooter();
+    loadState();
+    renderRanges();
+    renderLog();
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('log-date').value = today;
+  });
+
+  const STORAGE_KEY = 'tup_tempblanket';
+  let state = { unit:'F', ranges:[], log:[] };
+
+  function loadState(){
+    try{
+      const s = localStorage.getItem(STORAGE_KEY);
+      if(s) state = JSON.parse(s);
+    }catch(e){}
+    // sync unit radio
+    document.querySelectorAll('input[name="unit"]').forEach(r=>{
+      r.checked = r.value === state.unit;
+      r.addEventListener('change',()=>{ state.unit=r.value; saveState(); });
+    });
+  }
+  function saveState(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+  const COLORS = ['#ef4444','#f97316','#f59e0b','#eab308','#84cc16','#22c55e','#14b8a6','#06b6d4','#3b82f6','#8b5cf6','#ec4899','#ffffff','#94a3b8','#1e293b','#6b7280'];
+
+  function addRange(){
+    if(state.ranges.length >= 15) return;
+    state.ranges.push({ min:'', max:'', color: COLORS[state.ranges.length % COLORS.length], name:'' });
+    saveState();
+    renderRanges();
+  }
+
+  function renderRanges(){
+    const c = document.getElementById('ranges-container');
+    c.innerHTML = '';
+    state.ranges.forEach((r,i)=>{
+      const row = document.createElement('div');
+      row.className = 'range-row';
+      row.innerHTML = `
+        <div><label class="label">Min °${state.unit}</label><input type="number" class="form-input" value="${r.min}" placeholder="e.g. 0" onchange="updateRange(${i},'min',this.value)" step="0.1"></div>
+        <div><label class="label">Max °${state.unit}</label><input type="number" class="form-input" value="${r.max}" placeholder="e.g. 32" onchange="updateRange(${i},'max',this.value)" step="0.1"></div>
+        <div class="color-name-col"><label class="label">Color Name</label><input type="text" class="form-input" value="${r.name}" placeholder="e.g. Icy Blue" onchange="updateRange(${i},'name',this.value)"></div>
+        <button class="btn-sm btn-danger" onclick="removeRange(${i})" title="Remove">✕</button>`;
+      c.appendChild(row);
+    });
+    document.getElementById('add-range-btn').style.display = state.ranges.length >= 15 ? 'none' : '';
+    updateResultsVisibility();
+  }
+
+  function updateRange(i, field, val){
+    state.ranges[i][field] = val;
+    saveState();
+    renderLog();
+  }
+  function removeRange(i){ state.ranges.splice(i,1); saveState(); renderRanges(); renderLog(); }
+
+  function findColor(temp){
+    const t = parseFloat(temp);
+    for(const r of state.ranges){
+      const mn = parseFloat(r.min), mx = parseFloat(r.max);
+      if(!isNaN(mn) && !isNaN(mx) && t >= mn && t <= mx) return r;
+    }
+    return null;
+  }
+
+  function logDay(){
+    const date = document.getElementById('log-date').value;
+    const temp = document.getElementById('log-temp').value;
+    const err = document.getElementById('log-error');
+    if(!date){ err.textContent='Please select a date.'; err.style.display=''; return; }
+    if(temp===''){ err.textContent='Please enter a temperature.'; err.style.display=''; return; }
+    err.style.display='none';
+    if(state.ranges.length === 0){ err.textContent='Please add at least one color range first.'; err.style.display=''; return; }
+    const existing = state.log.findIndex(l=>l.date===date);
+    const entry = { date, temp: parseFloat(temp) };
+    if(existing >= 0) state.log[existing] = entry;
+    else state.log.push(entry);
+    state.log.sort((a,b)=>a.date.localeCompare(b.date));
+    saveState();
+    renderLog();
+    updateResultsVisibility();
+  }
+
+  function renderLog(){
+    const tbody = document.getElementById('log-tbody');
+    if(!tbody) return;
+    tbody.innerHTML = '';
+    state.log.forEach((entry,i)=>{
+      const match = findColor(entry.temp);
+      const colorName = match ? (match.name || 'Unnamed') : 'No match';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${entry.date}</td><td>${entry.temp}°${state.unit}</td><td>${colorName}</td><td><button class="btn-sm btn-danger" onclick="removeLog(${i})">✕</button></td>`;
+      tbody.appendChild(tr);
+    });
+    const days = state.log.length;
+    const pct = Math.min(100, Math.round(days/365*100));
+    const fill = document.getElementById('progress-fill');
+    const lbl = document.getElementById('progress-label');
+    if(fill){ fill.style.width = pct+'%'; }
+    if(lbl){ lbl.textContent = `${days} of 365 rows stitched (${pct}%)`; }
+    renderLegend();
+    updateResultsVisibility();
+  }
+
+  function renderLegend(){
+    const grid = document.getElementById('legend-grid');
+    if(!grid) return;
+    grid.innerHTML = '';
+    state.ranges.forEach(r=>{
+      if(!r.name && r.min==='' && r.max==='') return;
+      const chip = document.createElement('div');
+      chip.className = 'legend-chip';
+      chip.innerHTML = `<span>${r.name||'Unnamed'}</span><span style="color:var(--text-muted);font-size:0.78rem;">${r.min}–${r.max}°${state.unit}</span>`;
+      grid.appendChild(chip);
+    });
+  }
+
+  function removeLog(i){ state.log.splice(i,1); saveState(); renderLog(); }
+
+  function updateResultsVisibility(){
+    const show = state.log.length > 0 || state.ranges.length > 0;
+    document.getElementById('results-section').style.display = show ? '' : 'none';
+  }
+
+  function clearAll(){
+    if(!confirm('Clear all ranges and log entries?')) return;
+    state.ranges = []; state.log = [];
+    saveState(); renderRanges(); renderLog();
+    document.getElementById('results-section').style.display='none';
+  }
+
+  function exportLog(){
+    let out = `Temperature Blanket Log\nUnit: °${state.unit}\n\nColor Ranges:\n`;
+    state.ranges.forEach(r=>{ out += `  ${r.name||'Unnamed'}: ${r.min}–${r.max}°${state.unit}\n`; });
+    out += `\nDay-by-Day Log (${state.log.length} rows):\n`;
+    state.log.forEach(e=>{
+      const m = findColor(e.temp);
+      out += `${e.date}  ${e.temp}°${state.unit}  ${m?(m.name||'Unnamed'):'No match'}\n`;
+    });
+    const blob = new Blob([out],{type:'text/plain'});
+    const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='temperature-blanket-log.txt'; a.click();
+  }
+  </script>
+</body>
+</html>

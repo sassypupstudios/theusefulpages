@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Blanket Border Calculator — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate the stitch count for each side of a crochet blanket border, total border stitches, and yarn needed.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-blanket-border-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Blanket Border Calculator</h1>
+      <p class="page-subtitle">Find the stitch count for every side of your blanket border and estimate yarn needed.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Blanket Width (inches)</label>
+            <input class="form-input" type="number" id="bl-width" min="1" step="0.5" placeholder="e.g. 40">
+          </div>
+          <div>
+            <label class="label">Blanket Length (inches)</label>
+            <input class="form-input" type="number" id="bl-length" min="1" step="0.5" placeholder="e.g. 50">
+          </div>
+          <div>
+            <label class="label">Your Stitch Gauge (sts/inch)</label>
+            <input class="form-input" type="number" id="bl-spi" min="0.1" step="0.1" placeholder="e.g. 4">
+          </div>
+          <div>
+            <label class="label">Your Row Gauge (rows/inch)</label>
+            <input class="form-input" type="number" id="bl-rpi" min="0.1" step="0.1" placeholder="e.g. 3.5">
+          </div>
+        </div>
+
+        <hr style="margin:1rem 0;border:none;border-top:1px solid var(--border);">
+        <h2 style="font-size:1rem;margin-bottom:0.75rem;">Border Yarn Estimate (optional)</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Number of Border Rounds</label>
+            <input class="form-input" type="number" id="border-rounds" min="1" value="1" placeholder="e.g. 2">
+          </div>
+          <div>
+            <label class="label">Yards per Stitch (approx.)</label>
+            <input class="form-input" type="number" id="yds-per-st" min="0.01" step="0.01" value="0.12" placeholder="e.g. 0.12">
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;">~0.10 sc, ~0.12 dc, ~0.15 tr</p>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="calcBorder()">Calculate Border</button>
+        <div id="border-result" style="margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Enter your finished blanket dimensions and gauge (from your swatch).</li>
+          <li>Optionally enter the number of border rounds and yards per stitch for a yarn estimate.</li>
+          <li>The calculator uses stitch gauge for the top/bottom sides and row gauge for the left/right sides, since each side is worked differently.</li>
+        </ul>
+        <h2>About Blanket Borders</h2>
+        <p>The top and bottom edges of a blanket are picked up based on stitch gauge (one stitch per stitch). The left and right edges are picked up based on row gauge (typically one stitch per row end, or sometimes 2 stitches per 3 row ends to keep things flat). This calculator uses row gauge directly — adjust for your pattern if needed.</p>
+        <p>For a flat, non-ruffling border, work 3 stitches into each corner. For a ruffled border, use 5 stitches in corners.</p>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Crochet Blanket Border Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Crochet Blanket Border Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcBorder() {
+    const w = parseFloat(document.getElementById('bl-width').value);
+    const l = parseFloat(document.getElementById('bl-length').value);
+    const spi = parseFloat(document.getElementById('bl-spi').value);
+    const rpi = parseFloat(document.getElementById('bl-rpi').value);
+    const rounds = parseInt(document.getElementById('border-rounds').value) || 1;
+    const yds = parseFloat(document.getElementById('yds-per-st').value) || 0.12;
+    const res = document.getElementById('border-result');
+    if (!w||!l||!spi||!rpi) {
+      res.innerHTML='<p style="color:var(--color-error)">Please fill in all four required fields.</p>'; return;
+    }
+    const topBottom = Math.round(w * spi);
+    const sides = Math.round(l * rpi);
+    const cornerSts = 3; // 3 sts in each corner for flat border
+    const totalPerRound = (topBottom * 2) + (sides * 2) + (cornerSts * 4);
+    const totalBorderSts = totalPerRound * rounds;
+    const yardage = Math.ceil(totalBorderSts * yds);
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid">
+        <div class="stat-box"><div class="label">Top & Bottom Sides</div><strong>${topBottom} sts</strong><br><span style="font-size:0.85rem;color:var(--text-muted)">each side</span></div>
+        <div class="stat-box"><div class="label">Left & Right Sides</div><strong>${sides} sts</strong><br><span style="font-size:0.85rem;color:var(--text-muted)">each side</span></div>
+        <div class="stat-box"><div class="label">Corner Treatment</div><strong>3 sts per corner</strong><br><span style="font-size:0.85rem;color:var(--text-muted)">flat border</span></div>
+        <div class="stat-box"><div class="label">Total per Round</div><strong style="font-size:1.5rem">${totalPerRound} sts</strong></div>
+        <div class="stat-box"><div class="label">Total Stitches (${rounds} round${rounds>1?'s':''})</div><strong style="font-size:1.5rem">${totalBorderSts} sts</strong></div>
+        <div class="stat-box"><div class="label">Estimated Yarn</div><strong style="font-size:1.5rem">~${yardage} yds</strong></div>
+      </div>
+    </div>`;
+  }
+  document.addEventListener('DOMContentLoaded', () => { injectNav('crochet-blanket-border-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

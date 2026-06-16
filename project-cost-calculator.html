@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Cost Calculator — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate the full cost of a craft project including materials and labor. Export as text.">
+  <link rel="canonical" href="https://theusefulpages.com/project-cost-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .mat-row { display:grid; grid-template-columns:2fr 80px 100px auto; gap:8px; align-items:center; margin-bottom:8px; }
+    .mat-row input { width:100%; }
+    .row-total { font-size:0.9rem; font-weight:600; color:var(--primary); text-align:right; padding-right:4px; }
+    .summary-line { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:0.95rem; }
+    .summary-line:last-child { border:none; font-weight:700; font-size:1.05rem; color:var(--primary); }
+    .btn-sm { padding:5px 10px; font-size:0.8rem; border-radius:6px; border:none; cursor:pointer; background:var(--primary); color:#fff; }
+    .btn-danger { background:#ef4444; }
+    @media(max-width:520px){ .mat-row{grid-template-columns:1fr 70px 90px auto;} }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Project Cost Calculator</h1>
+      <p class="page-subtitle">Build a materials list, add labor time, and calculate the full cost of your craft project.</p>
+
+      <div class="tool-card">
+        <h2 style="font-size:1rem;margin-bottom:12px;">Materials</h2>
+        <div style="display:grid;grid-template-columns:2fr 80px 100px auto;gap:8px;margin-bottom:6px;">
+          <div style="font-size:0.78rem;color:var(--text-muted);font-weight:600;">ITEM</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);font-weight:600;">QTY</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);font-weight:600;">UNIT COST ($)</div>
+          <div></div>
+        </div>
+        <div id="mat-rows"></div>
+        <button class="btn-outline" onclick="addRow()" style="margin-top:4px;font-size:0.88rem;">+ Add Item</button>
+
+        <hr style="margin:20px 0;border-color:var(--border);">
+
+        <h2 style="font-size:1rem;margin-bottom:12px;">Labor</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div><label class="label">Hours Worked</label><input type="number" id="hours" class="form-input" placeholder="e.g. 8" min="0" step="0.25" oninput="updateSummary()"></div>
+          <div><label class="label">Hourly Rate ($)</label><input type="number" id="rate" class="form-input" placeholder="e.g. 15" min="0" step="0.01" oninput="updateSummary()"></div>
+        </div>
+
+        <hr style="margin:20px 0;border-color:var(--border);">
+
+        <h2 style="font-size:1rem;margin-bottom:12px;">Overhead</h2>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+          <div style="flex:1;"><label class="label">Overhead Percentage (%)</label><input type="number" id="overhead" class="form-input" placeholder="e.g. 10" min="0" max="200" step="1" oninput="updateSummary()"></div>
+          <div style="font-size:0.82rem;color:var(--text-muted);padding-top:20px;">Applied to materials + labor</div>
+        </div>
+
+        <div id="summary" style="margin-top:8px;"></div>
+        <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
+          <button class="btn-primary" onclick="exportTxt()">Export as Text</button>
+          <button class="btn-outline" onclick="clearAll()">Clear All</button>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Project Cost Calculator</h2>
+        <ol>
+          <li>Add each material (yarn, notions, buttons, etc.) with quantity and unit cost.</li>
+          <li>Enter how many hours you spent and your desired hourly rate (use minimum wage, your craft rate, or $0 for personal projects).</li>
+          <li>Add an overhead percentage to cover electricity, packaging, or general expenses (optional).</li>
+          <li>Your totals update live. Use "Export as Text" to save a copy.</li>
+        </ol>
+        <p>Your data is saved automatically in your browser.</p>
+        <p class="disclaimer">All data stays in your browser. Nothing is sent to any server.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Project Cost Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Project Cost Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const STORAGE_KEY='tup_projcost';
+  let rows=[];
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    injectNav('project-cost-calculator.html');
+    injectFooter();
+    load();
+    if(rows.length===0) addRow();
+    render();
+  });
+
+  function load(){
+    try{
+      const s=localStorage.getItem(STORAGE_KEY);
+      if(s){
+        const d=JSON.parse(s);
+        rows=d.rows||[];
+        document.getElementById('hours').value=d.hours||'';
+        document.getElementById('rate').value=d.rate||'';
+        document.getElementById('overhead').value=d.overhead||'';
+      }
+    }catch(e){}
+  }
+
+  function save(){
+    const d={rows, hours:document.getElementById('hours').value, rate:document.getElementById('rate').value, overhead:document.getElementById('overhead').value};
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(d));
+  }
+
+  function addRow(){ rows.push({name:'',qty:'1',cost:''}); render(); }
+  function removeRow(i){ rows.splice(i,1); if(rows.length===0) addRow(); else render(); }
+
+  function updateRow(i,field,val){ rows[i][field]=val; save(); updateSummary(); }
+
+  function render(){
+    const c=document.getElementById('mat-rows');
+    c.innerHTML='';
+    rows.forEach((r,i)=>{
+      const div=document.createElement('div');
+      div.className='mat-row';
+      const rowTotal=(parseFloat(r.qty)||0)*(parseFloat(r.cost)||0);
+      div.innerHTML=`
+        <input type="text" class="form-input" placeholder="Item name" value="${r.name}" oninput="updateRow(${i},'name',this.value)">
+        <input type="number" class="form-input" placeholder="1" min="0" step="0.01" value="${r.qty}" oninput="updateRow(${i},'qty',this.value)">
+        <input type="number" class="form-input" placeholder="0.00" min="0" step="0.01" value="${r.cost}" oninput="updateRow(${i},'cost',this.value)">
+        <button class="btn-sm btn-danger" onclick="removeRow(${i})">✕</button>`;
+      c.appendChild(div);
+    });
+    updateSummary();
+  }
+
+  function updateSummary(){
+    save();
+    const matTotal = rows.reduce((s,r)=>s+(parseFloat(r.qty)||0)*(parseFloat(r.cost)||0),0);
+    const hrs=parseFloat(document.getElementById('hours').value)||0;
+    const rate=parseFloat(document.getElementById('rate').value)||0;
+    const labor=hrs*rate;
+    const ovPct=(parseFloat(document.getElementById('overhead').value)||0)/100;
+    const sub=matTotal+labor;
+    const overhead=sub*ovPct;
+    const grand=sub+overhead;
+    const fmt=n=>'$'+n.toFixed(2);
+    const s=document.getElementById('summary');
+    s.innerHTML=`<div style="background:var(--bg-secondary);border-radius:var(--radius);padding:14px;">
+      <div class="summary-line"><span>Materials</span><span>${fmt(matTotal)}</span></div>
+      <div class="summary-line"><span>Labor (${hrs}h × ${fmt(rate)})</span><span>${fmt(labor)}</span></div>
+      ${ovPct>0?`<div class="summary-line"><span>Overhead (${(ovPct*100).toFixed(0)}%)</span><span>${fmt(overhead)}</span></div>`:''}
+      <div class="summary-line"><span>Grand Total</span><span>${fmt(grand)}</span></div>
+    </div>`;
+  }
+
+  function exportTxt(){
+    const matTotal=rows.reduce((s,r)=>s+(parseFloat(r.qty)||0)*(parseFloat(r.cost)||0),0);
+    const hrs=parseFloat(document.getElementById('hours').value)||0;
+    const rate=parseFloat(document.getElementById('rate').value)||0;
+    const labor=hrs*rate;
+    const ovPct=(parseFloat(document.getElementById('overhead').value)||0)/100;
+    const overhead=(matTotal+labor)*ovPct;
+    const grand=matTotal+labor+overhead;
+    const fmt=n=>'$'+n.toFixed(2);
+    let out='PROJECT COST ESTIMATE\n'+'='.repeat(30)+'\n\nMATERIALS:\n';
+    rows.forEach(r=>{ const t=(parseFloat(r.qty)||0)*(parseFloat(r.cost)||0); out+=`  ${r.name||'(unnamed)'}  qty:${r.qty}  @${fmt(parseFloat(r.cost)||0)}  = ${fmt(t)}\n`; });
+    out+=`\nMaterials Total: ${fmt(matTotal)}\nLabor (${hrs}h × ${fmt(rate)}): ${fmt(labor)}\n`;
+    if(ovPct>0) out+=`Overhead (${(ovPct*100).toFixed(0)}%): ${fmt(overhead)}\n`;
+    out+=`\nGRAND TOTAL: ${fmt(grand)}\n`;
+    const blob=new Blob([out],{type:'text/plain'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='project-cost.txt'; a.click();
+  }
+
+  function clearAll(){
+    if(!confirm('Clear all materials and reset the form?')) return;
+    rows=[]; localStorage.removeItem(STORAGE_KEY);
+    document.getElementById('hours').value='';
+    document.getElementById('rate').value='';
+    document.getElementById('overhead').value='';
+    addRow(); render();
+  }
+  </script>
+</body>
+</html>

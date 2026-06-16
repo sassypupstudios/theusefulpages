@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter — Length, Weight, Temperature & More | The Useful Pages</title>
+  <meta name="description" content="Convert length, weight, temperature, volume, speed, and time units instantly. Real-time conversions with swap and quick-convert buttons. Free, no signup required.">
+  <meta name="keywords" content="unit converter, length converter, weight converter, temperature converter, metric imperial converter, free unit conversion">
+  <link rel="canonical" href="https://theusefulpages.com/unit-converter/">
+  <meta property="og:title" content="Unit Converter — The Useful Pages">
+  <meta property="og:description" content="Instantly convert length, weight, temperature, volume, speed, and time. Free, no signup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theusefulpages.com/unit-converter/">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Unit Converter",
+    "url": "https://theusefulpages.com/unit-converter/",
+    "description": "Convert length, weight, temperature, volume, speed, and time units instantly.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <!-- Google Analytics — replace G-XXXXXXXXXX -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <!-- AdSense — replace ca-pub-XXXXXXXXXXXXXXXX -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } }
+    };
+  </script>
+  <link rel="stylesheet" href="/css/shared.css">
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors-fast">
+
+  <!-- NAV -->
+  <nav class="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 text-indigo-600 font-bold text-lg shrink-0">
+          <span class="text-xl" aria-hidden="true">⚡</span> The Useful Pages
+        </a>
+        <div class="hidden lg:flex items-center gap-5 text-sm">
+          <a href="/word-unscrambler/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Word Unscrambler</a>
+          <a href="/password-generator/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Password Generator</a>
+          <a href="/unit-converter/" data-nav class="text-sky-600 font-semibold">Unit Converter</a>
+          <a href="/word-counter/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Word Counter</a>
+          <a href="/lorem-ipsum/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Lorem Ipsum</a>
+          <a href="/color-picker/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Color Picker</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="dark-toggle" aria-label="Toggle dark mode" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+            <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </button>
+          <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" class="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <div class="px-4 py-3 space-y-1 text-sm">
+        <a href="/word-unscrambler/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🔤 Word Unscrambler</a>
+        <a href="/password-generator/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🔐 Password Generator</a>
+        <a href="/unit-converter/" class="block px-3 py-2 rounded-lg bg-sky-50 dark:bg-sky-950 text-sky-700 dark:text-sky-300 font-medium">⚖️ Unit Converter</a>
+        <a href="/word-counter/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">📊 Word Counter</a>
+        <a href="/lorem-ipsum/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">📝 Lorem Ipsum</a>
+        <a href="/color-picker/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🎨 Color Picker</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- TOP AD BANNER -->
+  <!-- AD ZONE: top-banner 728×90 leaderboard -->
+  <div class="ad-zone ad-banner py-2 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
+    <div class="ad-placeholder">Advertisement · 728×90</div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="lg:grid lg:grid-cols-[1fr_300px] lg:gap-8">
+
+      <main>
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Unit Converter</h1>
+        <p class="text-gray-500 dark:text-gray-400 mb-8">Convert between any units instantly. Type in either field and the result updates in real time.</p>
+
+        <!-- CATEGORY TABS -->
+        <div class="flex flex-wrap gap-2 mb-6" id="category-tabs">
+          <button data-cat="length"      class="tab-btn active-tab px-4 py-2 rounded-full text-sm font-medium transition-colors">📏 Length</button>
+          <button data-cat="weight"      class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-colors">⚖️ Weight</button>
+          <button data-cat="temperature" class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-colors">🌡️ Temperature</button>
+          <button data-cat="volume"      class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-colors">🧪 Volume</button>
+          <button data-cat="speed"       class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-colors">💨 Speed</button>
+          <button data-cat="time"        class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-colors">⏱️ Time</button>
+        </div>
+
+        <!-- CONVERTER CARD -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-6 mb-6">
+
+          <div class="flex flex-col sm:flex-row items-stretch gap-4">
+            <!-- FROM -->
+            <div class="flex-1 space-y-2">
+              <label class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">From</label>
+              <input id="from-val" type="number" value="1" placeholder="Value"
+                class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white text-xl font-semibold outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all">
+              <select id="from-unit"
+                class="w-full px-3 py-2.5 rounded-xl border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white text-sm outline-none focus:ring-2 focus:ring-sky-500 transition-all">
+              </select>
+            </div>
+
+            <!-- SWAP button -->
+            <div class="flex items-center justify-center sm:mt-8">
+              <button id="swap-btn" title="Swap units"
+                class="w-10 h-10 rounded-full border-2 border-gray-300 dark:border-slate-600 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-sky-400 hover:text-sky-600 hover:bg-sky-50 dark:hover:bg-sky-950 transition-all">
+                <svg class="w-4 h-4 rotate-90 sm:rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+              </button>
+            </div>
+
+            <!-- TO -->
+            <div class="flex-1 space-y-2">
+              <label class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">To</label>
+              <input id="to-val" type="number" placeholder="Result"
+                class="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white text-xl font-semibold outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all">
+              <select id="to-unit"
+                class="w-full px-3 py-2.5 rounded-xl border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white text-sm outline-none focus:ring-2 focus:ring-sky-500 transition-all">
+              </select>
+            </div>
+          </div>
+
+          <!-- Formula display -->
+          <p id="formula" class="mt-4 text-center text-sm text-gray-400 dark:text-gray-500 font-mono"></p>
+
+          <!-- Clear -->
+          <div class="flex justify-end mt-4">
+            <button id="clear-btn" class="text-sm text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">Clear</button>
+          </div>
+        </div>
+
+        <!-- QUICK CONVERSIONS -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-6">
+          <h2 class="font-semibold text-gray-700 dark:text-gray-300 mb-4 text-sm uppercase tracking-wide">Common Conversions</h2>
+          <div id="quick-buttons" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- MID AD -->
+        <!-- AD ZONE: mid-tool responsive -->
+        <div class="ad-zone ad-responsive mt-10">
+          <div class="ad-placeholder">Advertisement · Responsive</div>
+        </div>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="hidden lg:block space-y-6">
+        <!-- AD ZONE: sidebar rectangle 300×250 -->
+        <div class="ad-zone ad-rectangle">
+          <div class="ad-placeholder">Advertisement · 300×250</div>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-5">
+          <h3 class="font-semibold text-gray-700 dark:text-gray-300 mb-3 text-sm uppercase tracking-wide">Quick Facts</h3>
+          <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2">
+            <li>• 1 mile = 1.60934 kilometers</li>
+            <li>• 1 kg = 2.20462 pounds</li>
+            <li>• 0°C = 32°F = 273.15 K</li>
+            <li>• 1 US gallon = 3.78541 liters</li>
+            <li>• 1 inch = 2.54 centimeters</li>
+          </ul>
+        </div>
+        <div class="ad-zone ad-rectangle">
+          <div class="ad-placeholder">Advertisement · 300×250</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 mt-4">
+    <div class="ad-zone ad-banner border-b border-gray-100 dark:border-slate-800">
+      <div class="ad-placeholder">Advertisement · 728×90</div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500 dark:text-gray-400">
+      <span><span class="font-semibold text-gray-700 dark:text-gray-300">The Useful Pages</span> — Free tools for everyone</span>
+      <span>Powered by <a href="https://sassypupstudios.com" class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium" target="_blank" rel="noopener noreferrer">Sassy Pup Studios</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/shared.js"></script>
+  <script>
+  (function () {
+    // ---- Unit definitions: [label, toBase factor, fromBase fn (optional for non-linear)] ----
+    // For linear units: value_in_base = input * factor
+    // Temperature uses custom convert fns
+
+    const CATEGORIES = {
+      length: {
+        label: 'Length',
+        units: [
+          { id: 'mm',  label: 'Millimeter (mm)',   factor: 0.001 },
+          { id: 'cm',  label: 'Centimeter (cm)',   factor: 0.01  },
+          { id: 'm',   label: 'Meter (m)',          factor: 1     },
+          { id: 'km',  label: 'Kilometer (km)',     factor: 1000  },
+          { id: 'in',  label: 'Inch (in)',          factor: 0.0254 },
+          { id: 'ft',  label: 'Foot (ft)',          factor: 0.3048 },
+          { id: 'yd',  label: 'Yard (yd)',          factor: 0.9144 },
+          { id: 'mi',  label: 'Mile (mi)',          factor: 1609.344 },
+          { id: 'nmi', label: 'Nautical Mile',      factor: 1852  },
+        ],
+        defaults: ['m', 'ft'],
+        quick: [
+          { from: 1, fromU: 'mi',  toU: 'km',  label: '1 mi → km' },
+          { from: 1, fromU: 'ft',  toU: 'm',   label: '1 ft → m'  },
+          { from: 1, fromU: 'in',  toU: 'cm',  label: '1 in → cm' },
+          { from: 100,fromU: 'm',  toU: 'ft',  label: '100 m → ft'},
+        ],
+      },
+      weight: {
+        label: 'Weight',
+        units: [
+          { id: 'mg',    label: 'Milligram (mg)',  factor: 0.000001 },
+          { id: 'g',     label: 'Gram (g)',        factor: 0.001    },
+          { id: 'kg',    label: 'Kilogram (kg)',   factor: 1        },
+          { id: 't',     label: 'Metric Ton (t)',  factor: 1000     },
+          { id: 'oz',    label: 'Ounce (oz)',      factor: 0.0283495 },
+          { id: 'lb',    label: 'Pound (lb)',      factor: 0.453592 },
+          { id: 'st',    label: 'Stone (st)',      factor: 6.35029  },
+          { id: 'lton',  label: 'Long Ton',        factor: 1016.05  },
+          { id: 'ston',  label: 'Short Ton (US)',  factor: 907.185  },
+        ],
+        defaults: ['kg', 'lb'],
+        quick: [
+          { from: 1,   fromU: 'kg', toU: 'lb',  label: '1 kg → lb'  },
+          { from: 1,   fromU: 'lb', toU: 'kg',  label: '1 lb → kg'  },
+          { from: 100, fromU: 'g',  toU: 'oz',  label: '100 g → oz' },
+          { from: 1,   fromU: 'st', toU: 'kg',  label: '1 stone → kg'},
+        ],
+      },
+      temperature: {
+        label: 'Temperature',
+        units: [
+          { id: 'c', label: 'Celsius (°C)'    },
+          { id: 'f', label: 'Fahrenheit (°F)' },
+          { id: 'k', label: 'Kelvin (K)'      },
+        ],
+        defaults: ['c', 'f'],
+        quick: [
+          { from: 0,   fromU: 'c', toU: 'f', label: '0°C → °F'   },
+          { from: 100, fromU: 'c', toU: 'f', label: '100°C → °F' },
+          { from: 32,  fromU: 'f', toU: 'c', label: '32°F → °C'  },
+          { from: 37,  fromU: 'c', toU: 'f', label: '37°C → °F'  },
+        ],
+      },
+      volume: {
+        label: 'Volume',
+        units: [
+          { id: 'ml',   label: 'Milliliter (ml)',   factor: 0.001     },
+          { id: 'l',    label: 'Liter (l)',          factor: 1         },
+          { id: 'tsp',  label: 'Teaspoon (tsp)',     factor: 0.00492892 },
+          { id: 'tbsp', label: 'Tablespoon (tbsp)',  factor: 0.0147868 },
+          { id: 'floz', label: 'Fl Oz (US)',         factor: 0.0295735 },
+          { id: 'cup',  label: 'Cup (US)',           factor: 0.236588  },
+          { id: 'pt',   label: 'Pint (US)',          factor: 0.473176  },
+          { id: 'qt',   label: 'Quart (US)',         factor: 0.946353  },
+          { id: 'gal',  label: 'Gallon (US)',        factor: 3.78541   },
+          { id: 'cm3',  label: 'Cubic cm (cm³)',     factor: 0.001     },
+          { id: 'm3',   label: 'Cubic meter (m³)',   factor: 1000      },
+        ],
+        defaults: ['l', 'gal'],
+        quick: [
+          { from: 1,  fromU: 'gal', toU: 'l',    label: '1 gal → l'    },
+          { from: 1,  fromU: 'cup', toU: 'ml',   label: '1 cup → ml'   },
+          { from: 1,  fromU: 'l',   toU: 'floz', label: '1 L → fl oz'  },
+          { from: 1,  fromU: 'pt',  toU: 'ml',   label: '1 pint → ml'  },
+        ],
+      },
+      speed: {
+        label: 'Speed',
+        units: [
+          { id: 'ms',   label: 'm/s',           factor: 1       },
+          { id: 'kmh',  label: 'km/h',          factor: 1/3.6   },
+          { id: 'mph',  label: 'mph',           factor: 0.44704 },
+          { id: 'fts',  label: 'ft/s',          factor: 0.3048  },
+          { id: 'kn',   label: 'Knots',         factor: 0.514444 },
+          { id: 'mach', label: 'Mach (~sea level)', factor: 343  },
+        ],
+        defaults: ['kmh', 'mph'],
+        quick: [
+          { from: 100, fromU: 'kmh', toU: 'mph',  label: '100 km/h → mph' },
+          { from: 60,  fromU: 'mph', toU: 'kmh',  label: '60 mph → km/h'  },
+          { from: 1,   fromU: 'mach',toU: 'kmh',  label: '1 Mach → km/h'  },
+          { from: 1,   fromU: 'kn',  toU: 'kmh',  label: '1 knot → km/h'  },
+        ],
+      },
+      time: {
+        label: 'Time',
+        units: [
+          { id: 'ms',  label: 'Millisecond',  factor: 0.001    },
+          { id: 's',   label: 'Second',       factor: 1        },
+          { id: 'min', label: 'Minute',       factor: 60       },
+          { id: 'hr',  label: 'Hour',         factor: 3600     },
+          { id: 'day', label: 'Day',          factor: 86400    },
+          { id: 'wk',  label: 'Week',         factor: 604800   },
+          { id: 'mo',  label: 'Month (avg)',  factor: 2628000  },
+          { id: 'yr',  label: 'Year (365d)',  factor: 31536000 },
+        ],
+        defaults: ['hr', 'min'],
+        quick: [
+          { from: 1,  fromU: 'hr',  toU: 'min', label: '1 hr → min' },
+          { from: 1,  fromU: 'day', toU: 'hr',  label: '1 day → hr' },
+          { from: 1,  fromU: 'yr',  toU: 'day', label: '1 yr → days'},
+          { from: 90, fromU: 'min', toU: 'hr',  label: '90 min → hr'},
+        ],
+      },
+    };
+
+    // Temperature conversion helpers
+    function convertTemp(val, from, to) {
+      // Convert to Celsius first
+      let celsius;
+      if (from === 'c') celsius = val;
+      else if (from === 'f') celsius = (val - 32) * 5/9;
+      else celsius = val - 273.15;
+      // Then to target
+      if (to === 'c') return celsius;
+      if (to === 'f') return celsius * 9/5 + 32;
+      return celsius + 273.15;
+    }
+
+    function convert(val, fromId, toId, cat) {
+      if (val === '' || val === null || isNaN(val)) return '';
+      const n = parseFloat(val);
+      if (cat === 'temperature') return convertTemp(n, fromId, toId);
+      const units = CATEGORIES[cat].units;
+      const fromU = units.find(u => u.id === fromId);
+      const toU   = units.find(u => u.id === toId);
+      if (!fromU || !toU) return '';
+      const base = n * fromU.factor;
+      return base / toU.factor;
+    }
+
+    function fmt(n) {
+      if (n === '' || n === null || n === undefined) return '';
+      if (Math.abs(n) >= 1e10 || (Math.abs(n) < 0.0001 && n !== 0)) return n.toExponential(6);
+      const s = parseFloat(n.toPrecision(10)).toString();
+      return s;
+    }
+
+    // DOM
+    const fromVal  = document.getElementById('from-val');
+    const toVal    = document.getElementById('to-val');
+    const fromUnit = document.getElementById('from-unit');
+    const toUnit   = document.getElementById('to-unit');
+    const formula  = document.getElementById('formula');
+    const swapBtn  = document.getElementById('swap-btn');
+    const clearBtn = document.getElementById('clear-btn');
+    const quickBtns= document.getElementById('quick-buttons');
+    const tabs     = document.querySelectorAll('.tab-btn');
+
+    let currentCat = 'length';
+    let updatingFrom = false;
+
+    function populateUnits(cat) {
+      const units = CATEGORIES[cat].units;
+      const defs  = CATEGORIES[cat].defaults;
+      [fromUnit, toUnit].forEach((sel, i) => {
+        sel.innerHTML = '';
+        units.forEach(u => {
+          const opt = document.createElement('option');
+          opt.value = u.id;
+          opt.textContent = u.label;
+          sel.appendChild(opt);
+        });
+        sel.value = defs[i];
+      });
+    }
+
+    function populateQuick(cat) {
+      quickBtns.innerHTML = '';
+      CATEGORIES[cat].quick.forEach(q => {
+        const btn = document.createElement('button');
+        btn.className = 'px-3 py-1.5 text-xs font-medium rounded-lg border border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-300 hover:bg-sky-50 dark:hover:bg-sky-950 hover:border-sky-300 dark:hover:border-sky-700 hover:text-sky-700 dark:hover:text-sky-300 transition-all';
+        btn.textContent = q.label;
+        btn.addEventListener('click', () => {
+          fromVal.value = q.from;
+          fromUnit.value = q.fromU;
+          toUnit.value = q.toU;
+          doConvert(true);
+        });
+        quickBtns.appendChild(btn);
+      });
+    }
+
+    function updateFormula() {
+      const fv = parseFloat(fromVal.value);
+      const tv = parseFloat(toVal.value);
+      if (isNaN(fv) || isNaN(tv)) { formula.textContent = ''; return; }
+      const fLabel = CATEGORIES[currentCat].units.find(u => u.id === fromUnit.value)?.label?.match(/\(([^)]+)\)/)?.[1] || fromUnit.value;
+      const tLabel = CATEGORIES[currentCat].units.find(u => u.id === toUnit.value)?.label?.match(/\(([^)]+)\)/)?.[1] || toUnit.value;
+      formula.textContent = `${fv} ${fLabel} = ${fmt(tv)} ${tLabel}`;
+    }
+
+    function doConvert(fromChanged) {
+      if (fromChanged) {
+        const result = convert(fromVal.value, fromUnit.value, toUnit.value, currentCat);
+        toVal.value = result !== '' ? fmt(result) : '';
+      } else {
+        const result = convert(toVal.value, toUnit.value, fromUnit.value, currentCat);
+        fromVal.value = result !== '' ? fmt(result) : '';
+      }
+      updateFormula();
+    }
+
+    function switchCategory(cat) {
+      currentCat = cat;
+      tabs.forEach(t => {
+        const isActive = t.dataset.cat === cat;
+        t.className = isActive
+          ? 'tab-btn active-tab px-4 py-2 rounded-full text-sm font-medium bg-sky-600 text-white transition-colors'
+          : 'tab-btn px-4 py-2 rounded-full text-sm font-medium border border-gray-300 dark:border-slate-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors';
+      });
+      populateUnits(cat);
+      populateQuick(cat);
+      fromVal.value = 1;
+      doConvert(true);
+    }
+
+    // Events
+    fromVal.addEventListener('input',   () => doConvert(true));
+    toVal.addEventListener('input',     () => doConvert(false));
+    fromUnit.addEventListener('change', () => doConvert(true));
+    toUnit.addEventListener('change',   () => doConvert(true));
+    swapBtn.addEventListener('click',   () => {
+      const tmp = fromUnit.value;
+      fromUnit.value = toUnit.value;
+      toUnit.value = tmp;
+      doConvert(true);
+    });
+    clearBtn.addEventListener('click', () => { fromVal.value = ''; toVal.value = ''; formula.textContent = ''; });
+    tabs.forEach(t => t.addEventListener('click', () => switchCategory(t.dataset.cat)));
+
+    // Init
+    switchCategory('length');
+  })();
+  </script>
+</body>
+</html>

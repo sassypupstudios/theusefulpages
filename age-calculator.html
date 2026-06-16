@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator - Online Age Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate your exact age in years, months, days, hours, and minutes. Find your next birthday countdown, day of week born, and fun facts about your birth year.">
+  <link rel="canonical" href="https://theusefulpages.com/age-calculator.html">
+  <meta property="og:title" content="Age Calculator - The Useful Pages">
+  <meta property="og:description" content="Calculate your exact age in years, months, days, hours, and minutes. Find your next birthday countdown, day of week born, and fun facts about your birth year.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Age Calculator","url":"https://theusefulpages.com/age-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Age Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Find your exact age, next birthday countdown, and fun facts about when you were born.</p>
+      <div class="tool-card">
+        <div class="form-group" style="max-width:320px;">
+          <label class="form-label">Date of Birth</label>
+          <input class="form-input" type="date" id="dob-input" max="">
+        </div>
+        <div class="form-group" style="max-width:320px;">
+          <label class="form-label">Calculate age as of</label>
+          <input class="form-input" type="date" id="as-of-input">
+        </div>
+        <div id="age-error" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calcAge()">Calculate Age</button>
+          <button class="btn btn-ghost" onclick="clearAge()">Clear</button>
+          <button class="btn btn-outline" id="age-share" onclick="shareAge()" style="display:none;">Share Result</button>
+        </div>
+
+        <div id="age-results" class="hidden" style="margin-top:1.5rem;">
+          <div class="result-card" style="margin-bottom:1rem;">
+            <div style="text-align:center;padding:0.75rem 0;">
+              <div style="font-size:2.5rem;font-weight:700;color:var(--primary);" id="age-main"></div>
+              <div style="color:var(--text-muted);font-size:0.9rem;margin-top:0.25rem;" id="age-sub"></div>
+            </div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="age-months"></div>
+              <div class="stat-label">Total Months</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="age-weeks"></div>
+              <div class="stat-label">Total Weeks</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="age-days"></div>
+              <div class="stat-label">Total Days</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="age-hours"></div>
+              <div class="stat-label">Total Hours</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="age-minutes"></div>
+              <div class="stat-label">Total Minutes</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="age-seconds"></div>
+              <div class="stat-label">Total Seconds</div>
+            </div>
+          </div>
+
+          <div class="result-card" style="margin-top:1rem;">
+            <div class="result-row"><span class="result-label">Day of Week Born</span><span class="result-value" id="age-dow"></span></div>
+            <div class="result-row"><span class="result-label">Next Birthday</span><span class="result-value" id="age-next-bday"></span></div>
+            <div class="result-row"><span class="result-label">Days Until Birthday</span><span class="result-value" id="age-days-bday"></span></div>
+            <div class="result-row"><span class="result-label">Which Birthday</span><span class="result-value" id="age-which-bday"></span></div>
+          </div>
+
+          <div class="result-card" style="margin-top:1rem;">
+            <div style="font-weight:600;margin-bottom:0.5rem;font-size:0.95rem;">Fun Facts About Your Birth Year</div>
+            <div id="age-facts" style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;"></div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your date of birth using the date picker.</li>
+          <li>The "Calculate age as of" field defaults to today — change it to calculate age at any specific date.</li>
+          <li>Click <strong>Calculate Age</strong> to see your exact age in years, months, and days.</li>
+          <li>Scroll down to see your total age in months, weeks, days, hours, minutes, and seconds.</li>
+          <li>Find out what day of the week you were born and when your next birthday is.</li>
+          <li>Use <strong>Share Result</strong> to copy a summary of your age to the clipboard.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="percentage-calculator.html">Percentage Calculator</a>
+          <a href="random-number.html">Random Number Generator</a>
+          <a href="fraction-calculator.html">Fraction Calculator</a>
+          <a href="square-root.html">Square Root Calculator</a>
+          <a href="quadratic-solver.html">Quadratic Solver</a>
+          <a href="standard-deviation.html">Standard Deviation</a>
+          <a href="scientific-calculator.html">Scientific Calculator</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Age Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free age calculator to find an exact age in years, months, and days, plus helpful birthday details. It is useful for forms, records, birthdays, age checks, and date-based planning. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('age-calculator.html');
+    injectFooter();
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('dob-input').max = today;
+    document.getElementById('as-of-input').value = today;
+    document.getElementById('as-of-input').max = today;
+  });
+
+  const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  function calcAge() {
+    const dobVal = document.getElementById('dob-input').value;
+    const asOfVal = document.getElementById('as-of-input').value;
+    const err = document.getElementById('age-error');
+    if (!dobVal) { err.textContent = 'Please enter a date of birth.'; return; }
+    if (!asOfVal) { err.textContent = 'Please enter an "as of" date.'; return; }
+    const dob = new Date(dobVal + 'T00:00:00');
+    const asOf = new Date(asOfVal + 'T00:00:00');
+    if (dob > asOf) { err.textContent = 'Date of birth cannot be after the "as of" date.'; return; }
+    err.textContent = '';
+
+    let years = asOf.getFullYear() - dob.getFullYear();
+    let months = asOf.getMonth() - dob.getMonth();
+    let days = asOf.getDate() - dob.getDate();
+
+    if (days < 0) {
+      months--;
+      const prevMonth = new Date(asOf.getFullYear(), asOf.getMonth(), 0);
+      days += prevMonth.getDate();
+    }
+    if (months < 0) { years--; months += 12; }
+
+    document.getElementById('age-main').textContent = years + ' years, ' + months + ' months, ' + days + ' days';
+    document.getElementById('age-sub').textContent = 'Born ' + DAYS[dob.getDay()] + ', ' + MONTHS[dob.getMonth()] + ' ' + dob.getDate() + ', ' + dob.getFullYear();
+
+    const diffMs = asOf - dob;
+    const totalDays = Math.floor(diffMs / 86400000);
+    const totalWeeks = Math.floor(totalDays / 7);
+    const totalMonths = years * 12 + months;
+    const totalHours = totalDays * 24;
+    const totalMins = totalHours * 60;
+    const totalSecs = totalMins * 60;
+
+    document.getElementById('age-months').textContent = totalMonths.toLocaleString();
+    document.getElementById('age-weeks').textContent = totalWeeks.toLocaleString();
+    document.getElementById('age-days').textContent = totalDays.toLocaleString();
+    document.getElementById('age-hours').textContent = totalHours.toLocaleString();
+    document.getElementById('age-minutes').textContent = totalMins.toLocaleString();
+    document.getElementById('age-seconds').textContent = totalSecs.toLocaleString();
+
+    document.getElementById('age-dow').textContent = DAYS[dob.getDay()];
+
+    // Next birthday
+    const nextBday = new Date(asOf.getFullYear(), dob.getMonth(), dob.getDate());
+    if (nextBday <= asOf) nextBday.setFullYear(nextBday.getFullYear() + 1);
+    const daysUntil = Math.round((nextBday - asOf) / 86400000);
+    const nextAge = nextBday.getFullYear() - dob.getFullYear();
+
+    document.getElementById('age-next-bday').textContent = MONTHS[nextBday.getMonth()] + ' ' + nextBday.getDate() + ', ' + nextBday.getFullYear();
+    document.getElementById('age-days-bday').textContent = daysUntil === 0 ? 'Today! 🎉' : daysUntil + ' days';
+    document.getElementById('age-which-bday').textContent = ordinal(nextAge) + ' birthday';
+
+    // Fun facts
+    const yr = dob.getFullYear();
+    const facts = getBirthYearFacts(yr);
+    document.getElementById('age-facts').innerHTML = facts.map(f => '• ' + f).join('<br>');
+
+    document.getElementById('age-results').classList.remove('hidden');
+    document.getElementById('age-share').style.display = '';
+  }
+
+  function ordinal(n) {
+    const s = ['th','st','nd','rd'];
+    const v = n % 100;
+    return n + (s[(v-20)%10] || s[v] || s[0]);
+  }
+
+  function getBirthYearFacts(yr) {
+    const facts = [];
+    facts.push('You were born in ' + yr + '.');
+    const isLeap = (yr % 4 === 0 && yr % 100 !== 0) || yr % 400 === 0;
+    facts.push(yr + ' was ' + (isLeap ? 'a leap year (366 days).' : 'not a leap year (365 days).'));
+    const century = Math.ceil(yr / 100);
+    facts.push('You were born in the ' + ordinal(century) + ' century.');
+    if (yr >= 1980 && yr <= 1994) facts.push('You are a Millennial (born 1981–1996).');
+    else if (yr >= 1965 && yr <= 1979) facts.push('You are Generation X (born 1965–1980).');
+    else if (yr >= 1946 && yr <= 1964) facts.push('You are a Baby Boomer (born 1946–1964).');
+    else if (yr >= 1995 && yr <= 2009) facts.push('You are Generation Z (born 1997–2012).');
+    else if (yr >= 2010) facts.push('You are Generation Alpha (born 2013+).');
+    const decade = Math.floor(yr / 10) * 10;
+    facts.push('You were born in the ' + decade + 's.');
+    return facts;
+  }
+
+  function shareAge() {
+    const main = document.getElementById('age-main').textContent;
+    const sub = document.getElementById('age-sub').textContent;
+    const days = document.getElementById('age-days').textContent;
+    copyText(sub + '\nAge: ' + main + '\nTotal days lived: ' + days, 'Age summary copied!');
+  }
+
+  function clearAge() {
+    document.getElementById('dob-input').value = '';
+    document.getElementById('as-of-input').value = new Date().toISOString().split('T')[0];
+    document.getElementById('age-error').textContent = '';
+    document.getElementById('age-results').classList.add('hidden');
+    document.getElementById('age-share').style.display = 'none';
+  }
+  </script>
+</body>
+</html>

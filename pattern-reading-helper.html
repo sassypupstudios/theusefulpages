@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Reading Helper — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Paste a crochet or knitting pattern row and get a plain-English explanation with abbreviations expanded.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-reading-helper.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .toggle-group { display:flex; gap:0.5rem; margin-bottom:1rem; }
+    .toggle-btn { padding:0.4rem 1.2rem; border-radius:6px; border:2px solid var(--border); background:transparent; cursor:pointer; font-size:0.9rem; color:var(--text); }
+    .toggle-btn.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+    .expanded-row { padding:0.6rem 0; border-bottom:1px solid var(--border); line-height:1.6; }
+    .expanded-row:last-child { border-bottom:none; }
+    .abbr-highlight { background:var(--primary-light,#eff6ff); color:var(--primary); padding:0 3px; border-radius:3px; font-weight:600; font-size:0.9em; }
+    [data-theme="dark"] .abbr-highlight { background:#1e3a5f; color:#93c5fd; }
+    .example-btn { font-size:0.8rem; padding:0.25rem 0.7rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Reading Helper</h1>
+      <p class="page-subtitle">Paste a pattern row or round and see abbreviations expanded to plain English.</p>
+      <div class="tool-card">
+        <div class="toggle-group">
+          <button class="toggle-btn active" id="btn-crochet" onclick="setCraft('crochet')">Crochet</button>
+          <button class="toggle-btn" id="btn-knitting" onclick="setCraft('knitting')">Knitting</button>
+        </div>
+        <label class="label">Pattern Row / Round</label>
+        <textarea class="form-textarea" id="pattern-input" rows="4" placeholder="e.g. ch3, dc in next 4 sts, sk 2, dc in next 4 sts"></textarea>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.75rem;margin-bottom:0.75rem;">
+          <button class="btn-ghost example-btn" onclick="loadExample('crochet1')">Example: Crochet row</button>
+          <button class="btn-ghost example-btn" onclick="loadExample('crochet2')">Example: Crochet round</button>
+          <button class="btn-ghost example-btn" onclick="loadExample('knit1')">Example: Knitting row</button>
+        </div>
+        <button class="btn-primary" onclick="expandPattern()">Expand Pattern</button>
+        <div id="result" style="display:none;margin-top:1.5rem;">
+          <h3 style="margin-bottom:0.75rem;">Plain-English Expansion</h3>
+          <div id="expansion-output"></div>
+        </div>
+        <p class="disclaimer" style="margin-top:1rem;">This tool uses rule-based pattern recognition. Always verify with the original pattern.</p>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Select your craft type (Crochet or Knitting).</li>
+          <li>Paste or type a single row or round instruction.</li>
+          <li>Click <strong>Expand Pattern</strong> to see abbreviations expanded inline.</li>
+        </ol>
+        <h2>Tips</h2>
+        <ul>
+          <li>Separate instructions with commas for best results.</li>
+          <li>Abbreviations are case-insensitive (DC, dc, Dc all work).</li>
+          <li>Unknown abbreviations will be flagged so you can look them up.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Pattern Reading Helper</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Pattern Reading Helper to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  let craft = 'crochet';
+
+  const CROCHET_MAP = {
+    'ch': v => v ? `chain ${v}` : 'chain',
+    'sl st': v => v ? `slip stitch in ${v}` : 'slip stitch',
+    'sc': v => v ? `single crochet in ${v}` : 'single crochet',
+    'hdc': v => v ? `half double crochet in ${v}` : 'half double crochet',
+    'dc': v => v ? `double crochet in ${v}` : 'double crochet',
+    'tr': v => v ? `treble crochet in ${v}` : 'treble crochet',
+    'dtr': v => v ? `double treble crochet in ${v}` : 'double treble crochet',
+    'yo': () => 'yarn over',
+    'sk': v => v ? `skip ${v}` : 'skip next stitch',
+    'sk2': () => 'skip 2 stitches',
+    'rep': () => 'repeat',
+    'pm': () => 'place marker',
+    'sm': () => 'slip marker',
+    'blo': () => 'through back loop only',
+    'flo': () => 'through front loop only',
+    'inc': () => 'increase (work 2 stitches into same stitch)',
+    'dec': () => 'decrease',
+    'sc2tog': () => 'single crochet 2 together (decrease)',
+    'dc2tog': () => 'double crochet 2 together (decrease)',
+    'mr': () => 'magic ring',
+    'turn': () => 'turn your work',
+    'join': () => 'join with slip stitch',
+    'fasten off': () => 'fasten off and cut yarn',
+    'ch sp': () => 'chain space',
+    'tch': v => v ? `turning chain of ${v}` : 'turning chain',
+    'sp': () => 'space',
+    'st': () => 'stitch',
+    'sts': () => 'stitches',
+    'rnd': v => v ? `round ${v}` : 'round',
+    'rs': () => 'right side facing',
+    'ws': () => 'wrong side facing',
+    'fpdc': () => 'front post double crochet',
+    'bpdc': () => 'back post double crochet',
+    'puff st': () => 'puff stitch',
+    'bobble': () => 'bobble stitch',
+    'shell': () => 'shell stitch',
+    'v-st': () => 'v-stitch (dc, ch1, dc in same stitch)',
+    'mc': () => 'main color',
+    'cc': () => 'contrast color',
+    'cl': () => 'cluster',
+  };
+
+  const KNITTING_MAP = {
+    'k': v => v ? `knit ${v} stitches` : 'knit',
+    'p': v => v ? `purl ${v} stitches` : 'purl',
+    'k2tog': () => 'knit 2 together (right-leaning decrease)',
+    'p2tog': () => 'purl 2 together',
+    'ssk': () => 'slip, slip, knit (left-leaning decrease)',
+    'ssp': () => 'slip, slip, purl',
+    'yo': () => 'yarn over (creates new stitch)',
+    'co': v => v ? `cast on ${v} stitches` : 'cast on',
+    'bo': v => v ? `bind off ${v} stitches` : 'bind off',
+    'sm': () => 'slip marker',
+    'pm': () => 'place marker',
+    'm1': () => 'make 1 (increase)',
+    'm1l': () => 'make 1 left (left-leaning increase)',
+    'm1r': () => 'make 1 right (right-leaning increase)',
+    'kfb': () => 'knit into front and back (increase)',
+    'pfb': () => 'purl into front and back (increase)',
+    'sl': v => v ? `slip ${v} stitch${v>1?'es':''}` : 'slip 1 stitch',
+    'sl1': () => 'slip 1 stitch',
+    'psso': () => 'pass slipped stitch over',
+    'wyib': () => 'with yarn in back',
+    'wyif': () => 'with yarn in front',
+    'tbl': () => 'through back loop',
+    'cn': () => 'cable needle',
+    'c4b': () => 'cable 4 back (slip 2 to CN, hold back, k2, k2 from CN)',
+    'c4f': () => 'cable 4 front (slip 2 to CN, hold front, k2, k2 from CN)',
+    'c6b': () => 'cable 6 back',
+    'c6f': () => 'cable 6 front',
+    'rs': () => 'right side facing',
+    'ws': () => 'wrong side facing',
+    'rnd': v => v ? `round ${v}` : 'round',
+    'rep': () => 'repeat',
+    'sk2p': () => 'slip 1, k2tog, pass slipped stitch over (double decrease)',
+    's2kp': () => 'slip 2 together, k1, pass both slipped stitches over (centered double decrease)',
+    'mc': () => 'main color',
+    'cc': () => 'contrast color',
+    'st': () => 'stitch',
+    'sts': () => 'stitches',
+    'turn': () => 'turn your work',
+    'k1': () => 'knit 1 stitch',
+    'p1': () => 'purl 1 stitch',
+    'k3': () => 'knit 3 stitches',
+    'p3': () => 'purl 3 stitches',
+  };
+
+  const EXAMPLES = {
+    crochet1: 'ch3, dc in next 4 sts, sk 2, dc in next 4 sts',
+    crochet2: 'sc in each st around, inc in last 2 sts, join, turn',
+    knit1: 'k2, p2, k2tog, yo, ssk, p2, k2',
+  };
+
+  function setCraft(c) {
+    craft = c;
+    document.getElementById('btn-crochet').classList.toggle('active', c==='crochet');
+    document.getElementById('btn-knitting').classList.toggle('active', c==='knitting');
+  }
+
+  function loadExample(key) {
+    const ex = EXAMPLES[key];
+    if (!ex) return;
+    document.getElementById('pattern-input').value = ex;
+    if (key.startsWith('knit')) setCraft('knitting'); else setCraft('crochet');
+    expandPattern();
+  }
+
+  function expandPattern() {
+    const raw = document.getElementById('pattern-input').value.trim();
+    if (!raw) { alert('Please enter a pattern row first.'); return; }
+
+    const map = craft === 'crochet' ? CROCHET_MAP : KNITTING_MAP;
+    // Split on comma or semicolon
+    const parts = raw.split(/[,;]+/).map(s => s.trim()).filter(Boolean);
+
+    const expanded = parts.map(part => {
+      const lower = part.toLowerCase();
+      // Try to match abbreviation + context
+      let matched = false;
+      let result = part;
+
+      // Try longest match first
+      const keys = Object.keys(map).sort((a,b) => b.length - a.length);
+      for (const key of keys) {
+        const re = new RegExp(`^\\s*${escapeRegex(key)}\\s*(\\d+|next\\s+\\d+|each|all|around|to\\s+end)?\\s*(.*)$`, 'i');
+        const m = lower.match(re);
+        if (m) {
+          const suffix = m[2] ? ` ${m[2]}` : '';
+          const num = m[1] || '';
+          const expansion = map[key](num + (suffix ? ' ' + suffix.trim() : '')) ;
+          result = expansion;
+          matched = true;
+          break;
+        }
+      }
+
+      if (!matched) {
+        // Check for "X in next Y sts" pattern
+        const inMatch = lower.match(/^(\w+)\s+in\s+(next\s+\d+|same|each|next)(.*)$/i);
+        if (inMatch) {
+          const abbr = inMatch[1].toLowerCase();
+          const where = inMatch[2] + (inMatch[3] || '');
+          if (map[abbr]) {
+            result = map[abbr](where);
+            matched = true;
+          }
+        }
+      }
+
+      if (!matched) {
+        result = `<span style="color:var(--warning,#d97706)" title="Unrecognized abbreviation">[? ${escH(part)}]</span>`;
+      } else {
+        result = capitalizeFirst(result);
+      }
+
+      return `<div class="expanded-row">${escH(part)} <span style="color:var(--text-muted)">→</span> ${result}</div>`;
+    });
+
+    document.getElementById('expansion-output').innerHTML = expanded.join('');
+    document.getElementById('result').style.display = 'block';
+  }
+
+  function capitalizeFirst(s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  function escH(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function escapeRegex(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('pattern-reading-helper.html');
+    injectFooter();
+  });
+  </script>
+</body>
+</html>

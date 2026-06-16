@@ -1,0 +1,372 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wholesale Price Calculator — Calculator for Handmade Sellers | The Useful Pages</title>
+  <meta name="description" content="Calculate wholesale and retail prices for your handmade products. Understand keystone markup, implied wholesale from retail, and minimum order quantities. Free, no signup.">
+  <link rel="canonical" href="https://theusefulpages.com/wholesale-price-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .price-channel { background:var(--card-bg); border:1.5px solid var(--border); border-radius:10px; padding:1rem; margin-bottom:0.75rem; }
+    .price-channel-title { font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:0.25rem; }
+    .price-channel-val { font-size:1.75rem; font-weight:700; color:var(--primary); }
+    .price-channel-note { font-size:0.78rem; color:var(--text-muted); margin-top:0.2rem; }
+    .tab-panel { display:none; } .tab-panel.active { display:block; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Wholesale Price Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate wholesale and retail prices, understand keystone markup, and plan minimum orders.</p>
+
+      <div class="tool-card">
+        <div class="tab-group">
+          <button class="tab-btn active" onclick="switchTab('forward', this)">Cost → Price</button>
+          <button class="tab-btn" onclick="switchTab('reverse', this)">Retail → Wholesale</button>
+          <button class="tab-btn" onclick="switchTab('moq', this)">Min. Order Calculator</button>
+        </div>
+
+        <!-- Forward: Cost to Price -->
+        <div class="tab-panel active" id="tab-forward">
+          <div class="form-group">
+            <label class="form-label">Total Product Cost ($) <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">materials + labor + overhead per unit</span></label>
+            <input type="number" class="form-input" id="fwdCost" placeholder="0.00" min="0" step="0.01" oninput="calcForward()">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Wholesale Multiplier</label>
+              <select class="form-select" id="fwdMult" onchange="calcForward()">
+                <option value="2">2× (standard keystone)</option>
+                <option value="2.25">2.25×</option>
+                <option value="2.5" selected>2.5× (recommended)</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+            <div class="form-group" id="fwdCustomGroup" style="display:none;">
+              <label class="form-label">Custom Multiplier</label>
+              <input type="number" class="form-input" id="fwdCustomMult" placeholder="2.5" min="1" step="0.1" oninput="calcForward()">
+            </div>
+          </div>
+          <div id="fwdResults" style="margin-top:0.5rem;">
+            <div class="price-channel">
+              <div class="price-channel-title">Wholesale Price</div>
+              <div class="price-channel-val" id="fwdWholesale">—</div>
+              <div class="price-channel-note" id="fwdWholesaleNote">Cost × multiplier</div>
+            </div>
+            <div class="price-channel">
+              <div class="price-channel-title">Recommended Retail Price (RRP)</div>
+              <div class="price-channel-val" id="fwdRetail">—</div>
+              <div class="price-channel-note" id="fwdRetailNote">Wholesale × 2 (keystone retail)</div>
+            </div>
+            <div class="result-card">
+              <div class="result-row"><span class="result-label">Your Cost</span><span id="fwdCostDisplay">—</span></div>
+              <div class="result-row"><span class="result-label">Wholesale Profit</span><span id="fwdWholesaleProfit">—</span></div>
+              <div class="result-row"><span class="result-label">Wholesale Margin %</span><span id="fwdWholesaleMargin">—</span></div>
+              <div class="result-row"><span class="result-label">Retailer's Margin at RRP</span><span id="fwdRetailMargin">—</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reverse: Retail to Wholesale -->
+        <div class="tab-panel" id="tab-reverse">
+          <div class="form-group">
+            <label class="form-label">Current Retail Price ($)</label>
+            <input type="number" class="form-input" id="revRetail" placeholder="0.00" min="0" step="0.01" oninput="calcReverse()">
+          </div>
+          <div id="revResults" style="margin-top:0.5rem;">
+            <div class="price-channel">
+              <div class="price-channel-title">Implied Wholesale (Retail ÷ 2)</div>
+              <div class="price-channel-val" id="revWholesale">—</div>
+              <div class="price-channel-note">Standard keystone: wholesale = retail ÷ 2</div>
+            </div>
+            <div class="result-card">
+              <div class="result-row"><span class="result-label">At Retail ÷ 2.5 Wholesale</span><span id="revW25">—</span></div>
+              <div class="result-row"><span class="result-label">At Retail ÷ 2 Wholesale</span><span id="revW2">—</span></div>
+              <div class="result-row"><span class="result-label">Max cost for 50% wholesale margin</span><span id="revMaxCost">—</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MOQ -->
+        <div class="tab-panel" id="tab-moq">
+          <div class="form-group">
+            <label class="form-label">Minimum Order Value ($) <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">your required minimum</span></label>
+            <input type="number" class="form-input" id="moqValue" placeholder="200" min="0" step="1" oninput="calcMOQ()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Wholesale Price per Unit ($)</label>
+            <input type="number" class="form-input" id="moqUnitPrice" placeholder="0.00" min="0" step="0.01" oninput="calcMOQ()">
+          </div>
+          <div class="result-card" id="moqResults">
+            <div class="result-row"><span class="result-label">Minimum Units Required</span><span id="moqUnits" style="font-size:1.25rem;font-weight:700;color:var(--primary);">—</span></div>
+            <div class="result-row"><span class="result-label">Revenue at Minimum</span><span id="moqRevenue">—</span></div>
+            <div style="margin-top:0.75rem;">
+              <p style="font-size:0.8rem;color:var(--text-muted);margin:0;">Units needed at common minimums:</p>
+              <div id="moqCommon" style="margin-top:0.5rem;"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="disclaimer" style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">These calculators provide estimates for planning purposes. Consult a tax professional for business financial advice.</p>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">Understanding Wholesale Pricing</h2>
+        <ul style="margin:0 0 1rem 0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Keystone markup</strong> means doubling the wholesale price to get retail. Retailers expect this room to make a profit.</li>
+          <li><strong>Your wholesale price</strong> should be 2–2.5× your total production cost so you profit at wholesale rates.</li>
+          <li><strong>RRP (Recommended Retail Price)</strong> gives retailers guidance and protects your brand from being undercut.</li>
+          <li>Never price below cost. If 2× cost doesn't cover expenses, your cost structure needs review.</li>
+        </ul>
+        <h3 style="font-size:0.875rem;font-weight:700;margin-bottom:0.5rem;">Wholesale Tips</h3>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Set a minimum order to make wholesale financially worthwhile (common: $100–$300).</li>
+          <li>Offer a line sheet with your wholesale and RRP prices clearly listed.</li>
+          <li>Consider a minimum order quantity (MOQ) in addition to a dollar minimum.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="handmade-pricing-calculator.html">Handmade Pricing Calculator</a>
+          <a href="retail-markup-calculator.html">Retail Markup Calculator</a>
+          <a href="commission-price-calculator.html">Commission Price Calculator</a>
+          <a href="product-cost-calculator.html">Product Cost Calculator</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Wholesale Price Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Wholesale Price Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('wholesale-price-calculator.html'); injectFooter(); });
+
+    function switchTab(name, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + name).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function fmt(n) { return '$' + n.toFixed(2); }
+
+    document.getElementById('fwdMult').addEventListener('change', function() {
+      document.getElementById('fwdCustomGroup').style.display = this.value === 'custom' ? 'block' : 'none';
+      calcForward();
+    });
+
+    function calcForward() {
+      const cost = parseFloat(document.getElementById('fwdCost').value) || 0;
+      const multSel = document.getElementById('fwdMult').value;
+      const mult = multSel === 'custom' ? (parseFloat(document.getElementById('fwdCustomMult').value) || 2.5) : parseFloat(multSel);
+      const wholesale = cost * mult;
+      const retail = wholesale * 2;
+      const wsProfit = wholesale - cost;
+      const wsMargin = wholesale > 0 ? (wsProfit / wholesale * 100) : 0;
+      const retMargin = retail > 0 ? ((retail - wholesale) / retail * 100) : 0;
+
+      document.getElementById('fwdWholesale').textContent = fmt(wholesale);
+      document.getElementById('fwdWholesaleNote').textContent = `$${cost.toFixed(2)} × ${mult} = ${fmt(wholesale)}`;
+      document.getElementById('fwdRetail').textContent = fmt(retail);
+      document.getElementById('fwdRetailNote').textContent = `${fmt(wholesale)} × 2 = ${fmt(retail)}`;
+      document.getElementById('fwdCostDisplay').textContent = fmt(cost);
+      document.getElementById('fwdWholesaleProfit').textContent = fmt(wsProfit);
+      document.getElementById('fwdWholesaleMargin').textContent = wsMargin.toFixed(1) + '%';
+      document.getElementById('fwdRetailMargin').textContent = retMargin.toFixed(1) + '%';
+    }
+
+    function calcReverse() {
+      const retail = parseFloat(document.getElementById('revRetail').value) || 0;
+      const w2 = retail / 2;
+      const w25 = retail / 2.5;
+      const maxCost = w2 / 2;
+
+      document.getElementById('revWholesale').textContent = fmt(w2);
+      document.getElementById('revW25').textContent = fmt(w25);
+      document.getElementById('revW2').textContent = fmt(w2);
+      document.getElementById('revMaxCost').textContent = fmt(maxCost);
+    }
+
+    function calcMOQ() {
+      const moq = parseFloat(document.getElementById('moqValue').value) || 0;
+      const unit = parseFloat(document.getElementById('moqUnitPrice').value) || 0;
+      if (unit > 0) {
+        const units = Math.ceil(moq / unit);
+        document.getElementById('moqUnits').textContent = units + ' units';
+        document.getElementById('moqRevenue').textContent = fmt(units * unit);
+      } else {
+        document.getElementById('moqUnits').textContent = '—';
+        document.getElementById('moqRevenue').textContent = '—';
+      }
+      if (unit > 0) {
+        let html = '';
+        [100, 150, 200, 300, 500].forEach(m => {
+          const u = Math.ceil(m / unit);
+          html += `<div style="display:flex;justify-content:space-between;padding:0.3rem 0;font-size:0.8rem;border-bottom:1px solid var(--border);"><span style="color:var(--text-muted);">$${m} minimum</span><span style="font-weight:600;">${u} units</span></div>`;
+        });
+        document.getElementById('moqCommon').innerHTML = html;
+      }
+    }
+  </script>
+</body>
+</html>

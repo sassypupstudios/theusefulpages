@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Previewer - Live Markdown Editor | The Useful Pages</title>
+  <meta name="description" content="Free online Markdown previewer with live rendering. Write Markdown on the left, see the HTML preview on the right instantly. Copy HTML, download .md file, word count.">
+  <link rel="canonical" href="https://theusefulpages.com/markdown-previewer.html">
+  <meta property="og:title" content="Markdown Previewer - The Useful Pages">
+  <meta property="og:description" content="Free live Markdown editor and previewer. Write Markdown and see the rendered HTML instantly.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Markdown Previewer","url":"https://theusefulpages.com/markdown-previewer.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    .split-pane { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 768px) { .split-pane { grid-template-columns: 1fr; } }
+    .pane-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.4rem; }
+    #mdInput { width: 100%; height: 420px; resize: vertical; font-family: monospace; font-size: 0.875rem; }
+    .preview-pane { height: 420px; overflow-y: auto; border: 1px solid var(--border); border-radius: 8px; padding: 1rem; background: #fff; font-size: 0.9rem; line-height: 1.7; }
+    .preview-pane h1,.preview-pane h2,.preview-pane h3,.preview-pane h4 { color: var(--primary); margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .preview-pane h1 { font-size: 1.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.3rem; }
+    .preview-pane h2 { font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: 0.2rem; }
+    .preview-pane code { background: #f3f4f6; padding: 0.15rem 0.35rem; border-radius: 4px; font-family: monospace; font-size: 0.85em; }
+    .preview-pane pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow-x: auto; }
+    .preview-pane pre code { background: none; padding: 0; color: inherit; }
+    .preview-pane blockquote { border-left: 4px solid var(--primary); margin: 0.75rem 0; padding: 0.5rem 1rem; background: var(--bg-alt); color: var(--text-muted); }
+    .preview-pane a { color: var(--primary); }
+    .preview-pane table { border-collapse: collapse; width: 100%; margin: 0.75rem 0; }
+    .preview-pane th { background: var(--primary); color: #fff; padding: 0.4rem 0.75rem; }
+    .preview-pane td { border: 1px solid var(--border); padding: 0.35rem 0.75rem; }
+    .preview-pane tr:nth-child(even) td { background: var(--bg-alt); }
+    .preview-pane ul,.preview-pane ol { padding-left: 1.5rem; }
+    .preview-pane img { max-width: 100%; border-radius: 4px; }
+    .preview-pane hr { border: none; border-top: 2px solid var(--border); margin: 1rem 0; }
+    .stats-bar { display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+    .layout-toggle { display: flex; gap: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Markdown Previewer</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Write Markdown on the left and see a live HTML preview on the right as you type.</p>
+
+      <div class="tool-card">
+        <div class="btn-row" style="margin-bottom:1rem;flex-wrap:wrap;">
+          <button class="btn btn-ghost btn-sm" onclick="loadTemplate()">Starter Template</button>
+          <button class="btn btn-outline btn-sm" onclick="copyMarkdown()">Copy Markdown</button>
+          <button class="btn btn-outline btn-sm" onclick="copyHTML()">Copy HTML</button>
+          <button class="btn btn-ghost btn-sm" onclick="downloadMD()">Download .md</button>
+          <button class="btn btn-ghost btn-sm" onclick="clearAll()">Clear</button>
+        </div>
+
+        <div class="split-pane">
+          <div>
+            <div class="pane-label">Markdown</div>
+            <textarea id="mdInput" class="form-textarea code-area" placeholder="Type your Markdown here..."></textarea>
+            <div class="stats-bar" id="statsBar">
+              <span id="wordCount">0 words</span>
+              <span id="charCount">0 chars</span>
+              <span id="lineCount">0 lines</span>
+            </div>
+          </div>
+          <div>
+            <div class="pane-label">Preview</div>
+            <div class="preview-pane" id="preview"><em style="color:var(--text-muted);">Your preview will appear here...</em></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Type or paste Markdown in the left pane — the preview updates live as you type.</li>
+          <li>Click <strong>Starter Template</strong> to load a sample showing common Markdown syntax.</li>
+          <li>Use <strong>Copy HTML</strong> to grab the rendered HTML output.</li>
+          <li>Use <strong>Copy Markdown</strong> to copy your raw Markdown text.</li>
+          <li>Click <strong>Download .md</strong> to save your Markdown as a file.</li>
+          <li>Word count, character count, and line count update automatically.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="json-formatter.html">JSON Formatter</a>
+          <a href="html-formatter.html">HTML Formatter</a>
+          <a href="js-minifier.html">JS Minifier</a>
+          <a href="csv-to-json.html">CSV to JSON</a>
+          <a href="color-picker.html">Color Picker</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Markdown Previewer</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Markdown previewer to write Markdown and see the formatted result side by side. It is useful for README files, notes, documentation, blog drafts, and plain-text writing. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('markdown-previewer.html');
+      injectFooter();
+      document.getElementById('mdInput').addEventListener('input', debounceUpdate);
+    });
+
+    let debounceTimer = null;
+    function debounceUpdate() {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(updatePreview, 200);
+    }
+
+    function updatePreview() {
+      const md = document.getElementById('mdInput').value;
+      const preview = document.getElementById('preview');
+      if (!md.trim()) {
+        preview.innerHTML = '<em style="color:var(--text-muted);">Your preview will appear here...</em>';
+      } else {
+        preview.innerHTML = marked.parse(md);
+      }
+      updateStats(md);
+    }
+
+    function updateStats(text) {
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      const chars = text.length;
+      const lines = text.split('\n').length;
+      document.getElementById('wordCount').textContent = fmtNum(words) + ' words';
+      document.getElementById('charCount').textContent = fmtNum(chars) + ' chars';
+      document.getElementById('lineCount').textContent = fmtNum(lines) + ' lines';
+    }
+
+    function copyMarkdown() {
+      copyText(document.getElementById('mdInput').value, 'Markdown copied!');
+    }
+
+    function copyHTML() {
+      copyText(document.getElementById('preview').innerHTML, 'HTML copied!');
+    }
+
+    function downloadMD() {
+      const content = document.getElementById('mdInput').value;
+      const blob = new Blob([content], {type: 'text/markdown'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'document.md';
+      a.click();
+    }
+
+    function clearAll() {
+      document.getElementById('mdInput').value = '';
+      updatePreview();
+    }
+
+    function loadTemplate() {
+      document.getElementById('mdInput').value = `# Welcome to Markdown Previewer
+
+## What is Markdown?
+
+Markdown is a lightweight markup language for creating formatted text. It's used in **README files**, documentation, and more.
+
+## Text Formatting
+
+You can make text **bold**, *italic*, or ***both***. You can also ~~strikethrough~~ text.
+
+## Lists
+
+### Unordered List
+- Apples
+- Bananas
+- Cherries
+
+### Ordered List
+1. First item
+2. Second item
+3. Third item
+
+## Links & Images
+
+[Visit The Useful Pages](https://theusefulpages.com)
+
+## Code
+
+Inline \`code\` looks like this.
+
+\`\`\`javascript
+function greet(name) {
+  return \`Hello, \${name}!\`;
+}
+console.log(greet('World'));
+\`\`\`
+
+## Blockquote
+
+> "The best tools are the ones you actually use." — Someone wise
+
+## Table
+
+| Name    | Age | City       |
+|---------|-----|------------|
+| Alice   | 30  | New York   |
+| Bob     | 25  | London     |
+| Carol   | 35  | Tokyo      |
+
+## Horizontal Rule
+
+---
+
+*That's the basics of Markdown!*
+`;
+      updatePreview();
+    }
+  </script>
+</body>
+</html>

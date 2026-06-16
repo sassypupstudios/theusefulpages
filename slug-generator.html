@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slug Generator — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Convert any text into URL-friendly slugs instantly. Generate kebab-case, snake_case, and dot.case slugs with live preview. Free online slug generator.">
+  <link rel="canonical" href="https://theusefulpages.com/slug-generator">
+  <meta property="og:title" content="Slug Generator — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Slug Generator","url":"https://theusefulpages.com/slug-generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .slug-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--bg-alt, #f7f7f5);
+      border: 1px solid var(--border, #e0ddd8);
+      border-radius: 10px;
+      padding: 0.875rem 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .slug-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      min-width: 80px;
+    }
+    .slug-value {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9375rem;
+      color: var(--primary);
+      flex: 1;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Slug Generator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Turn any text into a clean, URL-friendly slug — live preview as you type.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label" for="slugInput">Enter your text</label>
+          <input type="text" class="form-input" id="slugInput" placeholder="e.g. My Awesome Blog Post Title!" oninput="updateSlug()" style="font-size:1rem;">
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.25rem;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Max length</label>
+            <input type="number" class="form-input" id="maxLength" value="0" min="0" max="500" oninput="updateSlug()" placeholder="0 = unlimited">
+            <span style="font-size:0.8rem;color:var(--text-muted);">0 = no limit</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;padding-top:1.5rem;">
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;">
+              <input type="checkbox" id="preserveNumbers" checked style="accent-color:var(--primary);"> Preserve numbers
+            </label>
+            <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;">
+              <input type="checkbox" id="lowercase" checked style="accent-color:var(--primary);"> Lowercase
+            </label>
+          </div>
+        </div>
+
+        <div id="slugResults" style="display:none;">
+          <div style="font-size:0.8125rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Slug Variants</div>
+
+          <div class="slug-row">
+            <span class="slug-label">kebab-case</span>
+            <span class="slug-value" id="slugHyphen"></span>
+            <button class="btn btn-secondary" style="padding:0.3rem 0.75rem;font-size:0.8125rem;" onclick="copyRaw('slugHyphen')">Copy</button>
+          </div>
+          <div class="slug-row">
+            <span class="slug-label">snake_case</span>
+            <span class="slug-value" id="slugUnderscore"></span>
+            <button class="btn btn-secondary" style="padding:0.3rem 0.75rem;font-size:0.8125rem;" onclick="copyRaw('slugUnderscore')">Copy</button>
+          </div>
+          <div class="slug-row">
+            <span class="slug-label">dot.case</span>
+            <span class="slug-value" id="slugDot"></span>
+            <button class="btn btn-secondary" style="padding:0.3rem 0.75rem;font-size:0.8125rem;" onclick="copyRaw('slugDot')">Copy</button>
+          </div>
+
+          <div style="font-size:0.8125rem;color:var(--text-muted);margin-top:0.5rem;" id="slugLength"></div>
+        </div>
+
+        <div id="emptyState" style="text-align:center;padding:2rem;color:var(--text-muted);font-size:0.9375rem;">
+          Start typing above to see your slug preview
+        </div>
+      </div>
+
+
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Type or paste any text into the input field — slugs update instantly as you type.</li>
+          <li>Set a <strong>Max length</strong> to truncate slugs to a specific character limit (0 = unlimited).</li>
+          <li>Toggle <strong>Preserve numbers</strong> to keep or strip numeric characters.</li>
+          <li>Click <strong>Copy</strong> next to any slug variant to copy it to the clipboard.</li>
+        </ol>
+        <p style="margin-top:0.75rem;">Slugs are used in URLs, file names, and identifiers. Special characters, accents, and punctuation are automatically removed or transliterated.</p>
+      </div>
+
+      <div id="related-tools"></div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Slug Generator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free slug generator to turn titles, product names, blog ideas, or phrases into clean URL-friendly slugs. It removes clutter and formats text for readable web addresses. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+
+  </div>
+
+
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('slug-generator.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('slug-generator.html', 'text');
+  });
+
+  // Basic transliteration map for common accented characters
+  const TRANSLITERATE = {
+    'à':'a','á':'a','â':'a','ã':'a','ä':'a','å':'a','æ':'ae',
+    'ç':'c','è':'e','é':'e','ê':'e','ë':'e','ì':'i','í':'i','î':'i','ï':'i',
+    'ð':'d','ñ':'n','ò':'o','ó':'o','ô':'o','õ':'o','ö':'o','ø':'o',
+    'ù':'u','ú':'u','û':'u','ü':'u','ý':'y','þ':'th','ß':'ss',
+    'À':'A','Á':'A','Â':'A','Ã':'A','Ä':'A','Å':'A','Æ':'AE',
+    'Ç':'C','È':'E','É':'E','Ê':'E','Ë':'E','Ì':'I','Í':'I','Î':'I','Ï':'I',
+    'Ð':'D','Ñ':'N','Ò':'O','Ó':'O','Ô':'O','Õ':'O','Ö':'O','Ø':'O',
+    'Ù':'U','Ú':'U','Û':'U','Ü':'U','Ý':'Y','Þ':'TH',
+  };
+
+  function toSlug(text, separator, preserveNums, lower, maxLen) {
+    // Transliterate
+    let s = text.split('').map(c => TRANSLITERATE[c] || c).join('');
+    // Lowercase before stripping
+    if (lower) s = s.toLowerCase();
+    // Remove non-alphanumeric (keep numbers if preserveNums)
+    if (preserveNums) {
+      s = s.replace(/[^a-zA-Z0-9\s-]/g, ' ');
+    } else {
+      s = s.replace(/[^a-zA-Z\s-]/g, ' ');
+    }
+    // Collapse whitespace/hyphens to separator
+    s = s.trim().replace(/[\s\-]+/g, separator);
+    // Apply max length (truncate cleanly at separator boundary)
+    if (maxLen > 0 && s.length > maxLen) {
+      s = s.slice(0, maxLen);
+      // Remove trailing separator
+      s = s.replace(new RegExp('[' + separator + ']+$'), '');
+    }
+    return s;
+  }
+
+  function copyRaw(elId) {
+    const val = document.getElementById(elId).textContent;
+    navigator.clipboard.writeText(val).then(() => showToast('Copied!'));
+  }
+
+  function updateSlug() {
+    const text = document.getElementById('slugInput').value;
+    const preserveNums = document.getElementById('preserveNumbers').checked;
+    const lower = document.getElementById('lowercase').checked;
+    const maxLen = parseInt(document.getElementById('maxLength').value) || 0;
+
+    if (!text.trim()) {
+      document.getElementById('slugResults').style.display = 'none';
+      document.getElementById('emptyState').style.display = '';
+      return;
+    }
+
+    const hyphen = toSlug(text, '-', preserveNums, lower, maxLen);
+    const underscore = toSlug(text, '_', preserveNums, lower, maxLen);
+    const dot = toSlug(text, '.', preserveNums, lower, maxLen);
+
+    document.getElementById('slugHyphen').textContent = hyphen || '(empty)';
+    document.getElementById('slugUnderscore').textContent = underscore || '(empty)';
+    document.getElementById('slugDot').textContent = dot || '(empty)';
+    document.getElementById('slugLength').textContent = `kebab-case length: ${hyphen.length} character${hyphen.length !== 1 ? 's' : ''}`;
+
+    document.getElementById('slugResults').style.display = '';
+    document.getElementById('emptyState').style.display = 'none';
+  }
+  </script>
+</body>
+</html>

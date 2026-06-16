@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet Stitch Height Reference — Chart & Calculator | The Useful Pages</title>
+  <meta name="description" content="Reference chart for crochet stitch heights, turning chains, and height ratios. Plus a calculator: enter your gauge and target height to find the stitch count needed.">
+  <link rel="canonical" href="https://theusefulpages.com/crochet-stitch-height-reference.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Crochet Stitch Height Reference</h1>
+      <p class="page-subtitle">Stitch heights, turning chains, and height ratios — plus a vertical stitch count calculator.</p>
+      <div class="tool-card">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Stitch Height Reference Chart</h2>
+        <div class="table-wrap">
+          <table class="data-table" id="height-table">
+            <thead>
+              <tr>
+                <th>Stitch Name</th>
+                <th>Abbreviation</th>
+                <th>Turning Chains</th>
+                <th>Height Ratio vs SC</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Slip Stitch</td><td><strong>sl st</strong></td><td>0</td><td>0.5×</td><td>Almost no height; used for joining or surface work</td></tr>
+              <tr><td>Single Crochet</td><td><strong>sc</strong></td><td>1</td><td>1× (baseline)</td><td>Short, dense stitch; baseline for comparison</td></tr>
+              <tr><td>Half Double Crochet</td><td><strong>hdc</strong></td><td>2</td><td>1.5×</td><td>Slightly taller than sc; has a distinctive third loop</td></tr>
+              <tr><td>Double Crochet</td><td><strong>dc</strong></td><td>3</td><td>2×</td><td>Most commonly used stitch; open and drapey</td></tr>
+              <tr><td>Treble Crochet</td><td><strong>tr</strong></td><td>4</td><td>3×</td><td>Tall stitch; yarn over twice before inserting hook</td></tr>
+              <tr><td>Double Treble Crochet</td><td><strong>dtr</strong></td><td>5</td><td>4×</td><td>Very tall; yarn over 3 times</td></tr>
+              <tr><td>Triple Treble Crochet</td><td><strong>trtr</strong></td><td>6</td><td>5×</td><td>Extremely tall; yarn over 4 times</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr style="margin:1.75rem 0;border:none;border-top:1px solid var(--border);">
+
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Vertical Stitch Count Calculator</h2>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1rem;">Enter your gauge and target finished height to find how many rows you need.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Target Height (inches)</label>
+            <input class="form-input" type="number" id="target-height" min="0.1" step="0.1" placeholder="e.g. 12">
+          </div>
+          <div>
+            <label class="label">Rows per Inch (gauge)</label>
+            <input class="form-input" type="number" id="rows-per-inch" min="0.1" step="0.1" placeholder="e.g. 5">
+          </div>
+          <div>
+            <label class="label">Stitch Type</label>
+            <select class="form-select" id="stitch-type">
+              <option value="1">Single Crochet (sc)</option>
+              <option value="1.5">Half Double Crochet (hdc)</option>
+              <option value="2" selected>Double Crochet (dc)</option>
+              <option value="3">Treble Crochet (tr)</option>
+              <option value="4">Double Treble (dtr)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcHeight()">Calculate Rows</button>
+        <div id="height-result" style="margin-top:1rem;"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Use the <strong>reference chart</strong> to compare stitch heights and find the correct turning chain count for any stitch.</li>
+          <li>In the <strong>calculator</strong>, enter your target height (e.g. 12 inches), rows per inch from your gauge swatch, and stitch type to get the exact row count needed.</li>
+        </ul>
+        <h2>About Stitch Heights</h2>
+        <p>Stitch height determines how many rows fit in a given vertical measurement. Taller stitches like treble crochet work up faster vertically — you need fewer rows to reach the same height as with single crochet. Turning chains at the beginning of a row compensate for the height of the stitch and keep your edges straight.</p>
+        <p>Note: Some patterns treat the turning chain as the first stitch; others do not. This affects stitch counts per row.</p>
+        <p class="disclaimer">Results are estimates. Actual row heights vary by yarn weight, hook size, and personal tension.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Crochet Stitch Height Reference</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Crochet Stitch Height Reference to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcHeight() {
+    const h = parseFloat(document.getElementById('target-height').value);
+    const rpi = parseFloat(document.getElementById('rows-per-inch').value);
+    const ratio = parseFloat(document.getElementById('stitch-type').value);
+    const res = document.getElementById('height-result');
+    if (!h || !rpi || h <= 0 || rpi <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid values for height and gauge.</p>';
+      return;
+    }
+    const rows = Math.ceil(h * rpi);
+    const heightCheck = (rows / rpi).toFixed(2);
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid">
+        <div class="stat-box"><div class="label">Rows Needed</div><strong style="font-size:1.6rem">${rows}</strong></div>
+        <div class="stat-box"><div class="label">Actual Height</div><strong style="font-size:1.6rem">${heightCheck}"</strong></div>
+        <div class="stat-box"><div class="label">Your Row Gauge</div>${rpi} rows/inch</div>
+        <div class="stat-box"><div class="label">Stitch Height Ratio</div>${ratio}× vs single crochet</div>
+      </div>
+    </div>`;
+  }
+  document.addEventListener('DOMContentLoaded', () => { injectNav('crochet-stitch-height-reference.html'); injectFooter(); });
+  </script>
+</body>
+</html>

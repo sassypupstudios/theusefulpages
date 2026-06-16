@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retirement Calculator - Online Retirement Planner | The Useful Pages</title>
+  <meta name="description" content="Calculate your projected retirement balance, inflation-adjusted value, and monthly retirement income. Free retirement planner with year-by-year growth table.">
+  <link rel="canonical" href="https://theusefulpages.com/retirement-calculator.html">
+  <meta property="og:title" content="Retirement Calculator - The Useful Pages">
+  <meta property="og:description" content="Plan your retirement with projected balance, inflation-adjusted value, and monthly income estimates using the 4% rule.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Retirement Calculator","url":"https://theusefulpages.com/retirement-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Retirement Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Project your retirement savings and estimate your monthly income in retirement.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Current Age</label>
+            <input type="number" class="form-input" id="currentAge" value="30" min="18" max="80">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Retirement Age</label>
+            <input type="number" class="form-input" id="retirementAge" value="65" min="30" max="90">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Current Savings ($)</label>
+            <input type="number" class="form-input" id="currentSavings" value="25000" min="0" step="1000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Monthly Contribution ($)</label>
+            <input type="number" class="form-input" id="monthlyContrib" value="500" min="0" step="50">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Expected Annual Return (%)</label>
+            <input type="number" class="form-input" id="returnRate" value="7" min="0" max="30" step="0.1">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Inflation Rate (%)</label>
+            <input type="number" class="form-input" id="inflationRate" value="2.5" min="0" max="20" step="0.1">
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary btn-block" onclick="calculateRetirement()">Calculate Retirement</button>
+        </div>
+
+        <div id="results" class="hidden" style="margin-top:1.5rem;">
+          <div class="stat-grid" id="statGrid"></div>
+          <div id="guidance" style="margin-top:1rem;padding:0.75rem;background:var(--surface);border-radius:8px;font-size:0.875rem;color:var(--text-muted);"></div>
+
+          <div style="margin-top:1.5rem;">
+            <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;">Year-by-Year Growth</h3>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Age</th><th>Contributions</th><th>Interest Earned</th><th>Balance</th></tr></thead>
+                <tbody id="growthBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div style="margin-top:1rem;">
+            <button class="btn btn-accent btn-sm" onclick="copySummary()">Copy Summary</button>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">For educational purposes only — not financial advice. Consult a financial advisor for personalized guidance.</p>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your current age and the age you plan to retire.</li>
+          <li>Input your current retirement savings balance.</li>
+          <li>Add your monthly contribution amount (include employer match if applicable).</li>
+          <li>Set your expected annual return — 7% is a common estimate for diversified index funds.</li>
+          <li>Set inflation rate — 2.5–3% is typical for long-term US planning.</li>
+          <li>The 4% rule estimates safe annual withdrawal as 4% of your retirement balance.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="compound-interest.html">Compound Interest Calculator</a>
+          <a href="savings-calculator.html">Savings Calculator</a>
+          <a href="hourly-salary.html">Hourly to Salary Converter</a>
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="debt-payoff.html">Debt Payoff Calculator</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Retirement Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free retirement calculator to estimate retirement savings growth and future planning numbers. It is useful for rough projections, contribution planning, and comparing different savings scenarios. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('retirement-calculator.html'); injectFooter(); });
+
+    function calculateRetirement() {
+      const currentAge = parseInt(document.getElementById('currentAge').value) || 30;
+      const retirementAge = parseInt(document.getElementById('retirementAge').value) || 65;
+      const currentSavings = parseFloat(document.getElementById('currentSavings').value) || 0;
+      const monthlyContrib = parseFloat(document.getElementById('monthlyContrib').value) || 0;
+      const annualReturn = parseFloat(document.getElementById('returnRate').value) || 7;
+      const inflationRate = parseFloat(document.getElementById('inflationRate').value) || 2.5;
+
+      if (retirementAge <= currentAge) { showToast('Retirement age must be greater than current age.'); return; }
+
+      const years = retirementAge - currentAge;
+      const monthlyRate = annualReturn / 100 / 12;
+      const rows = [];
+
+      let balance = currentSavings;
+      let totalContributions = currentSavings;
+
+      for (let yr = 1; yr <= years; yr++) {
+        const prevBalance = balance;
+        for (let mo = 0; mo < 12; mo++) {
+          balance = balance * (1 + monthlyRate) + monthlyContrib;
+          totalContributions += monthlyContrib;
+        }
+        const yearInterest = balance - prevBalance - monthlyContrib * 12;
+        rows.push({ age: currentAge + yr, yearContrib: monthlyContrib * 12, yearInterest, balance });
+      }
+
+      const projectedBalance = balance;
+      const inflationFactor = Math.pow(1 + inflationRate / 100, years);
+      const inflationAdjusted = projectedBalance / inflationFactor;
+      const monthlyIncome4pct = (projectedBalance * 0.04) / 12;
+      const inflationAdjMonthlyIncome = (inflationAdjusted * 0.04) / 12;
+      // Years of retirement funded at $4k/month with 4% rule = essentially indefinite at 4%
+      const retirementYearsFunded = projectedBalance > 0 ? Math.round(projectedBalance / (monthlyIncome4pct * 12) * 0.04 * 100) : 0;
+
+      document.getElementById('statGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(projectedBalance)}</div><div class="stat-label">Projected Balance at Retirement</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(inflationAdjusted)}</div><div class="stat-label">Inflation-Adjusted Value (Today's $)</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(monthlyIncome4pct)}</div><div class="stat-label">Monthly Income (4% Rule, Nominal)</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(inflationAdjMonthlyIncome)}</div><div class="stat-label">Monthly Income (4% Rule, Today's $)</div></div>
+      `;
+
+      const annualContribTotal = monthlyContrib * 12;
+      const savingsRatePct = annualContribTotal > 0 ? '' : '';
+      document.getElementById('guidance').innerHTML = `
+        <strong>Savings timeline:</strong> ${years} years to retirement &nbsp;|&nbsp;
+        <strong>Total contributed:</strong> ${fmtCurrency(totalContributions)} &nbsp;|&nbsp;
+        <strong>Interest earned:</strong> ${fmtCurrency(projectedBalance - totalContributions)}<br>
+        <span style="margin-top:0.5rem;display:block;">The <strong>4% rule</strong> suggests withdrawing 4% of your portfolio annually in retirement for a high probability of never running out of money over a 30-year retirement.</span>
+      `;
+
+      document.getElementById('growthBody').innerHTML = rows.map(r => `
+        <tr>
+          <td>${r.age}</td>
+          <td>${fmtCurrency(r.yearContrib)}</td>
+          <td>${fmtCurrency(r.yearInterest)}</td>
+          <td>${fmtCurrency(r.balance)}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('results').classList.remove('hidden');
+    }
+
+    function copySummary() {
+      const boxes = document.querySelectorAll('.stat-box');
+      let text = 'Retirement Calculator Summary\n';
+      boxes.forEach(b => {
+        text += `${b.querySelector('.stat-label').textContent}: ${b.querySelector('.stat-value').textContent}\n`;
+      });
+      copyText(text, 'Summary copied!');
+    }
+  </script>
+</body>
+</html>

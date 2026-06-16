@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Size Grading Calculator — Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate how to grade a sewing pattern from one size to another. Enter your measurements and target measurements to get grading differences at bust, waist, and hip.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-size-grading-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Size Grading Calculator</h1>
+      <p class="page-subtitle">Calculate grading differences between a pattern size and your target measurements.</p>
+      <div class="tool-card">
+        <p class="disclaimer" style="margin-bottom:1rem;">Note: Professional pattern grading is complex and varies by garment type and designer. This tool provides a basic estimate suitable for simple patterns and small size adjustments only.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:0.5rem;">
+          <div style="font-weight:600;font-size:0.85rem;color:var(--color-muted);padding:0 0.25rem;">Measurement</div>
+          <div style="font-weight:600;font-size:0.85rem;color:var(--color-muted);padding:0 0.25rem;">Pattern Size (inches)</div>
+          <div style="font-weight:600;font-size:0.85rem;color:var(--color-muted);padding:0 0.25rem;">Your Measurement (inches)</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;align-items:center;" id="grade-grid">
+          <div class="label" style="margin:0;">Bust / Chest</div>
+          <input class="form-input" type="number" id="bust-pat" min="20" step="0.25" placeholder="e.g. 36">
+          <input class="form-input" type="number" id="bust-you" min="20" step="0.25" placeholder="e.g. 38">
+
+          <div class="label" style="margin:0;">Waist</div>
+          <input class="form-input" type="number" id="waist-pat" min="20" step="0.25" placeholder="e.g. 28">
+          <input class="form-input" type="number" id="waist-you" min="20" step="0.25" placeholder="e.g. 30">
+
+          <div class="label" style="margin:0;">Hip</div>
+          <input class="form-input" type="number" id="hip-pat" min="20" step="0.25" placeholder="e.g. 38">
+          <input class="form-input" type="number" id="hip-you" min="20" step="0.25" placeholder="e.g. 40">
+
+          <div class="label" style="margin:0;">Shoulder Width <span style="font-weight:400;font-size:0.8em;">(optional)</span></div>
+          <input class="form-input" type="number" id="shoulder-pat" min="10" step="0.25" placeholder="e.g. 15">
+          <input class="form-input" type="number" id="shoulder-you" min="10" step="0.25" placeholder="e.g. 16">
+
+          <div class="label" style="margin:0;">Back Length <span style="font-weight:400;font-size:0.8em;">(optional)</span></div>
+          <input class="form-input" type="number" id="back-pat" min="10" step="0.25" placeholder="e.g. 16.5">
+          <input class="form-input" type="number" id="back-you" min="10" step="0.25" placeholder="e.g. 17">
+        </div>
+
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcGrading()">Calculate Grading</button>
+          <button class="btn-outline" onclick="resetGrading()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+
+        <div id="grade-result" style="display:none;margin-top:1.5rem;">
+          <h3>Grading Differences</h3>
+          <div class="table-wrap">
+            <table class="data-table" id="grade-table">
+              <thead>
+                <tr><th>Measurement</th><th>Pattern</th><th>Target</th><th>Total Diff</th><th>Per Side</th><th>Action</th></tr>
+              </thead>
+              <tbody id="grade-tbody"></tbody>
+            </table>
+          </div>
+          <div id="grade-notes" style="margin-top:1rem;"></div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching. For best fit, make a muslin toile before cutting your final fabric.</p>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">Standard Size Chart Reference</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hip</th></tr></thead>
+            <tbody>
+              <tr><td>XS (2–4)</td><td>31–32"</td><td>23–24"</td><td>33–34"</td></tr>
+              <tr><td>S (6–8)</td><td>33–34"</td><td>25–26"</td><td>35–36"</td></tr>
+              <tr><td>M (10–12)</td><td>35–36"</td><td>27–28"</td><td>37–38"</td></tr>
+              <tr><td>L (14–16)</td><td>37–40"</td><td>29–32"</td><td>39–42"</td></tr>
+              <tr><td>XL (18–20)</td><td>41–44"</td><td>33–36"</td><td>43–46"</td></tr>
+              <tr><td>2XL (22–24)</td><td>45–48"</td><td>37–40"</td><td>47–50"</td></tr>
+              <tr><td>3XL (26–28)</td><td>49–52"</td><td>41–44"</td><td>51–54"</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use the Pattern Grading Calculator</h2>
+        <ul>
+          <li>Enter the measurements listed on the pattern envelope or instructions (the "pattern size") in the middle column.</li>
+          <li>Enter your own body measurements in the right column.</li>
+          <li>Shoulder width and back length are optional but help with more accurate grading.</li>
+          <li>Click <strong>Calculate Grading</strong> to see the difference at each point and how much to add or remove.</li>
+        </ul>
+        <h2>Understanding the Results</h2>
+        <ul>
+          <li><strong>Total Diff</strong> — How many inches larger (+) or smaller (−) your measurement is compared to the pattern.</li>
+          <li><strong>Per Side</strong> — For circumference measurements (bust/waist/hip), the adjustment is spread across the sides of the pattern. Divide by 4 for a standard front-and-back 2-piece pattern (each seam gets ¼ of the adjustment).</li>
+          <li>For length measurements (back length), the total difference is added or removed at a single point.</li>
+        </ul>
+        <h2>Important Limitations</h2>
+        <ul>
+          <li>This calculator gives a simple linear estimate. True pattern grading curves seam lines and shifts design elements proportionally.</li>
+          <li>Always make a test garment (muslin or toile) before cutting expensive fabric.</li>
+          <li>For differences larger than 2 sizes (4"), consider buying the nearest size and doing a full adjustment rather than grading.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Pattern Size Grading Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Pattern Size Grading Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('pattern-size-grading-calculator.html');injectFooter();});
+
+    const measurements = [
+      {id:'bust',     label:'Bust / Chest',   type:'circ'},
+      {id:'waist',    label:'Waist',           type:'circ'},
+      {id:'hip',      label:'Hip',             type:'circ'},
+      {id:'shoulder', label:'Shoulder Width',  type:'length'},
+      {id:'back',     label:'Back Length',     type:'length'},
+    ];
+
+    function calcGrading(){
+      const tbody = document.getElementById('grade-tbody');
+      tbody.innerHTML = '';
+      let hasData = false;
+      let notes = [];
+
+      measurements.forEach(m => {
+        const pat = parseFloat(document.getElementById(m.id + '-pat').value);
+        const you = parseFloat(document.getElementById(m.id + '-you').value);
+        if(isNaN(pat) || isNaN(you)) return;
+        hasData = true;
+        const diff = you - pat;
+        const perSide = m.type === 'circ' ? diff / 4 : diff;
+        const action  = diff === 0 ? 'No change needed' :
+                        (diff > 0 ? 'Add ' + Math.abs(diff).toFixed(3).replace(/\.?0+$/,'') + '"' :
+                                    'Remove ' + Math.abs(diff).toFixed(3).replace(/\.?0+$/,'') + '"');
+        const color   = diff === 0 ? '' : (diff > 0 ? 'color:var(--color-success,#22c55e)' : 'color:var(--color-danger,#ef4444)');
+        const perSideLabel = m.type === 'circ'
+          ? (perSide >= 0 ? '+' : '') + perSide.toFixed(3).replace(/\.?0+$/,'') + '" per seam (÷4)'
+          : (diff >= 0 ? '+' : '') + diff.toFixed(3).replace(/\.?0+$/,'') + '" total';
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${m.label}</td><td>${pat}"</td><td>${you}"</td>` +
+          `<td style="${color}">${diff >= 0 ? '+' : ''}${diff.toFixed(3).replace(/\.?0+$/,'')}"</td>` +
+          `<td style="${color}">${perSideLabel}</td>` +
+          `<td style="${color}">${action}</td>`;
+        tbody.appendChild(tr);
+
+        if(Math.abs(diff) > 4) notes.push(m.label + ' difference (' + Math.abs(diff).toFixed(1) + '") is large — consider buying a different pattern size.');
+      });
+
+      if(!hasData){alert('Please enter at least one set of measurements.');return;}
+
+      const notesEl = document.getElementById('grade-notes');
+      notesEl.innerHTML = notes.length ? '<div class="disclaimer"><strong>Notices:</strong><ul>' + notes.map(n=>'<li>'+n+'</li>').join('') + '</ul></div>' : '';
+
+      document.getElementById('grade-result').style.display = 'block';
+    }
+
+    function resetGrading(){
+      ['bust','waist','hip','shoulder','back'].forEach(m => {
+        document.getElementById(m+'-pat').value = '';
+        document.getElementById(m+'-you').value = '';
+      });
+      document.getElementById('grade-result').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

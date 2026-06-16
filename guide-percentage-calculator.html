@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Calculate Percentages: The Three Types That Actually Come Up | The Useful Pages</title>
+  <meta name="description" content="A plain-language guide to percentage calculations — finding a percent of a number, calculating percentage change, and working backward from a total.">
+  <link rel="canonical" href="https://theusefulpages.com/guide-percentage-calculator.html">
+  <meta property="og:title" content="How to Calculate Percentages: The Three Types That Actually Come Up">
+  <meta property="og:description" content="A plain-language guide to percentage calculations — finding a percent of a number, calculating percentage change, and working backward from a total.">
+  <meta property="og:type" content="article">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">How to Calculate Percentages: The Three Types That Actually Come Up</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Discounts, grade scores, tax rates, pay raises — almost every percentage problem in daily life falls into one of three patterns. Here is how each one works.</p>
+
+      <div class="instructions-card" style="line-height:1.75;">
+
+        <h2>Why percentages feel harder than they are</h2>
+        <p>Percentages show up constantly — on price tags, pay stubs, test scores, nutrition labels, interest rates, and performance reviews. But most people never learned the three distinct operations you actually need, so each situation feels like a fresh puzzle. Once you recognize which type of problem you have, the math becomes straightforward.</p>
+        <p>All three percentage operations are available in the free <a href="percentage-calculator.html">Percentage Calculator</a>, but understanding the logic helps you catch mistakes, estimate quickly in your head, and know which formula to reach for.</p>
+
+        <h2>Type 1: Finding a percentage of a number</h2>
+        <p>This is the most common type. You have a number and want to find a specific percentage of it. Examples: What is 20% of $45? What is 8.5% sales tax on a $120 purchase?</p>
+        <p>The formula is simple: multiply the number by the percentage expressed as a decimal.</p>
+        <p style="font-family:monospace;background:var(--bg-secondary);padding:0.75rem 1rem;border-radius:6px;border:1px solid var(--border);">Result = Number × (Percentage ÷ 100)</p>
+        <p>So 20% of $45 is $45 × 0.20 = $9.00. Sales tax of 8.5% on $120 is $120 × 0.085 = $10.20, making the total $130.20.</p>
+        <p>The mental shortcut: to find 10%, just move the decimal point one place left. To find 20%, double that. To find 5%, take half of the 10% figure. Most quick discount estimates only need these three moves.</p>
+
+        <h2>Type 2: Percentage change (increase or decrease)</h2>
+        <p>This is what you need when comparing two numbers over time: a price went up, a score improved, a company's revenue fell. The question is how much something changed, expressed as a percentage.</p>
+        <p style="font-family:monospace;background:var(--bg-secondary);padding:0.75rem 1rem;border-radius:6px;border:1px solid var(--border);">Percentage Change = ((New Value − Old Value) ÷ Old Value) × 100</p>
+        <p>If your rent increased from $1,200 to $1,350: (1350 − 1200) ÷ 1200 × 100 = 12.5% increase. If a product dropped from $80 to $60: (60 − 80) ÷ 80 × 100 = −25%, meaning a 25% decrease.</p>
+        <p>A common mistake is dividing by the new value instead of the old value. The old value is always the denominator because you are measuring how much the starting point changed.</p>
+
+        <h2>Type 3: What percent is one number of another</h2>
+        <p>This is useful for scoring, market share, completion rates, and any situation where you need to express a part-to-whole relationship. Examples: You answered 43 out of 50 questions correctly — what is your score? Your team closed 17 of 25 leads — what is the conversion rate?</p>
+        <p style="font-family:monospace;background:var(--bg-secondary);padding:0.75rem 1rem;border-radius:6px;border:1px solid var(--border);">Percentage = (Part ÷ Whole) × 100</p>
+        <p>43 out of 50 is (43 ÷ 50) × 100 = 86%. 17 out of 25 is (17 ÷ 25) × 100 = 68%.</p>
+
+        <h2>Reverse percentages: working backward from a result</h2>
+        <p>Sometimes you already have the result after a percentage was applied, and you need the original number. For example: a sale price is $68 after a 20% discount — what was the original price? Or: after tax, a bill is $54.08 — what was the pre-tax amount?</p>
+        <p style="font-family:monospace;background:var(--bg-secondary);padding:0.75rem 1rem;border-radius:6px;border:1px solid var(--border);">Original = Result ÷ (1 − Discount%) &nbsp;&nbsp;or&nbsp;&nbsp; Result ÷ (1 + Tax%)</p>
+        <p>The $68 sale price came from a 20% discount: $68 ÷ 0.80 = $85 original price. The $54.08 bill at 8% tax: $54.08 ÷ 1.08 = $50 pre-tax. This is the reverse percentage operation many people struggle with — the <a href="percentage-calculator.html">Percentage Calculator</a> handles it directly with a dedicated field.</p>
+
+        <h2>Quick reference: percentage formulas</h2>
+        <ul>
+          <li><strong>X% of Y:</strong> Y × (X ÷ 100)</li>
+          <li><strong>Percentage change:</strong> ((New − Old) ÷ Old) × 100</li>
+          <li><strong>Part as % of whole:</strong> (Part ÷ Whole) × 100</li>
+          <li><strong>Original before % increase:</strong> Final ÷ (1 + Rate)</li>
+          <li><strong>Original before % decrease:</strong> Final ÷ (1 − Rate)</li>
+        </ul>
+
+        <h2>Use the calculator for anything else</h2>
+        <p>The free <a href="percentage-calculator.html">Percentage Calculator</a> covers all of these cases in one place. Enter what you know and it calculates what you need — no formula memorization required. For tip and bill splitting, the <a href="tip-calculator.html">Tip Calculator</a> handles restaurant math specifically. For sales tax, the <a href="sales-tax-calculator.html">Sales Tax Calculator</a> works forward and in reverse.</p>
+
+      </div>
+    </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>injectNav('guide-percentage-calculator.html'); injectFooter();</script>
+</body>
+</html>

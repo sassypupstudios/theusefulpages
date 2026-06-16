@@ -1,0 +1,447 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientific Calculator - Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Free online scientific calculator with trig functions, logarithms, powers, roots, constants π and e, degree/radian toggle, and full keyboard support.">
+  <link rel="canonical" href="https://theusefulpages.com/scientific-calculator.html">
+  <meta property="og:title" content="Scientific Calculator - The Useful Pages">
+  <meta property="og:description" content="Free online scientific calculator with trig functions, logarithms, powers, roots, constants and keyboard support.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Scientific Calculator","url":"https://theusefulpages.com/scientific-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .calc-wrap { max-width: 420px; margin: 0 auto; }
+    .calc-display { background: #0f172a; color: #f8fafc; border-radius: 0.75rem; padding: 1rem 1.25rem; margin-bottom: 0.75rem; min-height: 90px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end; }
+    .calc-expr { font-size: 0.85rem; color: #94a3b8; min-height: 1.2rem; word-break: break-all; text-align: right; }
+    .calc-value { font-size: 2rem; font-weight: 700; word-break: break-all; text-align: right; line-height: 1.2; }
+    .calc-grid { display: grid; gap: 0.4rem; }
+    .calc-grid-sci { grid-template-columns: repeat(5, 1fr); }
+    .calc-grid-main { grid-template-columns: repeat(4, 1fr); margin-top: 0.4rem; }
+    .cb { border: none; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 600; cursor: pointer; min-height: 44px; padding: 0.4rem 0.2rem; transition: filter 0.1s, transform 0.08s; user-select: none; }
+    .cb:active { filter: brightness(0.85); transform: scale(0.96); }
+    .cb-num { background: #1e293b; color: #f1f5f9; font-size: 1.1rem; }
+    .cb-op  { background: #236A77; color: #fff; }
+    .cb-fn  { background: #334155; color: #cbd5e1; font-size: 0.78rem; }
+    .cb-eq  { background: #D6AA76; color: #1e293b; font-size: 1.2rem; }
+    .cb-clr { background: #dc2626; color: #fff; }
+    .cb-ac  { background: #7f1d1d; color: #fff; }
+    .cb-mode { background: #0f766e; color: #fff; border-radius: 2rem; padding: 0.3rem 0.75rem; font-size: 0.8rem; cursor: pointer; border: none; font-weight: 700; }
+    .cb-mode.rad { background: #7c3aed; }
+    .calc-status { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.8rem; color: var(--text-muted); }
+    .calc-history { font-size: 0.78rem; color: #64748b; margin-top: 0.5rem; max-height: 80px; overflow-y: auto; text-align: right; }
+    .err-flash { color: #ef4444 !important; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Scientific Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Full scientific calculator with trig, logarithms, powers, and keyboard support.</p>
+
+      <div class="tool-card">
+        <div class="calc-wrap">
+          <div class="calc-status">
+            <span id="angle-label" style="font-weight:600;color:var(--primary);">DEG mode</span>
+            <button class="cb-mode" id="mode-btn" onclick="toggleMode()">DEG</button>
+          </div>
+
+          <div class="calc-display">
+            <div class="calc-expr" id="calc-expr"></div>
+            <div class="calc-value" id="calc-value">0</div>
+          </div>
+
+          <!-- Scientific function row -->
+          <div class="calc-grid calc-grid-sci">
+            <button class="cb cb-fn" onclick="press('sin(')">sin</button>
+            <button class="cb cb-fn" onclick="press('cos(')">cos</button>
+            <button class="cb cb-fn" onclick="press('tan(')">tan</button>
+            <button class="cb cb-fn" onclick="press('asin(')">sin⁻¹</button>
+            <button class="cb cb-fn" onclick="press('acos(')">cos⁻¹</button>
+
+            <button class="cb cb-fn" onclick="press('atan(')">tan⁻¹</button>
+            <button class="cb cb-fn" onclick="press('log(')">log</button>
+            <button class="cb cb-fn" onclick="press('ln(')">ln</button>
+            <button class="cb cb-fn" onclick="press('10^(')">10ˣ</button>
+            <button class="cb cb-fn" onclick="press('e^(')">eˣ</button>
+
+            <button class="cb cb-fn" onclick="press('^2')">x²</button>
+            <button class="cb cb-fn" onclick="press('^3')">x³</button>
+            <button class="cb cb-fn" onclick="press('^(')">xʸ</button>
+            <button class="cb cb-fn" onclick="press('sqrt(')">√x</button>
+            <button class="cb cb-fn" onclick="press('cbrt(')">∛x</button>
+
+            <button class="cb cb-fn" onclick="pressConst('π')">π</button>
+            <button class="cb cb-fn" onclick="pressConst('e')">e</button>
+            <button class="cb cb-fn" onclick="press('(')">( </button>
+            <button class="cb cb-fn" onclick="press(')')"> )</button>
+            <button class="cb cb-fn" onclick="pressAns()">ANS</button>
+          </div>
+
+          <!-- Main keypad -->
+          <div class="calc-grid calc-grid-main">
+            <button class="cb cb-ac" onclick="allClear()">AC</button>
+            <button class="cb cb-clr" onclick="backspace()">⌫</button>
+            <button class="cb cb-op" onclick="press('%')">%</button>
+            <button class="cb cb-op" onclick="press('/')">÷</button>
+
+            <button class="cb cb-num" onclick="press('7')">7</button>
+            <button class="cb cb-num" onclick="press('8')">8</button>
+            <button class="cb cb-num" onclick="press('9')">9</button>
+            <button class="cb cb-op" onclick="press('*')">×</button>
+
+            <button class="cb cb-num" onclick="press('4')">4</button>
+            <button class="cb cb-num" onclick="press('5')">5</button>
+            <button class="cb cb-num" onclick="press('6')">6</button>
+            <button class="cb cb-op" onclick="press('-')">−</button>
+
+            <button class="cb cb-num" onclick="press('1')">1</button>
+            <button class="cb cb-num" onclick="press('2')">2</button>
+            <button class="cb cb-num" onclick="press('3')">3</button>
+            <button class="cb cb-op" onclick="press('+')">+</button>
+
+            <button class="cb cb-num" onclick="toggleSign()" style="font-size:1rem;">±</button>
+            <button class="cb cb-num" onclick="press('0')">0</button>
+            <button class="cb cb-num" onclick="press('.')">.</button>
+            <button class="cb cb-eq" onclick="calculate()">=</button>
+          </div>
+
+          <div class="calc-history" id="calc-history"></div>
+        </div>
+      </div>
+
+
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Click buttons or use your keyboard — numbers, operators (+, -, *, /), Enter for equals, and Escape to clear.</li>
+          <li>Toggle <strong>DEG / RAD</strong> to switch between degree and radian mode for trig functions.</li>
+          <li>Use <strong>ANS</strong> to insert the previous result into the current expression.</li>
+          <li>Scientific functions like sin, cos, log, and √ require a closing parenthesis — e.g. sin(30).</li>
+          <li><strong>xʸ</strong> raises the current number to a power — e.g. 2^(10) = 1024.</li>
+          <li><strong>AC</strong> clears everything; <strong>⌫</strong> deletes the last character.</li>
+          <li>Calculation history is shown below the display.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="percentage-calculator.html">Percentage Calculator</a>
+          <a href="age-calculator.html">Age Calculator</a>
+          <a href="random-number.html">Random Number Generator</a>
+          <a href="fraction-calculator.html">Fraction Calculator</a>
+          <a href="square-root.html">Square Root Calculator</a>
+          <a href="quadratic-solver.html">Quadratic Solver</a>
+          <a href="standard-deviation.html">Standard Deviation</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Scientific Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free scientific calculator for advanced math functions including powers, roots, trigonometry, logarithms, and common calculator operations. It is built for quick browser-based math work. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('scientific-calculator.html');
+    injectFooter();
+    document.addEventListener('keydown', handleKey);
+  });
+
+  let expr = '';
+  let lastAnswer = 0;
+  let isDeg = true;
+  let history = [];
+
+  function updateDisplay() {
+    document.getElementById('calc-expr').textContent = expr;
+    document.getElementById('calc-value').textContent = expr || '0';
+    document.getElementById('calc-value').classList.remove('err-flash');
+  }
+
+  function press(val) {
+    // If last result shown and user presses a number, start fresh
+    if (expr === String(lastAnswer) && /^\d/.test(val)) {
+      expr = val;
+    } else {
+      expr += val;
+    }
+    updateDisplay();
+  }
+
+  function pressConst(c) {
+    const val = c === 'π' ? String(Math.PI) : String(Math.E);
+    expr += val;
+    updateDisplay();
+  }
+
+  function pressAns() {
+    expr += String(lastAnswer);
+    updateDisplay();
+  }
+
+  function allClear() {
+    expr = '';
+    updateDisplay();
+    document.getElementById('calc-value').textContent = '0';
+  }
+
+  function backspace() {
+    expr = expr.slice(0, -1);
+    updateDisplay();
+    if (!expr) document.getElementById('calc-value').textContent = '0';
+  }
+
+  function toggleSign() {
+    if (!expr) return;
+    if (expr.startsWith('-')) {
+      expr = expr.slice(1);
+    } else {
+      expr = '-' + expr;
+    }
+    updateDisplay();
+  }
+
+  function toggleMode() {
+    isDeg = !isDeg;
+    const btn = document.getElementById('mode-btn');
+    btn.textContent = isDeg ? 'DEG' : 'RAD';
+    btn.classList.toggle('rad', !isDeg);
+    document.getElementById('angle-label').textContent = isDeg ? 'DEG mode' : 'RAD mode';
+  }
+
+  function toRad(x) { return isDeg ? x * Math.PI / 180 : x; }
+  function fromRad(x) { return isDeg ? x * 180 / Math.PI : x; }
+
+  function calculate() {
+    if (!expr.trim()) return;
+    try {
+      let e = expr;
+
+      // Replace display operators
+      e = e.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
+
+      // Handle trig functions with degree/radian conversion
+      e = e.replace(/\bsin\(([^)]+)\)/g, (_, a) => Math.sin(toRad(eval(a))));
+      e = e.replace(/\bcos\(([^)]+)\)/g, (_, a) => Math.cos(toRad(eval(a))));
+      e = e.replace(/\btan\(([^)]+)\)/g, (_, a) => Math.tan(toRad(eval(a))));
+      e = e.replace(/\basin\(([^)]+)\)/g, (_, a) => fromRad(Math.asin(eval(a))));
+      e = e.replace(/\bacos\(([^)]+)\)/g, (_, a) => fromRad(Math.acos(eval(a))));
+      e = e.replace(/\batan\(([^)]+)\)/g, (_, a) => fromRad(Math.atan(eval(a))));
+
+      // Other math functions
+      e = e.replace(/\blog\(([^)]+)\)/g, (_, a) => Math.log10(eval(a)));
+      e = e.replace(/\bln\(([^)]+)\)/g, (_, a) => Math.log(eval(a)));
+      e = e.replace(/10\^\(([^)]+)\)/g, (_, a) => Math.pow(10, eval(a)));
+      e = e.replace(/e\^\(([^)]+)\)/g, (_, a) => Math.exp(eval(a)));
+      e = e.replace(/\bsqrt\(([^)]+)\)/g, (_, a) => Math.sqrt(eval(a)));
+      e = e.replace(/\bcbrt\(([^)]+)\)/g, (_, a) => Math.cbrt(eval(a)));
+
+      // Powers
+      e = e.replace(/\^/g, '**');
+
+      // Percentage: number% → number/100
+      e = e.replace(/(\d+(?:\.\d+)?)\s*%/g, (_, n) => '(' + n + '/100)');
+
+      const result = Function('"use strict"; return (' + e + ')')();
+
+      if (!isFinite(result)) throw new Error('Result is not finite');
+      if (isNaN(result)) throw new Error('Result is NaN');
+
+      const displayResult = parseFloat(result.toFixed(10)).toString();
+      const histEntry = expr + ' = ' + displayResult;
+
+      history.unshift(histEntry);
+      if (history.length > 8) history.pop();
+      document.getElementById('calc-history').innerHTML = history.map(h => '<div>' + h + '</div>').join('');
+
+      lastAnswer = result;
+      expr = displayResult;
+      document.getElementById('calc-expr').textContent = histEntry;
+      document.getElementById('calc-value').textContent = displayResult;
+      document.getElementById('calc-value').classList.remove('err-flash');
+    } catch (err) {
+      document.getElementById('calc-value').textContent = 'Error';
+      document.getElementById('calc-value').classList.add('err-flash');
+      expr = '';
+    }
+  }
+
+  function handleKey(e) {
+    const key = e.key;
+    if (key >= '0' && key <= '9') press(key);
+    else if (key === '+') press('+');
+    else if (key === '-') press('-');
+    else if (key === '*') press('*');
+    else if (key === '/') { e.preventDefault(); press('/'); }
+    else if (key === '.') press('.');
+    else if (key === '(') press('(');
+    else if (key === ')') press(')');
+    else if (key === '%') press('%');
+    else if (key === '^') press('^(');
+    else if (key === 'Enter' || key === '=') { e.preventDefault(); calculate(); }
+    else if (key === 'Escape') allClear();
+    else if (key === 'Backspace') backspace();
+  }
+  </script>
+</body>
+</html>

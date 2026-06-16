@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Calculator - Add or Subtract Days, Weeks, Months | The Useful Pages</title>
+  <meta name="description" content="Add or subtract years, months, weeks, and days from any date. Calculate business days with US holiday support. Free online date calculator tool.">
+  <link rel="canonical" href="https://theusefulpages.com/date-calculator.html">
+  <meta property="og:title" content="Date Calculator - The Useful Pages">
+  <meta property="og:description" content="Add or subtract years, months, weeks, and days from any date. Business days calculator included.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Date Calculator","url":"https://theusefulpages.com/date-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Date Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Add or subtract time from a date, or calculate business days between dates.</p>
+      <div class="tool-card">
+        <div class="tab-group" style="margin-bottom:1.5rem;">
+          <button class="tab-btn active" onclick="switchTab('addsub')" id="tab-addsub">Add / Subtract</button>
+          <button class="tab-btn" onclick="switchTab('bizdays')" id="tab-bizdays">Business Days</button>
+        </div>
+
+        <!-- Add/Subtract Tab -->
+        <div id="pane-addsub">
+          <div class="form-group">
+            <label class="form-label">Start Date</label>
+            <div style="display:flex;gap:0.5rem;">
+              <input type="date" id="as-date" class="form-input" style="flex:1;">
+              <button class="btn btn-outline btn-sm" onclick="document.getElementById('as-date').value=new Date().toISOString().split('T')[0]">Today</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Operation</label>
+            <div style="display:flex;gap:0.5rem;">
+              <button class="btn btn-primary" id="op-add" onclick="setOp('add')" style="flex:1;">+ Add</button>
+              <button class="btn btn-outline" id="op-sub" onclick="setOp('sub')" style="flex:1;">− Subtract</button>
+            </div>
+          </div>
+          <div class="form-row" style="grid-template-columns:repeat(4,1fr);">
+            <div class="form-group">
+              <label class="form-label">Years</label>
+              <input type="number" id="as-years" class="form-input" value="0" min="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Months</label>
+              <input type="number" id="as-months" class="form-input" value="0" min="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Weeks</label>
+              <input type="number" id="as-weeks" class="form-input" value="0" min="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Days</label>
+              <input type="number" id="as-days" class="form-input" value="30" min="0">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="calcAddSub()">Calculate Date</button>
+          <div id="as-result" class="hidden" style="margin-top:1rem;">
+            <div class="result-card">
+              <div class="result-row">
+                <span class="result-label">Result Date</span>
+                <span id="as-result-date" style="font-size:1.25rem;font-weight:700;color:var(--primary);">-</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Day of Week</span>
+                <span id="as-result-dow" style="font-weight:600;">-</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Days from Today</span>
+                <span id="as-result-diff" style="font-weight:500;">-</span>
+              </div>
+            </div>
+            <button class="btn btn-accent btn-block" style="margin-top:0.75rem;" onclick="copyText(document.getElementById('as-result-date').textContent,'Date copied!')">Copy Date</button>
+          </div>
+        </div>
+
+        <!-- Business Days Tab -->
+        <div id="pane-bizdays" class="hidden">
+          <div class="form-group">
+            <label class="form-label">Start Date</label>
+            <div style="display:flex;gap:0.5rem;">
+              <input type="date" id="biz-date" class="form-input" style="flex:1;">
+              <button class="btn btn-outline btn-sm" onclick="document.getElementById('biz-date').value=new Date().toISOString().split('T')[0]">Today</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Operation</label>
+            <div style="display:flex;gap:0.5rem;">
+              <button class="btn btn-primary" id="biz-op-add" onclick="setBizOp('add')" style="flex:1;">+ Add</button>
+              <button class="btn btn-outline" id="biz-op-sub" onclick="setBizOp('sub')" style="flex:1;">− Subtract</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Number of Business Days</label>
+            <input type="number" id="biz-days" class="form-input" value="10" min="0">
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+              <input type="checkbox" id="biz-holidays" checked style="width:18px;height:18px;accent-color:var(--primary);">
+              Exclude US Federal Holidays
+            </label>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="calcBizDays()">Calculate Business Date</button>
+          <div id="biz-result" class="hidden" style="margin-top:1rem;">
+            <div class="result-card">
+              <div class="result-row">
+                <span class="result-label">Result Date</span>
+                <span id="biz-result-date" style="font-size:1.25rem;font-weight:700;color:var(--primary);">-</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Day of Week</span>
+                <span id="biz-result-dow" style="font-weight:600;">-</span>
+              </div>
+              <div class="result-row">
+                <span class="result-label">Holidays Skipped</span>
+                <span id="biz-holidays-skipped" style="font-weight:500;">-</span>
+              </div>
+            </div>
+            <button class="btn btn-accent btn-block" style="margin-top:0.75rem;" onclick="copyText(document.getElementById('biz-result-date').textContent,'Date copied!')">Copy Date</button>
+          </div>
+        </div>
+      </div>
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Choose <strong>Add / Subtract</strong> to find a date a specific number of years, months, weeks, or days from a starting date.</li>
+          <li>Choose <strong>Business Days</strong> to add or subtract working days (Mon–Fri), with optional US federal holiday exclusion.</li>
+          <li>Select + Add or − Subtract to control the direction of calculation.</li>
+          <li>Click <strong>Calculate Date</strong> to see the resulting date and day of the week.</li>
+          <li>Use the <strong>Today</strong> button to quickly set the start date to today.</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="days-between-dates.html">Days Between Dates</a>
+          <a href="days-until.html">Days Until Calculator</a>
+          <a href="unix-timestamp.html">Unix Timestamp Converter</a>
+          <a href="timezone-converter.html">Time Zone Converter</a>
+          <a href="countdown-timer.html">Countdown Timer</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Date Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free date calculator to add or subtract days, weeks, months, or years from a starting date. It is useful for planning deadlines, renewals, appointments, and project milestones. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let currentOp = 'add';
+    let bizOp = 'add';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('date-calculator.html');
+      injectFooter();
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('as-date').value = today;
+      document.getElementById('biz-date').value = today;
+    });
+
+    function switchTab(tab) {
+      document.getElementById('pane-addsub').classList.toggle('hidden', tab !== 'addsub');
+      document.getElementById('pane-bizdays').classList.toggle('hidden', tab !== 'bizdays');
+      document.getElementById('tab-addsub').classList.toggle('active', tab === 'addsub');
+      document.getElementById('tab-bizdays').classList.toggle('active', tab === 'bizdays');
+    }
+
+    function setOp(op) {
+      currentOp = op;
+      document.getElementById('op-add').className = op === 'add' ? 'btn btn-primary' : 'btn btn-outline';
+      document.getElementById('op-sub').className = op === 'sub' ? 'btn btn-primary' : 'btn btn-outline';
+    }
+
+    function setBizOp(op) {
+      bizOp = op;
+      document.getElementById('biz-op-add').className = op === 'add' ? 'btn btn-primary' : 'btn btn-outline';
+      document.getElementById('biz-op-sub').className = op === 'sub' ? 'btn btn-primary' : 'btn btn-outline';
+    }
+
+    function calcAddSub() {
+      const sv = document.getElementById('as-date').value;
+      if (!sv) { showToast('Please select a start date.'); return; }
+      const years = parseInt(document.getElementById('as-years').value) || 0;
+      const months = parseInt(document.getElementById('as-months').value) || 0;
+      const weeks = parseInt(document.getElementById('as-weeks').value) || 0;
+      const days = parseInt(document.getElementById('as-days').value) || 0;
+      const sign = currentOp === 'add' ? 1 : -1;
+
+      const d = new Date(sv + 'T00:00:00');
+      d.setFullYear(d.getFullYear() + sign * years);
+      d.setMonth(d.getMonth() + sign * months);
+      d.setDate(d.getDate() + sign * (weeks * 7 + days));
+
+      const opts = { year: 'numeric', month: 'long', day: 'numeric' };
+      const dowOpts = { weekday: 'long' };
+      document.getElementById('as-result-date').textContent = d.toLocaleDateString(undefined, opts);
+      document.getElementById('as-result-dow').textContent = d.toLocaleDateString(undefined, dowOpts);
+
+      const today = new Date(); today.setHours(0,0,0,0);
+      const diffMs = d - today;
+      const diffDays = Math.round(diffMs / (1000*60*60*24));
+      if (diffDays === 0) document.getElementById('as-result-diff').textContent = 'Today';
+      else if (diffDays > 0) document.getElementById('as-result-diff').textContent = diffDays + ' days from now';
+      else document.getElementById('as-result-diff').textContent = Math.abs(diffDays) + ' days ago';
+
+      document.getElementById('as-result').classList.remove('hidden');
+    }
+
+    function getUSHolidays(year) {
+      // Fixed US Federal Holidays
+      const fixed = [
+        `${year}-01-01`, // New Year's Day
+        `${year}-06-19`, // Juneteenth
+        `${year}-07-04`, // Independence Day
+        `${year}-11-11`, // Veterans Day
+        `${year}-12-25`, // Christmas
+      ];
+      // MLK Day: 3rd Monday in January
+      fixed.push(nthWeekday(year, 1, 1, 3));
+      // Presidents Day: 3rd Monday in February
+      fixed.push(nthWeekday(year, 2, 1, 3));
+      // Memorial Day: last Monday in May
+      fixed.push(lastWeekday(year, 5, 1));
+      // Labor Day: 1st Monday in September
+      fixed.push(nthWeekday(year, 9, 1, 1));
+      // Columbus Day: 2nd Monday in October
+      fixed.push(nthWeekday(year, 10, 1, 2));
+      // Thanksgiving: 4th Thursday in November
+      fixed.push(nthWeekday(year, 11, 4, 4));
+      return new Set(fixed);
+    }
+
+    function nthWeekday(year, month, dow, n) {
+      // dow: 0=Sun,1=Mon...6=Sat; n: 1-based
+      const d = new Date(year, month - 1, 1);
+      let count = 0;
+      while (true) {
+        if (d.getDay() === dow) { count++; if (count === n) break; }
+        d.setDate(d.getDate() + 1);
+      }
+      return d.toISOString().split('T')[0];
+    }
+
+    function lastWeekday(year, month, dow) {
+      const d = new Date(year, month, 0); // last day of month
+      while (d.getDay() !== dow) d.setDate(d.getDate() - 1);
+      return d.toISOString().split('T')[0];
+    }
+
+    function calcBizDays() {
+      const sv = document.getElementById('biz-date').value;
+      if (!sv) { showToast('Please select a start date.'); return; }
+      const n = parseInt(document.getElementById('biz-days').value) || 0;
+      const useHolidays = document.getElementById('biz-holidays').checked;
+      const sign = bizOp === 'add' ? 1 : -1;
+
+      const d = new Date(sv + 'T00:00:00');
+      let remaining = n;
+      let holidaysSkipped = 0;
+      const yearsChecked = new Set();
+      let holidays = new Set();
+
+      while (remaining > 0) {
+        d.setDate(d.getDate() + sign);
+        const yr = d.getFullYear();
+        if (!yearsChecked.has(yr)) { yearsChecked.add(yr); const h = getUSHolidays(yr); h.forEach(x => holidays.add(x)); }
+        const dow = d.getDay();
+        if (dow === 0 || dow === 6) continue; // weekend
+        const ds = d.toISOString().split('T')[0];
+        if (useHolidays && holidays.has(ds)) { holidaysSkipped++; continue; }
+        remaining--;
+      }
+
+      const opts = { year: 'numeric', month: 'long', day: 'numeric' };
+      const dowOpts = { weekday: 'long' };
+      document.getElementById('biz-result-date').textContent = d.toLocaleDateString(undefined, opts);
+      document.getElementById('biz-result-dow').textContent = d.toLocaleDateString(undefined, dowOpts);
+      document.getElementById('biz-holidays-skipped').textContent = useHolidays ? holidaysSkipped + ' holiday(s)' : 'Not excluded';
+      document.getElementById('biz-result').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

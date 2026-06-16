@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stash Yardage Calculator — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Track your yarn stash — add, edit, search, and see total yardage by weight. Saved in your browser.">
+  <link rel="canonical" href="https://theusefulpages.com/stash-yardage-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .stash-form { display:grid; grid-template-columns:2fr 1fr 1fr 1fr auto; gap:8px; align-items:end; margin-bottom:14px; }
+    .stash-table { width:100%; border-collapse:collapse; font-size:0.88rem; }
+    .stash-table th { background:var(--table-th-bg); padding:8px 10px; text-align:left; }
+    .stash-table td { padding:7px 10px; border-bottom:1px solid var(--border); }
+    .stash-table tr:last-child td { border:none; }
+    .weight-badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:0.75rem; font-weight:600; background:var(--primary); color:#fff; }
+    .summary-grid { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:16px; }
+    .summary-chip { background:var(--bg-secondary); border:1px solid var(--border); border-radius:8px; padding:8px 14px; font-size:0.85rem; }
+    .summary-chip strong { color:var(--primary); }
+    .toolbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:12px; }
+    .btn-sm { padding:5px 12px; font-size:0.82rem; border-radius:6px; border:none; cursor:pointer; background:var(--primary); color:#fff; }
+    .btn-danger { background:#ef4444; }
+    .btn-neutral { background:var(--bg-secondary); color:var(--text); border:1px solid var(--border); }
+    .search-bar { flex:1; min-width:150px; }
+    @media(max-width:620px){ .stash-form{grid-template-columns:1fr 1fr; } .stash-form .full-col{grid-column:1/3;} }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Stash Yardage Calculator</h1>
+      <p class="page-subtitle">Track your yarn stash — add entries, search by name, filter by weight, and see totals.</p>
+
+      <div class="tool-card">
+        <h2 style="font-size:1rem;margin-bottom:10px;">Add Yarn to Stash</h2>
+        <div class="stash-form">
+          <div class="full-col"><label class="label">Yarn Name / Brand</label><input type="text" id="add-name" class="form-input" placeholder="e.g. Malabrigo Rios - Whale Blue"></div>
+          <div><label class="label">Weight</label>
+            <select id="add-weight" class="form-select">
+              <option value="Lace">Lace</option>
+              <option value="Fingering">Fingering</option>
+              <option value="Sport">Sport</option>
+              <option value="DK">DK</option>
+              <option value="Worsted" selected>Worsted</option>
+              <option value="Bulky">Bulky</option>
+              <option value="Super Bulky">Super Bulky</option>
+            </select>
+          </div>
+          <div><label class="label">Yardage</label><input type="number" id="add-yards" class="form-input" placeholder="e.g. 440" min="0"></div>
+          <div><label class="label">Color Notes</label><input type="text" id="add-color" class="form-input" placeholder="e.g. teal"></div>
+          <div style="padding-top:20px;"><button class="btn-primary" onclick="addEntry()">Add</button></div>
+        </div>
+        <div id="add-error" style="color:#ef4444;font-size:0.85rem;display:none;margin-bottom:8px;"></div>
+
+        <hr style="margin:16px 0;border-color:var(--border);">
+
+        <div id="summary-section">
+          <h2 style="font-size:1rem;margin-bottom:8px;">Stash Summary</h2>
+          <div class="summary-grid" id="summary-grid"></div>
+        </div>
+
+        <div class="toolbar">
+          <input type="text" id="search-input" class="form-input search-bar" placeholder="Search by name or color..." oninput="renderTable()">
+          <select id="filter-weight" class="form-select" style="width:auto;" onchange="renderTable()">
+            <option value="">All weights</option>
+            <option value="Lace">Lace</option>
+            <option value="Fingering">Fingering</option>
+            <option value="Sport">Sport</option>
+            <option value="DK">DK</option>
+            <option value="Worsted">Worsted</option>
+            <option value="Bulky">Bulky</option>
+            <option value="Super Bulky">Super Bulky</option>
+          </select>
+          <button class="btn-sm btn-neutral" onclick="exportStash()">Export Text</button>
+          <button class="btn-sm btn-danger" onclick="clearStash()">Clear All</button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="stash-table">
+            <thead><tr><th>Name</th><th>Weight</th><th>Yards</th><th>Color</th><th></th></tr></thead>
+            <tbody id="stash-tbody"></tbody>
+          </table>
+        </div>
+        <div id="empty-msg" style="text-align:center;padding:24px;color:var(--text-muted);display:none;">No entries yet. Add your first yarn above!</div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>About the Stash Tracker</h2>
+        <p>Keep a running inventory of your yarn stash right in your browser. All data is stored locally — no account needed.</p>
+        <ul>
+          <li>Add as many yarns as you like — name, weight, yardage, and color notes.</li>
+          <li>The summary shows total yardage broken down by weight category.</li>
+          <li>Use the search bar to find a specific yarn, or filter by weight to plan a project.</li>
+          <li>Export your stash as a text file for backup or sharing.</li>
+        </ul>
+        <p class="disclaimer">Data is stored in your browser's localStorage. Clearing browser data will erase your stash — use Export regularly.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Stash Yardage Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Stash Yardage Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const STORAGE_KEY='tup_stash';
+  let stash=[];
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    injectNav('stash-yardage-calculator.html');
+    injectFooter();
+    load();
+    renderTable();
+    renderSummary();
+  });
+
+  function load(){ try{ const s=localStorage.getItem(STORAGE_KEY); if(s) stash=JSON.parse(s); }catch(e){} }
+  function save(){ localStorage.setItem(STORAGE_KEY,JSON.stringify(stash)); }
+
+  function addEntry(){
+    const name=document.getElementById('add-name').value.trim();
+    const weight=document.getElementById('add-weight').value;
+    const yards=parseFloat(document.getElementById('add-yards').value);
+    const color=document.getElementById('add-color').value.trim();
+    const err=document.getElementById('add-error');
+    if(!name){ err.textContent='Please enter a yarn name.'; err.style.display=''; return; }
+    if(isNaN(yards)||yards<0){ err.textContent='Please enter a valid yardage.'; err.style.display=''; return; }
+    err.style.display='none';
+    stash.push({ id:Date.now(), name, weight, yards, color });
+    save();
+    document.getElementById('add-name').value='';
+    document.getElementById('add-yards').value='';
+    document.getElementById('add-color').value='';
+    renderTable();
+    renderSummary();
+  }
+
+  function removeEntry(id){
+    stash=stash.filter(e=>e.id!==id);
+    save(); renderTable(); renderSummary();
+  }
+
+  function renderTable(){
+    const search=(document.getElementById('search-input').value||'').toLowerCase();
+    const filterW=document.getElementById('filter-weight').value;
+    const tbody=document.getElementById('stash-tbody');
+    const empty=document.getElementById('empty-msg');
+    const filtered=stash.filter(e=>{
+      if(filterW && e.weight!==filterW) return false;
+      if(search && !e.name.toLowerCase().includes(search) && !e.color.toLowerCase().includes(search)) return false;
+      return true;
+    });
+    tbody.innerHTML='';
+    if(filtered.length===0){ empty.style.display=''; }
+    else {
+      empty.style.display='none';
+      filtered.forEach(e=>{
+        const tr=document.createElement('tr');
+        tr.innerHTML=`<td>${e.name}</td><td><span class="weight-badge">${e.weight}</span></td><td>${e.yards.toLocaleString()}</td><td>${e.color||'—'}</td><td><button class="btn-sm btn-danger" onclick="removeEntry(${e.id})">✕</button></td>`;
+        tbody.appendChild(tr);
+      });
+    }
+  }
+
+  function renderSummary(){
+    const grid=document.getElementById('summary-grid');
+    const WEIGHTS=['Lace','Fingering','Sport','DK','Worsted','Bulky','Super Bulky'];
+    const totals={};
+    stash.forEach(e=>{ totals[e.weight]=(totals[e.weight]||0)+e.yards; });
+    const grandTotal=stash.reduce((s,e)=>s+e.yards,0);
+    grid.innerHTML='';
+    const grand=document.createElement('div');
+    grand.className='summary-chip';
+    grand.innerHTML=`<strong>${grandTotal.toLocaleString()} yd</strong> total (${stash.length} skeins)`;
+    grid.appendChild(grand);
+    WEIGHTS.forEach(w=>{
+      if(totals[w]){
+        const chip=document.createElement('div'); chip.className='summary-chip';
+        chip.innerHTML=`${w}: <strong>${totals[w].toLocaleString()} yd</strong>`;
+        grid.appendChild(chip);
+      }
+    });
+  }
+
+  function exportStash(){
+    let out='YARN STASH EXPORT\n'+'='.repeat(30)+'\n\n';
+    const grandTotal=stash.reduce((s,e)=>s+e.yards,0);
+    out+=`Total: ${stash.length} skeins, ${grandTotal.toLocaleString()} yards\n\n`;
+    stash.forEach(e=>{ out+=`${e.name}  |  ${e.weight}  |  ${e.yards} yd  |  ${e.color||'no color note'}\n`; });
+    const blob=new Blob([out],{type:'text/plain'});
+    const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='yarn-stash.txt'; a.click();
+  }
+
+  function clearStash(){
+    if(!confirm('Clear all stash entries? This cannot be undone.')) return;
+    stash=[]; save(); renderTable(); renderSummary();
+  }
+  </script>
+</body>
+</html>

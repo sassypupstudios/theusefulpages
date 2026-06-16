@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Use | The Useful Pages</title>
+  <meta name="description" content="Terms of Use for The Useful Pages, including permitted use, disclaimers, limitations, advertising, and contact information.">
+  <link rel="canonical" href="https://theusefulpages.com/terms.html">
+  <meta property="og:title" content="Terms of Use | The Useful Pages">
+  <meta property="og:description" content="Terms of Use for The Useful Pages, including permitted use, disclaimers, limitations, advertising, and contact information.">
+  <meta property="og:type" content="website">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Terms of Use</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;"><strong>Effective Date:</strong> May 20, 2026</p>
+
+      <div class="instructions-card" style="line-height:1.75;">
+        <p>These Terms of Use govern your access to and use of The Useful Pages at <strong>https://theusefulpages.com</strong>. By using the website, you agree to these Terms.</p>
+
+        <h2>About The Useful Pages</h2>
+        <p>The Useful Pages provides free online tools, calculators, converters, generators, and utilities for general informational and convenience purposes.</p>
+
+        <h2>Use of the website</h2>
+        <p>You may use the website for lawful personal, educational, or business purposes. You agree not to misuse the website or attempt to interfere with its operation.</p>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Use the site for unlawful, harmful, abusive, or fraudulent purposes.</li>
+          <li>Attempt to break, overload, scrape aggressively, reverse engineer, or disrupt the website.</li>
+          <li>Use the tools to process information you do not have the right to use.</li>
+          <li>Upload or enter malicious code, harmful content, or illegal material.</li>
+          <li>Misrepresent results from the tools as professional advice.</li>
+        </ul>
+
+        <h2>No professional advice</h2>
+        <p>The tools and information on The Useful Pages are provided for general informational and convenience purposes only.</p>
+        <p>The website does not provide legal, financial, medical, tax, accounting, engineering, or other professional advice. You should verify results before relying on them and consult a qualified professional when needed.</p>
+        <p>Examples:</p>
+        <ul>
+          <li>Financial calculators provide estimates, not financial advice.</li>
+          <li>Health calculators provide general reference information, not medical advice.</li>
+          <li>Date, math, developer, and conversion tools may contain errors or limitations.</li>
+          <li>Generated text, names, codes, invoices, or calculations should be reviewed before use.</li>
+        </ul>
+
+        <h2>Accuracy of results</h2>
+        <p>We try to make the tools useful and accurate, but we do not guarantee that any result, calculation, conversion, generated text, or output will be complete, accurate, current, or suitable for your specific purpose.</p>
+        <p>You are responsible for checking important results before relying on them.</p>
+
+        <h2>Availability</h2>
+        <p>The Useful Pages may be updated, changed, interrupted, or discontinued at any time without notice. We do not guarantee that the website will always be available, error-free, or secure.</p>
+
+        <h2>Advertising and third-party services</h2>
+        <p>The website may display advertisements or use third-party services, such as analytics, hosting, security, or advertising tools. Third-party services may have their own terms and privacy policies.</p>
+        <p>We are not responsible for third-party websites, advertisements, products, services, claims, or content.</p>
+
+        <h2>Intellectual property</h2>
+        <p>The Useful Pages website design, branding, text, structure, and original content are owned by or licensed to Sassy Pup Studios LLC unless otherwise stated.</p>
+        <p>You may use the website and tool outputs for your own lawful purposes, but you may not copy, clone, resell, or redistribute the website itself as a competing service without permission.</p>
+
+        <h2>User-entered content</h2>
+        <p>You are responsible for any information you enter into the tools. Do not enter content that is unlawful, harmful, confidential, or that you do not have permission to use.</p>
+        <p>Most tools are intended to process information in your browser, but you should still avoid entering sensitive information unless you are comfortable doing so.</p>
+
+        <h2>Disclaimer of warranties</h2>
+        <p>The website is provided “as is” and “as available” without warranties of any kind, whether express or implied.</p>
+        <p>We disclaim all warranties, including warranties of accuracy, reliability, fitness for a particular purpose, merchantability, non-infringement, availability, and security.</p>
+
+        <h2>Limitation of liability</h2>
+        <p>To the fullest extent permitted by law, Sassy Pup Studios LLC and its owners, employees, contractors, affiliates, and partners will not be liable for any indirect, incidental, consequential, special, punitive, or exemplary damages arising from your use of or inability to use the website.</p>
+        <p>This includes, but is not limited to, loss of data, loss of profits, business interruption, inaccurate results, reliance on tool outputs, or issues caused by third-party services.</p>
+
+        <h2>Indemnification</h2>
+        <p>You agree to hold harmless Sassy Pup Studios LLC from claims, damages, losses, liabilities, and expenses arising from your misuse of the website, violation of these Terms, or violation of any law or third-party rights.</p>
+
+        <h2>Governing law</h2>
+        <p>These Terms are governed by the laws of the State of South Carolina, United States, without regard to conflict of law principles.</p>
+
+        <h2>Changes to these Terms</h2>
+        <p>We may update these Terms from time to time. If we make changes, we will update the effective date at the top of this page. Continued use of the website after changes means you accept the updated Terms.</p>
+
+        <h2>Contact</h2>
+        <p>For questions about these Terms, contact:</p>
+        <p><strong>Sassy Pup Studios LLC</strong><br>Email: <strong>info@sassypupstudios.com</strong></p>
+      </div>
+    </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>injectNav('terms.html'); injectFooter();</script>
+</body>
+</html>

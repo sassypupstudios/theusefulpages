@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttonhole Spacing Calculator — Knitting Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate perfectly spaced buttonhole positions for knitted button bands. Shows stitch positions and a visual text ruler.">
+  <link rel="canonical" href="https://theusefulpages.com/buttonhole-spacing-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Buttonhole Spacing Calculator</h1>
+      <p class="page-subtitle">Enter your band stitch count and number of buttonholes to get perfectly spaced positions with a visual layout.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Band stitch count (total)</label>
+            <input class="form-input" type="number" id="band-sts" min="10" max="500" placeholder="e.g. 120">
+          </div>
+          <div>
+            <label class="label">Number of buttonholes</label>
+            <input class="form-input" type="number" id="num-holes" min="1" max="20" placeholder="e.g. 5">
+          </div>
+          <div>
+            <label class="label">Buttonhole size (stitches)</label>
+            <select class="form-select" id="hole-size">
+              <option value="1">1 stitch (small button)</option>
+              <option value="2" selected>2 stitches (standard)</option>
+              <option value="3">3 stitches (large button)</option>
+              <option value="4">4 stitches (extra large)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Edge stitches each end</label>
+            <input class="form-input" type="number" id="edge-sts" min="0" max="10" value="2" placeholder="e.g. 2">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcButtonholes()">Calculate Spacing</button>
+
+        <div id="bh-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid" style="margin-bottom:1.5rem;">
+            <div class="stat-box">
+              <div class="stat-value" id="res-spacing"></div>
+              <div class="stat-label">Stitches between holes</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-first"></div>
+              <div class="stat-label">First hole starts at st</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-last"></div>
+              <div class="stat-label">Last hole starts at st</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-leftover"></div>
+              <div class="stat-label">Extra sts (distributed)</div>
+            </div>
+          </div>
+
+          <h3 style="margin-bottom:0.75rem;">Buttonhole Positions</h3>
+          <div id="bh-positions" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.9rem;line-height:1.8;white-space:pre-wrap;"></div>
+
+          <h3 style="margin:1.25rem 0 0.75rem;">Written Instructions</h3>
+          <div id="bh-instructions" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-size:0.9rem;line-height:1.7;white-space:pre-wrap;font-family:monospace;"></div>
+
+          <h3 style="margin:1.25rem 0 0.5rem;">Visual Ruler</h3>
+          <p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.5rem;">"|" = edge, "o" = buttonhole position, "-" = band stitch (scaled display)</p>
+          <div id="bh-ruler" style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;font-family:monospace;font-size:0.85rem;overflow-x:auto;white-space:pre;word-break:break-all;"></div>
+
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always swatch before starting a garment project.</p>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li><strong>Band stitch count:</strong> Total stitches in your button band, usually picked up along the front edge.</li>
+          <li><strong>Number of buttonholes:</strong> Count your buttons — each button needs one hole.</li>
+          <li><strong>Buttonhole size:</strong> For most adult garments, 2 stitches is standard (bind off 2, cast on 2 on next row).</li>
+          <li><strong>Edge stitches:</strong> Stitches at each end that are never used for a buttonhole (keeps edges neat).</li>
+        </ol>
+        <h3 style="margin-top:1rem;">Tips</h3>
+        <ul>
+          <li>The top and bottom buttonholes are typically 2–3 stitches in from each edge.</li>
+          <li>For a 1-row buttonhole: bind off the number of stitches, then on the next row cast on the same number over the gap.</li>
+          <li>Test your button through a sample buttonhole before committing to the full band.</li>
+          <li>If spacing comes out uneven, add extra stitches to the spaces closest to the center of the band.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Buttonhole Spacing Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Buttonhole Spacing Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded',()=>{injectNav('buttonhole-spacing-calculator.html');injectFooter();});
+
+  function calcButtonholes() {
+    const band = parseInt(document.getElementById('band-sts').value);
+    const holes = parseInt(document.getElementById('num-holes').value);
+    const holeSize = parseInt(document.getElementById('hole-size').value);
+    const edge = parseInt(document.getElementById('edge-sts').value) || 0;
+
+    if (!band || !holes) { alert('Please enter band stitch count and number of buttonholes.'); return; }
+
+    const usable = band - (edge * 2) - (holes * holeSize);
+    if (usable < 0) { alert('Not enough stitches for that many buttonholes with those edge stitches.'); return; }
+
+    // Gaps: between holes and from edge to first hole, last hole to edge
+    // Holes: 1 buttonhole has 2 gaps (edge left, gap, hole, gap, edge right)
+    // n holes -> n+1 gaps (including edge gaps on both sides, but edge sts are separate)
+    // gaps = holes + 1 (between + before + after, excluding edge sts)
+    const gaps = holes + 1;
+    const baseGap = Math.floor(usable / gaps);
+    const remainder = usable % gaps;
+
+    // First hole starts after: edge + first gap
+    // Distribute remainder to middle gaps first (gaps 2..n)
+    const gapSizes = Array(gaps).fill(baseGap);
+    for (let i = 1; i <= remainder; i++) {
+      gapSizes[i % gaps]++;
+    }
+
+    // Compute start positions
+    let positions = [];
+    let pos = edge + gapSizes[0] + 1; // 1-indexed
+    positions.push(pos);
+    for (let i = 1; i < holes; i++) {
+      pos += holeSize + gapSizes[i];
+      positions.push(pos);
+    }
+
+    document.getElementById('res-spacing').textContent = baseGap + (remainder > 0 ? `–${baseGap+1}` : '');
+    document.getElementById('res-first').textContent = positions[0];
+    document.getElementById('res-last').textContent = positions[positions.length-1];
+    document.getElementById('res-leftover').textContent = remainder;
+
+    // Position list
+    let posText = '';
+    positions.forEach((p, i) => {
+      posText += `Buttonhole ${i+1}: begins at stitch ${p}, ends at stitch ${p + holeSize - 1}\n`;
+    });
+    document.getElementById('bh-positions').textContent = posText.trim();
+
+    // Written instructions
+    let instr = `ROW 1 (Buttonhole row):\n`;
+    let cursor = 1;
+    let parts = [];
+    parts.push(`K${edge > 0 ? edge : '0 (no edge sts)'}`);
+    positions.forEach((p, i) => {
+      const kBeforeHole = p - cursor;
+      if (kBeforeHole > 0) parts.push(`k${kBeforeHole}`);
+      parts.push(`BO ${holeSize} (buttonhole ${i+1})`);
+      cursor = p + holeSize;
+    });
+    const kAfter = band - cursor - edge + 1;
+    if (kAfter > 0) parts.push(`k${kAfter}`);
+    if (edge > 0) parts.push(`k${edge}`);
+    instr += `  ${parts.join(', ')}\n\n`;
+    instr += `ROW 2 (Close buttonholes):\n`;
+    instr += `  Work to each gap; cast on ${holeSize} stitch${holeSize>1?'es':''} over each bound-off gap using backward-loop or cable cast-on.`;
+    document.getElementById('bh-instructions').textContent = instr;
+
+    // Visual ruler (scaled to max ~80 chars)
+    const scale = band <= 80 ? 1 : Math.ceil(band / 80);
+    let ruler = '|';
+    for (let s = 1; s <= band; s++) {
+      const isEdge = (s <= edge) || (s > band - edge);
+      const isHole = positions.some(p => s >= p && s < p + holeSize);
+      if (s % scale !== 0 && scale > 1) continue;
+      if (isHole) ruler += 'o';
+      else if (isEdge) ruler += '=';
+      else ruler += '-';
+    }
+    ruler += '|';
+    ruler += `\n(Each character ≈ ${scale} stitch${scale>1?'es':''})`;
+    document.getElementById('bh-ruler').textContent = ruler;
+
+    document.getElementById('bh-result').style.display = 'block';
+  }
+  </script>
+</body>
+</html>

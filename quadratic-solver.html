@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quadratic Equation Solver - Online Tool | The Useful Pages</title>
+  <meta name="description" content="Solve quadratic equations ax² + bx + c = 0 instantly. Shows discriminant, real and complex roots, vertex, axis of symmetry, and full step-by-step working.">
+  <link rel="canonical" href="https://theusefulpages.com/quadratic-solver.html">
+  <meta property="og:title" content="Quadratic Equation Solver - The Useful Pages">
+  <meta property="og:description" content="Solve quadratic equations ax² + bx + c = 0. Get discriminant, roots, vertex, and step-by-step working using the quadratic formula.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Quadratic Equation Solver","url":"https://theusefulpages.com/quadratic-solver.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .eq-preview { font-size:1.4rem; font-weight:600; color:var(--primary); text-align:center; padding:1rem; background:var(--result-bg); border-radius:0.5rem; margin:1rem 0; min-height:3.5rem; letter-spacing:0.02em; }
+    .steps-box { background:var(--bg-secondary); border-radius:0.5rem; padding:1rem; margin-top:1rem; font-size:0.875rem; line-height:2.2; }
+    .step-line { display:block; }
+    .nature-badge { display:inline-block; padding:0.3rem 0.75rem; border-radius:1rem; font-size:0.8rem; font-weight:600; }
+    .nature-two { background:#d1fae5; color:#065f46; }
+    .nature-one { background:#fef3c7; color:#92400e; }
+    .nature-complex { background:#ede9fe; color:#5b21b6; }
+    .coeff-label { font-size:0.7rem; color:var(--text-muted); text-align:center; margin-top:0.25rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Quadratic Equation Solver</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Solve ax² + bx + c = 0 with full step-by-step working, discriminant, and vertex information.</p>
+
+      <div class="tool-card">
+        <div class="eq-preview" id="eq-preview">ax² + bx + c = 0</div>
+
+        <div class="form-row" style="align-items:flex-end;gap:1rem;flex-wrap:wrap;">
+          <div class="form-group" style="flex:1;min-width:80px;">
+            <label class="form-label">a (x² coefficient)</label>
+            <input class="form-input" id="q-a" type="number" placeholder="1" step="any" oninput="updatePreview()">
+            <div class="coeff-label">must ≠ 0</div>
+          </div>
+          <div class="form-group" style="flex:1;min-width:80px;">
+            <label class="form-label">b (x coefficient)</label>
+            <input class="form-input" id="q-b" type="number" placeholder="0" step="any" oninput="updatePreview()">
+          </div>
+          <div class="form-group" style="flex:1;min-width:80px;">
+            <label class="form-label">c (constant)</label>
+            <input class="form-input" id="q-c" type="number" placeholder="0" step="any" oninput="updatePreview()">
+          </div>
+        </div>
+
+        <div id="q-error" style="color:red;font-size:0.8rem;min-height:1.2rem;"></div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="solveQuadratic()">Solve</button>
+          <button class="btn btn-ghost" onclick="clearQuadratic()">Clear</button>
+          <button class="btn btn-outline" id="q-copy" onclick="copyQuadratic()" style="display:none;">Copy Results</button>
+        </div>
+
+        <div id="q-results" class="hidden" style="margin-top:1.5rem;">
+          <div class="result-card" style="margin-bottom:1rem;">
+            <div class="result-row">
+              <span class="result-label">Nature of Roots</span>
+              <span class="result-value" id="q-nature"></span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Discriminant (Δ = b²−4ac)</span>
+              <span class="result-value" id="q-disc"></span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Root x₁</span>
+              <span class="result-value" id="q-x1"></span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Root x₂</span>
+              <span class="result-value" id="q-x2"></span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Vertex (h, k)</span>
+              <span class="result-value" id="q-vertex"></span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Axis of Symmetry</span>
+              <span class="result-value" id="q-axis"></span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Parabola Opens</span>
+              <span class="result-value" id="q-opens"></span>
+            </div>
+          </div>
+
+          <div style="font-weight:600;margin-bottom:0.5rem;font-size:0.9rem;">Step-by-step working</div>
+          <div class="steps-box" id="q-steps"></div>
+        </div>
+      </div>
+
+
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter the three coefficients <strong>a</strong>, <strong>b</strong>, and <strong>c</strong> for the equation ax² + bx + c = 0.</li>
+          <li>The equation preview updates live as you type so you can verify your input.</li>
+          <li><strong>a</strong> must not be zero — otherwise the equation is linear, not quadratic.</li>
+          <li>Click <strong>Solve</strong> to get the roots, discriminant, vertex, and axis of symmetry.</li>
+          <li>When the discriminant is negative, the roots are complex (a ± bi format).</li>
+          <li>Full step-by-step working using the quadratic formula is shown below the results.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="percentage-calculator.html">Percentage Calculator</a>
+          <a href="age-calculator.html">Age Calculator</a>
+          <a href="random-number.html">Random Number Generator</a>
+          <a href="fraction-calculator.html">Fraction Calculator</a>
+          <a href="square-root.html">Square Root Calculator</a>
+          <a href="standard-deviation.html">Standard Deviation</a>
+          <a href="scientific-calculator.html">Scientific Calculator</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Quadratic Solver</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free quadratic equation solver to solve equations in the form ax2 + bx + c = 0. It helps find roots, discriminants, and solutions for algebra and math practice. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('quadratic-solver.html');
+    injectFooter();
+  });
+
+  function fmt(n, d=6) {
+    if (Number.isInteger(n)) return n.toString();
+    return parseFloat(n.toFixed(d)).toString();
+  }
+
+  function updatePreview() {
+    const a = document.getElementById('q-a').value;
+    const b = document.getElementById('q-b').value;
+    const c = document.getElementById('q-c').value;
+    const av = parseFloat(a), bv = parseFloat(b), cv = parseFloat(c);
+
+    let parts = [];
+    if (!isNaN(av) && av !== 0) {
+      parts.push((av === 1 ? '' : av === -1 ? '-' : av) + 'x²');
+    } else if (a === '' || a === undefined) {
+      parts.push('ax²');
+    }
+    if (!isNaN(bv) && bv !== 0) {
+      const sign = bv > 0 && parts.length > 0 ? '+' : '';
+      parts.push(sign + (bv === 1 ? '' : bv === -1 ? '-' : bv) + 'x');
+    } else if (b === '' || b === undefined) {
+      parts.push('+ bx');
+    }
+    if (!isNaN(cv) && cv !== 0) {
+      const sign = cv > 0 && parts.length > 0 ? '+' : '';
+      parts.push(sign + cv);
+    } else if (c === '' || c === undefined) {
+      parts.push('+ c');
+    }
+    document.getElementById('eq-preview').textContent = (parts.length ? parts.join(' ') : '0') + ' = 0';
+  }
+
+  function solveQuadratic() {
+    const a = parseFloat(document.getElementById('q-a').value);
+    const b = parseFloat(document.getElementById('q-b').value);
+    const c = parseFloat(document.getElementById('q-c').value);
+    const err = document.getElementById('q-error');
+
+    if (isNaN(a) || isNaN(b) || isNaN(c)) { err.textContent = 'Please enter values for a, b, and c.'; return; }
+    if (a === 0) { err.textContent = 'Coefficient a cannot be zero (that makes it a linear equation).'; return; }
+    err.textContent = '';
+
+    const disc = b * b - 4 * a * c;
+    const steps = [];
+    steps.push('<span class="step-line"><strong>Quadratic Formula:</strong> x = (−b ± √(b²−4ac)) / 2a</span>');
+    steps.push('<span class="step-line">Coefficients: a = ' + a + ', b = ' + b + ', c = ' + c + '</span>');
+    steps.push('<span class="step-line">Discriminant: Δ = b² − 4ac = (' + b + ')² − 4(' + a + ')(' + c + ') = ' + fmt(b*b) + ' − ' + fmt(4*a*c) + ' = ' + fmt(disc) + '</span>');
+
+    let x1text, x2text, natureHTML;
+
+    if (disc > 0) {
+      const sqrtDisc = Math.sqrt(disc);
+      const x1 = (-b + sqrtDisc) / (2 * a);
+      const x2 = (-b - sqrtDisc) / (2 * a);
+      x1text = fmt(x1);
+      x2text = fmt(x2);
+      natureHTML = '<span class="nature-badge nature-two">Two distinct real roots</span>';
+      steps.push('<span class="step-line">√Δ = √' + fmt(disc) + ' = ' + fmt(sqrtDisc) + '</span>');
+      steps.push('<span class="step-line">x₁ = (−' + b + ' + ' + fmt(sqrtDisc) + ') / (2 × ' + a + ') = ' + fmt(-b+sqrtDisc) + ' / ' + fmt(2*a) + ' = ' + x1text + '</span>');
+      steps.push('<span class="step-line">x₂ = (−' + b + ' − ' + fmt(sqrtDisc) + ') / (2 × ' + a + ') = ' + fmt(-b-sqrtDisc) + ' / ' + fmt(2*a) + ' = ' + x2text + '</span>');
+    } else if (disc === 0) {
+      const x1 = -b / (2 * a);
+      x1text = fmt(x1);
+      x2text = fmt(x1) + ' (repeated)';
+      natureHTML = '<span class="nature-badge nature-one">One repeated real root</span>';
+      steps.push('<span class="step-line">Δ = 0 → one repeated root</span>');
+      steps.push('<span class="step-line">x = −b / (2a) = ' + fmt(-b) + ' / ' + fmt(2*a) + ' = ' + x1text + '</span>');
+    } else {
+      const realPart = -b / (2 * a);
+      const imagPart = Math.sqrt(-disc) / (2 * a);
+      x1text = fmt(realPart) + ' + ' + fmt(imagPart) + 'i';
+      x2text = fmt(realPart) + ' − ' + fmt(imagPart) + 'i';
+      natureHTML = '<span class="nature-badge nature-complex">Two complex (imaginary) roots</span>';
+      steps.push('<span class="step-line">Δ < 0 → complex roots</span>');
+      steps.push('<span class="step-line">Real part: −b / 2a = ' + fmt(-b) + ' / ' + fmt(2*a) + ' = ' + fmt(realPart) + '</span>');
+      steps.push('<span class="step-line">Imaginary part: √(−Δ) / 2a = √' + fmt(-disc) + ' / ' + fmt(2*a) + ' = ' + fmt(imagPart) + '</span>');
+      steps.push('<span class="step-line">x₁ = ' + x1text + ', x₂ = ' + x2text + '</span>');
+    }
+
+    // Vertex and axis of symmetry
+    const h = -b / (2 * a);
+    const k = c - (b * b) / (4 * a);
+    steps.push('<span class="step-line"><strong>Vertex:</strong> h = −b/2a = ' + fmt(h) + ', k = c − b²/4a = ' + fmt(k) + '</span>');
+    steps.push('<span class="step-line"><strong>Axis of symmetry:</strong> x = ' + fmt(h) + '</span>');
+
+    document.getElementById('q-nature').innerHTML = natureHTML;
+    document.getElementById('q-disc').textContent = fmt(disc) + (disc > 0 ? ' (positive)' : disc === 0 ? ' (zero)' : ' (negative)');
+    document.getElementById('q-x1').textContent = x1text;
+    document.getElementById('q-x2').textContent = x2text;
+    document.getElementById('q-vertex').textContent = '(' + fmt(h) + ', ' + fmt(k) + ')';
+    document.getElementById('q-axis').textContent = 'x = ' + fmt(h);
+    document.getElementById('q-opens').textContent = a > 0 ? 'Upward ∪ (minimum at vertex)' : 'Downward ∩ (maximum at vertex)';
+    document.getElementById('q-steps').innerHTML = steps.join('');
+    document.getElementById('q-results').classList.remove('hidden');
+    document.getElementById('q-copy').style.display = '';
+  }
+
+  function clearQuadratic() {
+    ['q-a','q-b','q-c'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('q-error').textContent = '';
+    document.getElementById('q-results').classList.add('hidden');
+    document.getElementById('q-copy').style.display = 'none';
+    document.getElementById('eq-preview').textContent = 'ax² + bx + c = 0';
+  }
+
+  function copyQuadratic() {
+    const x1 = document.getElementById('q-x1').textContent;
+    const x2 = document.getElementById('q-x2').textContent;
+    const disc = document.getElementById('q-disc').textContent;
+    const vertex = document.getElementById('q-vertex').textContent;
+    copyText('x₁ = ' + x1 + '\nx₂ = ' + x2 + '\nDiscriminant: ' + disc + '\nVertex: ' + vertex, 'Results copied!');
+  }
+  </script>
+</body>
+</html>

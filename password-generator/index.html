@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator — Free Secure Random Passwords | The Useful Pages</title>
+  <meta name="description" content="Generate strong, random passwords up to 64 characters. Customize uppercase, lowercase, numbers, and symbols. Check strength and copy instantly. Free, no signup.">
+  <meta name="keywords" content="password generator, random password, secure password, strong password generator, free password tool">
+  <link rel="canonical" href="https://theusefulpages.com/password-generator/">
+  <meta property="og:title" content="Password Generator — The Useful Pages">
+  <meta property="og:description" content="Generate strong random passwords instantly. Customize length and character sets. Free, no signup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theusefulpages.com/password-generator/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Password Generator — The Useful Pages">
+  <meta name="twitter:description" content="Free secure password generator. Customize length, characters, and generate multiple at once.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Secure Password Generator",
+    "url": "https://theusefulpages.com/password-generator/",
+    "description": "Generate strong random passwords with customizable length and character sets.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <!-- Google Analytics — replace G-XXXXXXXXXX -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+  <!-- AdSense — replace ca-pub-XXXXXXXXXXXXXXXX -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } }
+    };
+  </script>
+  <link rel="stylesheet" href="/css/shared.css">
+</head>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors-fast">
+
+  <!-- NAV -->
+  <nav class="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 text-indigo-600 font-bold text-lg shrink-0">
+          <span class="text-xl" aria-hidden="true">⚡</span> The Useful Pages
+        </a>
+        <div class="hidden lg:flex items-center gap-5 text-sm">
+          <a href="/word-unscrambler/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Word Unscrambler</a>
+          <a href="/password-generator/" data-nav class="text-indigo-600 font-semibold">Password Generator</a>
+          <a href="/unit-converter/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Unit Converter</a>
+          <a href="/word-counter/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Word Counter</a>
+          <a href="/lorem-ipsum/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Lorem Ipsum</a>
+          <a href="/color-picker/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Color Picker</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="dark-toggle" aria-label="Toggle dark mode" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+            <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </button>
+          <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" class="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+      <div class="px-4 py-3 space-y-1 text-sm">
+        <a href="/word-unscrambler/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🔤 Word Unscrambler</a>
+        <a href="/password-generator/" class="block px-3 py-2 rounded-lg bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-medium">🔐 Password Generator</a>
+        <a href="/unit-converter/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">⚖️ Unit Converter</a>
+        <a href="/word-counter/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">📊 Word Counter</a>
+        <a href="/lorem-ipsum/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">📝 Lorem Ipsum</a>
+        <a href="/color-picker/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🎨 Color Picker</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- TOP AD BANNER -->
+  <!-- AD ZONE: top-banner 728×90 leaderboard -->
+  <div class="ad-zone ad-banner py-2 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
+    <div class="ad-placeholder">Advertisement · 728×90</div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="lg:grid lg:grid-cols-[1fr_300px] lg:gap-8">
+
+      <main>
+        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Password Generator</h1>
+        <p class="text-gray-500 dark:text-gray-400 mb-8">Create strong, random passwords using cryptographically secure randomness. Your passwords are generated locally and never sent anywhere.</p>
+
+        <!-- GENERATOR CARD -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-6 mb-6">
+
+          <!-- Password display -->
+          <div class="relative mb-6">
+            <div id="password-display" class="w-full bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl px-4 py-4 pr-24 font-mono text-lg break-all text-gray-900 dark:text-gray-100 min-h-[3.5rem] select-all leading-relaxed">
+              Click Generate
+            </div>
+            <button id="copy-btn" class="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg transition-colors">
+              Copy
+            </button>
+          </div>
+
+          <!-- Strength meter -->
+          <div class="mb-6">
+            <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-1.5">
+              <span>Password strength</span>
+              <span id="strength-label" class="font-semibold">—</span>
+            </div>
+            <div class="h-2 bg-gray-200 dark:bg-slate-700 rounded-full overflow-hidden">
+              <div id="strength-bar" class="h-full rounded-full transition-all duration-300" style="width:0%"></div>
+            </div>
+          </div>
+
+          <!-- Length slider -->
+          <div class="mb-6">
+            <div class="flex justify-between items-center mb-2">
+              <label for="length-slider" class="text-sm font-semibold text-gray-700 dark:text-gray-300">Length</label>
+              <span id="length-display" class="text-sm font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950 px-2.5 py-0.5 rounded-lg">16</span>
+            </div>
+            <input type="range" id="length-slider" min="8" max="64" value="16" class="w-full">
+            <div class="flex justify-between text-xs text-gray-400 dark:text-gray-500 mt-1">
+              <span>8</span><span>64</span>
+            </div>
+          </div>
+
+          <!-- Character sets -->
+          <div class="mb-6 grid grid-cols-2 gap-3">
+            <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 dark:border-slate-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
+              <input type="checkbox" id="use-upper" checked class="w-4 h-4 accent-emerald-600 rounded">
+              <div>
+                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Uppercase</p>
+                <p class="text-xs text-gray-400 font-mono">A–Z</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 dark:border-slate-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
+              <input type="checkbox" id="use-lower" checked class="w-4 h-4 accent-emerald-600 rounded">
+              <div>
+                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Lowercase</p>
+                <p class="text-xs text-gray-400 font-mono">a–z</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 dark:border-slate-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
+              <input type="checkbox" id="use-numbers" checked class="w-4 h-4 accent-emerald-600 rounded">
+              <div>
+                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Numbers</p>
+                <p class="text-xs text-gray-400 font-mono">0–9</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 dark:border-slate-700 cursor-pointer hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
+              <input type="checkbox" id="use-symbols" checked class="w-4 h-4 accent-emerald-600 rounded">
+              <div>
+                <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Symbols</p>
+                <p class="text-xs text-gray-400 font-mono">!@#$%</p>
+              </div>
+            </label>
+          </div>
+
+          <!-- Multiple passwords -->
+          <div class="mb-6 flex items-center gap-3">
+            <label for="count-input" class="text-sm font-semibold text-gray-700 dark:text-gray-300 shrink-0">Generate</label>
+            <input type="number" id="count-input" value="1" min="1" max="20" class="w-20 px-3 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white text-center text-sm outline-none focus:ring-2 focus:ring-emerald-500">
+            <span class="text-sm text-gray-500 dark:text-gray-400">password(s)</span>
+          </div>
+
+          <!-- Generate button -->
+          <button id="generate-btn" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-semibold rounded-xl transition-colors text-base">
+            Generate Password
+          </button>
+        </div>
+
+        <!-- Multiple results -->
+        <div id="multi-results" class="hidden space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="font-semibold text-gray-700 dark:text-gray-300">Generated Passwords</h2>
+            <button id="copy-all-btn" class="text-sm text-emerald-600 dark:text-emerald-400 hover:underline">Copy all</button>
+          </div>
+          <div id="multi-list" class="space-y-2"></div>
+        </div>
+
+        <!-- MID AD -->
+        <!-- AD ZONE: mid-tool responsive -->
+        <div class="ad-zone ad-responsive mt-10">
+          <div class="ad-placeholder">Advertisement · Responsive</div>
+        </div>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="hidden lg:block space-y-6">
+        <!-- AD ZONE: sidebar rectangle 300×250 -->
+        <div class="ad-zone ad-rectangle">
+          <div class="ad-placeholder">Advertisement · 300×250</div>
+        </div>
+
+        <!-- Tips -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-5">
+          <h3 class="font-semibold text-gray-700 dark:text-gray-300 mb-3 text-sm uppercase tracking-wide">Password Tips</h3>
+          <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2">
+            <li>• Use 16+ characters for most accounts</li>
+            <li>• Use all 4 character types for max strength</li>
+            <li>• Never reuse passwords across sites</li>
+            <li>• Store passwords in a password manager</li>
+            <li>• Generated locally — never sent anywhere</li>
+          </ul>
+        </div>
+
+        <!-- AD ZONE: sidebar rectangle 300×250 (2nd) -->
+        <div class="ad-zone ad-rectangle">
+          <div class="ad-placeholder">Advertisement · 300×250</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 mt-4">
+    <!-- AD ZONE: footer-banner 728×90 -->
+    <div class="ad-zone ad-banner border-b border-gray-100 dark:border-slate-800">
+      <div class="ad-placeholder">Advertisement · 728×90</div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500 dark:text-gray-400">
+      <span><span class="font-semibold text-gray-700 dark:text-gray-300">The Useful Pages</span> — Free tools for everyone</span>
+      <span>Powered by <a href="https://sassypupstudios.com" class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium" target="_blank" rel="noopener noreferrer">Sassy Pup Studios</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/shared.js"></script>
+  <script>
+  (function () {
+    const UPPER   = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const LOWER   = 'abcdefghijklmnopqrstuvwxyz';
+    const NUMBERS = '0123456789';
+    const SYMBOLS = '!@#$%^&*()-_=+[]{}|;:,.<>?';
+
+    const display      = document.getElementById('password-display');
+    const copyBtn      = document.getElementById('copy-btn');
+    const generateBtn  = document.getElementById('generate-btn');
+    const lengthSlider = document.getElementById('length-slider');
+    const lengthDisplay= document.getElementById('length-display');
+    const strengthBar  = document.getElementById('strength-bar');
+    const strengthLabel= document.getElementById('strength-label');
+    const countInput   = document.getElementById('count-input');
+    const multiResults = document.getElementById('multi-results');
+    const multiList    = document.getElementById('multi-list');
+    const copyAllBtn   = document.getElementById('copy-all-btn');
+
+    const useUpper   = document.getElementById('use-upper');
+    const useLower   = document.getElementById('use-lower');
+    const useNumbers = document.getElementById('use-numbers');
+    const useSymbols = document.getElementById('use-symbols');
+
+    let lastPasswords = [];
+
+    function buildCharset() {
+      let cs = '';
+      if (useUpper.checked)   cs += UPPER;
+      if (useLower.checked)   cs += LOWER;
+      if (useNumbers.checked) cs += NUMBERS;
+      if (useSymbols.checked) cs += SYMBOLS;
+      return cs;
+    }
+
+    function generateOne(len, charset) {
+      if (!charset) return '';
+      const arr = new Uint32Array(len);
+      crypto.getRandomValues(arr);
+      return Array.from(arr).map(n => charset[n % charset.length]).join('');
+    }
+
+    function calcStrength(pwd) {
+      let score = 0;
+      if (pwd.length >= 12) score += 1;
+      if (pwd.length >= 16) score += 1;
+      if (pwd.length >= 24) score += 1;
+      if (/[A-Z]/.test(pwd)) score += 1;
+      if (/[a-z]/.test(pwd)) score += 1;
+      if (/[0-9]/.test(pwd)) score += 1;
+      if (/[^A-Za-z0-9]/.test(pwd)) score += 1;
+      return score;
+    }
+
+    function renderStrength(pwd) {
+      const score = calcStrength(pwd);
+      const levels = [
+        { label: 'Very Weak',  color: '#ef4444', pct: '15%' },
+        { label: 'Weak',       color: '#f97316', pct: '30%' },
+        { label: 'Fair',       color: '#eab308', pct: '50%' },
+        { label: 'Good',       color: '#84cc16', pct: '70%' },
+        { label: 'Strong',     color: '#22c55e', pct: '85%' },
+        { label: 'Very Strong',color: '#10b981', pct: '100%' },
+        { label: 'Very Strong',color: '#10b981', pct: '100%' },
+        { label: 'Very Strong',color: '#10b981', pct: '100%' },
+      ];
+      const l = levels[Math.min(score, levels.length - 1)];
+      strengthBar.style.width = l.pct;
+      strengthBar.style.backgroundColor = l.color;
+      strengthLabel.textContent = l.label;
+      strengthLabel.style.color = l.color;
+    }
+
+    function generate() {
+      const len = parseInt(lengthSlider.value);
+      const charset = buildCharset();
+      const count = Math.min(Math.max(parseInt(countInput.value) || 1, 1), 20);
+
+      if (!charset) { showToast('Select at least one character type.'); return; }
+
+      lastPasswords = Array.from({ length: count }, () => generateOne(len, charset));
+
+      if (count === 1) {
+        display.textContent = lastPasswords[0];
+        renderStrength(lastPasswords[0]);
+        multiResults.classList.add('hidden');
+      } else {
+        display.textContent = lastPasswords[0];
+        renderStrength(lastPasswords[0]);
+        multiResults.classList.remove('hidden');
+        multiList.innerHTML = '';
+        lastPasswords.forEach((pwd, i) => {
+          const row = document.createElement('div');
+          row.className = 'flex items-center gap-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl px-4 py-2.5';
+          row.innerHTML = `
+            <span class="flex-1 font-mono text-sm text-gray-800 dark:text-gray-200 break-all">${pwd}</span>
+            <button class="shrink-0 text-xs text-emerald-600 dark:text-emerald-400 font-medium hover:underline" data-idx="${i}">Copy</button>
+          `;
+          multiList.appendChild(row);
+        });
+      }
+    }
+
+    // Events
+    lengthSlider.addEventListener('input', () => { lengthDisplay.textContent = lengthSlider.value; });
+    generateBtn.addEventListener('click', generate);
+    copyBtn.addEventListener('click', () => { if (display.textContent !== 'Click Generate') copyToClipboard(display.textContent); });
+    copyAllBtn.addEventListener('click', () => copyToClipboard(lastPasswords.join('\n'), 'All passwords copied!'));
+    multiList.addEventListener('click', e => {
+      const btn = e.target.closest('[data-idx]');
+      if (btn) copyToClipboard(lastPasswords[parseInt(btn.dataset.idx)]);
+    });
+
+    // Auto-generate on load
+    generate();
+  })();
+  </script>
+</body>
+</html>

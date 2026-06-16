@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batch Production Calculator — Craft Business Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate total materials, time, and cost needed to produce a batch of handmade items. Free batch production calculator for craft sellers — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/batch-production-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Batch Production Calculator</h1>
+      <p class="page-subtitle">Scale up your materials and time from a single item to a full production batch. Plan craft fair stock or wholesale orders with ease.</p>
+
+      <div class="tool-card">
+        <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 1rem;">Per-item inputs</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Time to make 1 item (minutes)</label>
+            <input type="number" id="time-per" class="form-input" placeholder="e.g. 45" min="1">
+          </div>
+          <div>
+            <label class="label">Material cost per item ($)</label>
+            <input type="number" id="cost-per" class="form-input" placeholder="e.g. 4.50" min="0" step="0.01">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Batch size (items to make)</label>
+            <input type="number" id="batch-qty" class="form-input" placeholder="e.g. 24" min="1">
+          </div>
+          <div>
+            <label class="label">Your hourly rate ($/hr)</label>
+            <input type="number" id="hourly-rate" class="form-input" placeholder="e.g. 20" min="0" step="0.01">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Overhead per batch ($) <span style="font-size:0.8rem;color:var(--text-muted);">(packaging, fees, etc.)</span></label>
+            <input type="number" id="overhead" class="form-input" value="0" min="0" step="0.01">
+          </div>
+          <div>
+            <label class="label">Batch efficiency savings <span style="font-size:0.8rem;color:var(--text-muted);">(%)</span></label>
+            <input type="number" id="efficiency" class="form-input" value="0" min="0" max="50" step="1" placeholder="e.g. 10">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcBatch()">Calculate Batch</button>
+
+        <div id="batch-result" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">How to use this calculator</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Enter the time and material cost for a single item, then set your batch size. The calculator scales everything up, applies any batch efficiency you've found (e.g. working in assembly-line fashion saves 10–20% time), and shows total labor cost and overall cost per item.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li><strong>Efficiency savings</strong>: Many crafters find batch-making the same item cuts time per unit by 10–25% compared to making items one at a time</li>
+          <li><strong>Overhead</strong>: Include shared costs like tissue paper, boxes, labels, or platform fees that apply to the whole batch</li>
+          <li>Use this alongside the Profit Margin Calculator to set your selling price</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Labor cost is calculated as (time × hourly rate). Set your hourly rate to what you need to earn, not minimum wage, to ensure your pricing is sustainable.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Batch Production Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Batch Production Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcBatch() {
+    const timePer = parseFloat(document.getElementById('time-per').value);
+    const costPer = parseFloat(document.getElementById('cost-per').value);
+    const qty = parseInt(document.getElementById('batch-qty').value);
+    const rate = parseFloat(document.getElementById('hourly-rate').value) || 0;
+    const overhead = parseFloat(document.getElementById('overhead').value) || 0;
+    const eff = parseFloat(document.getElementById('efficiency').value) || 0;
+    if (!timePer || !costPer || !qty) { alert('Enter time, material cost, and batch size.'); return; }
+
+    const effFactor = 1 - (eff / 100);
+    const timePerEffective = timePer * effFactor;
+    const totalMinutes = timePerEffective * qty;
+    const totalHours = totalMinutes / 60;
+    const totalMaterials = costPer * qty;
+    const totalLabor = totalHours * rate;
+    const totalCost = totalMaterials + totalLabor + overhead;
+    const costPerItem = totalCost / qty;
+    const timeSaved = (timePer * qty) - totalMinutes;
+
+    const el = document.getElementById('batch-result');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Batch Size</div><div class="stat-value">${qty} items</div></div>
+      <div class="stat-box"><div class="stat-label">Total Time</div><div class="stat-value">${totalHours.toFixed(1)} hrs</div></div>
+      <div class="stat-box"><div class="stat-label">Total Materials</div><div class="stat-value">$${totalMaterials.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Total Labor</div><div class="stat-value">$${totalLabor.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Overhead</div><div class="stat-value">$${overhead.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Total Batch Cost</div><div class="stat-value">$${totalCost.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Cost Per Item</div><div class="stat-value">$${costPerItem.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Time Saved (${eff}% eff.)</div><div class="stat-value">${timeSaved.toFixed(0)} min</div></div>
+    </div>
+    <p style="margin-top:0.75rem;font-size:0.88rem;color:var(--text-muted);">Each item takes <strong>${timePerEffective.toFixed(0)} min</strong> in batch mode. Total production: <strong>${Math.floor(totalHours)}h ${Math.round((totalHours%1)*60)}m</strong>.</p>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('batch-production-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

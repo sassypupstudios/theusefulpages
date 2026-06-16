@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 Encoder / Decoder - Online Tool | The Useful Pages</title>
+  <meta name="description" content="Free online Base64 encoder and decoder. Encode text or files to Base64, decode Base64 strings back to text. Supports URL-safe encoding and image preview.">
+  <link rel="canonical" href="https://theusefulpages.com/base64.html">
+  <meta property="og:title" content="Base64 Encoder / Decoder - The Useful Pages">
+  <meta property="og:description" content="Encode and decode Base64 online. Supports URL-safe mode, file encoding, and image preview.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Base64 Encoder / Decoder","url":"https://theusefulpages.com/base64.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .mode-tabs{display:flex;gap:0.5rem;margin-bottom:1.25rem;}
+    .mode-tab{padding:0.45rem 1.1rem;border-radius:20px;border:1.5px solid var(--border);background:var(--card-bg);cursor:pointer;font-size:0.85rem;font-weight:500;color:var(--text-muted);transition:all .15s;}
+    .mode-tab.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+    .mode-panel{display:none;}.mode-panel.active{display:block;}
+    .char-count{font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem;text-align:right;}
+    .error-box{background:#fff0f0;border:1px solid #f5c0c0;border-radius:8px;padding:0.6rem 0.8rem;color:#c0392b;font-size:0.82rem;margin-top:0.5rem;display:none;}
+    .image-preview{margin-top:1rem;text-align:center;display:none;}
+    .image-preview img{max-width:100%;max-height:200px;border-radius:8px;border:1px solid var(--border);}
+    .options-row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:0.75rem;font-size:0.85rem;align-items:center;}
+    .options-row label{display:flex;align-items:center;gap:0.35rem;cursor:pointer;color:var(--text-muted);}
+    .drag-zone{border:2px dashed var(--border);border-radius:10px;padding:2rem;text-align:center;cursor:pointer;color:var(--text-muted);font-size:0.85rem;transition:border-color .15s;margin-bottom:0.75rem;}
+    .drag-zone:hover,.drag-zone.drag-over{border-color:var(--primary);color:var(--primary);}
+    .drag-zone input[type=file]{display:none;}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Base64 Encoder / Decoder</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Encode text or files to Base64, or decode Base64 strings back to readable text.</p>
+      <div class="tool-card">
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="encode">Encode</button>
+          <button class="mode-tab" data-mode="decode">Decode</button>
+          <button class="mode-tab" data-mode="file">File Encode</button>
+        </div>
+
+        <!-- ENCODE -->
+        <div class="mode-panel active" id="panel-encode">
+          <div class="options-row">
+            <label><input type="checkbox" id="enc-urlsafe"> URL-safe (replace +/ with -_)</label>
+            <label><input type="checkbox" id="enc-linebreaks"> Line breaks every 76 chars</label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Input Text</label>
+            <textarea class="form-input" id="enc-input" rows="6" placeholder="Enter text to encode..." oninput="doEncode()"></textarea>
+            <div class="char-count" id="enc-in-count">0 characters</div>
+          </div>
+          <div class="form-group" style="margin-top:0.75rem;">
+            <label class="form-label">Base64 Output</label>
+            <textarea class="form-input mono-output" id="enc-output" rows="6" readonly placeholder="Base64 encoded output will appear here..."></textarea>
+            <div class="char-count" id="enc-out-count">0 characters</div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-accent" onclick="copyText(document.getElementById('enc-output').value,'Copied!')">Copy Output</button>
+            <button class="btn btn-outline" onclick="clearEncode()">Clear</button>
+          </div>
+        </div>
+
+        <!-- DECODE -->
+        <div class="mode-panel" id="panel-decode">
+          <div class="form-group">
+            <label class="form-label">Base64 Input</label>
+            <textarea class="form-input mono-output" id="dec-input" rows="6" placeholder="Paste Base64 string to decode..." oninput="doDecode()"></textarea>
+            <div class="char-count" id="dec-in-count">0 characters</div>
+          </div>
+          <div class="error-box" id="dec-error">Invalid Base64 input. Please check your string and try again.</div>
+          <div class="form-group" style="margin-top:0.75rem;">
+            <label class="form-label">Decoded Output</label>
+            <textarea class="form-input" id="dec-output" rows="6" readonly placeholder="Decoded text will appear here..."></textarea>
+            <div class="char-count" id="dec-out-count">0 characters</div>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-accent" onclick="copyText(document.getElementById('dec-output').value,'Copied!')">Copy Output</button>
+            <button class="btn btn-outline" onclick="clearDecode()">Clear</button>
+          </div>
+        </div>
+
+        <!-- FILE ENCODE -->
+        <div class="mode-panel" id="panel-file">
+          <div class="drag-zone" id="drag-zone" onclick="document.getElementById('file-input').click()">
+            <div style="font-size:2rem;margin-bottom:0.5rem;">📁</div>
+            <div>Click to select a file, or drag and drop here</div>
+            <div style="font-size:0.75rem;margin-top:0.3rem;">Any file type supported</div>
+            <input type="file" id="file-input" onchange="encodeFile(this.files[0])">
+          </div>
+          <div id="file-info" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;display:none;"></div>
+          <div class="form-group">
+            <label class="form-label">Base64 Data URL Output</label>
+            <textarea class="form-input mono-output" id="file-output" rows="6" readonly placeholder="Base64 output will appear after selecting a file..."></textarea>
+          </div>
+          <div class="image-preview" id="img-preview">
+            <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Image Preview</p>
+            <img id="img-preview-el" src="" alt="Preview">
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-accent" onclick="copyText(document.getElementById('file-output').value,'Copied!')">Copy Output</button>
+            <button class="btn btn-outline" onclick="clearFile()">Clear</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Encode:</strong> Type or paste text into the input box — Base64 output is generated instantly</li>
+          <li>Check "URL-safe" to replace + and / with - and _ (safe for use in URLs and filenames)</li>
+          <li>Check "Line breaks" to wrap output at 76 characters per line (MIME standard)</li>
+          <li><strong>Decode:</strong> Paste a Base64 string — the decoded text appears instantly. URL-safe variants are auto-detected</li>
+          <li><strong>File Encode:</strong> Select or drag any file to get its Base64 data URL. Images will show a preview</li>
+          <li>Use Copy Output to copy results to your clipboard</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="hex-decimal.html" class="related-link">Hex ↔ Decimal</a>
+          <a href="binary-decimal.html" class="related-link">Binary Converter</a>
+          <a href="unit-converter.html" class="related-link">Unit Converter</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Base64</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Base64 encoder and decoder to convert plain text to Base64 or decode Base64 back into readable text. It is useful for developers, testing, troubleshooting, and data formatting. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  // Tab switching
+  document.querySelectorAll('.mode-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.mode-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.mode-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-'+btn.dataset.mode).classList.add('active');
+    });
+  });
+
+  function doEncode() {
+    const input = document.getElementById('enc-input').value;
+    const urlSafe = document.getElementById('enc-urlsafe').checked;
+    const lineBreaks = document.getElementById('enc-linebreaks').checked;
+    document.getElementById('enc-in-count').textContent = input.length + ' characters';
+    if (!input) { document.getElementById('enc-output').value=''; document.getElementById('enc-out-count').textContent='0 characters'; return; }
+    let encoded = btoa(unescape(encodeURIComponent(input)));
+    if (urlSafe) encoded = encoded.replace(/\+/g,'-').replace(/\//g,'_');
+    if (lineBreaks) encoded = encoded.match(/.{1,76}/g).join('\n');
+    document.getElementById('enc-output').value = encoded;
+    document.getElementById('enc-out-count').textContent = encoded.length + ' characters';
+  }
+
+  document.getElementById('enc-urlsafe').addEventListener('change', doEncode);
+  document.getElementById('enc-linebreaks').addEventListener('change', doEncode);
+
+  function clearEncode() {
+    document.getElementById('enc-input').value='';
+    document.getElementById('enc-output').value='';
+    document.getElementById('enc-in-count').textContent='0 characters';
+    document.getElementById('enc-out-count').textContent='0 characters';
+  }
+
+  function doDecode() {
+    let input = document.getElementById('dec-input').value.trim();
+    const errEl = document.getElementById('dec-error');
+    const outEl = document.getElementById('dec-output');
+    document.getElementById('dec-in-count').textContent = input.length + ' characters';
+    if (!input) { outEl.value=''; document.getElementById('dec-out-count').textContent='0 characters'; errEl.style.display='none'; return; }
+    // Normalize URL-safe and strip whitespace
+    input = input.replace(/[-]/g,'+').replace(/[_]/g,'/').replace(/\s/g,'');
+    try {
+      const decoded = decodeURIComponent(escape(atob(input)));
+      outEl.value = decoded;
+      document.getElementById('dec-out-count').textContent = decoded.length + ' characters';
+      errEl.style.display = 'none';
+    } catch(e) {
+      outEl.value = '';
+      document.getElementById('dec-out-count').textContent = '0 characters';
+      errEl.style.display = 'block';
+    }
+  }
+
+  function clearDecode() {
+    document.getElementById('dec-input').value='';
+    document.getElementById('dec-output').value='';
+    document.getElementById('dec-in-count').textContent='0 characters';
+    document.getElementById('dec-out-count').textContent='0 characters';
+    document.getElementById('dec-error').style.display='none';
+  }
+
+  function encodeFile(file) {
+    if (!file) return;
+    const infoEl = document.getElementById('file-info');
+    const outEl = document.getElementById('file-output');
+    const prevEl = document.getElementById('img-preview');
+    infoEl.style.display = 'block';
+    infoEl.textContent = `File: ${file.name} | Size: ${(file.size/1024).toFixed(1)} KB | Type: ${file.type || 'unknown'}`;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const dataUrl = e.target.result;
+      outEl.value = dataUrl;
+      if (file.type.startsWith('image/')) {
+        document.getElementById('img-preview-el').src = dataUrl;
+        prevEl.style.display = 'block';
+      } else {
+        prevEl.style.display = 'none';
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function clearFile() {
+    document.getElementById('file-input').value='';
+    document.getElementById('file-output').value='';
+    document.getElementById('file-info').style.display='none';
+    document.getElementById('img-preview').style.display='none';
+    document.getElementById('img-preview-el').src='';
+  }
+
+  // Drag and drop
+  const dz = document.getElementById('drag-zone');
+  dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag-over'); });
+  dz.addEventListener('dragleave', () => dz.classList.remove('drag-over'));
+  dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('drag-over'); const f = e.dataTransfer.files[0]; if(f) encodeFile(f); });
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('base64.html'); injectFooter(); });
+  </script>
+</body>
+</html>

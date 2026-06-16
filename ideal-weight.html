@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ideal Weight Calculator - Ideal Body Weight Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate your ideal body weight using 4 scientific formulas: Hamwi, Devine, Robinson, and Miller. See healthy BMI weight range and a visual comparison of all results.">
+  <link rel="canonical" href="https://theusefulpages.com/ideal-weight.html">
+  <meta property="og:title" content="Ideal Weight Calculator - The Useful Pages"><meta property="og:description" content="Find your ideal weight using Hamwi, Devine, Robinson, and Miller formulas."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Ideal Weight Calculator","url":"https://theusefulpages.com/ideal-weight.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .formula-card { background:var(--bg-secondary); border:1px solid var(--border); border-radius:10px; padding:1rem; margin-bottom:0.75rem; }
+    .formula-name { font-weight:700; color:var(--primary); font-size:0.95rem; }
+    .formula-weight { font-size:1.75rem; font-weight:700; color:var(--primary); }
+    .formula-desc { font-size:0.78rem; color:var(--text-muted); margin-top:0.25rem; }
+    .formula-bar-wrap { margin-top:0.5rem; }
+    .formula-bar-bg { height:8px; background:var(--border); border-radius:4px; overflow:hidden; }
+    .formula-bar-fill { height:100%; background:var(--primary); border-radius:4px; transition:width 0.4s; }
+    .range-indicator { position:relative; height:30px; margin:1.25rem 0 0.5rem; }
+    .range-bar { height:12px; background:linear-gradient(to right,#e2e8f0,#22c55e,#e2e8f0); border-radius:6px; position:absolute; top:9px; left:0; right:0; }
+    .range-dot { position:absolute; top:5px; width:20px; height:20px; border-radius:50%; border:3px solid #fff; box-shadow:0 1px 4px rgba(0,0,0,0.2); transform:translateX(-50%); transition:left 0.4s; }
+    .disclaimer { background:var(--bg-secondary); border-left:3px solid var(--accent); padding:0.75rem 1rem; border-radius:0 8px 8px 0; font-size:0.82rem; color:var(--text-muted); margin-top:1rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Ideal Weight Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Compare ideal weight estimates from four scientific formulas and the healthy BMI range for your height.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Sex</label>
+            <div class="tab-group" id="sexTabs">
+              <button class="tab-btn active" onclick="setSex('male')">Male</button>
+              <button class="tab-btn" onclick="setSex('female')">Female</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Units</label>
+            <div class="tab-group" id="unitTabs">
+              <button class="tab-btn active" onclick="setUnit('imperial')">Imperial</button>
+              <button class="tab-btn" onclick="setUnit('metric')">Metric</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top:0.75rem;" id="imperialH">
+          <div class="form-group">
+            <label class="form-label">Height — Feet</label>
+            <input type="number" id="feet" class="form-input" value="5" min="1" max="8">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Height — Inches</label>
+            <input type="number" id="inches" class="form-input" value="10" min="0" max="11">
+          </div>
+        </div>
+        <div class="form-row" id="metricH" style="display:none;margin-top:0.75rem;">
+          <div class="form-group">
+            <label class="form-label">Height (cm)</label>
+            <input type="number" id="cm" class="form-input" value="178" min="100" max="280">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:0.5rem;">
+          <label class="form-label">Current Weight (optional — for BMI back-calculation)</label>
+          <div style="display:flex;gap:0.75rem;align-items:center;">
+            <input type="number" id="currentWeight" class="form-input" style="max-width:160px;" placeholder="e.g. 170">
+            <span id="weightUnit" style="font-size:0.875rem;color:var(--text-muted);">lbs</span>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calculate()">Calculate</button>
+          <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
+        </div>
+
+        <div id="results" style="display:none;margin-top:1.25rem;">
+          <div style="font-weight:700;font-size:0.95rem;color:var(--primary);margin-bottom:0.75rem;">Results for <span id="heightDisplay"></span></div>
+
+          <div id="formulaCards"></div>
+
+          <div style="margin-top:1rem;padding:1rem;background:var(--bg-secondary);border-radius:10px;border:1px solid var(--border);">
+            <div style="font-weight:700;margin-bottom:0.5rem;">Healthy BMI Weight Range (18.5 – 24.9)</div>
+            <div style="font-size:1.5rem;font-weight:700;color:#22c55e;" id="bmiRange">—</div>
+            <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem;">Based on WHO BMI guidelines for your height</div>
+            <div id="currentBmiRow" style="margin-top:0.75rem;display:none;">
+              <div style="font-size:0.875rem;">Your current BMI: <strong id="currentBmi">—</strong> (<span id="currentBmiCat">—</span>)</div>
+            </div>
+          </div>
+
+          <div class="disclaimer">For informational purposes only — not medical advice. Ideal weight formulas were developed for clinical drug dosing, not fitness goals. A healthy weight depends on many individual factors including muscle mass, age, and bone density.</div>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;">About the Formulas</h2>
+        <div style="font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <p><strong>Hamwi (1964)</strong> — Originally developed for insulin dosing. Males: 106 lbs for 5 ft + 6 lbs per inch over 5 ft. Females: 100 lbs + 5 lbs/inch.</p>
+          <p><strong>Devine (1974)</strong> — Widely used in pharmacology and ICU settings. Males: 50 kg + 2.3 kg/inch over 5 ft. Females: 45.5 kg + 2.3 kg/inch.</p>
+          <p><strong>Robinson (1983)</strong> — Derived from Metropolitan Life tables. Males: 52 kg + 1.9 kg/inch over 5 ft. Females: 49 kg + 1.7 kg/inch.</p>
+          <p><strong>Miller (1983)</strong> — Another Met Life derivation. Males: 56.2 kg + 1.41 kg/inch over 5 ft. Females: 53.1 kg + 1.36 kg/inch.</p>
+        </div>
+      </div>
+
+      <div class="instructions-card"><h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2><ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+        <li>Select your sex and preferred units (Imperial or Metric).</li>
+        <li>Enter your height.</li>
+        <li>Optionally enter your current weight to see your current BMI alongside the ideal range.</li>
+        <li>Click <strong>Calculate</strong> to see results from all four formulas.</li>
+        <li>The green healthy BMI range (18.5–24.9) is the most widely accepted guideline.</li>
+        <li>These formulas were designed for clinical use — use them as a general reference only.</li>
+      </ul></div>
+
+      <div class="related-card"><h3>Related Tools</h3><div class="related-links">
+        <a href="bmi-calculator.html">BMI Calculator</a>
+        <a href="calorie-calculator.html">Calorie Calculator</a>
+        <a href="body-fat.html">Body Fat Calculator</a>
+      </div></div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Ideal Weight</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free ideal weight calculator to compare several common healthy-weight formulas and ranges. It is useful for general reference, fitness planning, and understanding different estimate methods. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let sex='male', unit='imperial';
+
+    function setSex(s){sex=s;document.querySelectorAll('#sexTabs .tab-btn').forEach((b,i)=>b.classList.toggle('active',['male','female'][i]===s));}
+    function setUnit(u){
+      unit=u;
+      document.querySelectorAll('#unitTabs .tab-btn').forEach((b,i)=>b.classList.toggle('active',['imperial','metric'][i]===u));
+      document.getElementById('imperialH').style.display=u==='imperial'?'flex':'none';
+      document.getElementById('metricH').style.display=u==='metric'?'flex':'none';
+      document.getElementById('weightUnit').textContent=u==='imperial'?'lbs':'kg';
+    }
+
+    function getHeightInches(){
+      if(unit==='imperial') return (parseFloat(document.getElementById('feet').value)||0)*12+(parseFloat(document.getElementById('inches').value)||0);
+      return (parseFloat(document.getElementById('cm').value)||0)/2.54;
+    }
+
+    function kgToDisplay(kg){ return unit==='imperial'?Math.round(kg*2.20462)+' lbs':Math.round(kg*10)/10+' kg'; }
+
+    function calculate(){
+      const totalInch=getHeightInches();
+      if(!totalInch||totalInch<48){showToast('Enter a valid height.');return;}
+      const inchOver5ft=Math.max(0,totalInch-60);
+      const heightM=totalInch*0.0254;
+
+      // All formulas return kg
+      let hamwi,devine,robinson,miller;
+      if(sex==='male'){
+        hamwi=48.08+2.7216*inchOver5ft; // 106lbs base = 48.08kg, 6lbs/inch = 2.7216kg
+        devine=50+2.3*inchOver5ft;
+        robinson=52+1.9*inchOver5ft;
+        miller=56.2+1.41*inchOver5ft;
+      } else {
+        hamwi=45.36+2.268*inchOver5ft; // 100lbs=45.36kg, 5lbs/inch=2.268kg
+        devine=45.5+2.3*inchOver5ft;
+        robinson=49+1.7*inchOver5ft;
+        miller=53.1+1.36*inchOver5ft;
+      }
+
+      const bmiLo=18.5*heightM*heightM;
+      const bmiHi=24.9*heightM*heightM;
+
+      const formulas=[
+        {name:'Hamwi',kg:hamwi,desc:'Originally developed for insulin dosing calculations (1964). Best for: general clinical reference.'},
+        {name:'Devine',kg:devine,desc:'Most widely used in ICU and pharmacology for drug dosing (1974). Best for: medication dosing contexts.'},
+        {name:'Robinson',kg:robinson,desc:'Derived from Metropolitan Life Insurance height-weight tables (1983). Best for: population-level estimates.'},
+        {name:'Miller',kg:miller,desc:'Another Metropolitan Life derivation with slightly higher estimates (1983). Best for: taller individuals.'},
+      ];
+      const allVals=formulas.map(f=>f.kg);
+      const minVal=Math.min(...allVals,bmiLo);
+      const maxVal=Math.max(...allVals,bmiHi)*1.1;
+
+      const COLORS=['#236A77','#D6AA76','#3b82f6','#22c55e'];
+      let html='';
+      formulas.forEach((f,i)=>{
+        const disp=kgToDisplay(f.kg);
+        const barPct=Math.round((f.kg-minVal)/(maxVal-minVal)*100);
+        html+=`<div class="formula-card"><div style="display:flex;justify-content:space-between;align-items:flex-start;"><div><div class="formula-name">${f.name} Formula</div><div class="formula-weight" style="color:${COLORS[i]}">${disp}</div><div class="formula-desc">${f.desc}</div></div></div><div class="formula-bar-wrap"><div class="formula-bar-bg"><div class="formula-bar-fill" style="width:${barPct}%;background:${COLORS[i]};"></div></div></div></div>`;
+      });
+      document.getElementById('formulaCards').innerHTML=html;
+
+      const avgKg=(hamwi+devine+robinson+miller)/4;
+      document.getElementById('bmiRange').textContent=`${kgToDisplay(bmiLo)} – ${kgToDisplay(bmiHi)}`;
+
+      let ftStr='';
+      if(unit==='imperial'){const f=Math.floor(totalInch/12),i=Math.round(totalInch%12);ftStr=`${f}′${i}″`;}
+      else{ftStr=`${Math.round(totalInch*2.54)} cm`;}
+      document.getElementById('heightDisplay').textContent=ftStr+(sex==='male'?' male':' female');
+
+      // Current BMI
+      const cw=parseFloat(document.getElementById('currentWeight').value);
+      if(cw){
+        const cwKg=unit==='imperial'?cw*0.453592:cw;
+        const bmi=cwKg/(heightM*heightM);
+        let bmiCat;
+        if(bmi<18.5)bmiCat='Underweight';
+        else if(bmi<25)bmiCat='Normal';
+        else if(bmi<30)bmiCat='Overweight';
+        else bmiCat='Obese';
+        document.getElementById('currentBmi').textContent=Math.round(bmi*10)/10;
+        document.getElementById('currentBmiCat').textContent=bmiCat;
+        document.getElementById('currentBmiRow').style.display='block';
+      } else {
+        document.getElementById('currentBmiRow').style.display='none';
+      }
+
+      document.getElementById('results').style.display='block';
+    }
+
+    function clearAll(){document.getElementById('results').style.display='none';document.getElementById('currentWeight').value='';}
+
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('ideal-weight.html');injectFooter();});
+  </script>
+</body>
+</html>

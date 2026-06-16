@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Counter - Online Character Count Tool | The Useful Pages</title>
+  <meta name="description" content="Count characters, letters, digits, spaces, and special characters instantly. See a frequency table of every character in your text. Free online character counter.">
+  <link rel="canonical" href="https://theusefulpages.com/character-counter.html">
+  <meta property="og:title" content="Character Counter - The Useful Pages">
+  <meta property="og:description" content="Count characters, letters, digits, spaces, and special characters instantly. See a frequency table of every character in your text.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Character Counter","url":"https://theusefulpages.com/character-counter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Character Counter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Paste or type your text to instantly count characters, letters, digits, spaces, and more.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label" for="mainText">Your Text</label>
+          <textarea class="form-textarea" id="mainText" placeholder="Type or paste text here..." style="min-height:200px;" oninput="analyzeText()"></textarea>
+        </div>
+
+        <div class="stat-grid" style="margin-top:1rem;">
+          <div class="stat-box">
+            <div class="stat-value" id="totalChars">0</div>
+            <div class="stat-label">Total Characters</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="charsNoSpace">0</div>
+            <div class="stat-label">Without Spaces</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="lettersOnly">0</div>
+            <div class="stat-label">Letters Only</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="digitsOnly">0</div>
+            <div class="stat-label">Digits Only</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="spacesCount">0</div>
+            <div class="stat-label">Spaces</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="specialChars">0</div>
+            <div class="stat-label">Special Characters</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="linesCount">0</div>
+            <div class="stat-label">Lines</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="uniqueChars">0</div>
+            <div class="stat-label">Unique Characters</div>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top:1rem;">
+          <button class="btn btn-primary" onclick="copyText(document.getElementById('mainText').value, 'Text copied!')">Copy Text</button>
+          <button class="btn btn-outline" onclick="clearAll()">Clear</button>
+        </div>
+      </div>
+
+      <!-- Frequency Table -->
+      <div class="tool-card" style="margin-top:1rem;">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">Top 10 Character Frequency</h2>
+        <div id="freqTable" style="font-size:0.875rem;color:var(--text-muted);">Type some text above to see character frequency.</div>
+      </div>
+
+
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Type or paste your text into the textarea above.</li>
+          <li>All character statistics update in real time as you type.</li>
+          <li>Special characters include punctuation, symbols, and non-alphanumeric characters.</li>
+          <li>The frequency table shows the top 10 most common characters with visual bars.</li>
+          <li>Unique characters counts how many distinct characters appear in your text.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="word-counter.html">Word Counter</a>
+          <a href="case-converter.html">Case Converter</a>
+          <a href="sentence-counter.html">Sentence Counter</a>
+          <a href="reading-time.html">Reading Time Calculator</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Character Counter</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free character counter to measure text length for social media posts, usernames, meta descriptions, SMS messages, titles, forms, and short snippets. It helps you stay under character limits without guessing. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+
+  </div>
+
+
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('character-counter.html');
+    injectFooter();
+  });
+
+  function analyzeText() {
+    const text = document.getElementById('mainText').value;
+    const total = text.length;
+    const noSpace = text.replace(/\s/g, '').length;
+    const letters = (text.match(/[a-zA-Z]/g) || []).length;
+    const digits = (text.match(/[0-9]/g) || []).length;
+    const spaces = (text.match(/ /g) || []).length;
+    const special = (text.match(/[^a-zA-Z0-9\s]/g) || []).length;
+    const lines = text === '' ? 0 : text.split('\n').length;
+    const unique = new Set(text.split('')).size;
+
+    document.getElementById('totalChars').textContent = fmtNum(total, 0);
+    document.getElementById('charsNoSpace').textContent = fmtNum(noSpace, 0);
+    document.getElementById('lettersOnly').textContent = fmtNum(letters, 0);
+    document.getElementById('digitsOnly').textContent = fmtNum(digits, 0);
+    document.getElementById('spacesCount').textContent = fmtNum(spaces, 0);
+    document.getElementById('specialChars').textContent = fmtNum(special, 0);
+    document.getElementById('linesCount').textContent = fmtNum(lines, 0);
+    document.getElementById('uniqueChars').textContent = fmtNum(unique, 0);
+
+    updateFreqTable(text);
+  }
+
+  function updateFreqTable(text) {
+    const container = document.getElementById('freqTable');
+    if (!text) {
+      container.innerHTML = '<span style="color:var(--text-muted);">Type some text above to see character frequency.</span>';
+      return;
+    }
+    const freq = {};
+    for (const c of text) {
+      const display = c === ' ' ? '(space)' : c === '\n' ? '(newline)' : c === '\t' ? '(tab)' : c;
+      freq[display] = (freq[display] || 0) + 1;
+    }
+    const sorted = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 10);
+    const max = sorted[0][1];
+    container.innerHTML = sorted.map(([char, count]) => `
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.4rem;">
+        <span style="width:80px;font-family:monospace;font-weight:600;font-size:1rem;">${char}</span>
+        <div style="flex:1;background:var(--table-th-bg);border-radius:4px;height:16px;overflow:hidden;">
+          <div style="width:${(count/max*100)}%;background:var(--accent);height:100%;border-radius:4px;"></div>
+        </div>
+        <span style="width:2.5rem;text-align:right;color:var(--text-muted);">${count}</span>
+      </div>
+    `).join('');
+  }
+
+  function clearAll() {
+    document.getElementById('mainText').value = '';
+    analyzeText();
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Order Quote Calculator — Craft Business Tool | The Useful Pages</title>
+  <meta name="description" content="Build a custom order quote for handmade items including materials, labor, rush fees, and markup. Free quote calculator for craft sellers — no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/custom-order-quote-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Custom Order Quote Calculator</h1>
+      <p class="page-subtitle">Calculate a fair price for custom handmade orders. Includes materials, labor, customization complexity, rush fees, and your target margin.</p>
+
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Base material cost ($)</label>
+            <input type="number" id="q-material" class="form-input" placeholder="e.g. 8.00" min="0" step="0.01">
+          </div>
+          <div>
+            <label class="label">Extra materials for customization ($)</label>
+            <input type="number" id="q-extra-mat" class="form-input" placeholder="e.g. 2.50" min="0" step="0.01" value="0">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Time to make (minutes)</label>
+            <input type="number" id="q-time" class="form-input" placeholder="e.g. 60" min="1">
+          </div>
+          <div>
+            <label class="label">Extra time for customization (min)</label>
+            <input type="number" id="q-extra-time" class="form-input" placeholder="e.g. 15" min="0" value="0">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Hourly labor rate ($/hr)</label>
+            <input type="number" id="q-rate" class="form-input" placeholder="e.g. 20" min="0" step="0.01">
+          </div>
+          <div>
+            <label class="label">Complexity multiplier</label>
+            <select id="q-complexity" class="form-select">
+              <option value="1.0">Standard (×1.0)</option>
+              <option value="1.15">Moderate customization (×1.15)</option>
+              <option value="1.3">Complex customization (×1.3)</option>
+              <option value="1.5">Highly complex / unique (×1.5)</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Rush fee ($)</label>
+            <input type="number" id="q-rush" class="form-input" value="0" min="0" step="0.01">
+          </div>
+          <div>
+            <label class="label">Packaging & shipping ($)</label>
+            <input type="number" id="q-ship" class="form-input" value="0" min="0" step="0.01">
+          </div>
+          <div>
+            <label class="label">Profit margin (%)</label>
+            <input type="number" id="q-margin" class="form-input" value="30" min="0" max="200" step="1">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcQuote()">Generate Quote</button>
+
+        <div id="quote-result" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">How to price a custom order</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">Custom orders deserve a premium over standard items. This calculator builds a quote from the ground up — start with your standard costs, add customization materials and time, apply a complexity multiplier for one-of-a-kind work, then add rush fees and a profit margin.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li><strong>Complexity multiplier</strong>: Charge more for work that requires extra skill, communication back-and-forth, or custom design time</li>
+          <li><strong>Rush fee</strong>: A flat fee for orders with shorter-than-standard turnaround times</li>
+          <li><strong>Profit margin</strong>: Applied on top of all costs — 30% is a common starting point</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">Never price custom orders below your standard items — customization requires more time, communication, and skill.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Custom Order Quote Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Custom Order Quote Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcQuote() {
+    const material = parseFloat(document.getElementById('q-material').value) || 0;
+    const extraMat = parseFloat(document.getElementById('q-extra-mat').value) || 0;
+    const time = parseFloat(document.getElementById('q-time').value) || 0;
+    const extraTime = parseFloat(document.getElementById('q-extra-time').value) || 0;
+    const rate = parseFloat(document.getElementById('q-rate').value) || 0;
+    const complexity = parseFloat(document.getElementById('q-complexity').value);
+    const rush = parseFloat(document.getElementById('q-rush').value) || 0;
+    const ship = parseFloat(document.getElementById('q-ship').value) || 0;
+    const margin = parseFloat(document.getElementById('q-margin').value) || 0;
+
+    if (!material && !time) { alert('Enter at least material cost or time.'); return; }
+
+    const totalMaterials = (material + extraMat) * complexity;
+    const totalMinutes = (time + extraTime) * complexity;
+    const totalHours = totalMinutes / 60;
+    const laborCost = totalHours * rate;
+    const baseCost = totalMaterials + laborCost;
+    const costBeforeExtras = baseCost + rush + ship;
+    const price = costBeforeExtras / (1 - margin / 100);
+    const profit = price - costBeforeExtras;
+
+    const el = document.getElementById('quote-result');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Total Materials</div><div class="stat-value">$${totalMaterials.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Total Time</div><div class="stat-value">${totalMinutes.toFixed(0)} min</div></div>
+      <div class="stat-box"><div class="stat-label">Labor Cost</div><div class="stat-value">$${laborCost.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Base Cost</div><div class="stat-value">$${baseCost.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Rush + Shipping</div><div class="stat-value">$${(rush+ship).toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Your Profit</div><div class="stat-value">$${profit.toFixed(2)}</div></div>
+    </div>
+    <div style="margin-top:1rem;padding:1rem;background:var(--result-bg,var(--bg-secondary));border-radius:8px;text-align:center;">
+      <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.25rem;">Suggested quote price</div>
+      <div style="font-size:2rem;font-weight:700;color:var(--accent);">$${price.toFixed(2)}</div>
+      <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.25rem;">${margin}% profit margin · complexity ×${complexity.toFixed(2)}</div>
+    </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('custom-order-quote-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

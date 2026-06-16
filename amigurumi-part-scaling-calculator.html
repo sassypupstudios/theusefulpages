@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amigurumi Part Scaling Calculator — Resize Any Amigurumi | The Useful Pages</title>
+  <meta name="description" content="Scale amigurumi parts proportionally by percentage or gauge. Enter body size and ratios to get all part dimensions. Free crochet calculator, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/amigurumi-part-scaling-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Amigurumi Part Scaling Calculator</h1>
+      <p class="page-subtitle">Scale all amigurumi parts proportionally from a reference body size, or resize by changing gauge.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+          <!-- Proportion scaling -->
+          <div style="border:1px solid var(--color-border);border-radius:0.5rem;padding:1rem;">
+            <h3 style="margin-bottom:0.75rem;font-size:1rem;">Scale by Proportions</h3>
+            <p style="font-size:0.875rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Enter the body diameter and percentage ratios for each part.</p>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Body Diameter (inches)</label>
+              <input class="form-input" type="number" id="body-diam" min="0.1" step="0.25" placeholder="e.g. 4">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.75rem;">
+              <div>
+                <label class="label">Head %</label>
+                <input class="form-input" type="number" id="pct-head" min="1" max="300" step="1" value="80">
+              </div>
+              <div>
+                <label class="label">Arms %</label>
+                <input class="form-input" type="number" id="pct-arms" min="1" max="300" step="1" value="60">
+              </div>
+              <div>
+                <label class="label">Legs %</label>
+                <input class="form-input" type="number" id="pct-legs" min="1" max="300" step="1" value="70">
+              </div>
+              <div>
+                <label class="label">Ears %</label>
+                <input class="form-input" type="number" id="pct-ears" min="1" max="300" step="1" value="25">
+              </div>
+              <div>
+                <label class="label">Tail %</label>
+                <input class="form-input" type="number" id="pct-tail" min="1" max="300" step="1" value="30">
+              </div>
+              <div>
+                <label class="label">Snout %</label>
+                <input class="form-input" type="number" id="pct-snout" min="1" max="300" step="1" value="35">
+              </div>
+            </div>
+            <button class="btn-primary" style="width:100%" onclick="calcProportions()">Calculate Parts</button>
+            <div id="prop-result" style="margin-top:1rem;"></div>
+          </div>
+
+          <!-- Gauge scaling -->
+          <div style="border:1px solid var(--color-border);border-radius:0.5rem;padding:1rem;">
+            <h3 style="margin-bottom:0.75rem;font-size:1rem;">Resize by Gauge Change</h3>
+            <p style="font-size:0.875rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Enter the original pattern gauge and your new gauge to proportionally scale all dimensions.</p>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Original Gauge (stitches per inch)</label>
+              <input class="form-input" type="number" id="orig-gauge" min="0.5" step="0.5" placeholder="e.g. 5">
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">New Gauge (stitches per inch)</label>
+              <input class="form-input" type="number" id="new-gauge" min="0.5" step="0.5" placeholder="e.g. 3.5">
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Original Dimensions (one per line, e.g. "Body: 4")</label>
+              <textarea class="form-textarea" id="orig-dims" rows="6" placeholder="Body: 4&#10;Head: 3.5&#10;Arms: 2.5&#10;Legs: 3&#10;Ears: 1"></textarea>
+            </div>
+            <button class="btn-outline" style="width:100%" onclick="calcGaugeScale()">Scale All Dimensions</button>
+            <div id="gauge-result" style="margin-top:1rem;"></div>
+          </div>
+        </div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--color-border);">
+
+        <h3 style="margin-bottom:0.75rem;font-size:1rem;">Common Amigurumi Proportion Reference</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Part</th><th>Typical % of Body</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>Head</td><td>75–90%</td><td>Large heads = cuter / more "chibi" look</td></tr>
+              <tr><td>Arms</td><td>50–70%</td><td>Shorter arms look more huggable</td></tr>
+              <tr><td>Legs</td><td>60–80%</td><td>Longer legs = more doll-like</td></tr>
+              <tr><td>Ears</td><td>20–35%</td><td>Varies widely by animal type</td></tr>
+              <tr><td>Snout / nose</td><td>25–40%</td><td>Larger snout = more animal, smaller = cuter</td></tr>
+              <tr><td>Tail</td><td>20–50%</td><td>Decorative; varies by species</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use — Proportion Scaling</h2>
+        <ul>
+          <li>Enter the diameter of the body piece you want to make.</li>
+          <li>Enter percentage ratios for each other part (e.g., head at 80% means head is 80% the diameter of the body).</li>
+          <li>Click <strong>Calculate Parts</strong> to see all dimension targets in inches.</li>
+        </ul>
+        <h2>How to Use — Gauge Scaling</h2>
+        <ul>
+          <li>Enter the original pattern's gauge and your actual gauge.</li>
+          <li>Enter the original dimensions (one per line, any format).</li>
+          <li>Click <strong>Scale All Dimensions</strong> to see how each measurement changes at your gauge.</li>
+        </ul>
+        <h2>Why Scale by Gauge?</h2>
+        <p>If a pattern is written for 5 sts/inch and you crochet at 3.5 sts/inch, your finished pieces will be (5 ÷ 3.5 = 1.43×) larger than the pattern states. The gauge scaler applies this multiplier to all dimensions so you can predict exactly how big your finished ami will be — or adjust to hit a target size.</p>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Amigurumi Part Scaling Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Amigurumi Part Scaling Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcProportions() {
+    const body = parseFloat(document.getElementById('body-diam').value);
+    const res = document.getElementById('prop-result');
+
+    if (!body || body <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter a valid body diameter.</p>'; return;
+    }
+
+    const parts = [
+      { name: 'Body', id: null, pct: 100 },
+      { name: 'Head', id: 'pct-head', pct: null },
+      { name: 'Arms', id: 'pct-arms', pct: null },
+      { name: 'Legs', id: 'pct-legs', pct: null },
+      { name: 'Ears', id: 'pct-ears', pct: null },
+      { name: 'Tail', id: 'pct-tail', pct: null },
+      { name: 'Snout', id: 'pct-snout', pct: null },
+    ];
+
+    for (const p of parts) {
+      if (p.id) p.pct = parseFloat(document.getElementById(p.id).value) || 50;
+    }
+
+    let rows = parts.map(p => {
+      const dim = (body * p.pct / 100).toFixed(2);
+      return `<tr><td>${p.name}</td><td>${p.pct}%</td><td>${dim}"</td></tr>`;
+    }).join('');
+
+    res.innerHTML = `<div class="table-wrap"><table class="data-table">
+      <thead><tr><th>Part</th><th>% of Body</th><th>Target Size</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>`;
+  }
+
+  function calcGaugeScale() {
+    const origGauge = parseFloat(document.getElementById('orig-gauge').value);
+    const newGauge = parseFloat(document.getElementById('new-gauge').value);
+    const dimsText = document.getElementById('orig-dims').value.trim();
+    const res = document.getElementById('gauge-result');
+
+    if (!origGauge || !newGauge || origGauge <= 0 || newGauge <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid original and new gauge values.</p>'; return;
+    }
+    if (!dimsText) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter at least one dimension.</p>'; return;
+    }
+
+    const scaleFactor = origGauge / newGauge;
+    const lines = dimsText.split('\n').filter(l => l.trim());
+    let rows = '';
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+      // Extract all numbers from the line
+      const nums = trimmed.match(/[\d.]+/g);
+      if (!nums) { rows += `<tr><td colspan="3">${trimmed} (no number found)</td></tr>`; continue; }
+      let newLine = trimmed;
+      const scaledNums = nums.map(n => {
+        const val = parseFloat(n);
+        return (val * scaleFactor).toFixed(2);
+      });
+      rows += `<tr><td>${trimmed}</td><td>${nums.map(n => n + '"').join(', ')}</td><td>${scaledNums.map(n => n + '"').join(', ')}</td></tr>`;
+    }
+
+    const pct = Math.round((scaleFactor - 1) * 100);
+    const direction = scaleFactor > 1 ? `${Math.abs(pct)}% larger` : scaleFactor < 1 ? `${Math.abs(pct)}% smaller` : 'same size';
+
+    res.innerHTML = `<div class="result-card">
+      <p style="margin-bottom:0.75rem;font-size:0.875rem;"><strong>Scale factor: ${scaleFactor.toFixed(3)}×</strong> — your finished pieces will be <strong>${direction}</strong> than the original pattern.</p>
+      <div class="table-wrap"><table class="data-table">
+        <thead><tr><th>Part / Label</th><th>Original</th><th>Scaled (your gauge)</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>
+    </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('amigurumi-part-scaling-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

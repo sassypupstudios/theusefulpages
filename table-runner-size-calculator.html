@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table Runner Size Calculator — Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate table runner dimensions and fabric yardage. Enter your table size and desired overhang to get runner length, width suggestions, and total yardage.">
+  <link rel="canonical" href="https://theusefulpages.com/table-runner-size-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Table Runner Size Calculator</h1>
+      <p class="page-subtitle">Find the perfect runner dimensions and fabric yardage for any table.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+          <div style="grid-column:1/-1;">
+            <label class="label">Table Preset</label>
+            <select class="form-select" id="table-preset" onchange="applyTablePreset()">
+              <option value="">— Select a preset or enter manually —</option>
+              <option value="60,30">Standard Dining (60" × 30")</option>
+              <option value="72,36">Large Dining (72" × 36")</option>
+              <option value="84,40">Extra Long Dining (84" × 40")</option>
+              <option value="96,42">Banquet Table (96" × 42")</option>
+              <option value="48,22">Coffee Table (48" × 22")</option>
+              <option value="54,16">Console Table (54" × 16")</option>
+              <option value="36,18">Small Console (36" × 18")</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Table Length (inches)</label>
+            <input class="form-input" type="number" id="tbl-l" min="1" step="0.5" placeholder="e.g. 72" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Table Width (inches)</label>
+            <input class="form-input" type="number" id="tbl-w" min="1" step="0.5" placeholder="e.g. 36" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Overhang Each End (inches)</label>
+            <select class="form-select" id="overhang" onchange="calculate()">
+              <option value="6">6" (minimal)</option>
+              <option value="8" selected>8" (standard)</option>
+              <option value="10">10"</option>
+              <option value="12">12" (generous)</option>
+              <option value="custom">Custom</option>
+            </select>
+          </div>
+          <div id="overhang-custom-wrap" style="display:none;">
+            <label class="label">Custom Overhang (inches)</label>
+            <input class="form-input" type="number" id="overhang-custom" min="0" step="0.5" placeholder="e.g. 9" oninput="calculate()">
+          </div>
+          <div>
+            <label class="label">Seam Allowance</label>
+            <select class="form-select" id="sa" onchange="calculate()">
+              <option value="0.5" selected>½" (standard)</option>
+              <option value="0.625">⅝"</option>
+              <option value="1">1"</option>
+            </select>
+          </div>
+          <div style="grid-column:1/-1;">
+            <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;">
+              <input type="checkbox" id="backing" onchange="calculate()" style="width:1rem;height:1rem;">
+              <span class="label" style="margin:0;">Include backing fabric yardage</span>
+            </label>
+          </div>
+        </div>
+
+        <div id="result-area" style="display:none;">
+          <div class="result-card">
+            <div class="stat-grid" id="stat-grid"></div>
+          </div>
+          <div id="width-suggestions" style="margin-top:1rem;"></div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use the Table Runner Size Calculator</h2>
+        <p>Select a table preset or enter your table's length and width manually. Choose your desired overhang on each end and a seam allowance. The calculator shows your finished runner dimensions, suggested widths, and how much fabric to buy.</p>
+        <h3>Runner Width Guide</h3>
+        <ul>
+          <li><strong>⅓ of table width</strong> is the classic proportion (e.g., 12" runner on a 36" table).</li>
+          <li><strong>Narrow (10–12")</strong> works well for console and sideboard tables.</li>
+          <li><strong>Wide (16–20")</strong> creates a bold statement on large dining tables.</li>
+        </ul>
+        <h3>Standard Table & Runner Reference</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Table Type</th><th>Table Size</th><th>Runner Length</th><th>Runner Width</th></tr></thead>
+            <tbody>
+              <tr><td>Dining (seats 4)</td><td>60" × 30"</td><td>76" (8" overhang)</td><td>10–14"</td></tr>
+              <tr><td>Dining (seats 6)</td><td>72" × 36"</td><td>88"</td><td>12–16"</td></tr>
+              <tr><td>Dining (seats 8)</td><td>84" × 40"</td><td>100"</td><td>14–18"</td></tr>
+              <tr><td>Coffee Table</td><td>48" × 22"</td><td>64"</td><td>7–10"</td></tr>
+              <tr><td>Console Table</td><td>54" × 16"</td><td>70"</td><td>10–14"</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Table Runner Size Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Table Runner Size Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('table-runner-size-calculator.html'); injectFooter(); });
+
+    function applyTablePreset() {
+      const v = document.getElementById('table-preset').value;
+      if (!v) return;
+      const [l, w] = v.split(',').map(Number);
+      document.getElementById('tbl-l').value = l;
+      document.getElementById('tbl-w').value = w;
+      calculate();
+    }
+
+    document.getElementById('overhang').addEventListener('change', function() {
+      document.getElementById('overhang-custom-wrap').style.display = this.value === 'custom' ? '' : 'none';
+      calculate();
+    });
+
+    function getOverhang() {
+      const sel = document.getElementById('overhang').value;
+      if (sel === 'custom') return parseFloat(document.getElementById('overhang-custom').value) || 0;
+      return parseFloat(sel);
+    }
+
+    function toYards(inches) { return (inches / 36).toFixed(3); }
+
+    function calculate() {
+      const tblL = parseFloat(document.getElementById('tbl-l').value);
+      const tblW = parseFloat(document.getElementById('tbl-w').value);
+      const overhang = getOverhang();
+      const sa = parseFloat(document.getElementById('sa').value);
+      const backing = document.getElementById('backing').checked;
+
+      if (!tblL || !tblW || tblL <= 0 || tblW <= 0) {
+        document.getElementById('result-area').style.display = 'none'; return;
+      }
+
+      const finishedL = tblL + 2 * overhang;
+      const suggestedNarrow = Math.round(tblW / 3);
+      const suggestedStd = Math.round(tblW * 0.4);
+      const suggestedWide = Math.round(tblW / 2);
+
+      const cutL = finishedL + 2 * sa;
+      const cutWNarrow = suggestedNarrow + 2 * sa;
+      const cutWStd = suggestedStd + 2 * sa;
+
+      // Yardage for standard width (most common)
+      const yardsMain = parseFloat(toYards(cutL));
+      const totalYards = yardsMain;
+
+      const stats = [
+        { label: 'Finished Runner Length', value: finishedL.toFixed(1) + '"' },
+        { label: 'Overhang Each End', value: overhang + '"' },
+        { label: 'Cut Length (with SA)', value: cutL.toFixed(1) + '"' },
+        { label: 'Suggested Narrow Width (⅓)', value: suggestedNarrow + '" finished / ' + cutWNarrow.toFixed(1) + '" cut' },
+        { label: 'Suggested Standard Width (40%)', value: suggestedStd + '" finished / ' + cutWStd.toFixed(1) + '" cut' },
+        { label: 'Suggested Wide Width (½)', value: suggestedWide + '" finished' },
+        { label: 'Fabric Yardage Needed', value: totalYards.toFixed(2) + ' yd (for 1 runner)' },
+      ];
+
+      if (backing) {
+        stats.push({ label: 'Backing Yardage', value: totalYards.toFixed(2) + ' yd' });
+        stats.push({ label: 'Total with Backing', value: (totalYards * 2).toFixed(2) + ' yd' });
+      }
+
+      const grid = document.getElementById('stat-grid');
+      grid.innerHTML = stats.map(s => `<div class="stat-box"><div class="stat-label">${s.label}</div><div class="stat-value">${s.value}</div></div>`).join('');
+      document.getElementById('result-area').style.display = '';
+    }
+  </script>
+</body>
+</html>

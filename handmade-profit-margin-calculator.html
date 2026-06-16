@@ -1,0 +1,324 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handmade Profit Margin Calculator — Craft Business Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate profit margin and suggested retail price for handmade items. Enter material cost, labor, and overhead to find your break-even and target sell price.">
+  <link rel="canonical" href="https://theusefulpages.com/handmade-profit-margin-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Handmade Profit Margin Calculator</h1>
+      <p class="page-subtitle">Enter your costs and desired margin to find a fair selling price — or enter a selling price to see what margin you're actually earning.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" style="margin-bottom:1.25rem;">
+          <button class="tab-btn active" onclick="showPM('cost-to-price')">Find Selling Price</button>
+          <button class="tab-btn" onclick="showPM('price-to-margin')">Check Existing Price</button>
+        </div>
+
+        <!-- COST TO PRICE -->
+        <div id="cost-to-price">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Materials cost ($)</label>
+              <input type="number" id="pm-mat" class="form-input" placeholder="e.g. 8.50" min="0" step="0.01">
+            </div>
+            <div>
+              <label class="label">Labor cost ($)</label>
+              <input type="number" id="pm-labor" class="form-input" placeholder="e.g. 12.00" min="0" step="0.01" value="0">
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Overhead per item ($) <span style="font-size:0.8rem;color:var(--text-muted);">(packaging, fees)</span></label>
+              <input type="number" id="pm-overhead" class="form-input" placeholder="e.g. 1.50" min="0" step="0.01" value="0">
+            </div>
+            <div>
+              <label class="label">Marketplace fee (%) <span style="font-size:0.8rem;color:var(--text-muted);">(Etsy, etc.)</span></label>
+              <input type="number" id="pm-fee" class="form-input" placeholder="e.g. 6.5" min="0" max="100" step="0.1" value="0">
+            </div>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label class="label">Target profit margin (%)</label>
+            <input type="number" id="pm-margin" class="form-input" value="30" min="0" max="500" step="1" style="max-width:180px;">
+          </div>
+          <button class="btn-primary" onclick="calcPrice()">Calculate Selling Price</button>
+          <div id="pm-result1" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+        </div>
+
+        <!-- PRICE TO MARGIN -->
+        <div id="price-to-margin" style="display:none;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Your selling price ($)</label>
+              <input type="number" id="chk-price" class="form-input" placeholder="e.g. 35.00" min="0" step="0.01">
+            </div>
+            <div>
+              <label class="label">Total cost (materials + labor + overhead)</label>
+              <input type="number" id="chk-cost" class="form-input" placeholder="e.g. 22.00" min="0" step="0.01">
+            </div>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label class="label">Marketplace fee (%) <span style="font-size:0.8rem;color:var(--text-muted);">(deducted from price)</span></label>
+            <input type="number" id="chk-fee" class="form-input" placeholder="e.g. 6.5" min="0" max="100" step="0.1" value="0" style="max-width:180px;">
+          </div>
+          <button class="btn-primary" onclick="calcMargin()">Check Margin</button>
+          <div id="pm-result2" class="result-card" style="display:none;margin-top:1.25rem;"></div>
+        </div>
+
+        <div style="margin-top:2rem;">
+          <h3 style="font-size:0.95rem;font-weight:700;margin:0 0 0.75rem;">Common marketplace fees reference</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Platform</th><th>Transaction fee</th><th>Listing fee</th></tr></thead>
+              <tbody>
+                <tr><td>Etsy</td><td>6.5% + payment processing</td><td>$0.20/listing</td></tr>
+                <tr><td>Shopify</td><td>0–2% (plan-dependent)</td><td>Monthly subscription</td></tr>
+                <tr><td>Amazon Handmade</td><td>15%</td><td>No listing fee</td></tr>
+                <tr><td>eBay</td><td>~13.25% (category varies)</td><td>Up to 250 free/mo</td></tr>
+                <tr><td>Local market / craft show</td><td>0% transaction</td><td>Table/booth fee (varies)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">Pricing handmade items</h2>
+        <p style="margin:0 0 0.75rem;color:var(--text-muted);font-size:0.9rem;">A common formula: <strong>Price = (Materials + Labor + Overhead) ÷ (1 − Margin%)</strong>. This ensures margin is calculated on revenue, not cost. A 30% margin means 30 cents of every dollar sold is profit after all costs.</p>
+        <ul style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.7;">
+          <li>Pay yourself a real hourly rate — at least minimum wage, ideally market rate for your skill</li>
+          <li>Marketplace fees come off your revenue, so build them into your price</li>
+          <li>A 30–50% margin is a common starting target for handmade businesses</li>
+          <li>If your market won't bear your true cost + margin, consider premium positioning or reducing costs</li>
+        </ul>
+        <p class="disclaimer" style="margin-top:0.75rem;">These calculations are for guidance only. Actual profitability depends on volume, overhead allocation, and tax obligations.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Handmade Profit Margin Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Handmade Profit Margin Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function showPM(id) {
+    ['cost-to-price','price-to-margin'].forEach(t => document.getElementById(t).style.display = t===id?'':'none');
+    document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i===(id==='cost-to-price'?0:1)));
+  }
+
+  function calcPrice() {
+    const mat = parseFloat(document.getElementById('pm-mat').value) || 0;
+    const labor = parseFloat(document.getElementById('pm-labor').value) || 0;
+    const overhead = parseFloat(document.getElementById('pm-overhead').value) || 0;
+    const fee = parseFloat(document.getElementById('pm-fee').value) || 0;
+    const margin = parseFloat(document.getElementById('pm-margin').value) || 30;
+    if (!mat && !labor) { alert('Enter at least materials or labor cost.'); return; }
+    const totalCost = mat + labor + overhead;
+    const divisor = 1 - (margin / 100) - (fee / 100);
+    if (divisor <= 0) { alert('Margin + fee cannot exceed 100%.'); return; }
+    const price = totalCost / divisor;
+    const profit = price - totalCost - (price * fee / 100);
+    const actualMargin = (profit / price) * 100;
+    const el = document.getElementById('pm-result1');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Total Cost</div><div class="stat-value">$${totalCost.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Marketplace Fee</div><div class="stat-value">$${(price*fee/100).toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Your Profit</div><div class="stat-value">$${profit.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Actual Margin</div><div class="stat-value">${actualMargin.toFixed(1)}%</div></div>
+    </div>
+    <div style="margin-top:1rem;padding:1rem;background:var(--result-bg,var(--bg-secondary));border-radius:8px;text-align:center;">
+      <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.25rem;">Suggested selling price</div>
+      <div style="font-size:2rem;font-weight:700;color:var(--accent);">$${price.toFixed(2)}</div>
+      <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.25rem;">Break-even at $${(totalCost/(1-fee/100)).toFixed(2)}</div>
+    </div>`;
+  }
+
+  function calcMargin() {
+    const price = parseFloat(document.getElementById('chk-price').value);
+    const cost = parseFloat(document.getElementById('chk-cost').value);
+    const fee = parseFloat(document.getElementById('chk-fee').value) || 0;
+    if (!price || !cost) { alert('Enter selling price and total cost.'); return; }
+    const feeAmt = price * fee / 100;
+    const netRevenue = price - feeAmt;
+    const profit = netRevenue - cost;
+    const margin = (profit / price) * 100;
+    const markup = (profit / cost) * 100;
+    const el = document.getElementById('pm-result2');
+    el.style.display = '';
+    el.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="stat-label">Selling Price</div><div class="stat-value">$${price.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Marketplace Fee</div><div class="stat-value">$${feeAmt.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Net Revenue</div><div class="stat-value">$${netRevenue.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Total Cost</div><div class="stat-value">$${cost.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Profit</div><div class="stat-value" style="color:${profit>=0?'#22c55e':'#ef4444'}">$${profit.toFixed(2)}</div></div>
+      <div class="stat-box"><div class="stat-label">Profit Margin</div><div class="stat-value" style="color:${margin>=20?'#22c55e':margin>=0?'#f59e0b':'#ef4444'}">${margin.toFixed(1)}%</div></div>
+      <div class="stat-box"><div class="stat-label">Markup on Cost</div><div class="stat-value">${markup.toFixed(1)}%</div></div>
+    </div>
+    <p style="margin-top:0.75rem;font-size:0.88rem;color:var(--text-muted);">${margin < 0 ? '⚠️ You are selling below cost.' : margin < 15 ? '⚠️ Low margin — consider raising price or reducing costs.' : margin >= 30 ? '✅ Healthy margin.' : '⚠️ Moderate margin — OK for high volume, consider improving for lower volume.'}</p>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('handmade-profit-margin-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

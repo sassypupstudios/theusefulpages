@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Chart Symbol Lookup — Online Reference | The Useful Pages</title>
+  <meta name="description" content="Look up standard knitting chart symbols with RS and WS meanings. Searchable reference for 40+ symbols including cables, decreases, and increases.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-chart-symbol-lookup.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .sym-cell { font-size:1.5rem; font-weight:700; text-align:center; color:var(--primary); min-width:2rem; display:inline-block; }
+    .rs-badge { background:#d1fae5; color:#065f46; padding:1px 6px; border-radius:4px; font-size:0.75rem; }
+    .ws-badge { background:#dbeafe; color:#1e40af; padding:1px 6px; border-radius:4px; font-size:0.75rem; }
+    [data-theme="dark"] .rs-badge { background:#064e3b; color:#6ee7b7; }
+    [data-theme="dark"] .ws-badge { background:#1e3a5f; color:#93c5fd; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Chart Symbol Lookup</h1>
+      <p class="page-subtitle">Standard knitting chart symbols with Right Side (RS) and Wrong Side (WS) meanings. Searchable reference.</p>
+      <div class="tool-card">
+        <input class="form-input" type="text" id="search" placeholder="Search symbol name or meaning (e.g. knit, decrease, cable...)" style="margin-bottom:1rem;" oninput="filterTable()">
+        <p id="count-label" style="font-size:0.9rem;color:var(--text-muted);margin-bottom:0.75rem;"></p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Symbol</th><th>Name / Abbr</th><th><span class="rs-badge">RS</span> Meaning</th><th><span class="ws-badge">WS</span> Meaning</th></tr>
+            </thead>
+            <tbody id="symbol-body"></tbody>
+          </table>
+        </div>
+        <p class="disclaimer" style="margin-top:1rem;">Knitting chart symbols vary between publishers. Always refer to the symbol key provided in your specific pattern. These follow common international conventions.</p>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Read Knitting Charts</h2>
+        <p>Knitting charts are read from bottom to top, mirroring how the knitting grows. For flat knitting, <strong>RS rows are read right to left</strong> and <strong>WS rows are read left to right</strong>. For knitting in the round, all rows are read right to left.</p>
+        <p>Each square in the chart represents one stitch. The symbol in the square tells you what to do on the RS. When you turn and work the WS, the same symbol has a different meaning (e.g., a knit symbol on RS = purl on WS).</p>
+        <h2>Cable Symbols</h2>
+        <p>Cable symbols show multiple stitches as a group. The direction of the cable (front vs. back) indicates which way the cable twists. Cables with a "/" lean right; cables with a "\" lean left.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Knitting Chart Symbol Lookup</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Knitting Chart Symbol Lookup to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const SYMBOLS = [
+    {sym:'□',name:'Knit / k',rs:'Knit',ws:'Purl',cat:'basic'},
+    {sym:'•',name:'Purl / p',rs:'Purl',ws:'Knit',cat:'basic'},
+    {sym:'—',name:'Purl (alt symbol)',rs:'Purl',ws:'Knit',cat:'basic'},
+    {sym:'O',name:'Yarn Over / yo',rs:'Yarn over (new stitch, eyelet hole)',ws:'Yarn over',cat:'increase'},
+    {sym:'/',name:'K2tog (right lean)',rs:'Knit 2 together (right-leaning decrease)',ws:'SSP (purl version of ssk)',cat:'decrease'},
+    {sym:'\\',name:'SSK (left lean)',rs:'Slip, slip, knit (left-leaning decrease)',ws:'P2tog',cat:'decrease'},
+    {sym:'X',name:'Slip Stitch / sl',rs:'Slip 1 stitch purlwise with yarn in back',ws:'Slip 1 stitch purlwise with yarn in front',cat:'basic'},
+    {sym:'⊠',name:'Knit TBL / k tbl',rs:'Knit through back loop',ws:'Purl through back loop',cat:'basic'},
+    {sym:'⊡',name:'Purl TBL / p tbl',rs:'Purl through back loop',ws:'Knit through back loop',cat:'basic'},
+    {sym:'△',name:'Make 1 Left / m1l',rs:'Make 1 Left (left-leaning increase)',ws:'Make 1 Left purlwise',cat:'increase'},
+    {sym:'▷',name:'Make 1 Right / m1r',rs:'Make 1 Right (right-leaning increase)',ws:'Make 1 Right purlwise',cat:'increase'},
+    {sym:'V',name:'KFB / kfb',rs:'Knit front and back (increase)',ws:'Purl front and back',cat:'increase'},
+    {sym:'⋀',name:'Double Decrease / sk2p',rs:'Slip 1, k2tog, pass slipped stitch over',ws:'P3tog',cat:'decrease'},
+    {sym:'⋁',name:'Centered Double Decrease / s2kp',rs:'Slip 2 together knitwise, k1, pass 2 slipped over',ws:'Centered double decrease purlwise',cat:'decrease'},
+    {sym:'⬡',name:'Bobble',rs:'Work 5 stitches into 1 then turn back to 1',ws:'Purl the bobble stitch',cat:'texture'},
+    {sym:'⬬',name:'Nupp',rs:'Work (k1, yo) × 4, k1 into same stitch',ws:'Purl 9 stitches together tightly',cat:'texture'},
+    {sym:'≡',name:'Garter Stitch / g st',rs:'Purl (creates garter ridge)',ws:'Knit',cat:'texture'},
+    {sym:'◁',name:'No Stitch',rs:'No stitch; placeholder to align chart columns',ws:'No stitch; skip this square',cat:'basic'},
+    {sym:'|',name:'Knit (chart side bars)',rs:'Knit on RS',ws:'Purl on WS',cat:'basic'},
+    {sym:'↑',name:'Elongated Stitch',rs:'Knit wrapping yarn twice around needle',ws:'Drop extra loop to elongate',cat:'texture'},
+    {sym:'C2B',name:'Cable 2 Back / c2b',rs:'Slip 1 to CN hold back, k1, k1 from CN (right-twist)',ws:'Work WS sts across cable',cat:'cable'},
+    {sym:'C2F',name:'Cable 2 Front / c2f',rs:'Slip 1 to CN hold front, k1, k1 from CN (left-twist)',ws:'Work WS sts across cable',cat:'cable'},
+    {sym:'C4B',name:'Cable 4 Back / c4b',rs:'Slip 2 to CN hold back, k2, k2 from CN',ws:'Purl across cable stitches',cat:'cable'},
+    {sym:'C4F',name:'Cable 4 Front / c4f',rs:'Slip 2 to CN hold front, k2, k2 from CN',ws:'Purl across cable stitches',cat:'cable'},
+    {sym:'C6B',name:'Cable 6 Back / c6b',rs:'Slip 3 to CN hold back, k3, k3 from CN',ws:'Purl across cable stitches',cat:'cable'},
+    {sym:'C6F',name:'Cable 6 Front / c6f',rs:'Slip 3 to CN hold front, k3, k3 from CN',ws:'Purl across cable stitches',cat:'cable'},
+    {sym:'T4B',name:'Twist 4 Back (with purl)',rs:'Slip 2 to CN hold back, k2, p2 from CN',ws:'Work sts as they appear',cat:'cable'},
+    {sym:'T4F',name:'Twist 4 Front (with purl)',rs:'Slip 2 to CN hold front, p2, k2 from CN',ws:'Work sts as they appear',cat:'cable'},
+    {sym:'///',name:'K3tog',rs:'Knit 3 together (2-st decrease)',ws:'P3tog',cat:'decrease'},
+    {sym:'\\\\\\',name:'SSSK',rs:'Slip 3 knitwise one at a time, k3tog tbl (2-st decrease)',ws:'—',cat:'decrease'},
+    {sym:'⊕',name:'Marker',rs:'Place or slip stitch marker',ws:'Slip marker',cat:'basic'},
+    {sym:'W',name:'Wrap and Turn / w&t',rs:'Wrap yarn around next stitch and turn work (short rows)',ws:'Work wrap together with wrapped stitch',cat:'shaping'},
+    {sym:'⟨⟩',name:'Repeat Box',rs:'Work stitches inside brackets the specified number of times',ws:'Work stitches inside brackets the specified number of times',cat:'basic'},
+    {sym:'▣',name:'Selvedge Stitch',rs:'Slip 1 knitwise (or knit 1) for neat edge',ws:'Purl 1 for neat edge',cat:'basic'},
+    {sym:'∅',name:'Double Yarn Over / dyo',rs:'Yarn over twice around needle',ws:'(K1, p1) into the double yarn over',cat:'increase'},
+    {sym:'↗',name:'Inc Row / lifted increase',rs:'Lift right loop of stitch below and knit it',ws:'Lift loop and purl',cat:'increase'},
+    {sym:'↙',name:'Left Lifted Increase',rs:'Lift left loop of stitch below and knit it',ws:'Lift loop and purl',cat:'increase'},
+    {sym:'⊟',name:'Brioche Knit / brk',rs:'Knit stitch together with its yarn over',ws:'Brp (brioche purl)',cat:'texture'},
+    {sym:'⊞',name:'Brioche Purl / brp',rs:'Purl stitch together with its yarn over',ws:'Brk (brioche knit)',cat:'texture'},
+    {sym:'⟲',name:'Work in Round Symbol',rs:'Continue working in rounds',ws:'N/A (in-the-round)',cat:'basic'},
+  ];
+
+  function escH(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function renderTable(data) {
+    document.getElementById('count-label').textContent = `Showing ${data.length} of ${SYMBOLS.length} symbols`;
+    document.getElementById('symbol-body').innerHTML = data.map(r =>
+      `<tr>
+        <td style="text-align:center;"><span class="sym-cell">${escH(r.sym)}</span></td>
+        <td><strong>${escH(r.name)}</strong></td>
+        <td>${escH(r.rs)}</td>
+        <td>${escH(r.ws)}</td>
+      </tr>`
+    ).join('');
+  }
+
+  function filterTable() {
+    const q = document.getElementById('search').value.trim().toLowerCase();
+    if (!q) { renderTable(SYMBOLS); return; }
+    renderTable(SYMBOLS.filter(r =>
+      r.name.toLowerCase().includes(q) || r.rs.toLowerCase().includes(q) ||
+      r.ws.toLowerCase().includes(q) || r.cat.toLowerCase().includes(q) || r.sym.toLowerCase().includes(q)
+    ));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('knitting-chart-symbol-lookup.html');
+    injectFooter();
+    renderTable(SYMBOLS);
+  });
+  </script>
+</body>
+</html>

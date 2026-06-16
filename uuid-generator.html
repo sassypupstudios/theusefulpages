@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UUID Generator - Online UUID v4 Generator & Validator | The Useful Pages</title>
+  <meta name="description" content="Free online UUID v4 generator. Generate single or bulk UUIDs, validate any UUID, toggle uppercase/lowercase, and learn what each UUID section means.">
+  <link rel="canonical" href="https://theusefulpages.com/uuid-generator.html">
+  <meta property="og:title" content="UUID Generator - The Useful Pages">
+  <meta property="og:description" content="Free online UUID v4 generator and validator. Generate single or bulk UUIDs, validate any UUID string.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"UUID Generator","url":"https://theusefulpages.com/uuid-generator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .uuid-display { font-family: monospace; font-size: 1.35rem; font-weight: 700; letter-spacing: 0.04em; padding: 1.1rem 1.25rem; background: var(--bg-alt); border: 2px solid var(--primary); border-radius: 10px; color: var(--primary); text-align: center; word-break: break-all; }
+    .uuid-segment { display: inline; }
+    .seg-time-low  { color: #2563eb; }
+    .seg-time-mid  { color: #7c3aed; }
+    .seg-time-high { color: #db2777; }
+    .seg-clock     { color: #d97706; }
+    .seg-node      { color: #059669; }
+    .seg-dash      { color: var(--text-muted); }
+    .breakdown-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.5rem; margin-top: 0.75rem; }
+    .breakdown-cell { padding: 0.5rem; border-radius: 8px; font-size: 0.8rem; text-align: center; }
+    .breakdown-cell .seg-label { font-weight: 700; font-size: 0.75rem; margin-bottom: 0.2rem; }
+    .breakdown-cell .seg-desc { font-size: 0.7rem; color: var(--text-muted); }
+    .validate-result { padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; margin-top: 0.75rem; }
+    .validate-valid { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .validate-invalid { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .bulk-list { max-height: 320px; overflow-y: auto; }
+    .bulk-item { display: flex; align-items: center; justify-content: space-between; padding: 0.35rem 0.5rem; border-bottom: 1px solid var(--border); font-family: monospace; font-size: 0.82rem; }
+    .bulk-item:last-child { border-bottom: none; }
+    .nil-uuid { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">UUID Generator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Generate, validate, and explore UUID v4 identifiers. Bulk generate up to 100 UUIDs at once.</p>
+
+      <div class="tool-card">
+        <!-- Single UUID -->
+        <div class="form-group">
+          <label class="form-label">Generated UUID v4</label>
+          <div class="uuid-display" id="uuidDisplay">—</div>
+        </div>
+
+        <div class="btn-row" style="flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="generateOne()">&#x1F504; Generate New</button>
+          <button class="btn btn-outline btn-sm" onclick="copyUUID()">Copy UUID</button>
+          <button class="btn btn-ghost btn-sm" onclick="toggleCase()">Toggle Case</button>
+          <button class="btn btn-ghost btn-sm" onclick="setNil()">NIL UUID</button>
+        </div>
+
+        <!-- UUID segment breakdown -->
+        <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <label class="form-label">Format Breakdown</label>
+          <div id="breakdownDisplay" style="font-family:monospace;font-size:1rem;word-break:break-all;margin-bottom:0.75rem;"></div>
+          <div class="breakdown-grid" id="breakdownGrid"></div>
+        </div>
+
+        <!-- Bulk generate -->
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <label class="form-label">Bulk Generate</label>
+          <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;margin-bottom:0.75rem;">
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;">
+              <span>Count:</span>
+              <input type="number" id="bulkCount" value="10" min="1" max="100" class="form-input" style="width:70px;">
+            </div>
+            <button class="btn btn-accent btn-sm" onclick="generateBulk()">Generate List</button>
+            <button class="btn btn-ghost btn-sm" onclick="copyAllUUIDs()">Copy All</button>
+          </div>
+          <div id="bulkSection" class="hidden">
+            <div class="bulk-list mono-output" id="bulkList" style="padding:0;"></div>
+          </div>
+        </div>
+
+        <!-- Validator -->
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <label class="form-label">UUID Validator</label>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <input class="form-input" id="validateInput" placeholder="Paste a UUID to validate..." style="flex:1;" oninput="liveValidate(this.value)">
+            <button class="btn btn-outline btn-sm" onclick="validateUUID()">Validate</button>
+          </div>
+          <div id="validateResult" class="hidden"></div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Click <strong>Generate New</strong> to create a cryptographically random UUID v4.</li>
+          <li>Use <strong>Copy UUID</strong> to copy it to your clipboard.</li>
+          <li><strong>Toggle Case</strong> switches between lowercase and uppercase formats.</li>
+          <li><strong>NIL UUID</strong> inserts the special all-zeros UUID (00000000-0000-0000-0000-000000000000).</li>
+          <li>The format breakdown shows what each section of the UUID represents with color coding.</li>
+          <li>Enter any UUID in the validator to check if it is valid and which version it is.</li>
+          <li>Set a count (1–100) and click <strong>Generate List</strong> for bulk UUID generation.</li>
+        </ul>
+      </div>
+
+      <!-- UUID Info -->
+      <div class="tool-card" style="margin-top:1rem;">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">About UUID Format</h2>
+        <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:0.75rem;">A UUID (Universally Unique Identifier) is a 128-bit value represented as 32 hexadecimal digits in 5 groups separated by hyphens: <code style="background:var(--bg-alt);padding:0.1rem 0.35rem;border-radius:4px;">xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx</code></p>
+        <div class="breakdown-grid" style="margin-top:0.5rem;">
+          <div class="breakdown-cell" style="background:#eff6ff;"><div class="seg-label" style="color:#2563eb;">time_low</div><div class="seg-desc">First 8 chars — 32 bits</div></div>
+          <div class="breakdown-cell" style="background:#f5f3ff;"><div class="seg-label" style="color:#7c3aed;">time_mid</div><div class="seg-desc">4 chars — 16 bits</div></div>
+          <div class="breakdown-cell" style="background:#fdf2f8;"><div class="seg-label" style="color:#db2777;">time_hi + version</div><div class="seg-desc">4 chars — M = version digit</div></div>
+          <div class="breakdown-cell" style="background:#fffbeb;"><div class="seg-label" style="color:#d97706;">clock_seq</div><div class="seg-desc">4 chars — N = variant bits</div></div>
+          <div class="breakdown-cell" style="background:#ecfdf5;"><div class="seg-label" style="color:#059669;">node</div><div class="seg-desc">12 chars — 48 bits</div></div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem;">In UUID v4, the M digit is always <strong>4</strong> and the N digit is <strong>8, 9, a, or b</strong>. All other digits are random, giving approximately 2¹²² possible values.</p>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="password-generator.html">Password Generator</a>
+          <a href="json-formatter.html">JSON Formatter</a>
+          <a href="qr-generator.html">QR Code Generator</a>
+          <a href="csv-to-json.html">CSV to JSON</a>
+          <a href="color-picker.html">Color Picker</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Uuid Generator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free UUID generator to create one or many version 4 UUIDs. It is useful for developers, test data, databases, prototypes, automation workflows, and unique placeholder IDs. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('uuid-generator.html');
+      injectFooter();
+      generateOne();
+    });
+
+    let currentUUID = '';
+    let isUppercase = false;
+    let bulkUUIDs = [];
+
+    function generateUUIDv4() {
+      const bytes = new Uint8Array(16);
+      crypto.getRandomValues(bytes);
+      bytes[6] = (bytes[6] & 0x0f) | 0x40; // version 4
+      bytes[8] = (bytes[8] & 0x3f) | 0x80; // variant bits
+      const hex = Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
+      return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
+    }
+
+    function applyCase(uuid) {
+      return isUppercase ? uuid.toUpperCase() : uuid.toLowerCase();
+    }
+
+    function generateOne() {
+      currentUUID = generateUUIDv4();
+      renderUUID();
+    }
+
+    function renderUUID() {
+      const display = applyCase(currentUUID);
+      document.getElementById('uuidDisplay').textContent = display;
+      renderBreakdown(display);
+    }
+
+    function renderBreakdown(uuid) {
+      const parts = uuid.split('-');
+      if (parts.length !== 5) return;
+      const [tl, tm, th, cl, node] = parts;
+      document.getElementById('breakdownDisplay').innerHTML =
+        `<span class="seg-time-low">${tl}</span><span class="seg-dash">-</span>` +
+        `<span class="seg-time-mid">${tm}</span><span class="seg-dash">-</span>` +
+        `<span class="seg-time-high">${th}</span><span class="seg-dash">-</span>` +
+        `<span class="seg-clock">${cl}</span><span class="seg-dash">-</span>` +
+        `<span class="seg-node">${node}</span>`;
+
+      document.getElementById('breakdownGrid').innerHTML = `
+        <div class="breakdown-cell" style="background:#eff6ff;">
+          <div class="seg-label" style="color:#2563eb;">${tl}</div>
+          <div class="seg-desc">time_low (32 bits)</div>
+        </div>
+        <div class="breakdown-cell" style="background:#f5f3ff;">
+          <div class="seg-label" style="color:#7c3aed;">${tm}</div>
+          <div class="seg-desc">time_mid (16 bits)</div>
+        </div>
+        <div class="breakdown-cell" style="background:#fdf2f8;">
+          <div class="seg-label" style="color:#db2777;">${th}</div>
+          <div class="seg-desc">version + time_hi</div>
+        </div>
+        <div class="breakdown-cell" style="background:#fffbeb;">
+          <div class="seg-label" style="color:#d97706;">${cl}</div>
+          <div class="seg-desc">clock_seq + variant</div>
+        </div>
+        <div class="breakdown-cell" style="background:#ecfdf5;">
+          <div class="seg-label" style="color:#059669;">${node}</div>
+          <div class="seg-desc">node (48 bits)</div>
+        </div>
+      `;
+    }
+
+    function copyUUID() {
+      const display = applyCase(currentUUID);
+      if (!display || display === '—') { showToast('Generate a UUID first.'); return; }
+      copyText(display, 'UUID copied!');
+    }
+
+    function toggleCase() {
+      isUppercase = !isUppercase;
+      renderUUID();
+      if (bulkUUIDs.length) renderBulkList();
+    }
+
+    function setNil() {
+      currentUUID = '00000000-0000-0000-0000-000000000000';
+      renderUUID();
+    }
+
+    function generateBulk() {
+      const count = Math.min(100, Math.max(1, parseInt(document.getElementById('bulkCount').value) || 10));
+      bulkUUIDs = Array.from({length: count}, generateUUIDv4);
+      renderBulkList();
+      document.getElementById('bulkSection').classList.remove('hidden');
+    }
+
+    function renderBulkList() {
+      const list = document.getElementById('bulkList');
+      list.innerHTML = bulkUUIDs.map((uuid, i) => {
+        const display = applyCase(uuid);
+        return `<div class="bulk-item">
+          <span>${i+1}. ${display}</span>
+          <button class="btn btn-ghost btn-sm" style="font-size:0.7rem;padding:0.2rem 0.5rem;flex-shrink:0;" onclick="copyText('${display}','Copied!')">Copy</button>
+        </div>`;
+      }).join('');
+    }
+
+    function copyAllUUIDs() {
+      if (!bulkUUIDs.length) { showToast('Generate a bulk list first.'); return; }
+      copyText(bulkUUIDs.map(applyCase).join('\n'), 'All UUIDs copied!');
+    }
+
+    const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    const NIL_RE = /^00000000-0000-0000-0000-000000000000$/;
+
+    function liveValidate(val) {
+      if (!val.trim()) { document.getElementById('validateResult').classList.add('hidden'); return; }
+      validateUUID();
+    }
+
+    function validateUUID() {
+      const val = document.getElementById('validateInput').value.trim();
+      const result = document.getElementById('validateResult');
+      result.classList.remove('hidden');
+
+      if (!val) { result.className = 'validate-result validate-invalid'; result.textContent = 'Please enter a UUID to validate.'; return; }
+
+      if (NIL_RE.test(val)) {
+        result.className = 'validate-result validate-valid';
+        result.textContent = '✓ Valid — NIL UUID (all zeros, version-less)';
+        return;
+      }
+
+      if (UUID_RE.test(val)) {
+        const versionChar = val.split('-')[2][0];
+        const version = parseInt(versionChar);
+        const variantNybble = parseInt(val.split('-')[3][0], 16);
+        const variant = variantNybble >= 8 && variantNybble <= 11 ? 'RFC 4122' : 'Other';
+        result.className = 'validate-result validate-valid';
+        result.textContent = `✓ Valid UUID — Version ${version}, Variant: ${variant}`;
+      } else {
+        result.className = 'validate-result validate-invalid';
+        // give a hint about what's wrong
+        const noHyphens = val.replace(/-/g, '');
+        if (noHyphens.length !== 32) {
+          result.textContent = `✗ Invalid — expected 32 hex digits, got ${noHyphens.length}`;
+        } else if (val.split('-').length !== 5) {
+          result.textContent = '✗ Invalid — must have exactly 4 hyphens in the format 8-4-4-4-12';
+        } else {
+          result.textContent = '✗ Invalid UUID — check version digit (3rd group) and variant bits (4th group)';
+        }
+      }
+    }
+  </script>
+</body>
+</html>

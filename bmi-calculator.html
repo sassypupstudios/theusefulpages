@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator - Body Mass Index Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate your BMI (Body Mass Index) instantly. Supports imperial and metric units. Shows WHO category, healthy weight range, and a visual BMI scale for your height.">
+  <link rel="canonical" href="https://theusefulpages.com/bmi-calculator.html">
+  <meta property="og:title" content="BMI Calculator - The Useful Pages"><meta property="og:description" content="Calculate your BMI instantly with imperial or metric units."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"BMI Calculator","url":"https://theusefulpages.com/bmi-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .bmi-gauge-wrap { margin: 1.25rem 0; }
+    .bmi-scale { position:relative; height:28px; border-radius:14px; background:linear-gradient(to right,#3b82f6 0%,#22c55e 25%,#f59e0b 50%,#ef4444 75%,#991b1b 100%); overflow:visible; }
+    .bmi-marker { position:absolute; top:-6px; transform:translateX(-50%); width:4px; height:40px; background:var(--text); border-radius:2px; transition:left 0.4s; }
+    .bmi-marker::after { content:attr(data-val); position:absolute; top:44px; left:50%; transform:translateX(-50%); font-size:0.75rem; font-weight:700; white-space:nowrap; color:var(--text); }
+    .bmi-labels { display:flex; justify-content:space-between; font-size:0.7rem; color:var(--text-muted); margin-top:0.4rem; }
+    .bmi-number { font-size:3.5rem; font-weight:700; color:var(--primary); line-height:1; }
+    .bmi-cat { font-size:1.1rem; font-weight:600; margin-top:0.25rem; }
+    .cat-underweight { color:#3b82f6; }
+    .cat-normal { color:#22c55e; }
+    .cat-overweight { color:#f59e0b; }
+    .cat-obese1, .cat-obese2, .cat-obese3 { color:#ef4444; }
+    .formula-box { background:var(--bg-secondary); border-radius:8px; padding:0.75rem 1rem; font-family:monospace; font-size:0.875rem; margin-top:0.75rem; color:var(--text-muted); }
+    .disclaimer { background:#fff8f0; border-left:3px solid var(--accent); padding:0.75rem 1rem; border-radius:0 8px 8px 0; font-size:0.82rem; color:var(--text-muted); margin-top:1rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">BMI Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate your Body Mass Index. See your WHO category and healthy weight range.</p>
+      <div class="tool-card">
+        <div class="tab-group" id="unitTabs">
+          <button class="tab-btn active" onclick="setUnit('imperial')">Imperial (ft, lbs)</button>
+          <button class="tab-btn" onclick="setUnit('metric')">Metric (cm, kg)</button>
+        </div>
+
+        <div id="imperialInputs" style="margin-top:1rem;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Height — Feet</label>
+              <input type="number" id="feet" class="form-input" value="5" min="1" max="8" step="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Height — Inches</label>
+              <input type="number" id="inches" class="form-input" value="10" min="0" max="11" step="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Weight (lbs)</label>
+              <input type="number" id="lbs" class="form-input" value="170" min="1" max="999" step="1">
+            </div>
+          </div>
+        </div>
+
+        <div id="metricInputs" style="display:none;margin-top:1rem;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Height (cm)</label>
+              <input type="number" id="cm" class="form-input" value="178" min="50" max="280" step="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Weight (kg)</label>
+              <input type="number" id="kg" class="form-input" value="77" min="1" max="500" step="0.1">
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="calculate()">Calculate BMI</button>
+          <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
+        </div>
+
+        <div id="results" style="display:none;">
+          <div style="display:flex;align-items:flex-end;gap:1rem;margin-top:1.25rem;">
+            <div>
+              <div class="bmi-number" id="bmiValue">—</div>
+              <div class="bmi-cat" id="bmiCat"></div>
+            </div>
+            <div id="bmiStat" style="font-size:0.85rem;color:var(--text-muted);padding-bottom:0.4rem;"></div>
+          </div>
+          <div class="bmi-gauge-wrap">
+            <div class="bmi-scale"><div class="bmi-marker" id="bmiMarker" data-val=""></div></div>
+            <div class="bmi-labels"><span>16</span><span>18.5</span><span>25</span><span>30</span><span>35</span><span>40</span></div>
+          </div>
+          <div class="stat-grid" style="margin-top:1.25rem;">
+            <div class="stat-box"><div class="stat-value" id="healthyRange">—</div><div class="stat-label">Healthy Weight Range</div></div>
+            <div class="stat-box"><div class="stat-value" id="bmiDisplay">—</div><div class="stat-label">Your BMI</div></div>
+            <div class="stat-box"><div class="stat-value" id="catDisplay">—</div><div class="stat-label">WHO Category</div></div>
+          </div>
+          <div class="formula-box" id="formulaBox"></div>
+          <div class="disclaimer">For informational purposes only — not medical advice. BMI is a screening tool, not a diagnostic measure. Consult a healthcare provider for a complete health assessment.</div>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1rem;">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">WHO BMI Categories</h2>
+        <div class="table-wrap">
+          <table style="width:100%;border-collapse:collapse;font-size:0.875rem;">
+            <thead><tr style="background:var(--primary);color:#fff;"><th style="padding:0.6rem 0.75rem;text-align:left;">BMI Range</th><th style="padding:0.6rem 0.75rem;text-align:left;">Category</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);">Below 18.5</td><td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#3b82f6;font-weight:600;">Underweight</td></tr>
+              <tr style="background:var(--bg-secondary);"><td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);">18.5 – 24.9</td><td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#22c55e;font-weight:600;">Normal / Healthy Weight</td></tr>
+              <tr><td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);">25.0 – 29.9</td><td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#f59e0b;font-weight:600;">Overweight</td></tr>
+              <tr style="background:var(--bg-secondary);"><td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);">30.0 – 34.9</td><td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#ef4444;font-weight:600;">Obese Class I</td></tr>
+              <tr><td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);">35.0 – 39.9</td><td style="padding:0.6rem 0.75rem;border-bottom:1px solid var(--border);color:#ef4444;font-weight:600;">Obese Class II</td></tr>
+              <tr style="background:var(--bg-secondary);"><td style="padding:0.6rem 0.75rem;">40.0 and above</td><td style="padding:0.6rem 0.75rem;color:#991b1b;font-weight:600;">Obese Class III</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="instructions-card"><h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2><ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+        <li>Choose Imperial (feet/inches, pounds) or Metric (cm, kg).</li>
+        <li>Enter your height and weight, then click <strong>Calculate BMI</strong>.</li>
+        <li>The gauge shows where your BMI falls on the WHO scale.</li>
+        <li>Your healthy weight range is calculated from BMI 18.5–24.9 for your height.</li>
+        <li>BMI = weight (kg) ÷ height (m)². For imperial: BMI = 703 × lbs ÷ inches².</li>
+        <li>BMI is a population screening tool — it does not account for muscle mass or body composition.</li>
+      </ul></div>
+
+      <div class="related-card"><h3>Related Tools</h3><div class="related-links">
+        <a href="calorie-calculator.html">Calorie Calculator (TDEE)</a>
+        <a href="body-fat.html">Body Fat Calculator</a>
+        <a href="ideal-weight.html">Ideal Weight Calculator</a>
+      </div></div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Bmi Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free BMI calculator to estimate body mass index from height and weight. It provides a general reference category and can help with basic health, fitness, or tracking conversations. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let unit = 'imperial';
+
+    function setUnit(u) {
+      unit = u;
+      document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',['imperial','metric'][i]===u));
+      document.getElementById('imperialInputs').style.display = u==='imperial'?'block':'none';
+      document.getElementById('metricInputs').style.display = u==='metric'?'block':'none';
+      document.getElementById('results').style.display='none';
+    }
+
+    function calculate() {
+      let heightM, weightKg;
+      if (unit === 'imperial') {
+        const ft = parseFloat(document.getElementById('feet').value)||0;
+        const inch = parseFloat(document.getElementById('inches').value)||0;
+        const lb = parseFloat(document.getElementById('lbs').value)||0;
+        if (!lb || (!ft && !inch)) { showToast('Enter height and weight.'); return; }
+        heightM = (ft * 12 + inch) * 0.0254;
+        weightKg = lb * 0.453592;
+      } else {
+        const cm = parseFloat(document.getElementById('cm').value)||0;
+        const kg = parseFloat(document.getElementById('kg').value)||0;
+        if (!cm || !kg) { showToast('Enter height and weight.'); return; }
+        heightM = cm / 100;
+        weightKg = kg;
+      }
+      const bmi = weightKg / (heightM * heightM);
+      const bmiRound = Math.round(bmi * 10) / 10;
+
+      let cat, catClass;
+      if (bmi < 18.5) { cat='Underweight'; catClass='cat-underweight'; }
+      else if (bmi < 25) { cat='Normal Weight'; catClass='cat-normal'; }
+      else if (bmi < 30) { cat='Overweight'; catClass='cat-overweight'; }
+      else if (bmi < 35) { cat='Obese Class I'; catClass='cat-obese1'; }
+      else if (bmi < 40) { cat='Obese Class II'; catClass='cat-obese2'; }
+      else { cat='Obese Class III'; catClass='cat-obese3'; }
+
+      // Healthy weight range for this height (BMI 18.5–24.9)
+      const loKg = 18.5 * heightM * heightM;
+      const hiKg = 24.9 * heightM * heightM;
+      let rangeStr;
+      if (unit === 'imperial') {
+        rangeStr = `${Math.round(loKg/0.453592)} – ${Math.round(hiKg/0.453592)} lbs`;
+      } else {
+        rangeStr = `${Math.round(loKg*10)/10} – ${Math.round(hiKg*10)/10} kg`;
+      }
+
+      document.getElementById('bmiValue').textContent = bmiRound;
+      const catEl = document.getElementById('bmiCat');
+      catEl.textContent = cat;
+      catEl.className = 'bmi-cat ' + catClass;
+
+      // Gauge position: clamp BMI 16–40 to 0–100%
+      const pct = Math.min(100, Math.max(0, (bmi - 16) / (40 - 16) * 100));
+      const marker = document.getElementById('bmiMarker');
+      marker.style.left = pct + '%';
+      marker.setAttribute('data-val', bmiRound);
+
+      document.getElementById('healthyRange').textContent = rangeStr;
+      document.getElementById('bmiDisplay').textContent = bmiRound;
+      document.getElementById('catDisplay').textContent = cat;
+
+      if (unit === 'imperial') {
+        const totalInch = parseFloat(document.getElementById('feet').value)*12 + parseFloat(document.getElementById('inches').value);
+        const lb = parseFloat(document.getElementById('lbs').value);
+        document.getElementById('formulaBox').textContent = `BMI = 703 × ${lb} lbs ÷ ${totalInch}² = ${bmiRound}`;
+      } else {
+        const cm = parseFloat(document.getElementById('cm').value);
+        const kg = parseFloat(document.getElementById('kg').value);
+        document.getElementById('formulaBox').textContent = `BMI = ${kg} kg ÷ (${cm/100} m)² = ${bmiRound}`;
+      }
+      document.getElementById('results').style.display='block';
+    }
+
+    function clearAll() {
+      document.getElementById('results').style.display='none';
+      if (unit==='imperial') { document.getElementById('feet').value='5'; document.getElementById('inches').value='10'; document.getElementById('lbs').value='170'; }
+      else { document.getElementById('cm').value='178'; document.getElementById('kg').value='77'; }
+    }
+
+    document.addEventListener('DOMContentLoaded',()=>{ injectNav('bmi-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrabble Word Finder - Online Scrabble Helper | The Useful Pages</title>
+  <meta name="description" content="Find all playable Scrabble words from your tiles. Supports blank wildcards (?). Sort by Scrabble score, filter by length or letters. See letter scores for each word.">
+  <link rel="canonical" href="https://theusefulpages.com/scrabble-word-finder.html">
+  <meta property="og:title" content="Scrabble Word Finder - The Useful Pages"><meta property="og:description" content="Find all playable Scrabble words from your tiles instantly."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Scrabble Word Finder","url":"https://theusefulpages.com/scrabble-word-finder.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tile-input { display:flex; gap:0.5rem; flex-wrap:wrap; align-items:center; }
+    .tile-box { width:48px; height:52px; border:2px solid var(--border); border-radius:8px; text-align:center; font-size:1.25rem; font-weight:700; text-transform:uppercase; background:var(--bg-secondary); color:var(--primary); outline:none; transition:border-color 0.15s; }
+    .tile-box:focus { border-color:var(--primary); background:var(--card-bg); }
+    .tile-box.wildcard { border-color:var(--accent); color:var(--accent); }
+    .top-words { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:0.5rem; margin-bottom:1rem; }
+    .top-word-card { background:var(--bg-secondary); border:1px solid var(--border); border-radius:8px; padding:0.6rem 0.75rem; }
+    .top-word-name { font-weight:700; color:var(--primary); font-size:1rem; }
+    .top-word-score { font-size:1.25rem; font-weight:700; color:var(--accent); float:right; }
+    .word-letters { display:flex; gap:2px; flex-wrap:wrap; margin-top:0.35rem; }
+    .letter-tile { display:inline-flex; flex-direction:column; align-items:center; background:var(--card-bg); border:1px solid var(--border); border-radius:4px; padding:0 4px; min-width:22px; }
+    .letter-tile.blank-tile { border-color:var(--accent); color:var(--accent); }
+    .lt-char { font-size:0.85rem; font-weight:700; line-height:1.3; }
+    .lt-score { font-size:0.55rem; color:var(--text-muted); }
+    .blank-tile .lt-score { color:var(--accent); }
+    .all-words-grid { display:flex; flex-wrap:wrap; gap:0.4rem; }
+    .word-chip { background:var(--bg-secondary); border:1px solid var(--border); border-radius:6px; padding:0.3rem 0.6rem; font-size:0.82rem; font-weight:600; }
+    .word-chip .chip-score { font-size:0.7rem; color:var(--accent); margin-left:0.25rem; }
+    .loader { display:inline-block; width:14px; height:14px; border:2px solid var(--border); border-top-color:var(--primary); border-radius:50%; animation:spin 0.6s linear infinite; vertical-align:middle; margin-right:0.4rem; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .filter-row { display:flex; gap:0.75rem; flex-wrap:wrap; align-items:flex-end; margin-bottom:1rem; }
+    .section-title { font-weight:700; font-size:0.95rem; color:var(--primary); margin:1rem 0 0.5rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Scrabble Word Finder</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Enter up to 7 tiles (use <strong>?</strong> for blank/wildcard). Find your highest-scoring plays.</p>
+      <div class="tool-card">
+        <label class="form-label">Your Tiles (up to 7 — use ? for blank)</label>
+        <div class="tile-input" id="tileInputs">
+          <input class="tile-box" maxlength="1" data-idx="0">
+          <input class="tile-box" maxlength="1" data-idx="1">
+          <input class="tile-box" maxlength="1" data-idx="2">
+          <input class="tile-box" maxlength="1" data-idx="3">
+          <input class="tile-box" maxlength="1" data-idx="4">
+          <input class="tile-box" maxlength="1" data-idx="5">
+          <input class="tile-box" maxlength="1" data-idx="6">
+        </div>
+        <div class="filter-row" style="margin-top:1rem;">
+          <div class="form-group">
+            <label class="form-label">Min Length</label>
+            <select id="minLen" class="form-select">
+              <option value="2">2+</option><option value="3" selected>3+</option><option value="4">4+</option><option value="5">5+</option><option value="6">6+</option><option value="7">7</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Contains Letter</label>
+            <input type="text" id="containsLetter" class="form-input" maxlength="1" placeholder="Any" style="width:70px;" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'').toUpperCase()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Starts With</label>
+            <input type="text" id="startsWith" class="form-input" maxlength="3" placeholder="Any" style="width:80px;" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'').toUpperCase()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ends With</label>
+            <input type="text" id="endsWith" class="form-input" maxlength="3" placeholder="Any" style="width:80px;" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'').toUpperCase()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sort By</label>
+            <select id="sortBy" class="form-select">
+              <option value="score" selected>Scrabble Score</option>
+              <option value="length">Length</option>
+              <option value="alpha">Alphabetical</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="findWords()">Find Words</button>
+          <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
+        </div>
+        <div id="statusBar" style="font-size:0.82rem;color:var(--text-muted);margin-top:0.75rem;"></div>
+        <div id="resultsArea"></div>
+      </div>
+
+      <div class="instructions-card"><h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2><ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+        <li>Type your tile letters into the boxes — one letter per box.</li>
+        <li>Use <strong>?</strong> for a blank tile (worth 0 points, can be any letter).</li>
+        <li>Use the filters to narrow results by length, starting/ending letters, or a required letter.</li>
+        <li>Results are sorted by Scrabble score by default — highest scoring first.</li>
+        <li>The <strong>Top 10</strong> section shows your best plays with letter-by-letter scores.</li>
+        <li>Orange highlighted tiles indicate blank tile usage (0 pts).</li>
+        <li>Word list loads once and is cached for 7 days for fast results.</li>
+      </ul></div>
+
+      <div class="related-card"><h3>Related Tools</h3><div class="related-links">
+        <a href="word-unscrambler.html">Word Unscrambler</a>
+      </div></div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Scrabble Word Finder</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Scrabble word finder to find playable word ideas from letters, including wildcard options and scoring help. It is useful for word games, practice, and checking possible plays. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    const SCRABBLE_VALS = {a:1,b:3,c:3,d:2,e:1,f:4,g:2,h:4,i:1,j:8,k:5,l:1,m:3,n:1,o:1,p:3,q:10,r:1,s:1,t:1,u:1,v:4,w:4,x:8,y:4,z:10};
+    const WORD_LIST_KEY = 'wordlist_v1';
+    const WORD_LIST_TS = 'wordlist_ts';
+    let wordSet = null;
+    let allFound = [];
+
+    // Auto-advance tiles
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('scrabble-word-finder.html');
+      injectFooter();
+      const tiles = document.querySelectorAll('.tile-box');
+      tiles.forEach((tile, i) => {
+        tile.addEventListener('input', e => {
+          tile.value = tile.value.replace(/[^a-zA-Z?]/g, '').toUpperCase();
+          tile.classList.toggle('wildcard', tile.value === '?');
+          if (tile.value && i < tiles.length - 1) tiles[i+1].focus();
+        });
+        tile.addEventListener('keydown', e => {
+          if (e.key === 'Backspace' && !tile.value && i > 0) tiles[i-1].focus();
+          if (e.key === 'Enter') findWords();
+        });
+      });
+      loadWordList();
+    });
+
+    async function loadWordList() {
+      const ts = localStorage.getItem(WORD_LIST_TS);
+      if (ts && Date.now() - parseInt(ts) < 7 * 864e5) {
+        const stored = localStorage.getItem(WORD_LIST_KEY);
+        if (stored) { wordSet = new Set(stored.split('\n').map(w=>w.trim().toLowerCase())); return; }
+      }
+      document.getElementById('statusBar').innerHTML = '<span class="loader"></span>Loading word list…';
+      try {
+        const r = await fetch('https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt');
+        const txt = await r.text();
+        try { localStorage.setItem(WORD_LIST_KEY, txt.trim()); localStorage.setItem(WORD_LIST_TS, Date.now()); } catch(e){}
+        wordSet = new Set(txt.split('\n').map(w=>w.trim().toLowerCase()));
+        document.getElementById('statusBar').textContent = 'Word list ready.';
+      } catch(e) { document.getElementById('statusBar').textContent = 'Could not load word list.'; }
+    }
+
+    function getTiles() {
+      return Array.from(document.querySelectorAll('.tile-box')).map(t=>t.value.toLowerCase()).filter(Boolean);
+    }
+
+    function canFormWithBlanks(word, tiles) {
+      const pool = tiles.slice();
+      const blanks = pool.filter(t=>t==='?').length;
+      const letters = pool.filter(t=>t!=='?');
+      let blanksUsed = 0;
+      const blankPositions = [];
+      for (let i = 0; i < word.length; i++) {
+        const c = word[i];
+        const li = letters.indexOf(c);
+        if (li !== -1) { letters.splice(li, 1); }
+        else if (blanksUsed < blanks) { blanksUsed++; blankPositions.push(i); }
+        else return null;
+      }
+      return blankPositions;
+    }
+
+    function scrabbleScore(word, blankPos=[]) {
+      return word.split('').reduce((s,c,i)=> s + (blankPos.includes(i) ? 0 : (SCRABBLE_VALS[c]||0)), 0);
+    }
+
+    async function findWords() {
+      const tiles = getTiles();
+      if (!tiles.length) { showToast('Enter your tiles first.'); return; }
+      if (!wordSet) { await loadWordList(); if (!wordSet) return; }
+      const minLen = parseInt(document.getElementById('minLen').value);
+      const contains = document.getElementById('containsLetter').value.toLowerCase();
+      const starts = document.getElementById('startsWith').value.toLowerCase();
+      const ends = document.getElementById('endsWith').value.toLowerCase();
+      const sortBy = document.getElementById('sortBy').value;
+      document.getElementById('statusBar').innerHTML = '<span class="loader"></span>Searching…';
+      setTimeout(() => {
+        allFound = [];
+        for (const word of wordSet) {
+          if (word.length < minLen || word.length > tiles.length) continue;
+          if (contains && !word.includes(contains)) continue;
+          if (starts && !word.startsWith(starts)) continue;
+          if (ends && !word.endsWith(ends)) continue;
+          const blanks = canFormWithBlanks(word, tiles);
+          if (blanks !== null) allFound.push({ word, blanks, score: scrabbleScore(word, blanks) });
+        }
+        if (sortBy === 'score') allFound.sort((a,b)=>b.score-a.score);
+        else if (sortBy === 'length') allFound.sort((a,b)=>b.word.length-a.word.length);
+        else allFound.sort((a,b)=>a.word.localeCompare(b.word));
+        renderResults(allFound);
+        document.getElementById('statusBar').innerHTML = `Found <strong>${allFound.length}</strong> words`;
+      }, 10);
+    }
+
+    function renderLetterTiles(word, blanks) {
+      return word.split('').map((c,i)=>{
+        const isBlank = blanks.includes(i);
+        const score = isBlank ? 0 : (SCRABBLE_VALS[c]||0);
+        return `<span class="letter-tile${isBlank?' blank-tile':''}"><span class="lt-char">${c.toUpperCase()}</span><span class="lt-score">${score}</span></span>`;
+      }).join('');
+    }
+
+    function renderResults(words) {
+      const area = document.getElementById('resultsArea');
+      if (!words.length) { area.innerHTML = '<div style="color:var(--text-muted);text-align:center;padding:2rem;">No words found. Try fewer filters or add a ? blank tile.</div>'; return; }
+      const top10 = words.slice(0, 10);
+      let html = `<div class="section-title">Top ${Math.min(10,words.length)} Highest-Scoring Words</div><div class="top-words">`;
+      top10.forEach(({word,blanks,score})=>{
+        html += `<div class="top-word-card"><span class="top-word-name">${word.toUpperCase()}</span><span class="top-word-score">${score}</span><div class="word-letters">${renderLetterTiles(word,blanks)}</div></div>`;
+      });
+      html += '</div>';
+      if (words.length > 10) {
+        html += `<div class="section-title">All ${words.length} Words</div><div class="all-words-grid">`;
+        words.forEach(({word,score})=>{
+          html += `<span class="word-chip">${word.toUpperCase()}<span class="chip-score">${score}</span></span>`;
+        });
+        html += '</div>';
+      }
+      area.innerHTML = html;
+    }
+
+    function clearAll() {
+      document.querySelectorAll('.tile-box').forEach(t=>{t.value='';t.classList.remove('wildcard');});
+      document.getElementById('containsLetter').value='';
+      document.getElementById('startsWith').value='';
+      document.getElementById('endsWith').value='';
+      document.getElementById('resultsArea').innerHTML='';
+      document.getElementById('statusBar').textContent='';
+      allFound=[];
+    }
+  </script>
+</body>
+</html>

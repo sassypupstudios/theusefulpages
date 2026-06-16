@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Diff Checker — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Compare two blocks of text side by side. See additions in green, deletions in red, and unchanged lines clearly. Free online text diff tool.">
+  <link rel="canonical" href="https://theusefulpages.com/text-diff">
+  <meta property="og:title" content="Text Diff Checker — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Text Diff Checker","url":"https://theusefulpages.com/text-diff","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .diff-panels { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    @media(max-width:640px){ .diff-panels { grid-template-columns:1fr; } }
+    .diff-result { font-family:'Courier New',monospace; font-size:0.85rem; line-height:1.6; }
+    .diff-line { padding:2px 8px; border-radius:3px; white-space:pre-wrap; word-break:break-all; }
+    .diff-added { background:#d4edda; color:#155724; }
+    .diff-removed { background:#f8d7da; color:#721c24; }
+    .diff-unchanged { color:var(--text); }
+    .diff-line-num { display:inline-block; min-width:2rem; opacity:0.4; user-select:none; font-size:0.75rem; }
+    .stat-chips { display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1rem; }
+    .stat-chip { padding:0.35rem 0.75rem; border-radius:20px; font-size:0.875rem; font-weight:600; }
+    .chip-added { background:#d4edda; color:#155724; }
+    .chip-removed { background:#f8d7da; color:#721c24; }
+    .chip-unchanged { background:#e2e3e5; color:#383d41; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Text Diff Checker</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Paste two versions of text and see exactly what changed — line by line.</p>
+
+      <div class="tool-card">
+        <div class="diff-panels">
+          <div class="form-group">
+            <label class="form-label" for="originalText">Original Text</label>
+            <textarea class="form-textarea" id="originalText" placeholder="Paste original text here..." style="min-height:180px;font-family:'Courier New',monospace;font-size:0.875rem;"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="modifiedText">Modified Text</label>
+            <textarea class="form-textarea" id="modifiedText" placeholder="Paste modified text here..." style="min-height:180px;font-family:'Courier New',monospace;font-size:0.875rem;"></textarea>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;margin-top:0.75rem;align-items:center;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="runDiff()">Compare</button>
+          <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+          <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;">
+            <input type="checkbox" id="ignoreCase" style="accent-color:var(--primary);"> Ignore case
+          </label>
+          <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.9rem;cursor:pointer;">
+            <input type="checkbox" id="ignoreWhitespace" style="accent-color:var(--primary);"> Ignore leading/trailing whitespace
+          </label>
+        </div>
+
+        <div id="diffResultArea" style="display:none;margin-top:1.5rem;">
+          <div class="stat-chips" id="statChips"></div>
+          <div style="margin-top:1rem;">
+            <div style="font-size:0.8125rem;font-weight:600;color:var(--text-muted);margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:0.05em;">Diff Output</div>
+            <div id="diffOutput" class="diff-result" style="border:1px solid var(--border,#e0ddd8);border-radius:10px;padding:1rem;max-height:450px;overflow-y:auto;background:var(--bg-alt,#f7f7f5);"></div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ol>
+          <li>Paste your original text in the left panel and your modified text in the right panel.</li>
+          <li>Optionally enable <strong>Ignore case</strong> or <strong>Ignore whitespace</strong> for a looser comparison.</li>
+          <li>Click <strong>Compare</strong> to see the diff result.</li>
+          <li>Green lines are additions, red lines are deletions, and plain lines are unchanged.</li>
+        </ol>
+      </div>
+
+      <div id="related-tools"></div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Text Diff</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free text diff checker to compare two pieces of text side by side and spot differences. It is useful for drafts, edited copy, code snippets, notes, contracts, and version checks. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+
+  </div>
+
+
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('text-diff.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('text-diff.html', 'text');
+  });
+
+  function clearAll() {
+    document.getElementById('originalText').value = '';
+    document.getElementById('modifiedText').value = '';
+    document.getElementById('diffResultArea').style.display = 'none';
+  }
+
+  // LCS-based line diff
+  function lcs(a, b) {
+    const m = a.length, n = b.length;
+    const dp = Array.from({length: m+1}, () => new Array(n+1).fill(0));
+    for (let i = 1; i <= m; i++) {
+      for (let j = 1; j <= n; j++) {
+        if (a[i-1] === b[j-1]) dp[i][j] = dp[i-1][j-1] + 1;
+        else dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+      }
+    }
+    // Backtrack
+    const result = [];
+    let i = m, j = n;
+    while (i > 0 || j > 0) {
+      if (i > 0 && j > 0 && a[i-1] === b[j-1]) {
+        result.unshift({type:'same', val:a[i-1]});
+        i--; j--;
+      } else if (j > 0 && (i === 0 || dp[i][j-1] >= dp[i-1][j])) {
+        result.unshift({type:'add', val:b[j-1]});
+        j--;
+      } else {
+        result.unshift({type:'del', val:a[i-1]});
+        i--;
+      }
+    }
+    return result;
+  }
+
+  function normalize(line, ignCase, ignWS) {
+    if (ignWS) line = line.trim();
+    if (ignCase) line = line.toLowerCase();
+    return line;
+  }
+
+  function runDiff() {
+    const ignCase = document.getElementById('ignoreCase').checked;
+    const ignWS = document.getElementById('ignoreWhitespace').checked;
+
+    const rawA = document.getElementById('originalText').value.split('\n');
+    const rawB = document.getElementById('modifiedText').value.split('\n');
+
+    const normA = rawA.map(l => normalize(l, ignCase, ignWS));
+    const normB = rawB.map(l => normalize(l, ignCase, ignWS));
+
+    // Cap at 500 lines each for performance
+    const capA = normA.slice(0, 500);
+    const capB = normB.slice(0, 500);
+    const capRawA = rawA.slice(0, 500);
+    const capRawB = rawB.slice(0, 500);
+
+    const diff = lcs(capA, capB);
+
+    // Map diff back to raw lines
+    let ai = 0, bi = 0;
+    const output = [];
+    diff.forEach(item => {
+      if (item.type === 'same') {
+        output.push({type:'same', val:capRawA[ai]});
+        ai++; bi++;
+      } else if (item.type === 'del') {
+        output.push({type:'del', val:capRawA[ai]});
+        ai++;
+      } else {
+        output.push({type:'add', val:capRawB[bi]});
+        bi++;
+      }
+    });
+
+    let added = 0, removed = 0, unchanged = 0;
+    const html = output.map((item, idx) => {
+      let cls, prefix;
+      if (item.type === 'add')  { cls='diff-added';     prefix='+ '; added++; }
+      else if (item.type === 'del') { cls='diff-removed'; prefix='− '; removed++; }
+      else { cls='diff-unchanged'; prefix='  '; unchanged++; }
+      const esc = item.val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      return `<div class="diff-line ${cls}"><span class="diff-line-num">${idx+1}</span>${prefix}${esc}</div>`;
+    }).join('');
+
+    document.getElementById('diffOutput').innerHTML = html || '<div class="diff-line diff-unchanged">No differences found.</div>';
+    document.getElementById('statChips').innerHTML = `
+      <span class="stat-chip chip-added">+${added} added</span>
+      <span class="stat-chip chip-removed">−${removed} removed</span>
+      <span class="stat-chip chip-unchanged">${unchanged} unchanged</span>
+    `;
+    document.getElementById('diffResultArea').style.display = '';
+  }
+  </script>
+</body>
+</html>

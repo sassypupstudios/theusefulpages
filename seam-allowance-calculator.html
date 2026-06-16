@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seam Allowance Calculator — Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Convert between cut size and finished size using any seam allowance. Supports quilting, garment, and pattern seam allowances. Live update with decimal and fraction display.">
+  <link rel="canonical" href="https://theusefulpages.com/seam-allowance-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Seam Allowance Calculator</h1>
+      <p class="page-subtitle">Convert between cut size and finished size — or finished size to cut size — for any seam allowance.</p>
+      <div class="tool-card">
+        <div style="margin-bottom:1rem;">
+          <label class="label">Seam Allowance</label>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
+            <select class="form-select" id="sa-preset" style="flex:1;min-width:180px;" onchange="applyPreset()">
+              <option value="">— Select preset —</option>
+              <option value="0.25">¼" — Quilting standard</option>
+              <option value="0.375">⅜" — Some patterns</option>
+              <option value="0.5">½" — Some patterns</option>
+              <option value="0.625">⅝" — Garment / commercial patterns</option>
+              <option value="1">1" — Heavy fabrics, outerwear</option>
+            </select>
+            <span style="color:var(--color-muted);">or enter custom:</span>
+            <input class="form-input" type="number" id="sa-custom" min="0.0625" step="0.0625" placeholder='e.g. 0.25' style="flex:1;min-width:100px;" oninput="liveUpdate()">
+          </div>
+          <div id="sa-display" style="margin-top:0.5rem;font-size:0.9rem;color:var(--color-muted);"></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1rem;">
+          <!-- Mode A: cut to finished -->
+          <div style="border:1px solid var(--color-border);border-radius:0.5rem;padding:1rem;">
+            <div style="font-weight:600;margin-bottom:0.75rem;">Cut Size → Finished Size</div>
+            <label class="label">Cut Size (inches)</label>
+            <input class="form-input" type="number" id="cut-size" min="0.1" step="0.0625" placeholder='e.g. 3.5' oninput="calcFromCut()">
+            <div id="finished-result" style="margin-top:0.75rem;display:none;">
+              <div class="stat-box" style="margin-top:0.5rem;">
+                <div class="stat-value" id="res-finished-dec"></div>
+                <div class="stat-label">Finished size (decimal)</div>
+              </div>
+              <div class="stat-box" style="margin-top:0.5rem;">
+                <div class="stat-value" id="res-finished-frac"></div>
+                <div class="stat-label">Finished size (fraction)</div>
+              </div>
+              <div id="res-finished-math" style="margin-top:0.5rem;font-size:0.85rem;color:var(--color-muted);"></div>
+            </div>
+          </div>
+
+          <!-- Mode B: finished to cut -->
+          <div style="border:1px solid var(--color-border);border-radius:0.5rem;padding:1rem;">
+            <div style="font-weight:600;margin-bottom:0.75rem;">Finished Size → Cut Size</div>
+            <label class="label">Desired Finished Size (inches)</label>
+            <input class="form-input" type="number" id="desired-finished" min="0.1" step="0.0625" placeholder='e.g. 3' oninput="calcFromFinished()">
+            <div id="cut-result" style="margin-top:0.75rem;display:none;">
+              <div class="stat-box" style="margin-top:0.5rem;">
+                <div class="stat-value" id="res-cut-dec"></div>
+                <div class="stat-label">Cut size (decimal)</div>
+              </div>
+              <div class="stat-box" style="margin-top:0.5rem;">
+                <div class="stat-value" id="res-cut-frac"></div>
+                <div class="stat-label">Cut size (fraction)</div>
+              </div>
+              <div id="res-cut-math" style="margin-top:0.5rem;font-size:0.85rem;color:var(--color-muted);"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching.</p>
+
+        <h3 style="margin-top:1.5rem;">Seam Allowance Quick Reference</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Seam Allowance</th><th>Total Removed (both sides)</th><th>Common Use</th></tr></thead>
+            <tbody>
+              <tr><td>¼" (0.25")</td><td>½"</td><td>Quilting — standard for quilt blocks</td></tr>
+              <tr><td>⅜" (0.375")</td><td>¾"</td><td>Some commercial patterns, lightweight fabrics</td></tr>
+              <tr><td>½" (0.5")</td><td>1"</td><td>Home dec, some garment patterns</td></tr>
+              <tr><td>⅝" (0.625")</td><td>1¼"</td><td>Garment sewing — commercial pattern standard</td></tr>
+              <tr><td>1" (1.0")</td><td>2"</td><td>Heavy fabrics, outerwear, ease for fitting</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">Common Decimal / Fraction Equivalents</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Fraction</th><th>Decimal</th><th>Fraction</th><th>Decimal</th></tr></thead>
+            <tbody>
+              <tr><td>⅛"</td><td>0.125"</td><td>⅝"</td><td>0.625"</td></tr>
+              <tr><td>¼"</td><td>0.25"</td><td>¾"</td><td>0.75"</td></tr>
+              <tr><td>⅜"</td><td>0.375"</td><td>⅞"</td><td>0.875"</td></tr>
+              <tr><td>½"</td><td>0.5"</td><td>1"</td><td>1.0"</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use the Seam Allowance Calculator</h2>
+        <ul>
+          <li>First, select a preset seam allowance or type a custom value in inches (decimal, e.g. 0.625 for ⅝").</li>
+          <li><strong>Cut Size → Finished Size:</strong> Enter the measurement you cut your fabric. The calculator shows what the finished size will be after stitching seams on both sides.</li>
+          <li><strong>Finished Size → Cut Size:</strong> Enter the finished size you want. The calculator shows how large to cut the fabric piece.</li>
+          <li>Results update live as you type.</li>
+        </ul>
+        <h2>How the Math Works</h2>
+        <ul>
+          <li><strong>Finished = Cut − (Seam Allowance × 2)</strong></li>
+          <li><strong>Cut = Finished + (Seam Allowance × 2)</strong></li>
+          <li>The seam allowance is removed from <em>both</em> sides of a piece (left/right or top/bottom), so the total reduction is double the seam allowance.</li>
+        </ul>
+        <h2>Tips</h2>
+        <ul>
+          <li>Quilting patterns almost always use ¼" seam allowances. Check your pattern instructions.</li>
+          <li>Commercial garment patterns sold in stores use ⅝" seam allowances unless otherwise stated.</li>
+          <li>When in doubt, make a test seam on scrap fabric to verify your machine stitches the correct seam width.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Seam Allowance Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Seam Allowance Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('seam-allowance-calculator.html');injectFooter();});
+
+    const FRACS = [
+      [1/16,'1/16'],[1/8,'⅛'],[3/16,'3/16'],[1/4,'¼'],[5/16,'5/16'],[3/8,'⅜'],[7/16,'7/16'],
+      [1/2,'½'],[9/16,'9/16'],[5/8,'⅝'],[11/16,'11/16'],[3/4,'¾'],[13/16,'13/16'],[7/8,'⅞'],[15/16,'15/16'],[1,'1']
+    ];
+
+    function toFrac(val){
+      if(val <= 0) return '0"';
+      const whole = Math.floor(val);
+      const dec   = val - whole;
+      if(dec < 0.03) return whole + '"';
+      let best = FRACS[0], bestDiff = Math.abs(dec - FRACS[0][0]);
+      FRACS.forEach(([f,s]) => { const d = Math.abs(dec-f); if(d < bestDiff){bestDiff=d;best=[f,s];} });
+      return (whole > 0 ? whole : '') + best[1] + '"';
+    }
+
+    function getSA(){
+      const preset = parseFloat(document.getElementById('sa-preset').value);
+      const custom = parseFloat(document.getElementById('sa-custom').value);
+      if(!isNaN(custom) && custom > 0) return custom;
+      if(!isNaN(preset) && preset > 0) return preset;
+      return NaN;
+    }
+
+    function applyPreset(){
+      const val = parseFloat(document.getElementById('sa-preset').value);
+      if(!isNaN(val)){
+        document.getElementById('sa-custom').value = '';
+        updateSADisplay(val);
+        liveUpdate();
+      }
+    }
+
+    function updateSADisplay(sa){
+      if(isNaN(sa)||sa<=0){document.getElementById('sa-display').textContent='';return;}
+      document.getElementById('sa-display').textContent =
+        'Seam allowance: ' + sa.toFixed(4).replace(/0+$/,'').replace(/\.$/,'') + '" (' + toFrac(sa) + ') — Total removed from both sides: ' + toFrac(sa*2);
+    }
+
+    function liveUpdate(){
+      const sa = getSA();
+      updateSADisplay(sa);
+      calcFromCut();
+      calcFromFinished();
+    }
+
+    function calcFromCut(){
+      const sa  = getSA();
+      const cut = parseFloat(document.getElementById('cut-size').value);
+      if(isNaN(sa)||sa<=0||isNaN(cut)||cut<=0){document.getElementById('finished-result').style.display='none';return;}
+      const finished = cut - sa * 2;
+      if(finished <= 0){document.getElementById('finished-result').style.display='none';return;}
+      document.getElementById('res-finished-dec').textContent  = finished.toFixed(4).replace(/0+$/,'').replace(/\.$/,'') + '"';
+      document.getElementById('res-finished-frac').textContent = toFrac(finished);
+      document.getElementById('res-finished-math').textContent = cut + '" − (' + sa + '" × 2) = ' + finished.toFixed(4).replace(/0+$/,'').replace(/\.$/,'') + '"';
+      document.getElementById('finished-result').style.display = 'block';
+    }
+
+    function calcFromFinished(){
+      const sa  = getSA();
+      const fin = parseFloat(document.getElementById('desired-finished').value);
+      if(isNaN(sa)||sa<=0||isNaN(fin)||fin<=0){document.getElementById('cut-result').style.display='none';return;}
+      const cut = fin + sa * 2;
+      document.getElementById('res-cut-dec').textContent  = cut.toFixed(4).replace(/0+$/,'').replace(/\.$/,'') + '"';
+      document.getElementById('res-cut-frac').textContent = toFrac(cut);
+      document.getElementById('res-cut-math').textContent = fin + '" + (' + sa + '" × 2) = ' + cut.toFixed(4).replace(/0+$/,'').replace(/\.$/,'') + '"';
+      document.getElementById('cut-result').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Row Counter — Online Tool | The Useful Pages</title>
+  <meta name="description" content="A simple tap-to-count row counter for knitting and crochet. Save up to 5 named counters with target rows and progress tracking.">
+  <link rel="canonical" href="https://theusefulpages.com/row-counter.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .counter-card {
+      background: var(--bg-secondary);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+    .counter-card.active-counter { border-color: var(--primary); }
+    .counter-name-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+    .counter-name-input { flex: 1; font-size: 1rem; font-weight: 600; background: transparent; border: none; border-bottom: 1px solid var(--border); padding: 0.25rem 0; color: var(--text); outline: none; }
+    .counter-name-input:focus { border-bottom-color: var(--primary); }
+    .count-display { font-size: 5rem; font-weight: 700; color: var(--primary); text-align: center; line-height: 1; margin: 0.5rem 0; user-select: none; }
+    .count-display.complete { color: #38a169; }
+    .btn-row-counter { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin: 0.75rem 0; }
+    .btn-counter-main {
+      min-width: 80px;
+      min-height: 80px;
+      font-size: 2rem;
+      font-weight: 700;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.1s, opacity 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-counter-main:active { transform: scale(0.92); opacity: 0.85; }
+    .btn-plus { background: var(--primary); color: #fff; width: 100px; height: 100px; font-size: 2.5rem; }
+    .btn-minus { background: var(--bg); border: 2px solid var(--border) !important; color: var(--text-muted); }
+    .btn-counter-sm { padding: 0.4rem 0.85rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-secondary); color: var(--text-muted); cursor: pointer; font-size: 0.82rem; font-weight: 500; transition: all 0.15s; }
+    .btn-counter-sm:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-delete-counter { border-color: #e53e3e; color: #e53e3e; }
+    .btn-delete-counter:hover { background: #e53e3e; color: #fff; }
+    .progress-wrap { margin-top: 0.5rem; }
+    .progress-bar { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; margin-top: 0.35rem; }
+    .progress-fill { height: 100%; background: var(--primary); border-radius: 4px; transition: width 0.3s; }
+    .progress-fill.complete { background: #38a169; }
+    .target-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+    .target-row input { width: 70px; padding: 0.25rem 0.4rem; border-radius:6px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 0.85rem; text-align: center; }
+    .add-counter-area { text-align: center; padding: 1rem; }
+    .max-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+    .empty-state { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Row Counter</h1>
+      <p class="page-subtitle">Tap the big button to count rows. Save up to 5 named counters with target tracking — all saved automatically.</p>
+      <div class="tool-card" style="padding:1rem;">
+        <div id="countersArea"></div>
+        <div class="add-counter-area">
+          <button class="btn btn-primary" onclick="addCounter()" id="addBtn">+ Add Counter</button>
+          <div class="max-note" id="maxNote" style="display:none;">Maximum of 5 counters reached.</div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Tap the large <strong>+</strong> button to count up one row or round.</li>
+          <li>Use the <strong>−</strong> button to undo the last count.</li>
+          <li>Give your counter a name (e.g., "Left Sleeve" or "Body").</li>
+          <li>Set a <strong>target row count</strong> to see a progress bar.</li>
+          <li>Up to <strong>5 counters</strong> can be saved at once — great for tracking multiple pieces.</li>
+          <li>All counters are saved automatically to your browser — they'll still be here when you return.</li>
+          <li>Use <strong>Reset</strong> to set a counter back to 0, or <strong>Delete</strong> to remove it.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Row Counter</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Row Counter to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    const MAX_COUNTERS = 5;
+    const STORAGE_KEY = 'tup_row_counters';
+
+    function loadCounters() {
+      try {
+        const d = localStorage.getItem(STORAGE_KEY);
+        return d ? JSON.parse(d) : [];
+      } catch(e) { return []; }
+    }
+
+    function saveCounters(counters) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(counters));
+    }
+
+    let counters = loadCounters();
+
+    function renderAll() {
+      const area = document.getElementById('countersArea');
+      const addBtn = document.getElementById('addBtn');
+      const maxNote = document.getElementById('maxNote');
+
+      if (counters.length === 0) {
+        area.innerHTML = '<div class="empty-state">No counters yet. Add one below to get started!</div>';
+      } else {
+        area.innerHTML = counters.map((c, i) => renderCounter(c, i)).join('');
+      }
+
+      const atMax = counters.length >= MAX_COUNTERS;
+      addBtn.style.display = atMax ? 'none' : 'inline-flex';
+      maxNote.style.display = atMax ? 'block' : 'none';
+    }
+
+    function renderCounter(c, i) {
+      const target = c.target || 0;
+      const count = c.count || 0;
+      const complete = target > 0 && count >= target;
+      const pct = target > 0 ? Math.min(100, Math.round((count / target) * 100)) : 0;
+      const name = c.name || `Counter ${i + 1}`;
+
+      return `<div class="counter-card${complete ? '' : ''}" id="cc-${i}">
+        <div class="counter-name-row">
+          <input class="counter-name-input" type="text" value="${name.replace(/"/g,'&quot;')}" placeholder="Project name…" onchange="updateName(${i}, this.value)" oninput="updateName(${i}, this.value)">
+          <button class="btn-counter-sm btn-delete-counter" onclick="deleteCounter(${i})">Delete</button>
+        </div>
+        <div class="count-display${complete ? ' complete' : ''}" id="cd-${i}">${count}</div>
+        <div class="btn-row-counter">
+          <button class="btn-counter-main btn-minus" onclick="decrement(${i})" aria-label="Decrease">−</button>
+          <button class="btn-counter-main btn-plus" onclick="increment(${i})" aria-label="Increase">+</button>
+        </div>
+        <div style="display:flex;gap:0.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:0.5rem;">
+          <button class="btn-counter-sm" onclick="resetCounter(${i})">Reset</button>
+        </div>
+        <div class="target-row">
+          <label style="white-space:nowrap;">Target rows:</label>
+          <input type="number" min="0" step="1" value="${target || ''}" placeholder="—" onchange="updateTarget(${i}, this.value)">
+          ${target > 0 ? `<span style="margin-left:auto;">${count}/${target} (${pct}%)</span>` : ''}
+        </div>
+        ${target > 0 ? `<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill${complete ? ' complete' : ''}" style="width:${pct}%"></div></div></div>` : ''}
+        ${complete ? `<p style="text-align:center;color:#38a169;font-weight:700;font-size:0.9rem;margin-top:0.5rem;">Target reached!</p>` : ''}
+      </div>`;
+    }
+
+    function increment(i) {
+      counters[i].count = (counters[i].count || 0) + 1;
+      saveCounters(counters);
+      renderAll();
+    }
+
+    function decrement(i) {
+      if ((counters[i].count || 0) > 0) {
+        counters[i].count = counters[i].count - 1;
+        saveCounters(counters);
+        renderAll();
+      }
+    }
+
+    function resetCounter(i) {
+      counters[i].count = 0;
+      saveCounters(counters);
+      renderAll();
+    }
+
+    function updateName(i, val) {
+      counters[i].name = val;
+      saveCounters(counters);
+    }
+
+    function updateTarget(i, val) {
+      const n = parseInt(val);
+      counters[i].target = isNaN(n) || n < 0 ? 0 : n;
+      saveCounters(counters);
+      renderAll();
+    }
+
+    function deleteCounter(i) {
+      counters.splice(i, 1);
+      saveCounters(counters);
+      renderAll();
+    }
+
+    function addCounter() {
+      if (counters.length >= MAX_COUNTERS) return;
+      counters.push({ name: '', count: 0, target: 0 });
+      saveCounters(counters);
+      renderAll();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('row-counter.html');
+      injectFooter();
+      if (counters.length === 0) {
+        counters.push({ name: 'My Project', count: 0, target: 0 });
+        saveCounters(counters);
+      }
+      renderAll();
+    });
+  </script>
+</body>
+</html>

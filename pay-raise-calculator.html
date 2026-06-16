@@ -1,0 +1,505 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pay Raise Calculator - Salary Increase Tool | The Useful Pages</title>
+  <meta name="description" content="Calculate your new salary after a raise. Enter your current pay, raise percentage or amount, and see new salary, hourly rate, monthly and annual difference — plus compare two offers.">
+  <link rel="canonical" href="https://theusefulpages.com/pay-raise-calculator.html">
+  <meta property="og:title" content="Pay Raise Calculator - The Useful Pages"><meta property="og:description" content="See your new salary, raise amount, and pay period breakdown after a raise. Compare two offers side by side."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Pay Raise Calculator","url":"https://theusefulpages.com/pay-raise-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+    .compare-col { border:1px solid var(--border,#e2e8f0); border-radius:10px; padding:1.25rem; }
+    .compare-col.winner { border-color:var(--primary); box-shadow:0 0 0 2px rgba(35,106,119,0.15); }
+    .compare-col h4 { font-size:0.85rem; font-weight:700; color:var(--primary); margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.05em; }
+    .winner-badge { display:inline-block; background:var(--primary); color:#fff; font-size:0.7rem; font-weight:700; padding:0.15rem 0.5rem; border-radius:99px; margin-left:0.5rem; vertical-align:middle; }
+    .coli-result { padding:0.75rem; background:var(--bg-secondary); border-radius:8px; margin-top:1rem; font-size:0.875rem; color:var(--text-muted); }
+    .coli-result strong { color:var(--primary); }
+    @media (max-width:600px) { .compare-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Pay Raise Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Find out exactly how much your raise is worth — new salary, hourly rate, and take-home difference by pay period.</p>
+
+      <div class="tool-card">
+        <div class="tab-group" style="margin-bottom:1.5rem;">
+          <button class="tab-btn active" onclick="switchTab('single',this)">Single Raise</button>
+          <button class="tab-btn" onclick="switchTab('compare',this)">Compare Two Offers</button>
+        </div>
+
+        <!-- SINGLE TAB -->
+        <div id="tab-single">
+          <div class="form-row">
+            <div class="form-group" style="flex:1;">
+              <label class="form-label">Current Salary / Rate</label>
+              <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input class="form-input" id="current-pay" type="number" min="0" step="0.01" placeholder="50000" oninput="calcSingle()">
+              </div>
+            </div>
+            <div class="form-group" style="flex:1;">
+              <label class="form-label">Pay Period (current pay is per…)</label>
+              <select class="form-select" id="pay-period" onchange="calcSingle()">
+                <option value="annual">Annual</option>
+                <option value="monthly">Monthly</option>
+                <option value="biweekly">Biweekly (every 2 weeks)</option>
+                <option value="weekly">Weekly</option>
+                <option value="hourly">Hourly</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group" style="flex:1;">
+              <label class="form-label">Raise Type</label>
+              <select class="form-select" id="raise-type" onchange="calcSingle()">
+                <option value="pct">Percentage (%)</option>
+                <option value="fixed">Fixed Amount ($)</option>
+              </select>
+            </div>
+            <div class="form-group" style="flex:1;">
+              <label class="form-label" id="raise-label">Raise Percentage (%)</label>
+              <input class="form-input" id="raise-value" type="number" min="0" step="0.01" placeholder="5" oninput="calcSingle()">
+            </div>
+          </div>
+
+          <!-- Cost of Living Context -->
+          <div class="form-row" style="align-items:flex-end;">
+            <div class="form-group" style="flex:1;max-width:220px;">
+              <label class="form-label">CPI / Inflation Rate (%) <span style="font-weight:400;color:var(--text-muted);">optional</span></label>
+              <input class="form-input" id="cpi-rate" type="number" min="0" step="0.1" placeholder="e.g. 3.2" oninput="calcSingle()">
+            </div>
+          </div>
+
+          <!-- Results -->
+          <div id="single-results" style="display:none;margin-top:1.5rem;">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="stat-value" id="r-new-annual">—</div>
+                <div class="stat-label">New Annual Salary</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-raise-amt">—</div>
+                <div class="stat-label">Raise Amount (Annual)</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-pct">—</div>
+                <div class="stat-label">% Increase</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-hourly">—</div>
+                <div class="stat-label">New Hourly Rate</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-monthly-diff">—</div>
+                <div class="stat-label">Monthly Difference</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="r-biweekly-diff">—</div>
+                <div class="stat-label">Biweekly Difference</div>
+              </div>
+            </div>
+
+            <div class="table-wrap" style="margin-top:1.25rem;">
+              <table class="data-table">
+                <thead><tr><th>Pay Period</th><th>Current</th><th>New</th><th>Difference</th></tr></thead>
+                <tbody id="breakdown-table"></tbody>
+              </table>
+            </div>
+
+            <div id="coli-result-box" class="coli-result" style="display:none;"></div>
+
+            <div class="btn-row" style="margin-top:1rem;">
+              <button class="btn btn-outline btn-sm" onclick="copyResults()">Copy Results</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMPARE TAB -->
+        <div id="tab-compare" class="hidden">
+          <div class="form-row" style="margin-bottom:1rem;">
+            <div class="form-group" style="flex:1;">
+              <label class="form-label">Current Annual Salary</label>
+              <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input class="form-input" id="cmp-current" type="number" min="0" step="0.01" placeholder="60000" oninput="calcCompare()">
+              </div>
+            </div>
+          </div>
+          <div class="compare-grid">
+            <div>
+              <div style="font-size:0.85rem;font-weight:700;color:var(--text-muted);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">Offer A</div>
+              <div class="form-group">
+                <label class="form-label">Raise Type</label>
+                <select class="form-select" id="cmp-a-type" onchange="calcCompare()">
+                  <option value="pct">Percentage</option>
+                  <option value="fixed">Fixed Amount</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" id="cmp-a-label">Raise %</label>
+                <input class="form-input" id="cmp-a-val" type="number" min="0" step="0.01" placeholder="5" oninput="calcCompare()">
+              </div>
+            </div>
+            <div>
+              <div style="font-size:0.85rem;font-weight:700;color:var(--text-muted);margin-bottom:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">Offer B</div>
+              <div class="form-group">
+                <label class="form-label">Raise Type</label>
+                <select class="form-select" id="cmp-b-type" onchange="calcCompare()">
+                  <option value="pct">Percentage</option>
+                  <option value="fixed">Fixed Amount</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" id="cmp-b-label">Raise %</label>
+                <input class="form-input" id="cmp-b-val" type="number" min="0" step="0.01" placeholder="3" oninput="calcCompare()">
+              </div>
+            </div>
+          </div>
+
+          <div id="compare-results" style="display:none;margin-top:1.5rem;">
+            <div class="compare-grid" id="compare-cards"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your current salary or rate, select the pay period it represents (annual, monthly, hourly, etc.).</li>
+          <li>Choose <strong>Percentage</strong> to enter a raise like "5%" or <strong>Fixed Amount</strong> to enter a dollar amount like "$3,000".</li>
+          <li>Results show your new annual salary, exact raise amount, new hourly rate (based on 40 hrs/week, 52 weeks), and the difference by every pay period.</li>
+          <li>Enter a CPI/inflation rate to see whether your raise keeps up with the cost of living and how much you'd need to break even.</li>
+          <li>Use <strong>Compare Two Offers</strong> to evaluate competing raises side by side — the better offer is highlighted.</li>
+          <li><strong>Negotiation tip:</strong> Research market rates on Glassdoor, LinkedIn, and the BLS before negotiating. Aim 10–20% above your target to leave room for counter-offers.</li>
+          <li><strong>Tip:</strong> A 3–5% raise is average. Anything below the current inflation rate is effectively a pay cut in real terms.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="hourly-salary.html">Hourly to Salary</a>
+          <a href="tip-calculator.html">Tip Calculator</a>
+          <a href="time-card-calculator.html">Time Card Calculator</a>
+          <a href="gpa-calculator.html">GPA Calculator</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Pay Raise Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free pay raise calculator to estimate new pay after a percentage or dollar raise. It is useful for job offers, reviews, salary planning, hourly pay changes, and budgeting. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    // Convert any pay period to annual
+    function toAnnual(amount, period) {
+      const n = parseFloat(amount) || 0;
+      switch (period) {
+        case 'annual':    return n;
+        case 'monthly':   return n * 12;
+        case 'biweekly':  return n * 26;
+        case 'weekly':    return n * 52;
+        case 'hourly':    return n * 40 * 52;
+        default:          return n;
+      }
+    }
+
+    function annualToHourly(annual) { return annual / (40 * 52); }
+
+    function calcRaise(currentAnnual, raiseType, raiseValue) {
+      const rv = parseFloat(raiseValue) || 0;
+      let raiseAmt;
+      if (raiseType === 'pct') {
+        raiseAmt = currentAnnual * (rv / 100);
+      } else {
+        // fixed amount — treat as annual regardless of input period for simplicity
+        raiseAmt = rv;
+      }
+      return raiseAmt;
+    }
+
+    function calcSingle() {
+      const currentPay = document.getElementById('current-pay').value;
+      const period = document.getElementById('pay-period').value;
+      const raiseType = document.getElementById('raise-type').value;
+      const raiseValue = document.getElementById('raise-value').value;
+      const cpiRate = parseFloat(document.getElementById('cpi-rate').value);
+
+      // Update label
+      document.getElementById('raise-label').textContent = raiseType === 'pct' ? 'Raise Percentage (%)' : 'Raise Amount ($)';
+
+      const currentAnnual = toAnnual(currentPay, period);
+      if (!currentPay || currentAnnual <= 0) { document.getElementById('single-results').style.display='none'; return; }
+
+      let raiseAnnual;
+      if (raiseType === 'pct') {
+        raiseAnnual = currentAnnual * ((parseFloat(raiseValue)||0) / 100);
+      } else {
+        // fixed dollar — convert from same period
+        raiseAnnual = toAnnual(raiseValue, period);
+      }
+
+      const newAnnual = currentAnnual + raiseAnnual;
+      const pctIncrease = currentAnnual > 0 ? (raiseAnnual / currentAnnual) * 100 : 0;
+
+      document.getElementById('r-new-annual').textContent = fmtCurrency(newAnnual);
+      document.getElementById('r-raise-amt').textContent = fmtCurrency(raiseAnnual);
+      document.getElementById('r-pct').textContent = fmtNum(pctIncrease, 2) + '%';
+      document.getElementById('r-hourly').textContent = fmtCurrency(annualToHourly(newAnnual));
+      document.getElementById('r-monthly-diff').textContent = fmtCurrency(raiseAnnual / 12);
+      document.getElementById('r-biweekly-diff').textContent = fmtCurrency(raiseAnnual / 26);
+
+      // Breakdown table
+      const periods = [
+        { label:'Hourly', div: 40*52 },
+        { label:'Weekly', div: 52 },
+        { label:'Biweekly', div: 26 },
+        { label:'Monthly', div: 12 },
+        { label:'Annual', div: 1 },
+      ];
+      const tbody = periods.map(p => {
+        const cur = currentAnnual / p.div;
+        const nw = newAnnual / p.div;
+        const diff = nw - cur;
+        return `<tr><td>${p.label}</td><td>${fmtCurrency(cur)}</td><td>${fmtCurrency(nw)}</td><td style="color:var(--primary);font-weight:600;">+${fmtCurrency(diff)}</td></tr>`;
+      }).join('');
+      document.getElementById('breakdown-table').innerHTML = tbody;
+
+      // CPI context
+      const coliBox = document.getElementById('coli-result-box');
+      if (!isNaN(cpiRate) && cpiRate > 0) {
+        const neededRaise = currentAnnual * (cpiRate / 100);
+        const neededPct = cpiRate;
+        const realDiff = raiseAnnual - neededRaise;
+        const isAhead = realDiff >= 0;
+        coliBox.style.display = '';
+        coliBox.innerHTML = `<strong>Cost of Living Context:</strong> At ${fmtNum(cpiRate,1)}% inflation, you need a <strong>${fmtCurrency(neededRaise)}/year</strong> raise (${fmtNum(neededPct,1)}%) just to keep up.
+          ${isAhead
+            ? `Your raise exceeds inflation by <strong style="color:var(--primary);">${fmtCurrency(realDiff)}/year</strong> — a real increase in purchasing power.`
+            : `Your raise is <strong style="color:#e53e3e;">${fmtCurrency(Math.abs(realDiff))/year}</strong> short of inflation — a real-terms pay cut of <strong style="color:#e53e3e;">${fmtNum(Math.abs(realDiff/currentAnnual)*100,2)}%</strong>.`
+          }`;
+      } else {
+        coliBox.style.display = 'none';
+      }
+
+      document.getElementById('single-results').style.display = '';
+    }
+
+    function calcCompare() {
+      const current = parseFloat(document.getElementById('cmp-current').value) || 0;
+      if (current <= 0) { document.getElementById('compare-results').style.display='none'; return; }
+
+      ['a','b'].forEach(key => {
+        const type = document.getElementById(`cmp-${key}-type`).value;
+        document.getElementById(`cmp-${key}-label`).textContent = type === 'pct' ? 'Raise %' : 'Fixed Amount ($)';
+      });
+
+      const aType = document.getElementById('cmp-a-type').value;
+      const aVal = parseFloat(document.getElementById('cmp-a-val').value) || 0;
+      const bType = document.getElementById('cmp-b-type').value;
+      const bVal = parseFloat(document.getElementById('cmp-b-val').value) || 0;
+
+      const aRaise = aType === 'pct' ? current * (aVal/100) : aVal;
+      const bRaise = bType === 'pct' ? current * (bVal/100) : bVal;
+      const aNew = current + aRaise;
+      const bNew = current + bRaise;
+      const aIsWinner = aNew >= bNew;
+
+      function offerCard(label, raiseAmt, newAnnual, isWinner) {
+        return `<div class="compare-col ${isWinner?'winner':''}">
+          <h4>${label} ${isWinner ? '<span class="winner-badge">Better Offer</span>' : ''}</h4>
+          <div class="result-row"><span class="result-label">Raise Amount</span><span class="result-value">${fmtCurrency(raiseAmt)}/yr</span></div>
+          <div class="result-row"><span class="result-label">% Increase</span><span class="result-value">${fmtNum((raiseAmt/current)*100,2)}%</span></div>
+          <div class="result-row"><span class="result-label">New Annual</span><span class="result-value" style="font-weight:700;color:var(--primary);">${fmtCurrency(newAnnual)}</span></div>
+          <div class="result-row"><span class="result-label">New Monthly</span><span class="result-value">${fmtCurrency(newAnnual/12)}</span></div>
+          <div class="result-row"><span class="result-label">New Hourly</span><span class="result-value">${fmtCurrency(annualToHourly(newAnnual))}</span></div>
+          <div class="result-row"><span class="result-label">vs Offer ${label==='Offer A'?'B':'A'}</span><span class="result-value" style="color:${isWinner?'var(--primary)':'#e53e3e'};font-weight:600;">${isWinner?'+':''}${fmtCurrency(newAnnual-(label==='Offer A'?bNew:aNew))}/yr</span></div>
+        </div>`;
+      }
+
+      document.getElementById('compare-cards').innerHTML = offerCard('Offer A', aRaise, aNew, aIsWinner) + offerCard('Offer B', bRaise, bNew, !aIsWinner);
+      document.getElementById('compare-results').style.display = '';
+    }
+
+    function copyResults() {
+      const annual = document.getElementById('r-new-annual').textContent;
+      const raise = document.getElementById('r-raise-amt').textContent;
+      const pct = document.getElementById('r-pct').textContent;
+      const hourly = document.getElementById('r-hourly').textContent;
+      const monthly = document.getElementById('r-monthly-diff').textContent;
+      const biweekly = document.getElementById('r-biweekly-diff').textContent;
+      const text = `Pay Raise Summary\nNew Annual Salary: ${annual}\nRaise Amount: ${raise} (${pct})\nNew Hourly Rate: ${hourly}\nMonthly Difference: +${monthly}\nBiweekly Difference: +${biweekly}`;
+      copyText(text, 'Results copied!');
+    }
+
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-single').classList.toggle('hidden', tab !== 'single');
+      document.getElementById('tab-compare').classList.toggle('hidden', tab !== 'compare');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => { injectNav('pay-raise-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

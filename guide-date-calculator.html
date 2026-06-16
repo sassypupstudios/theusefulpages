@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Working with Dates: How to Count Days, Add Time, and Plan Ahead | The Useful Pages</title>
+  <meta name="description" content="A practical guide to date math — counting days between dates, adding or subtracting time from a date, handling business days, and using date calculators for planning.">
+  <link rel="canonical" href="https://theusefulpages.com/guide-date-calculator.html">
+  <meta property="og:title" content="Working with Dates: How to Count Days, Add Time, and Plan Ahead">
+  <meta property="og:description" content="A practical guide to date math — counting days between dates, adding or subtracting time from a date, handling business days, and using date calculators for planning.">
+  <meta property="og:type" content="article">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Working with Dates: How to Count Days, Add Time, and Plan Ahead</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Date math explained — counting days between two dates, calculating future deadlines, business day rules, and what makes date calculations more complicated than they look.</p>
+
+      <div class="instructions-card" style="line-height:1.75;">
+
+        <h2>Why date math is harder than it looks</h2>
+        <p>At first glance, calculating the number of days between two dates seems simple. But months have different lengths (28, 29, 30, or 31 days), years have 365 or 366 days, and different counting conventions exist for whether the start date, end date, or both count. Business day rules add weekends and holidays to the complexity. Software handles this accurately — manual mental math often does not.</p>
+
+        <h2>Counting days between two dates</h2>
+        <p>The standard approach is to count the total calendar days from one date to another, not including the start date but including the end date (or vice versa, depending on the use case). This is called an "inclusive" or "exclusive" count, and different contexts use different conventions.</p>
+        <p>For legal deadlines, "within 30 days" typically means 30 calendar days from the triggering event, not counting the event date itself. For billing cycles, the start date is usually included. When precision matters, confirm which convention applies.</p>
+        <p>Common situations where day counts come up:</p>
+        <ul>
+          <li>Contract deadlines and notice periods ("give 60 days notice before the lease ends")</li>
+          <li>Return and warranty windows ("return within 30 days of purchase")</li>
+          <li>Medical and legal waiting periods</li>
+          <li>Project planning and milestone scheduling</li>
+          <li>Travel planning (days until departure, days of a trip)</li>
+          <li>Age calculations for forms and eligibility checks</li>
+        </ul>
+
+        <h2>Adding or subtracting time from a date</h2>
+        <p>Adding days to a date is straightforward: start from the date and count forward. Adding months or years is trickier because of variable month lengths.</p>
+        <p>Adding one month to January 31 produces February 28 (or 29 in a leap year) — because February never has 31 days. Different software handles this differently: some roll over to March 1 or 2, others cap at the last day of the month. When adding months for contract dates, subscription renewals, or legal periods, confirm whether the convention is calendar months or a specific day count.</p>
+        <p>Examples where this matters in practice:</p>
+        <ul>
+          <li>A monthly subscription starting January 31 — when does the next billing date fall?</li>
+          <li>A 6-month probationary period starting August 31 — does it end February 28 or March 2?</li>
+          <li>A 90-day return window starting December 1 — what is the last eligible return date?</li>
+        </ul>
+        <p>The <a href="date-calculator.html">Date Calculator</a> handles all of these cases: add or subtract any number of days, weeks, months, or years from a starting date and get the precise result.</p>
+
+        <h2>Business days vs. calendar days</h2>
+        <p>Business days (also called working days) exclude weekends — Saturdays and Sundays — and sometimes public holidays. Many financial, legal, and shipping contexts use business day counts rather than calendar days.</p>
+        <p>Common examples:</p>
+        <ul>
+          <li>Bank transfers typically settle in 1–3 business days</li>
+          <li>Legal responses are often due within 5 or 10 business days of notice</li>
+          <li>Shipping estimates of "3–5 business days" exclude weekends</li>
+          <li>Employment background checks usually complete within 2–5 business days</li>
+        </ul>
+        <p>The difference between business days and calendar days can be significant. Five business days starting on a Thursday spans two calendar weeks if a weekend is in between. The free <a href="business-days.html">Business Days Calculator</a> counts working days between any two dates, automatically skipping weekends.</p>
+
+        <h2>Leap years and why they matter</h2>
+        <p>A leap year occurs every 4 years and adds February 29, making the year 366 days long. The rule: a year is a leap year if it is divisible by 4, except century years (1900, 2100) which must be divisible by 400 (so 2000 was a leap year but 1900 was not).</p>
+        <p>Leap years matter for precise day counts over multi-year spans and for any date calculation involving February 28–29. A contract spanning from February 1, 2023 to February 1, 2025 covers exactly 730 days in a non-leap-year period, but a period spanning February 2024 covers 731 days because 2024 is a leap year.</p>
+
+        <h2>Countdown planning</h2>
+        <p>Counting down to a future event — a deadline, vacation, exam, launch date, or anniversary — is one of the most common uses for date tools. The <a href="days-until.html">Days Until Calculator</a> counts the days remaining to any future date. For recurring events or scheduling across time zones, the <a href="days-between-dates.html">Days Between Dates</a> calculator and <a href="timezone-converter.html">Time Zone Converter</a> handle the related calculations.</p>
+
+      </div>
+    </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>injectNav('guide-date-calculator.html'); injectFooter();</script>
+</body>
+</html>

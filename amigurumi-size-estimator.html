@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amigurumi Size Estimator — Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Estimate the finished size of your amigurumi from the magic ring count, or find the starting ring needed for a target size.">
+  <link rel="canonical" href="https://theusefulpages.com/amigurumi-size-estimator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Amigurumi Size Estimator</h1>
+      <p class="page-subtitle">Estimate finished amigurumi size from your magic ring, or find the ring count for a target size.</p>
+      <div class="tool-card">
+        <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;">
+          <button class="btn-primary" id="tab-forward" onclick="switchTab('forward')">Ring → Size</button>
+          <button class="btn-outline" id="tab-reverse" onclick="switchTab('reverse')">Size → Ring</button>
+        </div>
+
+        <!-- Forward: ring count → estimated size -->
+        <div id="panel-forward">
+          <p style="color:var(--text-muted);margin-bottom:1rem;">Enter your magic ring stitch count, yarn weight, and hook size to estimate finished diameter.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Magic Ring Starting Stitches</label>
+              <input class="form-input" type="number" id="ring-count" min="4" value="6" placeholder="e.g. 6">
+            </div>
+            <div>
+              <label class="label">Yarn Weight</label>
+              <select class="form-select" id="yarn-weight-f">
+                <option value="sport">Sport / Baby (2)</option>
+                <option value="dk">DK (3)</option>
+                <option value="worsted" selected>Worsted (4)</option>
+                <option value="bulky">Bulky (5)</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">Hook Size (mm)</label>
+              <input class="form-input" type="number" id="hook-mm" min="1" step="0.5" placeholder="e.g. 3.5">
+            </div>
+            <div>
+              <label class="label">Number of Rounds (full sphere)</label>
+              <input class="form-input" type="number" id="num-rounds" min="3" value="6" placeholder="e.g. 6">
+            </div>
+          </div>
+          <div style="margin-top:1rem;">
+            <button class="btn-primary" onclick="calcForward()">Estimate Size</button>
+          </div>
+          <div id="forward-result" style="display:none;margin-top:1.5rem;">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="stat-value" id="res-diameter-in"></div>
+                <div class="stat-label">Approx. Diameter (inches)</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="res-diameter-cm"></div>
+                <div class="stat-label">Approx. Diameter (cm)</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="res-max-sts"></div>
+                <div class="stat-label">Max Stitches (at widest)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reverse: target size → ring count -->
+        <div id="panel-reverse" style="display:none;">
+          <p style="color:var(--text-muted);margin-bottom:1rem;">Enter your desired finished size and yarn weight to find the recommended starting ring count.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label class="label">Desired Diameter (inches)</label>
+              <input class="form-input" type="number" id="target-size" min="1" step="0.5" placeholder="e.g. 4">
+            </div>
+            <div>
+              <label class="label">Yarn Weight</label>
+              <select class="form-select" id="yarn-weight-r">
+                <option value="sport">Sport / Baby (2)</option>
+                <option value="dk">DK (3)</option>
+                <option value="worsted" selected>Worsted (4)</option>
+                <option value="bulky">Bulky (5)</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-top:1rem;">
+            <button class="btn-primary" onclick="calcReverse()">Find Ring Count</button>
+          </div>
+          <div id="reverse-result" style="display:none;margin-top:1.5rem;">
+            <div class="stat-grid">
+              <div class="stat-box">
+                <div class="stat-value" id="res-ring-count"></div>
+                <div class="stat-label">Recommended Ring Count</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value" id="res-rounds-needed"></div>
+                <div class="stat-label">Rounds to Work</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="disclaimer" style="margin-top:1.5rem;">Results are estimates. Finished size varies significantly with hook size, tension, and whether stuffing is used. Always test with your specific yarn and hook.</p>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Common Amigurumi Yarn / Hook Combos</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Yarn Weight</th><th>Recommended Hook</th><th>Typical Gauge (per 4 rounds)</th><th>Approx. Sphere Diameter</th></tr></thead>
+            <tbody>
+              <tr><td>Sport (2)</td><td>2.25–3mm</td><td>20–22 sc / 4"</td><td>2–3" (6-st ring)</td></tr>
+              <tr><td>DK (3)</td><td>3–3.5mm</td><td>18–20 sc / 4"</td><td>3–4" (6-st ring)</td></tr>
+              <tr><td>Worsted (4)</td><td>3.5–4mm</td><td>14–16 sc / 4"</td><td>4–5" (6-st ring)</td></tr>
+              <tr><td>Bulky (5)</td><td>5–6mm</td><td>10–12 sc / 4"</td><td>5–7" (6-st ring)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <h3>Ring → Size</h3>
+        <ul>
+          <li>Enter the number of stitches in your magic ring (commonly 6 or 8).</li>
+          <li>Select your yarn weight and enter your hook size in mm.</li>
+          <li>Enter how many increase rounds you plan to work (the increases add 6 stitches per round for a 6-stitch ring).</li>
+          <li>Click <strong>Estimate Size</strong> to see the approximate finished diameter.</li>
+        </ul>
+        <h3>Size → Ring</h3>
+        <ul>
+          <li>Enter your desired finished diameter in inches.</li>
+          <li>Select yarn weight.</li>
+          <li>Click <strong>Find Ring Count</strong> for the recommended starting ring size and number of rounds.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Amigurumi Size Estimator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Amigurumi Size Estimator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('amigurumi-size-estimator.html');injectFooter();});
+    // stitch height (inches) per round approximate by weight
+    const stitchHeight = {sport:0.15, dk:0.18, worsted:0.22, bulky:0.3};
+    // stitch width (circumference contribution) approximate
+    const stitchWidth  = {sport:0.14, dk:0.17, worsted:0.21, bulky:0.28};
+
+    function switchTab(tab){
+      document.getElementById('panel-forward').style.display  = tab==='forward' ? 'block' : 'none';
+      document.getElementById('panel-reverse').style.display  = tab==='reverse' ? 'block' : 'none';
+      document.getElementById('tab-forward').className = tab==='forward' ? 'btn-primary' : 'btn-outline';
+      document.getElementById('tab-reverse').className = tab==='reverse' ? 'btn-primary' : 'btn-outline';
+    }
+
+    function calcForward(){
+      const ring   = parseInt(document.getElementById('ring-count').value)||6;
+      const wt     = document.getElementById('yarn-weight-f').value;
+      const rounds = parseInt(document.getElementById('num-rounds').value)||6;
+      // max stitches at widest part (each round adds ring count stitches)
+      const maxSts   = ring + ring * rounds;
+      // diameter ≈ circumference / π, circumference ≈ maxSts × stitch width
+      const circ     = maxSts * stitchWidth[wt];
+      const diam     = circ / Math.PI;
+      document.getElementById('res-diameter-in').textContent = diam.toFixed(1) + '"';
+      document.getElementById('res-diameter-cm').textContent = (diam * 2.54).toFixed(1) + ' cm';
+      document.getElementById('res-max-sts').textContent     = maxSts;
+      document.getElementById('forward-result').style.display = 'block';
+    }
+
+    function calcReverse(){
+      const targetIn = parseFloat(document.getElementById('target-size').value);
+      const wt       = document.getElementById('yarn-weight-r').value;
+      if(isNaN(targetIn)||targetIn<=0){alert('Please enter a target diameter.');return;}
+      // work backwards: circumference = π × diameter, sts = circ / stitchWidth
+      const circ    = Math.PI * targetIn;
+      const maxSts  = Math.round(circ / stitchWidth[wt]);
+      // ring usually 6; rounds = (maxSts - ring) / ring
+      const ring    = 6;
+      const rounds  = Math.max(1, Math.round((maxSts - ring) / ring));
+      document.getElementById('res-ring-count').textContent   = ring;
+      document.getElementById('res-rounds-needed').textContent = rounds;
+      document.getElementById('reverse-result').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

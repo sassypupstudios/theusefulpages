@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Granny Square Size Calculator — Rounds, Size &amp; Blanket Layout | The Useful Pages</title>
+  <meta name="description" content="Calculate granny square size by round count, find rounds needed for a target size, and plan blanket layouts. Free crochet calculator, no signup required.">
+  <link rel="canonical" href="https://theusefulpages.com/granny-square-size-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Granny Square Size Calculator</h1>
+      <p class="page-subtitle">Estimate granny square size by round count, find how many rounds to reach a target size, and plan your blanket layout.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+          <!-- Left: Size by rounds -->
+          <div style="border:1px solid var(--color-border);border-radius:0.5rem;padding:1rem;">
+            <h3 style="margin-bottom:0.75rem;font-size:1rem;">Size by Round Count</h3>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Inches Added per Round</label>
+              <input class="form-input" type="number" id="sq-inc-per-round" min="0.1" step="0.1" placeholder="e.g. 0.75" value="0.75">
+              <p style="font-size:0.8rem;color:var(--color-text-muted);margin-top:0.25rem;">Typical: 0.5–1" per round depending on yarn weight</p>
+            </div>
+            <button class="btn-primary" style="width:100%" onclick="calcByRounds()">Show 1–8 Round Sizes</button>
+            <div id="rounds-result" style="margin-top:1rem;"></div>
+          </div>
+          <!-- Right: Rounds by target size -->
+          <div style="border:1px solid var(--color-border);border-radius:0.5rem;padding:1rem;">
+            <h3 style="margin-bottom:0.75rem;font-size:1rem;">Rounds for Target Size</h3>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Desired Square Size (inches)</label>
+              <input class="form-input" type="number" id="sq-target" min="0.5" step="0.25" placeholder="e.g. 5">
+            </div>
+            <div style="margin-bottom:0.75rem;">
+              <label class="label">Inches Added per Round</label>
+              <input class="form-input" type="number" id="sq-inc2" min="0.1" step="0.1" placeholder="e.g. 0.75" value="0.75">
+            </div>
+            <button class="btn-outline" style="width:100%" onclick="calcRoundsNeeded()">Calculate Rounds Needed</button>
+            <div id="target-result" style="margin-top:1rem;"></div>
+          </div>
+        </div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--color-border);">
+
+        <h3 style="margin-bottom:0.75rem;font-size:1rem;">Blanket Layout Calculator</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Square Size (inches)</label>
+            <input class="form-input" type="number" id="sq-size" min="0.5" step="0.25" placeholder="e.g. 6">
+          </div>
+          <div>
+            <label class="label">Desired Blanket Width (inches)</label>
+            <input class="form-input" type="number" id="blanket-w" min="1" step="1" placeholder="e.g. 50">
+          </div>
+          <div>
+            <label class="label">Desired Blanket Length (inches)</label>
+            <input class="form-input" type="number" id="blanket-l" min="1" step="1" placeholder="e.g. 60">
+          </div>
+        </div>
+        <button class="btn-outline" onclick="calcBlanket()">Calculate Blanket Layout</button>
+        <div id="blanket-result" style="margin-top:1.25rem;"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Use <strong>Size by Round Count</strong> to see how large your square will be after each round.</li>
+          <li>Use <strong>Rounds for Target Size</strong> to find how many rounds give you the size you want.</li>
+          <li>Use <strong>Blanket Layout</strong> to find how many squares fit in a given blanket size.</li>
+        </ul>
+        <h2>Typical Granny Square Sizes by Yarn Weight</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Yarn Weight</th><th>Per Round Growth</th><th>5-Round Square</th><th>8-Round Square</th></tr></thead>
+            <tbody>
+              <tr><td>Fingering</td><td>~0.4–0.5"</td><td>~2–2.5"</td><td>~3.5–4"</td></tr>
+              <tr><td>Sport / DK</td><td>~0.5–0.65"</td><td>~2.5–3.5"</td><td>~4.5–5.5"</td></tr>
+              <tr><td>Worsted</td><td>~0.65–0.85"</td><td>~3.5–4.5"</td><td>~5.5–7"</td></tr>
+              <tr><td>Bulky</td><td>~0.9–1.2"</td><td>~5–6"</td><td>~8–10"</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h2>Common Uses</h2>
+        <ul>
+          <li>Granny square blankets and afghans</li>
+          <li>Patchwork bags and totes</li>
+          <li>Pillow covers and cushions</li>
+          <li>Colorwork sampler projects</li>
+        </ul>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Granny Square Size Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Granny Square Size Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcByRounds() {
+    const incPerRound = parseFloat(document.getElementById('sq-inc-per-round').value);
+    const res = document.getElementById('rounds-result');
+    if (!incPerRound || incPerRound <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter a valid increment per round.</p>'; return;
+    }
+    let rows = '';
+    for (let r = 1; r <= 8; r++) {
+      const size = (r * incPerRound).toFixed(2);
+      rows += `<tr><td>${r}</td><td>${size}"</td></tr>`;
+    }
+    res.innerHTML = `<div class="table-wrap"><table class="data-table">
+      <thead><tr><th>Rounds</th><th>Est. Size</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>`;
+  }
+
+  function calcRoundsNeeded() {
+    const target = parseFloat(document.getElementById('sq-target').value);
+    const inc = parseFloat(document.getElementById('sq-inc2').value);
+    const res = document.getElementById('target-result');
+    if (!target || !inc || target <= 0 || inc <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid target size and increment.</p>'; return;
+    }
+    const rounds = Math.ceil(target / inc);
+    const actualSize = (rounds * inc).toFixed(2);
+    res.innerHTML = `<div class="result-card">
+      <p><strong>${rounds} round${rounds !== 1 ? 's' : ''}</strong> needed for a ${target}" square.</p>
+      <p style="font-size:0.875rem;color:var(--color-text-muted)">Estimated actual size: ${actualSize}"</p>
+    </div>`;
+  }
+
+  function calcBlanket() {
+    const sqSize = parseFloat(document.getElementById('sq-size').value);
+    const bw = parseFloat(document.getElementById('blanket-w').value);
+    const bl = parseFloat(document.getElementById('blanket-l').value);
+    const res = document.getElementById('blanket-result');
+    if (!sqSize || !bw || !bl || sqSize <= 0 || bw <= 0 || bl <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid square size and blanket dimensions.</p>'; return;
+    }
+    const cols = Math.round(bw / sqSize);
+    const rows = Math.round(bl / sqSize);
+    const total = cols * rows;
+    const actualW = (cols * sqSize).toFixed(1);
+    const actualL = (rows * sqSize).toFixed(1);
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid">
+        <div class="stat-box"><div class="label">Grid Layout</div><strong>${cols} × ${rows}</strong></div>
+        <div class="stat-box"><div class="label">Total Squares</div><strong>${total}</strong></div>
+        <div class="stat-box"><div class="label">Actual Width</div><strong>${actualW}"</strong></div>
+        <div class="stat-box"><div class="label">Actual Length</div><strong>${actualL}"</strong></div>
+      </div>
+    </div>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('granny-square-size-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

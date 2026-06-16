@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binary to Decimal Converter - Online Tool | The Useful Pages</title>
+  <meta name="description" content="Free binary to decimal converter. Convert between binary, octal, decimal, and hex simultaneously. Includes custom base converter, bit info, and ASCII lookup.">
+  <link rel="canonical" href="https://theusefulpages.com/binary-decimal.html">
+  <meta property="og:title" content="Binary / Number Base Converter - The Useful Pages">
+  <meta property="og:description" content="Convert between binary, octal, decimal, and hex. Custom base converter, bit visualization, and ASCII character lookup.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Binary to Decimal Converter","url":"https://theusefulpages.com/binary-decimal.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .base-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    @media(max-width:540px){.base-grid{grid-template-columns:1fr;}}
+    .base-badge{display:inline-block;background:var(--primary);color:#fff;font-size:0.68rem;font-weight:700;padding:0.1rem 0.45rem;border-radius:10px;margin-left:0.4rem;vertical-align:middle;}
+    .base-label{font-size:0.78rem;font-weight:700;color:var(--text-muted);margin-bottom:0.3rem;display:flex;align-items:center;}
+    .section-title{font-size:1rem;font-weight:700;color:var(--primary);margin:1.5rem 0 0.75rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+    .bit-visual{display:flex;flex-wrap:wrap;gap:0.25rem;margin:0.75rem 0;font-family:monospace;}
+    .bit-group{display:flex;gap:0.15rem;margin-right:0.4rem;}
+    .bit-cell{width:28px;height:32px;border-radius:5px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;transition:all .15s;}
+    .bit-cell.one{background:var(--primary);color:#fff;border-color:var(--primary);}
+    .bit-cell.zero{background:var(--bg-secondary);color:var(--text-muted);}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.75rem;margin:0.75rem 0;}
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.75rem;margin:0.75rem 0;}
+    .info-box{background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.75rem;}
+    .info-box .lbl{font-size:0.72rem;color:var(--text-muted);margin-bottom:0.2rem;font-weight:500;}
+    .info-box .val{font-size:0.95rem;font-weight:700;color:var(--primary);font-family:monospace;}
+    .ascii-box{background:var(--result-bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin:0.75rem 0;font-size:0.9rem;display:none;}
+    .custom-base-row{display:grid;grid-template-columns:1fr 80px 80px 1fr;gap:0.75rem;align-items:end;}
+    @media(max-width:600px){.custom-base-row{grid-template-columns:1fr 1fr;}}
+    .error-inline{color:#c0392b;font-size:0.75rem;margin-top:0.2rem;}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Binary / Number Base Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Type in any field — binary, octal, decimal, or hex — and all others update instantly.</p>
+      <div class="tool-card">
+
+        <!-- Four-way converter -->
+        <div class="base-grid">
+          <div class="form-group">
+            <div class="base-label">Binary <span class="base-badge">Base 2</span></div>
+            <input type="text" class="form-input" style="font-family:monospace;" id="inp-bin" placeholder="e.g. 1010" oninput="syncFrom('bin')" autocomplete="off" spellcheck="false">
+            <div class="error-inline" id="err-bin"></div>
+          </div>
+          <div class="form-group">
+            <div class="base-label">Octal <span class="base-badge">Base 8</span></div>
+            <input type="text" class="form-input" style="font-family:monospace;" id="inp-oct" placeholder="e.g. 12" oninput="syncFrom('oct')" autocomplete="off">
+            <div class="error-inline" id="err-oct"></div>
+          </div>
+          <div class="form-group">
+            <div class="base-label">Decimal <span class="base-badge">Base 10</span></div>
+            <input type="text" class="form-input" style="font-family:monospace;" id="inp-dec" placeholder="e.g. 10" oninput="syncFrom('dec')" autocomplete="off">
+            <div class="error-inline" id="err-dec"></div>
+          </div>
+          <div class="form-group">
+            <div class="base-label">Hexadecimal <span class="base-badge">Base 16</span></div>
+            <input type="text" class="form-input" style="font-family:monospace;" id="inp-hex" placeholder="e.g. A" oninput="syncFrom('hex')" autocomplete="off" spellcheck="false">
+            <div class="error-inline" id="err-hex"></div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-accent" onclick="copyText(document.getElementById('inp-bin').value,'Binary copied!')">Copy Binary</button>
+          <button class="btn btn-primary" onclick="copyText(document.getElementById('inp-dec').value,'Decimal copied!')">Copy Decimal</button>
+          <button class="btn btn-outline" onclick="clearAll()">Clear</button>
+        </div>
+
+        <!-- Bit visualization -->
+        <div class="section-title">Binary Visualization</div>
+        <div class="bit-visual" id="bit-visual"><span style="color:var(--text-muted);font-size:0.82rem;">Enter a number above to see its bit representation.</span></div>
+
+        <!-- Bit info -->
+        <div class="info-grid" id="bit-info" style="display:none;">
+          <div class="info-box"><div class="lbl">Bits Needed</div><div class="val" id="bits-needed">—</div></div>
+          <div class="info-box"><div class="lbl">Unsigned Max</div><div class="val" id="unsigned-max">—</div></div>
+          <div class="info-box"><div class="lbl">Signed Min</div><div class="val" id="signed-min">—</div></div>
+          <div class="info-box"><div class="lbl">Signed Max</div><div class="val" id="signed-max">—</div></div>
+        </div>
+
+        <!-- ASCII -->
+        <div class="ascii-box" id="ascii-box">
+          <strong>ASCII Character:</strong> <span id="ascii-char"></span> &nbsp;|&nbsp; <span style="color:var(--text-muted);font-size:0.82rem;" id="ascii-name"></span>
+        </div>
+
+        <!-- Custom base converter -->
+        <div class="section-title">Custom Base Converter</div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;">Convert a number from any base (2–36) to any other base.</p>
+        <div class="custom-base-row">
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Input Number</label>
+            <input type="text" class="form-input" style="font-family:monospace;" id="custom-input" placeholder="e.g. ZZ" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">From Base</label>
+            <input type="number" class="form-input" id="custom-from" value="16" min="2" max="36">
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">To Base</label>
+            <input type="number" class="form-input" id="custom-to" value="10" min="2" max="36">
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">Result</label>
+            <input type="text" class="form-input" style="font-family:monospace;" id="custom-output" readonly placeholder="—">
+          </div>
+        </div>
+        <div class="btn-row" style="margin-top:0.75rem;">
+          <button class="btn btn-accent" onclick="runCustom()">Convert</button>
+          <button class="btn btn-outline" onclick="document.getElementById('custom-input').value='';document.getElementById('custom-output').value='';">Clear</button>
+        </div>
+        <div class="error-inline" id="err-custom"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Type any number in the Binary, Octal, Decimal, or Hex field — all four update simultaneously</li>
+          <li>The bit visualization shows the binary representation grouped in nibbles (4 bits each)</li>
+          <li>Bit info shows how many bits are needed, and the signed/unsigned range for that bit width</li>
+          <li>If the decimal value is 32–126, the ASCII character is shown below the visualization</li>
+          <li>The Custom Base Converter supports any base from 2 to 36 (uses 0–9 and A–Z)</li>
+          <li>Hex input is case-insensitive</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="hex-decimal.html" class="related-link">Hex ↔ Decimal</a>
+          <a href="base64.html" class="related-link">Base64 Encoder</a>
+          <a href="unit-converter.html" class="related-link">Unit Converter</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Binary Decimal</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free binary, decimal, hex, and octal converter to switch between common number bases. It is useful for programming, computer science, networking, electronics, and technical learning. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  let syncing = false;
+  const validators = { bin:/^[01]+$/, oct:/^[0-7]+$/, dec:/^[0-9]+$/, hex:/^[0-9a-fA-F]+$/ };
+  const bases = { bin:2, oct:8, dec:10, hex:16 };
+  const ids = { bin:'inp-bin', oct:'inp-oct', dec:'inp-dec', hex:'inp-hex' };
+
+  const asciiNames = {32:'Space',33:'!',34:'"',35:'#',36:'$',37:'%',38:'&',39:"'",40:'(',41:')',42:'*',43:'+',44:',',45:'-',46:'.',47:'/',48:'0',49:'1',50:'2',51:'3',52:'4',53:'5',54:'6',55:'7',56:'8',57:'9',58:':',59:';',60:'<',61:'=',62:'>',63:'?',64:'@',65:'A',66:'B',67:'C',68:'D',69:'E',70:'F',71:'G',72:'H',73:'I',74:'J',75:'K',76:'L',77:'M',78:'N',79:'O',80:'P',81:'Q',82:'R',83:'S',84:'T',85:'U',86:'V',87:'W',88:'X',89:'Y',90:'Z',91:'[',92:'\\',93:']',94:'^',95:'_',96:'`',97:'a',98:'b',99:'c',100:'d',101:'e',102:'f',103:'g',104:'h',105:'i',106:'j',107:'k',108:'l',109:'m',110:'n',111:'o',112:'p',113:'q',114:'r',115:'s',116:'t',117:'u',118:'v',119:'w',120:'x',121:'y',122:'z',123:'{',124:'|',125:'}',126:'~'};
+
+  function syncFrom(source) {
+    if (syncing) return;
+    syncing = true;
+    Object.keys(ids).forEach(b => document.getElementById('err-'+b).textContent='');
+    const val = document.getElementById(ids[source]).value.trim();
+    if (!val) {
+      Object.keys(ids).forEach(b => { if(b!==source) document.getElementById(ids[b]).value=''; });
+      updateVisual(null); syncing=false; return;
+    }
+    if (!validators[source].test(val)) {
+      document.getElementById('err-'+source).textContent = 'Invalid ' + source.toUpperCase() + ' value';
+      syncing=false; return;
+    }
+    const num = parseInt(val, bases[source]);
+    if (isNaN(num) || num < 0) { syncing=false; return; }
+    if (source!=='bin') document.getElementById(ids.bin).value = num.toString(2);
+    if (source!=='oct') document.getElementById(ids.oct).value = num.toString(8);
+    if (source!=='dec') document.getElementById(ids.dec).value = num.toString(10);
+    if (source!=='hex') document.getElementById(ids.hex).value = num.toString(16).toUpperCase();
+    updateVisual(num);
+    syncing = false;
+  }
+
+  function updateVisual(num) {
+    const bitEl = document.getElementById('bit-visual');
+    const infoEl = document.getElementById('bit-info');
+    const asciiEl = document.getElementById('ascii-box');
+    if (num === null) {
+      bitEl.innerHTML = '<span style="color:var(--text-muted);font-size:0.82rem;">Enter a number above to see its bit representation.</span>';
+      infoEl.style.display='none'; asciiEl.style.display='none'; return;
+    }
+    const binStr = num.toString(2);
+    // Pad to nearest nibble
+    const padLen = Math.ceil(binStr.length / 4) * 4;
+    const padded = binStr.padStart(padLen, '0');
+    // Group into nibbles
+    let html = '';
+    for (let i=0; i<padded.length; i+=4) {
+      html += '<div class="bit-group">';
+      for (let j=i; j<i+4; j++) {
+        html += `<div class="bit-cell ${padded[j]==='1'?'one':'zero'}">${padded[j]}</div>`;
+      }
+      html += '</div>';
+    }
+    bitEl.innerHTML = html;
+
+    // Bit info
+    const bitsNeeded = binStr.length;
+    const bitWidth = padLen;
+    const unsignedMax = Math.pow(2, bitWidth) - 1;
+    const signedMax = Math.pow(2, bitWidth-1) - 1;
+    const signedMin = -Math.pow(2, bitWidth-1);
+    document.getElementById('bits-needed').textContent = bitsNeeded + (bitsNeeded===1?' bit':' bits') + ' (' + bitWidth + '-bit width)';
+    document.getElementById('unsigned-max').textContent = unsignedMax.toLocaleString();
+    document.getElementById('signed-min').textContent = signedMin.toLocaleString();
+    document.getElementById('signed-max').textContent = signedMax.toLocaleString();
+    infoEl.style.display='grid';
+
+    // ASCII
+    if (num >= 32 && num <= 126) {
+      document.getElementById('ascii-char').textContent = String.fromCharCode(num);
+      document.getElementById('ascii-name').textContent = 'Decimal ' + num + ' = ASCII "' + asciiNames[num] + '"';
+      asciiEl.style.display='block';
+    } else {
+      asciiEl.style.display='none';
+    }
+  }
+
+  function clearAll() {
+    Object.keys(ids).forEach(b => { document.getElementById(ids[b]).value=''; document.getElementById('err-'+b).textContent=''; });
+    updateVisual(null);
+  }
+
+  function runCustom() {
+    const input = document.getElementById('custom-input').value.trim().toUpperCase();
+    const fromBase = parseInt(document.getElementById('custom-from').value);
+    const toBase = parseInt(document.getElementById('custom-to').value);
+    const errEl = document.getElementById('err-custom');
+    const outEl = document.getElementById('custom-output');
+    errEl.textContent='';
+    if (!input) { outEl.value=''; return; }
+    if (isNaN(fromBase)||fromBase<2||fromBase>36||isNaN(toBase)||toBase<2||toBase>36) {
+      errEl.textContent='Base must be between 2 and 36.'; return;
+    }
+    const num = parseInt(input, fromBase);
+    if (isNaN(num)) { errEl.textContent='Invalid number for base '+fromBase+'.'; outEl.value=''; return; }
+    outEl.value = num.toString(toBase).toUpperCase();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('binary-decimal.html'); injectFooter(); });
+  </script>
+</body>
+</html>

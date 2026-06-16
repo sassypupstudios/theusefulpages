@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator - Online Tip & Bill Splitter | The Useful Pages</title>
+  <meta name="description" content="Calculate tip amount, split the bill between people, and round up totals instantly. Free tip calculator with custom tip percentage and pre-tax option.">
+  <link rel="canonical" href="https://theusefulpages.com/tip-calculator.html">
+  <meta property="og:title" content="Tip Calculator - The Useful Pages">
+  <meta property="og:description" content="Calculate tip and split the bill instantly. Supports custom tip %, split by people, round-up, and pre-tax tip options.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tip Calculator","url":"https://theusefulpages.com/tip-calculator.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tip-btn-group { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; }
+    .tip-btn { padding:0.5rem 1rem; border:2px solid var(--border); border-radius:8px; background:var(--card-bg); cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--text-muted); transition:all 0.15s; font-family:inherit; }
+    .tip-btn:hover { border-color:var(--primary); color:var(--primary); }
+    .tip-btn.active { background:var(--primary); border-color:var(--primary); color:white; }
+    .result-big { text-align:center; padding:1.25rem; background:var(--primary); color:white; border-radius:12px; margin-bottom:0.75rem; }
+    .result-big .amount { font-size:2.25rem; font-weight:700; }
+    .result-big .label { font-size:0.875rem; opacity:0.85; margin-top:0.25rem; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Tip Calculator</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate your tip and split the bill — updates instantly as you type.</p>
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label">Bill Amount ($)</label>
+          <input type="number" class="form-input" id="billAmount" placeholder="0.00" min="0" step="0.01" oninput="calculate()">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tip Percentage</label>
+          <div class="tip-btn-group">
+            <button class="tip-btn" onclick="setTip(10)">10%</button>
+            <button class="tip-btn" onclick="setTip(15)">15%</button>
+            <button class="tip-btn active" onclick="setTip(18)">18%</button>
+            <button class="tip-btn" onclick="setTip(20)">20%</button>
+            <button class="tip-btn" onclick="setTip(25)">25%</button>
+            <button class="tip-btn" onclick="setTip('custom')">Custom</button>
+          </div>
+          <div id="customTipGroup" class="hidden">
+            <input type="number" class="form-input" id="customTipPct" placeholder="Custom tip %" min="0" max="100" step="1" oninput="calculate()">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Number of People</label>
+            <input type="number" class="form-input" id="numPeople" value="1" min="1" max="100" oninput="calculate()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pre-Tax Amount ($) <span style="font-size:0.75rem;font-weight:400;">(optional)</span></label>
+            <input type="number" class="form-input" id="preTaxAmount" placeholder="Leave blank to tip on total" min="0" step="0.01" oninput="calculate()">
+          </div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;margin-bottom:1rem;flex-wrap:wrap;">
+          <label style="display:flex;align-items:center;gap:0.4rem;font-size:0.875rem;cursor:pointer;">
+            <input type="checkbox" id="roundUp" onchange="calculate()"> Round up per-person total
+          </label>
+        </div>
+
+        <div id="results" style="margin-top:0.5rem;">
+          <div class="result-big">
+            <div class="amount" id="perPersonAmount">$0.00</div>
+            <div class="label">Per Person</div>
+          </div>
+          <div class="stat-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="stat-box"><div class="stat-value" id="tipAmount">$0.00</div><div class="stat-label">Tip Amount</div></div>
+            <div class="stat-box"><div class="stat-value" id="totalBill">$0.00</div><div class="stat-label">Total Bill</div></div>
+            <div class="stat-box"><div class="stat-value" id="tipPctDisplay">18%</div><div class="stat-label">Tip %</div></div>
+          </div>
+          <div style="margin-top:0.75rem;">
+            <button class="btn btn-accent btn-sm" onclick="copyResult()">Copy Result</button>
+          </div>
+        </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">For educational purposes only — not financial advice.</p>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter your total bill amount — results update instantly as you type.</li>
+          <li>Select a preset tip percentage or choose Custom to enter your own.</li>
+          <li>Enter the number of people splitting the bill.</li>
+          <li>Optionally enter a pre-tax amount to calculate tip on food only (before tax).</li>
+          <li>Check "Round up" to round each person's share to the nearest dollar.</li>
+          <li>Use "Copy Result" to share the breakdown with your group.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="hourly-salary.html">Hourly to Salary Converter</a>
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="savings-calculator.html">Savings Calculator</a>
+          <a href="car-payment.html">Car Payment Calculator</a>
+          <a href="debt-payoff.html">Debt Payoff Calculator</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Tip Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free tip calculator to calculate tip amounts, bill totals, and per-person splits. It is useful for restaurants, delivery, group meals, travel, and quick shared expense math. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('tip-calculator.html'); injectFooter(); calculate(); });
+
+    let currentTipPct = 18;
+
+    function setTip(val) {
+      document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      const customGroup = document.getElementById('customTipGroup');
+      if (val === 'custom') {
+        customGroup.classList.remove('hidden');
+        currentTipPct = parseFloat(document.getElementById('customTipPct').value) || 0;
+      } else {
+        customGroup.classList.add('hidden');
+        currentTipPct = val;
+      }
+      calculate();
+    }
+
+    function calculate() {
+      const bill = parseFloat(document.getElementById('billAmount').value) || 0;
+      const preTax = parseFloat(document.getElementById('preTaxAmount').value);
+      const people = parseInt(document.getElementById('numPeople').value) || 1;
+      const roundUp = document.getElementById('roundUp').checked;
+      const customPct = parseFloat(document.getElementById('customTipPct').value);
+
+      if (document.getElementById('customTipGroup') && !document.getElementById('customTipGroup').classList.contains('hidden')) {
+        currentTipPct = isNaN(customPct) ? 0 : customPct;
+      }
+
+      const tipBase = (!isNaN(preTax) && preTax > 0 && document.getElementById('preTaxAmount').value !== '') ? preTax : bill;
+      const tipAmount = tipBase * (currentTipPct / 100);
+      const totalBill = bill + tipAmount;
+      let perPerson = totalBill / people;
+      if (roundUp) perPerson = Math.ceil(perPerson);
+
+      document.getElementById('tipAmount').textContent = fmtCurrency(tipAmount);
+      document.getElementById('totalBill').textContent = fmtCurrency(totalBill);
+      document.getElementById('perPersonAmount').textContent = fmtCurrency(perPerson);
+      document.getElementById('tipPctDisplay').textContent = fmtPct(currentTipPct, 0);
+    }
+
+    function copyResult() {
+      const bill = document.getElementById('billAmount').value || '0';
+      const tip = document.getElementById('tipAmount').textContent;
+      const total = document.getElementById('totalBill').textContent;
+      const perPerson = document.getElementById('perPersonAmount').textContent;
+      const people = document.getElementById('numPeople').value;
+      const text = `Tip Calculator Result\nBill: $${bill}\nTip (${currentTipPct}%): ${tip}\nTotal: ${total}\nPer person (${people}): ${perPerson}`;
+      copyText(text, 'Result copied!');
+    }
+  </script>
+</body>
+</html>

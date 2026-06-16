@@ -1,0 +1,526 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Days Calculator — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Count business days between two dates or add working days to a start date. Optionally exclude US federal holidays. Free and instant.">
+  <link rel="canonical" href="https://theusefulpages.com/business-days.html">
+  <meta property="og:title" content="Business Days Calculator — The Useful Pages">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Business Days Calculator","url":"https://theusefulpages.com/business-days.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .holiday-table { width:100%; border-collapse:collapse; font-size:0.8125rem; margin-top:0.75rem; }
+    .holiday-table th { background:var(--table-th-bg); color:var(--text); font-weight:600; padding:0.4rem 0.75rem; text-align:left; }
+    .holiday-table td { padding:0.35rem 0.75rem; border-bottom:1px solid var(--border); color:var(--text-muted); }
+    .holiday-table tr:last-child td { border-bottom:none; }
+    .toggle-row { display:flex; align-items:center; gap:0.6rem; margin-bottom:1rem; font-size:0.875rem; cursor:pointer; }
+    .toggle-row input[type=checkbox] { width:16px; height:16px; accent-color:var(--primary); cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Business Days Calculator</h1>
+      <p class="page-subtitle">Count working days between dates or find a future date after N business days.</p>
+
+      <div class="tool-card">
+        <!-- Tabs -->
+        <div class="tab-group" style="margin-bottom:1.25rem;">
+          <button class="tab-btn active" id="tab-count" onclick="switchTab('count')">Count Business Days</button>
+          <button class="tab-btn" id="tab-add" onclick="switchTab('add')">Add Business Days</button>
+        </div>
+
+        <!-- Tab 1: Count -->
+        <div id="panel-count">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Start Date</label>
+              <input type="date" id="c-start" class="form-input" oninput="calcCount()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">End Date</label>
+              <input type="date" id="c-end" class="form-input" oninput="calcCount()">
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Add -->
+        <div id="panel-add" class="hidden">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Start Date</label>
+              <input type="date" id="a-start" class="form-input" oninput="calcAdd()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Business Days to Add</label>
+              <input type="number" id="a-days" class="form-input" placeholder="e.g. 10" min="1" oninput="calcAdd()">
+            </div>
+          </div>
+        </div>
+
+        <!-- Holiday toggle (shared) -->
+        <label class="toggle-row">
+          <input type="checkbox" id="holidays-toggle" onchange="onToggleChange()">
+          <span>Exclude US Federal Holidays</span>
+        </label>
+
+        <!-- Results: count mode -->
+        <div id="result-count" class="hidden">
+          <div class="stat-grid" style="grid-template-columns:repeat(2,1fr);gap:0.75rem;margin-bottom:1rem;">
+            <div class="stat-box" style="grid-column:1/-1;">
+              <div class="stat-value" id="r-biz" style="font-size:2.25rem;color:var(--primary);">—</div>
+              <div class="stat-label">Business Days</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="r-cal">—</div>
+              <div class="stat-label">Calendar Days</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="r-wknd">—</div>
+              <div class="stat-label">Weekend Days</div>
+            </div>
+            <div class="stat-box" id="r-hol-box" class="hidden">
+              <div class="stat-value" id="r-hol">—</div>
+              <div class="stat-label">Holidays Excluded</div>
+            </div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="copyCount()">Copy Result</button>
+          <!-- Holiday table -->
+          <div id="hol-table-wrap" class="hidden" style="margin-top:1rem;">
+            <p style="font-size:0.8125rem;font-weight:600;color:var(--text);margin-bottom:0.25rem;">Holidays in this range:</p>
+            <table class="holiday-table">
+              <thead><tr><th>Holiday</th><th>Date</th></tr></thead>
+              <tbody id="hol-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Results: add mode -->
+        <div id="result-add" class="hidden">
+          <div class="stat-grid" style="grid-template-columns:1fr;gap:0.75rem;margin-bottom:1rem;">
+            <div class="stat-box">
+              <div class="stat-value" id="r-result-date" style="font-size:1.75rem;color:var(--primary);">—</div>
+              <div class="stat-label">Result Date</div>
+            </div>
+          </div>
+          <div class="result-card" style="margin-bottom:0.75rem;">
+            <div class="result-row"><span class="result-label">Day of Week</span><span id="r-dow" style="font-weight:600;">—</span></div>
+            <div class="result-row"><span class="result-label">Calendar Days Elapsed</span><span id="r-cal-elapsed" style="font-weight:600;">—</span></div>
+            <div id="r-hol-skipped-row" class="result-row hidden"><span class="result-label">Holidays Skipped</span><span id="r-hol-skipped" style="font-weight:600;">—</span></div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="copyAdd()">Copy Result</button>
+        </div>
+      </div>
+
+
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li><strong>Count Business Days:</strong> Select a start and end date to see total working days, calendar days, and weekends excluded.</li>
+          <li><strong>Add Business Days:</strong> Enter a start date and the number of business days to add to find the resulting workday.</li>
+          <li>Check <strong>Exclude US Federal Holidays</strong> to skip the 11 official federal holidays in your count.</li>
+          <li>When holidays are enabled, a table lists which holidays fall within your selected date range.</li>
+          <li>Click <strong>Copy Result</strong> to copy the summary to your clipboard.</li>
+        </ul>
+        <div style="margin-top:0.75rem;">
+          <p style="font-size:0.8125rem;font-weight:600;color:var(--text);margin-bottom:0.4rem;">US Federal Holidays included:</p>
+          <p style="font-size:0.8125rem;color:var(--text-muted);line-height:1.7;">New Year's Day, Martin Luther King Jr. Day, Presidents' Day, Memorial Day, Juneteenth, Independence Day, Labor Day, Columbus Day, Veterans Day, Thanksgiving Day, Christmas Day.</p>
+        </div>
+      </div>
+
+      <div id="related-tools"></div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Business Days</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free business days calculator to count working days between dates while skipping weekends. It is useful for due dates, turnaround times, project schedules, invoices, and work planning. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+
+  </div>
+
+
+
+  <div id="site-footer"></div>
+
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('business-days.html');
+    injectFooter();
+    document.getElementById('related-tools').innerHTML = relatedToolsHTML('business-days.html', 'datetime');
+
+    // Set defaults
+    const today = new Date();
+    const todayStr = toDateStr(today);
+    document.getElementById('c-start').value = todayStr;
+    const future = new Date(today);
+    future.setDate(future.getDate() + 30);
+    document.getElementById('c-end').value = toDateStr(future);
+    document.getElementById('a-start').value = todayStr;
+    document.getElementById('a-days').value = 10;
+    calcCount();
+    calcAdd();
+  });
+
+  let activeTab = 'count';
+
+  function switchTab(tab) {
+    activeTab = tab;
+    document.getElementById('tab-count').classList.toggle('active', tab === 'count');
+    document.getElementById('tab-add').classList.toggle('active', tab === 'add');
+    document.getElementById('panel-count').classList.toggle('hidden', tab !== 'count');
+    document.getElementById('panel-add').classList.toggle('hidden', tab !== 'add');
+    document.getElementById('result-count').classList.toggle('hidden', tab !== 'count');
+    document.getElementById('result-add').classList.toggle('hidden', tab !== 'add');
+  }
+
+  function onToggleChange() {
+    calcCount();
+    calcAdd();
+  }
+
+  function toDateStr(d) {
+    return d.toISOString().split('T')[0];
+  }
+
+  // Returns an array of holiday date strings "YYYY-MM-DD" for a given year
+  function getFederalHolidays(year) {
+    const holidays = [];
+    // Helper: nth weekday of month (1-based weekday: 0=Sun,1=Mon,...6=Sat)
+    function nthWeekday(y, m, n, wd) {
+      let count = 0;
+      for (let d = 1; d <= 31; d++) {
+        const dt = new Date(y, m - 1, d);
+        if (dt.getMonth() !== m - 1) break;
+        if (dt.getDay() === wd) { count++; if (count === n) return toDateStr(dt); }
+      }
+      return null;
+    }
+    // Helper: last weekday of month
+    function lastWeekday(y, m, wd) {
+      const lastDay = new Date(y, m, 0).getDate();
+      for (let d = lastDay; d >= 1; d--) {
+        const dt = new Date(y, m - 1, d);
+        if (dt.getDay() === wd) return toDateStr(dt);
+      }
+      return null;
+    }
+    // Fixed-date helper (observe Monday if Sunday, Friday if Saturday)
+    function observedFixed(y, m, d) {
+      const dt = new Date(y, m - 1, d);
+      const dow = dt.getDay();
+      if (dow === 0) dt.setDate(d + 1);
+      else if (dow === 6) dt.setDate(d - 1);
+      return toDateStr(dt);
+    }
+
+    holidays.push({ name: "New Year's Day",       date: observedFixed(year, 1, 1) });
+    holidays.push({ name: 'Martin Luther King Jr. Day', date: nthWeekday(year, 1, 3, 1) });
+    holidays.push({ name: "Presidents' Day",      date: nthWeekday(year, 2, 3, 1) });
+    holidays.push({ name: 'Memorial Day',         date: lastWeekday(year, 5, 1) });
+    holidays.push({ name: 'Juneteenth',           date: observedFixed(year, 6, 19) });
+    holidays.push({ name: 'Independence Day',     date: observedFixed(year, 7, 4) });
+    holidays.push({ name: 'Labor Day',            date: nthWeekday(year, 9, 1, 1) });
+    holidays.push({ name: 'Columbus Day',         date: nthWeekday(year, 10, 2, 1) });
+    holidays.push({ name: 'Veterans Day',         date: observedFixed(year, 11, 11) });
+    holidays.push({ name: 'Thanksgiving Day',     date: nthWeekday(year, 11, 4, 4) });
+    holidays.push({ name: 'Christmas Day',        date: observedFixed(year, 12, 25) });
+    return holidays;
+  }
+
+  function getHolidaySet(y1, y2) {
+    const set = new Set();
+    const list = [];
+    for (let y = y1; y <= y2; y++) {
+      getFederalHolidays(y).forEach(h => { set.add(h.date); list.push(h); });
+    }
+    return { set, list };
+  }
+
+  function calcCount() {
+    const sv = document.getElementById('c-start').value;
+    const ev = document.getElementById('c-end').value;
+    if (!sv || !ev) { document.getElementById('result-count').classList.add('hidden'); return; }
+
+    let d1 = new Date(sv + 'T00:00:00');
+    let d2 = new Date(ev + 'T00:00:00');
+    if (d1 > d2) { const tmp = d1; d1 = d2; d2 = tmp; }
+
+    const useHolidays = document.getElementById('holidays-toggle').checked;
+    const y1 = d1.getFullYear(), y2 = d2.getFullYear();
+    const { set: holSet, list: holList } = useHolidays ? getHolidaySet(y1, y2) : { set: new Set(), list: [] };
+
+    const MS_DAY = 86400000;
+    const calDays = Math.round((d2 - d1) / MS_DAY);
+
+    let bizDays = 0, wkndDays = 0, holDays = 0;
+    const cur = new Date(d1);
+    for (let i = 0; i < calDays; i++) {
+      const dow = cur.getDay();
+      const ds = toDateStr(cur);
+      if (dow === 0 || dow === 6) {
+        wkndDays++;
+      } else if (useHolidays && holSet.has(ds)) {
+        holDays++;
+      } else {
+        bizDays++;
+      }
+      cur.setDate(cur.getDate() + 1);
+    }
+
+    document.getElementById('r-biz').textContent = bizDays;
+    document.getElementById('r-cal').textContent = calDays;
+    document.getElementById('r-wknd').textContent = wkndDays;
+
+    const holBox = document.getElementById('r-hol-box');
+    if (useHolidays) {
+      holBox.classList.remove('hidden');
+      document.getElementById('r-hol').textContent = holDays;
+    } else {
+      holBox.classList.add('hidden');
+    }
+
+    // Holiday table
+    const tableWrap = document.getElementById('hol-table-wrap');
+    if (useHolidays) {
+      const inRange = holList.filter(h => h.date >= toDateStr(d1) && h.date < toDateStr(d2));
+      inRange.sort((a, b) => a.date.localeCompare(b.date));
+      if (inRange.length > 0) {
+        const tbody = document.getElementById('hol-table-body');
+        tbody.innerHTML = inRange.map(h => {
+          const formatted = new Date(h.date + 'T00:00:00').toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric' });
+          return `<tr><td>${h.name}</td><td>${formatted}</td></tr>`;
+        }).join('');
+        tableWrap.classList.remove('hidden');
+      } else {
+        tableWrap.classList.add('hidden');
+      }
+    } else {
+      tableWrap.classList.add('hidden');
+    }
+
+    document.getElementById('result-count').classList.remove('hidden');
+  }
+
+  function calcAdd() {
+    const sv = document.getElementById('a-start').value;
+    const daysToAdd = parseInt(document.getElementById('a-days').value);
+    if (!sv || isNaN(daysToAdd) || daysToAdd < 1) { document.getElementById('result-add').classList.add('hidden'); return; }
+
+    const useHolidays = document.getElementById('holidays-toggle').checked;
+    const start = new Date(sv + 'T00:00:00');
+    // Estimate end year
+    const estEnd = new Date(start);
+    estEnd.setDate(estEnd.getDate() + daysToAdd * 2 + 20);
+    const { set: holSet } = useHolidays ? getHolidaySet(start.getFullYear(), estEnd.getFullYear()) : { set: new Set() };
+
+    let count = 0;
+    let holSkipped = 0;
+    const cur = new Date(start);
+    while (count < daysToAdd) {
+      cur.setDate(cur.getDate() + 1);
+      const dow = cur.getDay();
+      const ds = toDateStr(cur);
+      if (dow === 0 || dow === 6) continue;
+      if (useHolidays && holSet.has(ds)) { holSkipped++; continue; }
+      count++;
+    }
+
+    const calElapsed = Math.round((cur - start) / 86400000);
+    const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+    document.getElementById('r-result-date').textContent = cur.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+    document.getElementById('r-dow').textContent = DAYS[cur.getDay()];
+    document.getElementById('r-cal-elapsed').textContent = calElapsed + ' calendar days';
+
+    const holRow = document.getElementById('r-hol-skipped-row');
+    if (useHolidays) {
+      holRow.classList.remove('hidden');
+      document.getElementById('r-hol-skipped').textContent = holSkipped;
+    } else {
+      holRow.classList.add('hidden');
+    }
+
+    document.getElementById('result-add').classList.remove('hidden');
+  }
+
+  function copyCount() {
+    const sv = document.getElementById('c-start').value;
+    const ev = document.getElementById('c-end').value;
+    const biz = document.getElementById('r-biz').textContent;
+    const cal = document.getElementById('r-cal').textContent;
+    const wknd = document.getElementById('r-wknd').textContent;
+    const useHol = document.getElementById('holidays-toggle').checked;
+    const hol = useHol ? '\nHolidays Excluded: ' + document.getElementById('r-hol').textContent : '';
+    const text = `Business Days: ${sv} to ${ev}\nBusiness Days: ${biz}\nCalendar Days: ${cal}\nWeekend Days: ${wknd}${hol}`;
+    copyText(text, 'Result copied!');
+  }
+
+  function copyAdd() {
+    const sv = document.getElementById('a-start').value;
+    const days = document.getElementById('a-days').value;
+    const result = document.getElementById('r-result-date').textContent;
+    const text = `Add ${days} business days to ${sv}:\nResult Date: ${result}`;
+    copyText(text, 'Result copied!');
+  }
+  </script>
+</body>
+</html>

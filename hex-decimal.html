@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hex to Decimal Converter - Online Tool | The Useful Pages</title>
+  <meta name="description" content="Free hex to decimal converter. Convert between hexadecimal, decimal, binary, and octal instantly. Includes color preview, batch converter, and reference table.">
+  <link rel="canonical" href="https://theusefulpages.com/hex-decimal.html">
+  <meta property="og:title" content="Hex ↔ Decimal Converter - The Useful Pages">
+  <meta property="og:description" content="Convert hex, decimal, binary, and octal numbers instantly. Includes color preview and batch conversion.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hex to Decimal Converter","url":"https://theusefulpages.com/hex-decimal.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .base-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    @media(max-width:540px){.base-grid{grid-template-columns:1fr;}}
+    .base-label{font-size:0.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary);margin-bottom:0.25rem;}
+    .base-input{font-family:monospace;font-size:1rem;}
+    .color-preview{display:flex;align-items:center;gap:1rem;padding:0.75rem 1rem;border-radius:10px;border:1px solid var(--border);margin:1rem 0;display:none;}
+    .color-swatch{width:60px;height:60px;border-radius:8px;border:1px solid var(--border);flex-shrink:0;}
+    .color-info{font-size:0.85rem;}
+    .section-title{font-size:1rem;font-weight:700;color:var(--primary);margin:1.5rem 0 0.75rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+    .ref-table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+    .ref-table th{background:var(--primary);color:#fff;padding:0.4rem 0.6rem;text-align:left;font-weight:600;}
+    .ref-table td{padding:0.35rem 0.6rem;border-bottom:1px solid var(--border);font-family:monospace;}
+    .ref-table tr:nth-child(even) td{background:var(--bg-secondary);}
+    .batch-output{width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:0.75rem;}
+    .batch-output th{background:var(--primary);color:#fff;padding:0.4rem 0.6rem;text-align:left;font-weight:600;}
+    .batch-output td{padding:0.35rem 0.6rem;border-bottom:1px solid var(--border);font-family:monospace;}
+    .batch-output tr:nth-child(even) td{background:var(--bg-secondary);}
+    .error-inline{color:#c0392b;font-size:0.78rem;margin-top:0.2rem;}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Hex ↔ Decimal Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Convert between hexadecimal, decimal, binary, and octal. All four update simultaneously as you type.</p>
+      <div class="tool-card">
+
+        <!-- Main converter -->
+        <div class="base-grid">
+          <div class="form-group">
+            <div class="base-label">Hexadecimal (Base 16)</div>
+            <input type="text" class="form-input base-input" id="inp-hex" placeholder="e.g. FF" oninput="syncFrom('hex')" autocomplete="off" spellcheck="false">
+            <div class="error-inline" id="err-hex"></div>
+          </div>
+          <div class="form-group">
+            <div class="base-label">Decimal (Base 10)</div>
+            <input type="text" class="form-input base-input" id="inp-dec" placeholder="e.g. 255" oninput="syncFrom('dec')" autocomplete="off">
+            <div class="error-inline" id="err-dec"></div>
+          </div>
+          <div class="form-group">
+            <div class="base-label">Binary (Base 2)</div>
+            <input type="text" class="form-input base-input" id="inp-bin" placeholder="e.g. 11111111" oninput="syncFrom('bin')" autocomplete="off" spellcheck="false">
+            <div class="error-inline" id="err-bin"></div>
+          </div>
+          <div class="form-group">
+            <div class="base-label">Octal (Base 8)</div>
+            <input type="text" class="form-input base-input" id="inp-oct" placeholder="e.g. 377" oninput="syncFrom('oct')" autocomplete="off">
+            <div class="error-inline" id="err-oct"></div>
+          </div>
+        </div>
+
+        <!-- Color preview -->
+        <div class="color-preview" id="color-preview">
+          <div class="color-swatch" id="color-swatch"></div>
+          <div class="color-info">
+            <div style="font-weight:600;margin-bottom:0.2rem;" id="color-hex-label"></div>
+            <div style="color:var(--text-muted);font-size:0.78rem;" id="color-rgb-label"></div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-accent" onclick="copyText(document.getElementById('inp-hex').value,'HEX copied!')">Copy HEX</button>
+          <button class="btn btn-primary" onclick="copyText(document.getElementById('inp-dec').value,'DEC copied!')">Copy DEC</button>
+          <button class="btn btn-outline" onclick="clearAll()">Clear</button>
+        </div>
+
+        <!-- Batch converter -->
+        <div class="section-title">Batch Converter</div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.75rem;">Paste multiple numbers (one per line), select the input base, and convert all at once.</p>
+        <div class="form-row" style="align-items:flex-end;">
+          <div class="form-group" style="flex:2;">
+            <label class="form-label">Input (one per line)</label>
+            <textarea class="form-input mono-output" id="batch-input" rows="5" placeholder="FF&#10;A0&#10;1B"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Input Base</label>
+            <select class="form-select" id="batch-base">
+              <option value="16">Hexadecimal (16)</option>
+              <option value="10">Decimal (10)</option>
+              <option value="2">Binary (2)</option>
+              <option value="8">Octal (8)</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-accent" onclick="runBatch()">Convert All</button>
+        <div id="batch-result"></div>
+
+        <!-- Reference table -->
+        <div class="section-title">Common Hex Reference</div>
+        <table class="ref-table">
+          <thead><tr><th>HEX</th><th>DEC</th><th>BIN</th><th>OCT</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>00</td><td>0</td><td>00000000</td><td>0</td><td>Zero / null</td></tr>
+            <tr><td>0F</td><td>15</td><td>00001111</td><td>17</td><td>Lower nibble</td></tr>
+            <tr><td>10</td><td>16</td><td>00010000</td><td>20</td><td></td></tr>
+            <tr><td>1F</td><td>31</td><td>00011111</td><td>37</td><td></td></tr>
+            <tr><td>20</td><td>32</td><td>00100000</td><td>40</td><td>Space (ASCII)</td></tr>
+            <tr><td>40</td><td>64</td><td>01000000</td><td>100</td><td>@ (ASCII)</td></tr>
+            <tr><td>7F</td><td>127</td><td>01111111</td><td>177</td><td>DEL (ASCII)</td></tr>
+            <tr><td>80</td><td>128</td><td>10000000</td><td>200</td><td>Sign bit (8-bit signed)</td></tr>
+            <tr><td>A0</td><td>160</td><td>10100000</td><td>240</td><td></td></tr>
+            <tr><td>C0</td><td>192</td><td>11000000</td><td>300</td><td>Common subnet mask byte</td></tr>
+            <tr><td>FF</td><td>255</td><td>11111111</td><td>377</td><td>Max byte / 8-bit unsigned</td></tr>
+            <tr><td>100</td><td>256</td><td>100000000</td><td>400</td><td></td></tr>
+            <tr><td>FFFF</td><td>65535</td><td>1111111111111111</td><td>177777</td><td>Max 16-bit unsigned</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Type in any of the four fields (HEX, Decimal, Binary, Octal) — all others update instantly</li>
+          <li>If the hex value looks like a CSS color (#RRGGBB or RRGGBB), a color swatch preview appears</li>
+          <li>Use the Batch Converter to convert many numbers at once — paste one per line, select the base, and click Convert All</li>
+          <li>The reference table shows common hex values and their equivalents in all bases</li>
+          <li>Hex input is case-insensitive (A = a)</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="binary-decimal.html" class="related-link">Binary Converter</a>
+          <a href="base64.html" class="related-link">Base64 Encoder</a>
+          <a href="unit-converter.html" class="related-link">Unit Converter</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Hex Decimal</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free hex to decimal converter to convert hexadecimal values to decimal and decimal values back to hex. It is useful for developers, colors, data formats, debugging, and computer science work. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  let syncing = false;
+
+  const validators = {
+    hex: /^[0-9a-fA-F]+$/,
+    dec: /^[0-9]+$/,
+    bin: /^[01]+$/,
+    oct: /^[0-7]+$/
+  };
+  const bases = { hex:16, dec:10, bin:2, oct:8 };
+  const ids = { hex:'inp-hex', dec:'inp-dec', bin:'inp-bin', oct:'inp-oct' };
+
+  function syncFrom(source) {
+    if (syncing) return;
+    syncing = true;
+    ['hex','dec','bin','oct'].forEach(b => document.getElementById('err-'+b).textContent='');
+    const val = document.getElementById(ids[source]).value.trim();
+    if (!val) { ['hex','dec','bin','oct'].forEach(b => { if(b!==source) document.getElementById(ids[b]).value=''; }); updateColorPreview(''); syncing=false; return; }
+    if (!validators[source].test(val)) {
+      document.getElementById('err-'+source).textContent = 'Invalid ' + source.toUpperCase() + ' value';
+      syncing=false; return;
+    }
+    const num = parseInt(val, bases[source]);
+    if (isNaN(num)) { syncing=false; return; }
+    if (source !== 'hex') document.getElementById(ids.hex).value = num.toString(16).toUpperCase();
+    if (source !== 'dec') document.getElementById(ids.dec).value = num.toString(10);
+    if (source !== 'bin') document.getElementById(ids.bin).value = num.toString(2);
+    if (source !== 'oct') document.getElementById(ids.oct).value = num.toString(8);
+    updateColorPreview(num.toString(16).toUpperCase());
+    syncing = false;
+  }
+
+  function updateColorPreview(hexVal) {
+    const prev = document.getElementById('color-preview');
+    const clean = hexVal.replace(/^#/,'');
+    if (/^[0-9a-fA-F]{6}$/.test(clean)) {
+      const r = parseInt(clean.slice(0,2),16);
+      const g = parseInt(clean.slice(2,4),16);
+      const b = parseInt(clean.slice(4,6),16);
+      document.getElementById('color-swatch').style.background = '#'+clean;
+      document.getElementById('color-hex-label').textContent = '#'+clean.toUpperCase();
+      document.getElementById('color-rgb-label').textContent = `RGB(${r}, ${g}, ${b})`;
+      prev.style.display = 'flex';
+    } else {
+      prev.style.display = 'none';
+    }
+  }
+
+  function clearAll() {
+    ['hex','dec','bin','oct'].forEach(b => { document.getElementById(ids[b]).value=''; document.getElementById('err-'+b).textContent=''; });
+    document.getElementById('color-preview').style.display='none';
+  }
+
+  function runBatch() {
+    const lines = document.getElementById('batch-input').value.split('\n').map(l=>l.trim()).filter(l=>l);
+    const base = parseInt(document.getElementById('batch-base').value);
+    if (!lines.length) return;
+    const baseNames = {16:'HEX',10:'DEC',2:'BIN',8:'OCT'};
+    let html = '<table class="batch-output"><thead><tr><th>Input</th><th>HEX</th><th>DEC</th><th>BIN</th><th>OCT</th></tr></thead><tbody>';
+    lines.forEach(line => {
+      const num = parseInt(line, base);
+      if (isNaN(num)) {
+        html += `<tr><td>${line}</td><td colspan="4" style="color:#c0392b;">Invalid</td></tr>`;
+      } else {
+        html += `<tr><td>${line}</td><td>${num.toString(16).toUpperCase()}</td><td>${num.toString(10)}</td><td>${num.toString(2)}</td><td>${num.toString(8)}</td></tr>`;
+      }
+    });
+    html += '</tbody></table>';
+    document.getElementById('batch-result').innerHTML = html;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('hex-decimal.html'); injectFooter(); });
+  </script>
+</body>
+</html>

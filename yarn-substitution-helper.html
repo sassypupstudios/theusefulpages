@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarn Substitution Helper — Online Reference | The Useful Pages</title>
+  <meta name="description" content="Compare two yarns to see if they're compatible substitutes. Check weight, gauge, fiber, and care compatibility.">
+  <link rel="canonical" href="https://theusefulpages.com/yarn-substitution-helper.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .yarn-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+    @media(max-width:600px){.yarn-cols{grid-template-columns:1fr;}}
+    .yarn-col-head{font-weight:700;font-size:1rem;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--primary);}
+    .check-row{display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;}
+    .check-icon{font-size:1.2rem;width:1.5rem;text-align:center;}
+    .rating-good{color:#22c55e;font-weight:700;}
+    .rating-fair{color:#f59e0b;font-weight:700;}
+    .rating-risky{color:#ef4444;font-weight:700;}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Yarn Substitution Helper</h1>
+      <p class="page-subtitle">Compare your original yarn and substitute to check compatibility before you start your project.</p>
+      <div class="tool-card">
+        <div class="yarn-cols">
+          <div>
+            <div class="yarn-col-head">Original Yarn</div>
+            <label class="label">Weight</label>
+            <select class="form-select" id="orig-weight">
+              <option value="">-- Select --</option>
+              <option>Lace / Cobweb</option><option>Fingering / Sock</option><option>Sport / Baby</option>
+              <option>DK / Light Worsted</option><option>Worsted</option><option>Aran / Heavy Worsted</option>
+              <option>Bulky / Chunky</option><option>Super Bulky</option><option>Jumbo</option>
+            </select>
+            <label class="label" style="margin-top:0.75rem;">Fiber Content</label>
+            <select class="form-select" id="orig-fiber">
+              <option value="">-- Select --</option>
+              <option>Wool</option><option>Superwash Wool</option><option>Cotton</option><option>Acrylic</option>
+              <option>Linen</option><option>Alpaca</option><option>Silk</option><option>Bamboo</option>
+              <option>Mohair</option><option>Blend</option><option>Synthetic</option>
+            </select>
+            <label class="label" style="margin-top:0.75rem;">WPI</label>
+            <input class="form-input" type="number" id="orig-wpi" min="1" max="60" placeholder="e.g. 10">
+            <label class="label" style="margin-top:0.75rem;">Gauge (sts per 4")</label>
+            <input class="form-input" type="number" id="orig-gauge" min="1" max="60" placeholder="e.g. 18">
+            <label class="label" style="margin-top:0.75rem;">Care Instructions</label>
+            <select class="form-select" id="orig-care">
+              <option value="">-- Select --</option>
+              <option>Hand wash only</option><option>Machine wash cold</option><option>Machine wash warm</option>
+              <option>Dry clean only</option><option>Any / Machine washable</option>
+            </select>
+          </div>
+          <div>
+            <div class="yarn-col-head">Substitute Yarn</div>
+            <label class="label">Weight</label>
+            <select class="form-select" id="sub-weight">
+              <option value="">-- Select --</option>
+              <option>Lace / Cobweb</option><option>Fingering / Sock</option><option>Sport / Baby</option>
+              <option>DK / Light Worsted</option><option>Worsted</option><option>Aran / Heavy Worsted</option>
+              <option>Bulky / Chunky</option><option>Super Bulky</option><option>Jumbo</option>
+            </select>
+            <label class="label" style="margin-top:0.75rem;">Fiber Content</label>
+            <select class="form-select" id="sub-fiber">
+              <option value="">-- Select --</option>
+              <option>Wool</option><option>Superwash Wool</option><option>Cotton</option><option>Acrylic</option>
+              <option>Linen</option><option>Alpaca</option><option>Silk</option><option>Bamboo</option>
+              <option>Mohair</option><option>Blend</option><option>Synthetic</option>
+            </select>
+            <label class="label" style="margin-top:0.75rem;">WPI</label>
+            <input class="form-input" type="number" id="sub-wpi" min="1" max="60" placeholder="e.g. 10">
+            <label class="label" style="margin-top:0.75rem;">Gauge (sts per 4")</label>
+            <input class="form-input" type="number" id="sub-gauge" min="1" max="60" placeholder="e.g. 18">
+            <label class="label" style="margin-top:0.75rem;">Care Instructions</label>
+            <select class="form-select" id="sub-care">
+              <option value="">-- Select --</option>
+              <option>Hand wash only</option><option>Machine wash cold</option><option>Machine wash warm</option>
+              <option>Dry clean only</option><option>Any / Machine washable</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <button class="btn-primary" onclick="compare()">Compare Yarns</button>
+          <button class="btn-ghost" onclick="resetForm()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="compare-result" style="display:none;margin-top:1.5rem;"></div>
+        <p class="disclaimer" style="margin-top:1rem;">This tool provides general guidance only. Always swatch with your substitute yarn before starting any project.</p>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use This Tool</h2>
+        <ul>
+          <li>Fill in the details for your <strong>original yarn</strong> (from the pattern) and your <strong>substitute yarn</strong>.</li>
+          <li>Click <strong>Compare Yarns</strong> to see a compatibility checklist and overall substitution rating.</li>
+          <li>A rating of <strong class="rating-good">Good</strong> means 3–4 factors match. <strong class="rating-fair">Fair</strong> means 2 match. <strong class="rating-risky">Risky</strong> means 0–1 match.</li>
+        </ul>
+        <h2>Key Substitution Factors</h2>
+        <ul>
+          <li><strong>Weight:</strong> The most important factor. Mismatched weights require significant pattern adjustments.</li>
+          <li><strong>Gauge:</strong> Even with matching weight, different yarns can knit/crochet at different tensions. Always swatch!</li>
+          <li><strong>Fiber:</strong> Affects drape, warmth, care, and behavior. A cotton substitute for wool will drape differently and won't felt.</li>
+          <li><strong>Care:</strong> If the finished item will be machine washed but the substitute requires hand washing, reconsider.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Yarn Substitution Helper</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Yarn Substitution Helper to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('yarn-substitution-helper.html');injectFooter();});
+
+    function careCompat(a, b){
+      if(!a||!b) return null;
+      const strict = ['Hand wash only','Dry clean only'];
+      const aStrict = strict.some(s=>a.includes(s));
+      const bStrict = strict.some(s=>b.includes(s));
+      if(a===b) return true;
+      // machine wash → hand wash: risky (sub harder to care for)
+      if(b.includes('Hand wash') && !a.includes('Hand wash')) return false;
+      if(b.includes('Dry clean') && !a.includes('Dry clean')) return false;
+      return true;
+    }
+
+    function fiberCompat(a, b){
+      if(!a||!b) return null;
+      if(a===b) return true;
+      // broad groups: plant-based, animal, synthetic
+      const plant = ['Cotton','Linen','Bamboo'];
+      const animal = ['Wool','Superwash Wool','Alpaca','Silk','Mohair'];
+      const syn = ['Acrylic','Synthetic'];
+      const group = f => plant.includes(f)?'plant': animal.includes(f)?'animal': syn.includes(f)?'syn':'blend';
+      return group(a)===group(b);
+    }
+
+    function compare(){
+      const ow = document.getElementById('orig-weight').value;
+      const sw = document.getElementById('sub-weight').value;
+      const of_ = document.getElementById('orig-fiber').value;
+      const sf = document.getElementById('sub-fiber').value;
+      const owpi = parseFloat(document.getElementById('orig-wpi').value);
+      const swpi = parseFloat(document.getElementById('sub-wpi').value);
+      const og = parseFloat(document.getElementById('orig-gauge').value);
+      const sg = parseFloat(document.getElementById('sub-gauge').value);
+      const oc = document.getElementById('orig-care').value;
+      const sc = document.getElementById('sub-care').value;
+
+      const checks = [];
+      let score = 0;
+
+      // Weight
+      const wMatch = ow && sw && ow===sw;
+      if(ow&&sw) { checks.push({label:'Weight matches', ok: wMatch, detail: wMatch ? `Both: ${ow}` : `Original: ${ow} | Substitute: ${sw}`}); if(wMatch) score++; }
+
+      // WPI
+      const wpiMatch = !isNaN(owpi)&&!isNaN(swpi) && Math.abs(owpi-swpi)<=1;
+      if(!isNaN(owpi)&&!isNaN(swpi)) { checks.push({label:'WPI similar (within 1)', ok: wpiMatch, detail:`Original: ${owpi} WPI | Substitute: ${swpi} WPI (diff: ${Math.abs(owpi-swpi)})`}); if(wpiMatch) score++; }
+
+      // Gauge
+      const gaugeMatch = !isNaN(og)&&!isNaN(sg) && Math.abs(og-sg)<=2;
+      if(!isNaN(og)&&!isNaN(sg)) { checks.push({label:'Gauge similar (within 2 sts/4")', ok: gaugeMatch, detail:`Original: ${og} sts | Substitute: ${sg} sts (diff: ${Math.abs(og-sg)})`}); if(gaugeMatch) score++; }
+
+      // Fiber
+      const fc = fiberCompat(of_, sf);
+      if(fc!==null) { checks.push({label:'Fiber family compatible', ok: fc, detail: fc ? `Both from similar fiber group (${of_} / ${sf})` : `Different fiber groups: ${of_} vs ${sf} — expect different drape and behavior`}); if(fc) score++; }
+
+      // Care
+      const cc = careCompat(oc, sc);
+      if(cc!==null) { checks.push({label:'Care instructions compatible', ok: cc, detail: cc ? `Care is compatible` : `Substitute (${sc}) is harder to care for than original (${oc})`}); if(cc) score++; }
+
+      if(!checks.length){
+        document.getElementById('compare-result').innerHTML='<p style="color:var(--text-muted);">Please fill in at least some fields for both yarns.</p>';
+        document.getElementById('compare-result').style.display='block';
+        return;
+      }
+
+      const total = checks.length;
+      let ratingLabel, ratingClass, advice;
+      const pct = score/total;
+      if(pct>=0.75){ ratingLabel='Good Substitution'; ratingClass='rating-good'; advice='Most compatibility factors match. Swatch to confirm gauge and proceed with confidence.'; }
+      else if(pct>=0.5){ ratingLabel='Fair Substitution'; ratingClass='rating-fair'; advice='Some differences exist. You may need to adjust needle/hook size or pattern sizing. Always swatch first.'; }
+      else { ratingLabel='Risky Substitution'; ratingClass='rating-risky'; advice='Significant differences detected. This substitution may require major adjustments or may not work for the intended project.'; }
+
+      const rows = checks.map(c=>`
+        <div class="check-row">
+          <span class="check-icon">${c.ok ? '✅' : '⚠️'}</span>
+          <div><strong>${c.label}</strong><br><span style="color:var(--text-muted);font-size:0.9rem;">${c.detail}</span></div>
+        </div>
+      `).join('');
+
+      document.getElementById('compare-result').innerHTML = `
+        <div class="result-card">
+          <p style="font-size:1.1rem;">Overall Rating: <span class="${ratingClass}">${ratingLabel}</span> (${score}/${total} factors match)</p>
+          <p style="color:var(--text-muted);margin-bottom:1rem;">${advice}</p>
+          ${rows}
+        </div>
+      `;
+      document.getElementById('compare-result').style.display='block';
+    }
+
+    function resetForm(){
+      ['orig-weight','sub-weight','orig-fiber','sub-fiber','orig-care','sub-care'].forEach(id=>{document.getElementById(id).value='';});
+      ['orig-wpi','sub-wpi','orig-gauge','sub-gauge'].forEach(id=>{document.getElementById(id).value='';});
+      document.getElementById('compare-result').style.display='none';
+    }
+  </script>
+</body>
+</html>

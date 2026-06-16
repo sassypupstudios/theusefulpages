@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Days Between Dates - Online Date Difference Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate the exact number of days between two dates. Get total days, weeks, months, weekdays, and weekends between any two dates instantly for free.">
+  <link rel="canonical" href="https://theusefulpages.com/days-between-dates.html">
+  <meta property="og:title" content="Days Between Dates - The Useful Pages">
+  <meta property="og:description" content="Calculate the exact number of days between two dates. Get total days, weeks, months, weekdays, and weekends instantly.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Days Between Dates","url":"https://theusefulpages.com/days-between-dates.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Days Between Dates</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Calculate the exact number of days, weeks, months, and more between any two dates.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Start Date</label>
+            <div style="display:flex;gap:0.5rem;align-items:center;">
+              <input type="date" id="startDate" class="form-input" style="flex:1;">
+              <button class="btn btn-outline btn-sm" onclick="setToday('startDate')">Today</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">End Date</label>
+            <div style="display:flex;gap:0.5rem;align-items:center;">
+              <input type="date" id="endDate" class="form-input" style="flex:1;">
+              <button class="btn btn-outline btn-sm" onclick="setToday('endDate')">Today</button>
+            </div>
+          </div>
+        </div>
+        <div class="btn-row" style="margin-bottom:1rem;">
+          <button class="btn btn-primary btn-block" onclick="calculate()">Calculate Days</button>
+          <button class="btn btn-outline" onclick="swapDates()" style="min-width:120px;">&#8645; Swap</button>
+        </div>
+        <div id="results" class="hidden">
+          <div class="stat-grid" style="grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1rem;">
+            <div class="stat-box" style="grid-column:1/-1;">
+              <div class="stat-value" id="totalDays" style="font-size:2.5rem;color:var(--primary);">-</div>
+              <div class="stat-label">Total Days</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="weeksDisplay">-</div>
+              <div class="stat-label">Weeks &amp; Days</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="monthsDisplay">-</div>
+              <div class="stat-label">Months &amp; Days</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="weekdays">-</div>
+              <div class="stat-label">Weekdays Only</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="weekends">-</div>
+              <div class="stat-label">Weekend Days</div>
+            </div>
+          </div>
+          <div class="result-card" style="margin-bottom:1rem;">
+            <div class="result-row">
+              <span class="result-label">Breakdown</span>
+              <span id="breakdown" style="font-weight:600;color:var(--primary);">-</span>
+            </div>
+            <div class="result-row">
+              <span class="result-label">Earlier Date</span>
+              <span id="earlierDate" style="font-weight:500;">-</span>
+            </div>
+          </div>
+          <button class="btn btn-accent btn-block" onclick="copyResult()">Copy Result</button>
+        </div>
+      </div>
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter a start date and end date using the date pickers.</li>
+          <li>Click <strong>Today</strong> next to either field to quickly set it to today's date.</li>
+          <li>Use the <strong>Swap</strong> button to switch start and end dates.</li>
+          <li>Click <strong>Calculate Days</strong> to see results including total days, weeks, months, weekdays, and weekends.</li>
+          <li>Click <strong>Copy Result</strong> to copy a summary to your clipboard.</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="date-calculator.html">Date Calculator</a>
+          <a href="days-until.html">Days Until Calculator</a>
+          <a href="unix-timestamp.html">Unix Timestamp Converter</a>
+          <a href="timezone-converter.html">Time Zone Converter</a>
+          <a href="countdown-timer.html">Countdown Timer</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Days Between Dates</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free days between dates calculator to count the number of days, weeks, or months between two dates. It is helpful for deadlines, events, billing periods, trips, projects, and planning. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('days-between-dates.html');
+      injectFooter();
+      // Set defaults
+      const today = new Date();
+      const todayStr = today.toISOString().split('T')[0];
+      document.getElementById('startDate').value = todayStr;
+      const future = new Date(today);
+      future.setDate(future.getDate() + 30);
+      document.getElementById('endDate').value = future.toISOString().split('T')[0];
+    });
+
+    function setToday(id) {
+      document.getElementById(id).value = new Date().toISOString().split('T')[0];
+    }
+
+    function swapDates() {
+      const s = document.getElementById('startDate');
+      const e = document.getElementById('endDate');
+      const tmp = s.value;
+      s.value = e.value;
+      e.value = tmp;
+    }
+
+    function countWeekdays(start, end) {
+      let count = 0;
+      const cur = new Date(start);
+      while (cur <= end) {
+        const day = cur.getDay();
+        if (day !== 0 && day !== 6) count++;
+        cur.setDate(cur.getDate() + 1);
+      }
+      return count;
+    }
+
+    function calculate() {
+      const sv = document.getElementById('startDate').value;
+      const ev = document.getElementById('endDate').value;
+      if (!sv || !ev) { showToast('Please select both dates.'); return; }
+
+      let start = new Date(sv + 'T00:00:00');
+      let end = new Date(ev + 'T00:00:00');
+
+      const earlier = start <= end ? sv : ev;
+      const [d1, d2] = start <= end ? [start, end] : [end, start];
+
+      const msDay = 1000 * 60 * 60 * 24;
+      const totalDays = Math.round(Math.abs(d2 - d1) / msDay);
+
+      const weeks = Math.floor(totalDays / 7);
+      const remDays = totalDays % 7;
+
+      // Months and days breakdown
+      let y1 = d1.getFullYear(), m1 = d1.getMonth(), day1 = d1.getDate();
+      let y2 = d2.getFullYear(), m2 = d2.getMonth(), day2 = d2.getDate();
+      let totalMonths = (y2 - y1) * 12 + (m2 - m1);
+      let extraDays = day2 - day1;
+      if (extraDays < 0) { totalMonths--; extraDays += new Date(y2, m2, 0).getDate(); }
+
+      // Years, months, days
+      let years = Math.floor(totalMonths / 12);
+      let months = totalMonths % 12;
+
+      const weekdayCount = countWeekdays(d1, d2);
+      const weekendCount = totalDays - weekdayCount + 1 - (d1.getTime() === d2.getTime() ? 1 : 0);
+      // Recalculate: total days span is inclusive of endpoints?
+      // Actually let's count: totalDays = end - start in days (exclusive end)
+      // weekdays between start and end (exclusive)
+      // recount properly
+      const wkd = countWeekdaysExclusive(d1, d2);
+      const wke = totalDays - wkd;
+
+      document.getElementById('totalDays').textContent = totalDays;
+      document.getElementById('weeksDisplay').textContent = weeks + 'w ' + remDays + 'd';
+      document.getElementById('monthsDisplay').textContent = totalMonths + 'mo ' + extraDays + 'd';
+      document.getElementById('weekdays').textContent = wkd;
+      document.getElementById('weekends').textContent = wke;
+
+      let breakdownParts = [];
+      if (years > 0) breakdownParts.push(years + ' year' + (years !== 1 ? 's' : ''));
+      if (months > 0) breakdownParts.push(months + ' month' + (months !== 1 ? 's' : ''));
+      if (extraDays > 0) breakdownParts.push(extraDays + ' day' + (extraDays !== 1 ? 's' : ''));
+      document.getElementById('breakdown').textContent = breakdownParts.length ? breakdownParts.join(', ') : '0 days';
+
+      const opts = { year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('earlierDate').textContent = new Date(earlier + 'T00:00:00').toLocaleDateString(undefined, opts);
+
+      document.getElementById('results').classList.remove('hidden');
+    }
+
+    function countWeekdaysExclusive(d1, d2) {
+      // Count weekdays from d1 (inclusive) to d2 (exclusive)
+      const totalMs = d2 - d1;
+      const totalD = Math.round(totalMs / (1000*60*60*24));
+      let count = 0;
+      const cur = new Date(d1);
+      for (let i = 0; i < totalD; i++) {
+        const day = cur.getDay();
+        if (day !== 0 && day !== 6) count++;
+        cur.setDate(cur.getDate() + 1);
+      }
+      return count;
+    }
+
+    function copyResult() {
+      const total = document.getElementById('totalDays').textContent;
+      const weeks = document.getElementById('weeksDisplay').textContent;
+      const months = document.getElementById('monthsDisplay').textContent;
+      const wkd = document.getElementById('weekdays').textContent;
+      const wke = document.getElementById('weekends').textContent;
+      const breakdown = document.getElementById('breakdown').textContent;
+      const sv = document.getElementById('startDate').value;
+      const ev = document.getElementById('endDate').value;
+      const text = `Days Between ${sv} and ${ev}\nTotal Days: ${total}\nWeeks & Days: ${weeks}\nMonths & Days: ${months}\nBreakdown: ${breakdown}\nWeekdays: ${wkd}\nWeekend Days: ${wke}`;
+      copyText(text, 'Result copied!');
+    }
+  </script>
+</body>
+</html>

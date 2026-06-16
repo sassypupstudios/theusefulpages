@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skein Converter — Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Convert skein sizes, calculate yards per gram, estimate partial skein yardage, and look up typical yardage for common skein sizes by yarn weight.">
+  <link rel="canonical" href="https://theusefulpages.com/skein-converter.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tool-section{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+    .tool-section:last-child{border-bottom:none;}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Skein Converter</h1>
+      <p class="page-subtitle">Calculate yardage-per-gram ratios, estimate partial skeins, and convert between units.</p>
+      <div class="tool-card">
+
+        <div class="tool-section">
+          <h2 style="font-size:1.1rem;margin-bottom:1rem;">Yards Per Gram Calculator</h2>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">Enter your skein's total weight and yardage to find its yards-per-gram and yards-per-oz ratios.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Total Weight</label>
+              <div style="display:flex;gap:0.5rem;">
+                <input class="form-input" type="number" id="ypg-weight" min="1" placeholder="e.g. 100" oninput="calcYPG()">
+                <select class="form-select" id="ypg-unit" onchange="calcYPG()" style="width:80px;">
+                  <option value="g">g</option>
+                  <option value="oz">oz</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="label">Total Yardage</label>
+              <input class="form-input" type="number" id="ypg-yards" min="1" placeholder="e.g. 220" oninput="calcYPG()">
+            </div>
+          </div>
+          <div id="ypg-result" style="display:none;"></div>
+        </div>
+
+        <div class="tool-section">
+          <h2 style="font-size:1.1rem;margin-bottom:1rem;">Partial Skein Yardage Estimator</h2>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">How many yards are left in a partial skein? Enter the full skein specs and the remaining weight.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="label">Full Skein Weight (g)</label>
+              <input class="form-input" type="number" id="ps-full-g" min="1" placeholder="e.g. 100" oninput="calcPartial()">
+            </div>
+            <div>
+              <label class="label">Full Skein Yardage</label>
+              <input class="form-input" type="number" id="ps-full-yd" min="1" placeholder="e.g. 220" oninput="calcPartial()">
+            </div>
+            <div>
+              <label class="label">Remaining Weight (g)</label>
+              <input class="form-input" type="number" id="ps-remain-g" min="0" placeholder="e.g. 30" oninput="calcPartial()">
+            </div>
+          </div>
+          <div id="ps-result" style="display:none;"></div>
+        </div>
+
+        <div class="tool-section">
+          <h2 style="font-size:1.1rem;margin-bottom:1rem;">Typical Skein Yardage by Weight</h2>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">Common commercial skein sizes and their typical yardage ranges by yarn weight.</p>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Skein Size</th><th>Lace/Fingering</th><th>Sport/DK</th><th>Worsted</th><th>Bulky</th><th>Super Bulky</th></tr></thead>
+              <tbody>
+                <tr><td>25g</td><td>110–200 yd</td><td>65–110 yd</td><td>45–70 yd</td><td>25–40 yd</td><td>15–25 yd</td></tr>
+                <tr><td>50g</td><td>220–400 yd</td><td>130–220 yd</td><td>90–135 yd</td><td>50–75 yd</td><td>30–50 yd</td></tr>
+                <tr><td>100g</td><td>440–800 yd</td><td>260–440 yd</td><td>180–270 yd</td><td>100–150 yd</td><td>60–100 yd</td></tr>
+                <tr><td>200g</td><td>880–1600 yd</td><td>520–880 yd</td><td>360–540 yd</td><td>200–300 yd</td><td>120–200 yd</td></tr>
+                <tr><td>400g (cone)</td><td>1760+ yd</td><td>1040+ yd</td><td>720+ yd</td><td>400+ yd</td><td>240+ yd</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="disclaimer">Typical yardage ranges. Actual yardage on labels may vary by brand, fiber content, and twist.</p>
+        </div>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use This Tool</h2>
+        <ul>
+          <li><strong>Yards Per Gram:</strong> Enter your skein's weight and yardage to find its yd/g and yd/oz ratios. Useful for comparing yarns with different skein sizes.</li>
+          <li><strong>Partial Skein:</strong> Enter the full skein specs plus the weight you have remaining to estimate how many yards are left. Formula: remaining yards = (remaining g ÷ full g) × full yardage.</li>
+          <li><strong>Reference Table:</strong> Use to estimate yardage when labels are missing or when planning purchases.</li>
+        </ul>
+        <h2>Comparing Yarn Prices by Yards Per Gram</h2>
+        <p>A 50g skein at 220 yards and a 100g skein at 200 yards are very different values! Yards per gram (yd/g) is the best way to compare yarn prices fairly across different skein sizes. Higher yd/g = more yardage per gram = better value for fine work.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Skein Converter</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Skein Converter to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('skein-converter.html');injectFooter();});
+
+    function calcYPG(){
+      const weightRaw = parseFloat(document.getElementById('ypg-weight').value);
+      const unit = document.getElementById('ypg-unit').value;
+      const yards = parseFloat(document.getElementById('ypg-yards').value);
+      const res = document.getElementById('ypg-result');
+      if(isNaN(weightRaw)||weightRaw<=0||isNaN(yards)||yards<=0){res.style.display='none';return;}
+      const grams = unit==='oz' ? weightRaw*28.3495 : weightRaw;
+      const oz = grams/28.3495;
+      const ypg = yards/grams;
+      const ypo = yards/oz;
+      res.innerHTML = `
+        <div class="result-card"><div class="stat-grid">
+          <div class="stat-box"><div class="stat-value">${ypg.toFixed(2)}</div><div class="stat-label">Yards per Gram</div></div>
+          <div class="stat-box"><div class="stat-value">${ypo.toFixed(1)}</div><div class="stat-label">Yards per Oz</div></div>
+          <div class="stat-box"><div class="stat-value">${(grams/yards*100).toFixed(1)}g</div><div class="stat-label">Grams per 100 Yards</div></div>
+        </div></div>
+      `;
+      res.style.display='block';
+    }
+
+    function calcPartial(){
+      const fullG = parseFloat(document.getElementById('ps-full-g').value);
+      const fullYd = parseFloat(document.getElementById('ps-full-yd').value);
+      const remG = parseFloat(document.getElementById('ps-remain-g').value);
+      const res = document.getElementById('ps-result');
+      if(isNaN(fullG)||fullG<=0||isNaN(fullYd)||fullYd<=0||isNaN(remG)||remG<0){res.style.display='none';return;}
+      if(remG>fullG){res.innerHTML='<p style="color:var(--danger);">Remaining weight cannot exceed full skein weight.</p>';res.style.display='block';return;}
+      const remYd = (remG/fullG)*fullYd;
+      const pct = (remG/fullG*100).toFixed(0);
+      res.innerHTML = `
+        <div class="result-card"><div class="stat-grid">
+          <div class="stat-box"><div class="stat-value">${remYd.toFixed(0)} yd</div><div class="stat-label">Estimated Yards Remaining</div></div>
+          <div class="stat-box"><div class="stat-value">${(remYd*0.9144).toFixed(0)} m</div><div class="stat-label">Estimated Meters Remaining</div></div>
+          <div class="stat-box"><div class="stat-value">${pct}%</div><div class="stat-label">Skein Remaining</div></div>
+        </div></div>
+      `;
+      res.style.display='block';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pattern Bracket & Parentheses Explainer — Pattern Tool | The Useful Pages</title>
+  <meta name="description" content="Paste a crochet or knitting pattern section and instantly understand what each bracket and parenthesis means. Color-coded explanations.">
+  <link rel="canonical" href="https://theusefulpages.com/pattern-bracket-explainer.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .legend { display:flex; flex-wrap:wrap; gap:0.6rem; margin-bottom:1rem; }
+    .legend-item { display:flex; align-items:center; gap:0.35rem; font-size:0.82rem; font-weight:600; }
+    .legend-dot { width:14px; height:14px; border-radius:50%; flex-shrink:0; }
+
+    .highlighted-pattern {
+      background:var(--bg-secondary); border:1.5px solid var(--border);
+      border-radius:10px; padding:1rem; font-family:'Courier New',monospace;
+      font-size:0.95rem; line-height:1.8; word-break:break-word;
+      margin-bottom:1rem;
+    }
+    .hl-paren { background:rgba(66,153,225,0.18); color:#2b6cb0; border-radius:3px; padding:1px 2px; }
+    .hl-bracket { background:rgba(237,137,54,0.18); color:#c05621; border-radius:3px; padding:1px 2px; }
+    .hl-curly { background:rgba(72,187,120,0.2); color:#276749; border-radius:3px; padding:1px 2px; }
+    .hl-asterisk { background:rgba(159,122,234,0.18); color:#6b46c1; border-radius:3px; padding:1px 2px; font-style:italic; }
+
+    [data-theme="dark"] .hl-paren { background:rgba(66,153,225,0.22); color:#90cdf4; }
+    [data-theme="dark"] .hl-bracket { background:rgba(237,137,54,0.22); color:#fbd38d; }
+    [data-theme="dark"] .hl-curly { background:rgba(72,187,120,0.22); color:#9ae6b4; }
+    [data-theme="dark"] .hl-asterisk { background:rgba(159,122,234,0.22); color:#d6bcfa; }
+
+    .explanation-card {
+      border-radius:10px; border:1.5px solid var(--border);
+      padding:0.85rem 1rem; margin-bottom:0.6rem;
+      background:var(--bg-secondary);
+    }
+    .expl-header { display:flex; align-items:center; gap:0.6rem; margin-bottom:0.35rem; font-weight:700; font-size:0.95rem; }
+    .expl-badge { border-radius:6px; padding:0.2rem 0.5rem; font-size:0.82rem; font-weight:700; font-family:'Courier New',monospace; }
+    .badge-paren { background:rgba(66,153,225,0.18); color:#2b6cb0; }
+    .badge-bracket { background:rgba(237,137,54,0.18); color:#c05621; }
+    .badge-curly { background:rgba(72,187,120,0.2); color:#276749; }
+    .badge-asterisk { background:rgba(159,122,234,0.18); color:#6b46c1; }
+    [data-theme="dark"] .badge-paren { background:rgba(66,153,225,0.22); color:#90cdf4; }
+    [data-theme="dark"] .badge-bracket { background:rgba(237,137,54,0.22); color:#fbd38d; }
+    [data-theme="dark"] .badge-curly { background:rgba(72,187,120,0.22); color:#9ae6b4; }
+    [data-theme="dark"] .badge-asterisk { background:rgba(159,122,234,0.22); color:#d6bcfa; }
+
+    .expl-desc { font-size:0.87rem; color:var(--text-muted); line-height:1.55; }
+    .expl-quote { font-family:'Courier New',monospace; font-size:0.85rem; color:var(--text); margin-top:0.25rem; display:block; }
+    .example-quick-btns { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.5rem; }
+    .eq-btn { padding:0.28rem 0.6rem; border-radius:16px; border:1.5px solid var(--border); background:var(--bg-secondary); font-size:0.77rem; cursor:pointer; color:var(--text-muted); transition:all 0.15s; white-space:nowrap; font-family:'Courier New',monospace; }
+    .eq-btn:hover { border-color:var(--primary); color:var(--primary); }
+    .no-found { color:var(--text-muted); font-size:0.9rem; font-style:italic; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Pattern Bracket &amp; Parentheses Explainer</h1>
+      <p class="page-subtitle">Paste a pattern section and get a color-coded breakdown of what every bracket, parenthesis, and asterisk means.</p>
+
+      <div class="tool-card">
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#4299e1;"></div><span class="badge-paren" style="border-radius:4px;padding:1px 6px;">( )</span> Parentheses</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#ed8936;"></div><span class="badge-bracket" style="border-radius:4px;padding:1px 6px;">[ ]</span> Square brackets</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#48bb78;"></div><span class="badge-curly" style="border-radius:4px;padding:1px 6px;">{ }</span> Curly braces</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#9f7aea;"></div><span class="badge-asterisk" style="border-radius:4px;padding:1px 6px;">* *</span> Asterisks</div>
+        </div>
+
+        <div class="label">Paste Pattern Section</div>
+        <textarea class="form-textarea" id="patInput" rows="5"
+          placeholder="e.g. *sc in next 3, [dc, ch1, dc] in next st* repeat 4 times. {18 sts}&#10;Size: (S, M, L, XL)"></textarea>
+
+        <div class="example-quick-btns">
+          <span class="eq-btn" onclick="useEx(this)">*sc, dc* repeat 4 times</span>
+          <span class="eq-btn" onclick="useEx(this)">[dc, ch1, dc] in next st {12 sts}</span>
+          <span class="eq-btn" onclick="useEx(this)">(S, M, L): Cast on (80, 96, 112) sts</span>
+          <span class="eq-btn" onclick="useEx(this)">*k2, p2* repeat to end {48 sts}</span>
+          <span class="eq-btn" onclick="useEx(this)">sc in next (2, 3, 4) sts, [hdc, dc] in next {18 sts}</span>
+        </div>
+
+        <button class="btn btn-primary" style="margin-top:0.85rem;" onclick="explain()">Explain Brackets</button>
+
+        <div id="resultArea" style="display:none;margin-top:1rem;">
+          <div class="label">Pattern with Color Coding</div>
+          <div class="highlighted-pattern" id="highlightedPat"></div>
+          <div class="label">What Each Symbol Means</div>
+          <div id="explanations"></div>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">Understanding Pattern Symbols</h2>
+        <div style="display:grid;gap:0.75rem;font-size:0.875rem;">
+          <div class="explanation-card">
+            <div class="expl-header"><span class="expl-badge badge-paren">( )</span> Parentheses — three common uses</div>
+            <div class="expl-desc">
+              1. <strong>Alternate sizes:</strong> numbers for each size in order — e.g. <code>(S, M, L)</code>: cast on <code>(80, 96, 112)</code> sts.<br>
+              2. <strong>Repeat group:</strong> work the stitches inside as a unit — e.g. <code>(dc, ch1, dc) in next st</code>.<br>
+              3. <strong>Clarifying note:</strong> additional info such as <code>(turn work)</code> or <code>(right side)</code>.
+            </div>
+          </div>
+          <div class="explanation-card">
+            <div class="expl-header"><span class="expl-badge badge-bracket">[ ]</span> Square Brackets — repeat groups and notes</div>
+            <div class="expl-desc">
+              1. <strong>Repeat group:</strong> work all stitches inside as a unit, then repeat — e.g. <code>[sc, dc] 3 times</code>.<br>
+              2. <strong>Editor's note / correction:</strong> clarification added by the pattern publisher — e.g. <code>[Note: WS row]</code>.<br>
+              3. Used interchangeably with <code>( )</code> in many patterns.
+            </div>
+          </div>
+          <div class="explanation-card">
+            <div class="expl-header"><span class="expl-badge badge-curly">{ }</span> Curly Braces — stitch counts</div>
+            <div class="expl-desc">
+              Almost always indicates a <strong>stitch count check</strong> at the end of a row or round — e.g. <code>{24 sts}</code>.<br>
+              This tells you how many stitches you should have after completing that row. Use it to verify you haven't made an error.
+            </div>
+          </div>
+          <div class="explanation-card">
+            <div class="expl-header"><span class="expl-badge badge-asterisk">* *</span> Asterisks — repeat section markers</div>
+            <div class="expl-desc">
+              Mark the beginning and end of a section to repeat — e.g. <code>*sc, dc, ch1* repeat 4 times</code>.<br>
+              Sometimes only an opening asterisk is used: <code>*sc, dc, ch1, repeat from * 4 times</code>.
+            </div>
+          </div>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Pattern Bracket Explainer</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Pattern Bracket Explainer to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    function useEx(el) {
+      document.getElementById('patInput').value = el.textContent;
+      explain();
+    }
+
+    function escHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function highlightPattern(text) {
+      let result = escHtml(text);
+      // Curly braces first (stitch counts) - green
+      result = result.replace(/\{([^}]*)\}/g, '<span class="hl-curly">{$1}</span>');
+      // Square brackets - orange
+      result = result.replace(/\[([^\]]*)\]/g, '<span class="hl-bracket">[$1]</span>');
+      // Parentheses - blue
+      result = result.replace(/\(([^)]*)\)/g, '<span class="hl-paren">($1)</span>');
+      // Asterisks pairs
+      result = result.replace(/\*([^*]+)\*/g, '<span class="hl-asterisk">*$1*</span>');
+      // Single asterisks
+      result = result.replace(/(?<![a-z])\*(?![^<]*>)/gi, '<span class="hl-asterisk">*</span>');
+      return result;
+    }
+
+    function explain() {
+      const text = document.getElementById('patInput').value.trim();
+      if (!text) return;
+
+      const highlighted = highlightPattern(text);
+      document.getElementById('highlightedPat').innerHTML = highlighted;
+
+      const found = [];
+      const explanations = [];
+
+      // Detect asterisks
+      if (/\*/.test(text)) {
+        const pairMatch = text.match(/\*([^*]+)\*/);
+        found.push('asterisk');
+        let desc = 'Asterisks mark a <strong>repeat section</strong>. Work all stitches between the asterisks as a group.';
+        let quote = '';
+        if (pairMatch) {
+          const inner = pairMatch[1].trim();
+          const timesM = text.match(/repeat\s+(\d+)\s*times?|(\d+)\s*times?/i);
+          const times = timesM ? (timesM[1]||timesM[2]) : null;
+          quote = `*${inner}*${times ? ` repeated ${times} times` : ''}`;
+          desc += times ? ` In this case: work <strong>${inner}</strong>, then repeat that group <strong>${times} times total</strong>.` : '';
+        }
+        explanations.push({ type:'asterisk', label:'* * Asterisks', badge:'badge-asterisk', desc, quote });
+      }
+
+      // Detect parentheses
+      const parenMatches = text.match(/\(([^)]+)\)/g);
+      if (parenMatches) {
+        found.push('paren');
+        parenMatches.forEach(match => {
+          const inner = match.slice(1,-1).trim();
+          let meaning = '';
+          // Size list: contains commas and numbers or size letters
+          if (/,/.test(inner) && /\d/.test(inner)) {
+            meaning = `<strong>Size values</strong> — these are different values for each size (S, M, L, XL in order). Use the number that matches your chosen size.`;
+          } else if (/\d+\s*sts?/.test(inner)) {
+            meaning = `<strong>Stitch count check</strong> — you should have ${inner} after this step.`;
+          } else if (/turn|side|rs|ws|right|wrong/i.test(inner)) {
+            meaning = `<strong>Note/direction</strong> — a clarifying instruction: "${inner}".`;
+          } else {
+            meaning = `<strong>Repeat group or note</strong> — work the stitches/instructions inside as a unit: "${inner}".`;
+          }
+          explanations.push({ type:'paren', label:`( ) Parentheses: ${match}`, badge:'badge-paren', desc: meaning, quote: match });
+        });
+      }
+
+      // Detect square brackets
+      const bracketMatches = text.match(/\[([^\]]+)\]/g);
+      if (bracketMatches) {
+        found.push('bracket');
+        bracketMatches.forEach(match => {
+          const inner = match.slice(1,-1).trim();
+          let meaning = '';
+          const afterMatch = text.slice(text.indexOf(match)+match.length).match(/^\s*(\d+)\s*times?/i);
+          if (afterMatch) {
+            meaning = `<strong>Repeat group</strong> — work "${inner}" as a unit, repeated <strong>${afterMatch[1]} times</strong>.`;
+          } else if (/note|see|ref|WS|RS/i.test(inner)) {
+            meaning = `<strong>Editor's note</strong> — additional information: "${inner}".`;
+          } else {
+            meaning = `<strong>Repeat group</strong> — work all stitches inside as a unit: "${inner}". Check after the bracket for how many times to repeat.`;
+          }
+          explanations.push({ type:'bracket', label:`[ ] Square brackets: ${match}`, badge:'badge-bracket', desc: meaning, quote: match });
+        });
+      }
+
+      // Detect curly braces
+      const curlyMatches = text.match(/\{([^}]+)\}/g);
+      if (curlyMatches) {
+        found.push('curly');
+        curlyMatches.forEach(match => {
+          const inner = match.slice(1,-1).trim();
+          explanations.push({
+            type:'curly', label:`{ } Curly braces: ${match}`, badge:'badge-curly',
+            desc: `<strong>Stitch count</strong> — after completing this row or round, you should have <strong>${inner}</strong>. Count your stitches to verify you're on track.`,
+            quote: match
+          });
+        });
+      }
+
+      const container = document.getElementById('explanations');
+      if (explanations.length === 0) {
+        container.innerHTML = '<div class="no-found">No brackets, parentheses, or asterisks found in this text.</div>';
+      } else {
+        container.innerHTML = explanations.map(e => `
+          <div class="explanation-card">
+            <div class="expl-header"><span class="expl-badge ${e.badge}">${e.label.split(':')[0]}</span><span style="font-size:0.82rem;color:var(--text-muted);">${e.quote ? e.quote : ''}</span></div>
+            <div class="expl-desc">${e.desc}</div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('resultArea').style.display='block';
+    }
+
+    document.addEventListener('DOMContentLoaded', ()=>{
+      injectNav('pattern-bracket-explainer.html');
+      injectFooter();
+    });
+  </script>
+</body>
+</html>

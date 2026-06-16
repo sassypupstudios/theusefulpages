@@ -1,0 +1,460 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speed Converter - MPH, KM/H, Knots, Mach | The Useful Pages</title>
+  <meta name="description" content="Free online speed converter between mph, km/h, m/s, ft/s, knots, and Mach. Includes travel time calculator, distance calculator, and all-units table.">
+  <link rel="canonical" href="https://theusefulpages.com/speed-converter.html">
+  <meta property="og:title" content="Speed Converter - MPH, KM/H, Knots & More - The Useful Pages">
+  <meta property="og:description" content="Convert speed between mph, km/h, m/s, ft/s, knots, and Mach. Travel time and distance calculator included.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Speed Converter","url":"https://theusefulpages.com/speed-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .converter-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;}
+    @media(max-width:600px){.converter-row{grid-template-columns:1fr;}}
+    .swap-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:var(--card-bg);cursor:pointer;font-size:1.25rem;transition:all .15s;align-self:flex-end;}
+    .swap-btn:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
+    .section-title{font-size:1rem;font-weight:700;color:var(--primary);margin:1.5rem 0 0.75rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+    .all-units-table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+    .all-units-table th{background:var(--primary);color:#fff;padding:0.45rem 0.75rem;text-align:left;font-weight:600;}
+    .all-units-table td{padding:0.4rem 0.75rem;border-bottom:1px solid var(--border);}
+    .all-units-table tr:nth-child(even) td{background:var(--bg-secondary);}
+    .all-units-table .unit-name{color:var(--text-muted);font-size:0.78rem;}
+    .ref-table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+    .ref-table th{background:var(--primary);color:#fff;padding:0.4rem 0.6rem;text-align:left;font-weight:600;}
+    .ref-table td{padding:0.35rem 0.6rem;border-bottom:1px solid var(--border);}
+    .ref-table tr:nth-child(even) td{background:var(--bg-secondary);}
+    .travel-result{background:var(--result-bg);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;margin-top:0.75rem;font-size:0.88rem;display:none;}
+    .travel-result strong{color:var(--primary);font-size:1rem;}
+    .tab-group{display:flex;gap:0.5rem;margin-bottom:1rem;}
+    .tab-btn{padding:0.4rem 1rem;border-radius:20px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:0.82rem;font-weight:500;color:var(--text-muted);transition:all .15s;}
+    .tab-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+    .tab-panel{display:none;}.tab-panel.active{display:block;}
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Speed Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Convert between mph, km/h, m/s, ft/s, knots, and Mach. Real-time results with travel calculator.</p>
+      <div class="tool-card">
+
+        <!-- Main converter -->
+        <div class="converter-row" style="margin-bottom:1rem;">
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">From</label>
+            <input type="number" class="form-input" id="speed-from-val" value="60" min="0" step="any" oninput="convertSpeed('from')">
+            <select class="form-select" id="speed-from-unit" onchange="convertSpeed('from')" style="margin-top:0.4rem;">
+              <option value="mph" selected>Miles per hour (mph)</option>
+              <option value="km_h">Kilometers per hour (km/h)</option>
+              <option value="m_s">Meters per second (m/s)</option>
+              <option value="ft_s">Feet per second (ft/s)</option>
+              <option value="knots">Knots</option>
+              <option value="mach">Mach (~343 m/s)</option>
+            </select>
+          </div>
+          <button class="swap-btn" onclick="swapSpeed()" title="Swap">⇄</button>
+          <div class="form-group" style="margin:0;">
+            <label class="form-label">To</label>
+            <input type="number" class="form-input" id="speed-to-val" oninput="convertSpeed('to')">
+            <select class="form-select" id="speed-to-unit" onchange="convertSpeed('from')" style="margin-top:0.4rem;">
+              <option value="mph">Miles per hour (mph)</option>
+              <option value="km_h" selected>Kilometers per hour (km/h)</option>
+              <option value="m_s">Meters per second (m/s)</option>
+              <option value="ft_s">Feet per second (ft/s)</option>
+              <option value="knots">Knots</option>
+              <option value="mach">Mach (~343 m/s)</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-accent" onclick="copyText(document.getElementById('speed-to-val').value,'Copied!')">Copy Result</button>
+          <button class="btn btn-outline" onclick="clearSpeed()">Clear</button>
+        </div>
+
+        <!-- All units table -->
+        <div class="section-title">All Units at a Glance</div>
+        <table class="all-units-table" id="all-units-table">
+          <thead><tr><th>Unit</th><th>Value</th></tr></thead>
+          <tbody id="all-units-body">
+            <tr><td>Miles per hour <span class="unit-name">(mph)</span></td><td id="au-mph">—</td></tr>
+            <tr><td>Kilometers per hour <span class="unit-name">(km/h)</span></td><td id="au-km_h">—</td></tr>
+            <tr><td>Meters per second <span class="unit-name">(m/s)</span></td><td id="au-m_s">—</td></tr>
+            <tr><td>Feet per second <span class="unit-name">(ft/s)</span></td><td id="au-ft_s">—</td></tr>
+            <tr><td>Knots <span class="unit-name">(nmi/h)</span></td><td id="au-knots">—</td></tr>
+            <tr><td>Mach <span class="unit-name">(at sea level)</span></td><td id="au-mach">—</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Travel calculator -->
+        <div class="section-title">Travel Calculator</div>
+        <div class="tab-group">
+          <button class="tab-btn active" data-tab="time">Distance → Time</button>
+          <button class="tab-btn" data-tab="distance">Time → Distance</button>
+        </div>
+        <div class="tab-panel active" id="tab-time">
+          <div class="form-row" style="align-items:flex-end;">
+            <div class="form-group">
+              <label class="form-label">Distance</label>
+              <input type="number" class="form-input" id="t-distance" placeholder="e.g. 300" min="0" step="any" oninput="calcTime()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Unit</label>
+              <select class="form-select" id="t-dist-unit" onchange="calcTime()">
+                <option value="mi">Miles</option>
+                <option value="km" selected>Kilometers</option>
+                <option value="m">Meters</option>
+                <option value="nmi">Nautical Miles</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Speed</label>
+              <input type="number" class="form-input" id="t-speed" placeholder="e.g. 100" min="0" step="any" oninput="calcTime()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Speed Unit</label>
+              <select class="form-select" id="t-speed-unit" onchange="calcTime()">
+                <option value="mph">mph</option>
+                <option value="km_h" selected>km/h</option>
+                <option value="m_s">m/s</option>
+                <option value="knots">knots</option>
+              </select>
+            </div>
+          </div>
+          <div class="travel-result" id="t-result"></div>
+        </div>
+        <div class="tab-panel" id="tab-distance">
+          <div class="form-row" style="align-items:flex-end;">
+            <div class="form-group">
+              <label class="form-label">Hours</label>
+              <input type="number" class="form-input" id="d-hours" placeholder="0" min="0" oninput="calcDistance()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Minutes</label>
+              <input type="number" class="form-input" id="d-minutes" placeholder="0" min="0" max="59" oninput="calcDistance()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Speed</label>
+              <input type="number" class="form-input" id="d-speed" placeholder="e.g. 100" min="0" step="any" oninput="calcDistance()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Speed Unit</label>
+              <select class="form-select" id="d-speed-unit" onchange="calcDistance()">
+                <option value="mph">mph</option>
+                <option value="km_h" selected>km/h</option>
+                <option value="m_s">m/s</option>
+                <option value="knots">knots</option>
+              </select>
+            </div>
+          </div>
+          <div class="travel-result" id="d-result"></div>
+        </div>
+
+        <!-- Speed reference -->
+        <div class="section-title">Common Speed Reference</div>
+        <table class="ref-table">
+          <thead><tr><th>Description</th><th>mph</th><th>km/h</th><th>m/s</th></tr></thead>
+          <tbody>
+            <tr><td>Average walking pace</td><td>3</td><td>4.8</td><td>1.3</td></tr>
+            <tr><td>Jogging / easy run</td><td>6</td><td>9.7</td><td>2.7</td></tr>
+            <tr><td>Competitive sprint (100m world record)</td><td>27.8</td><td>44.7</td><td>12.4</td></tr>
+            <tr><td>City speed limit (typical)</td><td>25–35</td><td>40–56</td><td>11–16</td></tr>
+            <tr><td>Highway / motorway speed</td><td>60–75</td><td>97–121</td><td>27–34</td></tr>
+            <tr><td>High-speed train (TGV, Shinkansen)</td><td>200</td><td>322</td><td>89</td></tr>
+            <tr><td>Speed of sound (sea level, 20°C)</td><td>767</td><td>1235</td><td>343</td></tr>
+            <tr><td>Mach 2 (fighter jet)</td><td>1535</td><td>2470</td><td>686</td></tr>
+            <tr><td>Low Earth orbit</td><td>17,500</td><td>28,160</td><td>7,822</td></tr>
+            <tr><td>Speed of light</td><td>670,616,629</td><td>1,079,252,848</td><td>299,792,458</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Enter a speed value in either field and select the units — the result updates instantly</li>
+          <li>Use the ⇄ button to swap the from and to units</li>
+          <li>The "All Units at a Glance" table shows your entered speed in every unit simultaneously</li>
+          <li><strong>Distance → Time:</strong> Enter a distance and speed to calculate travel time</li>
+          <li><strong>Time → Distance:</strong> Enter a duration and speed to calculate distance covered</li>
+          <li>Mach speed uses 343 m/s (speed of sound at sea level, approximately 20°C)</li>
+        </ul>
+      </div>
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="unit-converter.html" class="related-link">Unit Converter</a>
+          <a href="height-converter.html" class="related-link">Height Converter</a>
+          <a href="cooking-conversion.html" class="related-link">Cooking Conversion</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Speed Converter</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free speed converter to convert miles per hour, kilometers per hour, meters per second, knots, and other speed units. It is useful for travel, sports, weather, vehicles, and science tasks. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  // All factors in m/s
+  const speedFactors = { mph:0.44704, km_h:0.277778, m_s:1, ft_s:0.3048, knots:0.514444, mach:343 };
+  const distFactors = { mi:1609.344, km:1000, m:1, nmi:1852 }; // in meters
+
+  function convertSpeed(dir) {
+    const fv = document.getElementById('speed-from-val');
+    const tv = document.getElementById('speed-to-val');
+    const fu = document.getElementById('speed-from-unit').value;
+    const tu = document.getElementById('speed-to-unit').value;
+    if (dir === 'from') {
+      const v = parseFloat(fv.value);
+      if (!isNaN(v)) {
+        const ms = v * speedFactors[fu];
+        tv.value = parseFloat((ms / speedFactors[tu]).toFixed(6));
+        updateAllUnits(ms);
+      }
+    } else {
+      const v = parseFloat(tv.value);
+      if (!isNaN(v)) {
+        const ms = v * speedFactors[tu];
+        fv.value = parseFloat((ms / speedFactors[fu]).toFixed(6));
+        updateAllUnits(ms);
+      }
+    }
+  }
+
+  function updateAllUnits(ms) {
+    Object.keys(speedFactors).forEach(u => {
+      const el = document.getElementById('au-'+u);
+      if (el) el.textContent = parseFloat((ms/speedFactors[u]).toFixed(4)).toLocaleString();
+    });
+  }
+
+  function swapSpeed() {
+    const fu = document.getElementById('speed-from-unit');
+    const tu = document.getElementById('speed-to-unit');
+    const tmp = fu.value; fu.value = tu.value; tu.value = tmp;
+    convertSpeed('from');
+  }
+
+  function clearSpeed() {
+    document.getElementById('speed-from-val').value='';
+    document.getElementById('speed-to-val').value='';
+    Object.keys(speedFactors).forEach(u => { const el=document.getElementById('au-'+u); if(el) el.textContent='—'; });
+  }
+
+  function formatDuration(totalSec) {
+    const h = Math.floor(totalSec/3600);
+    const m = Math.floor((totalSec%3600)/60);
+    const s = Math.round(totalSec%60);
+    let parts=[];
+    if(h>0) parts.push(h+' hr');
+    if(m>0) parts.push(m+' min');
+    if(s>0||parts.length===0) parts.push(s+' sec');
+    return parts.join(' ');
+  }
+
+  function calcTime() {
+    const dist = parseFloat(document.getElementById('t-distance').value);
+    const speed = parseFloat(document.getElementById('t-speed').value);
+    const distUnit = document.getElementById('t-dist-unit').value;
+    const speedUnit = document.getElementById('t-speed-unit').value;
+    const el = document.getElementById('t-result');
+    if (isNaN(dist)||isNaN(speed)||dist<=0||speed<=0) { el.style.display='none'; return; }
+    const distM = dist * distFactors[distUnit];
+    const speedMs = speed * speedFactors[speedUnit];
+    const timeSec = distM / speedMs;
+    const distKm = distM/1000;
+    const distMi = distM/1609.344;
+    el.innerHTML = `Travel time: <strong>${formatDuration(timeSec)}</strong><br><span style="font-size:0.78rem;color:var(--text-muted);">${dist} ${distUnit} at ${speed} ${speedUnit} = ${(timeSec/3600).toFixed(3)} hours &nbsp;|&nbsp; ${distKm.toFixed(2)} km = ${distMi.toFixed(2)} mi</span>`;
+    el.style.display='block';
+  }
+
+  function calcDistance() {
+    const hours = parseFloat(document.getElementById('d-hours').value)||0;
+    const mins = parseFloat(document.getElementById('d-minutes').value)||0;
+    const speed = parseFloat(document.getElementById('d-speed').value);
+    const speedUnit = document.getElementById('d-speed-unit').value;
+    const el = document.getElementById('d-result');
+    if ((hours===0&&mins===0)||isNaN(speed)||speed<=0) { el.style.display='none'; return; }
+    const totalHr = hours + mins/60;
+    const speedMs = speed * speedFactors[speedUnit];
+    const distM = speedMs * totalHr * 3600;
+    const distKm = distM/1000;
+    const distMi = distM/1609.344;
+    const distNmi = distM/1852;
+    el.innerHTML = `Distance covered: <strong>${distKm.toFixed(2)} km</strong> / <strong>${distMi.toFixed(2)} mi</strong><br><span style="font-size:0.78rem;color:var(--text-muted);">${distNmi.toFixed(2)} nautical miles &nbsp;|&nbsp; ${Math.round(distM).toLocaleString()} meters</span>`;
+    el.style.display='block';
+  }
+
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('speed-converter.html'); injectFooter();
+    convertSpeed('from');
+  });
+  </script>
+</body>
+</html>

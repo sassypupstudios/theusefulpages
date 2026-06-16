@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hourly to Salary Converter - Online Pay Calculator | The Useful Pages</title>
+  <meta name="description" content="Convert hourly wage to annual salary or salary to hourly rate instantly. Includes biweekly, weekly, daily pay, overtime calculator, and US tax estimates.">
+  <link rel="canonical" href="https://theusefulpages.com/hourly-salary.html">
+  <meta property="og:title" content="Hourly to Salary Converter - The Useful Pages">
+  <meta property="og:description" content="Instantly convert between hourly and annual pay. See all pay periods, overtime, and rough US federal tax estimates.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hourly to Salary Converter","url":"https://theusefulpages.com/hourly-salary.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tab-group { display:flex; gap:0; border:2px solid var(--border); border-radius:10px; overflow:hidden; margin-bottom:1.5rem; }
+    .tab-btn { flex:1; padding:0.625rem 1rem; background:var(--card-bg); border:none; cursor:pointer; font-size:0.9rem; font-weight:600; color:var(--text-muted); transition:all 0.15s; font-family:inherit; }
+    .tab-btn.active { background:var(--primary); color:white; }
+    .tab-btn:not(:last-child) { border-right:2px solid var(--border); }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Hourly to Salary Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Convert between hourly wage and annual salary — with overtime calculator and tax estimates.</p>
+      <div class="tool-card">
+        <div class="tab-group">
+          <button class="tab-btn active" id="tab-hourly" onclick="switchTab('hourly')">Hourly → Salary</button>
+          <button class="tab-btn" id="tab-salary" onclick="switchTab('salary')">Salary → Hourly</button>
+        </div>
+
+        <div id="panel-hourly">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Hourly Wage ($)</label>
+              <input type="number" class="form-input" id="hourlyWage" value="25" min="0" step="0.01" oninput="calcFromHourly()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Hours Per Week</label>
+              <input type="number" class="form-input" id="hoursPerWeek" value="40" min="1" max="168" oninput="calcFromHourly()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Weeks Per Year</label>
+            <select class="form-select" id="weeksPerYear" onchange="calcFromHourly()">
+              <option value="52">52 weeks (no vacation)</option>
+              <option value="50" selected>50 weeks (2 weeks vacation)</option>
+              <option value="48">48 weeks (4 weeks vacation)</option>
+              <option value="46">46 weeks (6 weeks vacation)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="panel-salary" class="hidden">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Annual Salary ($)</label>
+              <input type="number" class="form-input" id="annualSalary" value="52000" min="0" step="1000" oninput="calcFromSalary()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Hours Per Week</label>
+              <input type="number" class="form-input" id="hoursPerWeekSalary" value="40" min="1" max="168" oninput="calcFromSalary()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Weeks Per Year</label>
+            <select class="form-select" id="weeksPerYearSalary" onchange="calcFromSalary()">
+              <option value="52">52 weeks (no vacation)</option>
+              <option value="50" selected>50 weeks (2 weeks vacation)</option>
+              <option value="48">48 weeks (4 weeks vacation)</option>
+              <option value="46">46 weeks (6 weeks vacation)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="payResults" style="margin-top:1rem;">
+          <div class="stat-grid" id="payGrid"></div>
+        </div>
+
+        <!-- Tax estimates -->
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.25rem;">Rough US Federal Tax Estimate</h3>
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.75rem;">Approximate single-filer estimate only. Actual taxes vary based on deductions, state, and filing status.</p>
+          <div class="stat-grid" id="taxGrid"></div>
+        </div>
+
+        <!-- Overtime -->
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;">Overtime Calculator</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Regular Hours (this week)</label>
+              <input type="number" class="form-input" id="regHours" value="40" min="0" oninput="calcOvertime()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Overtime Hours</label>
+              <input type="number" class="form-input" id="otHours" value="5" min="0" oninput="calcOvertime()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">OT Rate Multiplier</label>
+            <select class="form-select" id="otMultiplier" onchange="calcOvertime()">
+              <option value="1.5" selected>1.5x (time and a half)</option>
+              <option value="2">2x (double time)</option>
+              <option value="1.25">1.25x</option>
+            </select>
+          </div>
+          <div class="stat-grid" id="otGrid"></div>
+        </div>
+
+        <div style="margin-top:1rem;">
+          <button class="btn btn-accent btn-sm" onclick="copySummary()">Copy Summary</button>
+        </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">For educational purposes only — not financial or tax advice. Consult a tax professional for accurate estimates.</p>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Use "Hourly → Salary" to see your annual equivalent from an hourly rate.</li>
+          <li>Use "Salary → Hourly" to break down your salary into an effective hourly rate.</li>
+          <li>Adjust hours per week and weeks per year to match your actual work schedule.</li>
+          <li>Tax estimates are rough US federal only — state taxes and deductions not included.</li>
+          <li>Use the overtime calculator to see your weekly pay with overtime hours.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="tip-calculator.html">Tip Calculator</a>
+          <a href="retirement-calculator.html">Retirement Calculator</a>
+          <a href="savings-calculator.html">Savings Calculator</a>
+          <a href="loan-calculator.html">Loan Calculator</a>
+          <a href="debt-payoff.html">Debt Payoff Calculator</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Hourly Salary</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free hourly to salary calculator to convert hourly pay into weekly, monthly, and annual estimates, or compare salary back to an hourly rate. It is useful for job offers, budgeting, and planning. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => { injectNav('hourly-salary.html'); injectFooter(); calcFromHourly(); });
+
+    let currentMode = 'hourly';
+    let currentHourly = 25;
+    let currentAnnual = 0;
+
+    function switchTab(tab) {
+      currentMode = tab;
+      document.getElementById('tab-hourly').classList.toggle('active', tab === 'hourly');
+      document.getElementById('tab-salary').classList.toggle('active', tab === 'salary');
+      document.getElementById('panel-hourly').classList.toggle('hidden', tab !== 'hourly');
+      document.getElementById('panel-salary').classList.toggle('hidden', tab !== 'salary');
+      if (tab === 'hourly') calcFromHourly(); else calcFromSalary();
+    }
+
+    function calcFromHourly() {
+      const hourly = parseFloat(document.getElementById('hourlyWage').value) || 0;
+      const hpw = parseFloat(document.getElementById('hoursPerWeek').value) || 40;
+      const wpy = parseFloat(document.getElementById('weeksPerYear').value) || 50;
+      currentHourly = hourly;
+      currentAnnual = hourly * hpw * wpy;
+      renderPayGrid(currentHourly, currentAnnual, hpw, wpy);
+      renderTaxGrid(currentAnnual);
+      calcOvertime();
+    }
+
+    function calcFromSalary() {
+      const annual = parseFloat(document.getElementById('annualSalary').value) || 0;
+      const hpw = parseFloat(document.getElementById('hoursPerWeekSalary').value) || 40;
+      const wpy = parseFloat(document.getElementById('weeksPerYearSalary').value) || 50;
+      currentAnnual = annual;
+      currentHourly = hpw > 0 && wpy > 0 ? annual / (hpw * wpy) : 0;
+      renderPayGrid(currentHourly, currentAnnual, hpw, wpy);
+      renderTaxGrid(currentAnnual);
+      calcOvertime();
+    }
+
+    function renderPayGrid(hourly, annual, hpw, wpy) {
+      const weekly = hourly * hpw;
+      const biweekly = weekly * 2;
+      const monthly = annual / 12;
+      const daily = hpw > 0 ? weekly / 5 : 0;
+      document.getElementById('payGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(hourly)}</div><div class="stat-label">Hourly Rate</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(daily)}</div><div class="stat-label">Daily (8 hrs)</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(weekly)}</div><div class="stat-label">Weekly</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(biweekly)}</div><div class="stat-label">Biweekly</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(monthly)}</div><div class="stat-label">Monthly</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(annual)}</div><div class="stat-label">Annual</div></div>
+      `;
+    }
+
+    function renderTaxGrid(annual) {
+      // 2024 US federal tax brackets (single filer, standard deduction $14,600)
+      const taxable = Math.max(0, annual - 14600);
+      let tax = 0;
+      const brackets = [
+        [11600, 0.10], [33550, 0.12], [50400, 0.22], [96950, 0.24], [206700, 0.32], [243725, 0.35], [Infinity, 0.37]
+      ];
+      let prev = 0;
+      for (const [limit, rate] of brackets) {
+        if (taxable <= prev) break;
+        tax += (Math.min(taxable, limit) - prev) * rate;
+        prev = limit;
+      }
+      // FICA: 6.2% SS (up to $168,600) + 1.45% Medicare
+      const ss = Math.min(annual, 168600) * 0.062;
+      const medicare = annual * 0.0145;
+      const totalTax = tax + ss + medicare;
+      const effectiveRate = annual > 0 ? (totalTax / annual) * 100 : 0;
+      const takeHome = annual - totalTax;
+      document.getElementById('taxGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(tax)}</div><div class="stat-label">Est. Federal Income Tax</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(ss + medicare)}</div><div class="stat-label">Est. FICA (SS + Medicare)</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtPct(effectiveRate, 1)}</div><div class="stat-label">Effective Tax Rate</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(takeHome)}</div><div class="stat-label">Est. Annual Take-Home</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(takeHome / 12)}</div><div class="stat-label">Est. Monthly Take-Home</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(takeHome / 26)}</div><div class="stat-label">Est. Biweekly Take-Home</div></div>
+      `;
+    }
+
+    function calcOvertime() {
+      const regHours = parseFloat(document.getElementById('regHours').value) || 40;
+      const otHours = parseFloat(document.getElementById('otHours').value) || 0;
+      const otMult = parseFloat(document.getElementById('otMultiplier').value) || 1.5;
+      const regPay = regHours * currentHourly;
+      const otPay = otHours * currentHourly * otMult;
+      const totalPay = regPay + otPay;
+      document.getElementById('otGrid').innerHTML = `
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(regPay)}</div><div class="stat-label">Regular Pay</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(otPay)}</div><div class="stat-label">Overtime Pay (${otMult}x)</div></div>
+        <div class="stat-box"><div class="stat-value">${fmtCurrency(totalPay)}</div><div class="stat-label">Total Weekly Pay</div></div>
+      `;
+    }
+
+    function copySummary() {
+      const boxes = document.querySelectorAll('#payGrid .stat-box');
+      let text = 'Pay Conversion Summary\n';
+      boxes.forEach(b => {
+        text += `${b.querySelector('.stat-label').textContent}: ${b.querySelector('.stat-value').textContent}\n`;
+      });
+      copyText(text, 'Summary copied!');
+    }
+  </script>
+</body>
+</html>

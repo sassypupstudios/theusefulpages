@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What QR Codes Are and How to Use Them Effectively | The Useful Pages</title>
+  <meta name="description" content="A practical guide to QR codes — how they work, what they can encode, when to use them for business or personal use, and how to generate one for free.">
+  <link rel="canonical" href="https://theusefulpages.com/guide-qr-code.html">
+  <meta property="og:title" content="What QR Codes Are and How to Use Them Effectively">
+  <meta property="og:description" content="A practical guide to QR codes — how they work, what they can encode, when to use them for business or personal use, and how to generate one for free.">
+  <meta property="og:type" content="article">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.queue; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">What QR Codes Are and How to Use Them Effectively</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">How QR codes work, what they can store, practical uses for business and personal projects, and tips for creating ones that actually scan reliably.</p>
+
+      <div class="instructions-card" style="line-height:1.75;">
+
+        <h2>What a QR code actually is</h2>
+        <p>QR stands for "Quick Response." A QR code is a two-dimensional barcode — a square pattern of black and white modules — that encodes information in a format a camera can read. Unlike traditional barcodes that only encode data horizontally, QR codes encode data both horizontally and vertically, allowing them to store much more information in a small space.</p>
+        <p>QR codes were invented in 1994 by a Japanese company called Denso Wave to track automotive parts during manufacturing. They became widely used for consumer applications after smartphones made it easy to scan them with a built-in camera — no separate scanner required. Today, most smartphone cameras on iOS and Android scan QR codes automatically when you point the camera at one.</p>
+
+        <h2>What QR codes can store</h2>
+        <p>A QR code can encode any short text string. What that text represents depends on convention:</p>
+        <ul>
+          <li><strong>URLs:</strong> The most common use. Scanning opens a website in the phone's browser.</li>
+          <li><strong>Plain text:</strong> A message, address, or any short text that displays directly when scanned.</li>
+          <li><strong>Contact info (vCard):</strong> A formatted text string that lets the phone save a contact automatically.</li>
+          <li><strong>Wi-Fi credentials:</strong> A specially formatted string that lets phones join a network by scanning instead of typing a password.</li>
+          <li><strong>Email or phone:</strong> Opens the mail or phone app with the address or number pre-filled.</li>
+          <li><strong>SMS:</strong> Opens the messaging app with a number and optional pre-filled message.</li>
+          <li><strong>App store links:</strong> Directs to an app download page on iOS or Android.</li>
+        </ul>
+        <p>Standard QR codes have a maximum data capacity of about 3,000 alphanumeric characters, though most practical uses involve much shorter content. Longer content means a denser, harder-to-scan code.</p>
+
+        <h2>Practical uses for QR codes</h2>
+        <p><strong>Business and marketing.</strong> QR codes on business cards, flyers, menus, signage, and packaging let customers reach a website, menu, booking page, or social profile without typing a URL. Restaurant menus went heavily digital during the pandemic and many have stayed that way. Event posters can link to ticketing pages. Product packaging can link to setup instructions or warranty registration.</p>
+        <p><strong>Small businesses.</strong> A QR code at the register or on a receipt can link customers to a Google review page, loyalty program, or feedback form. Wi-Fi QR codes at a coffee shop or hotel let guests connect without sharing a password verbally.</p>
+        <p><strong>Personal use.</strong> QR codes on invitations can link to an RSVP page. A code on a luggage tag can encode your contact info so a finder can reach you without exposing your personal details to anyone walking by. Codes on labels in a storage room can link to a spreadsheet or photo of a box's contents.</p>
+        <p><strong>Education and events.</strong> Presenters use QR codes to share slides, handouts, or survey links with an audience instantly. Teachers use them to link students to resources. Conference badges often include a QR code for digital contact sharing.</p>
+
+        <h2>Tips for QR codes that scan reliably</h2>
+        <ul>
+          <li><strong>Keep the content short.</strong> Shorter URLs and text produce simpler, less dense codes that scan faster and more reliably, especially at small sizes or in poor lighting.</li>
+          <li><strong>Use a URL shortener for long links.</strong> If your URL is long, shorten it first before generating the QR code.</li>
+          <li><strong>Print at adequate size.</strong> A minimum of about 2 × 2 cm (roughly 0.75 × 0.75 inches) is recommended for print materials. Larger is better for anything viewed at a distance, like posters or signs.</li>
+          <li><strong>Maintain contrast.</strong> Dark modules on a light background is the standard and most reliable combination. Avoid low-contrast color schemes (light gray on white, dark colors on dark backgrounds).</li>
+          <li><strong>Include a quiet zone.</strong> QR codes need a margin of white space (called the "quiet zone") around all four sides. Most generators include this automatically.</li>
+          <li><strong>Test before printing.</strong> Scan your code on multiple devices before sending anything to print. Test at the actual printed size if possible.</li>
+        </ul>
+
+        <h2>Static vs. dynamic QR codes</h2>
+        <p>A static QR code encodes the destination directly. If the URL changes later, you need a new code. A dynamic QR code encodes a redirect URL — scanning always hits the same redirect, which you can update to point to a new destination without changing the printed code. Dynamic codes require a paid third-party service to manage the redirect. For most personal and small business uses, static codes are sufficient and free.</p>
+
+        <h2>Generate a QR code</h2>
+        <p>Use the free <a href="qr-generator.html">QR Code Generator</a> on this site to create a QR code from any URL or text. The code downloads as a PNG image ready for print or digital use. No account required.</p>
+
+      </div>
+    </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>injectNav('guide-qr-code.html'); injectFooter();</script>
+</body>
+</html>

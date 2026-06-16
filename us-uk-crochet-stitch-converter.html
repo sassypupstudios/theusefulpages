@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>US/UK Crochet Stitch Converter — Online Tool | The Useful Pages</title>
+  <meta name="description" content="Convert US crochet stitch names to UK and vice versa. Paste a pattern row and toggle between US/UK terminology instantly.">
+  <link rel="canonical" href="https://theusefulpages.com/us-uk-crochet-stitch-converter.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">US/UK Crochet Stitch Converter</h1>
+      <p class="page-subtitle">Convert between US and UK crochet stitch names — individually or paste an entire pattern row.</p>
+      <div class="tool-card">
+        <div class="disclaimer" style="margin-bottom:1.25rem;">
+          <strong>Warning:</strong> US and UK crochet terminology is NOT the same. A US "double crochet" is a UK "treble crochet." Always verify which system your pattern uses before starting!
+        </div>
+
+        <h2 style="font-size:1.1rem;margin-bottom:1rem;">Quick Stitch Lookup</h2>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+          <div style="flex:1;min-width:200px;">
+            <label class="label">Select US Stitch Name</label>
+            <select class="form-select" id="us-select" onchange="syncFromUS()">
+              <option value="">-- Select US stitch --</option>
+            </select>
+          </div>
+          <div style="flex:1;min-width:200px;">
+            <label class="label">Select UK Stitch Name</label>
+            <select class="form-select" id="uk-select" onchange="syncFromUK()">
+              <option value="">-- Select UK stitch --</option>
+            </select>
+          </div>
+        </div>
+        <div id="quick-result" class="result-card" style="display:none;"></div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--border);">
+
+        <h2 style="font-size:1.1rem;margin-bottom:0.5rem;">Pattern Row Converter</h2>
+        <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1rem;">Paste a pattern row below and choose conversion direction.</p>
+        <div style="display:flex;gap:1rem;margin-bottom:0.75rem;flex-wrap:wrap;align-items:center;">
+          <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+            <input type="radio" name="direction" value="us-to-uk" checked onchange="convertPattern()"> Convert US → UK
+          </label>
+          <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+            <input type="radio" name="direction" value="uk-to-us" onchange="convertPattern()"> Convert UK → US
+          </label>
+        </div>
+        <textarea class="form-textarea" id="pattern-input" rows="4" placeholder="e.g. Row 3: ch 3, dc in next 4 sts, sc in last st, turn." oninput="convertPattern()"></textarea>
+        <label class="label" style="margin-top:1rem;">Converted Pattern</label>
+        <textarea class="form-textarea" id="pattern-output" rows="4" readonly placeholder="Converted result will appear here..." style="background:var(--bg-alt);"></textarea>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--border);">
+
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Full Conversion Table</h2>
+        <input class="form-input" type="text" id="table-search" placeholder="Search stitch name or abbreviation..." oninput="filterConversionTable()" style="margin-bottom:1rem;">
+        <div class="table-wrap">
+          <table class="data-table" id="conv-table">
+            <thead>
+              <tr>
+                <th>US Stitch Name</th>
+                <th>US Abbr.</th>
+                <th>UK Stitch Name</th>
+                <th>UK Abbr.</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="conv-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Use the <strong>Quick Stitch Lookup</strong> dropdowns to find the equivalent stitch in either direction.</li>
+          <li>Paste any pattern row into the <strong>Pattern Row Converter</strong> and select US→UK or UK→US. Stitch abbreviations are replaced automatically.</li>
+          <li>Search the <strong>Full Conversion Table</strong> to browse all stitch equivalents.</li>
+        </ul>
+        <h2>Why US and UK Terms Differ</h2>
+        <p>US and UK crochet terminology evolved separately, leading to the same words meaning different stitches. The confusion most often trips up crafters when a pattern calls for "double crochet" — in the US that is a medium-height stitch (yarn over once), while in the UK it refers to what Americans call single crochet.</p>
+        <p>Always check your pattern's country of origin or look for a terminology key at the top of the pattern. If in doubt, check whether the pattern uses "sc" (likely US) or "dc" for the shortest standard stitch (likely UK).</p>
+        <p class="disclaimer">Results are estimates. Verify conversions against your pattern's stitch key.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Us Uk Crochet Stitch Converter</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Us Uk Crochet Stitch Converter to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const STITCH_MAP = [
+    {usName:'Slip Stitch',      usAbbr:'sl st', ukName:'Slip Stitch',         ukAbbr:'ss',   notes:'Same in both systems'},
+    {usName:'Single Crochet',   usAbbr:'sc',    ukName:'Double Crochet',       ukAbbr:'dc',   notes:'Most commonly confused pair'},
+    {usName:'Half Double Crochet', usAbbr:'hdc', ukName:'Half Treble Crochet', ukAbbr:'htr',  notes:''},
+    {usName:'Double Crochet',   usAbbr:'dc',    ukName:'Treble Crochet',       ukAbbr:'tr',   notes:''},
+    {usName:'Treble Crochet',   usAbbr:'tr',    ukName:'Double Treble Crochet',ukAbbr:'dtr',  notes:''},
+    {usName:'Double Treble Crochet', usAbbr:'dtr', ukName:'Triple Treble Crochet', ukAbbr:'trtr', notes:''},
+    {usName:'Triple Treble Crochet', usAbbr:'trtr', ukName:'Quadruple Treble Crochet', ukAbbr:'qtr', notes:'Very tall stitch'},
+    {usName:'Chain',            usAbbr:'ch',    ukName:'Chain',                ukAbbr:'ch',   notes:'Same in both systems'},
+    {usName:'Magic Ring',       usAbbr:'mr',    ukName:'Magic Ring',           ukAbbr:'mr',   notes:'Same in both systems'},
+    {usName:'Single Crochet 2 Together', usAbbr:'sc2tog', ukName:'Double Crochet 2 Together', ukAbbr:'dc2tog', notes:'Decrease stitch'},
+    {usName:'Double Crochet 2 Together', usAbbr:'dc2tog', ukName:'Treble Crochet 2 Together', ukAbbr:'tr2tog', notes:'Decrease stitch'},
+    {usName:'Back Loop Only',   usAbbr:'BLO',   ukName:'Back Loop Only',       ukAbbr:'BLO',  notes:'Same in both systems'},
+    {usName:'Front Loop Only',  usAbbr:'FLO',   ukName:'Front Loop Only',      ukAbbr:'FLO',  notes:'Same in both systems'},
+  ];
+
+  // Pattern-level abbr replacement pairs (US abbr → UK abbr and vice versa)
+  const US_TO_UK_ABBR = [
+    ['sc2tog','dc2tog'],['dc2tog','tr2tog'],
+    ['hdc','htr'],['dtr','trtr'],['trtr','qtr'],
+    ['\\bdc\\b','tr'],['\\btr\\b','dtr'],
+    ['\\bsc\\b','dc'],
+    ['sl st','ss'],
+  ];
+  const UK_TO_US_ABBR = [
+    ['dc2tog','sc2tog'],['tr2tog','dc2tog'],
+    ['htr','hdc'],['trtr','dtr'],['qtr','trtr'],
+    ['\\bdtr\\b','tr'],['\\btr\\b','dc'],
+    ['\\bdc\\b','sc'],
+    ['\\bss\\b','sl st'],
+  ];
+
+  function buildSelects() {
+    const us = document.getElementById('us-select');
+    const uk = document.getElementById('uk-select');
+    STITCH_MAP.forEach((s,i) => {
+      us.add(new Option(s.usName + ' (' + s.usAbbr + ')', i));
+      uk.add(new Option(s.ukName + ' (' + s.ukAbbr + ')', i));
+    });
+  }
+
+  function syncFromUS() {
+    const idx = document.getElementById('us-select').value;
+    if (idx === '') { document.getElementById('quick-result').style.display='none'; return; }
+    document.getElementById('uk-select').value = idx;
+    showQuickResult(idx, 'us');
+  }
+  function syncFromUK() {
+    const idx = document.getElementById('uk-select').value;
+    if (idx === '') { document.getElementById('quick-result').style.display='none'; return; }
+    document.getElementById('us-select').value = idx;
+    showQuickResult(idx, 'uk');
+  }
+  function showQuickResult(idx, from) {
+    const s = STITCH_MAP[idx];
+    const r = document.getElementById('quick-result');
+    r.style.display = 'block';
+    r.innerHTML = `<div class="stat-grid">
+      <div class="stat-box"><div class="label">US Name</div><strong>${s.usName}</strong><br><span style="color:var(--text-muted)">${s.usAbbr}</span></div>
+      <div class="stat-box"><div class="label">UK Name</div><strong>${s.ukName}</strong><br><span style="color:var(--text-muted)">${s.ukAbbr}</span></div>
+      ${s.notes ? `<div class="stat-box" style="flex-basis:100%"><div class="label">Note</div>${s.notes}</div>` : ''}
+    </div>`;
+  }
+
+  function convertPattern() {
+    const input = document.getElementById('pattern-input').value;
+    const direction = document.querySelector('input[name="direction"]:checked').value;
+    const pairs = direction === 'us-to-uk' ? US_TO_UK_ABBR : UK_TO_US_ABBR;
+    let result = input;
+    pairs.forEach(([from, to]) => {
+      result = result.replace(new RegExp(from, 'gi'), to);
+    });
+    document.getElementById('pattern-output').value = result;
+  }
+
+  function buildConversionTable() {
+    renderConversionTable(STITCH_MAP);
+  }
+
+  function renderConversionTable(data) {
+    const tbody = document.getElementById('conv-body');
+    tbody.innerHTML = data.map(s => `<tr>
+      <td>${s.usName}</td><td><strong>${s.usAbbr}</strong></td>
+      <td>${s.ukName}</td><td><strong>${s.ukAbbr}</strong></td>
+      <td>${s.notes}</td>
+    </tr>`).join('');
+  }
+
+  function filterConversionTable() {
+    const q = document.getElementById('table-search').value.toLowerCase();
+    const filtered = q ? STITCH_MAP.filter(s =>
+      s.usName.toLowerCase().includes(q) || s.ukName.toLowerCase().includes(q) ||
+      s.usAbbr.toLowerCase().includes(q) || s.ukAbbr.toLowerCase().includes(q)
+    ) : STITCH_MAP;
+    renderConversionTable(filtered);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('us-uk-crochet-stitch-converter.html');
+    injectFooter();
+    buildSelects();
+    buildConversionTable();
+  });
+  </script>
+</body>
+</html>

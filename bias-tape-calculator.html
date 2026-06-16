@@ -1,0 +1,373 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bias Tape Calculator — Sewing Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate how much fabric you need to make continuous bias tape. Enter tape length, width, and fabric square size to get cutting instructions. Also shows purchased packages needed.">
+  <link rel="canonical" href="https://theusefulpages.com/bias-tape-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Bias Tape Calculator</h1>
+      <p class="page-subtitle">Calculate the fabric square needed to make continuous bias tape, or how many purchased packages to buy.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Total Bias Tape Length Needed (inches)</label>
+            <input class="form-input" type="number" id="tape-length" min="1" step="1" placeholder="e.g. 200">
+            <div style="font-size:0.8rem;color:var(--color-muted);margin-top:0.25rem;">Measure all edges you need to bind</div>
+          </div>
+          <div>
+            <label class="label">Bias Tape Width (unfolded strip width, inches)</label>
+            <select class="form-select" id="tape-width">
+              <option value="1">1" strip → ½" double-fold tape</option>
+              <option value="1.5">1.5" strip → ¾" double-fold tape</option>
+              <option value="2" selected>2" strip → 1" double-fold tape</option>
+              <option value="2.5">2.5" strip → standard single-fold wide</option>
+              <option value="3">3" strip → 1½" binding (quilts)</option>
+              <option value="custom">Custom width</option>
+            </select>
+          </div>
+          <div id="custom-width-wrap" style="display:none;">
+            <label class="label">Custom Strip Width (inches)</label>
+            <input class="form-input" type="number" id="custom-tape-width" min="0.5" step="0.25" placeholder="e.g. 2.5">
+          </div>
+          <div>
+            <label class="label">Seam Allowance for Joining Strips</label>
+            <select class="form-select" id="join-sa">
+              <option value="0.25">¼" (standard for bias)</option>
+              <option value="0.5">½"</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Add Safety Buffer</label>
+            <select class="form-select" id="buffer">
+              <option value="1.0">None (exact calculation)</option>
+              <option value="1.10">10% extra</option>
+              <option value="1.15" selected>15% extra (recommended)</option>
+              <option value="1.20">20% extra</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcBiasTape()">Calculate</button>
+          <button class="btn-outline" onclick="resetBias()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+
+        <div id="bias-result" style="display:none;margin-top:1.5rem;">
+          <h3>Make Your Own Continuous Bias Tape</h3>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-square-size"></div>
+              <div class="stat-label">Fabric Square Size Needed</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-strip-width"></div>
+              <div class="stat-label">Unfolded Strip Width</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-tape-yards"></div>
+              <div class="stat-label">Tape Length (yards)</div>
+            </div>
+          </div>
+          <div id="bias-steps" style="margin-top:1rem;padding:1rem;background:var(--color-surface-2,rgba(0,0,0,0.04));border-radius:0.5rem;"></div>
+
+          <h3 style="margin-top:1.5rem;">Buy Pre-made Bias Tape Instead</h3>
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-pkgs-3yd"></div>
+              <div class="stat-label">3-yard packages needed</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-pkgs-5yd"></div>
+              <div class="stat-label">5-yard packages needed</div>
+            </div>
+          </div>
+          <p class="disclaimer" style="margin-top:1rem;">Results are estimates. Always add extra for shrinkage, mistakes, and pattern matching. The continuous bias method yields a little less than the theoretical maximum — always buy or cut more than calculated.</p>
+        </div>
+
+        <h3 style="margin-top:1.5rem;">Common Bias Tape Uses</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Application</th><th>Common Tape Width</th><th>Type</th></tr></thead>
+            <tbody>
+              <tr><td>Quilt binding</td><td>2½" strips (makes 1¼" binding)</td><td>Double-fold</td></tr>
+              <tr><td>Garment neckline / armhole</td><td>1" strip (½" finished)</td><td>Double-fold or single-fold</td></tr>
+              <tr><td>Appliqué outline</td><td>½" strip</td><td>Single-fold</td></tr>
+              <tr><td>Bag / tote edge</td><td>2" strip</td><td>Double-fold</td></tr>
+              <tr><td>Facing alternative</td><td>1–2" strip</td><td>Single-fold</td></tr>
+              <tr><td>Piping casing</td><td>Varies by cord size</td><td>Bias-cut strip</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use the Bias Tape Calculator</h2>
+        <ul>
+          <li>Measure all the edges you need to bind and add them together for the total tape length needed (in inches).</li>
+          <li>Select the strip width — for double-fold bias tape, the standard is 2" wide strips folded to 1" finished.</li>
+          <li>Choose your joining seam allowance (¼" is standard for bias tape joins).</li>
+          <li>Select a safety buffer to account for waste and errors.</li>
+          <li>Click <strong>Calculate</strong> to see the fabric square size needed and how many purchased packages to buy.</li>
+        </ul>
+        <h2>How Continuous Bias Tape Works</h2>
+        <ol>
+          <li>Cut a square of fabric. The size of the square determines how much tape you get.</li>
+          <li>Cut the square in half diagonally to make two triangles.</li>
+          <li>Sew the triangles together along the short straight edge (¼" seam) to make a parallelogram.</li>
+          <li>Draw parallel lines across the fabric at the desired strip width.</li>
+          <li>Join the top and bottom edges with a ¼" offset to make a tube. Sew together.</li>
+          <li>Cut along the spiral lines to produce one continuous bias strip.</li>
+        </ol>
+        <h2>Formula Used</h2>
+        <ul>
+          <li>The area of the fabric square (side²) divided by the strip width gives the theoretical tape length.</li>
+          <li>A small amount is lost to seam allowances when joining; the calculator accounts for this.</li>
+          <li>For a 20" square cut into 2" strips: 20" × 20" ÷ 2" = 200" of tape (theoretical).</li>
+        </ul>
+        <h2>Tips</h2>
+        <ul>
+          <li>Cut strips on the true bias (45° to the grain) for maximum stretch and smooth curves.</li>
+          <li>Pre-cut quilting strips are not bias — they are cut straight and do not stretch around curves.</li>
+          <li>Use a bias tape maker tool to fold and press strips quickly and evenly.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Bias Tape Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Bias Tape Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{
+      injectNav('bias-tape-calculator.html');
+      injectFooter();
+      document.getElementById('tape-width').addEventListener('change', function(){
+        document.getElementById('custom-width-wrap').style.display = this.value === 'custom' ? '' : 'none';
+      });
+    });
+
+    function getStripWidth(){
+      const sel = document.getElementById('tape-width').value;
+      if(sel === 'custom'){
+        const cw = parseFloat(document.getElementById('custom-tape-width').value);
+        return isNaN(cw)||cw<=0 ? NaN : cw;
+      }
+      return parseFloat(sel);
+    }
+
+    function calcBiasTape(){
+      const tapeLenIn = parseFloat(document.getElementById('tape-length').value);
+      const stripW    = getStripWidth();
+      const joinSA    = parseFloat(document.getElementById('join-sa').value);
+      const buffer    = parseFloat(document.getElementById('buffer').value);
+
+      if(isNaN(tapeLenIn)||tapeLenIn<=0){alert('Please enter a valid tape length.');return;}
+      if(isNaN(stripW)||stripW<=0){alert('Please enter a valid strip width.');return;}
+
+      // Apply buffer
+      const totalNeeded = tapeLenIn * buffer;
+
+      // Fabric area needed (in²): area = strip_width × total_length
+      // Add ~10% for seam losses in continuous method
+      const areaNeeded = stripW * totalNeeded * 1.08;
+
+      // Square side: sqrt(area)
+      const squareSide = Math.sqrt(areaNeeded);
+      // Round up to nearest 0.5"
+      const squareSideRounded = Math.ceil(squareSide * 2) / 2;
+
+      // Actual yield from rounded square
+      const actualYield = (squareSideRounded * squareSideRounded) / stripW / 1.08;
+
+      const tapeYards   = (totalNeeded / 36).toFixed(2);
+      const pkgs3       = Math.ceil(totalNeeded / 108); // 3yd = 108"
+      const pkgs5       = Math.ceil(totalNeeded / 180); // 5yd = 180"
+
+      document.getElementById('res-square-size').textContent = squareSideRounded + '" × ' + squareSideRounded + '"';
+      document.getElementById('res-strip-width').textContent = stripW + '"';
+      document.getElementById('res-tape-yards').textContent  = tapeYards + ' yards';
+      document.getElementById('res-pkgs-3yd').textContent   = pkgs3 + ' package' + (pkgs3===1?'':'s');
+      document.getElementById('res-pkgs-5yd').textContent   = pkgs5 + ' package' + (pkgs5===1?'':'s');
+
+      const steps = document.getElementById('bias-steps');
+      steps.innerHTML = `
+        <strong>Steps for a ${squareSideRounded}" × ${squareSideRounded}" square:</strong>
+        <ol style="margin:0.5rem 0 0 1.2rem;padding:0;line-height:1.8;">
+          <li>Cut a <strong>${squareSideRounded}" × ${squareSideRounded}"</strong> square of fabric.</li>
+          <li>Cut diagonally from corner to corner to make 2 triangles.</li>
+          <li>Sew the two triangles together on the short straight edge with a ¼" seam. Press open. You now have a parallelogram.</li>
+          <li>Draw lines parallel to the long bias edges every <strong>${stripW}"</strong> across the parallelogram.</li>
+          <li>Bring the short straight edges together (right sides facing), offset by exactly one strip width so the drawn lines align. Sew with a ¼" seam and press open.</li>
+          <li>Cut along the spiral to produce one continuous strip approximately <strong>${Math.round(actualYield)}"</strong> long.</li>
+          <li>Fold and press into bias tape using your preferred method.</li>
+        </ol>`;
+
+      document.getElementById('bias-result').style.display = 'block';
+    }
+
+    function resetBias(){
+      document.getElementById('tape-length').value = '';
+      document.getElementById('bias-result').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

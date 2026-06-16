@@ -1,0 +1,403 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repeat Instruction Explainer — Pattern Tool | The Useful Pages</title>
+  <meta name="description" content="Paste a crochet or knitting repeat instruction and see it fully expanded. Shows stitch count and plain-English breakdown.">
+  <link rel="canonical" href="https://theusefulpages.com/repeat-instruction-explainer.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .result-box { background:var(--bg-secondary); border:1.5px solid var(--border); border-radius:12px; padding:1.1rem; margin-top:0.75rem; }
+    .result-box h3 { font-size:0.85rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; margin:0 0 0.5rem; }
+    .expand-text { font-size:0.95rem; line-height:1.7; color:var(--text); font-family:'Courier New',monospace; word-break:break-word; }
+    .stitch-count-badge { display:inline-flex; align-items:center; gap:0.4rem; background:var(--primary); color:#fff; border-radius:8px; padding:0.35rem 0.85rem; font-weight:700; font-size:0.92rem; margin-top:0.75rem; }
+    .iteration-block { margin-bottom:0.4rem; }
+    .iteration-label { font-size:0.78rem; color:var(--text-muted); font-weight:600; }
+    .more-note { font-style:italic; color:var(--text-muted); font-size:0.85rem; margin-top:0.35rem; }
+    .example-chips { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.5rem; }
+    .example-chip { padding:0.28rem 0.65rem; border-radius:16px; border:1.5px solid var(--border); background:var(--bg-secondary); font-size:0.78rem; cursor:pointer; color:var(--text-muted); transition:all 0.15s; white-space:nowrap; }
+    .example-chip:hover { border-color:var(--primary); color:var(--primary); }
+    .mode-toggle { display:flex; gap:0.5rem; margin-bottom:0.75rem; }
+    .mode-btn { flex:1; padding:0.45rem; border-radius:8px; border:1.5px solid var(--border); background:var(--bg-secondary); color:var(--text-muted); cursor:pointer; font-size:0.85rem; font-weight:600; transition:all 0.15s; }
+    .mode-btn.active { border-color:var(--primary); background:var(--primary); color:#fff; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 class="page-title">Repeat Instruction Explainer</h1>
+      <p class="page-subtitle">Type or paste a repeat instruction and see it fully expanded stitch-by-stitch, with a total stitch count.</p>
+
+      <div class="tool-card">
+        <div class="mode-toggle">
+          <button class="mode-btn active" id="modeCrochet" onclick="setMode('crochet')">Crochet</button>
+          <button class="mode-btn" id="modeKnitting" onclick="setMode('knitting')">Knitting</button>
+        </div>
+
+        <div class="label">Repeat Instruction</div>
+        <input class="form-input" id="repeatInput" type="text"
+          placeholder="*sc, dc, ch1* repeat 6 times"
+          style="font-family:'Courier New',monospace;">
+        <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.35rem;">
+          Supported formats: <code>*…* repeat X times</code> · <code>[…] X times</code> · <code>(…) repeat to end</code> · <code>…, repeat from * X times</code>
+        </div>
+
+        <div class="example-chips" id="exampleChips"></div>
+
+        <button class="btn btn-primary" style="margin-top:1rem;" onclick="explain()">Expand Repeat</button>
+
+        <div id="resultArea" style="display:none;">
+          <div class="result-box" style="margin-top:1rem;">
+            <h3>Expanded (showing first 3 iterations)</h3>
+            <div id="expandedText" class="expand-text"></div>
+            <div id="moreNote" class="more-note" style="display:none;"></div>
+          </div>
+          <div class="result-box">
+            <h3>Stitch Count</h3>
+            <div id="stitchCount"></div>
+          </div>
+        </div>
+        <div id="errorMsg" style="display:none;color:#e53e3e;font-size:0.88rem;margin-top:0.75rem;"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Type or paste a repeat instruction from your pattern.</li>
+          <li>Click an example chip to prefill with a common pattern format.</li>
+          <li>Click <strong>Expand Repeat</strong> to see every stitch written out.</li>
+          <li>The tool shows the first 3 iterations in full, then notes how many more remain.</li>
+          <li><strong>Total stitch count</strong> counts each stitch token in the full expansion.</li>
+          <li>Switch between <strong>Crochet</strong> and <strong>Knitting</strong> mode for mode-specific examples.</li>
+          <li>Chains (ch) count as stitches for the purposes of the total count shown.</li>
+        </ul>
+        <div style="margin-top:0.75rem;font-size:0.82rem;color:var(--text-muted);">
+          <strong>Supported formats:</strong> <code>*sc, dc* repeat 4 times</code> — <code>[k2, p2] 6 times</code> — <code>(dc, ch1, dc) repeat to end</code> — <code>repeat from * to end 5 times</code>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Repeat Instruction Explainer</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Repeat Instruction Explainer to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    let mode = 'crochet';
+
+    const EXAMPLES = {
+      crochet: [
+        '*sc, dc, ch1* repeat 6 times',
+        '[sc in next 2, dc in next] repeat 4 times',
+        '(dc, ch2, dc) repeat 5 times',
+        '*sc, hdc, dc, hdc* repeat to end 3 times',
+        '*ch1, skip 1, sc in next* repeat 8 times',
+      ],
+      knitting: [
+        '[k2, p2] repeat 6 times',
+        '*k1, p1* repeat to end 10 times',
+        '(ssk, k4, k2tog) repeat 3 times',
+        '*k3, p1, k3* repeat 4 times',
+        '[yo, k2tog] repeat 5 times',
+      ]
+    };
+
+    function setMode(m) {
+      mode = m;
+      document.getElementById('modeCrochet').className = 'mode-btn' + (m==='crochet'?' active':'');
+      document.getElementById('modeKnitting').className = 'mode-btn' + (m==='knitting'?' active':'');
+      renderExamples();
+      document.getElementById('resultArea').style.display='none';
+      document.getElementById('errorMsg').style.display='none';
+    }
+
+    function renderExamples() {
+      const chips = EXAMPLES[mode].map(e =>
+        `<span class="example-chip" onclick="useExample(this)">${e}</span>`
+      ).join('');
+      document.getElementById('exampleChips').innerHTML = chips;
+    }
+
+    function useExample(el) {
+      document.getElementById('repeatInput').value = el.textContent;
+      explain();
+    }
+
+    function parseRepeat(raw) {
+      raw = raw.trim();
+      let inner = '', times = 0;
+
+      // Pattern: *...* repeat X times / *...* X times / repeat from * X times
+      let m;
+      m = raw.match(/\*([^*]+)\*\s*(?:repeat\s+)?(\d+)\s*times?/i);
+      if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+
+      // Pattern: *...* repeat to end X times
+      if (!inner) {
+        m = raw.match(/\*([^*]+)\*\s*(?:repeat\s+)?to\s+end\s+(\d+)\s*times?/i);
+        if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+      }
+
+      // Pattern: [...] X times
+      if (!inner) {
+        m = raw.match(/\[([^\]]+)\]\s*(?:repeat\s+)?(\d+)\s*times?/i);
+        if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+      }
+
+      // Pattern: (...) X times / (...) repeat X times
+      if (!inner) {
+        m = raw.match(/\(([^)]+)\)\s*(?:repeat\s+)?(\d+)\s*times?/i);
+        if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+      }
+
+      // Pattern: (...) repeat to end X times
+      if (!inner) {
+        m = raw.match(/\(([^)]+)\)\s*repeat\s+to\s+end\s+(\d+)\s*times?/i);
+        if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+      }
+
+      // Pattern: repeat from * to end X times (inner is everything before "repeat")
+      if (!inner) {
+        m = raw.match(/^(.+?)\s*,?\s*repeat\s+from\s+\*\s+(?:to\s+end\s+)?(\d+)\s*times?/i);
+        if (m) { inner = m[1].trim(); times = parseInt(m[2]); }
+      }
+
+      // Fallback: just look for any "X times" at end
+      if (!inner) {
+        m = raw.match(/^(.+?)\s+(\d+)\s*times?$/i);
+        if (m) {
+          inner = m[1].replace(/^\*|\*$/g,'').replace(/^\[|\]$/g,'').replace(/^\(|\)$/g,'').trim();
+          times = parseInt(m[2]);
+        }
+      }
+
+      return { inner, times };
+    }
+
+    function countStitches(stitchList) {
+      return stitchList.filter(s => s.trim().length > 0).length;
+    }
+
+    function explain() {
+      const raw = document.getElementById('repeatInput').value.trim();
+      const errorEl = document.getElementById('errorMsg');
+      const resultArea = document.getElementById('resultArea');
+      errorEl.style.display='none';
+      resultArea.style.display='none';
+
+      if (!raw) { errorEl.textContent = 'Please enter a repeat instruction.'; errorEl.style.display='block'; return; }
+
+      const { inner, times } = parseRepeat(raw);
+
+      if (!inner || times < 1 || times > 200) {
+        errorEl.textContent = 'Could not parse this repeat instruction. Make sure it includes a repeat group (*…*, […], or (…)) and a number of times (e.g. "6 times").';
+        errorEl.style.display='block';
+        return;
+      }
+
+      const stitches = inner.split(',').map(s => s.trim()).filter(s => s.length > 0);
+      const perRepeat = stitches.length;
+      const totalStitches = perRepeat * times;
+
+      // Build expansion (show up to 3 full iterations)
+      const showIterations = Math.min(3, times);
+      const expandedEl = document.getElementById('expandedText');
+      const moreNote = document.getElementById('moreNote');
+
+      let htmlParts = [];
+      for (let i = 0; i < showIterations; i++) {
+        htmlParts.push(
+          `<div class="iteration-block"><span class="iteration-label">Repeat ${i+1}: </span>${stitches.join(', ')}</div>`
+        );
+      }
+      expandedEl.innerHTML = htmlParts.join('');
+
+      if (times > 3) {
+        moreNote.textContent = `… continuing for ${times - 3} more iteration${times-3>1?'s':''} (× ${times} total)`;
+        moreNote.style.display = 'block';
+      } else {
+        moreNote.style.display = 'none';
+      }
+
+      // Stitch count
+      const countEl = document.getElementById('stitchCount');
+      countEl.innerHTML = `
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;">
+          <div class="stitch-count-badge">Total: ${totalStitches} stitches</div>
+          <div style="font-size:0.85rem;color:var(--text-muted);">${perRepeat} per repeat × ${times} repeats</div>
+        </div>
+        <div style="margin-top:0.5rem;font-size:0.85rem;color:var(--text-muted);">
+          Stitches per repeat: ${stitches.join(' · ')}
+        </div>
+      `;
+
+      resultArea.style.display = 'block';
+    }
+
+    document.getElementById('repeatInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') explain();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('repeat-instruction-explainer.html');
+      injectFooter();
+      renderExamples();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Converter - Online Text Case Changer | The Useful Pages</title>
+  <meta name="description" content="Convert text to uppercase, lowercase, title case, sentence case, or alternating case instantly. Also reverse text and remove extra spaces. Free online case converter.">
+  <link rel="canonical" href="https://theusefulpages.com/case-converter.html">
+  <meta property="og:title" content="Case Converter - The Useful Pages">
+  <meta property="og:description" content="Convert text to uppercase, lowercase, title case, sentence case, or alternating case instantly. Free online case converter tool.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Case Converter","url":"https://theusefulpages.com/case-converter.html","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Case Converter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Paste your text and click a conversion button to change its case instantly.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label" for="mainText">Your Text</label>
+          <textarea class="form-textarea" id="mainText" placeholder="Type or paste text here..." style="min-height:200px;" oninput="updateCharCount()"></textarea>
+          <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.4rem;" id="charCount">0 characters &bull; 0 words</div>
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:0.875rem;font-weight:600;margin-bottom:0.6rem;color:var(--primary);">Case Conversions</div>
+          <div class="btn-row">
+            <button class="btn btn-primary" style="min-height:44px;" onclick="convertCase('upper')">UPPERCASE</button>
+            <button class="btn btn-primary" style="min-height:44px;" onclick="convertCase('lower')">lowercase</button>
+            <button class="btn btn-primary" style="min-height:44px;" onclick="convertCase('title')">Title Case</button>
+            <button class="btn btn-primary" style="min-height:44px;" onclick="convertCase('sentence')">Sentence case</button>
+            <button class="btn btn-primary" style="min-height:44px;" onclick="convertCase('alternate')">aLtErNaTe</button>
+          </div>
+        </div>
+
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:0.875rem;font-weight:600;margin-bottom:0.6rem;color:var(--primary);">Text Transformations</div>
+          <div class="btn-row">
+            <button class="btn btn-accent" style="min-height:44px;" onclick="removeExtraSpaces()">Remove Extra Spaces</button>
+            <button class="btn btn-accent" style="min-height:44px;" onclick="reverseText()">Reverse Text</button>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-outline" style="min-height:44px;" onclick="copyText(document.getElementById('mainText').value, 'Text copied!')">Copy Text</button>
+          <button class="btn btn-ghost" style="min-height:44px;" onclick="clearAll()">Clear</button>
+        </div>
+      </div>
+
+      <!-- Quick Preview -->
+      <div class="tool-card" style="margin-top:1rem;" id="previewCard">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">All Case Previews</h2>
+        <div id="previewsContainer" style="font-size:0.875rem;color:var(--text-muted);">Type some text above to see previews of all cases.</div>
+      </div>
+
+
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Type or paste your text into the textarea.</li>
+          <li>Click any case conversion button to transform the text in the textarea.</li>
+          <li><strong>UPPERCASE</strong> — converts all letters to capital letters.</li>
+          <li><strong>lowercase</strong> — converts all letters to small letters.</li>
+          <li><strong>Title Case</strong> — capitalizes the first letter of every word.</li>
+          <li><strong>Sentence case</strong> — capitalizes only the first letter of each sentence.</li>
+          <li><strong>aLtErNaTe</strong> — alternates between lower and uppercase letters.</li>
+          <li><strong>Remove Extra Spaces</strong> — collapses multiple spaces into one.</li>
+          <li><strong>Reverse Text</strong> — reverses all characters in the text.</li>
+          <li>Use the Copy button to copy the transformed text to your clipboard.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="word-counter.html">Word Counter</a>
+          <a href="character-counter.html">Character Counter</a>
+          <a href="slug-generator.html">Slug Generator</a>
+          <a href="remove-duplicate-lines.html">Remove Duplicate Lines</a>
+          <a href="text-diff.html">Text Diff Checker</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Case Converter</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free case converter to quickly change text between uppercase, lowercase, title case, sentence case, camelCase, snake_case, and other common formats. It is useful for writing cleanup, code naming, headlines, and lists. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+
+  </div>
+
+
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('case-converter.html');
+    injectFooter();
+  });
+
+  function updateCharCount() {
+    const text = document.getElementById('mainText').value;
+    const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+    document.getElementById('charCount').textContent = `${fmtNum(text.length, 0)} characters • ${fmtNum(words, 0)} words`;
+    updatePreviews(text);
+  }
+
+  function updatePreviews(text) {
+    const container = document.getElementById('previewsContainer');
+    if (!text.trim()) {
+      container.innerHTML = '<span style="color:var(--text-muted);">Type some text above to see previews of all cases.</span>';
+      return;
+    }
+    const preview = text.length > 120 ? text.slice(0, 120) + '...' : text;
+    const cases = [
+      { label: 'UPPERCASE', val: preview.toUpperCase() },
+      { label: 'lowercase', val: preview.toLowerCase() },
+      { label: 'Title Case', val: preview.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()) },
+      { label: 'Sentence case', val: preview.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase()) },
+      { label: 'aLtErNaTe', val: (() => { let i=0; return preview.split('').map(c => c.match(/[a-z]/i) ? (i++%2===0 ? c.toLowerCase() : c.toUpperCase()) : c).join(''); })() },
+    ];
+    container.innerHTML = cases.map(c => `
+      <div style="margin-bottom:0.75rem;padding:0.6rem 0.75rem;background:var(--bg-secondary);border-radius:6px;border:1px solid var(--border);">
+        <div style="font-size:0.75rem;font-weight:600;color:var(--primary);margin-bottom:0.25rem;">${c.label}</div>
+        <div style="word-break:break-word;">${c.val}</div>
+      </div>
+    `).join('');
+  }
+
+  function convertCase(type) {
+    const ta = document.getElementById('mainText');
+    let t = ta.value;
+    if (type === 'upper') t = t.toUpperCase();
+    else if (type === 'lower') t = t.toLowerCase();
+    else if (type === 'title') t = t.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+    else if (type === 'sentence') t = t.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
+    else if (type === 'alternate') {
+      let i = 0;
+      t = t.split('').map(c => c.match(/[a-z]/i) ? (i++ % 2 === 0 ? c.toLowerCase() : c.toUpperCase()) : c).join('');
+    }
+    ta.value = t;
+    updateCharCount();
+  }
+
+  function removeExtraSpaces() {
+    const ta = document.getElementById('mainText');
+    ta.value = ta.value.replace(/[ \t]+/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
+    updateCharCount();
+  }
+
+  function reverseText() {
+    const ta = document.getElementById('mainText');
+    ta.value = ta.value.split('').reverse().join('');
+    updateCharCount();
+  }
+
+  function clearAll() {
+    document.getElementById('mainText').value = '';
+    updateCharCount();
+  }
+  </script>
+</body>
+</html>

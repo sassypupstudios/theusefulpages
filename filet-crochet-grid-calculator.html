@@ -1,0 +1,365 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filet Crochet Grid Calculator — Grid Size &amp; Design Planner | The Useful Pages</title>
+  <meta name="description" content="Calculate filet crochet grid dimensions and foundation chain from finished size and gauge. Includes an interactive click-to-design grid planner.">
+  <link rel="canonical" href="https://theusefulpages.com/filet-crochet-grid-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    #filet-grid-table { border-collapse: collapse; margin: 0 auto; }
+    #filet-grid-table td {
+      width: 22px; height: 22px;
+      border: 1px solid var(--color-border);
+      cursor: pointer;
+      background: var(--color-bg);
+      transition: background 0.1s;
+    }
+    #filet-grid-table td.filled { background: var(--color-text); }
+    #filet-grid-table td:hover { opacity: 0.7; }
+    #grid-wrap { overflow: auto; max-width: 100%; padding: 0.5rem 0; }
+    .grid-legend { display: flex; gap: 1rem; align-items: center; margin-bottom: 0.5rem; font-size: 0.875rem; }
+    .grid-legend-box { width: 20px; height: 20px; border: 1px solid var(--color-border); display: inline-block; vertical-align: middle; margin-right: 4px; }
+  </style>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Filet Crochet Grid Calculator</h1>
+      <p class="page-subtitle">Calculate your grid size and foundation chain from finished dimensions and gauge, then plan your design with an interactive grid.</p>
+      <div class="tool-card">
+        <h3 style="margin-bottom:0.75rem;font-size:1rem;">Size Calculator</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Desired Finished Width (inches)</label>
+            <input class="form-input" type="number" id="filet-width" min="1" step="0.5" placeholder="e.g. 12">
+          </div>
+          <div>
+            <label class="label">Desired Finished Height (inches)</label>
+            <input class="form-input" type="number" id="filet-height" min="1" step="0.5" placeholder="e.g. 10">
+          </div>
+          <div>
+            <label class="label">Mesh Gauge (squares per inch)</label>
+            <input class="form-input" type="number" id="filet-gauge" min="0.25" step="0.25" placeholder="e.g. 2" value="2">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcFilet()">Calculate Grid</button>
+        <div id="filet-result" style="margin-top:1.25rem;"></div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--color-border);">
+
+        <h3 style="margin-bottom:0.5rem;font-size:1rem;">Interactive Design Grid</h3>
+        <p style="font-size:0.875rem;color:var(--color-text-muted);margin-bottom:0.75rem;">Click cells to toggle filled (block) / open (mesh) squares. Max 20×20. Use to sketch your design before charting.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-bottom:0.75rem;">
+          <div>
+            <label class="label">Grid Columns (max 20)</label>
+            <input class="form-input" type="number" id="grid-cols" min="1" max="20" step="1" value="10">
+          </div>
+          <div>
+            <label class="label">Grid Rows (max 20)</label>
+            <input class="form-input" type="number" id="grid-rows" min="1" max="20" step="1" value="8">
+          </div>
+        </div>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+          <button class="btn-primary" onclick="buildGrid()">Build Grid</button>
+          <button class="btn-outline" onclick="clearGrid()">Clear Grid</button>
+          <button class="btn-outline" onclick="invertGrid()">Invert</button>
+        </div>
+        <div class="grid-legend">
+          <span><span class="grid-legend-box" style="background:var(--color-text)"></span> Filled (block stitch)</span>
+          <span><span class="grid-legend-box"></span> Open (mesh stitch)</span>
+        </div>
+        <div id="grid-wrap"><p style="color:var(--color-text-muted);font-size:0.875rem;">Set dimensions and click Build Grid to start designing.</p></div>
+        <div id="grid-count" style="margin-top:0.5rem;font-size:0.875rem;color:var(--color-text-muted);"></div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Enter your desired finished dimensions and mesh gauge to calculate grid size and foundation chain.</li>
+          <li>Use the <strong>Interactive Grid</strong> to click cells and sketch out a design — filled cells = block stitches, open cells = mesh stitches.</li>
+          <li>Invert the grid to swap all blocks and open squares at once.</li>
+        </ul>
+        <h2>Filet Crochet Foundation Chain Formula</h2>
+        <p>Standard dc mesh: foundation chain = (grid squares × 3) + 5</p>
+        <ul>
+          <li>Each mesh square = ch 2, 1 dc (3 sts per square)</li>
+          <li>Add 5 for the turning chain setup at the start</li>
+          <li>First row: dc in 8th ch from hook, then repeat (ch 2, skip 2, dc) across</li>
+        </ul>
+        <h2>Typical Filet Gauges</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Thread / Yarn</th><th>Squares/inch</th></tr></thead>
+            <tbody>
+              <tr><td>Size 10 thread</td><td>6–8</td></tr>
+              <tr><td>Size 3 thread</td><td>4–5</td></tr>
+              <tr><td>Fingering yarn</td><td>3–4</td></tr>
+              <tr><td>Sport / DK</td><td>2–3</td></tr>
+              <tr><td>Worsted</td><td>1.5–2</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Filet Crochet Grid Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Filet Crochet Grid Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  function calcFilet() {
+    const w = parseFloat(document.getElementById('filet-width').value);
+    const h = parseFloat(document.getElementById('filet-height').value);
+    const gauge = parseFloat(document.getElementById('filet-gauge').value);
+    const res = document.getElementById('filet-result');
+
+    if (!w || !h || !gauge || w <= 0 || h <= 0 || gauge <= 0) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter valid width, height, and gauge.</p>'; return;
+    }
+
+    const sqW = Math.round(w * gauge);
+    const sqH = Math.round(h * gauge);
+    // Foundation chain formula: (sqW * 3) + 5
+    const foundChain = sqW * 3 + 5;
+    const actualW = (sqW / gauge).toFixed(1);
+    const actualH = (sqH / gauge).toFixed(1);
+    const totalSq = sqW * sqH;
+
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid">
+        <div class="stat-box"><div class="label">Grid Width</div><strong>${sqW} squares</strong></div>
+        <div class="stat-box"><div class="label">Grid Height</div><strong>${sqH} rows</strong></div>
+        <div class="stat-box"><div class="label">Foundation Chain</div><strong>${foundChain} chs</strong></div>
+        <div class="stat-box"><div class="label">Total Squares</div><strong>${totalSq.toLocaleString()}</strong></div>
+        <div class="stat-box"><div class="label">Actual Width</div><strong>${actualW}"</strong></div>
+        <div class="stat-box"><div class="label">Actual Height</div><strong>${actualH}"</strong></div>
+      </div>
+      <div style="margin-top:0.75rem;padding:0.75rem;background:var(--color-bg-secondary);border-radius:0.5rem;font-size:0.875rem;">
+        <strong>Start:</strong> Ch ${foundChain}. Dc in 8th ch from hook. *Ch 2, skip 2 ch, dc in next ch* across (${sqW} mesh squares). Turn.
+      </div>
+    </div>`;
+  }
+
+  let gridData = [];
+
+  function buildGrid() {
+    let cols = parseInt(document.getElementById('grid-cols').value);
+    let rows = parseInt(document.getElementById('grid-rows').value);
+    cols = Math.min(20, Math.max(1, cols || 10));
+    rows = Math.min(20, Math.max(1, rows || 8));
+
+    gridData = Array.from({ length: rows }, () => Array(cols).fill(false));
+    renderGrid(cols, rows);
+  }
+
+  function renderGrid(cols, rows) {
+    const wrap = document.getElementById('grid-wrap');
+    let html = '<table id="filet-grid-table">';
+    for (let r = 0; r < rows; r++) {
+      html += '<tr>';
+      for (let c = 0; c < cols; c++) {
+        const filled = gridData[r][c] ? ' filled' : '';
+        html += `<td class="${filled}" onclick="toggleCell(${r},${c})"></td>`;
+      }
+      html += '</tr>';
+    }
+    html += '</table>';
+    wrap.innerHTML = html;
+    updateGridCount(cols, rows);
+  }
+
+  function toggleCell(r, c) {
+    gridData[r][c] = !gridData[r][c];
+    const table = document.getElementById('filet-grid-table');
+    const cell = table.rows[r].cells[c];
+    cell.classList.toggle('filled', gridData[r][c]);
+    updateGridCount(gridData[0].length, gridData.length);
+  }
+
+  function clearGrid() {
+    if (!gridData.length) return;
+    const rows = gridData.length;
+    const cols = gridData[0].length;
+    gridData = Array.from({ length: rows }, () => Array(cols).fill(false));
+    renderGrid(cols, rows);
+  }
+
+  function invertGrid() {
+    if (!gridData.length) return;
+    const rows = gridData.length;
+    const cols = gridData[0].length;
+    for (let r = 0; r < rows; r++)
+      for (let c = 0; c < cols; c++)
+        gridData[r][c] = !gridData[r][c];
+    renderGrid(cols, rows);
+  }
+
+  function updateGridCount(cols, rows) {
+    const filled = gridData.flat().filter(Boolean).length;
+    const open = cols * rows - filled;
+    document.getElementById('grid-count').textContent =
+      `${cols}×${rows} grid — ${filled} filled blocks, ${open} open mesh squares`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => { injectNav('filet-crochet-grid-calculator.html'); injectFooter(); });
+  </script>
+</body>
+</html>

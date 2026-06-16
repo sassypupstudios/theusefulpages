@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knitting Needle Size Converter — Online Reference | The Useful Pages</title>
+  <meta name="description" content="Convert knitting needle sizes between US, metric (mm), and UK/Canadian systems. Searchable table plus a quick converter.">
+  <link rel="canonical" href="https://theusefulpages.com/knitting-needle-size-converter.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Knitting Needle Size Converter</h1>
+      <p class="page-subtitle">Convert needle sizes between US, metric (mm), and UK/Canadian systems.</p>
+      <div class="tool-card">
+        <h2 style="font-size:1.1rem;margin-bottom:1rem;">Quick Converter</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+          <div>
+            <label class="label">Select System</label>
+            <select class="form-select" id="conv-system" onchange="rebuildDropdown()">
+              <option value="us">US Size</option>
+              <option value="mm">Metric (mm)</option>
+              <option value="uk">UK / Canadian</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Select Size</label>
+            <select class="form-select" id="conv-size" onchange="doConvert()"></select>
+          </div>
+        </div>
+        <div id="conv-result" style="display:none;" class="result-card">
+          <div class="stat-grid" id="conv-stats"></div>
+        </div>
+
+        <h2 style="font-size:1.1rem;margin:1.5rem 0 1rem;">Full Conversion Reference Table</h2>
+        <input class="form-input" type="text" id="search-needles" placeholder="Filter by US, mm, or UK size…" oninput="filterTable()" style="margin-bottom:1rem;">
+        <div class="table-wrap">
+          <table class="data-table" id="needle-table">
+            <thead><tr><th>US Size</th><th>Metric (mm)</th><th>UK / Canadian</th></tr></thead>
+            <tbody id="needle-tbody"></tbody>
+          </table>
+        </div>
+
+        <h2 style="font-size:1.1rem;margin:2rem 0 1rem;">Metric-Only Sizes (No US Equivalent)</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Metric (mm)</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>2.5 mm</td><td>Between US 1 and 2; common in European patterns</td></tr>
+              <tr><td>3.0 mm</td><td>Between US 2 and 3; common in European patterns</td></tr>
+              <tr><td>3.5 mm (US 4)</td><td>Also listed as metric 3.5 in some EU patterns</td></tr>
+              <tr><td>4.5 mm</td><td>Between US 7 and 8; used in some European patterns</td></tr>
+              <tr><td>5.5 mm</td><td>Between US 9 and 10; common in some EU designs</td></tr>
+              <tr><td>7.0 mm</td><td>Between US 10.5 and 11</td></tr>
+              <tr><td>11.0 mm</td><td>Between US 15 and 17</td></tr>
+              <tr><td>13.0 mm</td><td>Between US 17 and 19</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use This Converter</h2>
+        <ul>
+          <li>Use the <strong>Quick Converter</strong> — choose a size system and select a needle size to see all equivalents instantly.</li>
+          <li>Use the <strong>search box</strong> above the table to filter by US number, mm size, or UK number.</li>
+          <li>Note that some US sizes share the same metric size (e.g., US 4 and US 5 are both close to 3.5–3.75mm).</li>
+        </ul>
+        <h2>Understanding Needle Size Systems</h2>
+        <ul>
+          <li><strong>US:</strong> Numbered 0–50. Larger numbers = larger needles.</li>
+          <li><strong>Metric (mm):</strong> Measures actual shaft diameter. The most accurate and internationally consistent system.</li>
+          <li><strong>UK/Canadian (old system):</strong> Numbered in reverse — higher numbers = smaller needles. This system is largely obsolete but still appears in vintage patterns.</li>
+          <li>When in doubt, always use the mm measurement to match your needle correctly.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Knitting Needle Size Converter</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Knitting Needle Size Converter to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('knitting-needle-size-converter.html');injectFooter();init();});
+
+    const needles = [
+      {us:'0',    mm:2.0,   uk:14},
+      {us:'1',    mm:2.25,  uk:13},
+      {us:'2',    mm:2.75,  uk:12},
+      {us:'3',    mm:3.25,  uk:10},
+      {us:'4',    mm:3.5,   uk:9},
+      {us:'5',    mm:3.75,  uk:9},
+      {us:'6',    mm:4.0,   uk:8},
+      {us:'7',    mm:4.5,   uk:7},
+      {us:'8',    mm:5.0,   uk:6},
+      {us:'9',    mm:5.5,   uk:5},
+      {us:'10',   mm:6.0,   uk:4},
+      {us:'10.5', mm:6.5,   uk:3},
+      {us:'11',   mm:8.0,   uk:0},
+      {us:'13',   mm:9.0,   uk:'00'},
+      {us:'15',   mm:10.0,  uk:'000'},
+      {us:'17',   mm:12.75, uk:'—'},
+      {us:'19',   mm:15.0,  uk:'—'},
+      {us:'35',   mm:19.0,  uk:'—'},
+      {us:'50',   mm:25.0,  uk:'—'},
+    ];
+
+    function init(){
+      renderTable(needles);
+      rebuildDropdown();
+    }
+
+    function renderTable(data){
+      document.getElementById('needle-tbody').innerHTML =
+        data.map(n=>`<tr><td>${n.us}</td><td>${n.mm}</td><td>${n.uk}</td></tr>`).join('');
+    }
+
+    function filterTable(){
+      const q = document.getElementById('search-needles').value.toLowerCase();
+      renderTable(needles.filter(n=>
+        n.us.toLowerCase().includes(q)||
+        String(n.mm).includes(q)||
+        String(n.uk).toLowerCase().includes(q)
+      ));
+    }
+
+    function rebuildDropdown(){
+      const sys = document.getElementById('conv-system').value;
+      const sel = document.getElementById('conv-size');
+      sel.innerHTML = '';
+      let opts = [];
+      if(sys==='us') opts = needles.map(n=>({val:n.us, label:'US '+n.us}));
+      else if(sys==='mm') opts = needles.map(n=>({val:n.mm, label:n.mm+' mm'}));
+      else opts = needles.filter(n=>n.uk!=='—').map(n=>({val:n.uk, label:'UK '+n.uk}));
+      opts.forEach(o=>{
+        const opt=document.createElement('option');
+        opt.value=o.val; opt.textContent=o.label;
+        sel.appendChild(opt);
+      });
+      doConvert();
+    }
+
+    function doConvert(){
+      const sys = document.getElementById('conv-system').value;
+      const val = document.getElementById('conv-size').value;
+      let needle = null;
+      if(sys==='us') needle = needles.find(n=>n.us===val);
+      else if(sys==='mm') needle = needles.find(n=>String(n.mm)===val);
+      else needle = needles.find(n=>String(n.uk)===val);
+      if(!needle){document.getElementById('conv-result').style.display='none';return;}
+      document.getElementById('conv-stats').innerHTML = `
+        <div class="stat-box"><div class="stat-value">US ${needle.us}</div><div class="stat-label">US Size</div></div>
+        <div class="stat-box"><div class="stat-value">${needle.mm} mm</div><div class="stat-label">Metric</div></div>
+        <div class="stat-box"><div class="stat-value">${needle.uk}</div><div class="stat-label">UK / Canadian</div></div>
+      `;
+      document.getElementById('conv-result').style.display='block';
+    }
+  </script>
+</body>
+</html>

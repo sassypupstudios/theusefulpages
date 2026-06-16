@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sock Yarn Calculator — Online Calculator | The Useful Pages</title>
+  <meta name="description" content="Calculate yardage, cast-on count, and heel flap stitches for hand-knit socks. Includes standard size presets for women's and men's socks.">
+  <link rel="canonical" href="https://theusefulpages.com/sock-yarn-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Sock Yarn Calculator</h1>
+      <p class="page-subtitle">Calculate yardage, cast-on stitches, and heel flap count for hand-knit socks.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label class="label">Size Preset</label>
+            <select class="form-select" id="sock-preset" onchange="loadSockPreset()">
+              <option value="custom">Custom</option>
+              <option value="ws">Women's S (7.5" circ, 8.5" foot)</option>
+              <option value="wm">Women's M (8" circ, 9" foot)</option>
+              <option value="wl">Women's L (8.5" circ, 9.5" foot)</option>
+              <option value="ms">Men's S (8.5" circ, 9.5" foot)</option>
+              <option value="mm">Men's M (9" circ, 10" foot)</option>
+              <option value="ml">Men's L (9.5" circ, 11" foot)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Gauge: stitches per inch</label>
+            <input class="form-input" type="number" id="gauge-spi" min="4" step="0.5" value="8" placeholder="e.g. 8">
+          </div>
+          <div>
+            <label class="label">Foot Circumference (inches)</label>
+            <input class="form-input" type="number" id="foot-circ" min="4" step="0.5" placeholder="e.g. 8">
+          </div>
+          <div>
+            <label class="label">Foot Length (inches)</label>
+            <input class="form-input" type="number" id="foot-length" min="4" step="0.5" placeholder="e.g. 9">
+          </div>
+          <div>
+            <label class="label">Leg Length (inches)</label>
+            <input class="form-input" type="number" id="leg-length" value="6" step="0.5" placeholder="e.g. 6">
+          </div>
+        </div>
+        <div style="margin-top:1rem;">
+          <button class="btn-primary" onclick="calcSocks()">Calculate</button>
+          <button class="btn-ghost" onclick="resetSocks()" style="margin-left:0.5rem;">Reset</button>
+        </div>
+        <div id="sock-result" style="display:none;margin-top:1.5rem;">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-value" id="res-cast-on"></div>
+              <div class="stat-label">Cast-On Stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-heel-sts"></div>
+              <div class="stat-label">Heel Flap Stitches</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yds-one"></div>
+              <div class="stat-label">Yards (1 sock)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yds-pair"></div>
+              <div class="stat-label">Yards (pair)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-yds-buffer"></div>
+              <div class="stat-label">Yards + 15% Buffer</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value" id="res-skeins"></div>
+              <div class="stat-label">100g Skeins Needed</div>
+            </div>
+          </div>
+          <div class="result-card" style="margin-top:1rem;">
+            <p id="res-skein-note" style="margin:0;color:var(--text-muted);font-size:0.9rem;"></p>
+          </div>
+          <p class="disclaimer" style="margin-top:0.75rem;">Results are estimates. A standard 100g skein of fingering/sock yarn typically yields 400–450 yards. Actual usage varies by gauge, heel style, and pattern.</p>
+        </div>
+      </div>
+
+      <div class="tool-card" style="margin-top:1.5rem;">
+        <h2 style="font-size:1.1rem;margin-bottom:0.75rem;">Standard Sock Size Reference</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Size</th><th>Foot Circ.</th><th>Foot Length</th><th>US Shoe Size</th></tr></thead>
+            <tbody>
+              <tr><td>Women's S</td><td>7.5"</td><td>8.5"</td><td>5–6.5</td></tr>
+              <tr><td>Women's M</td><td>8"</td><td>9"</td><td>7–9</td></tr>
+              <tr><td>Women's L</td><td>8.5"</td><td>9.5"</td><td>9.5–11</td></tr>
+              <tr><td>Men's S</td><td>8.5"</td><td>9.5"</td><td>6–8</td></tr>
+              <tr><td>Men's M</td><td>9"</td><td>10"</td><td>8.5–10.5</td></tr>
+              <tr><td>Men's L</td><td>9.5"</td><td>11"</td><td>11–13</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="instructions-card">
+        <h2>How to Use This Calculator</h2>
+        <ul>
+          <li>Select a size preset or enter custom measurements.</li>
+          <li>Enter your gauge in stitches per inch — sock yarn is usually knit at 7–9 sts/inch.</li>
+          <li>Click <strong>Calculate</strong> to get your cast-on count, heel flap stitches, and yardage per sock and per pair.</li>
+        </ul>
+        <h2>Tips</h2>
+        <ul>
+          <li>Most sock patterns are knit with negative ease — the foot circumference of the sock should be about ½" less than the actual foot circumference.</li>
+          <li>A standard 100g fingering weight skein (400–450 yards) is usually enough for one average women's sock. Two skeins = one pair.</li>
+          <li>The heel flap stitch count is typically half the total cast-on stitches.</li>
+          <li>Gauge swatch in the round for the most accurate result, as gauge often differs between flat and circular knitting.</li>
+        </ul>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Sock Yarn Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Sock Yarn Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',()=>{injectNav('sock-yarn-calculator.html');injectFooter();});
+    const sockPresets = {
+      ws:{c:7.5,fl:8.5}, wm:{c:8,fl:9}, wl:{c:8.5,fl:9.5},
+      ms:{c:8.5,fl:9.5}, mm:{c:9,fl:10}, ml:{c:9.5,fl:11}
+    };
+    function loadSockPreset(){
+      const p = sockPresets[document.getElementById('sock-preset').value];
+      if(!p) return;
+      document.getElementById('foot-circ').value   = p.c;
+      document.getElementById('foot-length').value = p.fl;
+    }
+    function calcSocks(){
+      const spi     = parseFloat(document.getElementById('gauge-spi').value)||8;
+      const circ    = parseFloat(document.getElementById('foot-circ').value);
+      const footL   = parseFloat(document.getElementById('foot-length').value);
+      const legL    = parseFloat(document.getElementById('leg-length').value)||6;
+      if(isNaN(circ)||circ<=0||isNaN(footL)||footL<=0){alert('Please enter foot circumference and length.');return;}
+
+      const castOn   = Math.round(circ * spi);
+      const heelSts  = Math.round(castOn / 2);
+      // Area based: leg tube + foot tube + heel area
+      const legArea  = circ * legL;
+      const footArea = circ * footL;
+      const heelArea = circ * 2; // approx heel turn
+      const totalArea= legArea + footArea + heelArea;
+      const ydsOneSock = totalArea * 0.065; // fingering gauge avg
+      const ydsPair    = ydsOneSock * 2;
+      const buffer     = ydsPair * 1.15;
+      const skein400   = Math.ceil(buffer / 425);
+      const note = `At a typical 100g fingering skein (≈425 yards), you need approximately ${skein400} skein${skein400!==1?'s':''} for a pair. Buy the same dye lot!`;
+
+      document.getElementById('res-cast-on').textContent   = castOn;
+      document.getElementById('res-heel-sts').textContent  = heelSts;
+      document.getElementById('res-yds-one').textContent   = Math.round(ydsOneSock).toLocaleString();
+      document.getElementById('res-yds-pair').textContent  = Math.round(ydsPair).toLocaleString();
+      document.getElementById('res-yds-buffer').textContent= Math.round(buffer).toLocaleString();
+      document.getElementById('res-skeins').textContent    = skein400;
+      document.getElementById('res-skein-note').textContent= note;
+      document.getElementById('sock-result').style.display ='block';
+    }
+    function resetSocks(){
+      document.getElementById('sock-preset').value='custom';
+      ['foot-circ','foot-length'].forEach(id=>{document.getElementById(id).value='';});
+      document.getElementById('gauge-spi').value=8;
+      document.getElementById('leg-length').value=6;
+      document.getElementById('sock-result').style.display='none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Ring Stitch Calculator — Instructions by Stitch Type | The Useful Pages</title>
+  <meta name="description" content="Get specific magic ring written instructions for any stitch type and stitch count. Includes estimated first-round diameter and 6 vs 8 stitch start comparison.">
+  <link rel="canonical" href="https://theusefulpages.com/magic-ring-stitch-calculator.html">
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
+  }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div class="tool-page-wrap">
+    <main class="tool-main">
+      <h1 class="page-title">Magic Ring Stitch Calculator</h1>
+      <p class="page-subtitle">Get written magic ring instructions for any stitch type and count, with estimated first-round diameter at typical gauges.</p>
+      <div class="tool-card">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1rem;">
+          <div>
+            <label class="label">Stitch Type</label>
+            <select class="form-select" id="stitch-type">
+              <option value="sc">Single Crochet (sc)</option>
+              <option value="hdc">Half Double Crochet (hdc)</option>
+              <option value="dc" selected>Double Crochet (dc)</option>
+              <option value="tr">Treble Crochet (tr)</option>
+            </select>
+          </div>
+          <div>
+            <label class="label">Stitches in First Round</label>
+            <input class="form-input" type="number" id="ring-count" min="4" max="24" step="1" value="6">
+          </div>
+          <div>
+            <label class="label">Your Gauge (stitches per inch)</label>
+            <input class="form-input" type="number" id="ring-gauge" min="0.5" step="0.5" placeholder="e.g. 4">
+          </div>
+        </div>
+        <button class="btn-primary" onclick="calcMagicRing()">Generate Instructions</button>
+        <div id="ring-result" style="margin-top:1.25rem;"></div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--color-border);">
+
+        <h3 style="margin-bottom:0.75rem;font-size:1rem;">6-Stitch vs 8-Stitch Start Comparison</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Start Count</th><th>Center Feel</th><th>Best For</th><th>Typical Round 2</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>6 sts (sc)</td>
+                <td>Tight, small center hole, closes perfectly</td>
+                <td>Amigurumi spheres, 3D shapes, closed center designs</td>
+                <td>12 sts (2 sc in each)</td>
+              </tr>
+              <tr>
+                <td>8 sts (sc)</td>
+                <td>Slightly more open, flatter center</td>
+                <td>Flat circles, potholders, coasters, hat crowns</td>
+                <td>16 sts (2 sc in each)</td>
+              </tr>
+              <tr>
+                <td>6 sts (dc)</td>
+                <td>Open hexagon center</td>
+                <td>Granny squares, motifs, mandalas</td>
+                <td>12 sts (*2 dc, ch 1* × 6)</td>
+              </tr>
+              <tr>
+                <td>12 sts (sc)</td>
+                <td>Very flat, larger center</td>
+                <td>Large flat circles, rug centers, extra-flat bases</td>
+                <td>24 sts (2 sc in each)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr style="margin:1.5rem 0;border:none;border-top:1px solid var(--color-border);">
+
+        <h3 style="margin-bottom:0.75rem;font-size:1rem;">Estimated First-Round Diameters by Gauge</h3>
+        <div class="table-wrap" id="diameter-table">
+          <!-- Populated by JS on load -->
+        </div>
+      </div>
+
+      <div class="instructions-card">
+        <h2>How to Use</h2>
+        <ul>
+          <li>Select your stitch type (sc, hdc, dc, or tr).</li>
+          <li>Enter how many stitches you want in the first round (commonly 6 or 8 for sc, 6 or 12 for dc).</li>
+          <li>Enter your gauge (optional, used to estimate ring diameter).</li>
+          <li>Click <strong>Generate Instructions</strong> for complete written magic ring instructions.</li>
+        </ul>
+        <h2>What is a Magic Ring?</h2>
+        <p>A magic ring (also called an adjustable ring or magic circle) lets you start crocheting in the round with a closed center — no visible hole. You make a loop with the yarn tail, work your stitches into it, then pull the tail to cinch it shut.</p>
+        <h2>Alternative: Chain Start</h2>
+        <p>If you struggle with the magic ring, you can substitute: Ch 4, join to first ch to form a ring, then work stitches into the ring. The center will have a small hole but is easier to manage for beginners.</p>
+        <p class="disclaimer">Results are estimates. Actual results vary by gauge, tension, yarn, and hook size.</p>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Magic Ring Stitch Calculator</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free Magic Ring Stitch Calculator to get quick, accurate results directly in your browser. It is designed for everyday use with no signup, no downloads, and no account required. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+  </div>
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  const stitchData = {
+    sc:  { name: 'single crochet (sc)',         chains: 1, heightIn: 0.25,  abbr: 'sc' },
+    hdc: { name: 'half double crochet (hdc)',    chains: 2, heightIn: 0.35,  abbr: 'hdc' },
+    dc:  { name: 'double crochet (dc)',          chains: 3, heightIn: 0.50,  abbr: 'dc' },
+    tr:  { name: 'treble crochet (tr)',          chains: 4, heightIn: 0.65,  abbr: 'tr' },
+  };
+
+  function calcMagicRing() {
+    const type = document.getElementById('stitch-type').value;
+    const count = parseInt(document.getElementById('ring-count').value);
+    const gauge = parseFloat(document.getElementById('ring-gauge').value);
+    const res = document.getElementById('ring-result');
+
+    if (!count || count < 4) {
+      res.innerHTML = '<p style="color:var(--color-error)">Please enter a stitch count of at least 4.</p>'; return;
+    }
+
+    const st = stitchData[type];
+    const ch = st.chains;
+
+    // Diameter of first round: circumference = count stitches / gauge
+    // circumference = pi * d  =>  d = count / (pi * gauge)
+    let diamText = '';
+    let diamBox = '';
+    if (gauge && gauge > 0) {
+      const diam = (count / (Math.PI * gauge)).toFixed(2);
+      diamText = `at your gauge (${gauge} sts/inch), `;
+      diamBox = `<div class="stat-box"><div class="label">Est. Ring Diameter</div><strong>${diam}"</strong></div>`;
+    }
+
+    // Written instructions
+    const instruction = `Make a magic ring. Chain ${ch}. Work ${count} ${st.abbr} into the ring. Pull the yarn tail firmly to close the ring. Join to the top of the beginning ch-${ch} with a slip stitch. (${count} ${st.abbr})`;
+
+    // Alternative (no join, working in spiral — for sc amigurumi)
+    let spiralNote = '';
+    if (type === 'sc') {
+      spiralNote = `<p style="margin-top:0.75rem;font-size:0.875rem;"><strong>For amigurumi (working in continuous spiral):</strong> Make a magic ring. Work ${count} sc into the ring. Pull tail to close. Do NOT join — place a stitch marker and continue in a spiral for each subsequent round.</p>`;
+    }
+
+    res.innerHTML = `<div class="result-card">
+      <div class="stat-grid" style="margin-bottom:1rem;">
+        <div class="stat-box"><div class="label">Stitch Type</div><strong>${st.abbr.toUpperCase()}</strong></div>
+        <div class="stat-box"><div class="label">Ring Stitches</div><strong>${count}</strong></div>
+        <div class="stat-box"><div class="label">Starting Chain</div><strong>Ch ${ch}</strong></div>
+        ${diamBox}
+      </div>
+      <div style="padding:1rem;background:var(--color-bg-secondary);border-radius:0.5rem;font-size:0.9rem;line-height:1.6;">
+        <strong>Written Instructions:</strong><br>${instruction}
+      </div>
+      ${spiralNote}
+      <p style="margin-top:0.75rem;font-size:0.875rem;color:var(--color-text-muted)">Tip: Pull the tail gently but firmly — tugging too hard can distort the first round of stitches.</p>
+    </div>`;
+  }
+
+  function buildDiameterTable() {
+    const gauges = [
+      { label: 'Fingering (thread-like)', val: 6 },
+      { label: 'Sport', val: 5 },
+      { label: 'DK', val: 4.5 },
+      { label: 'Worsted', val: 4 },
+      { label: 'Bulky', val: 3 },
+    ];
+    let rows = '';
+    for (const g of gauges) {
+      const d6 = (6 / (Math.PI * g.val)).toFixed(2);
+      const d8 = (8 / (Math.PI * g.val)).toFixed(2);
+      const d12 = (12 / (Math.PI * g.val)).toFixed(2);
+      rows += `<tr><td>${g.label} (~${g.val} sc/in)</td><td>${d6}"</td><td>${d8}"</td><td>${d12}"</td></tr>`;
+    }
+    document.getElementById('diameter-table').innerHTML = `<table class="data-table">
+      <thead><tr><th>Yarn Weight</th><th>6-sc ring</th><th>8-sc ring</th><th>12-sc ring</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('magic-ring-stitch-calculator.html');
+    injectFooter();
+    buildDiameterTable();
+  });
+  </script>
+</body>
+</html>
