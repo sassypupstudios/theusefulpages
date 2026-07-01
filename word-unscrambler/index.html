@@ -1,417 +1,379 @@
-<!DOCTYPE html>
-<html lang="en" class="">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Word Unscrambler & Anagram Solver — Free Online Tool | The Useful Pages</title>
-  <meta name="description" content="Unscramble letters and find all valid words instantly. Filter by length, sort by Scrabble score, and look up definitions. Free, no signup required.">
-  <meta name="keywords" content="word unscrambler, anagram solver, unscramble letters, scrabble word finder, word finder">
+  <title>Word Unscrambler - Online Word Finder | The Useful Pages</title>
+  <meta name="description" content="Unscramble letters to find all possible words. Filter by length, sort by Scrabble score or alphabetically. Click any word to see its definition instantly.">
   <link rel="canonical" href="https://theusefulpages.com/word-unscrambler/">
-  <meta property="og:title" content="Word Unscrambler & Anagram Solver — The Useful Pages">
-  <meta property="og:description" content="Unscramble any letters to find valid words. Filter, sort, and look up definitions instantly.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://theusefulpages.com/word-unscrambler/">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Word Unscrambler & Anagram Solver — The Useful Pages">
-  <meta name="twitter:description" content="Unscramble any letters to find valid words instantly. Free, no signup.">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Word Unscrambler & Anagram Solver",
-    "url": "https://theusefulpages.com/word-unscrambler/",
-    "description": "Unscramble letters to find all valid English words. Filter by length, sort by Scrabble score.",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "Any",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  <meta property="og:title" content="Word Unscrambler - The Useful Pages"><meta property="og:description" content="Unscramble letters to find all possible words instantly."><meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Unscrambler","url":"https://theusefulpages.com/word-unscrambler/","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
   }
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
+  })();
   </script>
-  <!-- Google Analytics — replace G-XXXXXXXXXX -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
-  <!-- AdSense — replace ca-pub-XXXXXXXXXXXXXXXX -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } }
-    };
-  </script>
-  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .word-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .word-chip { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 6px; padding: 0.35rem 0.75rem; font-size: 0.875rem; cursor: pointer; transition: all 0.15s; font-weight: 500; }
+    .word-chip:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .word-chip .chip-score { font-size: 0.7rem; color: var(--accent); margin-left: 0.3rem; }
+    .word-chip:hover .chip-score { color: #fff; }
+    .status-bar { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; }
+    .modal-overlay.active { display:flex; }
+    .modal-box { background:var(--card-bg); border-radius:12px; padding:1.5rem; max-width:500px; width:90%; max-height:80vh; overflow-y:auto; }
+    .modal-word { font-size:1.5rem; font-weight:700; color:var(--primary); margin-bottom:0.25rem; }
+    .modal-phonetic { color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem; }
+    .def-pos { font-style:italic; font-size:0.85rem; color:var(--accent); margin-bottom:0.25rem; font-weight:600; }
+    .def-text { font-size:0.9rem; margin-bottom:0.75rem; }
+    .no-results { color:var(--text-muted); text-align:center; padding:2rem; font-size:0.95rem; }
+    .loader { display:inline-block; width:14px; height:14px; border:2px solid var(--border); border-top-color:var(--primary); border-radius:50%; animation:spin 0.6s linear infinite; vertical-align:middle; margin-right:0.4rem; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+  </style>
 </head>
-<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors-fast">
-
-  <!-- NAV -->
-  <nav class="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="/" class="flex items-center gap-2 text-indigo-600 font-bold text-lg shrink-0">
-          <span class="text-xl" aria-hidden="true">⚡</span> The Useful Pages
-        </a>
-        <div class="hidden lg:flex items-center gap-5 text-sm">
-          <a href="/word-unscrambler/" data-nav class="text-indigo-600 font-semibold">Word Unscrambler</a>
-          <a href="/password-generator/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Password Generator</a>
-          <a href="/unit-converter/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Unit Converter</a>
-          <a href="/word-counter/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Word Counter</a>
-          <a href="/lorem-ipsum/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Lorem Ipsum</a>
-          <a href="/color-picker/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Color Picker</a>
+<body>
+  <div id="site-nav"></div>
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Word Unscrambler</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Enter scrambled letters to find every word you can make. Click any word to see its definition.</p>
+      <div class="tool-card">
+        <div class="form-row">
+          <div class="form-group" style="flex:1;">
+            <label class="form-label">Scrambled Letters (up to 15)</label>
+            <input type="text" id="lettersInput" class="form-input" maxlength="15" placeholder="e.g. staer" style="text-transform:uppercase;font-size:1.25rem;letter-spacing:0.1em;" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'').toUpperCase()">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Min Length</label>
+            <select id="minLen" class="form-select">
+              <option value="2">2+</option>
+              <option value="3" selected>3+</option>
+              <option value="4">4+</option>
+              <option value="5">5+</option>
+              <option value="6">6+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Sort By</label>
+            <select id="sortBy" class="form-select">
+              <option value="length">Length</option>
+              <option value="alpha">Alphabetical</option>
+              <option value="score">Scrabble Score</option>
+            </select>
+          </div>
         </div>
-        <div class="flex items-center gap-2">
-          <button id="dark-toggle" aria-label="Toggle dark mode" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
-            <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-            <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-          </button>
-          <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" class="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          </button>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="unscramble()">Unscramble</button>
+          <button class="btn btn-outline" onclick="copyAllWords()">Copy All Words</button>
+          <button class="btn btn-ghost" onclick="clearAll()">Clear</button>
         </div>
+        <div id="statusBar" class="status-bar"></div>
+        <div id="resultsArea"></div>
       </div>
-    </div>
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-      <div class="px-4 py-3 space-y-1 text-sm">
-        <a href="/word-unscrambler/" class="block px-3 py-2 rounded-lg bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-medium">🔤 Word Unscrambler</a>
-        <a href="/password-generator/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🔐 Password Generator</a>
-        <a href="/unit-converter/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">⚖️ Unit Converter</a>
-        <a href="/word-counter/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">📊 Word Counter</a>
-        <a href="/lorem-ipsum/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">📝 Lorem Ipsum</a>
-        <a href="/color-picker/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🎨 Color Picker</a>
-      </div>
-    </div>
-  </nav>
 
-  <!-- TOP AD BANNER -->
-  <!-- AD ZONE: top-banner 728×90 leaderboard -->
-  <div class="ad-zone ad-banner py-2 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
-    <div class="ad-placeholder">Advertisement · 728×90</div>
+      <div class="instructions-card"><h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2><ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+        <li>Type your scrambled letters (up to 15) in the input box.</li>
+        <li>Choose minimum word length and sort preference.</li>
+        <li>Click <strong>Unscramble</strong> to find all possible words.</li>
+        <li>Click any word chip to look up its dictionary definition.</li>
+        <li>The number next to each word is its Scrabble point value.</li>
+        <li>Use <strong>Copy All Words</strong> to copy every result to clipboard.</li>
+        <li>The word list loads once and is cached for 7 days for fast results.</li>
+      </ul></div>
+
+      <div class="related-card"><h3>Related Tools</h3><div class="related-links">
+        <a href="scrabble-word-finder.html">Scrabble Word Finder</a>
+      </div></div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Word Unscrambler</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free word unscrambler to find possible words from a set of letters. It is useful for word games, puzzles, spelling practice, brainstorming, and checking possible letter combinations. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
   </div>
+  <div id="site-footer"></div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <div class="lg:grid lg:grid-cols-[1fr_300px] lg:gap-8">
-
-      <!-- MAIN TOOL -->
-      <main>
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Word Unscrambler</h1>
-        <p class="text-gray-500 dark:text-gray-400 mb-8">Enter scrambled letters to find every valid word you can make. Great for Scrabble, Wordle, and crosswords.</p>
-
-        <!-- INPUT SECTION -->
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-6 mb-6">
-          <label for="letters-input" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Enter your letters</label>
-          <div class="flex gap-3">
-            <input
-              id="letters-input"
-              type="text"
-              placeholder="e.g. aelrt"
-              maxlength="15"
-              autocomplete="off"
-              autocorrect="off"
-              autocapitalize="off"
-              spellcheck="false"
-              class="flex-1 px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white placeholder-gray-400 text-lg tracking-wider focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
-            >
-            <button id="clear-btn" class="px-4 py-3 rounded-xl border border-gray-300 dark:border-slate-700 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors text-sm font-medium">Clear</button>
-          </div>
-
-          <!-- Status / loader -->
-          <p id="dict-status" class="mt-2 text-xs text-gray-400 dark:text-gray-500"></p>
-
-          <!-- Filters -->
-          <div class="mt-4 flex flex-wrap items-center gap-4">
-            <div class="flex items-center gap-2">
-              <label for="min-len" class="text-sm text-gray-600 dark:text-gray-400">Min length:</label>
-              <select id="min-len" class="px-2 py-1.5 text-sm rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-indigo-500">
-                <option value="2">2</option><option value="3">3</option><option value="4">4</option>
-                <option value="5">5</option><option value="6">6</option><option value="7">7</option>
-              </select>
-            </div>
-            <div class="flex items-center gap-2">
-              <label for="sort-by" class="text-sm text-gray-600 dark:text-gray-400">Sort by:</label>
-              <select id="sort-by" class="px-2 py-1.5 text-sm rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-indigo-500">
-                <option value="length">Length</option>
-                <option value="alpha">Alphabetical</option>
-                <option value="score">Scrabble Score</option>
-              </select>
-            </div>
-            <button id="copy-results-btn" class="ml-auto px-3 py-1.5 text-sm rounded-lg border border-gray-300 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors hidden">Copy results</button>
-          </div>
+  <!-- Definition Modal -->
+  <div class="modal-overlay" id="defModal" onclick="if(event.target===this)closeModal()">
+    <div class="modal-box">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+        <div>
+          <div class="modal-word" id="modalWord"></div>
+          <div class="modal-phonetic" id="modalPhonetic"></div>
         </div>
-
-        <!-- RESULTS -->
-        <div id="results-section" class="hidden">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="font-semibold text-gray-700 dark:text-gray-300">
-              <span id="result-count">0</span> words found
-            </h2>
-          </div>
-
-          <!-- Length group tabs -->
-          <div id="length-tabs" class="flex flex-wrap gap-2 mb-4"></div>
-
-          <!-- Word grid -->
-          <div id="word-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2"></div>
-        </div>
-
-        <!-- Empty state -->
-        <div id="empty-state" class="text-center py-16 text-gray-400 dark:text-gray-500">
-          <div class="text-5xl mb-4">🔤</div>
-          <p class="text-lg font-medium">Enter letters above to start</p>
-          <p class="text-sm mt-1">Try typing: <button class="text-indigo-500 hover:underline" onclick="document.getElementById('letters-input').value='aelrt';document.getElementById('letters-input').dispatchEvent(new Event('input'))">aelrt</button></p>
-        </div>
-
-        <!-- MID AD -->
-        <!-- AD ZONE: mid-tool responsive -->
-        <div class="ad-zone ad-responsive mt-10 hidden" id="mid-ad">
-          <div class="ad-placeholder">Advertisement · Responsive</div>
-        </div>
-
-        <!-- Definition modal -->
-        <div id="def-modal" class="hidden fixed inset-0 bg-black/40 dark:bg-black/60 flex items-center justify-center z-50 p-4">
-          <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-lg w-full p-6 relative">
-            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
-            <h3 id="def-word" class="text-2xl font-bold text-gray-900 dark:text-white mb-4"></h3>
-            <div id="def-content" class="text-gray-600 dark:text-gray-300 text-sm space-y-3"></div>
-          </div>
-        </div>
-
-      </main>
-
-      <!-- SIDEBAR -->
-      <aside class="hidden lg:block space-y-6">
-        <!-- AD ZONE: sidebar rectangle 300×250 -->
-        <div class="ad-zone ad-rectangle">
-          <div class="ad-placeholder">Advertisement · 300×250</div>
-        </div>
-
-        <!-- Tips card -->
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-5">
-          <h3 class="font-semibold text-gray-700 dark:text-gray-300 mb-3 text-sm uppercase tracking-wide">Tips</h3>
-          <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2">
-            <li>• Use up to 15 letters at once</li>
-            <li>• Click any word to see its definition</li>
-            <li>• Sort by Scrabble score to maximize points</li>
-            <li>• Dictionary loads once and is cached</li>
-          </ul>
-        </div>
-
-        <!-- AD ZONE: sidebar rectangle 300×250 (2nd) -->
-        <div class="ad-zone ad-rectangle">
-          <div class="ad-placeholder">Advertisement · 300×250</div>
-        </div>
-      </aside>
-
+        <button onclick="closeModal()" class="btn btn-ghost btn-sm">✕</button>
+      </div>
+      <div id="modalDefs"></div>
     </div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 mt-4">
-    <!-- AD ZONE: footer-banner 728×90 -->
-    <div class="ad-zone ad-banner border-b border-gray-100 dark:border-slate-800">
-      <div class="ad-placeholder">Advertisement · 728×90</div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500 dark:text-gray-400">
-      <span><span class="font-semibold text-gray-700 dark:text-gray-300">The Useful Pages</span> — Free tools for everyone</span>
-      <span>Powered by <a href="https://sassypupstudios.com" class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium" target="_blank" rel="noopener noreferrer">Sassy Pup Studios</a></span>
-    </div>
-  </footer>
-
-  <script src="/js/shared.js"></script>
+  <script src="script.js"></script>
   <script>
-  (function () {
-    const SCRABBLE = {a:1,b:3,c:3,d:2,e:1,f:4,g:2,h:4,i:1,j:8,k:5,l:1,m:3,n:1,o:1,p:3,q:10,r:1,s:1,t:1,u:1,v:4,w:4,x:8,y:4,z:10};
-    const WORD_LIST_URL = 'https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt';
-    const CACHE_KEY = 'tup_wl_v1';
-    const CACHE_TS  = 'tup_wl_ts';
-    const CACHE_TTL = 7 * 24 * 60 * 60 * 1000;
+    const SCRABBLE_VALS = {a:1,b:3,c:3,d:2,e:1,f:4,g:2,h:4,i:1,j:8,k:5,l:1,m:3,n:1,o:1,p:3,q:10,r:1,s:1,t:1,u:1,v:4,w:4,x:8,y:4,z:10};
+    const WORD_LIST_KEY = 'wordlist_v1';
+    const WORD_LIST_TS = 'wordlist_ts';
+    const CACHE_DAYS = 7;
+    let wordSet = null;
+    let foundWords = [];
 
-    let wordList = null;
-    let currentResults = [];
+    function scrabbleScore(w) { return w.split('').reduce((s,c)=>s+(SCRABBLE_VALS[c]||0),0); }
 
-    const input       = document.getElementById('letters-input');
-    const clearBtn    = document.getElementById('clear-btn');
-    const minLen      = document.getElementById('min-len');
-    const sortBy      = document.getElementById('sort-by');
-    const resultsSection = document.getElementById('results-section');
-    const emptyState  = document.getElementById('empty-state');
-    const resultCount = document.getElementById('result-count');
-    const lengthTabs  = document.getElementById('length-tabs');
-    const wordGrid    = document.getElementById('word-grid');
-    const copyBtn     = document.getElementById('copy-results-btn');
-    const dictStatus  = document.getElementById('dict-status');
-    const midAd       = document.getElementById('mid-ad');
-
-    // Definition modal
-    const defModal    = document.getElementById('def-modal');
-    const defWord     = document.getElementById('def-word');
-    const defContent  = document.getElementById('def-content');
-    const closeModal  = document.getElementById('close-modal');
-
-    // ---- Load word list ----
     async function loadWordList() {
-      dictStatus.textContent = 'Loading dictionary…';
-      const cached = localStorage.getItem(CACHE_KEY);
-      const ts = localStorage.getItem(CACHE_TS);
-      if (cached && ts && Date.now() - parseInt(ts) < CACHE_TTL) {
-        wordList = cached.split('\n').filter(w => w.length >= 2 && w.length <= 15);
-        dictStatus.textContent = '';
-        return;
+      const ts = localStorage.getItem(WORD_LIST_TS);
+      if (ts && Date.now() - parseInt(ts) < CACHE_DAYS * 864e5) {
+        const stored = localStorage.getItem(WORD_LIST_KEY);
+        if (stored) { wordSet = new Set(stored.split('\n')); return; }
       }
+      setStatus('<span class="loader"></span>Loading word list (one-time download ~5MB)…');
       try {
-        const res = await fetch(WORD_LIST_URL);
-        const text = await res.text();
-        try {
-          localStorage.setItem(CACHE_KEY, text);
-          localStorage.setItem(CACHE_TS, Date.now().toString());
-        } catch (_) {}
-        wordList = text.split('\n').filter(w => w.length >= 2 && w.length <= 15);
-        dictStatus.textContent = '';
-      } catch (_) {
-        dictStatus.textContent = '⚠ Dictionary unavailable — check your connection.';
-      }
+        const r = await fetch('https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt');
+        const txt = await r.text();
+        try { localStorage.setItem(WORD_LIST_KEY, txt.trim()); localStorage.setItem(WORD_LIST_TS, Date.now()); } catch(e){}
+        wordSet = new Set(txt.split('\n').map(w=>w.trim().toLowerCase()));
+        setStatus('Word list loaded. Ready.');
+      } catch(e) { setStatus('Failed to load word list. Check connection.'); }
     }
 
-    // ---- Unscrambler logic ----
+    function setStatus(msg) { document.getElementById('statusBar').innerHTML = msg; }
+
     function canForm(word, letters) {
-      const freq = {};
-      for (const c of letters) freq[c] = (freq[c] || 0) + 1;
-      for (const c of word) { if (!freq[c]) return false; freq[c]--; }
+      const pool = letters.slice();
+      for (const c of word) {
+        const i = pool.indexOf(c);
+        if (i === -1) return false;
+        pool.splice(i, 1);
+      }
       return true;
     }
 
-    function scrabbleScore(word) {
-      return Array.from(word).reduce((s, c) => s + (SCRABBLE[c] || 0), 0);
+    async function unscramble() {
+      const letters = document.getElementById('lettersInput').value.toLowerCase().trim();
+      if (!letters) { showToast('Enter some letters first.'); return; }
+      if (!wordSet) { await loadWordList(); if (!wordSet) return; }
+      const minLen = parseInt(document.getElementById('minLen').value);
+      const sortBy = document.getElementById('sortBy').value;
+      setStatus('<span class="loader"></span>Searching…');
+      setTimeout(() => {
+        const letterArr = letters.split('');
+        foundWords = [];
+        for (const word of wordSet) {
+          if (word.length < minLen || word.length > letters.length) continue;
+          if (canForm(word.split(''), letterArr)) foundWords.push(word);
+        }
+        sortWords(foundWords, sortBy);
+        renderWords(foundWords);
+        setStatus(`Found <strong>${foundWords.length}</strong> words from "<strong>${letters.toUpperCase()}</strong>"`);
+      }, 10);
     }
 
-    function unscramble() {
-      const letters = input.value.trim().toLowerCase().replace(/[^a-z]/g, '');
-      if (!letters) { showEmpty(); return; }
-      if (!wordList) { dictStatus.textContent = 'Dictionary still loading…'; return; }
-
-      const minL = parseInt(minLen.value);
-      const sort = sortBy.value;
-
-      let words = wordList.filter(w => {
-        const wl = w.trim().toLowerCase();
-        return wl.length >= minL && wl.length <= letters.length && canForm(wl, letters);
-      }).map(w => w.trim().toLowerCase());
-
-      words = [...new Set(words)];
-
-      if (sort === 'alpha') words.sort();
-      else if (sort === 'length') words.sort((a, b) => b.length - a.length || a.localeCompare(b));
-      else if (sort === 'score') words.sort((a, b) => scrabbleScore(b) - scrabbleScore(a) || b.length - a.length);
-
-      currentResults = words;
-      renderResults(words);
+    function sortWords(words, by) {
+      if (by === 'length') words.sort((a,b)=>b.length-a.length||a.localeCompare(b));
+      else if (by === 'alpha') words.sort();
+      else if (by === 'score') words.sort((a,b)=>scrabbleScore(b)-scrabbleScore(a));
     }
 
-    function renderResults(words) {
-      if (!words.length) { showEmpty(); return; }
-
-      emptyState.classList.add('hidden');
-      resultsSection.classList.remove('hidden');
-      resultCount.textContent = words.length.toLocaleString();
-      copyBtn.classList.remove('hidden');
-
-      // Length group tabs
-      const groups = {};
-      words.forEach(w => { if (!groups[w.length]) groups[w.length] = []; groups[w.length].push(w); });
-      const lengths = Object.keys(groups).map(Number).sort((a, b) => b - a);
-
-      lengthTabs.innerHTML = '<button class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-600 text-white" data-len="all">All</button>';
-      lengths.forEach(len => {
-        const btn = document.createElement('button');
-        btn.className = 'px-3 py-1 text-xs font-medium rounded-full border border-gray-300 dark:border-slate-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors';
-        btn.textContent = `${len} letters (${groups[len].length})`;
-        btn.dataset.len = len;
-        lengthTabs.appendChild(btn);
-      });
-
-      renderGrid(words);
-      midAd.classList.remove('hidden');
+    function renderWords(words) {
+      const area = document.getElementById('resultsArea');
+      if (!words.length) { area.innerHTML = '<div class="no-results">No words found. Try fewer letters or a shorter minimum length.</div>'; return; }
+      const chips = words.map(w => {
+        const sc = scrabbleScore(w);
+        return `<span class="word-chip" onclick="lookupWord('${w}')">${w.toUpperCase()}<span class="chip-score">${sc}pts</span></span>`;
+      }).join('');
+      area.innerHTML = `<div class="word-chips">${chips}</div>`;
     }
 
-    function renderGrid(words) {
-      wordGrid.innerHTML = '';
-      words.slice(0, 500).forEach(word => {
-        const div = document.createElement('div');
-        const score = scrabbleScore(word);
-        div.className = 'group bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl px-3 py-2.5 cursor-pointer hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-sm transition-all animate-fade-in flex items-center justify-between';
-        div.innerHTML = `
-          <span class="font-medium text-gray-800 dark:text-gray-200 capitalize">${word}</span>
-          <span class="text-xs text-gray-400 dark:text-gray-500 font-mono">${score}pts</span>
-        `;
-        div.addEventListener('click', () => fetchDefinition(word));
-        wordGrid.appendChild(div);
-      });
+    function copyAllWords() {
+      if (!foundWords.length) { showToast('No words to copy.'); return; }
+      copyText(foundWords.join(', '), 'Words copied!');
     }
 
-    function showEmpty() {
-      resultsSection.classList.add('hidden');
-      emptyState.classList.remove('hidden');
-      copyBtn.classList.add('hidden');
-      midAd.classList.add('hidden');
+    function clearAll() {
+      document.getElementById('lettersInput').value = '';
+      document.getElementById('resultsArea').innerHTML = '';
+      setStatus('');
+      foundWords = [];
     }
 
-    // ---- Length tab filtering ----
-    lengthTabs.addEventListener('click', e => {
-      const btn = e.target.closest('[data-len]');
-      if (!btn) return;
-      lengthTabs.querySelectorAll('button').forEach(b => {
-        b.className = 'px-3 py-1 text-xs font-medium rounded-full border border-gray-300 dark:border-slate-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors';
-      });
-      btn.className = 'px-3 py-1 text-xs font-medium rounded-full bg-indigo-600 text-white';
-      const len = btn.dataset.len;
-      const filtered = len === 'all' ? currentResults : currentResults.filter(w => w.length === parseInt(len));
-      renderGrid(filtered);
-    });
-
-    // ---- Fetch definition ----
-    async function fetchDefinition(word) {
-      defWord.textContent = word;
-      defContent.innerHTML = '<p class="text-gray-400 dark:text-gray-500 italic">Loading definition…</p>';
-      defModal.classList.remove('hidden');
+    async function lookupWord(word) {
+      document.getElementById('modalWord').textContent = word.toUpperCase();
+      document.getElementById('modalPhonetic').textContent = '';
+      document.getElementById('modalDefs').innerHTML = '<div class="loader"></div> Looking up…';
+      document.getElementById('defModal').classList.add('active');
       try {
-        const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
-        if (!res.ok) throw new Error();
-        const data = await res.json();
+        const r = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+        const data = await r.json();
+        if (!Array.isArray(data) || !data.length) throw new Error('Not found');
         const entry = data[0];
+        document.getElementById('modalPhonetic').textContent = entry.phonetic || '';
         let html = '';
-        entry.meanings.slice(0, 3).forEach(m => {
-          html += `<div><span class="inline-block px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs font-medium mb-1">${m.partOfSpeech}</span>`;
-          m.definitions.slice(0, 2).forEach(d => {
-            html += `<p class="mb-1">• ${d.definition}</p>`;
-            if (d.example) html += `<p class="text-gray-400 dark:text-gray-500 text-xs italic ml-3">"${d.example}"</p>`;
+        for (const meaning of entry.meanings.slice(0,4)) {
+          html += `<div class="def-pos">${meaning.partOfSpeech}</div>`;
+          meaning.definitions.slice(0,2).forEach(d => {
+            html += `<div class="def-text">• ${d.definition}</div>`;
+            if (d.example) html += `<div style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;font-style:italic;">"${d.example}"</div>`;
           });
-          html += '</div>';
-        });
-        if (entry.phonetics?.[0]?.text) html = `<p class="text-indigo-500 text-xs mb-3">${entry.phonetics[0].text}</p>` + html;
-        defContent.innerHTML = html;
-      } catch (_) {
-        defContent.innerHTML = '<p class="text-gray-400 dark:text-gray-500">No definition found.</p>';
+        }
+        document.getElementById('modalDefs').innerHTML = html;
+      } catch(e) {
+        document.getElementById('modalDefs').innerHTML = '<div class="def-text" style="color:var(--text-muted)">Definition not found.</div>';
       }
     }
 
-    // ---- Events ----
-    input.addEventListener('input', unscramble);
-    minLen.addEventListener('change', unscramble);
-    sortBy.addEventListener('change', unscramble);
-    clearBtn.addEventListener('click', () => { input.value = ''; showEmpty(); input.focus(); });
-    copyBtn.addEventListener('click', () => copyToClipboard(currentResults.join(', ')));
-    closeModal.addEventListener('click', () => defModal.classList.add('hidden'));
-    defModal.addEventListener('click', e => { if (e.target === defModal) defModal.classList.add('hidden'); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') defModal.classList.add('hidden'); });
+    function closeModal() { document.getElementById('defModal').classList.remove('active'); }
 
-    // ---- Check URL param ----
-    const urlQ = new URLSearchParams(window.location.search).get('q');
-    if (urlQ) { input.value = urlQ; }
-
-    // Start loading word list immediately
-    loadWordList().then(() => { if (input.value) unscramble(); });
-  })();
+    document.addEventListener('DOMContentLoaded', () => {
+      injectNav('word-unscrambler.html');
+      injectFooter();
+      loadWordList();
+      document.getElementById('lettersInput').addEventListener('keydown', e => { if(e.key==='Enter') unscramble(); });
+    });
   </script>
 </body>
 </html>

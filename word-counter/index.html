@@ -1,355 +1,395 @@
-<!DOCTYPE html>
-<html lang="en" class="">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('tup_theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}()</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Word Counter — Count Words, Characters & Reading Time | The Useful Pages</title>
-  <meta name="description" content="Count words, characters, sentences, and paragraphs instantly. Get reading and speaking time estimates, find and replace text, and convert case. Free, no signup.">
-  <meta name="keywords" content="word counter, character counter, reading time calculator, word count tool, text analyzer, word frequency">
+  <title>Word Counter - Online Word Count Tool | The Useful Pages</title>
+  <meta name="description" content="Count words, characters, sentences, and paragraphs instantly. Get reading time, speaking time, top words, and case conversion tools. Free online word counter.">
   <link rel="canonical" href="https://theusefulpages.com/word-counter/">
-  <meta property="og:title" content="Word Counter & Text Analyzer — The Useful Pages">
-  <meta property="og:description" content="Instant word count, character count, reading time, and text analysis. Free, no signup.">
+  <meta property="og:title" content="Word Counter - The Useful Pages">
+  <meta property="og:description" content="Count words, characters, sentences, and paragraphs instantly. Get reading time, speaking time, top words, and case conversion tools.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://theusefulpages.com/word-counter/">
-  <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Word Counter & Text Analyzer",
-    "url": "https://theusefulpages.com/word-counter/",
-    "description": "Count words, characters, sentences, and paragraphs. Get reading and speaking time estimates.",
-    "applicationCategory": "UtilityApplication",
-    "operatingSystem": "Any",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Counter","url":"https://theusefulpages.com/word-counter/","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script type="text/javascript" async=true>
+  (function() {
+  var host = window.location.hostname;
+  var element = document.createElement('script');
+  var firstScript = document.getElementsByTagName('script')[0];
+  var url = 'https://cmp.inmobi.com'
+  .concat('/choice/', 'Lm5LFkLmQ9dTT', '/', host, '/choice.js?tag_version=V3');
+  var uspTries = 0;
+  var uspTriesLimit = 3;
+  element.async = true;
+  element.type = 'text/javascript';
+  element.src = url;
+  firstScript.parentNode.insertBefore(element, firstScript);
+  function makeStub() {
+  var TCF_LOCATOR_NAME = '__tcfapiLocator';
+  var queue = [];
+  var win = window;
+  var cmpFrame;
+  function addFrame() {
+  var doc = win.document;
+  var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+  if (!otherCMP) {
+  if (doc.body) {
+  var iframe = doc.createElement('iframe');
+  iframe.style.cssText = 'display:none';
+  iframe.name = TCF_LOCATOR_NAME;
+  doc.body.appendChild(iframe);
+  } else { setTimeout(addFrame, 5); }
   }
-  </script>
-  <!-- Google Analytics — replace G-XXXXXXXXXX -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
-  <!-- AdSense — replace ca-pub-XXXXXXXXXXXXXXXX -->
-  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } }
-    };
-  </script>
-  <link rel="stylesheet" href="/css/shared.css">
-</head>
-<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100 transition-colors-fast">
-
-  <!-- NAV -->
-  <nav class="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="/" class="flex items-center gap-2 text-indigo-600 font-bold text-lg shrink-0">
-          <span class="text-xl" aria-hidden="true">⚡</span> The Useful Pages
-        </a>
-        <div class="hidden lg:flex items-center gap-5 text-sm">
-          <a href="/word-unscrambler/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Word Unscrambler</a>
-          <a href="/password-generator/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Password Generator</a>
-          <a href="/unit-converter/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Unit Converter</a>
-          <a href="/word-counter/" data-nav class="text-violet-600 font-semibold">Word Counter</a>
-          <a href="/lorem-ipsum/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Lorem Ipsum</a>
-          <a href="/color-picker/" data-nav class="text-gray-600 dark:text-gray-300 hover:text-indigo-600 transition-colors">Color Picker</a>
-        </div>
-        <div class="flex items-center gap-2">
-          <button id="dark-toggle" aria-label="Toggle dark mode" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
-            <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-            <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-          </button>
-          <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" class="lg:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-      <div class="px-4 py-3 space-y-1 text-sm">
-        <a href="/word-unscrambler/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🔤 Word Unscrambler</a>
-        <a href="/password-generator/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🔐 Password Generator</a>
-        <a href="/unit-converter/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">⚖️ Unit Converter</a>
-        <a href="/word-counter/" class="block px-3 py-2 rounded-lg bg-violet-50 dark:bg-violet-950 text-violet-700 dark:text-violet-300 font-medium">📊 Word Counter</a>
-        <a href="/lorem-ipsum/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">📝 Lorem Ipsum</a>
-        <a href="/color-picker/" class="block px-3 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800">🎨 Color Picker</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- TOP AD BANNER -->
-  <!-- AD ZONE: top-banner 728×90 leaderboard -->
-  <div class="ad-zone ad-banner py-2 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
-    <div class="ad-placeholder">Advertisement · 728×90</div>
-  </div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <div class="lg:grid lg:grid-cols-[1fr_300px] lg:gap-8">
-
-      <main>
-        <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Word Counter</h1>
-        <p class="text-gray-500 dark:text-gray-400 mb-8">Paste or type your text below for an instant, detailed analysis.</p>
-
-        <!-- STATS ROW -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-3 mb-6">
-          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
-            <p id="stat-words" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Words</p>
-          </div>
-          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
-            <p id="stat-chars" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Characters</p>
-          </div>
-          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
-            <p id="stat-chars-no-space" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Chars (no spaces)</p>
-          </div>
-          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
-            <p id="stat-sentences" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Sentences</p>
-          </div>
-          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
-            <p id="stat-paragraphs" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Paragraphs</p>
-          </div>
-          <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4 text-center">
-            <p id="stat-read-time" class="text-3xl font-bold text-violet-600 dark:text-violet-400">0s</p>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium uppercase tracking-wide">Reading time</p>
-          </div>
-        </div>
-
-        <!-- Speaking time strip -->
-        <div class="bg-violet-50 dark:bg-violet-950 border border-violet-200 dark:border-violet-900 rounded-xl px-4 py-3 mb-6 flex items-center justify-between">
-          <span class="text-sm text-violet-700 dark:text-violet-300">🎤 Speaking time (avg 130 wpm)</span>
-          <span id="stat-speak-time" class="font-semibold text-violet-700 dark:text-violet-300">0s</span>
-        </div>
-
-        <!-- TEXTAREA -->
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-4 mb-6">
-          <textarea
-            id="text-input"
-            placeholder="Paste or type your text here…"
-            rows="12"
-            class="w-full bg-transparent resize-y text-gray-800 dark:text-gray-200 text-sm leading-relaxed outline-none placeholder-gray-300 dark:placeholder-gray-600"
-          ></textarea>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-gray-100 dark:border-slate-800 mt-2">
-            <div class="flex flex-wrap gap-2">
-              <button id="clear-text" class="px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-slate-700 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">Clear</button>
-              <button id="copy-text" class="px-3 py-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-slate-700 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">Copy text</button>
-            </div>
-            <span class="text-xs text-gray-400 dark:text-gray-500" id="char-counter">0 / ∞</span>
-          </div>
-        </div>
-
-        <!-- TOOLS SECTION -->
-        <!-- AD ZONE: mid-tool responsive -->
-        <div class="ad-zone ad-responsive mb-6">
-          <div class="ad-placeholder">Advertisement · Responsive</div>
-        </div>
-
-        <!-- Find & Replace -->
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-6 mb-6">
-          <h2 class="font-semibold text-gray-700 dark:text-gray-300 mb-4">Find &amp; Replace</h2>
-          <div class="grid sm:grid-cols-2 gap-3 mb-3">
-            <div>
-              <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1.5">Find</label>
-              <input id="find-input" type="text" placeholder="Search text…"
-                class="w-full px-3 py-2.5 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-violet-500 transition-all">
-            </div>
-            <div>
-              <label class="block text-xs text-gray-500 dark:text-gray-400 mb-1.5">Replace with</label>
-              <input id="replace-input" type="text" placeholder="Replacement…"
-                class="w-full px-3 py-2.5 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-gray-900 dark:text-white outline-none focus:ring-2 focus:ring-violet-500 transition-all">
-            </div>
-          </div>
-          <div class="flex items-center gap-3">
-            <label class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
-              <input type="checkbox" id="case-sensitive" class="accent-violet-600">
-              Case sensitive
-            </label>
-            <button id="replace-btn" class="px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white text-sm font-medium rounded-lg transition-colors">Replace All</button>
-            <span id="replace-count" class="text-sm text-gray-400 dark:text-gray-500"></span>
-          </div>
-        </div>
-
-        <!-- Case Converter -->
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-6 mb-6">
-          <h2 class="font-semibold text-gray-700 dark:text-gray-300 mb-4">Case Converter</h2>
-          <div class="flex flex-wrap gap-2">
-            <button data-case="upper"    class="case-btn px-3 py-2 text-sm font-medium border border-gray-200 dark:border-slate-700 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-violet-50 dark:hover:bg-violet-950 hover:border-violet-300 hover:text-violet-700 transition-all">UPPERCASE</button>
-            <button data-case="lower"    class="case-btn px-3 py-2 text-sm font-medium border border-gray-200 dark:border-slate-700 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-violet-50 dark:hover:bg-violet-950 hover:border-violet-300 hover:text-violet-700 transition-all">lowercase</button>
-            <button data-case="title"    class="case-btn px-3 py-2 text-sm font-medium border border-gray-200 dark:border-slate-700 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-violet-50 dark:hover:bg-violet-950 hover:border-violet-300 hover:text-violet-700 transition-all">Title Case</button>
-            <button data-case="sentence" class="case-btn px-3 py-2 text-sm font-medium border border-gray-200 dark:border-slate-700 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-violet-50 dark:hover:bg-violet-950 hover:border-violet-300 hover:text-violet-700 transition-all">Sentence case</button>
-            <button data-case="alternate" class="case-btn px-3 py-2 text-sm font-medium border border-gray-200 dark:border-slate-700 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-violet-50 dark:hover:bg-violet-950 hover:border-violet-300 hover:text-violet-700 transition-all">aLtErNaTe</button>
-          </div>
-        </div>
-
-        <!-- Word frequency -->
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-6">
-          <h2 class="font-semibold text-gray-700 dark:text-gray-300 mb-4">Top Words</h2>
-          <div id="word-freq" class="flex flex-wrap gap-2 text-sm text-gray-500 dark:text-gray-400 italic">
-            Start typing to see word frequency.
-          </div>
-        </div>
-
-      </main>
-
-      <!-- SIDEBAR -->
-      <aside class="hidden lg:block space-y-6">
-        <div class="ad-zone ad-rectangle">
-          <div class="ad-placeholder">Advertisement · 300×250</div>
-        </div>
-        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 p-5">
-          <h3 class="font-semibold text-gray-700 dark:text-gray-300 mb-3 text-sm uppercase tracking-wide">Reading Speeds</h3>
-          <ul class="text-sm text-gray-500 dark:text-gray-400 space-y-2">
-            <li>• Average reading: ~238 wpm</li>
-            <li>• Average speaking: ~130 wpm</li>
-            <li>• Speed reading: ~700+ wpm</li>
-            <li>• Blog post: ~1,600 words (~7 min)</li>
-            <li>• Novel page: ~250 words (~1 min)</li>
-          </ul>
-        </div>
-        <div class="ad-zone ad-rectangle">
-          <div class="ad-placeholder">Advertisement · 300×250</div>
-        </div>
-      </aside>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 mt-4">
-    <div class="ad-zone ad-banner border-b border-gray-100 dark:border-slate-800">
-      <div class="ad-placeholder">Advertisement · 728×90</div>
-    </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500 dark:text-gray-400">
-      <span><span class="font-semibold text-gray-700 dark:text-gray-300">The Useful Pages</span> — Free tools for everyone</span>
-      <span>Powered by <a href="https://sassypupstudios.com" class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium" target="_blank" rel="noopener noreferrer">Sassy Pup Studios</a></span>
-    </div>
-  </footer>
-
-  <script src="/js/shared.js"></script>
-  <script>
-  (function () {
-    const textarea    = document.getElementById('text-input');
-    const clearBtn    = document.getElementById('clear-text');
-    const copyBtn     = document.getElementById('copy-text');
-    const charCounter = document.getElementById('char-counter');
-    const findInput   = document.getElementById('find-input');
-    const replaceInput= document.getElementById('replace-input');
-    const replaceBtn  = document.getElementById('replace-btn');
-    const replaceCount= document.getElementById('replace-count');
-    const caseSensitive= document.getElementById('case-sensitive');
-    const wordFreqDiv = document.getElementById('word-freq');
-
-    const stats = {
-      words:         document.getElementById('stat-words'),
-      chars:         document.getElementById('stat-chars'),
-      charsNoSpace:  document.getElementById('stat-chars-no-space'),
-      sentences:     document.getElementById('stat-sentences'),
-      paragraphs:    document.getElementById('stat-paragraphs'),
-      readTime:      document.getElementById('stat-read-time'),
-      speakTime:     document.getElementById('stat-speak-time'),
-    };
-
-    function fmtTime(minutes) {
-      if (minutes < 1) return `${Math.round(minutes * 60)}s`;
-      if (minutes < 60) return `${Math.round(minutes)} min`;
-      const h = Math.floor(minutes / 60);
-      const m = Math.round(minutes % 60);
-      return m ? `${h}h ${m}m` : `${h}h`;
-    }
-
-    function analyze(text) {
-      const words = text.trim() === '' ? [] : text.trim().split(/\s+/).filter(w => w.length > 0);
-      const wordCount = words.length;
-      const charCount = text.length;
-      const charNoSpace = text.replace(/\s/g, '').length;
-      const sentences = text.trim() === '' ? 0 : (text.match(/[^.!?]*[.!?]+/g) || []).length || (text.trim().length > 0 ? 1 : 0);
-      const paragraphs = text.trim() === '' ? 0 : text.split(/\n\s*\n/).filter(p => p.trim().length > 0).length || (text.trim().length > 0 ? 1 : 0);
-      const readMins  = wordCount / 238;
-      const speakMins = wordCount / 130;
-
-      stats.words.textContent        = wordCount.toLocaleString();
-      stats.chars.textContent        = charCount.toLocaleString();
-      stats.charsNoSpace.textContent = charNoSpace.toLocaleString();
-      stats.sentences.textContent    = sentences.toLocaleString();
-      stats.paragraphs.textContent   = paragraphs.toLocaleString();
-      stats.readTime.textContent     = wordCount === 0 ? '0s' : fmtTime(readMins);
-      stats.speakTime.textContent    = wordCount === 0 ? '0s' : fmtTime(speakMins);
-      charCounter.textContent        = `${charCount.toLocaleString()} chars`;
-
-      // Word frequency (top 15, ignore stop words)
-      const STOP = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','is','it','be','as','was','are','were','has','have','had','i','you','he','she','we','they','this','that','not','by','from','up','about','into','over','after','its','their','there']);
-      const freq = {};
-      words.forEach(w => {
-        const wl = w.toLowerCase().replace(/[^a-z']/g, '');
-        if (wl.length > 2 && !STOP.has(wl)) freq[wl] = (freq[wl] || 0) + 1;
-      });
-      const sorted = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 15);
-      if (sorted.length === 0) {
-        wordFreqDiv.innerHTML = '<span class="italic">Start typing to see word frequency.</span>';
-      } else {
-        wordFreqDiv.innerHTML = sorted.map(([word, count]) =>
-          `<span class="inline-flex items-center gap-1 px-2.5 py-1 bg-violet-50 dark:bg-violet-950 text-violet-700 dark:text-violet-300 rounded-full text-xs font-medium">${word} <span class="opacity-60">${count}</span></span>`
-        ).join('');
-      }
-    }
-
-    // Case converters
-    function toTitleCase(str) {
-      const minors = new Set(['a','an','the','and','but','or','for','nor','on','at','to','by','in','up','as','of']);
-      return str.replace(/\w\S*/g, (word, idx) => {
-        const lower = word.toLowerCase();
-        return (idx === 0 || !minors.has(lower)) ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : lower;
-      });
-    }
-    function toSentenceCase(str) {
-      return str.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g, c => c.toUpperCase());
-    }
-    function toAlternate(str) {
-      let i = 0;
-      return str.replace(/[a-zA-Z]/g, c => i++ % 2 === 0 ? c.toLowerCase() : c.toUpperCase());
-    }
-
-    // Events
-    textarea.addEventListener('input', () => analyze(textarea.value));
-    clearBtn.addEventListener('click', () => { textarea.value = ''; analyze(''); textarea.focus(); });
-    copyBtn.addEventListener('click',  () => copyToClipboard(textarea.value));
-
-    replaceBtn.addEventListener('click', () => {
-      const find = findInput.value;
-      if (!find) return;
-      const flags = caseSensitive.checked ? 'g' : 'gi';
-      try {
-        const re = new RegExp(find.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), flags);
-        const matches = (textarea.value.match(re) || []).length;
-        textarea.value = textarea.value.replace(re, replaceInput.value);
-        analyze(textarea.value);
-        replaceCount.textContent = matches ? `${matches} replacement${matches !== 1 ? 's' : ''} made` : 'No matches found';
-      } catch (_) {
-        replaceCount.textContent = 'Invalid search';
-      }
-    });
-
-    document.querySelectorAll('.case-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const text = textarea.value;
-        const t = btn.dataset.case;
-        if (t === 'upper')     textarea.value = text.toUpperCase();
-        if (t === 'lower')     textarea.value = text.toLowerCase();
-        if (t === 'title')     textarea.value = toTitleCase(text);
-        if (t === 'sentence')  textarea.value = toSentenceCase(text);
-        if (t === 'alternate') textarea.value = toAlternate(text);
-        analyze(textarea.value);
-      });
-    });
-
-    // Init
-    analyze('');
+  return !otherCMP;
+  }
+  function tcfAPIHandler() {
+  var gdprApplies;
+  var args = arguments;
+  if (!args.length) { return queue; }
+  else if (args[0] === 'setGdprApplies') {
+  if (args.length > 3 && args[2] === 2 && typeof args[3] === 'boolean') {
+  gdprApplies = args[3];
+  if (typeof args[2] === 'function') { args[2]('set', true); }
+  }
+  } else if (args[0] === 'ping') {
+  var retr = { gdprApplies: gdprApplies, cmpLoaded: false, cmpStatus: 'stub' };
+  if (typeof args[2] === 'function') { args[2](retr); }
+  } else {
+  if (args[0] === 'init' && typeof args[3] === 'object') {
+  args[3] = Object.assign(args[3], { tag_version: 'V3' });
+  }
+  queue.push(args);
+  }
+  }
+  function postMessageEventHandler(event) {
+  var msgIsString = typeof event.data === 'string';
+  var json = {};
+  try { json = msgIsString ? JSON.parse(event.data) : event.data; } catch (ignore) {}
+  var payload = json.__tcfapiCall;
+  if (payload) {
+  window.__tcfapi(payload.command, payload.version, function(retValue, success) {
+  var returnMsg = { __tcfapiReturn: { returnValue: retValue, success: success, callId: payload.callId } };
+  if (msgIsString) { returnMsg = JSON.stringify(returnMsg); }
+  if (event && event.source && event.source.postMessage) { event.source.postMessage(returnMsg, '*'); }
+  }, payload.parameter);
+  }
+  }
+  while (win) {
+  try { if (win.frames[TCF_LOCATOR_NAME]) { cmpFrame = win; break; } } catch (ignore) {}
+  if (win === window.top) { break; }
+  win = win.parent;
+  }
+  if (!cmpFrame) {
+  addFrame();
+  win.__tcfapi = tcfAPIHandler;
+  win.addEventListener('message', postMessageEventHandler, false);
+  }
+  }
+  makeStub();
+  function makeGppStub() {
+  const CMP_ID = 10;
+  const SUPPORTED_APIS = ['2:tcfeuv2','6:uspv1','7:usnatv1','8:usca','9:usvav1','10:uscov1','11:usutv1','12:usctv1'];
+  window.__gpp_addFrame = function(n) {
+  if (!window.frames[n]) {
+  if (document.body) { var i = document.createElement('iframe'); i.style.cssText = 'display:none'; i.name = n; document.body.appendChild(i); }
+  else { window.setTimeout(window.__gpp_addFrame, 10, n); }
+  }
+  };
+  window.__gpp_stub = function() {
+  var b = arguments;
+  __gpp.queue = __gpp.queue || [];
+  __gpp.events = __gpp.events || [];
+  if (!b.length || (b.length == 1 && b[0] == 'queue')) { return __gpp.queue; }
+  if (b.length == 1 && b[0] == 'events') { return __gpp.events; }
+  var cmd = b[0]; var clb = b.length > 1 ? b[1] : null; var par = b.length > 2 ? b[2] : null;
+  if (cmd === 'ping') {
+  clb({ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} }, true);
+  } else if (cmd === 'addEventListener') {
+  if (!('lastId' in __gpp)) { __gpp.lastId = 0; }
+  __gpp.lastId++;
+  var lnr = __gpp.lastId;
+  __gpp.events.push({ id:lnr, callback:clb, parameter:par });
+  clb({ eventName:'listenerRegistered', listenerId:lnr, data:true, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'removeEventListener') {
+  var success = false;
+  for (var i = 0; i < __gpp.events.length; i++) { if (__gpp.events[i].id == par) { __gpp.events.splice(i, 1); success = true; break; } }
+  clb({ eventName:'listenerRemoved', listenerId:par, data:success, pingData:{ gppVersion:'1.1', cmpStatus:'stub', cmpDisplayStatus:'hidden', signalStatus:'not ready', supportedAPIs:SUPPORTED_APIS, cmpId:CMP_ID, sectionList:[], applicableSections:[-1], gppString:'', parsedSections:{} } }, true);
+  } else if (cmd === 'hasSection') { clb(false, true); }
+  else if (cmd === 'getSection' || cmd === 'getField') { clb(null, true); }
+  else { __gpp.queue.push([].slice.apply(b)); }
+  };
+  window.__gpp_msghandler = function(event) {
+  var msgIsString = typeof event.data === 'string';
+  try { var json = msgIsString ? JSON.parse(event.data) : event.data; } catch(e) { var json = null; }
+  if (typeof json === 'object' && json !== null && '__gppCall' in json) {
+  var i = json.__gppCall;
+  window.__gpp(i.command, function(retValue, success) {
+  var returnMsg = { __gppReturn: { returnValue:retValue, success:success, callId:i.callId } };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+  }, 'parameter' in i ? i.parameter : null, 'version' in i ? i.version : '1.1');
+  }
+  };
+  if (!('__gpp' in window) || typeof window.__gpp !== 'function') {
+  window.__gpp = window.__gpp_stub;
+  window.addEventListener('message', window.__gpp_msghandler, false);
+  window.__gpp_addFrame('__gppLocator');
+  }
+  }
+  makeGppStub();
+  var uspStubFunction = function() {
+  var arg = arguments;
+  if (typeof window.__uspapi !== uspStubFunction) {
+  setTimeout(function() { if (typeof window.__uspapi !== 'undefined') { window.__uspapi.apply(window.__uspapi, arg); } }, 500);
+  }
+  };
+  var checkIfUspIsReady = function() {
+  uspTries++;
+  if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) { console.warn('USP is not accessible'); }
+  else { clearInterval(uspInterval); }
+  };
+  if (typeof window.__uspapi === 'undefined') {
+  window.__uspapi = uspStubFunction;
+  var uspInterval = setInterval(checkIfUspIsReady, 6000);
+  }
   })();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1956458497999155" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS51XFQPSV"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-CS51XFQPSV');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+
+
+
+  <div class="page-wrapper">
+    <main class="tool-main">
+      <h1 style="font-size:1.875rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;">Word Counter</h1>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Type or paste your text below for instant word count, reading time, and more.</p>
+
+      <div class="tool-card">
+        <div class="form-group">
+          <label class="form-label" for="mainText">Your Text</label>
+          <textarea class="form-textarea" id="mainText" placeholder="Start typing or paste your text here..." style="min-height:200px;" oninput="analyzeText()"></textarea>
+        </div>
+
+        <div class="stat-grid" style="margin-top:1rem;">
+          <div class="stat-box">
+            <div class="stat-value" id="wordCount">0</div>
+            <div class="stat-label">Words</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="charCount">0</div>
+            <div class="stat-label">Characters (with spaces)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="charNoSpace">0</div>
+            <div class="stat-label">Characters (no spaces)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="sentenceCount">0</div>
+            <div class="stat-label">Sentences</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="paragraphCount">0</div>
+            <div class="stat-label">Paragraphs</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="readingTime">0 min</div>
+            <div class="stat-label">Reading Time</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-value" id="speakingTime">0 min</div>
+            <div class="stat-label">Speaking Time</div>
+          </div>
+        </div>
+
+        <div class="btn-row" style="margin-top:1rem;">
+          <button class="btn btn-primary" onclick="copyText(document.getElementById('mainText').value, 'Text copied!')">Copy Text</button>
+          <button class="btn btn-outline" onclick="clearAll()">Clear</button>
+        </div>
+      </div>
+
+      <!-- Case Converter -->
+      <div class="tool-card" style="margin-top:1rem;">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">Case Converter</h2>
+        <div class="btn-row">
+          <button class="btn btn-outline btn-sm" onclick="convertCase('upper')">UPPERCASE</button>
+          <button class="btn btn-outline btn-sm" onclick="convertCase('lower')">lowercase</button>
+          <button class="btn btn-outline btn-sm" onclick="convertCase('title')">Title Case</button>
+          <button class="btn btn-outline btn-sm" onclick="convertCase('sentence')">Sentence case</button>
+          <button class="btn btn-outline btn-sm" onclick="convertCase('alternate')">aLtErNaTe</button>
+        </div>
+      </div>
+
+      <!-- Find & Replace -->
+      <div class="tool-card" style="margin-top:1rem;">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">Find &amp; Replace</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Find</label>
+            <input class="form-input" type="text" id="findText" placeholder="Text to find...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Replace with</label>
+            <input class="form-input" type="text" id="replaceText" placeholder="Replace with...">
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.75rem;">
+          <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;cursor:pointer;">
+            <input type="checkbox" id="caseSensitive"> Case sensitive
+          </label>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="doFindReplace()" style="min-height:44px;">Replace All</button>
+        <span id="replaceResult" style="margin-left:1rem;font-size:0.875rem;color:var(--text-muted);"></span>
+      </div>
+
+      <!-- Top Words -->
+      <div class="tool-card" style="margin-top:1rem;">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">Top 10 Words</h2>
+        <div id="topWords" style="font-size:0.875rem;color:var(--text-muted);">Type some text above to see the most frequent words.</div>
+      </div>
+
+
+
+      <div class="instructions-card">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;">How to use</h2>
+        <ul style="margin:0;padding-left:1.25rem;font-size:0.875rem;color:var(--text-muted);line-height:1.8;">
+          <li>Type or paste your text into the large textarea above.</li>
+          <li>Stats update automatically — no button needed.</li>
+          <li>Use Case Converter buttons to transform your text formatting.</li>
+          <li>Use Find &amp; Replace to swap words or phrases in bulk.</li>
+          <li>Top 10 Words shows the most frequent words, excluding common stop words.</li>
+          <li>Reading time is estimated at 238 words per minute; speaking time at 130 wpm.</li>
+        </ul>
+      </div>
+
+      <div class="related-card">
+        <h3>Related Tools</h3>
+        <div class="related-links">
+          <a href="character-counter.html">Character Counter</a>
+          <a href="case-converter.html">Case Converter</a>
+          <a href="reading-time.html">Reading Time Calculator</a>
+          <a href="sentence-counter.html">Sentence Counter</a>
+          <a href="text-diff.html">Text Diff Checker</a>
+        </div>
+      </div>
+    <section id="tool-seo-support" class="instructions-card">
+      <h2 style="font-size:1.05rem;font-weight:700;margin:0 0 0.75rem;">About this Word Counter</h2>
+      <p style="margin:0;color:var(--text-muted);font-size:0.9rem;">Use this free word counter to count words, characters, sentences, paragraphs, reading time, and speaking time from pasted text. It is useful for essays, blog posts, social captions, emails, scripts, and any writing with a word or character limit. No signup is required, and the tool works on phones, tablets, and desktop browsers.</p>
+    </section>
+  </main>
+
+  </div>
+
+
+
+  <div id="site-footer"></div>
+  <script src="script.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    injectNav('word-counter.html');
+    injectFooter();
+  });
+
+  const STOP_WORDS = new Set(['the','a','an','and','or','but','in','on','at','to','for','of','with','by','from','is','was','are','were','be','been','being','have','has','had','do','does','did','will','would','could','should','may','might','shall','can','that','this','these','those','it','its','i','me','my','we','our','you','your','he','she','his','her','they','their','them','us','so','if','as','not','no','nor','yet','than','then','when','where','who','which','what','how','there','here','up','out','about','into','through','during','before','after','above','below','between','each','both','few','more','most','other','some','such','only','own','same','just','because','while','although','however','therefore','thus','also','very','too','much','many','any','all']);
+
+  function analyzeText() {
+    const text = document.getElementById('mainText').value;
+    const words = text.trim() === '' ? [] : text.trim().split(/\s+/).filter(w => w.length > 0);
+    const wordCount = words.length;
+    const charCount = text.length;
+    const charNoSpace = text.replace(/\s/g, '').length;
+    const sentences = text.trim() === '' ? 0 : (text.match(/[^.!?]*[.!?]+/g) || []).length || (text.trim().length > 0 ? 1 : 0);
+    const paragraphs = text.trim() === '' ? 0 : text.split(/\n\s*\n/).filter(p => p.trim().length > 0).length;
+    const readMins = wordCount / 238;
+    const speakMins = wordCount / 130;
+
+    document.getElementById('wordCount').textContent = fmtNum(wordCount, 0);
+    document.getElementById('charCount').textContent = fmtNum(charCount, 0);
+    document.getElementById('charNoSpace').textContent = fmtNum(charNoSpace, 0);
+    document.getElementById('sentenceCount').textContent = fmtNum(sentences, 0);
+    document.getElementById('paragraphCount').textContent = fmtNum(paragraphs, 0);
+    document.getElementById('readingTime').textContent = formatTime(readMins);
+    document.getElementById('speakingTime').textContent = formatTime(speakMins);
+
+    updateTopWords(words);
+  }
+
+  function formatTime(mins) {
+    if (mins < 1) return Math.ceil(mins * 60) + ' sec';
+    const m = Math.floor(mins);
+    const s = Math.round((mins - m) * 60);
+    return s > 0 ? m + ' min ' + s + ' sec' : m + ' min';
+  }
+
+  function updateTopWords(words) {
+    const freq = {};
+    words.forEach(w => {
+      const clean = w.toLowerCase().replace(/[^a-z']/g, '');
+      if (clean.length > 1 && !STOP_WORDS.has(clean)) {
+        freq[clean] = (freq[clean] || 0) + 1;
+      }
+    });
+    const sorted = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 10);
+    const container = document.getElementById('topWords');
+    if (sorted.length === 0) {
+      container.innerHTML = '<span style="color:var(--text-muted);">Type some text above to see the most frequent words.</span>';
+      return;
+    }
+    const max = sorted[0][1];
+    container.innerHTML = sorted.map(([word, count]) => `
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.4rem;">
+        <span style="width:100px;font-weight:500;">${word}</span>
+        <div style="flex:1;background:#f3f4f6;border-radius:4px;height:16px;overflow:hidden;">
+          <div style="width:${(count/max*100)}%;background:var(--primary);height:100%;border-radius:4px;"></div>
+        </div>
+        <span style="width:2rem;text-align:right;color:var(--text-muted);">${count}</span>
+      </div>
+    `).join('');
+  }
+
+  function convertCase(type) {
+    const ta = document.getElementById('mainText');
+    let t = ta.value;
+    if (type === 'upper') t = t.toUpperCase();
+    else if (type === 'lower') t = t.toLowerCase();
+    else if (type === 'title') t = t.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+    else if (type === 'sentence') t = t.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, c => c.toUpperCase());
+    else if (type === 'alternate') {
+      let i = 0;
+      t = t.split('').map(c => c.match(/[a-z]/i) ? (i++ % 2 === 0 ? c.toLowerCase() : c.toUpperCase()) : c).join('');
+    }
+    ta.value = t;
+    analyzeText();
+  }
+
+  function doFindReplace() {
+    const ta = document.getElementById('mainText');
+    const find = document.getElementById('findText').value;
+    const replace = document.getElementById('replaceText').value;
+    if (!find) { document.getElementById('replaceResult').textContent = 'Enter text to find.'; return; }
+    const flags = document.getElementById('caseSensitive').checked ? 'g' : 'gi';
+    const regex = new RegExp(find.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), flags);
+    let count = 0;
+    ta.value = ta.value.replace(regex, () => { count++; return replace; });
+    document.getElementById('replaceResult').textContent = count + ' replacement' + (count !== 1 ? 's' : '') + ' made.';
+    analyzeText();
+  }
+
+  function clearAll() {
+    document.getElementById('mainText').value = '';
+    document.getElementById('findText').value = '';
+    document.getElementById('replaceText').value = '';
+    document.getElementById('replaceResult').textContent = '';
+    analyzeText();
+  }
   </script>
 </body>
 </html>
